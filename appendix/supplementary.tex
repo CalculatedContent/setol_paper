@@ -1,0 +1,73 @@
+\documentclass[9pt,twoside,lineno]{pnas-new}
+% Use the lineno option to display guide line numbers if required.
+
+\templatetype{pnassupportinginfo}
+
+\newcommand{\nred}[1]{{\color{red}\sf{[#1]}}}
+
+
+\title{Your main manuscript title}
+\author{Author1, Author2 and Author3 (complete author list)}
+\correspondingauthor{Corresponding Author name.\\E-mail: author.two@email.com}
+
+\begin{document}
+
+%% Comment out or remove this line before generating final copy for submission; this will also remove the warning re: ``Consecutive odd pages found''.
+\instructionspage  
+
+\maketitle
+
+%% Adds the main heading for the SI text. Comment out this line if you do not have any supporting information text.
+\SItext
+
+
+\subsection*{Subhead}
+Type or paste text here. This should be additional explanatory text such as an extended technical description of results, full details of mathematical models, etc.   
+
+\include{appendix}
+
+
+%%% Each figure should be on its own page
+%\begin{figure}
+%\cantering
+%\includegraphics[width=\textwidth]{figures/example-image}
+%\caption{First figure}
+%\end{figure}
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=\textwidth]{figures/frog}
+%\caption{Second figure}
+%\end{figure}
+
+
+
+\begin{table}\centering
+\caption{This is a table}
+
+\begin{tabular}{lrrr}
+Species & CBS & CV & G3 \\
+\midrule
+1. Acetaldehyde & 0.0 & 0.0 & 0.0 \\
+2. Vinyl alcohol & 9.1 & 9.6 & 13.5 \\
+3. Hydroxyethylidene & 50.8 & 51.2 & 54.0\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%%% Add this line AFTER all your figures and tables
+\FloatBarrier
+
+\movie{Type legend for the movie here.}
+
+\movie{Type legend for the other movie here. Adding longer text to show what happens, to decide on alignment and/or indentations.}
+
+\movie{A third movie, just for kicks.}
+
+\dataset{dataset_one.txt}{Type or paste legend here.}
+
+\dataset{dataset_two.txt}{Type or paste legend here. Adding longer text to show what happens, to decide on alignment and/or indentations for multi-line or paragraph captions.}
+
+\bibliography{pnas-sample}
+
+\end{document}

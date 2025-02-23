@@ -1,0 +1,28 @@
+\nred{split this up; move some below to traps section on RANDDIST, and simplify the leadin here}
+By comparing an ESD to that of a corresponding MP distribution,
+or, more generally, comparing the current $\mathbf{W}$ to a
+corresponding random matrix $\mathbf{W}^{rand}$,
+one can estimate how well correlated a DNN layer weight matrix is
+and therefore how well it is converging.
+Currently, the~\WW tool provides two such measures: the \INITDIST~and \RANDDIST~metrics.
+The \INITDIST~metric measures the element-wise distance between the current $\mathbf{W}$ and it's
+initial (random) matrix: $\Vert\mathbf{W}-\mathbf{W}^{init}\Vert_{F}$.
+And this is can be a  useful to practioners at times to check if their layers are converging or not,
+but it is not terribly accurate\cite{MM21a_simpsons_TR,Yao}
+The \RANDDIST~metric, which is more accurate, randomly permutes the current $\mathbf{W}$ element-wise,
+and then compares the ESD of current $\mathbf{W}$ to the ESD of this randomized matrix
+(see Section~\ref{sxn:htsr-metrics} for more details)
+For all well trained DNN layers, the layer ESD $\rho_{emp}(\lambda)$
+differ significantly from the MP distribution, $\rho_{emp}(\lambda)\ne\rho_{MP}(\lambda)$,
+and the \RANDDIST~metric captures this.
+
+
+
+
+The \WW~\RANDDIST~metric, does more, however,  because it also
+compensates for HeavyTailedness in the ESD which is \emph{not} due to correlations,
+which dirve generalization,  but, which,  instead, arises spuriously from
+suboptimal training, from HT training data itself, and/or from other anomalies.
+(See Section~\ref{sxn:HT_ESDs} for a detailed discussion of this.)
+So to really understand how individual layers converge, we need to
+understand when and why their ESDs become Heavy-Tailed (HT).

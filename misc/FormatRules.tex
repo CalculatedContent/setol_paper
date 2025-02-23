@@ -1,0 +1,47 @@
+The following rules are applied to the formatting of the text
+
+Special Phrases
+1) all special phrases appear in the files
+
+phrase_macros.tex
+dedup_phrase_macros.tex
+
+2) In the all text
+all special phrases are expressed with latex macros
+they are  always capitalized (execept for a very specical cases)
+
+the first instance of the phrase is defined as the first time it appears
+in the text, not including the abstract or the table of contents
+
+The first instance of the phrase is to place in an emph{} tag
+and, if appropriate to be followed by the associated acroynym, in parenthesis
+
+For example, the special phrase ``Empirical Spectral Density''
+forst appears in the main text in the latex file:  210_htsr_setup.tex 
+in the subsection ``The \HTSR Setup''
+
+is expressed in the latex file with the macro \EmpiricalSpectralDensity
+It appears in the abstract as Empirical Spectral Density (ESD)
+
+The first time it appears in the main text, after the abstract,
+the latex is  \emph{\EmpiricalSpectralDensity} (ESD)
+it appears in the text as italized
+
+3) In The table of contents , if a special phrase appears in a section,  subsection, or subsubection title
+it is NOT emphasized BUT it is followed by the acroynym macro in parenthesis
+
+For example, for subsection 1.2, the latex is
+\subsection{Heavy-Tailed Self-Regularization (\HTSR)}
+
+
+4) If a mathematical symbol appears in the table of contents, or in
+a section, subsection, or subsubsection title, then it is placed in parenthesiss
+
+For example, file A64_tanaka.tex, the subsubsection title appears as:
+\subsubsection{Expressing the \GEN $(\GNORM(\lambda))$ as the Integrated \RTransform $(R(z)$ of the \CorrelationMatrix $(\AMAT)$}
+The 3 math symbols as: \GNORM(\lambda), R(z), and \AMAT
+
+
+
+
+

@@ -1,0 +1,24 @@
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.bbl
+*.blg
+*.synctex.gz
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.gz
+*.glg
+*.glo
+*.gls
+*.glsdefs
+
+# Temporary files
+*.bak
+*~
+.DS_Store
+__pycache__/

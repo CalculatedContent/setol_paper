@@ -1,0 +1,50 @@
+
+\begin{figure}[h] % [h] places the figure approximately here
+    \centering
+\resizebox{0.75\textwidth}{!}{
+\begin{tikzpicture}[
+     thick, % Line thickness
+    rectnode/.style={rectangle, draw=black, thick, minimum width=6cm, minimum height=2.5cm, rounded corners=0.3cm}, % Rectangular node style with rounded corners
+    -> % Arrow style
+]
+
+% Nodes with manual positioning
+\node[rectnode] (realdata) at (0,0) {%
+    \begin{minipage}{6cm}
+        \centering
+        \textbf{Real Data} \\
+        \vspace{0.3cm}
+        $\mathbf{x_\mu}, \mathrm{y}_\mu \in \mathbf{D},\;\mu=1, 2, \ldots, N$\\
+        $\text{where }$ \\
+        $\mathrm{y}_\mu \in \{-1, 1\}$ \\
+        $\mathbf{x_\mu}\text{ is real world, correlated data }$ \\
+        \red{$\mathbf{x_\mu} \in \mathbb{R}^{M}$, $\Vert\mathbf{x_\mu}\Vert=\tfrac{1}{M}$}
+    \end{minipage}
+};
+
+\node[rectnode] (modeldata) at (8,0) {%
+    \begin{minipage}{6cm}
+        \centering
+        \textbf{Model of the Data} \\
+        \vspace{0.3cm}
+        $\boldsymbol{\xi}_\mu, y_\mu \in \mathbf{\mathcal{D}},\;\mu=1, 2, \ldots, \infty$ \\
+        $\text{where }$ \\
+        $y_\mu \in \{-1, 1\}$ \\
+        $\boldsymbol{\xi}_{\mu} \sim \mathcal{N}(0, \sigma^2 I)$ \\
+        \red{$\boldsymbol{\xi}_{\mu}\in \mathbb{R}^{M}$, $\Vert\boldsymbol{\xi}_{\mu}\Vert=\tfrac{1}{M}$}
+    \end{minipage}
+};
+
+% Arrow between the boxes
+\draw[->] (realdata) -- (modeldata);
+
+\end{tikzpicture}
+}
+\caption{Mapping from a fixed set of $n=N$
+  real-world, correlated data instances $[\mathbf{x},\mathrm{y}]\in\mathbf{D}$
+  to an uncorrelated, random model of the data   $[\boldsymbol{\xi}, y]\in\mathbf{\mathcal{D}}$, drawn from a Gaussian i.i.d. distribution.
+  \michael{Is that bracket notation stale?  E.g., I assume that $[\mathbf{x},\mathrm{y}]\in\mathbf{D}$ is $\left\{\mathbf{x},\mathrm{y}\right\}_{i=1}^{N}\in\mathbf{D}$ and $[\boldsymbol{\xi}, y]\in\mathbf{\mathcal{D}}$ is $\left\{\boldsymbol{\xi}, y\right\}_{i=1}^{\infty}\in\mathbf{\mathcal{D}}$?}
+  \charles{How can we stabilize this ? What do you suggest as the notation for this ?  It has to be used everywhere}
+}
+    \label{fig:data_mapping}
+\end{figure}

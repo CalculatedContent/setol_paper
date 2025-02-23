@@ -1,0 +1,91 @@
+\subsection{Detecting Non-Ideal Learning Conditions}
+\label{sxn:HT_ESDs}
+
+%We would like to address the basic question:
+%\begin{quote}
+%What is the origin of the HT structure in the tail of the ESD?
+%\end{quote}
+
+The \HTSR \Phenomenology posits that SGD training reduces the \emph{\TrainingError} by accumulating correlations into the large eigenvalues
+in NN layer weight matrices  $\mathbf{W}$ such that they \emph{self-organize} into a HT with a PL signature,
+and that this successful self-organization leads to good model quality.
+Conversely, it also posits that when training has gone awry in some way, the resulting ESD, $\rho^{emp}(\lambda)$, will
+be deformed in some way.   
+In many practical situations, there can be other, 
+competing factors that give rise to large eigenvalues $(\lambda>\lambda^{+})$
+that do not contribute to the generalization capacity of the model, and, consequently, 
+can affect the \Scale (i.e., the largest eigenvalue(s) $\lambda_{max}$) 
+and \Shape (i.e., the PL exponent $\alpha$, or goodness of fit $D_{KS}$) of the layer ESDs.
+These large $\lambda$ could be \DragonKings, \emph{\CorrelationTraps}, or some other anomaly.
+
+In order to apply the HTSR \Phenomenology most effectively, one must be able to identify various spurious factors and
+distinguish real correlations from any other large eigenvalues, including the effects of both
+extreme eigenvalues $\lambda$, individual matrix elements $W_{i,j}$, and rank-$1$ perturbations in $\WMAT$
+In one case the ESD is HT primarily due to correlations that help the model generalize, whereas
+in another when the ESD may be more HT than expected due to suboptimal training, mis-labeled data, etc.
+In extreme cases, spurious eigenvalues can push the weight matrix
+into the \VeryHeavyTailed \Universality class (i.e., $\alpha<2$. See Table~\ref{tab:Uclass}, Section~\ref{sxn:htsr}), or
+disrupt the formation of a HT, resulting in a poor PL fit, undermining the core proposition of the  \HTSR approach.
+
+When training a model with SGD, one may only achieve  a sub-optimal result
+when using overly large learning rates / small batch sizes, (see Section~\ref{sxn:empirical}),
+from poor hyper-parameter settings,
+or simply because direct regularization fails. In such cases, the \HTSR approach allows one to detect
+potential problems by looking for large eigenvalues~\emph{not} resulting from correlations.\cite{GSZ20_TR}
+
+Importantly, in the context of the \SETOL theory, we can now identify such empirical anomalies
+due to \ATypical layer weight matrices $\mathbf{W}$, a key factor when models break down.
+The \SETOL approach formalizes the empirical \HTSR \Phenomenology,
+%(and as a single layer theory),
+but, in doing so, assumes that the
+underlying layer effective correlation matrix $\XECS$, is~\Typical, meaning that it can describe out-of-sample / test data.
+%\st{(This is because \SETOL is formulated in the annealed approximation; see Section XXX)}
+Conversely, if the underlying weight matrix $\mathbf{W}$ is~\ATypical, then it is in some sense
+overfit to the  training data and can not fully represent out-of-sample / test data.
+Consequently, when $\mathbf{W}$ is \ATypical,  we argue that we can observe this, either in the ESD $\rho^{emp}(\lambda)$ directly
+(i.e., when $\alpha< 2$),
+and/or having unusually large matrix elements $W_{ij}$.
+
+We conjecture such sub-optimal results, and particularly those occurring from overfitting, actually
+arise when the underlying layer weight matrix $\mathbf{W}$ is \ATypical in some way,
+in analogy to the results from the classic \SMOG theory (see Section XXX),
+and, importantly, that we can use the \SETOL approach to detect when $\mathbf{W}$ is~\ATypical
+and therefore a layer is overfit in some way.
+
+%That is, if $\mathbf{W}$ is \ATypical will arise as \Shape and/or \Scale anomalies.
+%Very Heavy Tailed ESDs may arise from a variety of phenomena, such as using too-small batch sizes, too-large learning rates, using ``bad data, etc.---all of which result in sub-optimal %t5raining.
+
+Here, we identify two specific cases of \ATypical weight matrices---\CorrelationTraps and \emph{\OverRegularization}.% 
+\footnote{Later, in Section~\ref{sxn:empirical}, we will show that we can systematically induce both phenomena and observe their effects on the \HTSR HT PL metric $\alpha$ and the \SETOL \TRACELOG condition.}
+\begin{enumerate}[label=3.3.\arabic*]
+  \item 
+  \textbf{\CorrelationTraps.} 
+  $\mathbf{W}$ is \ATypical in that $\mathbf{W}$
+ exhibits an anomalously large mean $(\bar{\WMAT})$.  
+  \michaeladdressed{Here ane below, what does mean? Mean of what?}
+  We can observe these by randomizing the layer weight matrix, $\mathbf{W}\rightarrow\mathbf{W}^{rand}$, and then looking
+  for eigenvalues that extend significantly beyond the MP edge of the random bulk (i.e., Spikes)..  We call such random spikes
+  ``\CorrelationTraps,  $\lambda_{trap}$, because they appear, in some exteme cases, to be associated with distorted ESDs
+  and, importantly, lower test accuracies.  Examples of \CorrelationTraps are shown in Section~\ref{sxn:empirical-correlation_trap}.
+  \item 
+  \textbf{\OverRegularization.} 
+  $\mathbf{W}$ is \ATypical in that $\mathbf{W}$ exhibits an anomalously large variance $(\sigma^2(\WMAT))$. 
+  We can observe this when the layer  $\alpha < 2$.  Also, since \ALPHA a measure of implicit regularization, we say the layer with $\alpha<2$ is \emph{Over-Regularized}.
+  In particular, when one layer is undertrained, having $\alpha>6$, it appears that other layers may become overtrained to compensate, and this can be seen with having $\alpha < 2$.
+  These effects are studied in Section~\ref{sxn:empirical}.
+  Additionally, we also observe that when evaluating the \SETOL \TRACELOG condition, when $\alpha < 2$, then $\Delta \lambda_{min}< 0$ (see Section~\ref{sxn:empirical-trace_log}).
+
+\end{enumerate}
+\michael{These are more saying what we see than seems right.}
+\charles{WHY ?}
+
+%These is only a few of the kinds of factors that can cause an ESD to have spurious heavy tails.
+
+
+% MM: The following are three subsubsections, maybe incorporate them into this file.
+\input{sections/331_correlation_traps}
+
+\input{sections/332_over_regularization}
+
+
+

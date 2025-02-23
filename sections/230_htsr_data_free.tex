@@ -1,0 +1,91 @@
+
+\subsection{Data-Free \SHAPE and \SCALE \Quality Metrics}
+\label{sxn:htsr-metics}
+
+The \HTSR \Phenomenology provides quality metrics for both individual layers and (by averaging layers) for an entire NN model.
+
+\paragraph{Layer-wise Quality Metrics.}
+Using the \HTSR \Phenomenology, we can define several other \SHAPE and/or \SCALE based layer (quality) metrics.
+These are available in the \WW tool, and they work very well in practice.
+\begin{itemize}
+\item 
+\ALPHA 
+$(\alpha)$: $\rho_{tail}(\lambda)\sim\lambda^{-\alpha}$. 
+A \SHAPE-based quality metric.
+\item
+\LOGSPECTRALNORM: $\log_{10}\lambda_{max}$.
+A \SCALE-based quality metric.
+\item 
+\ALPHAHAT 
+$(\hat{\alpha})$: $\alpha\log_{10}\lambda_{max}$.
+A \SCALE-adjusted \SHAPE-based quality metric.
+\item
+\RANDDIST: $JSD[\rho^{emp}|(\rho_{rand}^{emp})]$.
+A \SHAPE-based, non-parametric quality metric, suitable for highly-accurate, epoch-by-epoch analysis.%
+\footnote{JSD is the Jensen-Shannon Divergence between the original ESD and the ESD of the layer weight matrix, randomized elementwise.}
+\item
+\PLKS: $D_{KS}$.
+The KS-distance, or quality-of-fit, of the PL fits.  
+For transformers, foundation models, and large, complex, modern NNs, this is frequently an even better model quality metric than the $\alpha$ of the PL fit itself.
+\item
+\MPSOFTRANK: $\mathcal{R}_{MP}$.
+The MP-SoftRank, defined in~\cite{MM18_TR_JMLRversion}, can be used to identify problems such as when there is significant label or data noise that causes spuriously small $\alpha$, and also when it is difficult to fit a PL law.%
+\footnote{The~\WW tool also implements the WW-SoftRank, which is like the MP-SoftRank, but replaces $\lambda_{bulk}^{+}$ with $\lambda_{rand}^{max}$; these are mostly equivalent for large matrices, but they can be different for very small matrices.}
+\end{itemize}
+
+\noindent
+Each of these quality metrics provides a simple characterization of the \SHAPE and/or \SCALE of the tail of the ESD of a given layer $\mathbf{W}$.
+These metrics are related to each other, and they have various trade-offs in practice~\cite{MM20a_trends_NatComm, MM21a_simpsons_TR, YTHx23_KDD}.
+Of particular interest here in our development of \SETOL are the PL-based \WW~\ALPHA and  \ALPHAHAT~metrics.
+
+
+\paragraph{From Layer-wise Quality Metrics to Layer-Averaged Model Quality Metrics.}
+One can use the \HTSR \Phenomenology to go beyond individual \LayerQuality metrics, to construct model quality metrics by averaging \LayerQuality metrics (over all layers that are not very small). 
+%%The PL \ALPHA and  \ALPHAHAT metrics in particular correlate remarkably well with reported test accuracies for a wide range of large and very well trained NN models~\cite{MM20a_trends_NatComm,MM19a_TR}.
+Existing \HTSR model quality metrics assume that all layers are statistically independent, so that the average model quality is just the average of the contributions from each weight matrix $\mathbf{W}$.%
+\footnote{This independence assumption, clearly a mathematical convenience, gets us closer to a workable theory. One could go beyond a ``single layer theory'' by adding in intra-layer correlations empirically. The \WW tool does support this, but doing so is outside the scope of this work.}
+%
+Given a \LayerQuality metric, $\Q^{NN}_{L}(\mathbf{W})$, one can define the \emph{\ModelQuality} $\Q^{NN}$ metric for an entire model as 
+\begin{align}
+\label{eqn:ProductNorm}
+\Q^{NN}&:=\underset{L}{\prod}\;\Q^{NN}_{L}(\mathbf{W}) ,
+\end{align}
+a product of each independent \LayerQuality $\\Q^{NN}_{L}$, and then consider the layer average as the log \emph{\LayerQuality},
+\begin{align}
+\label{eqn:LogProductNorm}
+\log\Q^{NN}=\frac{1}{N_{L}}\underset{L}{\sum}\;\log\Q^{NN}_{L}=\langle\log\Q^{NN}_{L}\rangle_{L}
+\end{align}
+where $\langle\;\cdots\;\rangle_{L}$ denotes the layer average.
+
+\noindent
+In particular, prior work has used the following metrics:
+\begin{itemize}
+\item
+The layer-averaged model quality metric \ALPHA, $\log\Q^{NN}=\langle\alpha\rangle_{L}$, describes the \SHAPE of the ESDs.
+One can use the averaged \ALPHA when studying a single model, and only varying the regularization hyperparameters, although \ALPHA also works very well as a model quality metric when comparing different transformer models~\cite{YHTx21_TR}.
+\item
+The layer-averaged model quality metric \LOGSPECTRALNORM, $\log\Q^{NN}=\langle\log\lambda_{max}\rangle_{L}$, describes the \SCALE of the ESDs.
+The averaged \LOGSPECTRALNORM does work as a model quality metric but not as well as \ALPHA~(or \ALPHAHAT).
+Notably, \SLT predicts that smaller, not larger, \LOGSPECTRALNORM should correlated with model quality; the opposite is observed in practice!
+This is because smaller layer $\alpha$ generally, but not always, corresponds to larger $\lambda_{max}$.%
+\footnote{The \LOGSPECTRALNORM can exhibit a Simpsons paradox when segmenting models by quality)~\cite{MM21a_simpsons_TR}.  Nevertheless, this metric may be useful when a PL fit can not be obtained, say, when $N\gg M$ and $M$ is very small, as with LSTMs,  U-Net architectures, etc.}
+\item
+The layer-averaged model quality metric \ALPHAHAT, $\log\Q^{NN}=\langle\alpha\log\lambda_{max}\rangle_{L}=\langle\hat{\alpha}\rangle_{L}$, incorporates both \SHAPE and \SCALE information.
+This can compensate for anomalies that can arise when (say) comparing models of different sizes or model qualities~\cite{MM21a_simpsons_TR} or when other issues cause unusualy large $\lambda_{max}$. See Section~\ref{sxn:Traps}).
+\end{itemize}
+
+\noindent
+The layer-averaged \ALPHAHAT model quality metric has been been applied in a large meta-analysis of hundreds of SOTA 
+pre-trained publicly-available NN models in CV and NLP~\cite{MM20a_trends_NatComm,YTHx22_TR,YTHx23_KDD,MM19a_TR}. 
+%
+Generally speaking, \HTSR shape-based metrics, when used appropriately, outperform all other metrics studied (including 
+those from \SLT, and with access to the training/testing data,) for predicting the quality of SOTA pre-trained publicly-available NN models.  
+%
+The \HTSR theory predicts that the best-performing NN models have layers with $\ALPHA\in[2,6]$, and with $\alpha=2$
+indicating optimal performance.
+Moreover, prior empirical results show that the \ALPHA and \ALPHAHAT~metrics can predict trends in the \Quality 
+(i.e., the \GeneralizationAccuracy), of SOTA NN models---\emph{even without access to any training or testing data}~\cite{MM20a_trends_NatComm}.
+\michaeladdressed{Somewhere, around here, we need to be more explicit that we want $\alpha$ in $[2,4]$, with lower better, and that for \HTSR the latter comes from more of an informal argument from other areas that we squeeze more juice from the data; but it is not derived, even semi-empirically, from an underlying theory.}
+
+
+

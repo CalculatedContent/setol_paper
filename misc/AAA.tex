@@ -1,0 +1,91 @@
+
+\subsubsection{Aggressively Applying the Annealed Approximation}
+
+In our development of the \SETOL approach, we apply the AA ``more aggressively than it is usually applied in \STATMECH.
+By this, we mean that we will apply it more generally than just to averages of the data $x\in\mathcal{D}$.
+Doing so amounts to applying Jensens inequality \emph{as an equality}, which allows will let us interchange integrals and logarithms at will:
+\begin{align}
+\label{eqn:Jensens}
+\int\ln\cdots \leftrightarrow \ln\int\cdots
+\end{align}
+
+\noindent
+As an example, let us consider what happens when we ``aggressively apply the AA to the \FreeEnergy $F$ (as opposed to the quenched average  $\mathbb{E}[F]_{x}$).
+Using Eqns~\ref{eqn:Zu} and~\ref{eqn:F}, we obtain
+\begin{align}
+\label{eqn:ZtoF}
+F %%:=       -\dfrac{1}{\beta}\ln Z_{w}
+   =       -\dfrac{1}{\beta}\ln \int d\mu(w) e^{-\beta E(w,x)}  %%\\ \nonumber
+   \approx -\dfrac{1}{\beta}\int d\mu(w) \ln e^{-\beta E(w,x)}  %%\\ \nonumber
+   \approx \int d\mu(w) E(w,x)                                  %%\\ \nonumber
+   \approx \langle E(w,x)\rangle_{w}
+\end{align}
+where the final average $\langle E(w,x)\rangle_{w}$ is now just a Direct Average \st{or Likelihood}, i.e., 
+in this approximation , we treat $F$ as a Direct Average of the Energy $E(w,x)$.
+
+Notice that to obtain $F$, we maginalized out the variable $w$ from $E(w,x)$.
+We now see the intitution behind a \FreeEnergy: it lets us marginalize out, or ``free, a variable from an Energy function.
+(Note, however, that the \FreeEnergy is generally more complex than \EQN~\ref{eqn:ZtoF}, since $F$ can also include entropic contributions.)
+
+\michael{Lets sync, so we can minimize or modify the subsequent disucssion about high-temperature, since it is a bit confusing. Do we need it. I think we are saying that the aggressive applincation of AA and the first order contribution to the high-$T$ limit are the same, but we dont really say that explicitly.}
+
+More accurately, we can obtain this relation  by taking a \emph{High Temperature} (or small $\beta$) limit.
+At very high temperatures, i.e., $( T \rightarrow \infty $ or $ \beta \rightarrow 0 )$,
+the exponential Boltzmann factor tends to $1$,  $(e^{-\beta E(w,x)} \rightarrow 1)$,
+for all energy values $ E(w,x)$.
+Thus, the energy distribution broadens, and all microstates become nearly equally probable.
+\chris{Equivalently: Thus, the Boltzmann distribution approaches a Uniform distribution over microstates.}
+Note that in the high-T limit,
+\FreeEnergy $F$ 
+does not strictly become the average energy, but rather,
+the difference $F -\langle E \rangle_{w}^{\red{T}} $ is minimized.
+
+We also note that in the high-\(T\) limit, the free energy \(F(\beta)\) can be approximated as:
+\begin{equation}
+ \label{eqn:Ftaylor}
+F(\beta) \approx F(0) + \beta \left. \frac{\partial F}{\partial \beta} \right|_{\beta=0} + \dots
+\end{equation}
+Assuming that at high \(T\), \(F(\beta) \rightarrow F_0\) and no longer depends significantly on \(\beta\), \EQN~\ref{eqn:Ftaylor} simplifies, highlighting that the average energy is approximately given by:
+\begin{align}
+\label{eqn:Fu2}
+\langle E \rangle_{w}^{\text{high-T}} \approx \frac{\partial \beta F_0}{\partial \beta} = F_0.
+\end{align}
+
+Also, in this limit, we also note that the \ThermalAverage $\langle E\rangle_{w}$ becomes
+a uniform average over all possible states of the system, and one also has the relation:
+\begin{equation}
+\label{eqn:avgE}
+\langle E \rangle_{w}^{\red{T}} \approx
+\langle E \rangle_{w}:=
+\int d\mu(w) \ E(w,x),\;\;\beta\;small
+\end{equation}
+and the result resembles that of applying the AA aggressively.
+%%This can also be see by noting that in the high-T limit, we can assume $F\rightarrow F_{0}$ no longer depends on $\beta$,so that
+%the relation in \EQN~\ref{eqn:Fu1} becomes
+%\begin{align}
+%\label{eqn:Fu2}
+%\langle E \rangle_{w}^{\red{T}} \approx \dfrac{\partial \beta F_{0}}{\partial \beta} = F_{0}.
+%\end{align}
+
+
+
+\subsubsection{Overloading the Notation for Averages}
+
+In summary, in the AA, when applied ``aggresively, as if in a high-Temperature limit, the following relations hold: 
+\begin{equation}
+\label{eqn:FEE}
+\langle E \rangle_{w}^{\beta} \approx F_{an} \approx \langle E \rangle_{w}  ,
+\end{equation}
+where $F_{an}$ denotes specifically an \Annealed \FreeEnergy. 
+\michael{What is $F_{an}$, the high-$T$ FE, or the first order contribution, which I think is the aggressive application of the AA.}
+Moreover, if we apply the AA ``in reverse, we can effective convert a Direct Average or Likelihood into a what looks like a \FreeEnergy.
+This is exactly what is done in Section~\ref{sxn:matgen}; see \EQN~\ref{eqn:logAvgOverlap0}.
+
+From \EQN~\ref{eqn:FEE}, we notice that we can overload the bracket notation $\langle\cdots\rangle$ for averages; and we will consider multiple types of averages.
+For averages over data ($\langle\cdots\rangle_{x}$, $\langle\cdots\rangle_{\DX}$, $\langle\cdots\rangle{\XI}$, etc.), we always mean a direct average over some specific measure
+(like a Gaussian measure).
+For averages over weights ($\langle\cdots\rangle_{w}$, $\langle\cdots\rangle_{\mathbf{W}}$, $\langle\cdots\rangle_{\mathbf{S}}$, etc.),
+we will be converting these between Thermal Averages, Direct Averages/Likelihoods, and averages of random matrices (HCIZ Integrals).
+
+We can convert between averages like this because we are less concerned with computing rigourous bounds than with framing the modelling assumptions correctly and effectively.
+While obviously these are gross approximations, whatever errors these introduce will be compensated for when the final expression used is fit with empirical data (hence, a \SETOL).
