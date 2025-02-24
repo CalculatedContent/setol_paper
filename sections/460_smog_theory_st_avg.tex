@@ -5,7 +5,7 @@ In this subsection, we seek a simple, formal expression for the
 \StudentTeacher Average \GeneralizationError, $\AVGSTGE$,
 that can be used as the starting point for our extended \SemiEmpirical theory.
 
-%\input{sections/data_mapping}
+%\input{data_mapping}
 
 \paragraph{The Data Model.}
 
@@ -79,7 +79,7 @@ we define the  \EffectivePotential for the data-averaged ST \GeneralizationError
 \begin{align}
 \label{eqn:STerror}
 %\EPSLSTx = \langle\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)\rangle_{\NDXI}:=\frac{1}{N}\int d\mu(\NDXI)\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)  ,
-\EPSLSTx = \langle\DETOPSTL\rangle_{\NDXI}:=\frac{1}{N}\int d\mu(\NDXI)\DETOPSTL
+\EPSLSTx = \red{\tfrac{1}{N}}\langle\DETOPSTL\rangle_{\NDXI}:=\frac{1}{N}\int d\mu(\NDXI)\DETOPSTL
 \end{align}
 The measure $d\mu(\NDXI)$ will end up being a Gaussian measure over $N$ samples
 (see Appendix~\ref{sxn:summary_sst92}), and the intent is to evaluate it
@@ -158,7 +158,7 @@ with activation function $h(x)=x$,  the error function is
 
 
 
-\input{sections/overlap_figure}
+\input{overlap_figure}
 %\caption{Comparison of 2D and 3D representations of matrix overlap $R$. (a) 2D visualization of vector overlap $R = \cos(\theta) $.
 %  (b) 3D visualization of matrix overlap $R = \Trace{\frac{1}{N^2} \SMAT^\top \TMAT $ with solid angle $R$.}
 
@@ -206,28 +206,31 @@ which gives
 or, more simply,
 \begin{align}
   \label{eqn:eta_vec_avg_def}
-\ETA(\SVEC,\TVEC) = \langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\XI}=\tfrac{1}{N}(\SVEC^{\top} \TVEC )
+\ETA(\SVEC,\TVEC) = \langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\XI^{\red{N}}}=\tfrac{1}{N}(\SVEC^{\top} \TVEC )
 \end{align}
 
 We want to evaluate this as an \EffectivePotential $\EPSL(R)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:STerror}.
 To do this, we need to compute the average or integral over all possible input data $\XI$,
 an $N-$dimensional Gaussian vector (i.e., $d\mu(\XI)=\mathcal{D}\NDXI P(\NDXI)$).
 %
-Using $\mathcal{N}$ as the normalization for the average, as yet unspecified, we obtain
+%Using $\mathcal{N}$ as the normalization for the average, as yet unspecified, we obtain 
+\nred{CHECK THIS}
 \begin{align}
-  \langle\DETOPSTLL\rangle_{\NDXI}  
-   = &\frac{1}{\mathcal{N}}\int d\mu(\NDXI)(1-\ETA(\XI)) \\ \nonumber
-   = &\frac{1}{\mathcal{N}}\int d\mu(\NDXI)(1-\XI^{\top}\SVEC^{\top}\TVEC\XI) \\ \label{eqn:XI_ST}
-   = & \frac{N}{\mathcal{N}} - \frac{1}{\mathcal{N}}\int d\mu(\NDXI)\XI^{\top}\SVEC^{\top}\TVEC\XI \\ \nonumber
-   = & \frac{N}{\mathcal{N}} - \frac{1}{\mathcal{N}}\int d\mu(\NDXI)N\XI^{\top} R\XI \\ \nonumber
-   = & \frac{N}{\mathcal{N}} - R\frac{N}{\mathcal{N}}\int d\mu(\NDXI)\XI^{\top}\XI,
+\red{\tfrac{1}{N}?} \langle\DETOPSTLL\rangle_{\NDXI}  
+   = &\red{\cancel{\frac{1}{\mathcal{N}}}}\int d\mu(\NDXI)(1-\ETA(\XI)) \\ \nonumber
+   = &\red{\cancel{\frac{1}{\mathcal{N}}}}\int d\mu(\NDXI)(1-\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI) \\ \label{eqn:XI_ST} 
+   = &\red{\cancel{\frac{1}{\mathcal{N}}}\int d\mu(\NDXI)-\int d\mu(\NDXI)\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI) } \\ \nonumber
+   = & \red{\cancel{\frac{N}{\mathcal{N}}}}1 - \int d\mu(\NDXI)\XI^{\top}\red{\tfrac{1}{N}}\SVEC^{\top}\TVEC\XI \\ \nonumber
+   = & \red{\cancel{\frac{N}{\mathcal{N}}}}1 - \int d\mu(\NDXI)\red{\cancel{N}}\XI^{\top} R\XI \\ \nonumber
+   = & \red{\cancel{\frac{N}{\mathcal{N}}}}1 - R\int d\mu(\NDXI)\XI^{\top}\XI,
 \end{align}
-where the fifth line holds because the elements of $\XI$ are i.i.d.
+where the fifth line holds because the elements of $\XI$ are i.i.d.\red{???}
 Since $d\mu(\NDXI)$ is a measure over a (multi-variate) Gaussian distribution,
-if we normalize the data vectors $\XI$ to $\frac{1}{\sqrt{N}}$,  then $\mathcal{N}=N$, and we recover 
+if we normalize the data vectors \red{ $\XI$ to $\frac{1}{\sqrt{M}}$ (See Section~\ref{app:st-gen-err-annealed-ham}),  then
+\cancel{$\mathcal{N}=N$} the second term on the R.H.S. is unity?} and we recover (i.e., \red{\EQN~\ref{eqn:epsl}})
 \begin{align}
 \label{eqn:e0}
-\EPSL(R)=\langle\DETOPSTLL\rangle_{\NDXI} =  1 - R .
+\EPSL(R)=\red{\tfrac{1}{N}}\langle\DETOPSTLL\rangle_{\NDXI} =  1 - R .
 \end{align}
 %%%
 %%% CHM: what is this ?
@@ -260,7 +263,7 @@ and the \AverageSTGeneralizationError $\STGE(R)$ is then obtained by averaging o
 \begin{align}
 \label{eqn:AVGSTGE_R}
 \AVGSTGE(R)=\THRMAVG{\EPSL(R)}=
-\THRMAVG{1-\langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\XI}}=
+\THRMAVG{1-\langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\XI^{\red{N}}}}=
 \THRMAVG{1-\ETA(\SVEC,\TVEC)}=
 \THRMAVG{1-\tfrac{1}{N}\SVEC^{\top}\TVEC}=
 \THRMAVG{(1-R)}  ,
@@ -272,7 +275,7 @@ is just the \AverageGeneralizationAccuracy, so we can write
 \begin{align}
 \label{eqn:QST_final}
 \Q^{ST}:=1-\AVGSTGE(R)=\THRMAVG{1-\EPSL(R)}
-=\THRMAVG{\langle\ETA(\SVEC, \TVEC, \XI) \rangle_{\XI}}
+=\THRMAVG{\langle\ETA(\SVEC, \TVEC, \XI) \rangle_{\XI^{\red{N}}}}
 =\THRMAVG{\ETA(\SVEC, \TVEC)}
 =\THRMAVG{\tfrac{1}{N}\SVEC^{\top}\TVEC}=\THRMAVG{R}
 \end{align}
@@ -290,4 +293,4 @@ For more details, see Appendix~\ref{sxn:summary_sst92}.
 (In particular, doing this allows us to define the normalization needed later for the \TRACELOG condition).
 \michaeladdressed{MM TO DO: still to work on this par.}
 
-\input{sections/mapping_table}
+\input{mapping_table}
