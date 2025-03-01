@@ -95,14 +95,13 @@ we will revisit (and possibly distinguish) $N$ (layer input dimension) and $n$ (
 \charles{I am trying to clean this up. }
 
 
-Consider having a large set $\ND$ of actual, real-world data, 
+Consider having a large set $n=N$ of actual, real-world data, 
 \begin{align}
   \label{eqn:x}
-  \XVEC_{\mu}, \MY_{\mu} \in\ADD,\;\mu=1, \cdots, \ND,
+  \XVEC_{\mu}, \MY_{\mu} \in\ADD,\;\mu=1, \cdots, n,
 \end{align}
 where $\XVEC_{\mu}$ is an $m$-dimensional real vector, \red{$\XVEC_{\mu}\in\mathbb{R}^{m}$},
-$\MY_{\mu}$ is a binary label taking values $1$ of $-1$, denoted $\{-1,1\}$.
-\michaeladdressed{@charles: does that notation (here and elsewhere) mean $\{-1,1\}$?}
+$\MY_{\mu}$ is a binary label taking values $1$ of $-1$, denoted $\{-1,1\}$.$, $
 and $\ADD$ denotes the finite-size dataset.
 \michaeladdressed{Let's sync.  That ``$\in$'' is a little non-standard. Most would say $\XVEC_{\mu}\in\mathbb{R}^{m}$. But we need to be consistent throughout, and I'm not sure how you are using it. }
 \red{
@@ -112,7 +111,7 @@ and $\ADD$ denotes the finite-size dataset.
     \Vert\XVEC_{\mu}\Vert := \sqrt{\sum_{i=1}^{m} \XVEC_{\mu,i}^{2}}=\tfrac{1}{m}
   \end{equation}
   }
-We call $\XVEC^{n}$ an $n$-dimensional sample from $\ADD$.
+We call $\XVEC^{n},$ an $n$-dimensional sample (of the training data instances $\XVEC$) from $\ADD$.  We may or may not specify the labels for this sample, depending on the context
 
 We associate model errors
 with a (change in) energy $\Delta E$. Smaller energies correspond to smaller errors and therefore better models.
@@ -161,7 +160,7 @@ expected value over the model data, $\langle\cdots\rangle_{\NDXIn}$,
 using the notation:
 \begin{align}
   \label{eqn:Emap}
-  \DETOPX \xrightarrow{\text{data average}} \langle \DETOPXI \rangle_{\NDXIn} %= \DETOT = n \EPSLw.
+  \DETOPX \xrightarrow{\text{model data}} \langle \DETOPXI \rangle_{\NDXIn} %= \DETOT = n \EPSLw.
 \end{align}
 \michael{I'm confused by the arrow.  To clarify, it is not like the arrows in \EQN~\ref{eqn:model_real_world_expt}? There the arrow represents real to model; here it represents pre-average of real data to post-average of modeled data? }
 \michael{Im not sure what precisely that distinction is.  Are sample averages over the real data, and expected values over the Gaussian data that we are using to model the real data?}
@@ -217,20 +216,22 @@ To that end, we need to estimate them with a theoretical approach.
 \paragraph{Expected Values.}
 
 We can \ModelSamples and Sample Averages with an \emph{\ExpectedValue}, 
-which is computed by sampling from a model for the actual data distribution $\MDD$. 
+which is computed by sampling from a model for the actual data distribution $\MDD$.   
 \michael{@charles: that seems like a bad use of macros: ModelSamples splits out into two words, and in some places it is a noun; but here model is a capitalized verb, and ``Sample Averages'' is not a macro; and ExpectedValue is singular (the plural versus singular issue appears elsewhere with these macros).}
 \michael{It may be good to have a figure, perhaps in the intro, illustrating this shift, since it seems like the key conceptual shift.}
 \charles{This needs to all be done at once at the end of the proofreading}
 We will denote Expected Values using physics \BraKet notion.  
+ Importantly, we use the term \ExpectedValue in the physics sense, and BraKets denoted an un-normalized sum or integral; when the quantity is  to normalized, we will denote the normalization explicitly.
 For example, given a function $f(\XI)$, 
-we write the expected value as:
+we write the BraKet integral as:
 \begin{align}
  \label{eqn:EuT}
  \langle f(\XI) \rangle_{\XI}:=\int d\mu(\XI) f(\XI)  .
 \end{align}
 %%
-For a more complicated example, consider the expected value of the
-\emph{Data Averaged Total Model Error}:
+If  this integral is normalized properly, then this denotes the familiar \ExpectedValue $\mathbb{E}_{\XI}[f(\XI)]$
+For a more complicated example, consider the integral of the
+\emph{\TotalDataSampleError}
 %%\michael{If I understand what is going on, we are doing two things in this sentence; we are introducing a definition, i.e., of $\DETOPXI$, which depends on the Gaussian model, and we are introducing the expected value of that.  Althouth that may be exactly or roughly the same thing as in \EQN~\ref{eqn:Emap}?}
 \michaeladdressed{@charles: that's an example of emph inside emph.}
 \begin{align}
@@ -263,7 +264,7 @@ ensuring that macroscopic observables become independent of
 microscopic fluctuations.
 
 As an example of \SizeExtensivity and \SizeIntensivity, 
-we write the data-average of \TotalDataSampleError $\DETOPXI$ (\EQN~\ref{eqn:total_data_sample_error})
+we write the \ExpectedValue (i.e., the data-average) of \TotalDataSampleError $\DETOPXI$ (\EQN~\ref{eqn:total_data_sample_error})
 in the large-N limit as
 \begin{align}
   \lim_{n\gg 1}  \frac{1}{n}\langle\DETOPXI\rangle_{\NDXIn}=
@@ -291,7 +292,7 @@ The symbol $\EPSLw$ is our theoretical estimate of the sample average $\DETOPXI$
 well-defined for any $n$.
 We also call $\EPSLw$ the \emph{\EffectivePotential}, which will be made clear below.
 
-\michaeladdressed{Im a little confused as to the logical flow.  We introduce the ``Total \DataModel Error (which I dont think we will use much), and then we talk about the large $n$ limit, then we introduce the ``Data-Averaged Model Error (I think to introdue the notation $\EPSLw$ which we will use a lot, but this is the thing that we are talking the alrge $n$ limit of so presumably it should be introduced first), and then we introduce the \emph{Total Data-Averaged Model Error} (Im not sure why, but I think it is since we want to connect total energy to a sum or single-particle energies, which is improtant for the SETOL approach)}
+\michaeladdressed{Im a little confused as to the logical flow.  We introduce the ``Total \DataModel Error (which I don't think we will use much), and then we talk about the large $n$ limit, then we introduce the ``Data-Averaged Model Error (I think to introduce the notation $\EPSLw$ which we will use a lot, but this is the thing that we are talking the alrge $n$ limit of so presumably it should be introduced first), and then we introduce the \emph{Total Data-Averaged Model Error} (Im not sure why, but I think it is since we want to connect total energy to a sum or single-particle energies, which is important for the SETOL approach)}
 \charles{@michael: We use this later several times, such as Appendix A2, \EQN~\ref{eqn:DETOPST}}
 
 It is also convenient to write \emph{\TotalEffectivePotential} as an Energy, 
@@ -306,11 +307,11 @@ which is the regime in which \SETOL will be developed.%
 
 There is a related notion of \emph{\SizeConsistency},
 often introduced in Quantum Chemistry through the Linked Cluster Theorem\cite{Hubbard1959,Brandow1963},
-which states that the total energies and/or free energies of in particular a correlated system scale with $\mathcal{M}$,
+which states that the \emph{average} energies and/or free energies $(\bar{F})$ of in particular a correlated system scale with $\mathcal{M}$,
 the number of interacting components:
 \begin{align}
   \label{eqn:LCT}
-  \ln Z &= \sum_{\mu=1}^{\mathcal{M}}\text{(Connected Components)} \\ \nonumber
+  -\beta \bar{F}=\frac{1}{n}\ln Z &= \sum_{\mu=1}^{\mathcal{M}}\text{(Connected Components)} \\ \nonumber
   &= \sum_{\mu=1}^{\mathcal{M}}\text{Cumulants($\mu$)+higher order terms} 
 \end{align}
 Here, below, these connected components will be the matrix-generalized cumulants from RMT.
@@ -462,11 +463,11 @@ Each model and/or layer will have its own \PartitionFunction and associated \Gen
 We call $F$ and $Z$ \emph{\GeneratingFunctions} because they can be used to generate are the model errors (and/or accuracies). 
 Given a \FreeEnergy, $F$, we can ``generate'' the training and generlization errors with the appropriate derivatives of $F$ and/or $Z$~\cite{LTS90, Solla2023}.
 
-With out sign convention,  as the error decreases, the \FreeEnergy also decreases.
+Without sign convention,  as the error decreases, the \FreeEnergy also decreases.
 Therefore, when discussing accuracies or qualities,
 we will introduce a specific \GeneratingFunction, denoted $\Gamma$, which increases
 as the accuracy of quality increases.  To define $\Gamma$, one notes that
-For the average quanities, one has
+For the average quantities, one has
  $\bar{\Gamma}:=1-\bar{F}$ for the model or layer under consideration (see below).
 \michaeladdressed{Maybe be more explicit which one or two we will do?}
 \michaeladdressed{Check later: use this correctly for $F$ versus $Z$, and the $1 - \cdot$ version for accuracies.}
@@ -478,17 +479,19 @@ For the average quanities, one has
 
 In the traditional \SMOG approach, one models the (\Typical) generalization behavior of a NN
 by defining and computing the \ExpectedValue of the \FreeEnergy of the model.
-The full expected value of the \FreeEnergy, $\beta F_{n}=-\ln Z_{n}$, with respect to the (model)
+The full expected value  of the \FreeEnergy, $\beta F_{n}=-\ln Z_{n}$, with respect to the (model)
   data $\NDXIn$, as:
 \begin{align}
-  \mathbb{E}_{\NDXIn}[\beta F]:=-\langle \ln Z_{n}(\NDXIn)\rangle_{\mathcal{D}},
+  \mathbb{E}_{\NDXIn}[\beta F_n]:=-\red{\frac{1}{n}}\langle \ln Z_{n}(\NDXIn)\rangle_{\NDXIn},
 \end{align}
-where $\mathbb{E}_{\NDXIn}[\beta F]$ is the \ExpectedValue of the \FreeEnergy, which we wish to model, and 
-where $\langle \ln Z_{n}(\NDXIn)\rangle_{\mathcal{D}}$ means where we average over all possible samples of the data
+where $\mathbb{E}_{\NDXIn}[\beta F_n]$ is the \ExpectedValue of the \FreeEnergy, which we wish to model, and 
+where $\langle \ln Z_{n}(\NDXIn)\rangle_{\mathcal{D}}$ means where we average over  the $n$ samples of the data .
 ($\NDXIn$, of size $n$).  This is also called the \Quenched \FreeEnergy.
 This is, however,  frequently too difficult to analyze, and doing so typically
 requires a so-called Replica calculation. And while we will be doing something similar
-to a Replica calculation later, for the setup of the problem, we will use a simpler approach.
+to a Replica calculation later, for the setup of the problem, we will use a simpler approach
+
+.\nred{Note: when we use BraKets for Expected Values we mean in the physics sense and we have to specify the normalization explicitly }
 
 The \AnnealedApproximation (AA) is a way of taking the data-average \emph{first}, and greatly
 simpifies the model under study and its analysis.  The standard way to move forward is to follow the methods used
@@ -516,14 +519,14 @@ The mapping is:
 %chosen from the same data distribution $\mathcal{D}$, and indexed by $r$.
 %In this case, we say that the system is quenched to the disorder, and we are performing a \emph{\Quenched} Average over $\mathcal{D}$.
 
-\michaeladdressed{I think that we are using $\NDX$ and $\NDXIn$ somewhat inconsistently. And I think that is since we are going to a lot of effort to talk about replicas, etc.  We may be able to modularize some of this replica stuff to the appendix, since it's distracting to reader---it's taking a lot of time to get to the annealed hamiltonian, which is what we want to get to.  This feels a bit more like the advanced stuff that we have in Appendix~\ref{sxn:summary_sst92}, but where we do the less precise derivation in the main text; we may want to do that here, saying that there is an approach that sawps integrals to make life easier (see the appendix for a more detailed analysis, where wer derive it more precisely), and that gives the AA that gives us the annealed hamiltonian that is our staritng point.  That would also make this section shorter, which would be good.}
+\michaeladdressed{I think that we are using $\NDX$ and $\NDXIn$ somewhat inconsistently. And I think that is since we are going to a lot of effort to talk about replicas, etc.  We may be able to modularize some of this replica stuff to the appendix since it's distracting to reader---it's taking a lot of time to get to the annealed hamiltonian, which is what we want to get to.  This feels a bit more like the advanced stuff that we have in Appendix~\ref{sxn:summary_sst92}, but where we do the less precise derivation in the main text; we may want to do that here, saying that there is an approach that sawps integrals to make life easier (see the appendix for a more detailed analysis, where wer derive it more precisely), and that gives the AA that gives us the annealed hamiltonian that is our staritng point.  That would also make this section shorter, which would be good.}
 \charles{Cleaning this up}
 
 \paragraph{The Annealed Approximation (AA)} 
 Formally, the AA makes the substitution
 \begin{align}
 \label{eqn:AA}
-\mathbb{E}_{\NDXIn}[\beta F]:=-\langle\ln Z_{n}(\XI)\rangle_{\mathcal{D}}\approx-\ln \langle Z_{n}(\XI)\rangle_{\mathcal{D}}.
+-\langle\ln Z_{n}(\NDXIn)\rangle_{\NDXIn}\approx-\ln \langle Z_{n}(\NDXIn)\rangle_{\NDXIn}.
 \end{align}
 Here, we are \emph{averaging over the disorder}.
 We may associate $-\langle\ln Z_w(\NDXIn)\rangle_{\mathcal{D}}$ to the (unitless) \Quenched \FreeEnergy, and
