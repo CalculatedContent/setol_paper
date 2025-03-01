@@ -160,7 +160,7 @@ expected value over the model data, $\langle\cdots\rangle_{\NDXIn}$,
 using the notation:
 \begin{align}
   \label{eqn:Emap}
-  \DETOPX \xrightarrow{\text{model data}} \langle \DETOPXI \rangle_{\NDXIn} %= \DETOT = n \EPSLw.
+  \frac{1}{n}\DETOPX \xrightarrow{\text{expected value}} \frac{1}{n}\langle \DETOPXI \rangle_{\NDXIn} %= \DETOT = n \EPSLw.
 \end{align}
 \michael{I'm confused by the arrow.  To clarify, it is not like the arrows in \EQN~\ref{eqn:model_real_world_expt}? There the arrow represents real to model; here it represents pre-average of real data to post-average of modeled data? }
 \michael{Im not sure what precisely that distinction is.  Are sample averages over the real data, and expected values over the Gaussian data that we are using to model the real data?}
@@ -173,7 +173,7 @@ using the notation:
 \michael{Need to smooth out the text in this subsubsection a bit.}
 \charles{Get on a call, we can discuss, and just do it}
 
-\subsubsection{Sample Averages, Expected Values, and Thermal Averages}
+\subsubsection{BraKets, Expected Values, and Thermal Averages}
 \label{sxn:mathP_averages}
 
 Given the setup from Section~\ref{sxn:mathP_setup},
@@ -215,8 +215,8 @@ To that end, we need to estimate them with a theoretical approach.
 
 \paragraph{Expected Values.}
 
-We can \ModelSamples and Sample Averages with an \emph{\ExpectedValue}, 
-which is computed by sampling from a model for the actual data distribution $\MDD$.   
+We need to compute various integrals,  averages, and \emph{\ExpectedValues}, 
+ sampling from a model for the actual data distribution $\MDD$.   
 \michael{@charles: that seems like a bad use of macros: ModelSamples splits out into two words, and in some places it is a noun; but here model is a capitalized verb, and ``Sample Averages'' is not a macro; and ExpectedValue is singular (the plural versus singular issue appears elsewhere with these macros).}
 \michael{It may be good to have a figure, perhaps in the intro, illustrating this shift, since it seems like the key conceptual shift.}
 \charles{This needs to all be done at once at the end of the proofreading}
@@ -252,7 +252,6 @@ The measure $d\mu(\NDXIn)$ signifies a $n$ i.i.d Gaussian vector $\XI$, drawn fr
 %%\cformike{I use $n,m$ in this section, $N$, $M$ elsewhere since they can mean different things when we generalize to a layer.  We can fix if its too confusion, or maybe just explain above.}
 %
 
-\red{ADDED THIS:}
 \paragraph{\SizeExtensivity, \SizeIntensivity, and \SizeConsistency}
 A key requirement for the \ThermodynamicLimit in \STATMECH is \emph{\SizeExtensivity}:
 that physically meaningful quantities (i.e, total energies and free energies)
@@ -351,9 +350,9 @@ This will be made more clear later.
 \charles{I added paragraph markers; can move later}
 \paragraph{Braket Notation}
 We will use physics \BraKet notation, $\langle\cdots\rangle$,
-to denote different kinds of averages, with superscripts and subscripts,
-for expected values (estimated theoretical averages).
-We use superscripts to denote the kind of average:
+to denote different kinds of sums and integrals, with superscripts and subscripts,
+and for expected values (estimated theoretical averages).
+We use superscripts to denote the kind of integral or average:
 \begin{center}
 Thermal $\langle\cdots\rangle^{\beta}$,
 \Annealed $\langle\cdots\rangle^{an}$,
@@ -405,9 +404,6 @@ Importantly, we will never calculate the average errors directly like this.
 %%\michael{I assume that sentence is imprecise; we are not calculating average errors (of samples, so in the sese as used above), but instead computing expectations (of the model/Gaussian variables), which of course should approximate the average errors; correct?}
 Instead, we will calculate them from partial derivatives of the \FreeEnergy $F$ (as shown below).
 %%\charles{We discussed on the phone can rediscuss if necessary}
-
-\paragraph{Replica Averages}
-\charles{This section has been removed: see excerpt file}
 
 \paragraph{Other Notation: Overbars, Superscripts and Subscripts}
 \michael{The info in this paragraph should be elsewhere, maybe at the top of this or another section,
@@ -485,7 +481,7 @@ The full expected value  of the \FreeEnergy, $\beta F_{n}=-\ln Z_{n}$, with resp
   \mathbb{E}_{\NDXIn}[\beta F_n]:=-\red{\frac{1}{n}}\langle \ln Z_{n}(\NDXIn)\rangle_{\NDXIn},
 \end{align}
 where $\mathbb{E}_{\NDXIn}[\beta F_n]$ is the \ExpectedValue of the \FreeEnergy, which we wish to model, and 
-where $\langle \ln Z_{n}(\NDXIn)\rangle_{\mathcal{D}}$ means where we average over  the $n$ samples of the data .
+where $\langle \ln Z_{n}(\NDXIn)\rangle_{\NDXIn}$ means where we average over  the $n$ samples of the data .
 ($\NDXIn$, of size $n$).  This is also called the \Quenched \FreeEnergy.
 This is, however,  frequently too difficult to analyze, and doing so typically
 requires a so-called Replica calculation. And while we will be doing something similar
@@ -594,8 +590,8 @@ or, in Bra-Ket notation
   \ZAN = \langle\langle e^{-\beta\DETOPXI}\rangle_{\NDXIn}\rangle_{\WVEC}
 \end{align}
 which is exactly what we expect using the AA, as in \EQN~\ref{eqn:switch}
-(but where we leave the $\beta$ superscript off the outer Ket,
-i.e., $\langle\cdots\rangle_{\WVEC}$,  because the \ThermalAverage is explicit.).
+(Notice that we leave the $\beta$ superscript off the outer Ket,
+i.e., $\langle\cdots\rangle_{\WVEC}$,  because this is not a  \ThermalAverage.).
 
 Later, however, we will only need the high-T version $\HANHT$, and this takes a very simple form.
 \footnote{We derive expressions for $\EPSL(R)$ and $\AVGSTGE(R)$ in \EQN~\ref{eqn:e0} and \EQN~\ref{eqn:AVGSTGE_R}, respectively, using relatively simple arguments.
