@@ -31,10 +31,10 @@ The procedure starts by computing the associated quenched average of
 the \FreeEnergy, defined for the model error as
 \begin{align}
 \nonumber
-\langle-\beta F \rangle_{\NDXI} 
-   :=& \langle \ln Z \rangle_{\NDXI} \\ 
+\langle-\beta F \rangle_{\AVGNDXI} 
+   :=& \langle \ln Z \rangle_{\AVGNDXI} \\ 
 \nonumber
-   =&\left\langle \int d\mu(\SVEC)e^{-\beta\DETOPSTLL} \right\rangle_{\NDXI}  \\ 
+   =&\left\langle \int d\mu(\SVEC)e^{-\beta\DETOPSTLL} \right\rangle_{\AVGNDXI}  \\ 
 \label{eqn:qaF}
    =& \frac{1}{N}\int d\mu(\NDXI)\ln\int d\mu(\SVEC)e^{-\beta\DETOPSTLL}   ,
 \end{align}
@@ -48,21 +48,21 @@ Of course, with the HCIZ integral, we have to be also be careful since we move t
 If we apply the AA (see \EQN~\ref{eqn:AA}) to \EQN~\ref{eqn:qaF}, then we obtain
 \begin{align}
 \label{eqn:qaFan}
-\langle-\beta F \rangle_{\NDXI} \simeq 
-%%   \ln \langle Z \rangle_{\NDXI} = 
+\langle-\beta F \rangle_{\AVGNDXI} \simeq 
+%%   \ln \langle Z \rangle_{\AVGNDXI} = 
    \ln \frac{1}{N}\int d\mu(\NDXI) \int d\mu(\SVEC) e^{-\beta\DETOPSTLL}   .
 \end{align}
 %
 Notice that we have interchanged the logarithm $(\ln)$ and
 and the data average (the “disorder average”) 
-$\langle\cdots\rangle_{\NDXI}$ over the data; 
+$\langle\cdots\rangle_{\AVGNDXI}$ over the data; 
 this is the essence of the AA, as it lets the disorder fluctuate rather than forcing the system to be quenched to the data.
 %
 We will now switch the order of integration in \EQN~\ref{eqn:qaFan}, giving
 \begin{align}
 \label{eqn:qaFan3}
-\langle-\beta F \rangle_{\NDXI} \simeq 
-%%   \ln \langle Z \rangle_{\NDXI} = 
+\langle-\beta F \rangle_{\AVGNDXI} \simeq 
+%%   \ln \langle Z \rangle_{\AVGNDXI} = 
    \ln \int d\mu(\SVEC)\frac{1}{N}\int d\mu(\NDXI)e^{-\beta\DETOPSTLL)}   .
 \end{align}
 
@@ -80,7 +80,7 @@ Using this definition, we can express the \Annealed \PartitionFunction, $Z^{an}_
 (as in \EQN~\ref{eqn:Zan_def} in Section~\ref{sxn:mathP}, and as in \EQN~(2.31) of \cite{SST92}:
 \begin{align}
  \label{eqn:Zan}
-Z^{an}_{\ND}:=\ND\langle Z\rangle_{\NDXI}=\int d\mu(\SVEC)e^{-\ND\beta\HAN(\beta,\SVEC.\TVEC)}  .
+Z^{an}_{\ND}:=\ND\langle Z\rangle_{\AVGNDXI}=\int d\mu(\SVEC)e^{-\ND\beta\HAN(\beta,\SVEC.\TVEC)}  .
 \end{align}
 
 \michael{Here, we have a subscript $N$ and in the main text I think we have a subscript $n$ for the same thing. Is it different, or is it a typo.}
@@ -129,7 +129,7 @@ which can be seen from
   &=  -\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
   &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1}\dfrac{\partial }{\partial \beta}   \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
   &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1} \int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXI}
-% &=  \frac{1}{\ND} \langle\DETOPXI\rangle_{\NDXIn}
+% &=  \frac{1}{\ND} \langle\DETOPXI\rangle_{\AVGNDXIn}
  \end{align}
 This is analagous to defining the average error $\DETOPXI$ as a \ThermalAverage, but over the data $\NDXIn$  instead of the weights.
 
@@ -167,7 +167,7 @@ As shown in \EQN~(C6) of~\cite{SST92}, this takes a simple analytic form--in the
 \end{align}
 \EQN~\ref{eqn:Gan2} holds in the AA, but not in the High-T limit.
 %%
-%%We would like a simple expression for $\langle \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI \rangle_{\NDXI}$, so we can use the full form of $\GANR$.
+%%We would like a simple expression for $\langle \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI \rangle_{\AVGNDXI}$, so we can use the full form of $\GANR$.
 %%\michael{@charles, clarify what is the point of that sentence in the logical flow.  Can't we just remove it, since what we want is \EQN~\ref{eqn:Gan4} below, and to get that it is sufficient to use the following approximation.}
 %%However, 
 If we evaluate $\dfrac{\partial \HAN}{\partial \beta}$ in the High-T (small $\beta$) limit, 
@@ -183,7 +183,7 @@ By \EQN~\ref{eqn:Gan_highT_final}, this gives
 \begin{align}
 \label{eqn:Gan4}
 \EPSL(R) =
-\langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI \rangle_{\NDXI} \simeq 1-R\;\;\text{as}\;N\rightarrow\infty  ,
+\langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI \rangle_{\AVGNDXI} \simeq 1-R\;\;\text{as}\;N\rightarrow\infty  ,
 \end{align}
 which we recognize as the same as the data-averaged ST error $\epsilon(R)$ in \EQN~\ref{eqn:e0}.
 \michael{@charles: also, there is a $1/N$ in \EQN~\ref{eqn:e0}; does that belong here.}

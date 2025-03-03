@@ -56,7 +56,7 @@ $(\Ys=\Yt)$ when $(\XI=\XImu)$, and is nonzero otherwise.
 %%5Let us write the Average St \GeneralizationError, $\AVGSTGE$ (formally) as in \EQN~\ref{eqn:finalEgen} as
 %%5\begin{align}
 %%5\label{eqn:AVGSTGE0}
-%%5\AVGSTGE:= & \left\langle\THRMAVG{\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC, \XI)}\right\rangle_{\NDXI} 
+%%5\AVGSTGE:= & \left\langle\THRMAVG{\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC, \XI)}\right\rangle_{\AVGNDXI} 
 %%5\end{align}
 %%5where we first average over the model data $\NDXI$  and then take a Thermal
 %%5average over the \Student weight vectors $\SVEC$.
@@ -68,7 +68,7 @@ $(\Ys=\Yt)$ when $(\XI=\XImu)$, and is nonzero otherwise.
 %%5If take the average over the training examples $\XItrain$, we can write
 %%5\begin{align}
 %%5\label{eqn:ST_train_error}
-%%5\langle\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)\rangle_{\NDXItrain} := \dfrac{1}{\Ntrain}\sum_{\mu=1}^{\Ntrain}\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI_{\mu})
+%%5\langle\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)\rangle_{\AVGNDXItrain} := \dfrac{1}{\Ntrain}\sum_{\mu=1}^{\Ntrain}\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI_{\mu})
 %%5\end{align}
 %%5and use this to define the \emph{Model \TrainingError} $\AVGSTTE$.
 %%5We dont consider this here,  but it is important for the classic approach;
@@ -78,8 +78,8 @@ We aim to derive a simple expression for the  \AverageSTGeneralizationError, $\A
 we define the  \EffectivePotential for the data-averaged ST \GeneralizationError $\EPSL(\SVEC,\TVEC)$, as in \EQN~\ref{eqn:epsl}, as:
 \begin{align}
 \label{eqn:STerror}
-%\EPSLSTx = \langle\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)\rangle_{\NDXI}:=\frac{1}{N}\int d\mu(\NDXI)\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)  ,
-\EPSLSTx = \langle\DETOPSTL\rangle_{\NDXI}:=\frac{1}{N}\int d\mu(\NDXI)\DETOPSTL
+%\EPSLSTx = \langle\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)\rangle_{\AVGNDXI}:=\frac{1}{N}\int d\mu(\NDXI)\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)  ,
+\EPSLSTx = \langle\DETOPSTL\rangle_{\AVGNDXI}:=\frac{1}{N}\int d\mu(\NDXI)\DETOPSTL
 \end{align}
 The measure $d\mu(\NDXI)$ will end up being a Gaussian measure over $N$ samples
 (see Appendix~\ref{sxn:summary_sst92}), and the intent is to evaluate it
@@ -216,7 +216,7 @@ an $N-$dimensional Gaussian vector (i.e., $d\mu(\XI)=\mathcal{D}\NDXI P(\NDXI)$)
 %Using $\mathcal{N}$ as the normalization for the average, as yet unspecified, we obtain 
 \nred{CHECK THIS: notice we do not include the $\tfrac{1}{N}$ on the R.H.S.}
 \begin{align}
- \langle\DETOPSTLL\rangle_{\NDXI}  
+ \langle\DETOPSTLL\rangle_{\AVGNDXI}  
    = &\red{\cancel{\frac{1}{\mathcal{N}}}}\int d\mu(\NDXI)(1-\ETA(\XI)) \\ \nonumber
    = &\red{\cancel{\frac{1}{\mathcal{N}}}}\int d\mu(\NDXI)(1-\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI) \\ \label{eqn:XI_ST} 
    = &\red{\cancel{\frac{1}{\mathcal{N}}}\int d\mu(\NDXI)-\int d\mu(\NDXI)\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI) } \\ \nonumber
@@ -230,7 +230,7 @@ if we normalize the data vectors \red{ $\XI$ to $\frac{1}{\sqrt{M}}$ (See Sectio
 \cancel{$\mathcal{N}=N$} the second term on the R.H.S. is unity?} and we recover (i.e., \red{\EQN~\ref{eqn:epsl}})
 \begin{align}
 \label{eqn:e0}
-\EPSL(R)=\langle\DETOPSTLL\rangle_{\NDXI} =  1 - R .
+\EPSL(R)=\langle\DETOPSTLL\rangle_{\AVGNDXI} =  1 - R .
 \end{align}
 %%%
 %%% CHM: what is this ?
@@ -252,7 +252,7 @@ if we normalize the data vectors \red{ $\XI$ to $\frac{1}{\sqrt{M}}$ (See Sectio
 %%then $\mathcal{N}=N$, and we recover 
 %%\begin{align}
 %%\label{eqn:e0}
-%%\EPSL(R)=\frac{1}{N}\langle\Delta \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI)\rangle_{\NDXI} =  1 - R .
+%%\EPSL(R)=\frac{1}{N}\langle\Delta \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI)\rangle_{\AVGNDXI} =  1 - R .
 %%\end{align}
 
 \michaeladdressed{We have several types of subscripts on the BraKet average: $\NDXI$, $\XI$, and $\NDXIn$.  Im not sure if there are typos, or if things are overloaded. The difference isnt clear to me yet.}
@@ -263,7 +263,7 @@ and the \AverageSTGeneralizationError $\STGE(R)$ is then obtained by averaging o
 \begin{align}
 \label{eqn:AVGSTGE_R}
 \AVGSTGE(R)=\THRMAVG{\EPSL(R)}=
-\THRMAVG{1-\langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\NDXI}}=
+\THRMAVG{1-\langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\AVGNDXI}}=
 \THRMAVG{1-\ETA(\SVEC,\TVEC)}=
 \THRMAVG{1-\tfrac{1}{N}\SVEC^{\top}\TVEC}=
 \THRMAVG{(1-R)}  ,
