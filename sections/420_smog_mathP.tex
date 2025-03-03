@@ -590,19 +590,19 @@ To see this is correct, let us substitute~\ref{eqn:Gan_def} into~\ref{eqn:Zan_de
 \end{align}
 \nred{Actually, I think we want:
 \begin{align}
-   \beta\GAN:= - ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}.
+   \beta\GAN:= - ln \tfrac{1}{n} \int d\mu(\NDXIn)e^{-\beta\DETOPXI}.
 \end{align}
-so that the $\tfrac{1}{n}$ is part of the definition of $d\mu(\NDXIn)$.
+so that the $\tfrac{1}{n}$ is inside the logarithm.  
 This gives
 \begin{align}
   \label{eqn:Zan_simple}
-  \ZAN &=  \int d\mu(\WVEC) exp\left[-n \left(- \ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)\right] \\ \nonumber
-  &=  \int d\mu(\WVEC) exp\left[\ln \left( \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{n}\right] \\ \nonumber
-  &=  \int d\mu(\WVEC) \left( \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \right)^{n} \\ \nonumber
-  &=  \left (\int d\mu(\WVEC) \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \right)^{n} \\ \nonumber
+  \ZAN &=  \int d\mu(\WVEC) exp\left[-n \left(- \ln \tfrac{1}{n} \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)\right] \\ \nonumber
+  &=  \int d\mu(\WVEC) exp\left[\ln \left(\tfrac{1}{n} \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{n}\right] \\ \nonumber
+  &=  \int d\mu(\WVEC) \left( \tfrac{1}{n}\int d\mu(\NDXIn)e^{-\beta\DETOPXI} \right)^{n} \\ \nonumber
+  &=  \left (\int d\mu(\WVEC) \tfrac{1}{n}\int d\mu(\NDXIn)e^{-\beta\DETOPXI} \right)^{n} \\ \nonumber
   &= [Z^{an}_{1}]^{n}
 \end{align}
-This would simply things greatly here and elsewhere 
+This further illustrates how the AA results in a kindof mean-field approximation.
 }
 
 %or, in Bra-Ket notation
