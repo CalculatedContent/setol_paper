@@ -160,7 +160,7 @@ expected value over the model data, $\langle\cdots\rangle_{\NDXIn}$,
 using the notation:
 \begin{align}
   \label{eqn:Emap}
-  \frac{1}{n}\DETOPX \xrightarrow{\text{expected value}} \frac{1}{n}\langle \DETOPXI \rangle_{\NDXIn} %= \DETOT = n \EPSLw.
+  \DETOPX \xrightarrow{\text{expected value}} \langle \DETOPXI \rangle_{\NDXIn} %= \DETOT = n \EPSLw.
 \end{align}
 \michael{I'm confused by the arrow.  To clarify, it is not like the arrows in \EQN~\ref{eqn:model_real_world_expt}? There the arrow represents real to model; here it represents pre-average of real data to post-average of modeled data? }
 \michael{Im not sure what precisely that distinction is.  Are sample averages over the real data, and expected values over the Gaussian data that we are using to model the real data?}
@@ -213,16 +213,18 @@ Instead, we will model them.
 To that end, we need to estimate them with a theoretical approach.
 
 
-\paragraph{BraKets.}
+\paragraph{Expected Values}
 
-We need to compute various integrals,  averages, and \emph{\ExpectedValues}, 
- sampling from a model $\MDD$ for the actual data distribution $\ADD$.   
+We need to compute various sums and integrals, 
+sampling from a model $\MDD$ for the actual data distribution $\ADD$,
+which will frequently (but not always) be defined as more familiar \ExpectedValues.
 \michael{@charles: that seems like a bad use of macros: ModelSamples splits out into two words, and in some places it is a noun; but here model is a capitalized verb, and ``Sample Averages'' is not a macro; and ExpectedValue is singular (the plural versus singular issue appears elsewhere with these macros).}
 \michael{It may be good to have a figure, perhaps in the intro, illustrating this shift, since it seems like the key conceptual shift.}
 \charles{This needs to all be done at once at the end of the proofreading}
-We will denote Expected Values using physics \BraKet notion.  
- Importantly, we use the term \ExpectedValue in the physics sense, and BraKets denoted an un-normalized sum or integral; when the quantity is  to normalized, we will denote the normalization explicitly.
- \footnote{The BraKet  notation denotes an inner product in a Hilbert space of functions.}
+We will denote \ExpectedValues using physics \BraKet notion.
+Importantly, we use the term \ExpectedValue in the physics sense, and BraKets denoted an un-normalized sum or integral;
+notation denotes an inner product in a Hilbert space of functions;
+when the quantity is  to normalized, we will denote the normalization explicitly.
 For example, given a function $f(\XI)$, 
 we write the BraKet integral as:
 \begin{align}
@@ -239,8 +241,9 @@ For a more complicated example, consider the integral of the
   \label{eqn:total_data_sample_error}
 \nonumber
   \langle \DETOPXI\rangle_{\NDXIn}
-  :=  &\int d\mu(\NDXIn) \DETOPXI \\ 
-   = & \int \prod_{\mu=1}^{n}d\XI_{\mu}P(\NDXIn) \sum_{\mu=1}^{n}\DET
+  :=  &\frac{1}{n}\int d\mu(\NDXIn) \DETOPXI \\ 
+  = &
+  \frac{1}{n}\int \prod_{\mu=1}^{n}d\XI_{\mu}P(\NDXIn) \sum_{\mu=1}^{n}\DET
 \end{align}
 where $P(\NDXIn)$ is an $n$-dimensional
 probability distribution (i.e., an $n$-dimensional Gaussian distribution),
@@ -249,6 +252,7 @@ and where the subscript $\NDXIn$ on the Ket reminds us this is an expected value
 The measure $d\mu(\NDXIn)$ signifies a $n$ i.i.d Gaussian vector $\XI$, drawn from an $m$-dimensional data model vectors $\XI$.
 \michaeladdressed{@charles: clarify; that is $N$ vectors in $\mathbb{R}^{M}$ that are element-wise i.i.d. Gaussian?}
 (This is used in both Sections~\ref{sxn:SMOG_main} and~\ref{sxn:matgen}.)
+Finally, the normalization $\tfrac{1}{n}$ is included in the defintion to ensure the \BraKet is a proper \ExpectedValue.
 %%\michael{Where we are using $M$ and $N$ rather than $m$ and $n$; is that a typo, or what should it be.}
 %%\cformike{I use $n,m$ in this section, $N$, $M$ elsewhere since they can mean different things when we generalize to a layer.  We can fix if its too confusion, or maybe just explain above.}
 %
@@ -267,7 +271,7 @@ As an example of \SizeExtensivity and \SizeIntensivity,
 we write the \ExpectedValue (i.e., the data-average) of \TotalDataSampleError $\DETOPXI$ (\EQN~\ref{eqn:total_data_sample_error})
 in the large-N limit as
 \begin{align}
-  \lim_{n\gg 1}  \frac{1}{n}\langle\DETOPXI\rangle_{\NDXIn}=
+  \lim_{n\gg 1}  \langle\DETOPXI\rangle_{\NDXIn}=
   \lim_{n\gg 1}\frac{1}{n}
 \int \prod_{\mu=1}^{n}d\XI_{\mu}P(\NDXIn)
   \sum_{\mu=1}^{n}\Delta E_{\ell_2}(\WVEC,\XI_{\mu})
@@ -281,11 +285,11 @@ and~\ref{sxn:matgen}.
 Moreover, this limit will be implicit later when taking a \SaddlePointApproximation (SPA, see below).
 \footnote{As we are working within a ``physics-level of rigor, we take some liberties in evaluating these large-N limits; and we leave the formal proofs for future work. \michael{This comment should be in the intro, not in a footnote here.  Move later, since I don't have the token for the intro for now. } }
 
-The data-averaged error  $\tfrac{1}{n}\langle \DETOPXI \rangle_{\NDXIn}$ will appear frequently below.
+The data-averaged error  $\langle \DETOPXI \rangle_{\NDXIn}$ will appear frequently below.
 For compatibility with \cite{SST92}, we denote it using the symbol $\EPSLw$:
 \begin{align}
  \label{eqn:epsl}
- \EPSLw:=\frac{1}{n}\langle \DETOPXI \rangle_{\NDXIn} \quad \text{(\SizeIntensive)}.
+ \EPSLw:=\langle \DETOPXI \rangle_{\NDXIn} \quad \text{(\SizeIntensive)}.
 \end{align}
 where, by our normalization here, $\EPSLw \in [0,1]$.
 The symbol $\EPSLw$ is our theoretical estimate of the sample average $\DETOPXI$ (\EQN~\ref{eqn:detox}),
@@ -311,7 +315,7 @@ which states that the \emph{average} energies and/or free energies $(\bar{F})$ o
 the number of interacting components:
 \begin{align}
   \label{eqn:LCT}
-  -\beta \bar{F}=\frac{1}{n}\ln Z &= \sum_{\mu=1}^{\mathcal{M}}\text{(Connected Components)} \\ \nonumber
+  -\beta \bar{F}=\langle \ln Z \rangle_{\NDXIn} &= \sum_{\mu=1}^{\mathcal{M}}\text{(Connected Components)} \\ \nonumber
   &= \sum_{\mu=1}^{\mathcal{M}}\text{Cumulants($\mu$)+higher order terms} 
 \end{align}
 Here, below, these connected components will be the matrix-generalized cumulants from RMT.
@@ -479,10 +483,10 @@ by defining and computing the \ExpectedValue of the \FreeEnergy of the model.
 The full expected value  of the \FreeEnergy, $\beta F_{n}=-\ln Z_{n}$, with respect to the (model)
   data $\NDXIn$, as:
 \begin{align}
-  \mathbb{E}_{\NDXIn}[\beta F_n]:=-\red{\frac{1}{n}}\langle \ln Z_{n}(\NDXIn)\rangle_{\NDXIn},
+  \mathbb{E}_{\NDXIn}[\beta F_n]=\beta\bar{F}:=-\langle \ln Z_{n}\rangle_{\NDXIn},
 \end{align}
 where $\mathbb{E}_{\NDXIn}[\beta F_n]$ is the \ExpectedValue of the \FreeEnergy, which we wish to model, and 
-where $\langle \ln Z_{n}(\NDXIn)\rangle_{\NDXIn}$ means where we average over  the $n$ samples of the data .
+where $\langle \ln Z_{n}\rangle_{\NDXIn}$ means where we average over  the $n$ samples of the data .
 ($\NDXIn$, of size $n$).  This is also called the \Quenched \FreeEnergy.
 This is, however,  frequently too difficult to analyze, and doing so typically
 requires a so-called Replica calculation. And while we will be doing something similar
@@ -523,7 +527,7 @@ The mapping is:
 Formally, the AA makes the substitution
 \begin{align}
 \label{eqn:AA}
--\langle\ln Z_{n}(\NDXIn)\rangle_{\NDXIn}\approx-\ln \langle Z_{n}(\NDXIn)\rangle_{\NDXIn}.
+-\langle\ln Z_{n}\rangle_{\NDXIn}\approx-\ln \langle Z_{n}\rangle_{\NDXIn}.
 \end{align}
 Here, we are \emph{averaging over the disorder}.
 We may associate $-\langle\ln Z_w(\NDXIn)\rangle_{\mathcal{D}}$ to the (unitless) \Quenched \FreeEnergy, and
@@ -534,7 +538,7 @@ Applying the AA amounts to applying Jensens inequality \emph{as an equality},
 and it allows will let us interchange integrals and logarithms when computing the data average:
 \begin{align}
 \label{eqn:Jensens}
-\ln\int d\mu(\NDXIn)(\cdots)\leftrightarrow \int d\mu(\NDXIn)\ln(\cdots)   .
+\ln\frac{1}{n}\int d\mu(\NDXIn)(\cdots)\leftrightarrow \frac{1}{n}\int d\mu(\NDXIn)\ln(\cdots)   .
 \end{align}
 This will allow us to switch the order of the data and the thermal averages, i.e.,
 \begin{align}
@@ -585,14 +589,14 @@ To see this is correct, let us substitute~\ref{eqn:Gan_def} into~\ref{eqn:Zan_de
   &=  \int d\mu(\WVEC) exp\left[\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right] \\ \nonumber
   &=  \int d\mu(\WVEC)  \int d\mu(\NDXIn)e^{-\beta\DETOPXI} ,
 \end{align}
-or, in Bra-Ket notation
-\begin{align}
-  \label{eqn:Zan_brakets}
-  \ZAN = \langle\langle e^{-\beta\DETOPXI}\rangle_{\NDXIn}\rangle_{\WVEC}
-\end{align}
-which is exactly what we expect using the AA, as in \EQN~\ref{eqn:switch}
-(Notice that we leave the $\beta$ superscript off the outer Ket,
-i.e., $\langle\cdots\rangle_{\WVEC}$,  because this is not a  \ThermalAverage.).
+%or, in Bra-Ket notation
+%\begin{align}
+%%  \label{eqn:Zan_brakets}
+%  \ZAN = \langle\langle e^{-\beta\DETOPXI}\rangle_{\NDXIn}\rangle_{\WVEC}
+%\end{align}
+The order of the integrals is exactly what we expect using the AA, as in \EQN~\ref{eqn:switch}
+%(Notice that we leave the $\beta$ superscript off the outer Ket,
+%i.e., $\langle\cdots\rangle_{\WVEC}$,  because this is not a  \ThermalAverage.).
 
 Later, however, we will only need the high-T version $\HANHT$, and this takes a very simple form.
 \footnote{We derive expressions for $\EPSL(R)$ and $\AVGSTGE(R)$ in \EQN~\ref{eqn:e0} and \EQN~\ref{eqn:AVGSTGE_R}, respectively, using relatively simple arguments.
@@ -683,10 +687,11 @@ To do so, let's take a high-T expansion of \EQN~\ref{eqn:Gan_def} (see below for
 \label{eqn:Gan_highT}
 \beta\GANHT
 =&  - \frac{1}{n}\ln \int d\mu(\NDXIn) [1-\beta \DETOPXI] \\ \nonumber
-=&  - \frac{1}{n}\ln\langle 1-\beta\DETOPXI \rangle_{\NDXIn} \\ \nonumber
+\approx&\;   - \frac{1}{n} \int d\mu(\NDXIn)\beta \DETOPXI] \\ \nonumber
+%=&  - \ln\langle 1-\beta\DETOPXI \rangle_{\NDXIn} \\ \nonumber
 %=&  - \frac{1}{n}\left(\ln\langle 1\rangle_{\NDXIn}-\langle\beta\DETOPXI \rangle_{\NDXIn}\right) \\ \nonumber
-\approx&\;  \frac{1}{n}\langle \beta\DETOPXI \rangle_{\NDXIn} \\ \nonumber
-=&\;\frac{1}{n}\beta (n\EPSLw)\\ 
+=&\;\langle \beta\DETOPXI \rangle_{\NDXIn} \\ \nonumber
+=&\;\beta (n\EPSLw)\\ 
 \label{eqn:Gan_highT_final}
 =&\;\beta \EPSLw  .
 \end{align}

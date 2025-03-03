@@ -79,7 +79,7 @@ we define the  \EffectivePotential for the data-averaged ST \GeneralizationError
 \begin{align}
 \label{eqn:STerror}
 %\EPSLSTx = \langle\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)\rangle_{\NDXI}:=\frac{1}{N}\int d\mu(\NDXI)\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)  ,
-\EPSLSTx = \red{\tfrac{1}{N}}\langle\DETOPSTL\rangle_{\NDXI}:=\frac{1}{N}\int d\mu(\NDXI)\DETOPSTL
+\EPSLSTx = \langle\DETOPSTL\rangle_{\NDXI}:=\frac{1}{N}\int d\mu(\NDXI)\DETOPSTL
 \end{align}
 The measure $d\mu(\NDXI)$ will end up being a Gaussian measure over $N$ samples
 (see Appendix~\ref{sxn:summary_sst92}), and the intent is to evaluate it
@@ -214,9 +214,9 @@ To do this, we need to compute the average or integral over all possible input d
 an $N-$dimensional Gaussian vector (i.e., $d\mu(\XI)=\mathcal{D}\NDXI P(\NDXI)$).
 %
 %Using $\mathcal{N}$ as the normalization for the average, as yet unspecified, we obtain 
-\nred{CHECK THIS}
+\nred{CHECK THIS: notice we do not include the $\tfrac{1}{N}$ on the R.H.S.}
 \begin{align}
-\red{\tfrac{1}{N}?} \langle\DETOPSTLL\rangle_{\NDXI}  
+ \langle\DETOPSTLL\rangle_{\NDXI}  
    = &\red{\cancel{\frac{1}{\mathcal{N}}}}\int d\mu(\NDXI)(1-\ETA(\XI)) \\ \nonumber
    = &\red{\cancel{\frac{1}{\mathcal{N}}}}\int d\mu(\NDXI)(1-\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI) \\ \label{eqn:XI_ST} 
    = &\red{\cancel{\frac{1}{\mathcal{N}}}\int d\mu(\NDXI)-\int d\mu(\NDXI)\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI) } \\ \nonumber
@@ -230,7 +230,7 @@ if we normalize the data vectors \red{ $\XI$ to $\frac{1}{\sqrt{M}}$ (See Sectio
 \cancel{$\mathcal{N}=N$} the second term on the R.H.S. is unity?} and we recover (i.e., \red{\EQN~\ref{eqn:epsl}})
 \begin{align}
 \label{eqn:e0}
-\EPSL(R)=\red{\tfrac{1}{N}}\langle\DETOPSTLL\rangle_{\NDXI} =  1 - R .
+\EPSL(R)=\langle\DETOPSTLL\rangle_{\NDXI} =  1 - R .
 \end{align}
 %%%
 %%% CHM: what is this ?
@@ -263,7 +263,7 @@ and the \AverageSTGeneralizationError $\STGE(R)$ is then obtained by averaging o
 \begin{align}
 \label{eqn:AVGSTGE_R}
 \AVGSTGE(R)=\THRMAVG{\EPSL(R)}=
-\THRMAVG{1-\langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\XI^{\red{N}}}}=
+\THRMAVG{1-\langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\NDXI}}=
 \THRMAVG{1-\ETA(\SVEC,\TVEC)}=
 \THRMAVG{1-\tfrac{1}{N}\SVEC^{\top}\TVEC}=
 \THRMAVG{(1-R)}  ,

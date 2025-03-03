@@ -34,9 +34,9 @@ the \FreeEnergy, defined for the model error as
 \langle-\beta F \rangle_{\NDXI} 
    :=& \langle \ln Z \rangle_{\NDXI} \\ 
 \nonumber
-   =& \left\langle \int d\mu(\SVEC)e^{-\beta\DETOPSTLL} \right\rangle_{\NDXI}  \\ 
+   =&\left\langle \int d\mu(\SVEC)e^{-\beta\DETOPSTLL} \right\rangle_{\NDXI}  \\ 
 \label{eqn:qaF}
-   =& \int d\mu(\NDXI)\ln\int d\mu(\SVEC)e^{-\beta\DETOPSTLL}   ,
+   =& \frac{1}{N}\int d\mu(\NDXI)\ln\int d\mu(\SVEC)e^{-\beta\DETOPSTLL}   ,
 \end{align}
 where $d\mu(\NDXI):=\prod_{i=1}^{N}d\XI_{i} P(\NDXI)$ (see \EQN~\ref{eqn:pndx}) and
 where the data-dependent ST error, $\DETOPSTLL$, is defined in \EQN~\ref{eqn:DE_L},
@@ -50,7 +50,7 @@ If we apply the AA (see \EQN~\ref{eqn:AA}) to \EQN~\ref{eqn:qaF}, then we obtain
 \label{eqn:qaFan}
 \langle-\beta F \rangle_{\NDXI} \simeq 
 %%   \ln \langle Z \rangle_{\NDXI} = 
-   \ln \int d\mu(\NDXI) \int d\mu(\SVEC) e^{-\beta\DETOPSTLL}   .
+   \ln \frac{1}{N}\int d\mu(\NDXI) \int d\mu(\SVEC) e^{-\beta\DETOPSTLL}   .
 \end{align}
 %
 Notice that we have interchanged the logarithm $(\ln)$ and
@@ -63,7 +63,7 @@ We will now switch the order of integration in \EQN~\ref{eqn:qaFan}, giving
 \label{eqn:qaFan3}
 \langle-\beta F \rangle_{\NDXI} \simeq 
 %%   \ln \langle Z \rangle_{\NDXI} = 
-   \ln \int d\mu(\SVEC)\int d\mu(\NDXI)e^{-\beta\DETOPSTLL)}   .
+   \ln \int d\mu(\SVEC)\frac{1}{N}\int d\mu(\NDXI)e^{-\beta\DETOPSTLL)}   .
 \end{align}
 
 
@@ -128,10 +128,10 @@ which can be seen from
   &=  \dfrac{\partial }{\partial \beta} \left(-\frac{1}{\ND}\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right) \\ \nonumber
   &=  -\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
   &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1}\dfrac{\partial }{\partial \beta}   \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
-  &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1} \int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXI} \\ \nonumber
- &=  \frac{1}{\ND} \langle\DETOPXI\rangle_{\NDXIn}
-\end{align}
-\nred{CLEAN UP THE ABOVE. L2 is wrong. Is there an extra $\ND$.  $n\rightarrow\ND$ etc.}
+  &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1} \int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXI}
+% &=  \frac{1}{\ND} \langle\DETOPXI\rangle_{\NDXIn}
+ \end{align}
+This is analagous to defining the average error $\DETOPXI$ as a \ThermalAverage, but over the data $\NDXIn$  instead of the weights.
 
 We can also write the \ModelGeneralizationError $\AVGSTGE$  as \BoltzmannWeightedAverage
 of $\epsilon(R)$, weighted by $\HAN(\beta,S;T)$ (as in (2.30) in \cite{SST92}), as:
