@@ -70,7 +70,7 @@ We will now switch the order of integration in \EQN~\ref{eqn:qaFan}, giving
 We now recall the definition of the \AnnealedHamiltonian, $\GANR$ (see \EQN~\ref{eqn:Gan_def} in Section~\ref{sxn:mathP}, which is analogous to \EQN~(2.31) of \cite{SST92}):
 \begin{align}
 \label{eqn:Gan0}
-\beta\GANR = \beta\HAN(\beta,\SVEC,\TVEC):=-\frac{1}{N}\ln\int d\mu(\NDXI)e^{-\beta\DETOPSTLL}  .
+\beta\GANR = \beta\HAN(\beta,\SVEC,\TVEC):=-\cancel{\red{\frac{1}{N}}}\ln\red{\frac{1}{N}}\int d\mu(\NDXI)e^{-\beta\DETOPSTLL}  .
 \end{align}
 where we have denoted the Hamiltonian as $HAN(\beta,\SVEC,\TVEC)$ to indicated the explicit dependence on $\beta$,
 and we have added $\beta$ to the R.H.S. to because the L.H.S. is unitless.
@@ -116,8 +116,7 @@ This now lets us write the Average Model \TrainingError $\AVGSTTE$ in the AA in 
   \end{align}
   where $\langle \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle_{\XItrain}$
   is the specific ST error in the AA for the chosen set of training data $\XItrain$, and is given by
-
-\nred{CLEAN THIS UP}
+  \nred{CLEAN THIS UP}
  \begin{align}
   \red{ \langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle_{\XItrain}:==\dfrac{\partial \beta\HAN}{\partial \beta}.}
  \end{align}
@@ -125,10 +124,10 @@ which can be seen from
  \begin{align}
   \label{eqn:partial_Gan}
   \dfrac{\partial \beta\HAN}{\partial \beta}
-  &=  \dfrac{\partial }{\partial \beta} \left(-\frac{1}{\ND}\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right) \\ \nonumber
-  &=  -\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
-  &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1}\dfrac{\partial }{\partial \beta}   \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
-  &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1} \int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXI}
+  &=  \dfrac{\partial }{\partial \beta} \left(-\cancel{\red{\frac{1}{\ND}}}\ln \red{\frac{1}{\ND}} \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right) \\ \nonumber
+  &=  -\cancel{\red{\frac{1}{\ND}}}\dfrac{\partial }{\partial \beta} \ln \red{\frac{1}{\ND}}\int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
+  &=  -\cancel{\red{\frac{1}{\ND}}} \left( \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1}\dfrac{\partial }{\partial \beta} \red{\frac{1}{N}}\int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
+    &=  -\cancel{\red{\frac{1}{\ND}}} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1} \red{\frac{1}{N}}\int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXI}
 % &=  \frac{1}{\ND} \langle\DETOPXI\rangle_{\AVGNDXIn}
  \end{align}
 This is analagous to defining the average error $\DETOPXI$ as a \ThermalAverage, but over the data $\NDXIn$  instead of the weights.
