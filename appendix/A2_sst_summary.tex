@@ -124,10 +124,10 @@ This now lets us write the Average Model \TrainingError $\AVGSTTE$ in the AA in 
  \begin{align}
   \label{eqn:partial_Gan}
   \dfrac{\partial \beta\HAN}{\partial \beta}
-  &=  \dfrac{\partial }{\partial \beta} \left(-\frac{1}{\ND}\ln \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right) \\ \nonumber
-  &=  -\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \frac{1}{\ND}\ln \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
-  &=  -\frac{1}{\ND} \left( \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1}\dfrac{\partial }{\partial \beta} \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
-    &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1} \int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXI}
+  &=  \dfrac{\partial }{\partial \beta} \left(-\frac{1}{\ND}\ln \int d\mu(\NDXIn)e^{-\beta\DETOPXILL}\right) \\ \nonumber
+  &=  -\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \frac{1}{\ND}\ln \int d\mu(\NDXIn)e^{-\beta\DETOPXILL} \\ \nonumber
+  &=  -\frac{1}{\ND} \left( \int d\mu(\NDXIn)e^{-\beta\DETOPXILL}\right)^{-1}\dfrac{\partial }{\partial \beta} \int d\mu(\NDXIn)e^{-\beta\DETOPXILL} \\ \nonumber
+    &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXILL}\right)^{-1} \int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXILL}
 % &=  \frac{1}{\ND} \langle\DETOPXI\rangle_{\AVGNDXIn}
  \end{align}
 This is analagous to defining the average error $\DETOPXI$ as a \ThermalAverage, but as one over the data $\NDXIn$ instead of the weights.
