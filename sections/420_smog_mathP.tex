@@ -114,7 +114,7 @@ and $\ADD$ denotes the finite-size dataset.
 We call $\XVEC^{n},$ an $n$-dimensional sample (of the training data instances $\XVEC$) from $\ADD$.  We may or may not specify the labels for this sample, depending on the context
 
 We associate model errors
-with a (change in) energy $\Delta E$. Smaller energies correspond to smaller errors and therefore better models.
+with a (change in) energy $\Delta E_{\mathcal{L}}$. Smaller energies correspond to smaller errors and therefore better models.
 For example, for the mean-squared-error (MSE) loss, one has
 \begin{align}
   \label{eqn:DEy}
@@ -575,9 +575,9 @@ which we define as  %%We define the \Annealed Hamiltonian $\GAN$ as
   can be seen by noting that we can formally write $\GAN$ as an integral over a single data example $\XI$:
  \begin{align}
    \label{eqn:Gan_simplified}
-   \beta\GAN &=  - \frac{1}{n}\ln  \int d\mu(\NDXIn)e^{-\beta\sum_{\mu=1}^{n}\Delta E(\WVEC,\XI_{\mu})} \\ \nonumber
-   &=  - \ln \left[\int d\mu(\NDXIn)e^{-\beta\sum_{\mu=1}^{n}\Delta E(\WVEC,\XI_{\mu})}\right]^{\tfrac{1}{n}} \\ \nonumber
-   &=  - \ln \left[\prod_{\mu=1}^{n}\int d\mu(\XI_{\mu})e^{-\beta\Delta E(\WVEC,\XI_{\mu})}\right]^{\tfrac{1}{n}} \\ \nonumber
+   \beta\GAN &=  - \frac{1}{n}\ln  \int d\mu(\NDXIn)e^{-\beta\sum_{\mu=1}^{n}\Delta E_{\mathcal{L}}(\WVEC,\XI_{\mu})} \\ \nonumber
+   &=  - \ln \left[\int d\mu(\NDXIn)e^{-\beta\sum_{\mu=1}^{n}\Delta E_{\mathcal{L}}(\WVEC,\XI_{\mu})}\right]^{\tfrac{1}{n}} \\ \nonumber
+   &=  - \ln \left[\prod_{\mu=1}^{n}\int d\mu(\XI_{\mu})e^{-\beta\Delta E_{\mathcal{L}}(\WVEC,\XI_{\mu})}\right]^{\tfrac{1}{n}} \\ \nonumber
    &=  - \ln  \int d\mu(\XI)e^{-\beta\Delta E(\WVEC,\XI)}
  \end{align}
  Or, in BraKet notation,
