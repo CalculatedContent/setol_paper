@@ -54,7 +54,7 @@ see Table~\ref{tab:energies} for summary of types of ``Energies'' used throughou
 %\paragraph{Various other symbols.}
 %See Table~\ref{tab:symbols} for a summary of various other symbols used throughout the text.
 
-\renewcommand{\arraystretch}{1.15} % Increase row spacing
+\renewcommand{\arraystretch}{1.35} % Increase row spacing
 
 \begin{center}
 \begin{table}[h]
@@ -67,13 +67,13 @@ see Table~\ref{tab:energies} for summary of types of ``Energies'' used throughou
     $\ell_2$-Energy Difference or $\ell_2$-Error & $\DETSTLL$ \\ \hline
     $\ell_2$-Energy Difference Operator Form & $\DETOPSTLL:=\sum_{\XI}\DETSTLL$ \\ \hline
     $\ell_2$-Energy Difference Matrix Operator Form & $\DETOPST:=\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT$\\ \hline
-    \EffectivePotential  & $\epsilon(R)=\epsilon(S,T)=\langle\DETOPSTLL\rangle_{\NDXI}$ \\ \hline
+    \EffectivePotential  & $\epsilon(R)=\epsilon(S,T)=\langle\DETOPSTLL\rangle_{\AVGNDXI}$ \\ \hline
     \LinearPerceptron  $\epsilon(R)$ at high-T, large-$N$ & $\epsilon(R)=1-R$ \\ \hline
-    \AnnealedApproximation (AA)& $\langle\ln\cdots\rangle_{\XI}=\ln\langle\cdots\rangle_{\XI}$ \\ \hline
+    \AnnealedApproximation (AA)& $\langle\ln Z\rangle_{\AVGNDXI}=\ln\langle Z\rangle_{\AVGNDXI}$ \\ \hline
     \AnnealedHamiltonian &  $\GAN$ \\ \hline
     \AnnealedHamiltonian at high-T &  $\GANHT=\EPSL(\WVEC)$ \\ \hline  
-    \Annealed Partition Function & $Z^{an}_{n}=\THRMAVGw{n\GAN}$ \\ \hline
-    \Annealed Partition Function at high-T & $\ZANHT=\THRMAVGw{n\EPSLSTw}$ \\ \hline    
+   %\Annealed Partition Function & $Z^{an}_{n}=\THRMAVGw{n\GAN}$ \\ \hline
+   % \Annealed Partition Function at high-T & $\ZANHT=\THRMAVGw{n\EPSLSTw}$ \\ \hline    
     Average \GeneralizationError & $\AVGGE=\THRMAVG{\epsilon(R)}$ \\ \hline
     Average \GeneralizationAccuracy & $1-\AVGGE=\THRMAVG{\eta(R)}$ \\ \hline
     Matrix Layer \QualitySquared & $\QT=\THRMAVGIZ{\OLAPTOLAP}$ \\ \hline
@@ -145,9 +145,9 @@ Or between the outputs of the \Student and the \Teacher NNs. & $\mathbf{\Delta {
 \textbf{\AnnealedHamiltonian (and Potentials)} & $\HAN$ $(\mathcal{E}(R), \EPSL(R))$ & Sec.~\ref{sxn:mathP_annealed},\ref{sxn:summary_sst92} \\
 \hthinline
 The \EffectivePotential (for the Error) is defined as:  &
-$\EPSL(R)=\tfrac{1}{N}\mathcal{E}(R)=\tfrac{1}{N}\langle \mathbf{\Delta {E}}\rangle_{\XI}$ & ~\ref{eqn:e0}\\
+$\EPSL(R)=\mathcal{E}(R)=\langle \mathbf{\Delta {E}}\rangle_{\AVGNDXI}$ & ~\ref{eqn:e0}\\
 The \AnnealedHamiltonian (for the Error):  &
-$\beta\HAN:=\tfrac{1}{N}\ln\langle e^{-\beta\mathbf{\Delta {E}}}\rangle_{\XI}$ & ~\ref{eqn:Gan_def},~\ref{eqn:Gan0} \\
+$\beta\HAN:=\tfrac{1}{N}\ln\langle e^{-\beta\mathbf{\Delta {E}}}\rangle_{\NDXI}$ & ~\ref{eqn:Gan_def},~\ref{eqn:Gan0} \\
 At high-T, the relation between $\HANHT$ and $\EPSL(R)$ is &
 $\HANHT(R):=\EPSLR$ & ~\ref{eqn:XXX} \\
 \hthinline

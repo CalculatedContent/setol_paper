@@ -70,7 +70,7 @@ We will now switch the order of integration in \EQN~\ref{eqn:qaFan}, giving
 We now recall the definition of the \AnnealedHamiltonian, $\GANR$ (see \EQN~\ref{eqn:Gan_def} in Section~\ref{sxn:mathP}, which is analogous to \EQN~(2.31) of \cite{SST92}):
 \begin{align}
 \label{eqn:Gan0}
-\beta\GANR = \beta\HAN(\beta,\SVEC,\TVEC):=-\cancel{\red{\frac{1}{N}?}}\ln\red{\frac{1}{N}}\int d\mu(\NDXI)e^{-\beta\DETOPSTLL}  .
+\beta\GANR = \beta\HAN(\beta,\SVEC,\TVEC):=-\frac{1}{N}\ln \int d\mu(\NDXI)e^{-\beta\DETOPSTLL}  .
 \end{align}
 where we have denoted the Hamiltonian as $HAN(\beta,\SVEC,\TVEC)$ to indicated the explicit dependence on $\beta$,
 and we have added $\beta$ to the R.H.S. to because the L.H.S. is unitless.
@@ -121,17 +121,16 @@ This now lets us write the Average Model \TrainingError $\AVGSTTE$ in the AA in 
   \red{ \langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle_{\XItrain}:==\dfrac{\partial \beta\HAN}{\partial \beta}.}
  \end{align}
  which can be seen from
- \nred{not sure if we want to move the $\tfrac{1}{N}$ inside the log or not yet}
  \begin{align}
   \label{eqn:partial_Gan}
   \dfrac{\partial \beta\HAN}{\partial \beta}
-  &=  \dfrac{\partial }{\partial \beta} \left(-\cancel{\red{\frac{1}{\ND}}?}\ln \red{\frac{1}{\ND}} \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right) \\ \nonumber
-  &=  -\cancel{\red{\frac{1}{\ND}}}\dfrac{\partial }{\partial \beta} \ln \red{\frac{1}{\ND}}\int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
-  &=  -\cancel{\red{\frac{1}{\ND}}} \left( \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1}\dfrac{\partial }{\partial \beta} \red{\frac{1}{N}}\int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
-    &=  -\cancel{\red{\frac{1}{\ND}}} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1} \red{\frac{1}{N}}\int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXI}
+  &=  \dfrac{\partial }{\partial \beta} \left(-\cancel{\frac{1}{\ND}?}\ln \frac{1}{\ND} \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right) \\ \nonumber
+  &=  -\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \ln \frac{1}{\ND}\int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
+  &=  -\frac{1}{\ND} \left( \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1}\dfrac{\partial }{\partial \beta} \int d\mu(\NDXIn)e^{-\beta\DETOPXI} \\ \nonumber
+    &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{-1} \int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXI}
 % &=  \frac{1}{\ND} \langle\DETOPXI\rangle_{\AVGNDXIn}
  \end{align}
-This is analagous to defining the average error $\DETOPXI$ as a \ThermalAverage, but over the data $\NDXIn$  instead of the weights.
+This is analagous to defining the average error $\DETOPXI$ as a \ThermalAverage, but as one over the data $\NDXIn$ instead of the weights.
 
 We can also write the \ModelGeneralizationError $\AVGSTGE$  as \BoltzmannWeightedAverage
 of $\epsilon(R)$, weighted by $\HAN(\beta,S;T)$ (as in (2.30) in \cite{SST92}), as:
@@ -291,13 +290,6 @@ where
 \end{align}
 That is, $\HANPP$ represents the Energy or Error each of the $M$ parameters contributes
 (integrated over the $N$ training examples $\NDXI$).
-
-\nred{We might (need to) change this to
-  $\beta\HANPP:=-\ln\frac{1}{N}  \int\mathcal{D}\NDXI \, e^{-\beta \DETOPST} P(\NDXI) $
-  but this will require rederiving the final result and ensuring it is stil correct.
-}
-
-
 
 The goal will be to derive the high-Temperature \AnnealedHamiltonian, $\GANMATHT$, which is now
 \begin{align}

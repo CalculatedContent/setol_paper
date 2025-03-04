@@ -251,6 +251,7 @@ and where the subscript $\AVGNDXIn$ on the Ket reminds us this is an average or 
 The normalization $\tfrac{1}{n}$ is included in the defintion to ensure the \BraKet is a proper \ExpectedValue.
 \michaeladdressed{See comments above about $n$, since I was confused about $n$ was referring to, and I though $m$ was the dimensionality of the real and modeled data, and here we refer to ``$n$-dimensional Gaussian and ``$n$-size \ModelSample.}
 The measure $d\mu(\NDXIn)$ signifies a $n$ i.i.d Gaussian vector $\XI$, drawn from an $m$-dimensional data model vectors $\XI$.
+Also, in some cases, we make use the subscript $\NDXIn$ on the Ket;  this represents an integral over the data, but not an average or \ExpectedValue.
 \michaeladdressed{@charles: clarify; that is $N$ vectors in $\mathbb{R}^{M}$ that are element-wise i.i.d. Gaussian?}
 %%\michael{Where we are using $M$ and $N$ rather than $m$ and $n$; is that a typo, or what should it be.}
 %%\cformike{I use $n,m$ in this section, $N$, $M$ elsewhere since they can mean different things when we generalize to a layer.  We can fix if its too confusion, or maybe just explain above.}
@@ -560,10 +561,7 @@ This will allow us to develop a theory in terms a (Temperature dependent) \Effec
 %
 %, $\DETeff$, which looks formally as if it is defined
 %over a  single example $\XI$
-% \begin{align}
-%   \label{eqn:Gan_def}
-%   \GAN:= - \ln  \int d\mu(\XI)e^{-\beta\DETeff} 
-% \end{align}
+
 Following~\cite{SST92} (see \EQN(2.30)), we will call this the \emph{\Annealed Hamiltonian} $\GAN$, 
 \michaeladdressed{If the rule is to put things in italics the first time they are used and defined, we should probably do it here for that.}
 which we define as  %%We define the \Annealed Hamiltonian $\GAN$ as
@@ -573,8 +571,17 @@ which we define as  %%We define the \Annealed Hamiltonian $\GAN$ as
   \end{align}
 % defined as the average of the data-averaged error of a sample $\NDXIn$.
 % The \Annealed Hamiltonian
-The \AnnealedHamiltonian is a simple ``mean-field-like'' Hamiltonian for the problem,
-and it is a critical piece needed to generalize the vector-based ST \Perceptron model to the matrix-generalized ST MLP model.
+  The \AnnealedHamiltonian is a simple ``mean-field-like'' Hamiltonian for the problem, which
+  can be seen by noting that we can formally write $\GAN$ as an integral over a single data example $\XI$:
+ \begin{align}
+   \label{eqn:Gan_simplified}
+   \beta\GAN &=  - \frac{1}{n}\ln  \int d\mu(\NDXIn)e^{-\beta\sum_{\mu=1}^{n}\Delta E(\WVEC,\XI_{\mu})} \\ \nonumber
+   &=  - \ln \left[\int d\mu(\NDXIn)e^{-\beta\sum_{\mu=1}^{n}\Delta E(\WVEC,\XI_{\mu})}\right]^{\tfrac{1}{n}} \\ \nonumber
+   &=  - \ln \left[\prod_{\mu=1}^{n}\int d\mu(\XI_{\mu})e^{-\beta\Delta E(\WVEC,\XI_{\mu})}\right]^{\tfrac{1}{n}} \\ \nonumber
+   &=  - \ln  \int d\mu(\XI)e^{-\beta\Delta E(\WVEC,\XI)}
+ \end{align}
+Or, in BraKet notation, $\beta\GAN:= -\ln \langle e^{-\beta\Delta E(\WVEC,\XI)}\rangle_{\XI}$.
+This is a critical piece needed to generalize the vector-based ST \Perceptron model to the matrix-generalized ST MLP model.
 
 Using $\GAN$, we can define the \emph{Annealed Parition Function}, $Z^{an}_{n}$, as
 \begin{align}
@@ -588,33 +595,9 @@ To see this is correct, let us substitute~\ref{eqn:Gan_def} into~\ref{eqn:Zan_de
   &=  \int d\mu(\WVEC) exp\left[\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right] \\ \nonumber
   &=  \int d\mu(\WVEC)  \int d\mu(\NDXIn)e^{-\beta\DETOPXI} ,
 \end{align}
-\nred{Actually, I think we want:
-\begin{align}
-   \beta\GAN:= - ln \tfrac{1}{n} \int d\mu(\NDXIn)e^{-\beta\DETOPXI}.
-\end{align}
-so that the $\tfrac{1}{n}$ is inside the logarithm.  
-This gives
-\begin{align}
-  \label{eqn:Zan_simple}
-  \ZAN &=  \int d\mu(\WVEC) exp\left[-n \left(- \ln \tfrac{1}{n} \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)\right] \\ \nonumber
-  &=  \int d\mu(\WVEC) exp\left[\ln \left(\tfrac{1}{n} \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)^{n}\right] \\ \nonumber
-  &=  \int d\mu(\WVEC) \left( \tfrac{1}{n}\int d\mu(\NDXIn)e^{-\beta\DETOPXI} \right)^{n} \\ \nonumber
-  &=  \left (\int d\mu(\WVEC) \tfrac{1}{n}\int d\mu(\NDXIn)e^{-\beta\DETOPXI} \right)^{n} \\ \nonumber
-  &= [Z^{an}_{1}]^{n}
-\end{align}
-This further illustrates how the AA results in a kindof mean-field approximation.
-}
-
-%or, in Bra-Ket notation
-%\begin{align}
-%%  \label{eqn:Zan_brakets}
-%  \ZAN = \langle\langle e^{-\beta\DETOPXI}\rangle_{\AVGNDXIn}\rangle_{\WVEC}
-%\end{align}
-The order of the integrals is exactly what we expect using the AA, as in \EQN~\ref{eqn:switch}
-%(Notice that we leave the $\beta$ superscript off the outer Ket,
-%i.e., $\langle\cdots\rangle_{\WVEC}$,  because this is not a  \ThermalAverage.).
-
-Later, however, we will only need the high-T version $\HANHT$, and this takes a very simple form.
+Analagously to \EQN~\ref{eqn:Gan_simplified}, we can write $\ZAN$ as the product of the $n=1$ case, $\ZAN=[Z^{an}_{1}]^{n}$.
+Also. the order of the integrals is exactly what we expect using the AA, as in \EQN~\ref{eqn:switch}
+Finally, we will only need the high-T version $\HANHT$, and this takes a very simple form.
 \footnote{We derive expressions for $\EPSL(R)$ and $\AVGSTGE(R)$ in \EQN~\ref{eqn:e0} and \EQN~\ref{eqn:AVGSTGE_R}, respectively, using relatively simple arguments.
 in Appendix~\ref{app:st-gen-err-annealed-ham} we present
 a more detailed derivation of $\GANR$ and $\GANHTR=\EPSL(R)$
