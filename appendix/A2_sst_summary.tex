@@ -89,7 +89,7 @@ Following Section~\ref{sxn:mathP_errors}, we can write the \emph{Average Model \
 in terms of \Annealed \PartitionFunction, $Z^{an}_{\ND}$:
 \begin{align}
  \label{eqn:AVGSTTE_AA}
-\AVGSTTE:= \frac{1}{\red{\ND}}\dfrac{\partial }{\partial \beta} Z^{an}_{\ND}
+\AVGSTTE:= \frac{1}{\ND}\dfrac{\partial }{\partial \beta} Z^{an}_{\ND}
 \end{align}
 
 %Given $\GANR$ in \EQN~\ref{eqn:Gan0}, and in analogy with \EQN~\ref{eqn:avgte} in Section~\ref{sxn:mathP}, 
@@ -110,7 +110,7 @@ This now lets us write the Average Model \TrainingError $\AVGSTTE$ in the AA in 
   \begin{align}
   \nonumber
   \AVGSTTE
-   =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\dfrac{\partial \red{\beta}\HAN}{\partial \beta} e^{-\ND\beta\HAN(\beta,\SVEC,\TVEC)} \\ 
+   =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\dfrac{\partial \beta\HAN}{\partial \beta} e^{-\ND\beta\HAN(\beta,\SVEC,\TVEC)} \\ 
   \label{eqn:EtM2}
    =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\langle  \mathbf{\Delta E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle_{\XItrain} e^{-\ND\beta\HAN(\beta,\SVEC,\TVEC)}  ,
   \end{align}
@@ -453,14 +453,14 @@ Notice that for the final \LayerQualitySquared Hamiltonian $\HBARE$, this will c
 \charles{@michael: working on this, but IDK its  about A1 and A2; REWORKING THIS:}
 \begin{align}
   \label{eqn:I_9}
-    \IH\approx  \left[1  + \red{\frac{2\beta}{M}}\operatorname{Tr}[(\red{\IM}-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right]^{-N/2} ,
+    \IH\approx  \left[1  + \frac{2\beta}{M}\operatorname{Tr}[(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right]^{-N/2} ,
 \end{align}
 for any $M>1$.
 Given this, it follows from \EQN~{eqn:HANPP} and \EQN~\ref{eqn:Gan_lnI} that
 \begin{align}
 \label{eqn:GANmat}
 \beta\GANMAT = \beta M \HANPP
-  &=  \frac{M}{2}\ln \left[1 + \red{\frac{2\beta}{M}}(\IM-\mathbf{R})\right]  ,
+  &=  \frac{M}{2}\ln \left[1 + \frac{2\beta}{M}(\IM-\mathbf{R})\right]  ,
 \end{align}
 \michaeladdressed{@charles: I added that equation.}
 which is of the same functional form as \EQN~\ref{eqn:Gan2}, as desired:

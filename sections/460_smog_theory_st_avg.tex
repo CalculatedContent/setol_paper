@@ -18,14 +18,14 @@ and this is reflected in the layer weight matrices.
 However, to be tractable, our starting theoretical expressions use uncorrelated (i.i.d) data.
 Formally, we must replace the correlated data 
 with some uncorrelated, random model of the data, i.e., $\XVEC\rightarrow\XI$.
-\red{As described in Figure~\ref{fig:data_mapping},}
+As described in Figure~\ref{fig:data_mapping},
 our \DataModel is a standard Gaussian $N(0,1)$ model for the input data
 \begin{align}
 \DATA\rightarrow\XImu,\;\;\XImu\in N(0,1) ,
 \label{eqn:mwm_replace_1}
 \end{align}
 where $N(0,1)$ denotes a Gaussian distribution with zero mean and unit variance,
-\red{and $\XImu$ is normalized such that $\Vert\XImu\Vert=\tfrac{1}{M}$ for all $N$ data vectors.}
+\and $\XImu$ is normalized such that $\Vert\XImu\Vert=\tfrac{1}{M}$ for all $N$ data vectors.
 \michaeladdressed{@charles: I just added a label there, in case you are keeping track of labels.}
 
 We make this distinction between Actual and \ModelData to emphasize that,
