@@ -184,9 +184,9 @@ Likewise, when generalizing $\AVGSTGE$ to matrices,  & $\AVGSTGE\rightarrow\AVGN
 \hthinline
 For the ST \Perceptron, $\Q^{ST}$ is the generalization accuracy & $\Q^{ST}:= 1-\AVGSTGE = 1-\THRMAVG{\EPSL(R)}$ & \\
 in terms of the \SelfOverlap $\ETA(R)$ & $\Q^{ST}:= \THRMAVG{\ETA(R)}$ & \\
-In the AA, and at high-T, $\THRMAVG{\EPSL(R)}=1-R$ & $\Q^{ST}:= 1-\AVGGE^{an,ht} = \THRMAVG{R}$ & \ref{eqn:lQST_final} \\
+In the AA, and at high-T, $\THRMAVG{\EPSL(R)}=1-R$ & $\Q^{ST}:= 1-\AVGGE^{an,ht} = \THRMAVG{R}$ & \ref{eqn:QST_final} \\
 For an MLP / NN, we approximate the total accuracy as a product of layer qualities $\Q$ (in the AA, at high-T) &  $\Q^{NN}:=\prod \Q^{NN}_{L}$ &  \ref{eqn:ProductNorm}\\
-For a matrix, the \LayerQualitySquared $\QT$ is an HCIZ integral   & $\QT:=\THRMAVGIZ{\OLAPTOLAP}$ &\ref{eqn:QT_0}\\
+For a matrix, the \LayerQualitySquared $\QT$ is an HCIZ integral   & $\QT:=\THRMAVGIZ{\OLAPTOLAP}$ &\ref{eqn:QT_1}\\
 We approximate $\Q$ using the quality squared & $\Q:=\sqrt{\QT}\approx Q^{NN}_{L}$ & \ref{eqn:QT},\ref{eqn:QT_2}\\
 \hline
 \end{tabular}
