@@ -138,9 +138,9 @@ for both (and with $\ell_2$ loss),
 This gives $\EPSLSTx\rightarrow\EPSL(R)$, where
 \begin{align}
   \label{eqn:Rdef}
-R=\frac{1}{N}\SVEC^{\top}\TVEC=\frac{1}{N}\sum_{i=1}^{\red{M}}s_{i}t_{i},
+R=\frac{1}{N}\SVEC^{\top}\TVEC=\frac{1}{N}\sum_{i=1}^{M}s_{i}t_{i},
 \end{align}
-which is simply the dot product between the \red{$M$-dimensional} \Student $\SVEC$ and \Teacher $\TVEC$ weight vectors, \red{and normalized by the number of training instances $N$}.
+which is simply the dot product between the $M$-dimensional \Student $\SVEC$ and \Teacher $\TVEC$ weight vectors, and normalized by the number of training instances $N$.
 For a \LinearPerceptron~\cite{SST92},% 
 \footnote{In the classic approach for the ST model, the theory examined different expressions $\EPSL(R)$.
 For example, one can consider the  Boolean \Perceptron~\cite{SST92,Ros62}, with activation function $h(x)=\mbox{sgn}(x)$, 
@@ -273,7 +273,7 @@ where $\THRMAVG{\cdots}$ is a \ThermalAverage over the \Student weight vector $\
 Note that the \ModelQuality for the ST \Perceptron, $\Q^{ST}$
 is just the \AverageGeneralizationAccuracy, so we can write
 \begin{align}
-\label{eqn:QST_final}
+\label{eqn:lQST_final}
 \Q^{ST}:=1-\AVGSTGE(R)=\THRMAVG{1-\EPSL(R)}
 =\THRMAVG{\langle\ETA(\SVEC, \TVEC, \XI) \rangle_{\XI^{\red{N}}}}
 =\THRMAVG{\ETA(\SVEC, \TVEC)}

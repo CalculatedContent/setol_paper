@@ -169,8 +169,7 @@ where the normalization $\NORM_2$
 %\NORM_2 := \left((2\pi)^{N/2}\sigma^{2}\right)^{M}  ,
 \NORM_2 := \left(\pi\sigma^{2}\right)^{M/2}  ,
 \end{align}
-\red{Moving forward, we need to fix the prefactors}
-where $\sigma^{2}=\mathbf{s}^{\top}\mathbf{s}=\red{2?}1/N$ ??
+where $\sigma^{2}=\mathbf{s}^{\top}\mathbf{s}=\red{2?}1/M$
 \charles{Need to be very careful here.  Is this $1/N$ or $1/M$ ?  See also A2. We pick $\sigma^{2}=1/M$ to ensure the normalization on $\XI$ is correct.
 This needs to be double checked.}
 
@@ -282,7 +281,7 @@ Inserting $I^{*}(\AHAT,\mathbf{A})$ from \EQN~\ref{eqn:IAA_2} into $\IZG$, we ob
   e^{\tfrac{N}{2}\ln(\Det{\AMAT_{1}})}\right]  \\ \nonumber
   & =
     \ln  C_{\Gamma_1}
-  - \red{N}M
+  - NM
   +  \ln \left[ \int d\mu(\AMAT)
     e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AMAT_{2}\TMAT] }
     e^{\tfrac{N}{2}\ln(\Det{\AMAT_{1}})}\right]  .

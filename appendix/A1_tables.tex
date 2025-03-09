@@ -133,13 +133,13 @@ $\Expected[\AECS]{\exp\!\bigl(N\,\beta\,\mathrm{Tr}\bigl[\tfrac{1}{N}\,\TMAT^{\t
 \hline
 \textbf{\EnergyLandscape or Output function} & $E$ & Sec.~\ref{sxn:htsr_setup}\\
 \hthinline
-The output of the NN given a single input data point. & &\ref{eqn:dnn_energy},\ref{eqn:ENN},\ref{eqn:nflow} \\
+The output of the NN given a single input data point. & &\ref{eqn:dnn_energy},\ref{eqn:T_ENN},\ref{eqn:S_ENN},\ref{eqn:nflow} \\
 \hline
 \textbf{Energy Difference or \StudentTeacher (ST) Error} & $\Delta E$, $\mathbf{\Delta {E}}$ & Sec.~\ref{sxn:SMOG_main},~\ref{sxn:summary_sst92} \\
 \hthinline
 The difference between the output of a \Student NN and its prescribed label $y$ for a single data point &$\Delta E:=y-E_S $ & \ref{eqn:DEy} \\
 And as the total error for a sample of $N$ data points  &  $\mathbf{\Delta {E}}=\sum \Delta E$ & \ref{eqn:detopxy}  \\
-Or between the outputs of the \Student and the \Teacher NNs. & $\mathbf{\Delta {E}}:=\sum E_S - E_T$ & \ref{eqn:detopx},\ref{eqn:DE_L},\ref{eqn:DE},\ref{eqn:DETOPNN} \\
+Or between the outputs of the \Student and the \Teacher NNs. & $\mathbf{\Delta {E}}:=\sum E_S - E_T$ & \ref{eqn:DE_L},\ref{eqn:DE},\ref{eqn:DETOPNN} \\
 \hline
 
 \textbf{\AnnealedHamiltonian (and Potentials)} & $\HAN$ $(\mathcal{E}(R), \EPSL(R))$ & Sec.~\ref{sxn:mathP_annealed},\ref{sxn:summary_sst92} \\
@@ -149,19 +149,19 @@ $\EPSL(R)=\tfrac{1}{N}\mathcal{E}(R)=\langle \mathbf{\Delta {E}}\rangle_{\AVGNDX
 The \AnnealedHamiltonian (for the Error):  &
 $\beta\HAN:=\tfrac{1}{N}\ln\langle e^{-\beta\mathbf{\Delta {E}}}\rangle_{\NDXI}$ & ~\ref{eqn:Gan_def},~\ref{eqn:Gan0} \\
 At high-T, the relation between $\HANHT$ and $\EPSL(R)$ is &
-$\HANHT(R):=\EPSLR$ & ~\ref{eqn:XXX} \\
+$\HANHT(R):=\EPSLR$ & ~\ref{eqn:Gan_highT} \\
 \hthinline
 The full ST model Hamiltonian: &
 $\beta\HAN(\beta,R):= \tfrac{1}{2}\ln[{1+2\beta(1-R)}]$ & ~\ref{eqn:Gan2} \\
 At high-T, the ST model Hamiltonian is: &
-$\beta\HANHT(R):=\beta(1-R)$ & ~\ref{eqn:XXX},~\ref{eqnGan3} \\
+$\beta\HANHT(R):=\beta(1-R)$ & ~\ref{eqn:e0},~\ref{eqn:Gan3} \\
 \hthinline
 The matrix-generalized ST model Hamiltonian: &
 $\beta\GANMAT:=\tfrac{1}{2}\ln[1 + 2\beta(\IM-\mathbf{R})]$  & ~\ref{eqn:GANmat} \\
 At high-T, the matrix-generalized ST model Hamiltonian is: &
 $\GANMATHT:=\IM-\OVERLAP$ & ~\ref{eqn:GANHTmatR} \\
 The \LayerQualitySquared Hamiltonian (for the Accuracy): &
-$\HBARE:=\OLAPTOLAP$ & ~\ref{eqn:XXX},~\ref{eqn:HBARE} \\
+$\HBARE:=\OLAPTOLAP$ & ~\ref{eqn:RG},~\ref{eqn:HBARE} \\
 \hline
 \textbf{Different Average Model Errors} & $\AVGE$ & Sec.~\ref{sxn:mathP_errors}\\
 Empirical Training, \Teacher, and Test Errors  & $\AVGEMPTE$, $\AVGE^{T}\approx\AVGEMPGE$ & \ref{eqn:Eg_train},\ref{eqn:Eg_test},\ref{eqn:emp_gen_error}\\
@@ -184,7 +184,7 @@ Likewise, when generalizing $\AVGSTGE$ to matrices,  & $\AVGSTGE\rightarrow\AVGN
 \hthinline
 For the ST \Perceptron, $\Q^{ST}$ is the generalization accuracy & $\Q^{ST}:= 1-\AVGSTGE = 1-\THRMAVG{\EPSL(R)}$ & \\
 in terms of the \SelfOverlap $\ETA(R)$ & $\Q^{ST}:= \THRMAVG{\ETA(R)}$ & \\
-In the AA, and at high-T, $\THRMAVG{\EPSL(R)}=1-R$ & $\Q^{ST}:= 1-\AVGGE^{an,ht} = \THRMAVG{R}$ & \ref{eqn:QT_0} \\
+In the AA, and at high-T, $\THRMAVG{\EPSL(R)}=1-R$ & $\Q^{ST}:= 1-\AVGGE^{an,ht} = \THRMAVG{R}$ & \ref{eqn:lQST_final} \\
 For an MLP / NN, we approximate the total accuracy as a product of layer qualities $\Q$ (in the AA, at high-T) &  $\Q^{NN}:=\prod \Q^{NN}_{L}$ &  \ref{eqn:ProductNorm}\\
 For a matrix, the \LayerQualitySquared $\QT$ is an HCIZ integral   & $\QT:=\THRMAVGIZ{\OLAPTOLAP}$ &\ref{eqn:QT_0}\\
 We approximate $\Q$ using the quality squared & $\Q:=\sqrt{\QT}\approx Q^{NN}_{L}$ & \ref{eqn:QT},\ref{eqn:QT_2}\\

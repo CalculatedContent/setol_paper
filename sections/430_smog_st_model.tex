@@ -68,8 +68,8 @@ of this distinction.
 Following \EQN~\ref{eqn:dnn_energy}, lets say the \Teacher outputs are specified
 by an  Energy function $E^{T}_{NN}$
 \begin{align}
-\nonumber
-\Yt=E_{NN}(T,\DATA) \\ 
+\label{eqn:T_ENN}
+\Yt=E_{NN}(T,\DATA) 
 \end{align}
 \footnote{Do not confuse the Energy/output function $E_{NN}$ with the energies $\mathbf{\Delta E}$  defined below to represent the ST error function(s).  We refer to outputs of $E_{NN}(\TVEC,\DATA )$, when applied to a data point $\DATA$, as energies because they are effectively un-normalized probabilities for the class outputs (for labels $\Ymu=1$ or $-1$).  }
 so that we may write the \emph{Empirical} \AverageTrainingError
@@ -101,10 +101,9 @@ S:\DATA\rightarrow \Ys \approx \Yt  ,
 \end{align}
 and assume the \Student outputs $\Ys$ are given by the Energy output function $E^{S}_{NN}$
 \begin{align}
-\nonumber
+\label{eqn:S_ENN}
 \Ys=E_{NN}(S,\DATA) ,
 \end{align}
-
 \input{sections/precision_fig}
 If the \Teacher is trained to \Interpolation, then the difference between
 the \Student and the \Teacher labels 
