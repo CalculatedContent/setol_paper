@@ -135,26 +135,24 @@ we will revisit (and possibly distinguish) $N$ (layer input dimension) and $n$ (
 
 %In this section $n=N$  of the model and the number of training examples, and $m=M$ is the number of features.
 %\footnote{In later sections, we will use capital $N$ and $M$, as $N$ will represent the number of inputs to the layer, and $M$ also will denote the normalization of the correlation matrices $(\XMAT, \AMAT)$. See, for example, Appendix~\ref{sxn:summary_sst92}.}
-\michael{@charles: let's sync to clarify, I feel like we are overlaoding something here. I think there are two concepts, number of training examples, and number of free parameters. And at least four letters ($m$, $n$, $M$, and $N$). I can work on the text to clarify, but I'm not sure what is what.}
-\charles{I am trying to clean this up. }
-
+\michael{@charles: let's sync to clarify, I feel like we are overloading something here. I think there are two concepts, the number of training examples, and the number of free parameters. And at least four letters ($m$, $n$, $M$, and $N$). I can work on the text to clarify, but I'm not sure what is what.}
 
 Consider having a large set $n=N$ of actual, real-world data, 
 \begin{align}
   \label{eqn:x}
   \XVEC_{\mu}, \MY_{\mu} \in\ADD,\;\mu=1, \cdots, n,
 \end{align}
-where $\XVEC_{\mu}$ is an $m$-dimensional real vector, \red{$\XVEC_{\mu}\in\mathbb{R}^{m}$},
+where $\XVEC_{\mu}$ is an $m$-dimensional real vector, $\XVEC_{\mu}\in\mathbb{R}^{m}$,
 $\MY_{\mu}$ is a binary label taking values $1$ of $-1$, denoted $\{-1,1\}$.$, $
 and $\ADD$ denotes the finite-size dataset.
 \michaeladdressed{Let's sync.  That ``$\in$'' is a little non-standard. Most would say $\XVEC_{\mu}\in\mathbb{R}^{m}$. But we need to be consistent throughout, and I'm not sure how you are using it. }
-\red{
+
   Notice that $\XVEC_{\mu}$ ia normalized such that the Frobenius norm is $\tfrac{1}{m}$:
   \begin{equation}
     \label{eqn:XVEC_norm}
     \Vert\XVEC_{\mu}\Vert := \sqrt{\sum_{i=1}^{m} \XVEC_{\mu,i}^{2}}=\tfrac{1}{m}
   \end{equation}
-  }
+  
 We call $\XVEC^{n},$ an $n$-dimensional sample (of the training data instances $\XVEC$) from $\ADD$.  We may or may not specify the labels for this sample, depending on the context
 
 We associate model errors
