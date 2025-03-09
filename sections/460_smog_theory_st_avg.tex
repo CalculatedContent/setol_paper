@@ -206,7 +206,7 @@ which gives
 or, more simply,
 \begin{align}
   \label{eqn:eta_vec_avg_def}
-\ETA(\SVEC,\TVEC) = \langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\XI^{\red{N}}}=\tfrac{1}{N}(\SVEC^{\top} \TVEC )
+\ETA(\SVEC,\TVEC) = \langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\AVGNDXI}=\tfrac{1}{N}(\SVEC^{\top} \TVEC )
 \end{align}
 
 We want to evaluate this as an \EffectivePotential $\EPSL(R)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:STerror}.
@@ -273,11 +273,13 @@ where $\THRMAVG{\cdots}$ is a \ThermalAverage over the \Student weight vector $\
 Note that the \ModelQuality for the ST \Perceptron, $\Q^{ST}$
 is just the \AverageGeneralizationAccuracy, so we can write
 \begin{align}
-\label{eqn:lQST_final}
-\Q^{ST}:=1-\AVGSTGE(R)=\THRMAVG{1-\EPSL(R)}
-=\THRMAVG{\langle\ETA(\SVEC, \TVEC, \XI) \rangle_{\XI^{\red{N}}}}
-=\THRMAVG{\ETA(\SVEC, \TVEC)}
-=\THRMAVG{\tfrac{1}{N}\SVEC^{\top}\TVEC}=\THRMAVG{R}
+\label{eqn:QST_final}
+\Q^{ST} := 1 - \AVGSTGE(R) 
+       = \THRMAVG{1 - \EPSL(R)} 
+       = \THRMAVG{\langle\ETA(\SVEC, \TVEC, \XI)\rangle_{\AVGNDXI}} 
+       = \THRMAVG{\ETA(\SVEC, \TVEC)} 
+       = \THRMAVG{\tfrac{1}{N}\SVEC^{\top}\TVEC} 
+       = \THRMAVG{R}.
 \end{align}
 \EQN~\ref{eqn:QST_final} is the starting point for deriving a \SEMIEMP theory for the \WW quality metrics (\ALPHA,\ALPHAHAT);
 see Section~\ref{sxn:matgen_mlp3}.
