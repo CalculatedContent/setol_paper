@@ -1,24 +1,24 @@
 \subsection{Heavy-Tailed Self-Regularization (\HTSR)}
 
-A key aspect of a \SemiEmpirical theory involves the empirical data that are used semi-empirically within a broader theoretical framework.
-\charles{This needs reworked.   The framework is effcetive hamilitonians, many body theory, and stat mech.
-making it braoder dillutes the paper and the science. }
-For this, we need ``observables'' that are empirically-measurable.
-For nuclear structure, this involved \michael{XXX};
-for quantum chemistry, this involved \michael{XXX}.
-See Table~\ref{tab:table-of-analogies} for a summary.
+%A key aspect of a \SemiEmpirical theory involves the empirical data that are used semi-empirically within a broader theoretical framework.
+%\charles{This needs reworked.   The framework is effcetive hamilitonians, many body theory, and stat mech.
+%making it braoder dillutes the paper and the science. }
+%For this, we need ``observables'' that are empirically-measurable.
+%For nuclear structure, this involved \michael{XXX};
+%for quantum chemistry, this involved \michael{XXX}.
+%See Table~\ref{tab:table-of-analogies} for a summary.
 
 
-\michaeladdressed{For DNNs, one might be tempted to parameterize the theory in terms of the training data, algorithm learning rates, gradient information, etc.
-However, none of these are ``observable'' to the model user.
-Instead, our \SemiEmpirical theory will be formulated in terms of weight matrices of trained DNN models}
-\charles{This is incorrect. Of course these are observables}
+%\michaeladdressed{For DNNs, one might be tempted to parameterize the theory in terms of the training data, algorithm learning rates, gradient information, etc.
+%However, none of these are ``observable'' to the model user.
+%Instead, our \SemiEmpirical theory will be formulated in terms of weight matrices of trained DNN models}
+%\charles{This is incorrect. Of course these are observables}
 
-\footnote{We will assume that the user has access to a full pre-trained model. The basic \SemiEmpirical approach is still applicable, but would need to be modified appropriately, under more limited access models such as only API access.}
-and in particular in terms of the Empirical Spectral Distribution (ESD), i.e., the eigenvalues,%
-\footnote{We will be somewhat cavalier about the terminological distinction between eigenvalues and singular values.}
-of weight matrices.
-For this, we will use results from \emph{\HeavyTailedSelfRegularization} (\HTSR) theory~\cite{MM19_HTSR_ICML,MM20_SDM,MM18_TR_JMLRversion}.
+%\footnote{We will assume that the user has access to a full pre-trained model. The basic \SemiEmpirical approach is still applicable, but would need to %be modified appropriately, under more limited access models such as only API access.}
+%and in particular in terms of the Empirical Spectral Distribution (ESD), i.e., the eigenvalues,%
+%\footnote{We will be somewhat cavalier about the terminological distinction between eigenvalues and singular values.}
+%of weight matrices.
+%For this, we will use results from \emph{\HeavyTailedSelfRegularization} (\HTSR) theory~\cite{MM19_HTSR_ICML,MM20_SDM,MM18_TR_JMLRversion}.
 
 \HTSR theory is an approach that combines ideas from \STATMECH~with those of \emph{\HeavyTailed} \emph{\RandomMatrixTheory} (\RMT),
 providing eigenvalue-based quality metrics that correlate with model quality (i.e., out-of-sample performance).
