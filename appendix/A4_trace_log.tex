@@ -73,17 +73,9 @@ Using the relation,
 where $\AHAT$ is a  $M \times M$ auxiliary matrix, and the domain of integration $d\mu(\AHAT)$ is all $M \times M$ real-valued matrices, and where the normalization $\NORM_{1}$ is
 \begin{align}
   \label{eqn:norm_1}
-\NORM_1:=\frac{1}{(2\pi)^{NM/2}},
-\end{align}
-which will cancel out below
-(See \EQN~\ref{eqn:int-out-J2}?)
-\nred{Is this normlization correct? Or is it
-\begin{align}
-  \label{eqn:norm_1}
 \NORM_1:=\frac{1}{(2\pi)^{M(M+1)/4}},
 \end{align}
-which enforces the normalization on $M(M+1)/2$ constraints for the $M\times M$ symmetric matrix $\AMAT$
-}
+because  $\AMAT$ is a symmetric matrix with $M(M+1)/2$ constraints.
 
 This is simply the matrix generalization of 
 $\delta(x)=\dfrac{1}{2\pi}\int_{-\infty}^{\infty} e^{i\hat{x}x}d\hat{x}$,
@@ -173,7 +165,6 @@ where $\sigma^{2}=\mathbf{s}^{\top}\mathbf{s}=\red{2?}1/M$
 \charles{Need to be very careful here.  Is this $1/N$ or $1/M$ ?  See also A2. We pick $\sigma^{2}=1/M$ to ensure the normalization on $\XI$ is correct.
 This needs to be double checked.}
 
-\nred{check typos again here}\\
 For any square, non-singular matrix $\AHAT$,  $ \Trace{\ln\AHAT}=\ln \Det{\AHAT}$ , so
 it follows from \EQN~\ref{eqn:int-out-J2} that
 \begin{align}

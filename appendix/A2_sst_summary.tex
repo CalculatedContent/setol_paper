@@ -332,15 +332,15 @@ If we substitute $\DETOPNN$, \EQN~\ref{eqn:DETOPNN}, into the integral $\IH$, \E
   & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{N} (\XI^{\mu})^{\top} \left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) \NORM \exp\left( - \sum_{\mu=1}^{N} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right)  \\
     \nonumber
     %%  \IH
-  &= \red{\NORM} \int \mathcal{D}\NDXI \, \exp \left(
+  &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
     -\beta\sum_{\mu=1}^{N} (\XI^{\mu})^{\top} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
     - \sum_{\mu=1}^{N} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right) \\ 
 \nonumber
-  &= \red{\NORM} \int \mathcal{D}\NDXI \, \exp \left(
+  &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
     -\frac{1}{2\sigma^2}\sum_{\mu=1}^{N}2\beta\sigma^{2} (\XI^{\mu})^{\top} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
     +  \Vert\XI^{\mu}\Vert^{2} \right) \\ 
 \label{eqn:I_3} 
-  &= \red{\NORM} \int \mathcal{D}\NDXI \, \exp \left(
+  &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
     -\frac{1}{2\sigma^2}      
       \sum_{\mu=1}^{N}
           (\XI^{\mu})^{\top}[
@@ -351,7 +351,7 @@ By combining the exponents, we obtain
 \begin{align}
 \nonumber
 \IH
-  &=  \red{\NORM}\int \mathcal{D}\NDXI 
+  &=  \NORM\int \mathcal{D}\NDXI 
   \exp\left[
     -\frac{1}{2\sigma^2}\sum_{\mu=1}^{N}(\XI^{\mu})^{\top}
     \left(\mathbf{M}
@@ -359,7 +359,7 @@ By combining the exponents, we obtain
     \XI^{\mu}
     \right ]\\ 
 \label{eqn:I_4} 
-  &=  \red{\NORM}\int \mathcal{D}\XI  
+  &=  \NORM\int \mathcal{D}\XI  
  \exp\left[
     -\frac{1}{2\sigma^2}(\XI)^{\top}
     \left(\mathbf{M}
@@ -381,8 +381,8 @@ and $\mathbf{M}$ is a square postive-definite matrix, and $\Det{ \mathbf{M}}$ is
 Using \EQN~\ref{eqn:det_M}, we can rewrite $\IH$ in \EQN~\ref{eqn:I_4} as
 \begin{align}
 \label{eqn:I_5}
-\IH &=   \red{\NORM}\left[\frac{(2\pi\sigma^{2})^{M/2}}{\sqrt{\Det{ \mathbf{M}}}}\right]^{N} \\ \nonumber
-    &=   \red{\NORM}(2\pi\sigma^2)^{NM/2}\left[
+\IH &=   \NORM\left[\frac{(2\pi\sigma^{2})^{M/2}}{\sqrt{\Det{ \mathbf{M}}}}\right]^{N} \\ \nonumber
+    &=   \NORM(2\pi\sigma^2)^{NM/2}\left[
          \sqrt{\Det{ 2\beta\sigma^2(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)+\IM}}\right]^{-N}  \\
 %%\end{align}
 %%%
