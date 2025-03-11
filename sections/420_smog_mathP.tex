@@ -755,7 +755,7 @@ This will prove very useful later when working with HCIZ integrals.
 %Observe that the \AnnealedHamiltonian $\GAN$ is a simplistic mean-field potential, 
 %and the goal of \SETOL will be to parameterize this potential.%
 %\footnote{In {\it ab initio} quantum chemistry, a mean-field theory (i.e., Hartree Fock theory) allows one to factor the correlated many-electron Hamiltonian $\HH(n)$ into $n$ uncorrelated single-electron Hamiltonians, i.e., $\HH(n)=\HH_1+\HH_2+\cdots+\HH_n$~\cite{szabo_ostlund}.  In a \SemiEmpirical approach, the mean-field Hamiltonian is effectively a renormalized \EffectiveHamiltonian, where the parameters are adjusted to account for correlations using empirical data~\cite{Martin1996, Martin1996_CPL, martin_reparametrizing_1998, Freed1983}. \michael{This footnote should be in the intro or a discussion section or somewhere where we make this connection more explicity, not buried here.}\charles{the in}
-\michaeladdressed{The word ``like'' is confusing here, I'm not sure what it means.  Why not just say ``The goal of \SETOL will be to parameterize this \AnnealedHamiltonian'' or ``Observe that the \AnnealedHamiltonian $\GAN$ acts in a mean-field manner, and the goal of \SETOL will be to parameterize this quantity''.  Saying ``like an effective potential'' since we haven't resolved whether to call this a hamiltonian or potential or whatever.}
+\michaeladdressed{The word ``like'' is confusing here, I'm not sure what it means.  Why not just say ``The goal of \SETOL will be to parameterize this \AnnealedHamiltonian'' or ``Observe that the \AnnealedHamiltonian $\GAN$ acts in a mean-field manner, and the goal of \SETOL will be to parameterize this quantity''.  Saying ``like an effective potential'' since we haven't resolved whether to call this a Hamiltonian or potential or whatever.}
 
 
 
@@ -763,7 +763,7 @@ This will prove very useful later when working with HCIZ integrals.
 \label{sxn:mathP_errors}
 
 \michaeladdressed{This is a long subsubsection, and I think it's hard to follow. Let's have an outline of the subsubsection here, and let's stick to it. What is the point of this subsubsection, i.e., what (say) three equatinos are being derived.}
-\michael{It may also be good to have somem parts of this subsection just have results stated and move others to a self contained appendix; this is a long and comples subsubsection, and I'm not sure the logical flow.}
+\michael{It may also be good to have some parts of this subsection just have results stated and move others to a self-contained appendix; this is a long and comples subsubsection, and I'm not sure the logical flow.}
 
 In this subsection, we show how to derive the Average \TrainingError $\AVGTE$ and  the \AverageGeneralizationError $\AVGGE$,
 in the \AnnealedApproximation (AA), and at high-Temperature (high-T), using the \FreeEnergy $F$ and/or the \PartitionFunction $Z$ as
@@ -777,12 +777,12 @@ For a summary of these different symbols and terms, see Table~\ref{tab:energies}
 \paragraph{\GeneratingFunctions for the Errors: the \STATMECH way}
 
 In our theory, after applying the AA (AA), we obtain expressions where the
-random model data $\NDXIn$ has been integarted out. This leaves formal quantities
+random model data $\NDXIn$ has been integrated out. This leaves formal quantities
 that depend only on the weights $\WVEC$, which are the variables being learned during training.
 Since we are left with a distribution over $\WVEC$,
 we define the training error not explicitly as average over the training data itself,
 but instead in terms of how the Free Energy,  $\beta F :=-\ln Z_{n}$,
-varies  with $\beta$, i.e., the amount of stochasity in the model weights.
+varies with $\beta$, i.e., the amount of stochasticity in the model weights.
 
 Following ~\cite{LTS90, Solla2023},
 we define the \emph{\AverageTrainingError}, in the AA,
@@ -794,7 +794,7 @@ by by differentiating $\ln Z^{an}_{n}$ with respect to $\beta$:
   &  = -\frac{1}{n}\frac{1}{Z_{n}}\dfrac{\partial Z^{an}_{n}}{\partial \beta} 
 \end{align}
 This error captures how the model predictions will vary with changes in the learned
-weights $\WVEC$, which implicitly descibes how the changes will vary with the
+weights $\WVEC$, which implicitly describes how the changes will vary with the
 training data $\NDXIn$.
 
 Similarly, 
@@ -808,7 +808,7 @@ Following
 &  =  -\frac{1}{\beta}\frac{1}{Z_{n}}\dfrac{\partial Z^{an}_{n}}{\partial n}
   +\frac{1}{\beta}\ln z(\beta) 
 \end{align}
-where $z(\beta)$ is constant normalization term that depends only on $\beta$ (which, moving forward, we ignore, as it only shifts the scale).
+where $z(\beta)$ is a constant normalization term that depends only on $\beta$ (which, moving forward, we ignore, as it only shifts the scale).
 This error captures how the model’s predictions will change as more data is introduced.
 
 In the \ThermodynamicLimit $(n \gg 1)$, these two definitions of the error become equivalent at High-T,
@@ -848,8 +848,8 @@ Likeswise, if we substitute $\ZANHT$ into \EQN~\ref{eqn:avgge_def}, and take the
   because of the simple expression that appears in the exponent of $\ZANHT$, namely $-n\beta\HANHT(\WVEC)=n\beta\EPSLw$.
 
 
-This equivalence reflects the fact that, when the system is large enough, adding a new data example to the
-training distribution is formaly equivalent to adding noise, making the two errors indistinguishable.
+This equivalence reflects the fact that when the system is large enough, adding a new data example to the
+training distribution is formally equivalent to adding noise, making the two errors indistinguishable.
 This approach allows us to define both training and generalization errors in terms of fundamental thermodynamic quantities,
 providing a simplified formal framework suitable for empirical adjustment later.
 

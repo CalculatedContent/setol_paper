@@ -212,20 +212,18 @@ To do this, we need to compute the average or \ExpectedValue over all possible i
 an $N-$dimensional Gaussian vector (i.e., $d\mu(\XI)=\mathcal{D}\NDXI P(\NDXI)$).
 %
 %Using $\mathcal{N}$ as the normalization for the average, as yet unspecified, we obtain 
-\nred{CHECK THIS: notice we do not include the $\tfrac{1}{N}$ on the R.H.S.}
 \begin{align}
  \langle\DETOPSTLL\rangle_{\AVGNDXI}  
-   = &\red{\cancel{\frac{1}{\mathcal{N}}}}\int d\mu(\NDXI)(1-\ETA(\XI)) \\ \nonumber
-   = &\red{\cancel{\frac{1}{\mathcal{N}}}}\int d\mu(\NDXI)(1-\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI) \\ \label{eqn:XI_ST} 
-   = &\red{\cancel{\frac{1}{\mathcal{N}}}\int d\mu(\NDXI)-\int d\mu(\NDXI)\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI) } \\ \nonumber
-   = & \red{\cancel{\frac{N}{\mathcal{N}}}}1 - \int d\mu(\NDXI)\XI^{\top}\red{\tfrac{1}{N}}\SVEC^{\top}\TVEC\XI \\ \nonumber
-   = & \red{\cancel{\frac{N}{\mathcal{N}}}}1 - \int d\mu(\NDXI)\red{\cancel{N}}\XI^{\top} R\XI \\ \nonumber
-   = & \red{\cancel{\frac{N}{\mathcal{N}}}}1 - R\int d\mu(\NDXI)\XI^{\top}\XI,
+   = & \int d\mu(\NDXI)(1-\ETA(\XI)) \\ \nonumber
+   = & \int d\mu(\NDXI)(1-\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI) \\ \label{eqn:XI_ST} 
+   = & \int d\mu(\NDXI)-\int d\mu(\NDXI)\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI)  \\ \nonumber
+   = & 1 - \int d\mu(\NDXI)\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI \\ \nonumber
+   = & 1 - \int d\mu(\NDXI)\XI^{\top} R\XI \\ \nonumber
+   = &1 - R\int d\mu(\NDXI)\XI^{\top}\XI,
 \end{align}
-where the fifth line holds because the elements of $\XI$ are i.i.d.\red{???}
+where this holds because the elements of $\XI$ are i.i.d.
 Since $d\mu(\NDXI)$ is a measure over a (multi-variate) Gaussian distribution,
-if we normalize the data vectors \red{ $\XI$ to $\frac{1}{\sqrt{M}}$ (See Section~\ref{app:st-gen-err-annealed-ham}),  then
-\cancel{$\mathcal{N}=N$} the second term on the R.H.S. is unity?} and we recover (i.e., \red{\EQN~\ref{eqn:epsl}})
+if we normalize the data vectors $\XI$ to $\frac{1}{\sqrt{M}}$ (See Section~\ref{app:st-gen-err-annealed-ham},  then the second term on the R.H.S. is unity and we recover (i.e.,\EQN~\ref{eqn:epsl}}
 \begin{align}
 \label{eqn:e0}
 \EPSL(R)=\langle\DETOPSTLL\rangle_{\AVGNDXI} =  1 - R .
