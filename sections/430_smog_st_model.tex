@@ -108,7 +108,10 @@ estimates the true error, i.e., $\Vert\Ys-\Yt\Vert=\Vert\Ys-\Ytrue\Vert$,
 and this error is associated with the \TrainingAccuracy of the model in predicting the \GroundTruth.
 But if the \Teacher makes some errors, then $\Vert\Ys-\Yt\Vert$
 is now estimating the \Precision of the model.
-These two situations are depicited in Figure~\ref{fig:precision}.
+These two situations are depicted in Figure~\ref{fig:precision}.
+
+The \StudentTeacher model also explains why NNs can generalize even even when trained to \Interpolation on noisy data (which has been a source of confusion \cite{Understanding16_TR}).  In this model, the \GeneralizationError  $\AVGGE^{T}$ is a simple function of the overlap $R$ between the \Teacher $T$ and the \Students $S$, i.e., $\AVGGE^{T}\sim \THRMAVG{1-\EPSLR}$.  So even if the \Teacher $T$ is trained on noisy data, as long as there are \Students $S$ with significant overlap $R$ with the \Teacher, the \Teacher \GeneralizationError  $\AVGGE^{T}$  can be considerably small.  For more details, see \cite{MM17_TR_v1}
+
 
 \paragraph{Learning the Student}
 Moving forward, we will always assume the \Teacher is trained to \Interpolation because this

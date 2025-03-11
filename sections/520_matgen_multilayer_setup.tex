@@ -50,8 +50,8 @@ we can write the formal expression of the ST error for the simple MLP3 model as:
 \begin{align}
 \label{eqn:overlap1}
 \ETAMLPAVG  \\ \nonumber
-& =\langle\ETA(\SMAT_1,\SMAT_2,\SMAT_3,\TMAT_1,\TMAT_2,\TMAT_3,\boldsymbol{\xi})\rangle_{\XI}  \\ \nonumber
-& =  \Trace{
+& =\langle\ETA(\SMAT_1,\SMAT_2,\SMAT_3,\TMAT_1,\TMAT_2,\TMAT_3,\boldsymbol{\xi})\rangle_{\AVGNDXI}  \\ \nonumber
+& :=  \Trace{
     \frac{1}{\sqrt{N_3}} h\left(\mathbf{S}_3^{\top} 
     \frac{1}{\sqrt{N_2}} h\left(\mathbf{S}_2^{\top} 
     \frac{1}{\sqrt{N_1}} h\left(\mathbf{S}_1^{\top} \boldsymbol{\xi} \right)\right)\right)^{\top} 
