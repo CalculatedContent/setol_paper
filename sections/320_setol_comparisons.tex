@@ -47,7 +47,7 @@ These results hold because, as indicated by the \HTSR theory, the PL exponent $\
 \footnote{By ``after-the-fact'', we mean that it provides a measure of the regularization in a layer, along the lines of the self-regularization interpretation of \HTSR Theory~\cite{MM18_TR_JMLRversion}. However, we do \emph{not} recommend that it be used as an explicit regularization parameter. Informally, this is since the ``easiest way to obtain HT ESDs is to make weight matrices HT element-wise; but this is \emph{not} what is observed in practice, and thus this is precisely \emph{not} what \HTSR Theory and our new \SETOL approach are designed to model.}
 However, the \HTSR approach says nothing about the \SETOL \TRACELOG condition; and neither does the \SETOL approach require a minimum of $\alpha=2$ to obtain the best model quality, as observed by the \HTSR \Phenomenology.
 Remarkably, we can show that $(1)$ and $(2)$ do hold \emph{simultaneously}, both in carefully designed experiments on a small model,
-as well as for many pre-trained, high quality open-source models. 
+as well as for many pre-trained, high quality open-source models (such as VGG, ResNet, Llama, Falcon, etc). 
 
 %And generally speaking, smaller $\ALPHA$ corresponds to better model quality, and with the layer averaged $\langle\alpha\rangle\in[2,4]$ for the better performing models. 
 %\michael{Redundant.}
@@ -59,7 +59,7 @@ as well as for many pre-trained, high quality open-source models.
 
 \michael{Where to have this par?}
 \michael{The following is an important point.  Probably it should be in the intro and only reminded of here.}
-\HTSR theory, however, has been developed as a \Phenomenology describing the best trained, most accurate open-source models available.
+\HTSR theory, however, has been developed as a \Phenomenology describing the best-trained, most accurate open-source models available.
 As such, it may be biased towards such models, and it may not describe less optimal learning scenarios.
 \michael{Weave that in in some way; that is probably better in the intro.}
 The keys goals of this work are to derive independent conditions, both theoretical and experimental, that can

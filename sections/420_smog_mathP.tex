@@ -98,7 +98,7 @@ We will also make connections with the \SaddlePointApproximation (SPA).
 \item 
   \textbf{The Thermodynamic Large-N limit and the Saddle Point Approximation (SPA)}
   In Section~\ref{sxn:largeN_and_SPA}, we discuss the large‐$N$ \ThermodynamicLimit and the \SaddlePointApproximation (SPA).
-  We also the introduce concept of \SelfAveraging (and when it may fail).
+  We also the introduce concept of \SelfAveraging.
 %
  \item
   \textbf{HCIZ Integrals}
@@ -217,7 +217,7 @@ and just write this total error / energy difference as
   \DETOPX :=\sum_{\mu=1}^{n}\Delta E_{\mathcal{L}}(\WVEC,\XVEC_{\mu})  ,
 \end{align}
 which is now a function of the entire set of  $n$ vectors $[\NDX]$
-(where the labels $\MY$ have been implicitly set).
+(where the labels $\MY$ have been set implicitly).
 \michael{@charles: what is the significance of this switch? Is is to use this ``operator notation and if so what is the significance of that not having the $y$. }
 \cformike{The $y$ goes away in the next section; its not obvious yet.  Likewise, the operator notation is useful later.}
 This operator notation will provide useful later in Section~\ref{sxn:SMOG_main-st_av}
@@ -395,8 +395,14 @@ HCIZ $\langle\cdots\rangle^{IZ}$, etc.
 \end{center}
 We use subscripts to emphasize the dependent variables:
 \begin{center}
-  weights $\langle\cdots\rangle_{\WVEC}$, $\langle\cdots\rangle_{\SVEC}$, $\langle\cdots\rangle_{\SMAT}$,
-data $\langle\cdots\rangle_{\XI}$, $\langle\cdots\rangle_{\AVGNDXIn}$, etc.
+  weights $\langle\cdots\rangle_{\WVEC}$, $\langle\cdots\rangle_{\SVEC}$, $\langle\cdots\rangle_{\SMAT}$ \\ \nonumber
+    \\[0.33em]  % <-- extra vertical space here
+data $\langle\cdots\rangle_{\XI}$,
+\langle\cdots\rangle_{\NDXIn}$,
+$\langle\cdots\rangle_{\NDXI}$,
+$\langle\cdots\rangle_{\AVGNDXIn}$,
+$\langle\cdots\rangle_{\AVGNDXI}$,
+etc.
 \end{center}
 We also reuse these symbols for other quantities, such as the $\ZANHT$, $\AVGGE^{an,hT}$, $\GAN$, etc,
 but may mix-and-match subscripts and superscripts for visual clarity.
@@ -516,15 +522,14 @@ The full expected value  of the \FreeEnergy, $\beta F_{n}=-\ln Z_{n}$, with resp
   \mathbb{E}_{\NDXIn}[\beta F_n]=\beta\bar{F}:=-\langle \ln Z_{n}\rangle_{\AVGNDXIn},
 \end{align}
 where $\mathbb{E}_{\NDXIn}[\beta F_n]$ is the \ExpectedValue of the \FreeEnergy, which we wish to model, and 
-where $\langle \ln Z_{n}\rangle_{\AVGNDXIn}$ means where we average over  the $n$ samples of the data .
-($\NDXIn$, of size $n$).  This is also called the \Quenched \FreeEnergy.
+where $\langle \ln Z_{n}\rangle_{\AVGNDXIn}$ means where we average over  the $n$ samples of the data ($\NDXIn$, of size $n$).  This is also called the \Quenched \FreeEnergy.
 This is, however,  frequently too difficult to analyze, and doing so typically
 requires a so-called Replica calculation. And while we will be doing something similar
 to a Replica calculation later, for the setup of the problem, we will use a simpler approach
 
-The \AnnealedApproximation (AA) is a way of taking the data-average \emph{first}, and greatly
-simpifies the model under study and its analysis.  The standard way to move forward is to follow the methods used
-in disordered systems theory \cite{SST92,EB01_BOOK}.
+The \AnnealedApproximation (AA) is a way of taking the data-average \emph{first} and greatly
+simplifies the model under study and its analysis.  The standard way to move forward is to follow the methods used
+in disordered systems theory \cite{SST92, EB01_BOOK}.
 The mapping is:
 %\begin{center}
 \begin{align*}
@@ -560,24 +565,27 @@ Formally, the AA makes the substitution
 Here, we are \emph{averaging over the disorder}.
 We may associate $-\langle\ln Z_w(\NDXIn)\rangle_{\AVGNDXIn}$ to the (unitless) \Quenched \FreeEnergy, and
 $-\ln \langle Z_{n}(\NDXIn)\rangle_{\AVGNDXIn$ to the (unitless) \Annealed \FreeEnergy.
-\charles{unitless is akward, rephrase}
 
 Applying the AA amounts to applying Jensens inequality \emph{as an equality}, 
 and it allows will let us interchange integrals and logarithms when computing the data average:
 \begin{align}
 \label{eqn:Jensens}
-\ln\tfrac{1}{n}\int d\mu(\NDXIn)(\cdots)\leftrightarrow \tfrac{1}{n}\int d\mu(\NDXIn)\ln(\cdots)   .
+\ln\tfrac{1}{n}\int d\mu(\NDXIn)(\cdots)
+\xrightarrow {\text{AA}]
+\tfrac{1}{n}\int d\mu(\NDXIn)\ln(\cdots)   .
 \end{align}
 This will allow us to switch the order of the data and the thermal averages, i.e.,
 \begin{align}
- \label{eqn:switch}
-\langle\THRMAVGw{\cdots}\rangle_{\AVGNDXIn}\rightarrow\THRMAVGw{\langle\cdots\rangle_{\AVGNDXIn}}   ,
+\label{eqn:switch}
+\left\langle \THRMAVGw{\cdots} \right\rangle_{\AVGNDXIn}
+\xrightarrow{\text{AA}]
+\THRMAVGw{\left\langle \cdots \right\rangle_{\AVGNDXIn}},
 \end{align}
 greatly simplifying the analysis.
 
 \michaeladdressed{MM TO DO: I moved this par from elsewhere. I still need to weave it into this section better.}
 The use of the AA is common in \STATMECH, as it simplifies computations considerably; and 
-it is chosen when it holds exactly (if, say, $x$ is a \Typical sample from $\mathcal{D}$ and $Z_w(\XI)$ has a well defined mean).
+it is chosen when it holds exactly (if, say, $x$ is a \Typical sample from $\mathcal{D}$ and $Z_w(\XI)$ has a well-defined mean).
 In contrast, there are situations in \STATMECH when the average is \ATypical, and then it one can get different results for the \Quenched versus \Annealed cases.  In a practical sense, one imagines this may occur when the data is very
 noisy and/or mislabeled, and this requires a special treatment~\cite{SST92}.
 

@@ -50,27 +50,26 @@ Given a \LayerQuality metric, $\Q^{NN}_{L}(\mathbf{W})$, one can define the \emp
 \label{eqn:ProductNorm}
 \Q^{NN}&:=\underset{L}{\prod}\;\Q^{NN}_{L}(\mathbf{W}) ,
 \end{align}
-a product of each independent \LayerQuality $\\Q^{NN}_{L}$, and then consider the layer average as the log \emph{\LayerQuality},
+a product of each independent \LayerQuality $\Q^{NN}_{L}$, and then consider the layer average as the log \emph{\LayerQuality},
 \begin{align}
 \label{eqn:LogProductNorm}
-\log\Q^{NN}=\frac{1}{N_{L}}\underset{L}{\sum}\;\log\Q^{NN}_{L}=\langle\log\Q^{NN}_{L}\rangle_{L}
+\log\Q^{NN}=\frac{1}{N_{L}}\underset{L}{\sum}\;\log\Q^{NN}_{L}=\langle\log\Q^{NN}_{L}\rangle_{\bar{L}}
 \end{align}
-where $\langle\;\cdots\;\rangle_{L}$ denotes the layer average.
+where $\langle\;\cdots\;\rangle_{\bar{L}}$ denotes the layer average.
 
-\noindent
 In particular, prior work has used the following metrics:
 \begin{itemize}
 \item
-The layer-averaged model quality metric \ALPHA, $\log\Q^{NN}=\langle\alpha\rangle_{L}$, describes the \SHAPE of the ESDs.
+The layer-averaged model quality metric \ALPHA, $\log\Q^{NN}=\langle\alpha\rangle_{\bar{L}}$, describes the \SHAPE of the ESDs.
 One can use the averaged \ALPHA when studying a single model, and only varying the regularization hyperparameters, although \ALPHA also works very well as a model quality metric when comparing different transformer models~\cite{YHTx21_TR}.
 \item
-The layer-averaged model quality metric \LOGSPECTRALNORM, $\log\Q^{NN}=\langle\log\lambda_{max}\rangle_{L}$, describes the \SCALE of the ESDs.
+The layer-averaged model quality metric \LOGSPECTRALNORM, $\log\Q^{NN}=\langle\log\lambda_{max}\rangle_{\bar{L}}$, describes the \SCALE of the ESDs.
 The averaged \LOGSPECTRALNORM does work as a model quality metric but not as well as \ALPHA~(or \ALPHAHAT).
-Notably, \SLT predicts that smaller, not larger, \LOGSPECTRALNORM should correlated with model quality; the opposite is observed in practice!
+Notably, \SLT predicts that smaller, not larger, \LOGSPECTRALNORM should be correlated with model quality; the opposite is observed in practice!
 This is because smaller layer $\alpha$ generally, but not always, corresponds to larger $\lambda_{max}$.%
-\footnote{The \LOGSPECTRALNORM can exhibit a Simpsons paradox when segmenting models by quality)~\cite{MM21a_simpsons_TR}.  Nevertheless, this metric may be useful when a PL fit can not be obtained, say, when $N\gg M$ and $M$ is very small, as with LSTMs,  U-Net architectures, etc.}
+\footnote{The \LOGSPECTRALNORM can exhibit a Simpson's paradox when segmenting models by quality)~\cite{MM21a_simpsons_TR}.  Nevertheless, this metric may be useful when a PL fit can not be obtained, say, when $N\gg M$ and $M$ is very small, as with LSTMs,  U-Net architectures, etc.}
 \item
-The layer-averaged model quality metric \ALPHAHAT, $\log\Q^{NN}=\langle\alpha\log\lambda_{max}\rangle_{L}=\langle\hat{\alpha}\rangle_{L}$, incorporates both \SHAPE and \SCALE information.
+The layer-averaged model quality metric \ALPHAHAT, $\log\Q^{NN}=\langle\alpha\log\lambda_{max}\rangle_{\bar{L}}=\langle\hat{\alpha}\rangle_{\bar{L}}$, incorporates both \SHAPE and \SCALE information.
 This can compensate for anomalies that can arise when (say) comparing models of different sizes or model qualities~\cite{MM21a_simpsons_TR} or when other issues cause unusualy large $\lambda_{max}$. See Section~\ref{sxn:Traps}).
 \end{itemize}
 

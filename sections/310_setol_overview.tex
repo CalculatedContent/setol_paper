@@ -15,7 +15,7 @@ and in the \emph{\HighTemperature} limit; see Section ~\ref{sxn:SMOG_main}), and
 we then generalize this to the case of a NN $(\AVGE^{ST}_{gen}\rightarrow\AVGE^{NN}_{gen})$, so that we can analyze the \Quality of each layer.
 For the \Perceptron, the \GeneralizationError is an Energy, given as $\AVGE^{ST}_{gen}:=\THRMAVG{1-R}$, where $R$ is the ST vector overlap,
 and $\THRMAVG{\cdots}$ is a \emph{\ThermalAverage} (defined in Section~\ref{sxn:mathP}),
-a Boltzmann-weighted integral in matrix space.
+a Boltzmann-weighted average.
 In this case, the model \Quality, $\Q^{ST}$ is exactly the AA, high-T \AverageGeneralizationAccuracy 
 \michaeladdressed{still not sure we are using that term correctly, here and elsewhere}
 $\Q^{ST}:=1-\AVGE^{ST}_{gen}=\THRMAVG{R}$.
@@ -52,7 +52,7 @@ Let us now express the average matrix-matrix overlap $\mathbf{R}$ in squared for
   \label{eqn:R2}
 \Trace{\OVERLAP^{2}} &:=\OLAPSQD  \\ \nonumber
 &=\frac{1}{N^{2}}\Trace{\mathbf{T}^{\TR}\mathbf{SS}^{\TR}\mathbf{T})}
-=\frac{1}{N}\Trace{\mathbf{T}^{\TR}\mathbf{A}_\red{2}\mathbf{T}}
+=\frac{1}{N}\Trace{\mathbf{T}^{\TR}\mathbf{A}_2\mathbf{T}}
 \end{align}
 where $\AMAT_{2}$ is the $N\times N$ form of the \Student correlation matrix,
 $\mathbf{A}_2:=\frac{1}{N}\mathbf{SS}^{\TR}$.
@@ -81,7 +81,7 @@ For more details, see Section~\ref{sxn:matgen}, and the Appendix, Section~\ref{s
 We can write $\IZG$ as an HCIZ Integral, 
 \begin{align}
   \label{eqn:QT_dS}
-  \IZG  &=  \ln\int d\mu(\mathbf{S})\exp\left(N\beta\Trace{\mathbf{T}^{\TR}\mathbf{A}_\red{2}\mathbf{T}}\right),
+  \IZG  &=  \ln\int d\mu(\mathbf{S})\exp\left(N\beta\Trace{\mathbf{T}^{\TR}\mathbf{A}_2\mathbf{T}}\right),
 \end{align}
 
 
@@ -140,7 +140,7 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
   We have
   \begin{align}
   \label{eqn:IZGINF_HCIZ}
-  \IZGINF = \lim_{N\gg 1}\ln\int d\mu(\AECS)\exp\left(\beta\Trace{\mathbf{T}^{\TR}\AECS_\red{2}\mathbf{T}}\right) %= \beta\sum_{i=1}^{\MECS}\GNECS
+  \IZGINF = \lim_{N\gg 1}\ln\int d\mu(\AECS)\exp\left(\beta\Trace{\mathbf{T}^{\TR}\AECS_2\mathbf{T}}\right) %= \beta\sum_{i=1}^{\MECS}\GNECS
   \end{align}
   where  measure $d\mu(\AECS)$ lets us average over all \Student Correlation matrices $\AECS_{2}$ which
   lie in the~\ECS space and which ``resemble'' the \Teacher, 
@@ -157,8 +157,8 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
     \QT = \dfrac{1}{\beta}\dfrac{\partial}{\partial N}\IZGINF = \sum_{i=1}^{\MECS}\GNI
   \end{align}
   where $\GNI$ is a \emph{\GEN}, and is  defined as the integrated \emph{\RTransform} $R(z)$ of the \Teacher
-  layer ESD (where $z\in\mathbb{C}$), such that $\GN:= \int_{\LambdaECS_{min}}^{\lambda}R(z)dz$
-  and $\LambdaECS_{min}$  encapsulates  the~\ECS (and selects the desired branch-cut of $R(z)$
+  layer ESD (where $z\in\mathbb{C}$), such that $\GN:= \int_{\LambdaECSmin}^{\lambda}R(z)dz$
+  and $\LambdaECSmin$  encapsulates  the~\ECS (and selects the desired branch-cut of $R(z)$
   so that it is both single-valued and analytic).
 \end{itemize}
 
@@ -173,7 +173,7 @@ the tail of the ESD $\rho^{emp}_{T}(\lambda)$, and which can
 parameterized by some measurable property.
 This may include the number of Spikes $\lambda^{spike}$, the fitted PL exponent $\alpha$,
 the maximum eigenvalue $\lambda_{max}$, or even the entire tail $\rho^{tail}_{T}(\lambda)$.
-This may be a formal expression, a computational proceedure, or some combination.
+This may be a formal expression, a computational procedure, or some combination.
 
 To integrate $R(x)$, however, to have a physicaly meaningful result,
 one must ensure that $R(z)$ is both
@@ -188,7 +188,7 @@ To complete the theopry, we
 will also show that the \HTSR PL \LayerQuality metrics \ALPHA $(\alpha)$  and \ALPHAHAT $(\ALPHAHATEQN)$
 can be formally derived directly from the \SETOL \LayerQuality $\Q$ by selecting the appropriate
 \RTransform $R(z)$. In Section~\ref{sxn:r_transforms} we provide several possible
-model $R(z)$ and the resulting $\Q$.
+model $R(z)$ and the resulting \LayerQuality $\Q$.
 \michaeladdressed{Huh?}
 
 \paragraph{Renormalization Group Effective Hamiltonian}
@@ -205,12 +205,12 @@ that spans the \EffectiveCorrelationSpace~(\ECS). Formally, we have:
 where the RG transformation is defined by the \ScaleInvariant \TRACELOG condition,
 applied at large-$N$,
 and where $\HEFF$ is defined implicitly through result for $\QT$ (Eqn.~\ref{eqn:QT_result}).
-The result is, formally, a sum of the  integrated \RTransforms $\GNI$.
+The result is, formally, a sum of the integrated \RTransforms $\GNI$.
 \footnote{In a sense, this result resembles (a non-perturbative form of) the Linked Cluster Theorem
 in that the log \PartitionFunction is expressed as a sum of integrated matrix-generalized cumulants.}
 \nred{For the conclusions:} The  presence of the branch-cut in $R(z)$
 suggests a situation that is similar in spirit to the RG solution
-characterizing a phase transtion, here with a critical exponent of $\alpha=2$,
+characterizing a phase transition, here with a critical exponent of $\alpha=2$,
 and the phase boundary being between the \HeavyTailed 
 (HT) and the \VeryHeavyTailed (VHT) phase of learning of the \HTSR theory.
 This observation strengthens our argument that the \HTSR HT and HVT phases

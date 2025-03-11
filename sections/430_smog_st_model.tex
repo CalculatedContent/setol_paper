@@ -1,7 +1,6 @@
 \subsection{Student~-Teacher Model: Basic Setup}
 \label{sxn:SMOG_main-student_teacher}
 
-
 \begin{figure}
   \centering
 %  \includegraphics[width = 0.3\textwidth]{./img/perceptron.pdf}
@@ -40,21 +39,19 @@
 \end{figure}
 
 
-In this subsection, describe the basic setup of the classic \StudentTeacher model, taking an operational view from the perspectie of a practioner training real-world \Student and \Teacher models.  Specifically, we present the \AnnealedApproximation (AA) in a practical light,
+In this subsection, describe the basic setup of the classic \StudentTeacher model, taking an operational view from the perspective of a practitioner training real-world \Student and \Teacher models.  Specifically, we present the \AnnealedApproximation (AA) in a practical light,
 and use it explain the difference between computing the \emph{Empirical\GeneralizationError}, $\AVGEMPGE$, for the \emph{\TrueAccuracy}
 and for the \emph{\Precision} of a \Teacher model.
 
 \subsubsection{Test Error of the Teacher}
 
-We start by describing how to obtain a simple formal expression for the empirical test errors of the \Teacher, first
-for the \TrueAccuracy.
+We start by describing how to obtain a simple formal expression for the empirical test errors of the \Teacher, first for the \TrueAccuracy.
 
-Lets say we have am model, called the \Teacher $(T)$, 
-that maps some \emph{actual} (i.e., correlated) data
+Let us say we have a model, called \Teacher $(T)$, which maps some \emph{actual} (i.e., correlated) data
 $\DATA\in\ADD$ to some known or \emph{true}  labels $(\Ytrue)$
 (where,  $\Ytrue$ is, say, an $N$-dimensional vector of binary labels).
 We might say that $\Ytrue$ represents the \emph{\GroundTruth} for the problem.
-Operationall, we train the \Teacher $T$ to reproduce or at least approximate the true labels $\Ytrue$.
+Operationally, we train the \Teacher $T$ to reproduce or at least approximate the true labels $\Ytrue$.
 \begin{align}
  T:\DATA\rightarrow \Yt \approx \Ytrue.
 \end{align}
@@ -120,8 +117,8 @@ errors, we may need to consided  \Quenched averages, explained below.
 
 Imagine now that in order to estimate the empirical \AverageGeneralizationError, $\AVGEMPGE$,
 by training a very large number of Students, and computing the average ST error on some test set.
-Let us  one could break the data set into training $\DATAtrain$ and test $\DATAtest$ examples, 
-train models on the training data (i.e., find the optimal model weights), 
+Let us break the data set into training $\DATAtrain$ and test $\DATAtest$ examples, 
+train models on the training data (that is, find the optimal model weights), 
 and evaluate the $S$ and $T$ models on the test data.
 
 The \Student learning task can be written as in \EQN~(\ref{eqn:dnn_opt})
@@ -157,8 +154,7 @@ If we have a very large number of suitable Students
 (say, drawn from some random distribution), then we can try to estimate the 
 \AverageGeneralizationError of the \Teacher, i.e., $\TGE^{T}\approx\AVGEMPGE$.
 $\AVGEMPGE$ is given by an average loss, the average is 
-over all possible Students $N_S$,  and then 
-over all  $\Ntest$ test data points $\DATAtest\in\mathbf{D}$ 
+over all possible Students $N_S$,  and then  over all  $\Ntest$ test data points $\DATAtest\in\mathbf{D}$ 
 \begin{align}
   \AVGEMPGE
   &=
@@ -211,14 +207,14 @@ Training to \Interpolation correpsonds conceptually to working with a model
 in the \AnnealedApproximation, whereas not correpsonds to \Quenched case.
 
 Practically, when the \Teacher is not trained to \Interpolation, 
-we may  meed to resamplethe training data and training an ensemble of models to compensate for anomalies in training data (bad labels, noise, etc.) that may cause the underlying model to overfit to the training data.
+we may need to resample the training data and training an ensemble of models to compensate for anomalies in training data (bad labels, noise, etc.) that may cause the underlying model to overfit to the training data.
 Theoretically, within \SMOG, this is equivalent to \emph{quenching} the system to the data (a term analogous to quickly cooling a physical system, frezing in any defects).
 In contrast, when one \emph{anneals} a physical system, one heats up and cools it down slowly, and repeatedly, thereby removing any defects (of data anomalies for NNs, or material defects in a physical system).
 
 In \STATMECH, one can perform a so-called quenched average using a replica calculation,
 effectively removing the dependence on test and/or training data
 from the final estimate for $\AVGEMPGE$.
-However, theoretical quenched result may differ significantly from the annealed case when the underlying model is unrealizable~\cite{SST92}. 
+However, the theoretical quenched result may differ significantly from the annealed case when the underlying model is unrealizable~\cite{SST92}. 
 This may occur when the training data is very noisy and/or the model architecture is such that it can not correctly predict all the training labels.
 In such cases, the model will always have some finite, non-zero Average \TrainingError, $\AVGTE > 0$,
 even in the large-$N$ limit of infinite data.  In such a case, this indicates
@@ -244,8 +240,6 @@ This is a hallmark of the \SETOL approach, and it distinguishes \SETOL from the 
 
 %Importantly, we will not used the quenched form of $\mathcal{E}_{t}^{emp}$ because we will be able todetect
 %anomalies in the training data directly by looking at the fitted \SemiEmpirical HT parameter $\alpha$.
-
-
 
 be used to estimate the \AverageGeneralizationAccuracy (and not the \Precision),
 and which we will refer to more generally as a layer and/or model \Quality.

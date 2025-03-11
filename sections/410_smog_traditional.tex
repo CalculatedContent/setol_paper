@@ -65,7 +65,7 @@ highly non-convex landscape~\cite{SST92, STS90, engel2001statistical},
 and recognized classically by a slowing down of the training dynamics~\cite{gutfreund1985spin}).
 Thus, concepts such as training and \GeneralizationError arise naturally from integrals that are familiar to \STATMECH; 
 and theoretical quantities such as Load, Temperature, and \FreeEnergy also map onto useful and relevant concepts~\cite{MM17_TR}. 
-The \FreeEnergy is of particular interest, as it can be used as a generating function to obtain the desired \GeneralizationError and/or accuracy.
+The \FreeEnergy is of particular interest because it can be used as a generating function to obtain the desired \GeneralizationError and/or accuracy.
 We wish to understand how to compute the associated thermodynamic quantities such as the expected value of the
 various forms of the \AverageGeneralizationError $(\AVGGE)$, \PartitionFunction $(Z)$, and the
 \FreeEnergy $(F)$ and other \GeneratingFunctions~$(\Gamma)$.
@@ -77,7 +77,7 @@ various forms of the \AverageGeneralizationError $(\AVGGE)$, \PartitionFunction 
 \michaeladdressed{@charles: Can we just cange ``Generalization Accuracy'' to ``Model Quality'' and ``Model Accuracy'' since I think that will help to minimize confusion.  We should define what precisely is Model Quality and new notions.}
 
 \paragraph{The \StudentTeacher model.}
-
+\charles{@michael?  Removing for now ; we should discuss :
 XXX. PUT TWO OR THREE SENTENCES ON THE BASIC STUDENT SETUP; START WITH THE FOLLOWING AND REFINE.
 For simplicity, let's consider the classification of the elements of some input space $X$ into one of two classes, $\{0,1\}$.
 There is a \emph{target rule}, $T$, which is one particular mapping of the input space into the set of classes, as well as a \emph{hypothesis space}, $\mathcal{F}$, which consists  of the available mappings $f$ used to approximate the target $T$.
@@ -86,7 +86,7 @@ Given this setup, the problem of learning from examples is the following: on the
 One can think of the target rule $T$ as being a \emph{teacher}, and the goal of the \emph{student} is to approximate the teacher as well as possible.
 The \emph{generalization error} $\varepsilon$ is the probability of disagreement between the student/hypothesis and teacher/target on a randomly chosen subset of $X$.
 XXX. OLD STUFF VECTORS.
-XXX. NEW STUFF MATRICES.
+XXX. NEW STUFF MATRICES.}
 
 %To express these integrals, the \SMOG approach models both Students $S$ and Teachers $T$ as \emph{weight vectors},
 We seek to compute and/or estimate the  \AverageGeneralizationAccuracy for a \emph{fixed} \Teacher Perceptron $T$
@@ -125,6 +125,6 @@ we not only seek to parameterize our model; but
 we also try to understand 
 how to derive \HTSR empirical metrics, such as $\ALPHA$ and $\ALPHAHAT$,
 how they arise from this formalism, 
-how they are related to the correlatons in the data, and 
+how they are related to the correlations in the data, and 
 why they are transferable and exhibit \Universality.
 This gives what we call a \SemiEmpirical \emph{Theory}.

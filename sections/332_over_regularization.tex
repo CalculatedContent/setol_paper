@@ -17,7 +17,7 @@ concentrating into a low-rank~\ECS.  In general, and likewise, the more the weig
 correlations concentrate  into a low-rank~\ECS, the better the layer has been regularized.
 A natural question arises then, namely, can a layer be \emph{\OverRegularized} and
 can we detect this?
-
+and in large,
 Empirically, we do indeed observe that over the course of training, $\alpha$ decreases, (See Figure~\ref{fig:mlp3-FC1-alpha-overloaded} 
 (a), Section~\ref{sxn:hysteresis_effect},) and that the models predictions are concentrated into the~\ECS, 
 (See Section~\ref{sxn:empirical-effective_corr_space}). Thus, we also interpret $\alpha$ and~\ECS concentration to be 
@@ -26,7 +26,7 @@ measures of learning itself, meaning that NNs are self-regularizing~\cite{MM18_T
 Importantly, however, the \HTSR \Phenomenology indicates that \ALPHA usually lies in the Fat-Tailed Universality class,
 such that $\alpha\in [2,6]$.  When $\alpha <2$, the ESD is Very Heavy Tailed (VHT), and, also,
 this indicates that $\mathbf{W}$ has an anomalously large variance.  That is,  $\mathbf{W}$ is  \ATypical.
-Occasionally, but very infrequently, we do observe $\alpha<2$s, and in large, production quality models
+Occasionally, but very infrequently, we do observe $\alpha<2$, and in large, production quality models
 (like Llama\cite{LLAMA}).
 Interestingly, we also observe that, frequently, when the \HTSR $\alpha<2$, the \SETOL \TRACELOG
 condition holds fairly well.  This is further explored in Section~\ref{sxn:empirical}
@@ -78,7 +78,7 @@ leading to $\alpha<2$, and even the \TRACELOG condition $\Delta \lambda_{min} < 
 
 In Section~\ref{sxn:hysteresis_effect}, we will test this hypothesis.
 By reducing the trainable parameters in a small MLP, we can simulate the situation seen above in the Llama-65b model,
-and observe the formation of a Very Heavy Tailed ESD in the dominating layer weight matrix.
+and observe the formation of a Very Heavy Tailed (VHT) ESD in the dominating layer weight matrix.
 Overloading results from having too few parameters for the complexity of the task. Adding more data increases 
 the load up to the total complexity of the task itself.
 %\st{Adding noisy labels increases the load up to the capacity of the a}
