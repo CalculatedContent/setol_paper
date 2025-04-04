@@ -1,0 +1,60 @@
+\section{Statistical Mechanics of Generalization (\SMOG)}
+\label{sxn:SMOG_main}
+
+In this section, we review the \STATMECH approach to learning: 
+both to understand how it is usually applied in \StatisticalMechanicsOfGeneralization (\SMOG) theory; 
+and to understand how our \SemiEmpirical approach in \SETOL is similar to and different from the traditional approach.
+We will also obtain an expression for the \GeneralizationAccuracy (or \ModelQuality $\Q^{ST}$) for the
+classic \StudentTeacher (ST) model of the Linear \Perceptron (in the AA, and at high-T),
+as described in \cite{SST90,SST92}.
+In Section~\ref{sxn:matgen}, we will generalize this to a \LayerQuality metric, $\Q$, for a layer in a general Multi-Layer Perceptron (MLP),
+i.e., $\Q^{ST}\rightarrow\Q$, so that $\Q$ can then be expressed in terms of the ESD of the NN layer.
+\michael{AWK.}
+
+\paragraph{Outline.}
+Here is an outline of this section.
+\begin{enumerate}[label=4.\arabic*]
+\item
+  \textbf{Approaches to the \SMOG.}
+  In Section~\ref{sxn:trad_smog}, we explain the mapping from the \STATMECH theory of disordered systems
+    to the \STATMECH theory of NN learning (\SMOG); and how our \SemiEmpirical approach (\SETOL)
+    is similar to and different from the traditional approach.
+
+  \item
+      \textbf{Mathematical Preliminaries.}
+    In Section~\ref{sxn:mathP}, we review mathematical details of \STATMECH, providing definitions
+      and detailed derivations of quantities and expressions necessary later.  
+
+    \item
+      \textbf{Student-Teacher Model.}
+      In Section~\ref{sxn:SMOG_main-student_teacher}, we discuss the setup of the \StudentTeacher (ST) model
+      as a general means to estimate the \AverageGeneralizationError empirically.
+      First, in subsection~\ref{sxn:ST_OP_setup}, we describe the ST setup with an operational analogy.
+       Then, in subsection~\ref{sxn:SMOG_main-st_av}, we derive the (new) result for the
+    ST \ModelQuality, $\Q^{ST}$, using the setup of the classic (ST) model for the
+    \GeneralizationError (and accuracy) of the \Perceptron (in the AA, and at high-T).
+\end{enumerate}
+
+\noindent
+Additional information can be found in the Appendix.
+\begin{itemize} %\begin{enumerate}[label=A.\arabic*]
+\item
+  \textbf{Symbols and Equations.}
+  In Section~\ref{sxn:appendix_A}, we summarize the important symbols and key results,
+         including the dimensions of the vectors and matrices, different notations for energies,
+         and key equations.
+   \item
+   \textbf{Summary of the \SMOG.}
+         In Section~\ref{sxn:summary_sst92}, we provide a more detailed analysis of the results we derive in Section~\ref{sxn:SMOG_main-st_av}.
+         In particular, in Section~\ref{app:st-gen-err-annealed-ham}, we repeat the derivations of the ST \GeneralizationError $\AVGSTGE$ and related quantities (from Section~\ref{sxn:mathP}),
+         using more concrete notation to align with \cite{SST90, SST92}; and
+         in Section~\ref{sxn:appendix_Gan}, we use this to derive the matrix-generalization of the ST \EffectivePotential $\EPSLR$ (as well as the normalization for the weight matrices, necessary for later).
+\end{itemize} %\end{enumerate}
+
+\input{sections/410_smog_traditional}
+\input{sections/420_smog_mathP}
+\input{sections/430_smog_st_model}
+%\input{sections/440_smog_gen_gap}
+%\input{sections/450_smog_bad_data}
+%\input{sections/450_new}
+%\input{sections/460_smog_theory_st_avg}

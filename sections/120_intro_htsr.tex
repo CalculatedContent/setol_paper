@@ -1,0 +1,44 @@
+\subsection{Heavy-Tailed Self-Regularization (\HTSR)}
+
+%A key aspect of a \SemiEmpirical theory involves the empirical data that are used semi-empirically within a broader theoretical framework.
+%\charles{This needs reworked.   The framework is effcetive hamilitonians, many body theory, and stat mech.
+%making it braoder dillutes the paper and the science. }
+%For this, we need ``observables'' that are empirically-measurable.
+%For nuclear structure, this involved \michael{XXX};
+%for quantum chemistry, this involved \michael{XXX}.
+%See Table~\ref{tab:table-of-analogies} for a summary.
+
+
+%\michaeladdressed{For DNNs, one might be tempted to parameterize the theory in terms of the training data, algorithm learning rates, gradient information, etc.
+%However, none of these are ``observable'' to the model user.
+%Instead, our \SemiEmpirical theory will be formulated in terms of weight matrices of trained DNN models}
+%\charles{This is incorrect. Of course these are observables}
+
+%\footnote{We will assume that the user has access to a full pre-trained model. The basic \SemiEmpirical approach is still applicable, but would need to %be modified appropriately, under more limited access models such as only API access.}
+%and in particular in terms of the Empirical Spectral Distribution (ESD), i.e., the eigenvalues,%
+%\footnote{We will be somewhat cavalier about the terminological distinction between eigenvalues and singular values.}
+%of weight matrices.
+%For this, we will use results from \emph{\HeavyTailedSelfRegularization} (\HTSR) theory~\cite{MM19_HTSR_ICML,MM20_SDM,MM18_TR_JMLRversion}.
+
+\HTSR theory is an approach that combines ideas from \STATMECH~with those of \emph{\HeavyTailed} \emph{\RandomMatrixTheory} (\RMT),
+providing eigenvalue-based quality metrics that correlate with model quality (i.e., out-of-sample performance).
+\michael{We need to be pretty pedantic about model quality versus OOS performance versus generalization, etc.}
+\HTSR theory posits that well-trained models have extracted subtle correlations from the training data, and that these correlations manifest themselves in the \SHAPE and \SCALE of the eigenvalues of the layer weight matrices $\mathbf{W}$. 
+In particular, if one computes the empirical distribution of the eigenvalues, $\lambda_i$, of an individual  $N \times M$ weight matrix, $\mathbf{W}$, then this density, $\rho^{emp}(\lambda)$, which is an ESD, is Heavy-Tailed (HT) and can be well-fit to a \emph{\PowerLaw} (PL), i.e., $\rho(\lambda)\sim\lambda^{-\alpha}$, with exponent $\alpha$.
+\HTSR~theory provides a \emph{\Phenomenology} for qualitatively-distinct phases of learning~\cite{MM18_TR_JMLRversion}.
+It can, however, also be used to define \emph{Layer-level Quality metrics} and \emph{Model-level Quality metrics}: e.g., the \ALPHA~$(\alpha)$ and \ALPHAHAT~$(\ALPHAHATEQN)$ PL metrics, described below.
+
+Not needing any training data, \HTSR~theory has many practical uses.
+It can be directly applicable to large, open-source  models where the training and test data may not be available.
+Model quality metrics can be used, e.g., to predict trends in the quality of SOTA models in computer vision (CV)~\cite{MM20a_trends_NatComm} and natural language processing (NLP)~\cite{YTHx22_TR,YTHx23_KDD}, both during and after training, and without needing access to the model test or training data.
+Layer quality metrics can be used to diagnose potential internal problems in a given model, or (say) to accelerate training by providing optimal layer-wise learning rates \cite{NEURIPS2023_CHM} or pruning rations \cite{alphapruning_NEURIPS2024}.
+%
+Most notably, the \HTSR theory provides \emph{Universal} \LayerQuality metrics encapsulated in what apears to be a critical exponent, $\alpha=2$, that is empirically associated with optimal or \IdealLearning. Moreover, as argued below, the
+value $\alpha=2$a appears to define a phase boundary between a generalization and overfitting, analogous
+to the phase boundaries seen in \STATMECH theories of NN learning. 
+
+These results both motivate the search for a first prinples understanding of the \HTSR theory, 
+and suggests a path for developing a practical predictive theory of Deep Learning.
+For this, however, we need to go beyond the \Phenomenology provided by \HTSR theory, to relate it to some sort of (at least semi-rigorous/semi-empirical) derivations based on the \STATMECH theory of learning, and drawing
+upon previous success (in Quantum Chemistry) in developing a first principles \SemiEmpirical theory. 
+

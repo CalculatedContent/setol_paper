@@ -1,0 +1,99 @@
+\section{Empirical Studies}
+\label{sxn:empirical}
+
+In this section, we present empirical results. 
+Our goals are to justify key technical claims, including key assumptions underlying our \SETOL approach, and to illustrate the behavior of \SETOL with respect to various parameters and hyperparameters.
+Importantly, it is \emph{not} our goal to demonstrate that layer PL exponent~\ALPHA~and~\ALPHAHAT~perform well for diagnostics and predicting model quality for SOTA NN models, as that has been demonstrated previously~\cite{MM20a_trends_NatComm,MM21a_simpsons_TR,YTHx22_TR}.
+% (using just the \HTSR \Phenomenology).
+
+Since the \SETOL theory presented in Section~\ref{sxn:matgen} is (effectively) a single layer theory,
+in order to carefully test (as opposed to simply use) \SETOL, we need to limit the degree of inter-layer interactions present in the model.
+%%(For example, in one series of experiments, described below, all layers in the model are trained; and we then compare and contrast this with the case where only one layer was trained, and all other layers remained frozen with their random initializations.) 
+To do so, we consider a three-layer \MultiLayerPerceptron (MLP3), trained on MNIST~\cite{MNIST1998}. 
+We refer to the hidden layers as ``FC1 and ``FC2. Their output sizes and parameter counts are shown in 
+Table~\ref{tab:mlp3}.
+
+\begin{table}[h]
+\begin{center}
+        \begin{tabular}{| c | c | c | c |}
+                \hline
+                Layer & Units & Weight Parameters           & $\%$ of total \\ \hline \hline
+                FC1   &   300 & $768 \times 300 = 230,700$  & $88.2\%$      \\ \hline
+                FC2   &   100 & $300 \times 100 = 30,000$   & $11.4\%$      \\ \hline
+                out   &    10 &  $10 \times 100 = 1000$     & $0.38\%$      \\ \hline
+        \end{tabular}
+\end{center}
+\caption{Dimensions of each FC layer in the MLP3 model, along with weight matrix parameter count and fraction of the 
+total.}
+\label{tab:mlp3}
+\end{table}
+
+The following are the main topics we consider.
+
+\begin{enumerate}[label=6.\arabic*]
+\item
+\textbf{\ModelQuality: \HTSR \Phenomenology.}
+The \HTSR \Phenomenology provides a metric of model quality in the form of the PL exponent $\alpha$.%
+\footnote{Prior work has shown that the \ALPHAHAT metric $(\hat{\alpha})$ accurately describes variations in model 
+quality as a function of architecture changes~\cite{MM21a_simpsons_TR}. Since we do not vary the depth of the model in 
+our evaluations, the \ALPHA metric ($\alpha$) is of interest in this setting.} 
+In particular, smaller values of $\alpha$ (e.g., 
+%%provided $\alpha$ is not spuriously low, as discussed in Section~\ref{sxn:HT_ESDs}, then 
+values of $\alpha$ closer to $2$ than $3$ or $4$) should correspond to better models, e.g., having smaller test errors; and
+a minimal error should be obtained when $\alpha=2$.
+See Section~\ref{sxn:empirical-test_acc}.
+\item 
+\textbf{\EffectiveCorrelationSpace.}
+The \SETOL theory is based on the notion of an \EffectiveCorrelationSpace, in which the learning and generalization occurs. 
+This is the low-rank subspace $\mathbf{W}^{\EFF}$ of each layer $\mathbf{W}$ that approximates the teacher $\mathbf{T}$.
+In particular, 
+our measure of model quality should be restricted to $\mathbf{W}^{\EFF}$.
+The \EffectiveCorrelationSpace can be identified from the tail of the ESD, $\rho_{tail}(\lambda)$, and it can be chosen according to one of several related Model Selection Rules.
+See Section~\ref{sxn:empirical-effective_corr_space}.
+\item 
+\textbf{Evaluating the Trace-Log Condition.}
+In the \HTSR \Phenomenology, when a model is very well-trained, the layer PL exponent $\alpha\simeq 2$.
+In the \SETOL theory, when a model is very well-trained, the eigenvalues in the tail will satisfy the Empirical Trace-Log Condition, given in \EQN~(\ref{eqn:detX}).
+% \michael{We should probably be citing \EQN~(\ref{eqn:logTraceNorm}), or wherever we give it a name, consistently.}
+% \chris{Agree we should only cite one equation for this purpose for consistency, but I like \ref{eqn:detX} for this 
+% because its easier to interpret numerically. I checked and this (was) the only place where this equation was 
+% referenced, so I added another reference in the Section itself.}
+In Section~\ref{sxn:empirical-trace_log}, we provide a detailed analysis of this effect.
+%\item
+%\textbf{\ModelQuality: \SETOL Generalized norms.}
+%  \charles{We want to evaluate the different models for the \RTransform. This means
+%  (1) compare the Tail Norm to the matrix cummulants.
+%    (2) compute the alpha-hat metric with the correlation trap, and show that alpha-hat fixes this for FC1.
+%  }
+\item
+\textbf{\CorrelationTraps.}
+Recall, from Section~\ref{sxn:Traps}, that if a layer weight matrix $\mathbf{W}$ has a \CorrelationTrap
+(and, in particular, those arising from SGD training with very large learning rates)
+then it is likely that the test (and train) accuracy will be degraded, and $\alpha$ will drop below its optimal value. 
+See Section~\ref{sxn:empirical-correlation_trap} for an empirical demonstration of this.
+\item 
+\textbf{Overloading and Hysteresis Effects.}
+The experiments described so far validate that \SETOL makes valid predictions in the $\alpha \gtrsim 2$ range.
+Beyond that point, \SETOL only predicts ``atypicality, in the sense of spin glass theory~\cite{nishimori01}. 
+See Section~\ref{sxn:hysteresis_effect} for an examination of how the MLP3 behaves when it is pushed further out of that range of validity, e.g., by training only one layer, while keeping the others frozen. In particular, we compare results when a single layer is either over- vs under-parameterized.
+\end{enumerate}
+
+\noindent
+We trained the MLP3 model independently, using both the Tensorflow 2.0 framework (using the Keras api, and on Google Colab) and pytorch, with the goal of consistent, reproducible results.
+Each setting of batch size, learning rate, and trainable layer was trained with $5$ separate starting random seeds, and error bars shown in plots below represent one standard deviation taken over these $5$ random seeds. 
+Each training run used the same early stopping criteria on the train loss: training was halted when train loss did not decrease by more than $\Delta E_{train}=0.0001$, over a period of $3$ epochs. 
+In doing so, each model was trained with a different number of epochs; and, at the end, the best weights were chosen for the model.
+See Appendix~\ref{sxn:appendix_MLP3details} for more details on the MLP3 model and the training setup.
+We provide a Google Colab notebook with the exact details, allowing the reader to reproduce the results as desired.
+
+\michael{MM TO DO: make sure the following comment is mentioned earlier, not here.}
+The dominant generalizing components of $\mathbf{W}$ reside in $\mathbf{W}^{\EFF}$ such that it captures the functional contribution of $\mathbf{W}$ to the NN; and thus
+\charles{FINISH THOUGHTS HERE}
+
+
+\input{sections/610_empirical_htsr}
+\input{sections/620_empirical_testing_ecs}
+\input{sections/630_empirical_eval_trace_log}
+%\input{sections/640_empirical_model_quality}
+\input{sections/650_empirical_corr_trap}
+\input{sections/660_empirical_overloading}

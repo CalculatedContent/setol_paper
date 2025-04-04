@@ -1,0 +1,159 @@
+\subsection{A Semi-Empirical Theory of Learning (\SETOL)}
+
+We propose \SETOL, a \SemiEmpirical Theory for Deep Learning Neural Networks (NNs),
+as both a theoretical foundation for \HTSR \Phenomenology
+and a novel framework for predicting the properties of complex NN models.
+This unified framework offers a deeper understanding of DNN generalization
+through a \SemiEmpirical approach inspired by many-body physics,
+combined with a classic \STATMECH model for NN generalization.
+Specifically, \SETOL combines theoretical and empirical insights to evaluate \ModelQuality,
+showing that the weightwatcher layer \HTSR PL metrics (\ALPHA and \ALPHAHAT)
+can be derived using a phenomenological \EffectiveHamiltonian approach.
+This approach expressses the \HTSR \LayerQuality in terms of the RMT matrix cumulants
+of the layer weight matrix $\WMAT$,
+and is governed by a \ScaleInvariant transformation equivalent
+to a single step of an exact \RenormalizationGroup (RG) transformation.
+Here, we derive this from first principles, requiring no previous knowledge of statistical physics.
+
+The \SETOL approach unifies the \HTSR principles with
+a broader theoretical framework for layer analysis.
+The \HTSR theory identifies \Universality (e.g., $\alpha=2$) as a hallmark of the best-trained DNN layers,
+and, here, our\SETOL introduces the closely related \emph{Trace Log Condition}, a \ScaleInvariant or
+\VolumePreserving transformation that reflects an underlying \emph{Conservation Principle}.
+Together, these principles form the theoretical foundation for deriving \HTSR \LayerQuality metrics from first principles.
+By leveraging techniques from \STATMECH and modern \RMT, \SETOL offers a rigorous framework
+to connect empirical observations with theoretical predictions, advancing our understanding of generalization
+in neural networks.
+
+\begin{itemize}
+\item
+  \textbf{Derivation of the HTSR Layer Quality metrics $\ALPHA$ and  $\ALPHAHAT$}
+  The \SETOL approach takes as input the
+  \EmpiricalSpectralDensity (ESD) of the layers
+  of trained NN, and  derives an expression for the approximate \emph{\AverageGeneralizationAccuracy}
+  of a multi-layer NN, We call this approximation the \emph{\ModelQuality}, denoted $\Q^{NN}$
+  This \ModelQuality is  expressed as product of individual \LayerQuality terms, $\Q^{NN}_{L}$,
+  which themselves can  then 
+  be directly related to the \HTSR Power Law (PL) empirical $\ALPHA$ ($\alpha$)
+  and $\ALPHAHAT$  ($\ALPHAHATEQN=\ALPHAHATLONG$) metrics.
+
+  In particular, the \LayerQualitySquared, $\QT\approx[\Q^{NN}_{L}]^{2}$, is
+  expressed the logarithm of an \HCIZtext integral, the \ThermalAverage of an \EffectivePotential
+  for a matrix-generalized form the Linear Student-Teacher model of classical \STATMECH. This \HCIZtext
+  integral evaluates into the sum of integrated \RTransforms
+  from \RMT, or, equivalently, as a sum of integrated matrix cumulants.
+  From this, the \HTSR $\ALPHAHAT$ metric can be derived in the special case of \IdealLearning.
+  \footnote{The \SETOL approach to the \HTSR theory resembles
+  in spirit the derivation of the \SemiEmpirical PPP models using
+  the \EffectiveHamiltonian theory, where each phenomenological parameter is associated with a renormalized
+  effective interaction, expressed as a sum of linked diagrams or clusters.\cite{Martin1996, Martin1998}}
+
+   \item 
+     \textbf{Discovery of a Mathematical Condition for Ideal Learning.}
+     By \IdealLearning, we mean that the specific NN layer has optimally converged, capturing as
+     much of the information as possible in the training data without overfitting to any part of it.
+     In defining this, and deriving our results, we have discovered (and are proposing) a new condition
+     for \IdealLearning, which is associated with the \Universality of the \HTSR theory
+   \begin{itemize}
+      \item 
+        \textbf{\HTSR Condition for Ideal Learning.}
+        This \HTSR theory states that a NN layer is \Ideal  when the ESD can be well fit to a
+        Power Law (PL) distribution, with PL exponent $\alpha = 2$. Importantly, 
+        this appears to be a Universal property of all well-trained NNs, independent of the training data,
+        model architecture, and training procedure.
+      \item 
+        \textbf{\SETOL TRACE-LOG Condition  for Ideal Learning.}
+        The \SETOL condition for \IdealLearning states that the 
+        dominant eigencomponents associated with the ESD 
+        of layer form a reduced-rank \emph{Effective Correlation Space} (\ECS) that satisfies
+        a new kind of Conservation Principle
+        or \emph{\VolumePreservingTransformation} such that the largest eigenvalues $\LambdaECS_{i}$ of the~\ECS satisfy
+        the condition  $\ln \prod \LambdaECS_{i} = \sum \ln \LambdaECS_{i} = 0$.  
+        This is called the \emph{\TRACELOG Condition}.  The \TRACELOG Condition is equivalent to the taking a single step of the Wilson Exact Renormalization (RG).
+   \end{itemize}
+
+   The \HTSR Condition has been proposed and analyzed previously~\cite{MM18_TR_JMLRversion,MM20a_trends_NatComm,YTHx23_KDD}; but
+   the TRACE-LOG Condition is new, based on our \SETOL theory.
+   When these two conditions align, we propose the NN layer is in the \Ideal state.
+
+   \item 
+   \textbf{Experimental Validation.} 
+   We present detailed experimental results on a simple model, along with observations on large-scale pretrained NNs, to demonstrate that the \HTSR conditions for ideal learning $(\alpha = 2)$ are experimentally aligned with the independent \SETOL condition for ideal learning
+   $(\Det{\XECS}=1)$. 
+   See Section.~\ref{sxn:empirical-trace_log}.
+   Our primary objective here is not to demonstrate performance improvements on SOTA NNs---this has been previously established \cite{NEURIPS2023_CHM}. 
+   \michael{@charles: why that ref? don't we want Nat Comm and Yaoqing's KDD paper?}
+   Instead, our aim is to \textbf{validate the theoretical assumptions} of \SETOL, test the \textbf{predictions of the \SETOL framework}, and examine the \textbf{new, independent learning conditions} we discovered---on a model that is sufficiently simple that we can evaluate and stress test the theory.
+
+   \item 
+   \textbf{Observations on Overfit Layers ($\alpha < 2$).} 
+   Being a \SemiEmpirical theory, \SETOL can also identify violations of it's assumptions.
+   For example, when empirical results show $\alpha < 2$ for a single layer, the layer's ESD falls into the \HTSR \VeryHeavyTailed (VHT) Universality class.
+   (See Section~\ref{sxn:hysteresis_effect}.)
+   When this happens, the layer may be slightly overfit to the training data, resulting in \textbf{suboptimal performance} and potentially even exhibiting \textbf{hysteresis-like effects} (memory effects)---that we observe empirically.
+   These effects indicate that overfit layers may retain memory-like behavior, affecting learning dynamics and generalization.
+\end{itemize}
+
+
+%%%  We derive the an analytic expression for a general \LayerQuality metric that validates the \HTSR~approah
+%%%  %Building on new old and new techniques from \STATMECH~and \RMT,
+%%%%
+%%%%  as well as previously-reported empirical results~\cite{MM18_TR_JMLRversion,MM20a_trends_NatComm}, to present a \SemiEmpirical the%ory for and derivation of the $\hat{\alpha}$ metric from the phenomenological \HTSR~Theory.
+%%%%$\alpha$ is the average of fitted power law exponents over layers in a given model;
+%%%%$\hat{\alpha}$ is the weighted average, where one weights by the log spectral norm of the corresponding layer; 
+%%%%smaller values of $\alpha$ in the regime (a HT \Universality class~\cite{MM18_TR_JMLRversion}) of $(2,4)$ correspond to better-trained models; and
+%%%%$\hat{\alpha}$ is strongly predictive of model quality, across a wide range of SOTA CV and NLP models~\cite{MM20a_trends_NatComm,YTHx22_TR,YTHx23_KDD}.
+%%%\item
+%%%In the course of our derivation, we discovered a new and independent mathematical pre-condition for \Ideal learning for a given trained layer in a NN: \\
+%%%the \HTSR~condition: $\alpha \sim 2$; and \\
+%%%the \SETOL~conditions:  \TRACELOG: $\ln\prod\lambda_{i}=\sum\ln\lambda_{i}=0$ for the eigenvalues in the tail of the ESD: $\lambda_{i}\ge\lambda_{max}$. \\
+%%%%That is, in SETOL, we consider change  the measure of random layer weight matrices
+%%%%#$d\mu(\mathbf{W})\rightarrow d\mu(\mathbf{X}^{\EFF})$, where $\mathbf{X}:=\mathbf{W}^{T}\mathbf{W}$.
+%%%%When we restrict $\mathbf{X}$ to the \EffectiveCorrelationSpace $\mathbf{X}^{\EFF}$,
+%%%%5that only contains the generalizating components of the NN model, this leads to
+%%%%the new condition for \Ideal learning, $\mbox{det}(X^{\EFF}) = 1$.
+%%%%While completely independent mathematically,
+%%%%it turns out, these two conditions empirically coincide both on a simple model
+%%%%and for many large-scale pretreind models.
+%%%\nred{
+%%%XXX.  NEED SOME MORE SETUP TO SAY WHAT $X$ IS, ETC.
+%%%XXX.  EXPLAIN THE IDEAS HERE IN A MORE SELF CONTAINED WAY.
+%%%XXX.  WE SHOULD SAY SOMETHING ABOUT CONNECTION IN TERMS OF NECESSARY OR SUFFICIENT, E.G., DO WE GET IDEAL LEARNING IF EW SATISFY ONE OR THE OTHER OR BOTH OR NEITHER (PROBABLY BOTH?).}
+%%%\chris{I would describe it as $\alpha=2$ and $\mbox{detX} =1$ are both necessary for {\em \IdealLearning}, but \IdealLearning 
+%%%is {\em not} necessary for high accuracy. \IdealLearning doesnt mean the model learns the concept perfectly -- it could 
+%%%be unrealizeable -- but it does mean that in some sense the {\em maximum amount of information has been encoded in the 
+%%%tail by SGD... Nevertheless, they correlate well with high accuracy, even when one or the 
+%%%other is relaxed.}}
+%%%\charles{agree to some extent. We built steam enegines before we understood thermodynamics, and they worked..but sometimes they blew up.
+%%%  Theory is tool for engineers to build systems in a consistent and reliable way. }
+%%%\item
+%%%We present detailed experimental results on a very simple model,
+%%%as well as observations on large scale pretrained NNs, to show that
+%%%the \HTSR~theory conditions for \Ideal learning ($\alpha=2$) are
+%%%experimentally aligned with the independent SETOL condition for \Ideal learning
+%%%($\mbox{det}(X^{\EFF}) = 1$).
+%%%Our goal is not to show that this approach performs well on SOTA NNs, as that has been previously established~\cite{MM20a_trends_NatComm,YTHx23_KDD}; insetad our goal is to test the assumptions of the theory, test the predictions of the theory, and text the new independent conditions we discovered.
+%%%\item
+%%%  We argue that when we empirically observe that $\alpha < 2$ \emph{for a single layer}, i.e., the layer ESD is in the
+%%%  \HTSR~Very Heavy Tailed (VHT) Universality class, than
+%%%the layer appears to be slightly overfit to the training data, corresponding to suboptimal performance,
+%%%and can even exhibit hysteresis-like (i.e., memory) effects, 
+%%%that we argue we observe empirically.
+%%%\end{itemize}
+%%%
+%%%\noindent
+%%%In the remainder of this introduction, we place our main results in a broader context.
+%%%
+%%%\charles{Can we just remove this paragraph?}
+%%%\nred{
+%%%Technically, \SLT~seeks bounds on the worst-case behavior of a model, whereas \STATMEC~seeks \Typical-case behavior~\cite{DKST96,EB01_BOOK}.
+%%%Operationally, this difference usually amounts to how one deals with the specifies of limiting behavior, in the sense that certain limits are more amenable to one style of analysis or the other~\cite{MM17_TR,Liam_21_JSM_JRNL}.
+%%%In the VC approach, one typically takes the so-called \emph{VC limit}, in order to ensure appropriate concentration of measurable quantities of interest~\cite{Vapnik98}. 
+%%%More recent \SLT~models consider the limit of an infinitely wide network~\cite{Yang2021}.
+%%%%\michael{What is the ref~\cite{YangMS5}?  Is it~\cite{Yang2021}?}
+%%%In \STATMECH, one employs the so-called \ThermodyamnicLimit, where, e.g., the number of data points and the model complexity diverge together.
+%%%If you want to Read The Fundamental Material, than here it is:~\cite{SST92,WRB93,DKST96,EB01_BOOK}.
+%%%}
+%%%
+
+
