@@ -7,7 +7,7 @@ Despite this remarkable progress in a research field spanning over 50 years, dev
 
 Because training and evaluating NNs is so hard, significant issues can manifest in many obvious and non-obvious ways. A primary research goal is to improve the efficiency and reduce the cost of training large NNs. A less known but critical issue arises in many industrial settings, specifically “selecting the best models to test.” This arises in industries such as ad-click prediction, search relevance, quantitative trading, and more. Frequently, one has several seemingly equally good models to choose from, but testing the model can be very expensive, time-consuming, and even risky to the business. Recently, researchers and practitioners have started to fine-tune such large open-source models using techniques such as LoRA and QLoRA. Such methods allow one to adapt a large, open-source NN to a small dataset, and very cheaply. However, in fine-tuning, one could unwittingly overfit the model to the small dataset, degrading its performance for its intended use. Despite these and many other problems, theory remains well behind practice, and there is an increasingly pressing need to develop \emph{practical predictive theory} to both improve the training of these very large NN models and to design new methods to make their use more reliable.
 
-Before dicussing these methods, however, let us explain \emph{What is a SemiEmpirical Theory}
+Before discussing these methods, however, let us explain \emph{What is a SemiEmpirical Theory}
 
 \input{sections/110_intro_slt_vs_statmech}
 \input{sections/120_intro_htsr}
