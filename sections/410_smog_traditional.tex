@@ -46,6 +46,7 @@ This theory was developed in the 1980s and 1990s~\cite{SST90,SST92,Gar85,Gar88,e
 but it introduced because sign convention for the \FreeEnergy is always decreasing with the error.
   In contrast, we define the Hamiltonian in terms of the model error or accuracy, depending on the context.
   \michael{AWK.}
+  \michaelB{Do we ref this table anywhere.}
   }
 \label{table:SETOL_terminology}
 \end{table}
@@ -77,32 +78,21 @@ various forms of the \AverageGeneralizationError $(\AVGGE)$, \PartitionFunction 
 \michaeladdressed{@charles: Can we just cange ``Generalization Accuracy'' to ``Model Quality'' and ``Model Accuracy'' since I think that will help to minimize confusion.  We should define what precisely is Model Quality and new notions.}
 
 \paragraph{The \StudentTeacher model.}
-\charles{@michael?  Removing for now ; we should discuss :
-XXX. PUT TWO OR THREE SENTENCES ON THE BASIC STUDENT SETUP; START WITH THE FOLLOWING AND REFINE.
-For simplicity, let's consider the classification of the elements of some input space $X$ into one of two classes, $\{0,1\}$.
-There is a \emph{target rule}, $T$, which is one particular mapping of the input space into the set of classes, as well as a \emph{hypothesis space}, $\mathcal{F}$, which consists  of the available mappings $f$ used to approximate the target $T$.
-The set $\mathcal{F}$ could, e.g., consist of NNs with a given structure.
-Given this setup, the problem of learning from examples is the following: on the basis of the classification determined by the target rule $T$ for the elements of a subset $\mathcal{X} \subset X$, which is the \emph{training set}, select an element of $\mathcal{F}$ and evaluate how well that element approximates $T$ on the complete input space $X$.
+In the basic student-teacher model, one considers, e.g., the classification of the elements of some input space $X$.
+There is a target rule, $T$, which is one particular mapping of the input space into the set of classes, and a hypothesis space, $\mathcal{F}$, which consists of the available mappings $f$ used to approximate $T$.
+Given this setup, the basic problem is the following: on the basis of the classification determined by $T$ for the elements of a subset $\mathcal{X} \subset X$ (the ``training set''), select an element of $\mathcal{F}$ and evaluate how well that element approximates $T$ on the complete input space $X$.
 One can think of the target rule $T$ as being a \emph{teacher}, and the goal of the \emph{student} is to approximate the teacher as well as possible.
-The \emph{generalization error} $\varepsilon$ is the probability of disagreement between the student/hypothesis and teacher/target on a randomly chosen subset of $X$.
-XXX. OLD STUFF VECTORS.
-XXX. NEW STUFF MATRICES.}
+One popular metric, the generalization error, is the probability of disagreement between the student/hypothesis and teacher/target on a randomly chosen subset of $X$; and 
+one popular analysis approach is the probably approximately correct (PAC) framework~\cite{Val84}, where the problem of deciding, on the basis of a small training set, which hypothesis will perform well on the complete input is closely related to the statistical problem of convergence of frequencies to probabilities~\cite{Vapnik98}.
+A different analysis approach is based on statistical mechanics (\STATMECH)~\cite{SST92,WRB93,Kea95,DKST96,EB01_BOOK}.
 
-%To express these integrals, the \SMOG approach models both Students $S$ and Teachers $T$ as \emph{weight vectors},
-We seek to compute and/or estimate the  \AverageGeneralizationAccuracy for a \emph{fixed} \Teacher Perceptron $T$
-by averaging over an ensemble of \Student $S$ \Perceptrons, in the \AnnealedApproximation (AA), and at
-\HighTemperature (high-T); we call this ST \ModelQuality, and denote it $\Q^{ST}$.
-We will then, later, in Section~\ref{sxn:matgen}, we generalize $\Q^{ST}$ to an
-arbitrary layer in \MultiLayerPerceptron, giving a \LayerQuality, i.e., $\Q^{ST}\rightarrow\Q$.
-This formulation of the ST problem is different than the classic approach  because one
-usually does not fix the \Teacher but, instead,
-averages over all \Teacher vectors $\TVEC$~\cite{SST92,engel2001statistical}.
-This one of many ways that distinguishes the current approach from previous work.
-Because of this, we present both a pedagogic derivation of $\Q^{ST}$
-(for a general NN in Section~\ref{sxn:mathP}, and for the ST model specifically
-in the Appendix, Section~\ref{sxn:summary_sst92}),
-and we provide a more heuristic approach in Section~\ref{sxn:SMOG_main-st_av}, assuming
-the AA and high-T at all times.
+Our approach is closer to \STATMECH; but due to the \SemiEmpirical nature of \SETOL, there are important differences from the usual \SMOG approach.
+First, we will seek to estimatie the  \AverageGeneralizationAccuracy (with a metric we call the ST \ModelQuality, which we can denote $\Q^{ST}$), rather than the more traditional generalization error.
+Second, we will do so for a \emph{fixed} \Teacher Perceptron $T$ by averaging over an ensemble of \Student $S$ \Perceptrons, in (what is \SMOG is called) the \AnnealedApproximation (AA) and at \HighTemperature (high-T), rather than averaging over all teacher vectors $\TVEC$~\cite{SST92,engel2001statistical}.
+Third, rather than modeling students and the teacher as vectors, we will model them as matrices.
+Thus, we will generalize $\Q^{ST}$ to an
+arbitrary layer in \MultiLayerPerceptron, giving a \LayerQuality (i.e., $\Q^{ST}\rightarrow\Q$).
+Because of this, we present both a pedagogic derivation of $\Q^{ST}$: for a general NN in Section~\ref{sxn:mathP}; and for the ST model specifically in Appendix~\ref{sxn:summary_sst92} and (using a more heuristic approach) in Section~\ref{sxn:SMOG_main-st_av} (assuming the AA and high-T at all times).
 
 
 \paragraph{Towards a \SemiEmpirical Theory.}
