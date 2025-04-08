@@ -1,0 +1,5767 @@
+% File: ./ww_semiempirical_TRfmt.tex
+
+% File: ./abstract.tex
+
+$\hat{\alpha}$
+
+$\alpha$
+
+$\alpha$
+
+% File: ./100_introduction.tex
+
+% File: ./110_intro_slt_vs_statmech.tex
+
+% File: ./120_intro_htsr.tex
+
+$\mathbf{W}$
+
+$\lambda$
+
+$(\mathbf{W})$
+
+$\rho^{emp}(\lambda)$
+
+$\rho(\lambda)\sim\lambda^{-\alpha}$
+
+$\alpha$
+
+$(\alpha)$
+
+$(\ALPHAHATEQN)$
+
+% File: ./130_intro_semiempirical.tex
+
+% File: ./140_intro_setol.tex
+
+$\alpha \sim 2$
+
+$\log\prod\lambda_{i}=\sum\ln\lambda_{i}=0$
+
+$\lambda_{i}\ge\lambda_{max}$
+
+$X$
+
+$\alpha=2$
+
+$\mbox{detX} =1$
+
+$\alpha=2$
+
+$\mbox{det}(X^{\EFF}) = 1$
+
+$\alpha < 2$
+
+% File: ./150_intro_outline.tex
+
+% File: ./200_htsr.tex
+
+% File: ./210_htsr_setup.tex
+
+$L$
+
+$h_{l}(\cdot)$
+
+$\mathbf{W}_{l}$
+
+$\mathbf{b}_{l}$
+
+$E_{NN}$
+
+$E_{NN}$
+
+$\{\mathbf{x}_{\mu},y_{\mu}\}\in\mathcal{D}$
+
+$ \mathbf{x}_\mu $
+
+$\mu$
+
+$y_\mu$
+
+$y_{\mu}\in\{-1,1\}$
+
+$\mathcal{L}$
+
+$\Omega$
+
+$b_{l}$
+
+$\mathbf{W}_{L}$
+
+$N\times M$
+
+$\mathbf{W}$
+
+$\mathbf{X}$
+
+$\mathbf{W}$
+
+$\rho_{emp}(\lambda)$
+
+$\lambda_{j}$
+
+$\mathbf{X}$
+
+$\rho_{emp}(\lambda)$
+
+$\mathbf{W}$
+
+$\lambda=\sigma^{2}$
+
+$\sigma$
+
+$\mathbf{W}$
+
+$\rho_{tail}(\lambda)$
+
+$\lambda\ge\lambda_{min}$
+
+$\rho(\lambda)_{tail}$
+
+$\lambda_{min}$
+
+$\lambda_{min}$
+
+$D_{KS}$
+
+$\lambda_{min}$
+
+$xmin$
+
+$\lambda_{max}$
+
+$xmax$
+
+$xmin$
+
+$\alpha$
+
+$\alpha$
+
+$xmin$
+
+$\lambda_{min}=xmin$
+
+$bad\;xmin$
+
+$xmin=\lambda_{min}$
+
+$D_{KS}$
+
+$\mathbf{W}$
+
+$\lambda_{max}$
+
+$\alpha$
+
+$\lambda_{min}$
+
+$\XECS$
+
+$\mu$
+
+$\alpha$
+
+$\mu > 4$
+
+$\alpha>6$
+
+$\mu\in(2,4)$
+
+$\alpha\in(2,6)$
+
+$\mu\in(0,2)$
+
+$\alpha\in(1,2) $
+
+\begin{equation}
+\label{eqn:dnn_energy}
+E_{NN}:=h_{L}(\mathbf{W}_{L}\times h_{L-1}(\mathbf{W}_{L-1}\times(\cdots)+\mathbf{b}_{L-1})+\mathbf{b}_{L}) ,
+\end{equation}
+
+\begin{equation}
+\underset{\mathbf{W}_{l},\mathbf{b}_{l}}{\argmin}\;\sum_{\mu}\mathcal{L}[E_{NN}(\mathbf{x}_{\mu}),y_{\mu})]+\Omega .
+\label{eqn:dnn_opt}
+\end{equation}
+
+\begin{equation}
+\mathbf{X}:=\dfrac{1}{N}\mathbf{W}^{T}\mathbf{W} .
+\label{eqn:X}
+\end{equation}
+
+\begin{equation}
+\rho_{emp}(\lambda):=\sum_{j=1}^{M}\delta(\lambda-\lambda_{j}) .
+\label{eqn:rho}
+\end{equation}
+
+\begin{equation}
+\rho_{tail}(\lambda):=\rho_{emp}(\lambda\ge\lambda_{min})\sim\lambda^{-\alpha} .
+\label{eqn:rho_tail}
+\end{equation}
+
+% File: ./220_htsr_gaussian.tex
+
+$\mathbf{W}$
+
+$\rho(\lambda)$
+
+$\rho(\lambda)$
+
+$\alpha$
+
+$Q=\tfrac{N}{M}$
+
+$Q$
+
+$\sigma^2$
+
+$\Delta_{TW}$
+
+$\rho_{MP}(\lambda)$
+
+$W_{i,j}\in  N(0,\sigma^{2})$
+
+$Q=\tfrac{N}{M}$
+
+$\sigma^{2}$
+
+$\rho_{MP}(\lambda)$
+
+$\lambda^{-},\lambda^{+}$
+
+$\lambda^{+}$
+
+$\Delta_{TW}(\lambda)$
+
+$\mathcal{O}(M^{-2/3})$
+
+$\lambda>[\lambda^{+}+\Delta_{TW}(\lambda)]$
+
+$\mathbf{W}$
+
+$Q>1$
+
+$N>M$
+
+$\lambda_i>0$
+
+$i$
+
+$Q>1$
+
+$Q>1$
+
+$\mathbf{W}_{i,j}\rightarrow\mathbf{W}^{rand}_{i,j}$
+
+$W_{i,j}$
+
+$\mathbf{W}^{rand}$
+
+$\mathbf{W}$
+
+$\lambda_{max}$
+
+$\alpha$
+
+$\mathbf{W}(\mu)$
+
+$\mu$
+
+$\alpha$
+
+$\alpha=a\mu+b$
+
+$\mu$
+
+$a=\tfrac{1}{2}$
+
+$b=1$
+
+$a\ge \tfrac{1}{2}$
+
+$b\ge 1$
+
+$\alpha$
+
+$\mu$
+
+$Q=N/M$
+
+$\alpha$
+
+$\alpha$
+
+$\mu$
+
+$\alpha$
+
+$\mu$
+
+$Q=M/M$
+
+$1000\times1000$
+
+$\mu=1,3,5$
+
+$\mu$
+
+$\alpha$
+
+$\alpha$
+
+$\mu$
+
+$\mathbf{W}(\mu)$
+
+$\mu<2$
+
+$Q=1$
+
+$\alpha$
+
+$\alpha=\frac{1}{2}\mu+1$
+
+$\mu \in (2,4)$
+
+$Q$
+
+$\alpha\in[2,6]$
+
+$\mu>4$
+
+$\alpha$
+
+$Q$
+
+$W_{i,j}$
+
+$\alpha\in [2,6]$
+
+$80-90\%$
+
+$\alpha<2$
+
+$\alpha$
+
+$\alpha$
+
+$\alpha$
+
+$6$
+
+$\alpha$
+
+$\mu$
+
+$\alpha$
+
+$\mathbf{W}(\mu)$
+
+$\mu=1,3,5$
+
+$\alpha$
+
+$\mu$
+
+$\mu>2$
+
+$\alpha>2$
+
+$\alpha = 2$
+
+$\rho(\lambda)\sim \lambda^{-\alpha}$
+
+$\alpha<2$
+
+$\rho(\lambda)$
+
+$\rho(\lambda)$
+
+$\alpha = 2$
+
+$\alpha$
+
+$\rho_{tail}(\lambda)$
+
+$\alpha$
+
+$\alpha\in(2,6)$
+
+$\mathbf{W}$
+
+$\mathbf{W}$
+
+\begin{align}
+W_{i,j}(\mu)\sim\dfrac{C}{x^{\mu/2 +1}},\;\;\;\rho(\lambda)\sim\lambda^{-(a\mu+b)}.
+\end{align}
+
+% File: ./230_htsr_data_free.tex
+
+$(\alpha)$
+
+$\rho_{tail}(\lambda)\sim\lambda^{-\alpha}$
+
+$\log_{10}\lambda_{max}$
+
+$(\hat{\alpha})$
+
+$\alpha\log_{10}\lambda_{max}$
+
+$JSD[\rho_{emp}|(\rho^{rand}_{emp})]$
+
+$D_{KS}$
+
+$\alpha$
+
+$\mathcal{R}_{MP}$
+
+$\alpha$
+
+$\lambda_{bulk}^{+}$
+
+$\lambda_{rand}^{max}$
+
+$\mathbf{W}$
+
+$\mathbf{W}_{L}$
+
+$\Q$
+
+$\log\Q=\langle\alpha\rangle_{L}$
+
+$\log\Q=\langle\log\lambda_{max}\rangle_{L}$
+
+$\alpha$
+
+$\lambda_{max}$
+
+$N\gg M$
+
+$M$
+
+$\log\Q=\langle\alpha\log\lambda_{max}\rangle=\langle\hat{\alpha}\rangle_{L}$
+
+$\lambda_{max}$
+
+\begin{align}
+\label{eqn:ProductNorm}
+\Q&:=\underset{L}{\prod}\;\Q(\mathbf{W}_{L}) ,
+\end{align}
+
+\begin{align}
+\label{eqn:LogProductNorm}
+\log\Q=\frac{1}{N_{L}}\underset{L}{\sum}\;\log\Q(\mathbf{W}_{L})=\langle\log\Q\rangle_{L}  .
+\end{align}
+
+% File: ./300_setol.tex
+
+$\Q$
+
+$\Q$
+
+$\Q$
+
+$\alpha$
+
+% File: ./310_setol_overview.tex
+
+$\Q$
+
+$\Q$
+
+$(\AVGE^{ST}_{gen})$
+
+$(\AVGE^{ST}_{gen}\rightarrow\AVGE^{NN}_{gen})$
+
+$\AVGE^{ST}_{gen}:=\THRMAVG{1-R}$
+
+$\THRMAVG{\cdots}$
+
+$\QT$
+
+$\Q=\sqrt{\QT}$
+
+$1-\AVGE^{NN}_{gen}$
+
+$T$
+
+$\mathbf{R}$
+
+$\mathbf{R}:=\frac{1}{N}{\mathbf{S}^{\TR}\mathbf{T}}$
+
+$T$
+
+$S$
+
+$\THRMAVGIZ{\cdots}$
+
+$\mathbf{S}$
+
+$\mathbf{T}$
+
+$\mathbf{S}$
+
+$\mathbf{T}$
+
+$\TMAT, \SMAT$
+
+$\Q$
+
+$\QT$
+
+$\IZG$
+
+$\IZFE$
+
+$\mathbf{A}_1:=\frac{1}{N}\mathbf{SS}^{\TR}$
+
+$\mathbf{A}_2:=\frac{1}{N}\mathbf{SS}^{\TR}$
+
+$\IZG$
+
+$N$
+
+$\IZGINF:=\IZG$
+
+$N\rightarrow\infty$
+
+$\AMAT_{1}$
+
+$\AMAT_{2}$
+
+$\IZG$
+
+$d\mu(\mathbf{A})=d\mu(\mathbf{A}_1)=d\mu(\mathbf{A}_2)$
+
+$\AMAT_1$
+
+$\IZG$
+
+$\AMAT_2$
+
+$\IZGINF$
+
+$N$
+
+$d\mu(\mathbf{A})$
+
+$\AMAT_{2}$
+
+$\XMAT_2=\frac{1}{N}\mathbf{TT}^{\TR}$
+
+$\rho^{\infty}_{A}(\lambda)\sim\rho^{\infty}_{X}(\lambda)$
+
+$d\mu(\mathbf{S})$
+
+$d\mu(\mathbf{A})$
+
+$\rho_{tail}(\lambda)$
+
+$\AECS$
+
+$\AECS:=\mathbf{P}_{ecs}\AMAT$
+
+$\MECS\ll M$
+
+$d\mu(\AMAT)$
+
+$(d\mu(\AMAT)\rightarrow d\mu(\AECS))$
+
+$\TMAT=\WMAT$
+
+$\AECS_1$
+
+$\Trace{\ln\AECS_1}=\ln|\det \AECS_1|=0$
+
+$d\mu(\SMAT) \rightarrow d\mu(\AECS) $
+
+$\AECS_1$
+
+$\AECS_2$
+
+$\Trace{\ln\XECS}=\ln|\det \XECS|=0$
+
+$\MECS$
+
+$\lambda$
+
+$\sum_{i=1}^{\MECS}\ln\lambda_{i}\approx 0$
+
+$\alpha\sim 2$
+
+$\QT$
+
+$\QT$
+
+$\QT = \sum_{i=1}^{\MECS}\GNI$
+
+$\GN$
+
+$R(z)$
+
+$z\in\mathbb{C}$
+
+$\GN:= \int_{\lambda_{min}}^{\lambda_{max}}R(z)dz$
+
+$z\in\mathbb{C}$
+
+$\Q\approx\sqrt{\QT}$
+
+$R(z)$
+
+$\rho^{emp}_{T}(\lambda)$
+
+$\lambda^{spike}$
+
+$\alpha$
+
+$z$
+
+$R(z)$
+
+$m_{k}$
+
+$\XECS$
+
+$m_{k}:=\Trace{(\XECS)^{k}}$
+
+\begin{align}
+  \label{eqn:QT}
+  \QT :=   \THRMAVGIZ{\OLAPSQD}
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_QT}
+  \QT := \lim_{N\rightarrow\infty}\dfrac{1}{\beta}\dfrac{\partial\IZG }{\partial N}.
+\end{align}
+
+\begin{align}
+  \label{eqn:R2}
+\Trace{\OVERLAP^{2}} &:=\OLAPSQD  \\ \nonumber
+&=\frac{1}{N^{2}}\Trace{\mathbf{T}\mathbf{S}^{\TR}\mathbf{S}\mathbf{T}^{\TR})}
+=\frac{1}{N}\Trace{\mathbf{T}\mathbf{A}_\red{1}\mathbf{T}^{\TR}}  \\ \nonumber
+&=\frac{1}{N^{2}}\Trace{\mathbf{T}^{\TR}\mathbf{SS}^{\TR}\mathbf{T})}
+=\frac{1}{N}\Trace{\mathbf{T}^{\TR}\mathbf{A}_\red{2}\mathbf{T}}
+\end{align}
+
+\begin{align}
+  \label{eqn:QT_dS}
+  \IZG &=  \frac{1}{N}\ln\int d\mu(\mathbf{S})\exp\left(\beta\Trace{\mathbf{T}\mathbf{A}_\red{1}\mathbf{T}^{\TR}}\right) \\ \nonumber
+  &=  \frac{1}{N}\ln\int d\mu(\mathbf{S})\exp\left(\beta\Trace{\mathbf{T}^{\TR}\mathbf{A}_\red{2}\mathbf{T}}\right),
+\end{align}
+
+\begin{align}
+  \label{eqn:change_measure}
+  d\mu(\mathbf{S})\rightarrow d\mu(\mathbf{A})
+\end{align}
+
+\begin{align}
+  \label{eqn:IZGINF_HCIZ}
+  \IZGINF = \lim_{N\rightarrow\infty}\frac{1}{N}\ln\int d\mu(\mathbf{A})\exp\left(\beta\Trace{\mathbf{T}^{\TR}\mathbf{A}_\red{2}\mathbf{T}}\right).
+\end{align}
+
+% File: ./320_setol_comparisons.tex
+
+$\rho^{emp}_{tail}(\lambda)$
+
+$\alpha\approx 2$
+
+$\rho^{emp}_{tail}(\lambda)\sim\lambda^{-2}$
+
+$\lambda_{i}$
+
+$\sum_{i}\ln\lambda_{i}=0$
+
+$(\ref{itm:ideal_1})$
+
+$(\ref{itm:ideal_2})$
+
+$(3)$
+
+$\ref{itm:ideal_3})$
+
+$\alpha$
+
+$\alpha=2$
+
+$(1)$
+
+$(2)$
+
+% File: ./330_setol_detecting.tex
+
+$\mathbf{W}$
+
+$\rho^{emp}(\lambda)$
+
+$\lambda_{max}$
+
+$\alpha$
+
+$D_{KS}$
+
+$\alpha<2$
+
+$\mathbf{W}$
+
+$\XECS$
+
+$\mathbf{W}$
+
+$\mathbf{W}$
+
+$\rho^{emp}(\lambda)$
+
+$\alpha< 2$
+
+$W_{ij}$
+
+$\mathbf{W}$
+
+$\mathbf{W}$
+
+$\mathbf{W}$
+
+$\mathbf{W}$
+
+$\mathbf{W}\rightarrow\mathbf{W}_{rand}$
+
+$\lambda_{trap}$
+
+$\mathbf{W}$
+
+$\mathbf{W}$
+
+$\alpha < 2$
+
+$\alpha<2$
+
+$\alpha>6$
+
+$\alpha < 2$
+
+$\alpha < 2$
+
+$\Delta \lambda_{min}< 0$
+
+% File: ./331_correlation_traps.tex
+
+$\mathbf{W}$
+
+$\mathbf{X}$
+
+$W_{i,j}$
+
+$\mathbf{W}$
+
+$\lambda_{trap}$
+
+$\mathbf{W}$
+
+$\mathbf{W}\rightarrow\mathbf{W}^{rand}$
+
+$W^{rand}_{i,j}$
+
+$W^{rand}$
+
+$\lambda_{trap}$
+
+$\lambda_{trap}>\lambda^{+}_{bulk}$
+
+$W_{i,j}$
+
+$\mathbf{W}$
+
+$\mathbf{W}$
+
+$\lambda_{trap}$
+
+$W^{rand}$
+
+$\mathbf{X}$
+
+$\alpha$
+
+$\mathbf{W}$
+
+$W_{ij}$
+
+$\lambda$
+
+$\lambda^{+}_{bulk}$
+
+$\mathbf{W}$
+
+$\mathbf{W}$
+
+$\mathbf{W}^{rand}$
+
+$\mathbf{W}^{rand}$
+
+$\lambda_{trap}\gg\lambda^{+}_{bulk}$
+
+$\lambda_{trap}$
+
+$\mathbf{W}^{rand}$
+
+$ \lambda_{trap}>\lambda^{bulk}_{+}+\Delta_{TW} , $
+
+$\lambda_{bulk}$
+
+$\Delta_{TW}$
+
+$\mathbf{X}$
+
+$\mathbf{X}$
+
+$\mathbf{W}$
+
+$\mathbf{X}$
+
+$\mathbf{W}^{rand}$
+
+$\mathbf{W}$
+
+$\mathbf{X}$
+
+$\mathbf{X}$
+
+% File: ./332_over_regularization.tex
+
+$\mathbf{W}$
+
+$\alpha$
+
+$\alpha$
+
+$\alpha$
+
+$\alpha$
+
+$\alpha\in [2,6]$
+
+$\alpha <2$
+
+$\mathbf{W}$
+
+$\mathbf{W}$
+
+$\alpha<2$
+
+$\Delta $
+
+$\alpha<2$
+
+$\Delta < 0$
+
+$\alpha\in[2,6]$
+
+$\alpha>6$
+
+$\alpha <2$
+
+$\alpha~\sim2$
+
+$\alpha\le 2$
+
+$\alpha>6$
+
+$\alpha<2$
+
+$\Delta < 0$
+
+% File: ./400_smog.tex
+
+$\Q$
+
+$\AVGSTGE\rightarrow\AVGNNGE$
+
+% File: ./410_smog_traditional.tex
+
+$\NDX$
+
+$\WVEC$
+
+$\NDXI\in\mathcal{D}$
+
+$\WVEC$
+
+$\AVGTE, \AVGGE$
+
+$S$
+
+$T$
+
+$T$
+
+$\AVGE^{T}$
+
+$S$
+
+$\AVGSTGE$
+
+$\EPSLSTx$
+
+$S$
+
+$T$
+
+$\EPSLSTx=\EPSL(R)$
+
+$R=\SVEC^{T}\TVEC$
+
+$\AVGSTGE=\THRMAVG{\EPSL(R)}$
+
+$\TVEC$
+
+$\AVGE^{T}$
+
+$\AVGE^{T}$
+
+$\AVGNNGE$
+
+$\Q$
+
+$\AVGSTGE$
+
+$\AVGSTGE$
+
+$[\AVGSTGE]^{an}_{hT}$
+
+$\AVGNNGE$
+
+$\GAN$
+
+$\ZANHT$
+
+$\GAN$
+
+$\GANHT$
+
+$N\times M$
+
+$\AVGNNGE$
+
+$\AVGSTGE\rightarrow\AVGNNGE$
+
+$\AVGSTGE=\THRMAVG{1-R}$
+
+$\THRMAVG{\cdots}$
+
+$\TVEC$
+
+$\AVGSTGE$
+
+$\THRMAVG{\cdots}$
+
+$1-R$
+
+$\EPSL(R)$
+
+$\TVEC\rightarrow\TMAT=\WMAT$
+
+$\alpha$
+
+% File: ./420_smog_mathP.tex
+
+$\WVEC$
+
+$\XVEC$
+
+$\langle \cdots \rangle$
+
+$\AVGTE, \AVGGE$
+
+$n$
+
+$\XVEC_{\mu}$
+
+$m$
+
+$y_{\mu}$
+
+$\ADD$
+
+$m$
+
+$\WVEC$
+
+$\mathcal{L}$
+
+$\ell_2$
+
+$\AVGGE^{an,hT}$
+
+$\XVEC_{\mu}$
+
+$m$
+
+$\MY_{\mu}$
+
+$1|-1$
+
+$\ADD$
+
+$[\XVEC^{n}]$
+
+$n$
+
+$\ADD$
+
+$\XVEC \in \mathbb{R}^{m}$
+
+$D$
+
+$\XVEC$
+
+$[\XVEC^{n}]$
+
+$\ADD$
+
+$n$
+
+$n$
+
+$[\XVEC^{n}]$
+
+$n$
+
+$[\XVEC_{\mu}|\mu=1,2\cdots n]$
+
+$\Delta E$
+
+$E_{NN}(\WVEC,\XVEC_{\mu})$
+
+\begin{align}
+  \label{eqn:x}
+  \XVEC_{\mu}, \MY_{\mu} \in\ADD,\;\mu=1, \cdots, N_{D} ,
+\end{align}
+
+\begin{align}
+  \label{eqn:DEy}
+  \Delta E_{\mathcal{L}}(\WVEC,\XVEC_{\mu},\MY_{\mu}):= (\MY_{\mu}-E_{NN}(\WVEC,\XVEC_{\mu}))^{2}  ,
+\end{align}
+
+% File: ./data_model_image.tex
+
+$\mathbf{x_\mu}, \mathrm{y}_\mu \in \mathbf{D},\;\mu=1, 2, \ldots, \mathbf{D}$
+
+$\text{where }$
+
+$\mathrm{y}_\mu \in \{-1, 1\}$
+
+$\mathbf{x_\mu}\text{ is real world, correlated data }$
+
+$\boldsymbol{\xi}_\mu, \mathbf{y_\mu} \in \mathbf{\mathcal{D}},\;\mu=1, 2, \ldots, \infty$
+
+$\text{where }$
+
+$y_\mu \in \{-1, 1\}$
+
+$\boldsymbol{\xi}_{mu} \sim \mathcal{N}(0, \sigma^2 I)$
+
+$(\XI,y)$
+
+$\XI$
+
+$m$
+
+$\MDD$
+
+$y_{\mu}$
+
+$\XI^{n}$
+
+$n$
+
+$\MDD$
+
+$[\NDX]$
+
+$[\NDXIn]$
+
+$\DETOP$
+
+$\DETOP$
+
+$n$
+
+$[\NDX, \MY^{n}]$
+
+$n$
+
+$[(\XVEC_{\mu},\MY_{\mu})\in\ADD|\;\mu=1,\cdots,n]$
+
+$\MY_{\mu}$
+
+$\MY_{\mu}$
+
+$\Delta E_{\ell_2}$
+
+$\MY_{\mu}$
+
+$y^{n}$
+
+$n$
+
+$[\NDX]$
+
+$\MY$
+
+$y$
+
+$y$
+
+$Z$
+
+$\MDD$
+
+$f(\XI)$
+
+$\DETOPXI$
+
+$P(\NDXIn)$
+
+$n$
+
+$n$
+
+$\NDXIn$
+
+$n$
+
+$n$
+
+$n$
+
+$m$
+
+$n$
+
+$n$
+
+$d\mu(\NDXI)$
+
+$N$
+
+$M$
+
+$\XI$
+
+$M$
+
+$N$
+
+$m$
+
+$n$
+
+$n,m$
+
+$N$
+
+$M$
+
+$n$
+
+$n$
+
+$n$
+
+$\EPSLw$
+
+$n$
+
+$\EPSLw$
+
+$n$
+
+$\EPSLw$
+
+$\DETOPX$
+
+$n$
+
+$\langle\cdots\rangle$
+
+$\langle\cdots\rangle^{\beta}$
+
+$\langle\cdots\rangle^{an}$
+
+$\langle\cdots\rangle^{hT}$
+
+$\langle\cdots\rangle^{IZ}$
+
+$\langle\cdots\rangle_{\WVEC}$
+
+$\langle\cdots\rangle_{\SVEC}$
+
+$\langle\cdots\rangle_{\SMAT}$
+
+$\langle\cdots\rangle_{\XI}$
+
+$\langle\cdots\rangle_{\NDXIn}$
+
+$\ZANHT$
+
+$\AVGGE^{an,hT}$
+
+$\GAN$
+
+$\WVEC$
+
+$\mathbb{E}^{\beta}_{\WVEC}[f(\WVEC)]$
+
+$f(\WVEC)$
+
+$\WVEC$
+
+$\beta$
+
+$\beta=\frac{1}{T}$
+
+$Z_{n}$
+
+$n$
+
+$[\NDXIn]$
+
+$\DETOT$
+
+$\WVEC$
+
+$F$
+
+$\REPLICA\in\mathcal{D}$
+
+$r$
+
+$\NDX$
+
+$\NDX$
+
+$\NDXIn$
+
+$\langle \ln Z_{n}(\XVEC) \rangle_{\mathcal{D}}$
+
+$(N_r\rightarrow\infty)$
+
+$Z_{n}$
+
+$\XVEC$
+
+$\REPLICA$
+
+$\XVEC_{\nu}\in\REPLICA$
+
+$\XVEC_{\nu}$
+
+$\mathbb{E}[\cdots]$
+
+$(F)$
+
+$(\mathcal{E})$
+
+$(\mathcal{Q})$
+
+$\bar{F}$
+
+$\bar{\mathcal{E}}$
+
+$\Q$
+
+$N$
+
+$ST$
+
+$\AVGSTTE$
+
+$\AVGSTGE$
+
+$NN$
+
+$\AVGNNTE$
+
+$\AVGNNGE$
+
+$\AVGEMPTE$
+
+$\AVGEMPGE$
+
+$F$
+
+$Z_{n}$
+
+$n$
+
+$F$
+
+$Z$
+
+$Z$
+
+$n$
+
+$Z$
+
+$\XVEC$
+
+$Z(\XVEC)$
+
+$F$
+
+$\beta F=-\ln Z$
+
+$F$
+
+$Z$
+
+$F$
+
+$F$
+
+$Z$
+
+$F$
+
+$Z$
+
+$1 - \cdot$
+
+$\NDX$
+
+$[\NDXIn]$
+
+$\NDX$
+
+$\NDXIn$
+
+$\beta F_{\WVEC}=-\ln Z_{n}$
+
+$\XI$
+
+$\mathbb{E}_{x}[\beta F]$
+
+$\langle \ln Z_{n}(\XI)\rangle_{\mathcal{D}}$
+
+$[\NDXIn]$
+
+$n$
+
+$\mathcal{D}$
+
+$r$
+
+$\mathcal{D}$
+
+$(-\langle\ln Z_w(\XI)\rangle_{\mathcal{D}})$
+
+$(-\ln \langle Z_{n}(\XI)\rangle_{\mathcal{D}})$
+
+$\GAN$
+
+$\NDXIn$
+
+$\GAN$
+
+$\GAN$
+
+$\GAN$
+
+$\GAN=\beta F'(\XI)=-\ln Z'(\XI)$
+
+$F'$
+
+$Z'$
+
+$Z$
+
+$Z$
+
+$Z^{an}_{n}$
+
+$Z^{an}_{n}$
+
+$\EPSLw$
+
+$\beta$
+
+$\ln(1 + y) \approx y$
+
+$|y| \ll 1$
+
+$\EPSLw$
+
+$\GANHT:=\beta \EPSLw$
+
+$\EPSLw$
+
+$n$
+
+$\ZANHT$
+
+$n$
+
+$\GAN$
+
+$\HH(n)$
+
+$n$
+
+$\HH(n)=\HH_1+\HH_2+\cdots+\HH_n$
+
+$\GAN$
+
+$\ZANHT$
+
+$Z_{n}$
+
+$\beta$
+
+$x$
+
+$\mathcal{D}$
+
+$Z_w(\XI)$
+
+$\ZANHT$
+
+$n\EPSLw$
+
+$\beta$
+
+$\EPSLw$
+
+$Z^{an}_{n}$
+
+$\ln Z^{an}_{n}$
+
+$\AVGTE$
+
+$\AVGTE$
+
+$\beta F$
+
+$\beta$
+
+$\XI$
+
+$(\mathcal{L})$
+
+$\AVGGE$
+
+$\GANHT$
+
+$\THRMAVG{\EPSLw}$
+
+$\GANHT$
+
+$\AVGGE$
+
+$\AVGTE$
+
+$\AVGGE$
+
+$\AVGGE$
+
+$(\beta F)$
+
+$n$
+
+$z(\beta)$
+
+$\beta$
+
+$\Q$
+
+$\Gamma_{\Q}:=1-F$
+
+$Z_{n}$
+
+$\AVGTE^{an}$
+
+$\GANHT=\beta\EPSLw$
+
+$\GAN$
+
+$\AVGTE^{an,hT}$
+
+$\AVGGE^{an}$
+
+$\GANHT=\beta\EPSLw$
+
+$\GAN$
+
+$\AVGGE^{an, hT}$
+
+$\AVGTE^{an, hT}$
+
+$\AVGGE^{an,hT}$
+
+$\GAN$
+
+$\AVGGE^{an, hT}$
+
+$\EPSLw$
+
+$\AVGTE^{an,hT}$
+
+$\AVGGE^{an}$
+
+$\Q$
+
+
+$\Gamma_{\Q}$
+
+
+$\QT=\Q^{2}$
+
+$\Gamma_{\QT}$
+
+$n \rightarrow \infty$
+
+$m/n$
+
+$N$
+
+$n$
+
+$m$
+
+$\bar{F}$
+
+$\DETOT$
+
+$\DETOT=n\EPSL(\WVEC)$
+
+$F=n\bar{F}$
+
+$\WVEC$
+
+$F$
+
+$F$
+
+$Z$
+
+$Z$
+
+$F$
+
+$Z$
+
+$\WVEC^{*}$
+
+$\EPSL(\WVEC)$
+
+$F = n\bar{F}_{ex} + n^{1+x}\bar{F}_{non-ex},\;x>0$
+
+$F\sim NMF_{0}+\cdots$
+
+$N \times M$
+
+$m$
+
+$(\WVEC=\SVEC)$
+
+$N \times M$
+
+$\mathbf{S}$
+
+$\IZG$
+
+$N$
+
+$\beta$
+
+$\beta=1$
+
+$\QT$
+
+$\AMAT$
+
+$\BMAT$
+
+$N \times N$
+
+$d\mu(\AMAT)$
+
+$\mathcal{G}_{A}()$
+
+$\Gamma$
+
+$N$
+
+$\mathcal{G}_{A}()$
+
+$\mathcal{G}_{A}()$
+
+$\AMAT$
+
+$\rho^{\infty}_{A}(\lambda)$
+
+$\lambda_{i}/N$
+
+$\BMAT$
+
+$\mathcal{G}_{A}()$
+
+$\Trace{\AMAT\BMAT}=\Trace{\AMAT\WMAT^{T}\WMAT}=\Trace{\WMAT\AMAT\WMAT^{T}}$
+
+$\mathbf{W}$
+
+$\AMAT=\AMAT_{2}:=\tfrac{1}{N}\SMAT\SMAT^{T}$
+
+$\AMAT$
+
+$\AMAT\rightarrow\AECS$
+
+\begin{align}
+\label{eqn:model_real_world_expt}
+  \ADD \rightarrow \MDD,\;\;\XVEC \rightarrow \XI,\;\;  \MY \rightarrow y  ,
+\end{align}
+
+\begin{align}
+    \label{eqn:xi}
+  \XI_{\mu}, y_{\mu} \in\MDD,\;\mu=1, \cdots, \infty  .
+\end{align}
+
+\begin{align}
+  \label{eqn:Emap}
+  \DETOPX\rightarrow \langle\DETOPXI\rangle_{\NDXIn}, \DETOT,\;n\EPSLw  .
+\end{align}
+
+\begin{align}
+  \label{eqn:detopxy}
+  \DETOPXY :=\sum_{\mu=1}^{n}\Delta E_{\mathcal{L}}(\WVEC,\XVEC_{\mu}, \MY_{\mu})  ,
+\end{align}
+
+\begin{align}
+  \label{eqn:detopx}
+  \DETOPX :=\sum_{\mu=1}^{n}\Delta E_{\mathcal{L}}(\WVEC,\XVEC_{\mu})  ,
+\end{align}
+
+\begin{align}
+ \label{eqn:EuT}
+ \langle f(\XI) \rangle_{\XI}:=\int d\mu(\XI) f(\XI) 
+\end{align}
+
+\begin{align}
+  \langle \DETOPXI\rangle_{\NDXIn}
+:=  &\int d\mu(\NDXIn) \DETOPXI \\ \nonumber
+ = & \int \prod_{\mu=1}^{n}d\XI_{\mu}P(\NDXIn) \sum_{\mu=1}^{n}\DET
+\end{align}
+
+\begin{align}
+  \lim_{n\rightarrow\infty}  \frac{1}{n}\langle\DETOPXI\rangle_{\NDXIn}=
+  \lim_{n\rightarrow\infty}\frac{1}{n}
+\int \prod_{\mu=1}^{n}d\XI_{\mu}P(\NDXIn)
+  \sum_{\mu=1}^{n}\Delta E_{\ell_2}(\WVEC,\XI_{\mu})
+\end{align}
+
+\begin{align}
+ \label{eqn:epsl}
+ \EPSLw:=\frac{1}{n}\langle \DETOPXI \rangle_{\NDXIn}  .
+\end{align}
+
+\begin{align}
+ \label{eqn:detox}
+ \DETOT := n\EPSLw.
+\end{align}
+
+\begin{align}
+\label{eqn:thrmavg}
+\langle f(\WVEC)\rangle_{\WVEC}^{{\beta}}:=\dfrac{1}{Z_{n}}\int d\mu(\WVEC) f(\WVEC)e^{-\beta \DETOT}  ,
+\end{align}
+
+\begin{align}
+\label{eqn:Zwn}
+Z_{n}:=\int d\mu(\WVEC) e^{-\beta n\EPSLw},
+\end{align}
+
+\begin{align}
+\label{eqn:Detot}
+\langle \DETOT \rangle^{\beta}_{\WVEC}:=\dfrac{1}{Z_{n}}\int d\mu(\WVEC) \DETOT e^{-\beta \DETOT} .
+\end{align}
+
+\begin{align}
+  \label{eqn:logZreplica}
+  \langle \ln Z_{n}(\XVEC) \rangle_{\mathcal{D}}
+  :=
+  \dfrac{1}{N_r}\sum_{r=1}^{N_r}\ln\int d\mu(\NDX) e^{-\beta \DEREPLICA]},
+  \quad  %%\;
+  N_r\rightarrow\infty
+\end{align}
+
+\begin{align}
+\DEREPLICA:=\sum_{\nu=1}^{n}\Delta E_{\mathcal{L}}(\WVEC,\XVEC_{\nu}),
+\;
+\XVEC_{\nu}\in\REPLICA
+\end{align}
+
+\begin{align}
+\DEREPLICA:=\int d\mu(\REPLICA)\Delta E_{\mathcal{L}}(\WVEC,\XVEC)  .
+\end{align}
+
+\begin{align}
+\label{eqn:F}
+\beta F:=-\ln Z_{n}.
+\end{align}
+
+\begin{align}
+  \red{\mathbb{E}_{x}[\beta F]:\rightarrow}-\langle \ln Z_{n}(\XI)\rangle_{\mathcal{D}},
+\end{align}
+
+\begin{align}
+\label{eqn:AA}
+\mathbb{E}_{x}[\beta F]:=-\langle\ln Z_{n}(\XI)\rangle_{\mathcal{D}}\approx-\ln \langle Z_{n}(\XI)\rangle_{\mathcal{D}}.
+\end{align}
+
+\begin{align}
+\label{eqn:Jensens}
+\ln\int d\mu(\NDXIn)(\cdots)\leftrightarrow \int d\mu(\NDXIn)\ln(\cdots)   .
+\end{align}
+
+\begin{align}
+ \label{eqn:switch}
+\langle\THRMAVG{\cdots}\rangle_{\NDXIn}\rightarrow\THRMAVG{\langle\cdots\rangle_{\NDXIn}}   ,
+\end{align}
+
+\begin{align}
+   \label{eqn:Gan_def}
+   \GAN:= - \frac{1}{n}\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}.
+  \end{align}
+
+\begin{align}
+\label{eqn:Gan_highT}
+\GANHT
+=&  - \frac{1}{n}\ln \int d\mu(\NDXIn) [1-\beta \DETOPXI] \\ \nonumber
+=&  - \frac{1}{n}\ln\langle 1-\beta\DETOPXI \rangle_{\NDXIn} \\ \nonumber
+\approx&\;  \frac{1}{n}\langle \beta\DETOPXI \rangle_{\NDXIn} \\ \nonumber
+=&\;\frac{1}{n}\beta (n\EPSLw)\\ \nonumber
+=&\;\beta \EPSLw  ,
+\end{align}
+
+\begin{align}
+  \label{eqn:Zan}
+ \ZANHT :=  &\int d\mu(\WVEC) e^{-n\GANHT} \\ \nonumber
+  =  &\int d\mu(\WVEC) e^{-n\beta\EPSLw} 
+\end{align}
+
+\begin{align}
+  e^{-n\beta\EPSLw} \simeq 1 - n\beta\EPSLw +  (n\beta\EPSLw)^{2} + \cdots  .
+\end{align}
+
+\begin{align}
+  \ln\int d\mu(\WVEC)e^{-n\beta\EPSLw}\approx\int\ln d\mu(\WVEC)e^{-n\beta\EPSLw}=\int d\mu(\WVEC) (-n\beta\EPSLw)  .
+ \end{align}
+
+\begin{align}
+  \label{eqn:ZanhT}
+  \ZANHT :=
+            \int d\mu(\WVEC) e^{-n\beta \EPSLw}   .       %=  n\THRMAVGw{\EPSLw}  
+\end{align}
+
+\begin{align}
+  \label{eqn:avgte_def}
+  \AVGTE:=\frac{1}{n}\langle\THRMAVGw{\DETOPXI}\rangle_{\NDXIn}  .
+\end{align}
+
+\begin{align}
+  \label{eqn:avgte_an}
+  \AVGTE^{an}  := \frac{1}{n}\THRMAVGw{\langle\DETOPXI\rangle_{\NDXIn}}   ,
+\end{align}
+
+\begin{align}
+  \label{eqn:avgte_anhT}
+  \AVGTE^{an, hT} = \THRMAVGw{\EPSLw}   .
+\end{align}
+
+\begin{align}
+\label{eqn:avgte}
+\AVGTE^{an} =
+\tfrac{1}{n}\langle \mathbf{\Delta E}_{\mathcal{L}}\rangle_{\WVEC}^{\beta} =
+\frac{1}{n}\dfrac{\partial (\beta F)}{\partial \beta}= \dfrac{\partial (-\ln Z^{an}_{n})}{\partial \beta}  .
+\end{align}
+
+\begin{align}
+\label{eqn:avgte2}
+\frac{1}{n}\dfrac{\partial (-\ln Z^{an}_{n})}{\partial \beta} = 
+- \dfrac{1}{n}\dfrac{\partial}{\partial \beta}\ln\int d\mu(\WVEC)e^{-\beta \DETOT}  ,
+\end{align}
+
+\begin{align}
+\label{eqn:avgte_anhT}
+\frac{1}{n}\dfrac{\partial (-\ln Z^{an}_{hT,n})}{\partial \beta} 
+   =& - \dfrac{1}{n}\dfrac{\partial}{\partial \beta}\ln\int d\mu(\WVEC)e^{-\beta n\EPSLw} \\ \nonumber
+   =&  \dfrac{
+              \tfrac{1}{n}  \int  d\mu(\WVEC) n\EPSLw e^{-\beta n\EPSLw} 
+             }{
+              \int  d\mu(\WVEC) e^{-\beta n\EPSLw} 
+             } \\ \nonumber
+   =& \langle\EPSLw \rangle_{\WVEC}^{\beta}  .
+\end{align}
+
+\begin{align}
+ \AVGGE^{an,hT}:=\THRMAVG{\EPSLw}:=\int d\mu(\WVEC)\EPSLw e^{-n\GANHT}=\int d\mu(\WVEC)\EPSLw e^{-n\beta\EPSLw}  .
+\end{align}
+
+\begin{align}
+\label{eqn:avgge_def}
+\AVGGE^{an}:=\frac{1}{\beta}\dfrac{\partial (\beta F))}{\partial n}= -\frac{1}{\beta}\dfrac{\partial (\ln Z^{an}_{n})}{\partial n}+\frac{1}{\beta}\ln z(\beta)  ,
+\end{align}
+
+\begin{align}
+  \AVGTE^{an}
+  := -\frac{1}{n}\dfrac{\partial (\ln Z^{an}_{n})}{\partial \beta}  =
+ - \frac{1}{n}\frac{1}{Z_{n}}\dfrac{\partial Z^{an}_{n}}{\partial \beta} 
+\end{align}
+
+\begin{align}
+  \label{eqn:avgge_def}
+  \AVGGE^{an}
+  := -\frac{1}{\beta}\dfrac{\partial (\ln Z^{an}_{n})}{\partial n}  =
+  -\frac{1}{\beta}\frac{1}{Z_{n}}\dfrac{\partial Z^{an}_{n}}{\partial n}  .
+\end{align}
+
+\begin{align}
+  \dfrac{\partial Z^{an}_{n}}{\partial \beta}
+  = &  \dfrac{\partial }{\partial \beta} \int d\mu(\WVEC) e^{-n\GAN} \\ \nonumber
+  = & \int d\mu(\WVEC) \dfrac{\partial }{\partial \beta} e^{-n\GAN}\\ \nonumber
+  = & \int d\mu(\WVEC) (-n) \dfrac{\partial \GAN}{\partial \beta} e^{-n\GAN}  ,
+\end{align}
+
+\begin{align}
+  \AVGTE^{an} = \frac{1}{Z^{an}_{n}}\int d\mu(\WVEC)  \dfrac{\partial \GAN}{\partial \beta} e^{-n\GAN} .
+\end{align}
+
+\begin{align}
+  \label{eqn:avgte_anhT}
+  \AVGTE^{an,hT} = \frac{1}{\ZANHT}\int d\mu(\WVEC) \EPSLw e^{-n\GANHT}  .
+\end{align}
+
+\begin{align}
+  \dfrac{\partial Z^{an}_{n}}{\partial n}
+  = &  \dfrac{\partial }{\partial n} \int d\mu(\WVEC) e^{-n\GAN} \\ \nonumber
+  = & - \int d\mu(\WVEC) \GAN e^{-n\GAN}  .
+\end{align}
+
+\begin{align}
+ \dfrac{\partial \ZANHT}{\partial n}
+  = & - \int d\mu(\WVEC) \beta \EPSLw e^{-n\GANHT}  ,
+\end{align}
+
+\begin{align}
+  \label{eqn:avgge_anhT}
+  \AVGGE^{an, hT} = \frac{1}{\ZANHT}\int d\mu(\WVEC) \EPSLw e^{-n\GANHT}  .
+\end{align}
+
+\begin{align}
+  \label{eqn:finalEgen0}
+  \AVGGE^{an} =& \frac{1}{\ZANHT}\int d\mu(\WVEC) \EPSLw \exp[-n\GANHT] \\ \nonumber
+  =& \frac{1}{\ZANHT}\int d\mu(\WVEC) \EPSLw \exp\left[-n(-\frac{1}{n})\ln  \int d\mu(\XI)e^{-\beta \DETOPXI}\right]  ,
+\end{align}
+
+\begin{align}
+  \label{eqn:finalEgen}
+  \AVGGE^{an,hT}
+  =& \frac{1}{\ZANHT}\int d\mu(\WVEC)\EPSLw \left[\int d\mu(\NDXI)e^{-\beta \DETOPXI}\right] \\ \nonumber
+  =& \frac{1}{\ZANHT}\int d\mu(\WVEC) \int d\mu(\NDXI) \EPSLw e^{-\beta \DETOPXI}\\ \nonumber
+  =& \frac{1}{\ZANHT}\int d\mu(\WVEC) \int d\mu(\NDXI) \EPSLw e^{-\beta \DETOPXI}\\ \nonumber
+  =& \THRMAVGw{\EPSLw}   .
+\end{align}
+
+\begin{align}
+\label{eqn:final_equiv}
+  \AVGTE^{an,hT}=\AVGGE^{an, hT}= \langle \EPSLw\rangle_{\WVEC} .
+\end{align}
+
+\begin{align}
+  -\beta\bar{F} = \lim_{n\rightarrow \infty}\frac{1}{n}\ln \int d\mu(\WVEC) e^{-n\beta\EPSL(\WVEC)}  .
+\end{align}
+
+\begin{align}
+  \label{eqn:SPA}
+  \int d\mu(\WVEC) e^{-n\beta\EPSL(\WVEC)}\approx \sqrt{\tfrac{2\pi}{n\EPSL''(\WVEC^{*})}} e^{-n\beta\EPSL(\WVEC^{*})}  ,
+\end{align}
+
+\begin{align}
+  \EPSL'(\WVEC^{*}):=\tfrac{\partial}{\partial \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}=0 \\
+  \EPSL''(\WVEC^{*}):=\tfrac{\partial^{2}}{\partial^{2} \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}>0  .
+\end{align}
+
+\begin{align}
+\label{eqn:hciz_prelim}
+\lim_{N\rightarrow\infty}\IZG := \lim_{N\rightarrow\infty} \frac{1}{N}\ln \int d\mu(\AMAT) \exp[\beta\Trace{\AMAT\BMAT}] \approx N\beta\Trace{\mathcal{G}_{A}(\BMAT/N)}
+\end{align}
+
+% File: ./430_smog_st_model.tex
+
+$\AVGEMPGE$
+
+$\xi_1^M$
+
+$\xi_2^M$
+
+$\xi_3^M$
+
+$\xi_4^M$
+
+$Y_S^M$
+
+$Y_T^M$
+
+$J_1$
+
+$J_1$
+
+$J_1$
+
+$J_1$
+
+$T_1$
+
+$T_2$
+
+$T_3$
+
+$T_4$
+
+$\AVGSTGE$
+
+$\AVGSTGE$
+
+$\AVGSTGE=\THRMAVG{1-R}$
+
+$R=\SVEC^{T}\TVEC$
+
+$(T)$
+
+$\DATA\in\ADD$
+
+$\Yt$
+
+$E_{NN}$
+
+$\AVGGE^{T}$
+
+$\AVGGE^{T}$
+
+$(\DATA^{test}, \MY^{test})$
+
+$\AVGEMPGE$
+
+$\mathcal{L}$
+
+$\ell_1$
+
+$\ell_2$
+
+$\ell_2$
+
+$M$
+
+$(\AVGGE^{M})$
+
+$(\DX)$
+
+$(S)$
+
+$T$
+
+$\DATA\in\ADD$
+
+$\MY^{S}_{\mu}\simeq \MY^{T}_{\mu}$
+
+$\MY^{T}_{\mu}, \MY^{S}_{\mu}$
+
+$E_{NN}$
+
+$E_{NN}$
+
+$\TVEC$
+
+$\SVEC$
+
+$\DATA$
+
+$h(x)$
+
+$h(x)=sgn(x)$
+
+$h(x)=x$
+
+$E_{NN}$
+
+$\mathbf{\Delta E}$
+
+$E_{NN}(\TVEC,\DATA )$
+
+$\DATA$
+
+$\Ymu=1$
+
+$-1$
+
+$\DATAtrain$
+
+$\DATAtest$
+
+$S$
+
+$T$
+
+$\DATAtrain$
+
+$\SVEC$
+
+$\TVEC$
+
+$S,T$
+
+$\DX_{train}$
+
+$S[\DX^{train}], T[\DX^{train}]$
+
+$\SVEC$
+
+$\TGE^{T}$
+
+$y_{\mu}^{test}\rightarrow \Ys$
+
+$\DATAtest$
+
+$(\AVGEMPGE)$
+
+$\TGE^{T}\approx\AVGEMPGE$
+
+$S$
+
+$\Ntest$
+
+$\DATAtest\in\mathcal{D}$
+
+$\Ntest$
+
+$\mathcal{L}$
+
+$\ell_1$
+
+$\ell_2$
+
+$\THRMAVG{\cdots}$
+
+$\SVEC$
+
+$\NDX\in\mathcal{D}$
+
+$S$
+
+$\DX\in\ADD$
+
+$\AVGEMPGE$
+
+$\AVGTE > 0$
+
+$N$
+
+\begin{align}
+ T:\DATA\rightarrow \MY^{T}_{\mu}
+\end{align}
+
+\begin{align}
+\label{eqn:Eg_train}
+\AVGEMPTE:= \frac{1}{N^{train}}\sum_{\mu=1}^{N^{train}}\mathcal{L}[\MY^{T}_{\mu},E_{NN}(\TVEC,\DATAtrain)]
+\end{align}
+
+\begin{align}
+\label{eqn:Eg_test}
+ \AVGGE^{T}\approx \AVGEMPGE:= \frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}\mathcal{L}[\MY^{T}_{\mu},E_{NN}(\TVEC,\DATAtest)]
+\end{align}
+
+\begin{align}
+S:\DATA\rightarrow \MY^{S}_{\mu}
+\end{align}
+
+\begin{align}
+\Yt=E_{NN}(\TVEC, \DATA) \\ \nonumber
+\Ys=E_{NN}(\SVEC,\DATA) ,
+\end{align}
+
+\begin{align}
+\label{eqn:ENN}
+E_{NN}(\TVEC, \DATA)=h(\TVEC^{\top}\DATA) \\ \nonumber
+E_{NN}(\SVEC, \DATA)=h(\SVEC^{\top}\DATA)
+\end{align}
+
+\begin{align}
+\underset{\{\SVEC\}}{\argmin}\sum_{\mu=1}^{N^{train}}\mathcal{L}[E_{NN}(\SVEC,\DATA^{train}),E_{NN}(\TVEC,\DATAtrain)]   ,
+\label{eqn:student-learning-task}
+\end{align}
+
+\begin{align}
+\AVGEMPGE[\DXtrain, \DXtest]=\frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}
+\THRMAVG{\mathcal{L}[E_{NN}(\SVEC,\DATAtest),E_{NN}(\TVEC,\DATAtest)]}
+\label{eqn:emp_gen_error}
+\end{align}
+
+% File: ./440_smog_gen_gap.tex
+
+\begin{align}
+  \label{eqn:gen_gap}
+  \mathcal{E}^{emp}_{gap}:= \TTE[\DXtrain]- \TGE[\DXtest]
+\end{align}
+
+% File: ./450_smog_bad_data.tex
+
+$\alpha<2$
+
+% File: ./460_smog_theory_st_avg.tex
+
+$(\AVGSTGE)$
+
+$\AVGSTGE$
+
+$\TGE^{T}$
+
+$M$
+
+$(\DX)$
+
+$\DX$
+
+$\XVEC\rightarrow\XI$
+
+$N(0,1)$
+
+$N(1,0)$
+
+$\AVGGE^{T}$
+
+$\AVGSTGE$
+
+$\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC, \XI)$
+
+$N$
+
+$\XI$
+
+$\mathcal{L}(\SVEC,\TVEC, \XI)$
+
+$(\Ys=\Yt)$
+
+$(\XI=\XImu)$
+
+$\AVGSTGE$
+
+$\EPSL(\SVEC,\TVEC)$
+
+$d\mu(\NDXI)$
+
+$N$
+
+$N$
+
+$\XI\in\MDD$
+
+$\AVGSTGE$
+
+$\XI$
+
+$S$
+
+$\THRMAVG{\cdots}$
+
+$\beta$
+
+$\THRMAVG{\cdots}$
+
+$\IZG$
+
+$N$
+
+$\AVGEMPGE$
+
+$\DATAtrain$
+
+$\AVGSTGE$
+
+$(\NDX)$
+
+$\AVGSTGE$
+
+$\AVGNNGE$
+
+$\EPSL(R)$
+
+$\mathcal{L}=$
+
+$h(x)$
+
+$\ell_2$
+
+$\EPSL(\SVEC,\TVEC)$
+
+$R$
+
+$\EPSLSTx\rightarrow\EPSL(R)$
+
+$\SVEC$
+
+$\TVEC$
+
+$h(x)=x$
+
+$h(x)=\mbox{sgn}(x)$
+
+$R=1$
+
+$T$
+
+$S$
+
+$\theta$
+
+$R=\cos(\theta)$
+
+$\EPSL(R)$
+
+$\ell_2$
+
+$\eta(\XI):=\mathbf{y}_{S}^{\top}\mathbf{y}_{T}$
+
+$\eta(\XI)$
+
+$R$
+
+$\eta(\XI)$
+
+$\OVERLAP$
+
+$E_{NN}$
+
+$\YtVEC,\YsVEC$
+
+$\XI$
+
+$N-$
+
+$d\mu(\XI)=\mathcal{D}\NDXI P(\NDXI)$
+
+$\mathcal{N}$
+
+$\XI$
+
+$d\mu(\NDXI)$
+
+$\XI$
+
+$\frac{1}{\sqrt{N}}$
+
+$\mathcal{N}=N$
+
+$\NDXI$
+
+$\XI$
+
+$\NDXIn$
+
+$\TGE(R)$
+
+$R$
+
+$R$
+
+$\STGE(R)$
+
+$\THRMAVG{\cdots}$
+
+$\SVEC$
+
+$R$
+
+$1$
+
+$\SVEC^{\top}\SVEC$
+
+$N$
+
+$M$
+
+$\STGE$
+
+$\GAN$
+
+$\GAN$
+
+$\Q$
+
+$\Q$
+
+$\Q$
+
+$\OVERLAP$
+
+$\THRMAVG{\cdots}$
+
+$\THRMAVG{\cdots}$
+
+$\EPSL(\mathbf{R}) = 1 - \sqrt{\OLAPSQD}$
+
+\begin{align}
+\DATA\rightarrow\XImu,\;\;\XImu\in N(0,1)
+\end{align}
+
+\begin{align}
+\label{eqn:DE_L}
+\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC, \XI):=\sum_{\mu=1}^{N}\mathcal{L}[E_{NN}(\SVEC,\XI_{\mu}),E_{NN}(\TVEC,\XI_{\mu})]  .
+\end{align}
+
+\begin{align}
+\label{eqn:STerror}
+\EPSLSTx = \langle\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)\rangle_{\NDXI}:=\frac{1}{N}\int d\mu(\NDXI)\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)  ,
+\end{align}
+
+\begin{align}
+\label{eqn:MGE}
+\AVGSTGE:=\THRMAVG{\EPSLSTx}
+\end{align}
+
+\begin{align}
+  \EPSL(R)=1-R,\;\;\mathcal{L}=L2
+\end{align}
+
+\begin{align}
+R=\frac{1}{N}\SVEC^{\top}\TVEC=\frac{1}{N}\sum_{i=1}^{N}s_{i}t_{i},
+\end{align}
+
+\begin{align}
+\EPSL(R)=1-R  ,
+\label{eqn:LinearPerceptronError}
+\end{align}
+
+\begin{align}
+\EPSL(R)=1 - \dfrac{1}{\pi}\arccos(R).
+\label{eqn:BooleanPerceptronError}
+\end{align}
+
+\begin{align}
+\label{eqn:deriveSTerror}
+\Delta \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) = & \frac{1}{2} (\Ys - \Yt)^T(\Ys - \Yt) 
+   = 1 - (\YsVEC)^{\top}(\YtVEC) \\ \nonumber
+   =&  1 - \eta(\XI),
+\end{align}
+
+\begin{align}
+\YsVEC=\SVEC^{\top}\XI,\;\;
+\YtVEC=\TVEC^{\top}\XI 
+\end{align}
+
+\begin{align}
+\eta(\XI) = (\SVEC^T\XI)^T (\TVEC^T\XI) = \XI^T (\SVEC \, \TVEC^T )\XI 
+\end{align}
+
+\begin{align}
+\frac{1}{N}\langle\Delta \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI)\rangle_{\NDXI}  
+   = &\frac{1}{\mathcal{N}}\int d\mu(\NDXI)(1-\eta(\XI)) \\ \nonumber
+   = &\frac{1}{\mathcal{N}}\int d\mu(\NDXI)(1-\XI^T\SVEC\TVEC^{\top}\XI) \\ \label{eqn:XI_ST}
+   = & \frac{N}{\mathcal{N}} - \frac{1}{\mathcal{N}}\int d\mu(\NDXI)\XI^{\top}\SVEC\TVEC^{\top}\XI \\ \nonumber
+   = & \frac{N}{\mathcal{N}} - \frac{1}{\mathcal{N}}\int d\mu(\NDXI)N\XI^{\top} R\XI \\ \nonumber
+   = & \frac{N}{\mathcal{N}} - R\frac{N}{\mathcal{N}}\int d\mu(\NDXI)\XI^{\top}\XI,
+\end{align}
+
+\begin{align}
+\label{eqn:e0}
+\EPSL(R)=\frac{1}{N}\langle\Delta \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI)\rangle_{\NDXI} =  1 - R .
+\end{align}
+
+\begin{align}
+\label{eqn:AVGSTGE_R}
+\AVGSTGE(R)=\THRMAVG{\EPSL(R)}=\THRMAVG{1-\tfrac{1}{N}\SVEC^{\top}\TVEC}=\THRMAVG{(1-R)} 
+\end{align}
+
+\begin{align}
+\label{eqn:QT_0}
+\Q:=\THRMAVG{1-\EPSL(R)}\rightarrow\THRMAVGIZ{\sqrt{\OLAPSQD}}
+\end{align}
+
+% File: ./500_matgen.tex
+
+$\QT$
+
+$N$
+
+% File: ./510_matgen_semiemp_elements.tex
+
+$\mathbf{W}$
+
+$\mathbf{W}$
+
+$\rho_{tail}(\lambda)\sim\lambda^{-\alpha}$
+
+$\mathbf{W}$
+
+$\alpha$
+
+$\alpha\in[2,6]$
+
+$\mathbf{W}$
+
+$\alpha$
+
+$D_{KS}$
+
+$D_{KS}$
+
+$(\alpha)$
+
+$(\hat{\alpha})$
+
+$\QT$
+
+$\mathcal{E}_g$
+
+$T$
+
+$S$
+
+$R$
+
+$\mathcal{E}_{g}(R)$
+
+$S$
+
+$\QT(R)$
+
+$R$
+
+$\OVERLAP$
+
+$\OVERLAP := \tfrac{1}{N}\mathbf{S}^{T}\mathbf{T}$
+
+$M \times M$
+
+$M$
+
+$\OLAPSQD$
+
+$\OLAPSQD=\tfrac{1}{N}\Trace{\TMAT\AMAT_{1}\TMAT^{\TR}}=\tfrac{1}{N}\Trace{\TMAT^{\TR}\AMAT_{2}\TMAT}$
+
+$\AMAT_{1}:=\tfrac{1}{N}\AMAT\AMAT^{\TR}$
+
+$\AMAT_{2}:=\tfrac{1}{N}\AMAT\AMAT^{\TR}$
+
+$d\mu(\AMAT)$
+
+$d\mu(\AMAT)=d\mu(\AMAT_1)=d\mu(\AMAT_2)$
+
+$\AMAT_{1}\leftrightarrow\AMAT_{2}$
+
+$\OLAPSQD$
+
+$\QT$
+
+$\QT:=\THRMAVGIZ{\OLAPSQD}$
+
+$\sqrt{\QT}$
+
+$\mathbf{S}$
+
+$S$
+
+$\mathbf{A}_1$
+
+$(M \times M)$
+
+$d\mu(\SMAT)\rightarrow d\mu(\AMAT)$
+
+$\AMAT_1$
+
+$\AECS_1$
+
+$\AECS_1$
+
+$\log|\det\;\AECS_1|=0$
+
+$\lambda_{i}\in\rho_{tail}(\lambda)$
+
+$\sum_{i}\log\lambda_{i}\approx 0$
+
+$\AMAT_2$
+
+$\XMAT_1$
+
+$\XMAT_2$
+
+$\QT$
+
+$\rho_{tail}(\lambda)$
+
+$G(\lambda):=\int^{\lambda}_{0}R(z)dz$
+
+$\QT=\sum_{i}G(\lambda_{i}$
+
+$G(\lambda)$
+
+$\TMAT$
+
+$(\alpha, \lambda_{max})$
+
+$m_{k}:=\Trace{\XECS^{k}}$
+
+$\alpha$
+
+$\mathbf{X}$
+
+$\QT$
+
+$m_{k}$
+
+% File: ./520_matgen_multilayer_setup.tex
+
+$E^{\mu}_{\#}$
+
+$\XI$
+
+$h$
+
+$h(\cdot)$
+
+$\ell_2$
+
+$\eta$
+
+$\Delta \mathbf{E}$
+
+$\eta(\XI)$
+
+$\eta(\XI)$
+
+$\XI$
+
+$\langle\cdots\rangle_{\XI}$
+
+$\XI$
+
+$\eta(\XI)$
+
+$h(x)$
+
+$S$
+
+$T$
+
+$\eta(\XI)_{l}$
+
+$l$
+
+\begin{align}
+\nonumber
+  E_{1\mu} &:= \frac{1}{\sqrt{N_1}} h (\mathbf{W}_1^T \XI_{\mu}) , \\ 
+\nonumber
+  E_{2\mu} &:= \frac{1}{\sqrt{N_2}} h (\mathbf{W}_2^T \mathbf{Z}_{1\mu})     , \\ 
+\label{eqn:nflow}
+             y_{\mu} := E_{3\mu} &= \frac{1}{\sqrt{N_3}} h (\mathbf{W}_{3}^T \mathbf{Z}_{2\mu})     , 
+\end{align}
+
+\begin{align}
+\label{eqn:DE2}
+\DETOPNN
+   := \frac{1}{2} \Trace{ \Yt- \Ys)^T \, (\Yt - \Ys) } 
+   = 1 - \Trace{ (\YtVEC)^{T} \, \YsVEC  } 
+   = 1 - \eta(\XI),
+\end{align}
+
+\begin{align} 
+\label{eqn:overlap1}
+  \eta(\XI) := \Trace{ \tfrac{1}{\sqrt{N_3}}  h(\mathbf{T}^T_3 \tfrac{1}{\sqrt{N_2} } h(\mathbf{T}_2^T 
+    \tfrac{1}{\sqrt{N_1} } h(\mathbf{T}_1^{T}\boldsymbol{\xi} ) ) )^{T}
+    \times
+               \tfrac{1}{\sqrt{N_3}} h(\mathbf{S}^T_3 \tfrac{1}{\sqrt{N_2} } h(\mathbf{S}_2^T 
+               \tfrac{1}{\sqrt{N_1} } h(\mathbf{S}_1^{T}\boldsymbol{\xi} ) ) )   }  .
+\end{align}
+
+\begin{align} 
+\label{eqn:overlap2}
+  \eta(\XI) &= \tfrac{1}{N_3 \, N_2 \, N_1} \Trace{ \boldsymbol{\xi}^T \mathbf{T}_1 \mathbf{T}_2 \mathbf{T}_3 \mathbf{S}^T_3 \mathbf{S}_2^T \mathbf{S}_1^T \boldsymbol{\xi}) }  .
+\end{align}
+
+\begin{align}
+\eta(\XI)\approx\tfrac{1}{N}\prod_{l=1}^{L}\eta(\XI)_{l}=\tfrac{1}{N}\prod_{l=1}^{L}\Trace{ \XI^T \mathbf{T}_{l} \mathbf{S}_{l}^{T} \XI) } +\text{intra-layer cross terms}.
+\end{align}
+
+\begin{align}
+        \eta(\XI)_{l}\rightarrow \tfrac{1}{N} \Trace{ \XI^T \mathbf{T}_{l} \mathbf{S}_{l}^{T} \XI }  .
+\end{align}
+
+\begin{equation} 
+\label{eqn:DE}
+\DETOPNN = \frac{1}{2}\sum_{\mu=1}^{N_{D}}(\Yt - \Ys)^2 . 
+\end{equation}
+
+% File: ./530_matgen_quality_metrics.tex
+
+$\THRMAVG{\cdots}$
+
+$\THRMAVGIZ{\cdots}$
+
+$\Q=\Q_{L}$
+
+$\Q$
+
+$1-\AVGSTGE$
+
+$ \Q \approx \sqrt{\QT} $
+
+$\EPSL(\mathbf{R}) = 1 - \sqrt{\OLAPSQD}$
+
+$\QT$
+
+$\IZG$
+
+$\QT$
+
+$d\mu(\mathbf{A})$
+
+$\mathbf{X}$
+
+$\mathbf{A}$
+
+$\mathbf{A}_{1}$
+
+$\mathbf{A}_{2}$
+
+$\mathbf{A}$
+
+$N\times N$
+
+$\mathbf{A}$
+
+$\delta_{j}$
+
+$\mathbf{A}$
+
+$\mathbf{A}_{1}$
+
+$\mathbf{A}_{2}$
+
+$\lambda_{i}$
+
+$\lambda_{i}=0$
+
+$\mathbf{A}_{2}$
+
+$\AMAT$
+
+$\rho_{tail}(\lambda)$
+
+$(\Trace{\mathbf{A}_{1}}=\Trace{\mathbf{A}_{2}})$
+
+$\OLAPSQD$
+
+$\OLAPSQD$
+
+$\mathbf{A}$
+
+$\lambda$
+
+$N-M$
+
+$\mathbf{A}_{2}$
+
+$\mathbf{A}$
+
+$d\mu(\mathbf{A})$
+
+$d\mu(\mathbf{A})$
+
+$( \lambda_1, \lambda_2, \ldots, \lambda_M)$
+
+$\mathbf{A}$
+
+$\mathbf{A}_{1}$
+
+$\mathbf{A}_{2}$
+
+$ \prod_{i < j} |\lambda_i - \lambda_j| $
+
+$dO$
+
+$O(M)$
+
+$M\times M$
+
+$d\mu(\mathbf{A})$
+
+$d\mu(\mathbf{A}_{1})$
+
+$d\mu(\mathbf{A}_{2})$
+
+$\leftrightarrow$
+
+$\OVERLAP := \tfrac{1}{N}\mathbf{S}^{\top}\mathbf{\top}$
+
+$\IZG$
+
+$\mathbf{A}_{2}$
+
+$N\times M$
+
+$\mathbf{S}$
+
+$N\times N$
+
+$\mathbf{A}$
+
+$\IZG$
+
+$\mathbf{A}_{2}$
+
+$\mathbf{A}_{1}$
+
+$\IZG$
+
+$\mathbf{A}\rightarrow\AECS$
+
+$\AMAT$
+
+$\AMAT$
+
+$N$
+
+$d\mu(\mathbf{S})$
+
+$d\mu(\mathbf{A})$
+
+$\langle \exp\left[\tfrac{N}{2} \Trace{ \ln[det\;\AMAT_{1}] } \right]\rangle_{\AMAT}=1$
+
+$\IZG$
+
+$N$
+
+$\IZG$
+
+$N$
+
+$\IZG$
+
+$\rho_{tail}^{emp}(\lambda)$
+
+$\alpha\rightarrow\ 2$
+
+$\mathbf{A}_{1}=\tfrac{1}{N}\mathbf{S}^{\top}\mathbf{S}$
+
+$\mathbf{A}_{2}$
+
+$\AECS$
+
+$\MECS$
+
+$\mathbf{A}$
+
+$\mathbf{A}_{1}$
+
+$\mathbf{A}_{2}$
+
+$\mathbf{P}_{\EFF}$
+
+$|\lambda_{i}\rangle$
+
+$\lambda_{i}$
+
+$\mathbf{A}_{1}$
+
+$\mathbf{A}_{2}$
+
+$\alpha\ge 2$
+
+$|\lambda_{i}\rangle$
+
+$\MECS\ge M^{tail}$
+
+$\rho_{ecs}(\lambda)\supseteq\rho_{tail}(\lambda)$
+
+$\alpha=2$
+
+$\MECS=M^{tail}$
+
+$\rho_{ecs}(\lambda)=\rho_{tail}(\lambda)$
+
+$d\mu(\mathbf{S}) \rightarrow d\mu(\AECS)$
+
+$\mathbf{A}$
+
+$\mathbf{A}\rightarrow\AECS$
+
+$\lambda_{*}$
+
+$\QT$
+
+$\IZG$
+
+$\AMAT$
+
+$\XMAT$
+
+$\lambda_{*}$
+
+$\AECS_{1}$
+
+$\XECS$
+
+$\lambda_{t}$
+
+$\rho^{emp}_{tail}(\lambda)$
+
+$\XECS$
+
+$\lambda_{t}\ge\lambda_{*}$
+
+$\lambda_{*}$
+
+$\langle|\det\; \mathbf{A}_{1}|\rangle$
+
+$\mathbf{A}_{1}$
+
+$\rho_{tail}^{emp}(\lambda)$
+
+$\XMAT$
+
+$\alpha=2.0$
+
+$\Trace{\XMAT}=\Vert\mathbf{W}\Vert^{2}_{F}=N$
+
+$\lambda$
+
+$\XECS$
+
+$\lambda>\lambda_{min}^{ECS}$
+
+$\ln\lambda$
+
+$(\lambda_{min}^{PL})$
+
+$(\lambda_{min}^{ECS})$
+
+$\ln\lambda>1.0$
+
+$\ln\lambda<1.0$
+
+$\sum\ln\lambda= 0$
+
+$\lambda\ge\lambda_{min}^{ECS}$
+
+$\lambda_{min}^{ECS}$
+
+$|\det\;\XECS|\ll 1$
+
+$\lambda_{min}^{ECS}$
+
+$|\det\;\XECS| \gg 1$
+
+$\XECS$
+
+$\lambda_{min}^{ECS}$
+
+$|\det\;\XECS|=1$
+
+$\lambda_{*}$
+
+$\langle|\det\; \mathbf{A}_{1}|\rangle$
+
+$\alpha=2.0$
+
+$\Trace{\XMAT}=\Vert\mathbf{W}\Vert_{F}=N$
+
+$(\lambda_{min}^{PL})$
+
+$(\lambda_{min}^{ECS})$
+
+$\Delta \lambda_{min}:=\lambda_{min}^{ECS}-\lambda_{min}^{PL}\approx 0$
+
+$\ln\lambda>1.0$
+
+$\ln\lambda<1.0$
+
+$\sum\ln\lambda\approx 0$
+
+$\lambda\ge\lambda_{min}^{ECS}$
+
+$\Delta \lambda_{min}$
+
+$\alpha$
+
+\begin{align}
+  \label{eqn:QT_2}
+  \QT:=\THRMAVGIZ{\OLAPSQD },
+\end{align}
+
+\begin{align}
+  \label{eqn:betaIZG_S}
+  \IZG:=  \frac{1}{N}\ln \int d\mu(\mathbf{S}) \exp\left[N\beta\OLAPSQD\right] .
+\end{align}
+
+\begin{align}
+  \label{eqn:changeOfMeasure}
+  d\mu(\mathbf{S})\rightarrow d\mu(\mathbf{A}) ,
+\end{align}
+
+\begin{align}
+    \label{eqn:A1}
+  \mathbf{A}_{1}:=\frac{1}{N}\mathbf{S}^{\top}\mathbf{S} ,
+\end{align}
+
+\begin{align}
+  \label{eqn:A2}
+  \mathbf{A}_{2}:=\frac{1}{N}\mathbf{S}\mathbf{S}^{\top} .
+\end{align}
+
+\begin{align}
+  \label{eqn:TraceR2withA1}
+  \OLAPSQD:=\frac{1}{N^{2}}\Trace{\TMAT\SMAT^{\top}\SMAT\TMAT^{\top}}
+  =\frac{1}{N}\Trace{\TMAT\mathbf{A}_{1}\TMAT^{\top}}
+\end{align}
+
+\begin{align}
+  \label{eqn:TraceR2withA2}
+  \OLAPSQD:=\frac{1}{N^{2}}\Trace{\TMAT^{\top}\SMAT\SMAT^{\top}\TMAT}
+  =\frac{1}{N}\Trace{\TMAT^{\top}\mathbf{A}_{2}\TMAT}  .
+\end{align}
+
+\begin{align}
+  \label{eqn:dmuA}
+   d\mu(\mathbf{A}) := \left( \prod_{i < j} |\lambda_i - \lambda_j| \right) \, d\lambda_1 \, d\lambda_2 \cdots d\lambda_M \, dO
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_dmuS}
+  \IZG = \frac{1}{N}\ln \int d\mu(\SMAT)  e^{ N\beta Tr[ \tfrac{1}{N}\TMAT^T\mathbf{A}_{2}\TMAT]) }  .
+\end{align}
+
+\begin{align}
+  \nonumber %\label{eqn:IFA2_integral}
+  \IZG 
+  &\approx \frac{1}{N}\ln
+    \int d\mu(\AMAT)
+  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^T\AMAT_{2}\TMAT] }
+  e^{\tfrac{N}{2}Tr[\ln(|det\;\AMAT_{1}|)} \\
+  \label{eqn:IFA2_braket}
+  & = \frac{1}{N}\ln\left[
+  \left\langle
+  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^T\AMAT_{2}\TMAT] }
+  e^{\tfrac{N}{2}Tr[\ln(|det\;\AMAT_{1}|)}
+    \right\rangle_{\AMAT}
+    \right] ,
+\end{align}
+
+\begin{align}
+  \label{eqn:IFA2}
+  \IZG \approx \frac{1}{N}\ln\left[
+  \left\langle
+  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^T\AMAT_{2}\TMAT] }
+  \right\rangle_{\AMAT}
+  \left\langle
+  e^{\tfrac{N}{2}Tr[\ln(|det\;\AMAT_{1}|)}
+    \right\rangle_{\AMAT}
+    \right]  .
+\end{align}
+
+\begin{align}
+\label{eqn:tlc_mm}
+|det\;\AECS|=1 
+\quad\mbox{or}\quad
+\Trace{\ln \AECS}=0  ,
+\end{align}
+
+\begin{align}
+  \langle \exp\left[\tfrac{N}{2} \Trace{ \ln[det\;\AMAT_{1}] } \right]\rangle_{\AMAT}=1 ,
+ \end{align}
+
+\begin{align}
+  \label{sqn:AecsDefined}
+  \AECS:=\mathbf{P}_{\EFF}\mathbf{A},\;\;  \mathbf{P}_{\EFF}:= \sum_{i=1}^{\MECS}|\lambda_{i}\rangle\langle\lambda_{i}|
+\end{align}
+
+\begin{align}
+\label{eqn:IFA-ppint}
+\Big\langle \det\AECS_{1}\Big\rangle_{\AECS}\simeq\det\XECS=\prod_{t}\lambda_{t}\;\;\forall\lambda_{t}\in\rho^{emp}_{tail}(\lambda) ,
+\end{align}
+
+\begin{equation}
+\label{eqn:detX}
+\vert\det\XECS\vert \simeq 1 ; \quad \Trace{ \ln\XECS } = \ln\vert\det\XECS\vert \simeq 0  .
+\end{equation}
+
+% File: ./540_matgen_hciz.tex
+
+$N$
+
+$\AVGSTGE$
+
+$N$
+
+$\AECS_{2}$
+
+$\kECS$
+
+$\LambdaECS_{*}$
+
+$k^{th}$
+
+$\XECS$
+
+$\XECS$
+
+$\beta=1|2$
+
+$-\beta$
+
+$\QT$
+
+$\QT$
+
+$N$
+
+$\beta$
+
+$\tfrac{1}{\MECS}$
+
+$\GN$
+
+$\XECS$
+
+$\GNI$
+
+$R_{\AECS}(\LambdaECS)$
+
+$\LambdaECS_{min}\rightarrow 0$
+
+$\GN$
+
+$\AECS$
+
+$\XECS$
+
+$\AECS$
+
+$\XECS$
+
+$\AECS$
+
+$R$
+
+$\XECS$
+
+$\rho_{tail}(\lambda)$
+
+$\sigma^{2}$
+
+$\alpha$
+
+$\QT$
+
+$R(z)$
+
+\begin{equation}
+  \label{eqn:IZG_limit}
+  \IZGINF := \lim_{N\rightarrow \infty}\IZG = \lim_{N\rightarrow \infty}\dfrac{1}{N}\ln\; \red{\mathbb{E}_{\AECS}}\left[N\exp\beta\left( \tfrac{1}{N}\Trace{ \TMAT^{T}\AECS_{2}\TMAT } \right)\right] ,
+\end{equation}
+
+\begin{equation}
+  \label{eqn:IZG_generate_Q2}
+  \QT := \frac{1}{\beta}\frac{\partial }{\partial N}\lim_{N\rightarrow \infty}\IZGINF
+\end{equation}
+
+\begin{equation}
+\label{eqn:tanaka_result}
+\IZGINF =  \underset{N\rightarrow\infty}{\lim}\dfrac{1}{N}\ln\;
+  \red{\mathbb{E}_{\AECS}}\left[\exp\left(\beta \Trace{\TMAT^{T}\AECS\TMAT } \right)\right]
+  =\beta\sum\limits_{i=1}^{\kECS}\;\GNI,
+\end{equation}
+
+\begin{equation}
+\label{eqn:Q2_result}
+\QT = \sum\limits_{i=1}^{\kECS}\;\GNI,
+\end{equation}
+
+\begin{equation}
+\label{eqn:generating_function_A}
+ \GN:=\int\limits_{0}^{\lambda}R_{\AECS}(z)dz \red{=\int\limits_{\lambda_{min}^{ECS}}{\lambda}R_{\AECS}(z)dz}
+\end{equation}
+
+\begin{equation}
+\label{eqn:R_PL}
+  \rho_{tail}[\AECS](\lambda)\sim\rho_{tail}[\XECS](\lambda)\sim\lambda^{-\alpha}.
+\end{equation}
+
+% File: ./550_matgen_r_transforms.tex
+
+$R(z)$
+
+$\GN$
+
+$R(x)$
+
+$\rho(\lambda)$
+
+$G(z)$
+
+$C(z)=-G(z)$
+
+$G(z)$
+
+$\rho(\lambda)$
+
+$\mathrm{IM}$
+
+$G(z)$
+
+$\lim_{\epsilon\rightarrow 0+}$
+
+$R(z)$
+
+$B(z)$
+
+$B(z)$
+
+$G(z)$
+
+$\mathbf{H}_{0}$
+
+$\lambda^{0}_{i}$
+
+$\lambda^{0}_{i}$
+
+$\mathbf{H}_{1}$
+
+$\mathbf{H}_{0}$
+
+$\mathbf{H}=\mathbf{H}_{0}+\mathbf{H}_{1}$
+
+$\mathbf{H}$
+
+$\sigma$
+
+$\lambda=\lambda^{0}+\sigma$
+
+$\mathbf{H}$
+
+$\mathbf{H}_{0}$
+
+$\mathbf{H}_{1}$
+
+$\mathbf{H}$
+
+$R(z)=R_{0}(z)+R_{1}(z)$
+
+$R(z)$
+
+$\Sigma(z)$
+
+$R(z)$
+
+$\rho(\lambda)$
+
+$\rho(\lambda)$
+
+$R(z)$
+
+$R(z)=R(z)_{tail}+R(z)_{bulk}$
+
+$R(z)\approx R(z)_{tail}$
+
+$R(z)$
+
+$\int dz R(z)$
+
+$R(z)$
+
+$G(\lambda)$
+
+$R(x)$
+
+$G(z)$
+
+$\alpha=2,3,4$
+
+$R(z)$
+
+$G(\lambda)$
+
+$R(z)$
+
+$\sum_{i}\lambda_{i}$
+
+$\dfrac{\epsilon\phi z^2}{2 - \epsilon\phi^2 z^2}$
+
+$\dfrac{\kappa-\sqrt{\kappa(\kappa-2z)}}{z}$
+
+$\sigma$
+
+$(\alpha_{l}\ne 1)$
+
+$a+bz^{\alpha_{l}-1}$
+
+$\alpha_{l}=2, \beta=0$
+
+$\alpha=2$
+
+$a - i\gamma$
+
+$\kappa=\frac{1}{2}(Q-1)$
+
+$q=\frac{1}{Q}=\frac{M}{N}\le 1$
+
+$\epsilon$
+
+$\phi$
+
+$R(z)$
+
+$a$
+
+$b$
+
+$\alpha_{l}$
+
+$\beta$
+
+$\gamma$
+
+$\alpha_{l}\in (0,2)$
+
+$\alpha_{l}\sim\alpha/2-2$
+
+$\sigma$
+
+$R(z)$
+
+$\lambda_{spike}\ge \lambda^{+}_{bulk}$
+
+$\lambda^{+}_{bulk}$
+
+$\QT$
+
+$M^{tail}$
+
+$\MECS$
+
+$\MECS$
+
+$G(z)$
+
+$\tfrac{1}{\MECS}$
+
+$1/\MECS$
+
+$i$
+
+$\frac{1}{z-\lambda_{i}}$
+
+$B(z)=\lambda_{i}+\frac{1}{z}$
+
+$R(z)$
+
+$i$
+
+$\GN$
+
+$\Q=\sqrt{\QT}$
+
+$\kappa$
+
+$\alpha$
+
+$\mathbf{X}^{-1}$
+
+$\mathbf{X}$
+
+$\alpha\le 4$
+
+$\kappa$
+
+$\epsilon,\phi$
+
+$\mathbf{X}$
+
+$\GN$
+
+$R(z)$
+
+$|z|=0$
+
+$\kappa$
+
+$\sqrt{\kappa^{2}}$
+
+$\GN$
+
+$\GN)$
+
+$\rho_{tail}(\lambda)$
+
+$\kappa=0.25$
+
+$\kappa=1.25$
+
+$\kappa=0.25$
+
+$\kappa=1.25$
+
+$\kappa=0.25$
+
+$\alpha=1.91$
+
+$\kappa=1.25$
+
+$\alpha=2.92$
+
+$\alpha$
+
+$\kappa$
+
+$\kappa$
+
+$\alpha$
+
+$\QT$
+
+$\alpha\approx 2$
+
+$\mathbf{X}$
+
+$\alpha$
+
+$\alpha$
+
+$a$
+
+$b$
+
+$\beta$
+
+$\gamma$
+
+$\rho_{LW}(\lambda)$
+
+$\rho_{LW}(\lambda)$
+
+$\rho_{LW}(\lambda)\sim\lambda^{-\alpha'-1}$
+
+$\alpha`\approx 1$
+
+$\alpha\approx 2$
+
+$b$
+
+$\alpha\approx 2$
+
+$R(z)[HT]\approx R(z)[LW]$
+
+$b=a-i\gamma$
+
+$\alpha\approx 4$
+
+$R(z)[HT]\approx R(z)[LW]=z$
+
+$(R(z)=z)$
+
+$\alpha \ge 4$
+
+$Q=1$
+
+$R(z)[HT]$
+
+$2b=\alpha$
+
+$\QT$
+
+$\alpha=2$
+
+$\QT$
+
+$\alpha=4$
+
+$\QT$
+
+$\GN[HT] $
+
+$\QT$
+
+$\GN$
+
+$\lambda=\lambda_{max}$
+
+$\GN$
+
+$\lambda\rightarrow\tfrac{\lambda}{\MECS}$
+
+$\lambda_{max}<1$
+
+$\log\lambda_{max}<0$
+
+$\log \QT$
+
+$\ALPHAHATEQN=\ALPHAHATLONG$
+
+$2$
+
+$\alpha\rightarrow 2+$
+
+$\lambda_{max}/N$
+
+$\ALPHAHATEQN$
+
+$\alpha\approx 2$
+
+$R(z)$
+
+$R(z)$
+
+$R(z)$
+
+\begin{align}
+\label{eqn:spikes_model_3} 
+\GN = 
+\int_{\lambda_{min}}^{\lambda}
+\dfrac{1}{\MECS}
+\sum_{i}\lambda_{i} dz=
+\GN = \dfrac{1}{\MECS}\sum_{i}\lambda_{i} \int_{0}^{\lambda} 1 dz \\ \nonumber
+= \dfrac{1}{\MECS}\left(\sum_{i}\lambda_{i}\right)\left(\sum_{i}\lambda_{i}\right)
+\end{align}
+
+\begin{equation}
+\label{eqn:rgo}
+\rho(\lambda):=\frac{1}{N}\sum_{i}\delta(\lambda-\lambda_{i})
+\end{equation}
+
+\begin{equation}
+\label{eqn:Gz}
+G(z):=\int \mathrm{d}\lambda \frac{\rho(\lambda)}{z-\lambda}
+\end{equation}
+
+\begin{equation}
+\label{eqn:GzInverse}
+\rho(\lambda)=\lim_{\epsilon\rightarrow 0+}\frac{1}{\pi}\mathrm{IM}(C(\lambda+i\epsilon))
+\end{equation}
+
+\begin{equation}
+\label{eqn:Rz}
+R(z):=B(z)-\frac{1}{z}
+\end{equation}
+
+\begin{equation}
+\label{eqn:GzRelation}
+B[G(z)]=z
+\end{equation}
+
+\begin{equation}
+\label{eqn:spikes_model_0}
+\rho_{tail}(\lambda)=\frac{1}{\MECS}\sum_{i=1}^{\MECS}\delta(\lambda-\lambda_{i})
+\end{equation}
+
+\begin{equation}
+\label{eqn:spikes_model_1}
+G(z) = \int dz \dfrac{ \rho_{tail}(\lambda) }{z - \lambda} =
+\dfrac{1}{\MECS}\sum_{i} \int dz \dfrac{\delta(\lambda-\lambda_{i}) }{z - \lambda} =
+\dfrac{1}{\MECS}\sum_{i} \dfrac{1}{z-\lambda_{i}}
+\end{equation}
+
+\begin{equation}
+\label{eqn:spikes_model_2}
+R(z) =\dfrac{1}{\MECS}\sum_{i}\left(\lambda_{i}+ \dfrac{1}{z}\right) - \dfrac{1}{z}=
+\dfrac{1}{\MECS}\sum_{i}\lambda_{i}
+\end{equation}
+
+\begin{equation}
+\label{eqn:spikes_model_4} 
+\QT =\left(\dfrac{1}{\MECS}\sum_{i}\lambda_{i}\right)^{2}
+\end{equation}
+
+\begin{equation}
+\label{eqn:IW_model_0} 
+R(z)[IW] := \dfrac{\kappa -\sqrt{\kappa(\kappa-2z)}}{z}\Big|_{z=0} \approx 1 + \dfrac{1}{\kappa} + \dfrac{z^2}{2\kappa} + \dfrac{7z^4}{8\kappa^3} + \cdots
+\end{equation}
+
+\begin{equation}
+\label{eqn:IW_model_1} 
+\GN[IW] = \int_{0}^{\lambda^{max}} R(z)[IW] dz
+\end{equation}
+
+\begin{equation}
+\label{eqn:LW_model_0} 
+R(z)[HT] = bz^{\alpha/2-1},\;\alpha\in[2,4]
+\end{equation}
+
+\begin{equation}
+\label{eqn:LW_model_0} 
+\GN[HT] = \tfrac{2b}{\alpha} \lambda^{\alpha/2}
+\end{equation}
+
+\begin{equation}
+  \label{eqn:LW_model_1}
+  \QT = \tfrac{1}{\MECS}\sum_{i}\lambda^{\alpha/2}
+\end{equation}
+
+\begin{equation}
+\label{eqn:LW_model_2} 
+\log \GN[HT] =  \log\tfrac{2b}{\alpha} +\tfrac{\alpha}{2}\log\lambda
+\end{equation}
+
+\begin{equation}
+\label{eqn:LW_model_3} 
+\log \QT \approx   \log\tfrac{2b}{\alpha} +\tfrac{\alpha}{2}\log\lambda_{max}
+\end{equation}
+
+% File: ./560_matgen_computatonal_rmt.tex
+
+$R(z)$
+
+$z$
+
+$\kappa_{k}$
+
+$m_{k}$
+
+$\LambdaECS_{k}$
+
+$\mathbf\XECS$
+
+$\QT$
+
+$\GN$
+
+$\GN$
+
+$\tfrac{1}{\MECS}$
+
+$\tfrac{1}{\MECS}$
+
+$\XECS$
+
+\begin{align}
+  \label{eqn:kappa_defn_2}
+  k_1 = m_1 \\ \nonumber
+  k_2 = m_2 - m_1^2 \\ \nonumber
+  k_3 = m_3 - 3 m_2 m_1 + 2 m_1^3 \\ \nonumber
+  k_4 = m_4 - 4 m_3 m_1 - 2 m_2^2 + 10 m_2 m_1^2 - 5 m_1^4 \\ \nonumber 
+  k_5 = m_5 - 5 m_4 m_1 + 15 m_3 m_1^2 + 15 m_2^2 m_1 - 35 m_2 m_1^3 - 5 m_3 m_2 + 14 m_1^5
+\end{align}
+
+\begin{align}
+  \label{eqn:G_lambda_series}
+\GNECS=\kappa_{1}\frac{\LambdaECS}{\MECS}+\frac{\kappa_{2}}{2}\left(\dfrac{\LambdaECS}{\MECS}\right)^{2}+\cdots
+\end{align}
+
+\begin{equation}
+  \label{eqn:Rz_expansion}
+  R(z) := \kappa_1 + \kappa_2 z + \kappa_3 z^2 + \ldots 
+\end{equation}
+
+\begin{equation}
+  \label{eqn:mk_defn}
+  m_{k}:=\Trace{(\XECS)^{k}}=\sum_{i=1}^{\MECS}(\LambdaECS)^{k}
+\end{equation}
+
+\begin{equation}
+  \label{eqn:kappa_defn}
+  \kappa_k := m_k - \sum_{\text{partitions of } n} \prod_{\text{blocks } B} m_{|B|} 
+\end{equation}
+
+$\mathbf{W}$
+
+$\mathbf{X}=\mathbf{W}^{T}\mathbf{W}$
+
+$\mathcal{D}$
+
+$\alpha$
+
+$\det\XECS$
+
+$\lambda_{*}$
+
+$d\mu(\mathbf{S})$
+
+$d\mu(\mathbf{S})\rightarrow d\mu(\AECS)$
+
+$\det\AECS$
+
+$\alpha\simeq 2$
+
+$\XECS=\frac{1}{N}\mathbf{T}\mathbf{T}^T$
+
+% File: ./600_empirical.tex
+
+$\%$
+
+$768 \times 300 = 230,700$
+
+$88.2\%$
+
+$300 \times 100 = 30,000$
+
+$11.4\%$
+
+$10 \times 100 = 1000$
+
+$0.38\%$
+
+$\alpha$
+
+$(\hat{\alpha})$
+
+$\alpha$
+
+$\alpha$
+
+$\alpha$
+
+$2$
+
+$3$
+
+$4$
+
+$\alpha=2$
+
+$\mathbf{W}^{\EFF}$
+
+$\mathbf{W}$
+
+$\mathbf{T}$
+
+$\mathbf{W}^{\EFF}$
+
+$\rho_{tail}(\lambda)$
+
+$\alpha\simeq 2$
+
+$\mathbf{W}$
+
+$\alpha$
+
+$\alpha \gtrsim 2$
+
+$5$
+
+$5$
+
+$\Delta E_{train}=0.0001$
+
+$3$
+
+$\mathbf{W}$
+
+$\mathbf{W}^{\EFF}$
+
+$\mathbf{W}$
+
+% File: ./610_empirical_htsr.tex
+
+$bs=1$
+
+$lr=32\times$
+
+$0.01$
+
+$\times$
+
+$bs\in[1,2,4,8,16,32]$
+
+$[1\times,2\times,4\times,8\times,16\times,32\times]$
+
+$0.01$
+
+$\alpha$
+
+$2$
+
+$4$
+
+$1$
+
+$5$
+
+$bs$
+
+$bs \ge 2$
+
+$bs=2$
+
+$lr$
+
+$x$
+
+$1/x$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$\alpha$
+
+$32\times$
+
+$\alpha_{FC1}$
+
+$2$
+
+$lr=16\times$
+
+$bs=2$
+
+$lr=32\times$
+
+$bs=1$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$16\times$
+
+$\alpha\simeq 2$
+
+$2$
+
+$\alpha_{FC1}$
+
+$2$
+
+$0$
+
+$\alpha_{FC2}$
+
+$2$
+
+$lr=32\times$
+
+$\alpha_{FC2} \approx 2$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$16\times$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$\alpha$
+
+$1$
+
+$\alpha_{FC1}$
+
+$2$
+
+% File: ./620_empirical_testing_ecs.tex
+
+$\boldsymbol{\xi}$
+
+$\mathbf{W}\rightarrow\mathbf{W}^{\EFF}$
+
+$\rho_{tail}(\lambda)$
+
+$\rho_{tail}(\lambda)$
+
+$\lambda_{min}$
+
+$\lambda_{min}$
+
+$\mathbf{W}^{\EFF}$
+
+$\lambda_{min}$
+
+$\mathbf{W}_{FC1}$
+
+$\mathbf{W}_{FC2}$
+
+$P_{tail}$
+
+$\mathbf{W}_*$
+
+$\mathbf{W}^{\EFF}_*$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$E^{\EFF}_{train}$
+
+$\mathcal{D}$
+
+$E^{\EFF}_{test}$
+
+$\Delta E_{train}\to 0$
+
+$\Delta E_{test}\to 0$
+
+$\lambda_i \ge \LAMBDAPL$
+
+$\LAMBDAPL$
+
+$\lambda_{i}\ge \LAMBDADETX$
+
+$\prod\lambda_{i:\lambda_i \ge \LAMBDADETX}\simeq 1$
+
+$W$
+
+$M$
+
+$lr=1\times$
+
+$lr=2\times$
+
+$lr=4\times$
+
+$lr=8\times$
+
+$lr=16\times$
+
+$lr=32\times$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\Delta E_{train}$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$lr=16\times$
+
+$\Delta E_{train}$
+
+$. A lower $
+
+$ or $
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\lambda_{min}$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$lr=1\times$
+
+$lr=2\times$
+
+$lr=4\times$
+
+$lr=8\times$
+
+$lr=16\times$
+
+$lr=32\times$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\Delta E_{test}$
+
+$0$
+
+$\Delta E_{train}$
+
+$0.002$
+
+$0.0025$
+
+$32\times$
+
+$\Delta E_{train}$
+
+$10\times$
+
+$\lambda_{min}$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\lambda_{min}$
+
+$\Delta E_{test}$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\Delta E_{train}$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$E_{test} - E_{train}$
+
+$2$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\ALPHA$
+
+$2$
+
+$\alpha_{FC1} < 2$
+
+$\Delta E_{train}$
+
+$\Delta E_{test}$
+
+$\alpha_{FC1}$
+
+$2$
+
+$\alpha_{FC1}$
+
+$2$
+
+$2$
+
+% File: ./630_empirical_eval_trace_log.tex
+
+$\LAMBDAPL$
+
+$\rho(\lambda)_{tail}\sim\lambda^{-\alpha}$
+
+$\alpha\simeq2$
+
+$\lambda\ge\LAMBDAPL$
+
+$\LAMBDADETX$
+
+$\alpha$
+
+$2$
+
+$\LAMBDAPL$
+
+$\LAMBDADETX$
+
+$\Delta \lambda_{min}$
+
+$0$
+
+$\Delta \lambda_{min}$
+
+$\alpha$
+
+$2$
+
+$\LAMBDAPL$
+
+$\LAMBDADETX$
+
+$\LAMBDAPL$
+
+$\LAMBDADETX$
+
+$\Delta \lambda_{min}$
+
+$lr=32\times$
+
+$lr=16\times$
+
+$lr=32\times$
+
+$2$
+
+$\LAMBDAPL < \LAMBDADETX$
+
+$\alpha$
+
+$2$
+
+$\alpha\simeq2$
+
+$LR=8\times$
+
+$LR=16\times$
+
+$LR=32\times$
+
+$\LAMBDAPL$
+
+$\LAMBDADETX$
+
+$32\times$
+
+$\alpha < 2$
+
+$\alpha$
+
+$\Delta \lambda_{min}$
+
+$\Delta \lambda_{min}$
+
+$\alpha$
+
+$\alpha=2$
+
+$\Delta \lambda_{min} = 0$
+
+$(\alpha, \Delta\lambda_{min}) = (2, 0)$
+
+$\alpha=2$
+
+$\LAMBDAPL < \LAMBDADETX$
+
+$8/9$
+
+$1/9$
+
+$(2, 0)$
+
+$\alpha$
+
+$\alpha=2$
+
+$\alpha$
+
+$\Delta \lambda_{min}$
+
+$\LAMBDAPL$
+
+$\LAMBDADETX$
+
+$\alpha=2$
+
+$\Delta \lambda_{min} = 0$
+
+$\alpha$
+
+$2$
+
+$\Delta \lambda_{min}$
+
+$0$
+
+$\alpha$
+
+$2$
+
+$\Delta\lambda_{min}$
+
+$0$
+
+$\lambda_{min}$
+
+$\Delta\lambda_{min}$
+
+$\alpha$
+
+$\Delta \lambda_{min}$
+
+$0$
+
+$\alpha$
+
+$2$
+
+$\Delta \lambda_{min}$
+
+$2$
+
+$\alpha > 2.5$
+
+$\Delta \lambda_{min}$
+
+$6$
+
+$\alpha > 3.5$
+
+$\alpha$
+
+$2$
+
+$\Delta \lambda_{min}$
+
+$0$
+
+$\Delta\lambda_{min}$
+
+$(2, 0)$
+
+$\alpha$
+
+$\Delta \lambda_{min}$
+
+$\Delta\lambda_{min}$
+
+$\alpha < 2$
+
+$\Delta\lambda_{min}$
+
+$0$
+
+$\alpha$
+
+$\Delta\lambda_{min}$
+
+$\alpha$
+
+$\LAMBDAPL$
+
+$\LAMBDADETX$
+
+$64\times 64\times 3\times 3$
+
+$9$
+
+$64\times 64$
+
+$576$
+
+$\alpha$
+
+$\LAMBDAPL$
+
+$\LAMBDADETX$
+
+$\Delta\lambda_{min}$
+
+$\alpha\rightarrow 2$
+
+$\Delta\lambda_{min}$
+
+$\alpha$
+
+$2$
+
+$\Delta\lambda_{min}$
+
+$\alpha$
+
+$2$
+
+$\alpha$
+
+$2$
+
+$\alpha$
+
+$\Delta\lambda_{min}$
+
+$(2, 0)$
+
+$\lambda_{min}$
+
+$\Delta\lambda_{min} = \LAMBDAPL - \LAMBDADETX$
+
+$\alpha$
+
+$\Delta\lambda_{min}$
+
+$\alpha < 2$
+
+$(2, 0)$
+
+$\Delta\lambda_{min}$
+
+$\alpha$
+
+$(2, 0)$
+
+$\alpha=2$
+
+$\Delta=0$
+
+\begin{align}
+        \label{eqn:D_lambda_min}
+        \Delta \lambda_{min} = \LAMBDAPL - \LAMBDADETX  .
+\end{align}
+
+% File: ./640_empirical_model_quality.tex
+
+% File: ./650_empirical_corr_trap.tex
+
+$16\times$
+
+$32\times$
+
+$lr=16\times$
+
+$lr=32\times$
+
+$\mathbf{W}$
+
+$\mbox{rand}(\mathbf{W})$
+
+$0$
+
+$2$
+
+$lr=16\times$
+
+$lr=32\times$
+
+$\mathbf{W}^T\mathbf{W}$
+
+$\mathbf{W}^T\mathbf{W}$
+
+$\lambda^{max}_{rand}$
+
+$\mbox{rand}(\mathbf{W}^T\mathbf{W})$
+
+$\lambda^{max}_{rand}$
+
+$lr=16\times$
+
+$\mathbf{W}^T\mathbf{W}$
+
+$\lambda^{max}_{rand}$
+
+$lr=32\times$
+
+$\lambda^{max}_{rand}$
+
+$\alpha\simeq 2$
+
+% File: ./660_empirical_overloading.tex
+
+$\alpha$
+
+$\alpha \gtrsim 2$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$2$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$\alpha = 2$
+
+$\alpha > 2$
+
+$> 0.001$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$2$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$0.05$
+
+$5$
+
+$\alpha=2$
+
+$\alpha$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC2}$
+
+$32\times$
+
+$\alpha_{FC1}$
+
+$2$
+
+$\simeq 0$
+
+$\simeq 0$
+
+$\alpha_{FC1}$
+
+$2$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC1} = 2$
+
+$\alpha_{FC1} > 2$
+
+$\alpha_{FC1}$
+
+$2$
+
+$\sim 0$
+
+$\alpha_{FC1} < 2$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC1}$
+
+$2$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC1} > 2$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC1} < 2$
+
+$\alpha_{FC1}$
+
+$\alpha_{FC1} < 2$
+
+$\simeq 0$
+
+$\alpha_{FC1} \simeq 1.7$
+
+$\alpha = 2$
+
+$\alpha_{FC2}$
+
+$lr=16\times$
+
+$lr=32\times$
+
+$\alpha_{FC2} = 1.5$
+
+$60,000$
+
+$\alpha_{FC2}$
+
+$\alpha_{FC2}$
+
+$\alpha_{FC2}$
+
+$2$
+
+$\alpha_{FC2}$
+
+$16\times$
+
+$32\times$
+
+$\alpha_{FC2}$
+
+$1.5$
+
+$0.03$
+
+$\alpha_{FC2}$
+
+$\alpha_{FC2}$
+
+$2$
+
+$\alpha_{FC2}$
+
+$\alpha_{FC2}$
+
+$2$
+
+% File: ./700_discussion.tex
+
+$\rho_{tail}(\lambda)$
+
+$\mathbf{W}$
+
+$\lambda$
+
+$\mathbf{X}=\tfrac{1}{N}\mathbf{W}^{T}\mathbf{W}$
+
+$\rho_{tail}(\lambda)\sim\lambda^{-\alpha}$
+
+$\alpha$
+
+$(\alpha)$
+
+$(\ALPHAHATLONG)$
+
+$\mathbf{Q}$
+
+$\mathbf{Q}\sim F_{an}$
+
+$\alpha$
+
+$\mathbf{Q}$
+
+$log_{10}\Vert\mathbf{X}\Vert_{\alpha}^{\alpha}=log_{10}\sum\lambda^{\alpha}$
+
+$(\ALPHAHATEQN=\ALPHAHATLONG)$
+
+$\mathbf{W}$
+
+$\mathbf{W}^{\EFF}$
+
+$\sum\lambda=1$
+
+$Tr\log\mathbf{X}^{\EFF}=\log\det\mathbf{X}^{\EFF}=0$
+
+$\mathbf{X}^{\EFF}\sim\mathbf{W}^{T}\mathbf{W}$
+
+$\alpha$
+
+$2$
+
+$\alpha\simeq 2$
+
+$\alpha$
+
+$2$
+
+$\alpha > 2$
+
+$\alpha$
+
+$\alpha$
+
+$\alpha$
+
+% File: ./appendix.tex
+
+% File: ./A1_tables.tex
+
+$L$
+
+$N_{L}$
+
+$\mu$
+
+$\ND=N_{D}$
+
+$i,j$
+
+$N_{f}$
+
+$D$
+
+$N_{f}\times N_{D}$
+
+$\mathcal{D}$
+
+$N_{f}\times N$
+
+$\TVEC$
+
+$m$
+
+$\SVEC$
+
+$n$
+
+$\DATA$
+
+$N_{f}\times 1$
+
+$\boldsymbol{{\xi}}_{\mu}$
+
+$N_{f}\times 1$
+
+$\MY_{\mu}$
+
+$+1|-1$
+
+$y_{\mu}$
+
+$+1|-1$
+
+$\mathbf{W}$
+
+$N\times M$
+
+$\mathbf{X}=\frac{1}{N}\mathbf{W}^{T}\mathbf{W}$
+
+$M\times M$
+
+$\mathbf{W}_{1}$
+
+$N \times M$
+
+$\mathbf{W}_{2}$
+
+$N\times M$
+
+$\mathbf{W}_{3}$
+
+$M\times 2$
+
+$\mathbf{T}$
+
+$N\times M$
+
+$\mathbf{S}$
+
+$N\times M$
+
+$\OVERLAP=\mathbf{S}^T\mathbf{T}$
+
+$M\times M$
+
+$\mathbf{A}_{1}=\tfrac{1}{N}\mathbf{S}^{T}\mathbf{S}$
+
+$M\times M$
+
+$\mathbf{A}_{2}=\tfrac{1}{N}\mathbf{S}\mathbf{S}^{T}$
+
+$N\times N$
+
+$\AECS_{1}$
+
+$\MECS\times \MECS$
+
+$\AECS_{2}$
+
+$N \times N$
+
+$\XECS$
+
+$\MECS\times \MECS $
+
+$R=\SVEC^{T}\TVEC=\sum_{i}s_{i}t_{i}$
+
+$\OVERLAP=\mathbf{S}^{\top}\mathbf{T}$
+
+$\tfrac{1}{N^2}\OLAPSQD=\tfrac{1}{N^2}\Trace{\mathbf{RR}^{\top}}$
+
+$\eta(\boldsymbol{\xi})=\mathbf{y}^{\top}_{T}\mathbf{y}_{S}$
+
+$\DETSTLL$
+
+$\DETOPSTLL:=\sum_{\XI}\DETSTLL$
+
+$\DETOPST:=\mathbb{I}-\tfrac{1}{N}\SMAT^{\top}\TMAT$
+
+$\epsilon(R)=\epsilon(S,T)=\langle\DETOPSTLL\rangle_{\NDXI}$
+
+$\epsilon(R)=1-R$
+
+$\langle\ln\cdots\rangle_{\XI}=\ln\langle\cdots\rangle_{\XI}$
+
+$\GAN$
+
+$\GANHT=\beta\EPSL(\WVEC)$
+
+$Z^{an}_{n}=\THRMAVGw{n\GAN}$
+
+$\ZANHT=\THRMAVGw{n\EPSLSTw}$
+
+$\MTE=\THRMAVG{\epsilon(R)}$
+
+$\MGE=\THRMAVG{\epsilon(R)}$
+
+$\QT=\THRMAVGIZ{\OLAPSQD}$
+
+$\Q=\sqrt{\QT}$
+
+$\langle\cdots\rangle_{A}=\int\cdots d\mu(\mathbf{A})=\mathbb{E}_{\mathbf{A}}[\cdots]$
+
+$\mathbf{P}_{ecs} := \sum |\lambda_{i}\rangle\langle\lambda_{i}|,\;i=1\cdots\MECS$
+
+$\langle \cdots \rangle^{\beta}_{\AECS}:=\int \cdots d\mu(\AECS)$
+
+$\Trace{\log\mathbf{A}}=\log\det\mathbf{A}$
+
+$\Trace{\log\mathbf{A}}=0$
+
+$\det\mathbf{A}=1$
+
+$d\mu(\mathbf{S})\rightarrow d\mu(\AECS)$
+
+$\mathbf{A}$
+
+$\frac{1}{N}\ln\red{\mathbb{E}_{\AECS}}[\exp(N\beta\Trace{\tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT)}$
+
+$\frac{1}{N}\ln\red{\mathbb{E}_{\AECS}}[\exp(\beta\Trace{\TMAT^{\top}\AECS_{2}\TMAT)}$
+
+$G_{A}(\gamma)=\int_{0}^{\lambda}R_{A}(z)dz$
+
+$\mathbf{X}=\tfrac{1}{N}\mathbf{W}^{\top}\mathbf{W}$
+
+$\lambda$
+
+$\lambda_{i}$
+
+$i=1\cdots M$
+
+$\mathbf{X}$
+
+$\rho_{tail}(\lambda)\sim\lambda^{-\alpha}$
+
+$\mathbf{X}$
+
+$\rho_{ecs}(\lambda),\;\Trace{\ln[\prod_{j}\lambda_{j}]}=0$
+
+$\Vert\mathbf{X}\Vert^{\alpha}_{\alpha}=\sum_{j}\lambda_{j}^{\alpha}$
+
+$\tfrac{1}{M_{t}}\sum_{i}^{M_t}\lambda_{i},\;\;\lambda_{i}\in\rho_{tail}(\lambda)$
+
+$\Vert\mathbf{X}\Vert_{\infty}=\lambda_{max}$
+
+$\lambda^{PL}_{min}=\lambda_{min}$
+
+$\lambda^{ECS}_{min}=\lambda^{|detX|=1}_{min}$
+
+$\Delta\lambda_{min}:=\lambda^{ECS}_{min}-\lambda^{|detX|=1}_{min}$
+
+$\alpha$
+
+$\hat{\alpha}=\alpha\log_{10}(\lambda_{max})$
+
+$E$
+
+$\Delta E$
+
+$\mathbf{\Delta \hat{E}}$
+
+$y$
+
+$\Delta E:=y-E_S $
+
+$N$
+
+$\mathbf{\Delta \hat{E}}=\sum \Delta E$
+
+$\mathbf{\Delta \hat{E}}:=\sum E_S - E_T$
+
+$G^{an}$
+
+$\EPSL(R)$
+
+$G^{an}:=-\tfrac{1}{N}\ln\langle e^{-\beta\mathbf{\Delta \hat{E}}}\rangle_{\XI}$
+
+$\mathcal{E}(R), \EPSL(R)$
+
+$G^{an}$
+
+$\EPSL(R)$
+
+$G^{an}_{hT}=\beta\EPSL(R)$
+
+$\Delta E$
+
+$\newline \EPSL(R)=\tfrac{1}{N}\mathcal{E}(R)=\tfrac{1}{N}\langle \mathbf{\Delta \hat{E}}\rangle_{\XI}$
+
+$\AVGE$
+
+$\AVGEMPTE$
+
+$\AVGE^{T}\approx\AVGEMPGE$
+
+$\AVGE^{emp}_{gap}:=\AVGEMPTE-\AVGEMPGE$
+
+$\AVGSTTE$
+
+$\AVGSTGE$
+
+$\AVGNNTE$
+
+$\AVGNNGE$
+
+$\AVGTE, \AVGGE$
+
+$\EPSL(R)$
+
+$\newline \AVGTE^{an,hT}=\AVGGE^{an,hT}=\THRMAVG{\EPSL(R)}$
+
+$\AVGSTGE=\AVGGE^{an,hT}$
+
+$\AVGSTGE$
+
+$\AVGSTGE\rightarrow\AVGNNGE=\AVGGE^{an,hT}$
+
+$\Q$
+
+$\QT$
+
+$\Q$
+
+$\Q:= 1-\AVGSTGE = 1-\THRMAVG{\EPSL(R)}$
+
+$1-\THRMAVG{\EPSL(R)}=R$
+
+$\Q:= 1-\AVGGE^{an,ht} = R$
+
+$\Q_{L}=\Q$
+
+$\Q^{NN}:=\prod \Q$
+
+$\Q$
+
+$\Q:=\THRMAVGIZ{\OVERLAP}\approx\sqrt{\QT}$
+
+$\Q$
+
+$\QT:=\THRMAVGIZ{\OLAPSQD}$
+
+% File: ./A2_sst_summary.tex
+
+$\AVGNNGE$
+
+$\AVGSTGE$
+
+$\GAN$
+
+$\GAN$
+
+$N$
+
+$N$
+
+$\AVGSTGE$
+
+$\GAN$
+
+$\AVGSTGE$
+
+$\GAN$
+
+$\AVGSTGE$
+
+$\epsilon = \epsilon(R)$
+
+$\GAN$
+
+$\EPSL(R)$
+
+$d\mu(\NDXI):=\prod_{i=1}^{N}d\XI_{i} P(\NDXI)$
+
+$\DETOPSTLL$
+
+$\mathcal{L}=l2$
+
+$(\ln)$
+
+$\langle\cdots\rangle_{\NDXI}$
+
+$\GAN$
+
+$Z^{an}_{\ND}$
+
+$\GAN$
+
+$N$
+
+$n$
+
+$\GAN$
+
+$\GAN$
+
+$\beta$
+
+$\AVGSTTE$
+
+$\GAN$
+
+$\langle  \mathbf{E}_{l2}(\SVEC,\TVEC,\XI) \rangle_{\XItrain}$
+
+$\XItrain$
+
+$\AVGSTGE$
+
+$\epsilon(R)$
+
+$\GAN(\beta,S;T)$
+
+$\epsilon(R)=\epsilon(\SVEC)$
+
+$train$
+
+$\XI$
+
+$\beta$
+
+$\AVGSTTE\rightarrow\AVGSTGE$
+
+$T\rightarrow\infty$
+
+$\GAN$
+
+$L2$
+
+$N$
+
+$R$
+
+$\langle  \mathbf{E}_{l2}(\SVEC,\TVEC,\XI \rangle_{\NDXI}$
+
+$\GAN$
+
+$\dfrac{\partial \GAN}{\partial \beta}$
+
+$\beta$
+
+$(\ln[1+x]\simeq x+\cdots)$
+
+$\GANHT$
+
+$\GAN$
+
+$\epsilon(R)$
+
+$\GAN$
+
+$S$
+
+$T$
+
+$R:=\SVEC^{\top}\TVEC$
+
+$\GAN$
+
+$\GAN$
+
+$N \times M$
+
+$\WMAT$
+
+$N$
+
+$M=1$
+
+$\GAN$
+
+$N$
+
+$\XI$
+
+$0$
+
+$\sigma^{2}$
+
+$\XI_{\mu}$
+
+$M$
+
+$\mathbb{I}$
+
+$M \times M$
+
+$\sigma^{2}\sim\tfrac{1}{M}$
+
+$1.0$
+
+$\mathbb{E}[\Vert \XI_{\mu} \Vert^2]=1$
+
+$N$
+
+$M=N_f$
+
+$\XINORM$
+
+$d\mu(\NDXI)$
+
+$I_G$
+
+$N$
+
+$\ln I_G$
+
+$N$
+
+$\GAN$
+
+$\XI$
+
+$N$
+
+$\DETOPST$
+
+$\SMAT$
+
+$\mathbb{I}$
+
+$\XI$
+
+$\DETOPNN$
+
+$I_G$
+
+$\mathbf{M}=2\beta\sigma^{2}(\mathbb{I} - \tfrac{1}{N}\SMAT^{\top}\TMAT)+\mathbb{I}$
+
+$M \times M$
+
+$\mathbf{x}$
+
+$m$
+
+$\mathbf{M}$
+
+$|\det \mathbf{M}|$
+
+$\mathbf{M}$
+
+$I$
+
+$\XINORM$
+
+$\sigma^{2}=\tfrac{1}{M}$
+
+$N$
+
+$|\det \mathbf{M}|$
+
+$N$
+
+$\GANHT$
+
+$M=1$
+
+$\WMAT$
+
+$\SMAT$
+
+$\TMAT$
+
+$\lambda$
+
+$\XMAT$
+
+$\AMAT$
+
+$M$
+
+$\tfrac{1}{M}$
+
+$I$
+
+$I_G$
+
+$I$
+
+$\IZG$
+
+$\XMAT$
+
+$\XECS$
+
+$M$
+
+$\tfrac{1}{N}\Trace{\mathbf{W}^{T}\mathbf{W}}=1$
+
+$\Trace{\mathbf{W}^{T}\mathbf{W}}=\sum_{i=1}^{M}=M$
+
+$\tfrac{1}{N}\Trace{\mathbf{W}^{T}\mathbf{W}}=M$
+
+$N$
+
+$M$
+
+$N$
+
+$\beta$
+
+$M$
+
+\begin{align}
+\label{eqn:qaF}
+\langle-\beta F \rangle_{\NDXI} 
+   :=& \langle \ln Z \rangle_{\NDXI} \\ \nonumber
+   =& \left\langle \int d\mu(\SVEC)e^{-\beta\DETOPSTLL} \right\rangle_{\NDXI}  \\ \nonumber
+   =& \int d\mu(\NDXI)\ln\int d\mu(\SVEC)e^{-\beta\DETOPSTLL}   ,
+\end{align}
+
+\begin{align}
+\label{eqn:qaFan}
+\langle-\beta F \rangle_{\NDXI} \simeq \ln \langle Z \rangle_{\NDXI} = \ln \int d\mu(\NDXI) \int d\mu(\SVEC) e^{-\beta\DETOPSTLL}  \\ \nonumber
+\end{align}
+
+\begin{align}
+\label{eqn:qaFan3}
+\langle-\beta F \rangle_{\NDXI} \simeq \ln \langle Z \rangle_{\NDXI} = \ln \int d\mu(\SVEC)\int d\mu(\NDXI)e^{-\beta\DETOPSTLL)}   \\ \nonumber
+\end{align}
+
+\begin{align}
+\label{eqn:Gan0}
+\GAN = \GAN(\beta,\SVEC,\TVEC):=-\frac{1}{N}\ln\int d\mu(\NDXI)e^{-\beta\DETOPSTLL}.
+\end{align}
+
+\begin{align}
+ \label{eqn:Zan}
+Z^{an}_{\ND}:=\ND\langle Z\rangle_{\NDXI}=\int d\mu(\SVEC)e^{-\ND\GAN(\beta,\SVEC.\TVEC)}  .
+\end{align}
+
+\begin{align}
+  \label{eqn:Ga1}
+\red{\Delta E(\SVEC,\TVEC)_{train}}:=\langle  \mathbf{E}_{l2}(\SVEC,\TVEC,\XI) \rangle_{\XItrain} 
+ =\dfrac{\partial \GAN}{\partial \beta}  .
+\end{align}
+
+\begin{align}
+  \label{eqn:EtM2}
+  \AVGSTTE
+   =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\dfrac{\partial \GAN}{\partial \beta} e^{-\ND\GAN(\beta,\SVEC,\TVEC)} \\ \nonumber
+   =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\langle  \mathbf{E}_{l2}(\SVEC,\TVEC,\XI) \rangle_{\XItrain} e^{-\ND\GAN(\beta,\SVEC,\TVEC)}  ,
+  \end{align}
+
+\begin{align}
+\label{eqn:EgCanonical}
+\AVGSTGE=\dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\epsilon(R)e^{-\ND\GAN(\beta,\SVEC,\TVEC)} ,
+\end{align}
+
+\begin{align}
+\label{eqn:Gan2}
+\GAN = \dfrac{1}{2}\ln\left[{1+2\beta(1-R)}\right]
+\end{align}
+
+\begin{align}
+\label{eqn:Gan3}
+\GANHT:=\beta(1-R),\;\;\;\;\beta\;\text{small},
+\end{align}
+
+\begin{align}
+\label{eqn:Gan4}
+\langle  \mathbf{E}_{l2}(\SVEC,\TVEC,\XI \rangle_{\NDXI} \simeq 1-R\;\;\text{as}\;N\rightarrow\infty  .
+\end{align}
+
+\begin{align}
+  \label{eqn:pndx_vec}
+  P(\NDXI) &= \prod_{\mu=1}^{N} \left( \frac{1}{\sqrt{(2 \pi \sigma^2)^M}} \right) e^{-\frac{\|\XI_{\mu}\|^2}{2 \sigma^2}} \\ \nonumber
+  &= \left( \frac{1}{\sqrt{(2 \pi \sigma^2)^M}} \right)^{N} \exp\left[-\frac{M}{2}\sum_{\mu=1}^{N}\|\XI_{\mu}\|^2\right] \\ \nonumber
+  &= \XINORM \exp\left[-\frac{M}{2}\sum_{\mu=1}^{N}\|\XI_{\mu}\|^2\right] ,
+\end{align}
+
+\begin{align}
+\label{eqn:xinorm}
+\XINORM 
+:=\left( \frac{1}{\sqrt{(2 \pi \sigma^2)^M}} \right)^{N}
+ =\left( \frac{M}{2\pi} \right)^{MN/2} .
+\end{align}
+
+\begin{align}
+  \label{eqn:Gan_lnI}
+  \GAN=-\frac{1}{N}\ln I_G ,
+\end{align}
+
+\begin{align}
+\label{eqn:InsideGan}
+I_G := \int\mathcal{D}\NDXI \, e^{-\beta \DETOPST} P(\NDXI) .
+\end{align}
+
+\begin{align}
+I_G := \int\mathcal{D}\NDXI  e^{-\beta \DETOPST} P(\NDXI)  \rightarrow\left[\int\mathcal{D}\XI \cdots \right]^{N} ,
+\end{align}
+
+\begin{align}
+-\ln I_{G} = -\ln\left[\int\mathcal{D}\XI \cdots \right]^{N}= -N\ln\left[\int\mathcal{D}\XI \cdots \right] .
+\end{align}
+
+\begin{align}
+ \label{eqn:DETOPST}
+\DETOPST  := \mathbb{I} - \frac{1}{N}\Trace{\SMAT^{\top}\TMAT}
+\end{align}
+
+\begin{align}
+ \label{eqn:DETOPNN}
+ \DETOPNN
+ :=& \sum_{\mu=1}^{N} (\XI^{\mu})^{\top} \left( \mathbf{I} - \frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \\ \nonumber
+  =&  \sum_{\mu=1}^{N} \sum_{i,j=1}^{M} \XI_i^{\mu} \left( \delta_{ij} - \frac{1}{N} [\SMAT^{\top}\TMAT]_{ij} \right) \XI_j^{\mu} 
+\end{align}
+
+\begin{align}
+    \label{eqn:I_1} 
+  I_G & = \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{N} (\XI^{\mu})^{\top} \left(\mathbf{I}-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) P(\NDXI))
+  \end{align}
+
+\begin{align}
+ \label{eqn:I_3} 
+  I_G
+  &= \int \mathcal{D}\NDXI \, \exp \left(
+    -\beta\sum_{\mu=1}^{N} (\XI^{\mu})^{\top} (\mathbb{I}-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
+    - \sum_{\mu=1}^{N} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right) \\ \nonumber
+ &= \int \mathcal{D}\NDXI \, \exp \left(
+    -\frac{1}{2\sigma^2}\sum_{\mu=1}^{N}2\beta\sigma^{2} (\XI^{\mu})^{\top} (\mathbb{I}-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
+    +  \Vert\XI^{\mu}\Vert^{2} \right) \\ \nonumber
+    &= \int \mathcal{D}\NDXI \, \exp \left(
+    -\frac{1}{2\sigma^2}      
+      \sum_{\mu=1}^{N}
+          (\XI^{\mu})^{\top}[
+      2\beta\sigma^{2} (\mathbb{I}-\tfrac{1}{N}\SMAT^{\top}\TMAT)+\mathbb{I}] (\XI^{\mu})\right) 
+\end{align}
+
+\begin{align}
+  \label{eqn:I_4} 
+  I_G
+  &=  \int \mathcal{D}\NDXI 
+  \exp\left[
+    -\frac{1}{2\sigma^2}\sum_{\mu=1}^{N}(\XI^{\mu})^{\top}
+    \left(\mathbf{M}
+    \right)
+    \XI^{\mu}
+    \right ]\\ \nonumber
+  &=  \int \mathcal{D}\XI  
+ \exp\left[
+    -\frac{1}{2\sigma^2}(\XI)^{\top}
+    \left(\mathbf{M}
+    \right)
+    \XI
+    \right]^{N} 
+\end{align}
+
+\begin{align}
+  \label{eqn:det_M}
+\int d\mathbf{x}  e^{-\frac{1}{2\sigma^{2}}(\mathbf{x})^{\top}\mathbf{M}(\mathbf{x}) } = (2\pi\sigma^{2})^{m/2}\frac{1}{\sqrt{|\det \mathbf{M}|}}
+\end{align}
+
+\begin{align}
+  \label{eqn:I_5}
+  I_G &=   \left[\frac{(2\pi\sigma^{2})^{M/2}}{\sqrt{|\det \mathbf{M}|}}\right]^{N} \\ \nonumber
+  &=   (2\pi\sigma^2)^{NM/2}\left[
+    \sqrt{|\det 2\beta\sigma^2(\mathbb{I}-\tfrac{1}{N}\SMAT^{\top}\TMAT)+\mathbb{I}|}\right]^{-N}
+\end{align}
+
+\begin{align}
+  \label{eqn:I_6}
+  I_G &=  
+  \left( \frac{1}{2\pi\sigma^{2}} \right)^{MN/2}
+  (2\pi \sigma^{2})^{M/2}
+    \left[\sqrt{|\det \mathbb{I} + 2\beta\sigma^{2}(\mathbb{I}-\tfrac{1}{N}\SMAT^{\top}\TMAT)|}\right]^{-N}
+\end{align}
+
+\begin{align}
+  \label{eqn:I_7}
+  I_G &=
+  \left[\sqrt{|\det \mathbb{I} + 2\beta\sigma^{2}(\mathbb{I}-\tfrac{1}{N}\SMAT^{\top}\TMAT)|}\right]^{-N}  \\ \nonumber
+ &=
+  \left[\sqrt{|\det \mathbb{I}  + \tfrac{2\beta}{M}(\mathbb{I}-\tfrac{1}{N}\SMAT^{\top}\TMAT|)}\right]^{-N} \\ \nonumber
+  &=
+  \left[|\det \mathbb{I}  + \tfrac{2\beta}{M}(\mathbb{I}-\tfrac{1}{N}\SMAT^{\top}\TMAT|)\right]^{-N/2} 
+\end{align}
+
+\begin{align}
+\det(\mathbb{I}+\epsilon\mathbf{A})\approx1+\epsilon\Trace{\mathbf{A}}
+\end{align}
+
+\begin{align}
+  \label{eqn:I_8}
+  I_G &\approx  \left[1  + \tfrac{2\beta}{M}(\Trace{\mathbb{I}-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-N/2} 
+\end{align}
+
+\begin{align}
+    \label{eqn:GANmat}
+\GANMAT  -\frac{1}{N}\ln I_G
+  &=  -\frac{1}{N}\ln  \left[1  + 2\beta(1-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right]^{-N/2} \\ \nonumber
+  &= \frac{1}{2}\ln  \left[1  + 2\beta(1-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right] \\ \nonumber
+ &=  \frac{1}{2}\ln \left[1 + 2\beta(1-R)\right] \\ \nonumber
+\end{align}
+
+\begin{align}
+  \label{eqn:W_normalization}
+  \sum_{1=1}^{M}\lambda_{i}=M
+\end{align}
+
+\begin{align}
+  \label{eqn:I_9}
+    I_G\approx  \left[1  + 2\beta(1-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right]^{-N/2} 
+\end{align}
+
+\begin{equation}
+  \Vert \XI \Vert^2 :=\frac{1}{N} \sum_{\mu=1}^{N} \XI_\mu \XI_\mu^{\top} = \sigma^{2}\mathbb{I} ,
+\end{equation}
+
+\begin{equation}
+\mathbb{E}[\Vert \XI_{\mu} \Vert^2] = M \sigma^2 .
+\end{equation}
+
+% File: ./A3_quality.tex
+
+$\GANMAT$
+
+$\IZFE$
+
+$\EPSL(\mathbf{R})$
+
+$\EPSL(\mathbf{R}) = 1 - \sqrt{\OLAPSQD}$
+
+$\OLAPSQD$
+
+$\Gamma$
+
+$\Q$
+
+$\QT$
+
+\begin{align}
+  \label{eqn:IZFE0}
+-\IZFE =& -  \ln \int d\mu(\mathbf{S}) \exp\left[-N\beta \EPSL(\mathbf{R})  \right] \\ 
+=& - \ln \int d\mu(\mathbf{S}) \exp\left[-N\beta(1 - \sqrt{\OLAPSQD} ) \right] \\ 
+\label{eqn:IZFE1}
+=& -  \ln \int d\mu(\mathbf{S}) \exp[-N\beta]\exp\left[N\beta \sqrt{\OLAPSQD}\right], \\
+\label{eqn:IZFE2}
+=& -  \ln e^{-N\beta} \int d\mu(\mathbf{S}) \exp\left[N\beta \sqrt{\OLAPSQD}\right], \\
+\label{eqn:IZFE3}
+=& -  \ln e^{-N\beta} - \ln \int d\mu(\mathbf{S}) \exp\left[N\beta \sqrt{\OLAPSQD}\right], \\
+\label{eqn:IZFE4}
+=& N\beta - \ln \int d\mu(\mathbf{S}) \exp\left[\beta N\sqrt{\OLAPSQD}\right], 
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_Q}
+  \Gamma^{IZ}_{\Q} :=  \ln \int d\mu(\mathbf{S}) \exp\left[N\beta \sqrt{{\OLAPSQD}}\right],
+\end{align}
+
+\begin{align}
+    \label{eqn:IZG_QT}
+  \Gamma^{IZ}_{\QT} :=  \ln \int d\mu(\mathbf{S}) \exp\left[N\beta {\OLAPSQD}\right]  .
+\end{align}
+
+% File: ./A4_trace_log.tex
+
+$\mathbf{A}_{2}$
+
+$d\mu(\mathbf{S})$
+
+$N \times M$
+
+$N \times M$
+
+$\TMAT$
+
+$(\SMAT, \AMAT, \SVEC, etc.)$
+
+$\IZG$
+
+$N \times M$
+
+$d\mu(\mathbf{S})$
+
+$N \times N$
+
+$d\mu(\mathbf{A})$
+
+$d\mu(\mathbf{S})\rightarrow d\mu(\mathbf{A})$
+
+$d\mu(\mathbf{A})=\Probab{\mathbf{A}}d\mathbf{A}$
+
+$\Probab{\mathbf{A}}$
+
+$\mathbf{A}$
+
+$N$
+
+$N$
+
+$\AHAT$
+
+$M \times M$
+
+$d\mu(\AHAT)$
+
+$M \times M$
+
+$\NORM_{1}$
+
+$\delta(x)=\dfrac{1}{2\pi}\int_{-\infty}^{\infty} e^{i\hat{x}x}d\hat{x}$
+
+$\Gamma_1$
+
+$\Gamma_1$
+
+$i\AHAT\rightarrow\AHAT$
+
+$\Trace{ABC}=\Trace{BCA}=\Trace{CAB}$
+
+$\Gamma_2$
+
+$d\mu(i\AHAT)\rightarrow i\;d\mu(\AHAT)$
+
+$\Gamma_2$
+
+$\mathbf{S}$
+
+$d\mu(\mathbf{S})$
+
+$N$
+
+$\mathbf{s}_{\mu}$
+
+$\mathbf{S}$
+
+$\mathbf{S}$
+
+$\Gamma_2$
+
+$N$
+
+$M\times M$
+
+$\AHAT$
+
+$\NORM_2$
+
+$\sigma^{2}=\mathbf{s}^{\top}\mathbf{s}=\red{2?}1/N$
+
+$ \Trace{\ln\AHAT}=\ln det\;\AHAT $
+
+$\AHAT$
+
+$\Gamma_1$
+
+$C_{\Gamma_1}$
+
+$\ln  C_{\Gamma_1}$
+
+$\AHAT$
+
+$\INTAHAT $
+
+$\Lambda(\AHAT)$
+
+$I(\AHAT,\mathbf{A})$
+
+$N$
+
+$I^{*}(\AHAT,\mathbf{A})$
+
+$I'$
+
+$I''$
+
+$\otimes$
+
+$\mathbf{A} \otimes \mathbf{A}$
+
+$\mathbf{A}$
+
+$\AHAT=\tfrac{1}{2}\mathbf{A}^{-1}$
+
+$ det \left( -\frac{1}{8} \mathbf{A} \otimes \mathbf{A} \right) = \left( -\frac{1}{8} \right)^{M^2} \left(  det (\mathbf{A}) \right)^M$
+
+$\AHAT$
+
+$I$
+
+$I^{*}(\AHAT,\mathbf{A})$
+
+$N$
+
+$|det\;\mathbf{A}|$
+
+$\IZG$
+
+$\IZG$
+
+$I^{*}(\AHAT,\mathbf{A})$
+
+$\IZG$
+
+$C_{\Gamma_1}$
+
+$\ln\;C_{\Gamma_1} $
+
+$|1|$
+
+$\ln\;C_{\Gamma_1}$
+
+$\lim_{N\rightarrow\infty}\tfrac{1}{N}\IZG$
+
+$\Trace{\mathbb{I}}$
+
+$N$
+
+$\IZG$
+
+$\AVGNNGE$
+
+$\IZG$
+
+$\Trace{\ln(|det\;\;\AMAT_{1}|)}$
+
+$\AMAT_{1}$
+
+$\AMAT_{2}$
+
+$|det\;\;\AMAT_{1}|$
+
+$\mathbf{A}$
+
+$\mathbf{A}$
+
+$\mathbf{X}$
+
+$\mathbf{A}$
+
+$\mathbf{X}$
+
+$\rho^{\infty}_{\mathbf{A}}(\lambda)=\rho^{\infty}_{\mathbf{X}}(\lambda)$
+
+$|det\;\mathbf{A}|$
+
+$\mathbb{E}[|det\;\mathbf{A}|]=|det\;\mathbf{X}|$
+
+$|det\;\mathbf{X}|\approx 0$
+
+$\ln\lambda<1.0$
+
+$\mathbf{A}$
+
+$\mathbf{X}$
+
+$\AECS$
+
+$\XECS$
+
+$\mathbb{E}[|det\;\AECS|]=|det\;\XECS|>0$
+
+$\IZG$
+
+$\AECS_{2}$
+
+$\AECS_{1}$
+
+$\AECS_{2}$
+
+$\AECS$
+
+$\rho^{infty}_{\AECS}=\rho^{infty}_{\XECS}$
+
+$|det\;\;\AECS| $
+
+$\alpha=2$
+
+$\XECS$
+
+$|det;\XECS|=1$
+
+$\mathbf{A}$
+
+$\AECS$
+
+$\mathbf{A}\rightarrow\AECS$
+
+$|det\;\AECS|=1$
+
+$\IZG$
+
+$\IZG$
+
+$\AHAT$
+
+$ln|det\;\AHAT|=0$
+
+$\AHAT$
+
+$M$
+
+$\AECS$
+
+$\AECS_{2}$
+
+$N\times N$
+
+$\TMAT$
+
+$N\times M$
+
+$\TMAT$
+
+$\TMAT=\tilde{\mathbf{W}}$
+
+$\beta$
+
+$1$
+
+$2$
+
+\begin{align}
+\IZG = \ln\INTS  d\mu(\mathbf{S}) \exp\left(N\beta \Trace{ \tfrac{1}{N}\TMAT^{\top} \mathbf{A}_{2} \TMAT } \right)
+\end{align}
+
+\begin{align}
+  \label{eqn:I}
+  \mathbf{I}:=\int d\mu(\AMAT)\delta(N\AMAT_{1}-\mathbf{S}^{\top}\mathbf{S})=\int d\mu(\mathbf{A})\delta(N\AMAT-\mathbf{S}^{\top}\mathbf{S})  .
+\end{align}
+
+\begin{align}
+\label{eqn:IZG_3}
+\IZG= \ln \INTS d\mu(\mathbf{S})\INTA d\mu(\mathbf{A})
+           \delta\left( N\mathbf{A}-\mathbf{S}^{\top}\mathbf{S} \right) 
+           e^{ N\beta Tr[\tfrac{1}{N} \TMAT^{\top} \mathbf{A}_{2}\TMAT ] } ,
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_4}
+  \lim_{N\rightarrow\infty}\frac{1}{N}\IZG =
+  \lim_{N\rightarrow\infty}\frac{1}{N} \ln
+  \int d\mu(\mathbf{A})
+  \int d\mu(\mathbf{S})
+  \delta(N\AMAT-\mathbf{S}^{\top}\mathbf{S})
+  e^{ N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\mathbf{A}_{2}\TMAT]) }  .
+\end{align}
+
+\begin{align}
+  \lim_{N\rightarrow\infty} \int d\mu(\mathbf{S})    \delta(N\AMAT-\mathbf{S}^{\top}\mathbf{S})
+\end{align}
+
+\begin{align}
+\delta(N\mathbf{A}-\mathbf{S^{\top}S})
+   =\mathcal{N_1}\INTAHAT  d\mu(\AHAT) e^{ iN Tr[\AHAT\mathbf{A}] } e^{ -i Tr[\AHAT\mathbf{S^{\top}S}] }  ,
+\end{align}
+
+\begin{align}
+  \label{eqn:norm_1}
+\NORM_1:=\frac{1}{(2\pi)^{NM/2}},
+\end{align}
+
+\begin{align}
+\label{eqn:Q2}
+\IZG = \NORM_1 \ln\INTS  d\mu(\mathbf{S}) \INTA d\mu(\mathbf{A}) 
+                           \INTAHAT d\mu(\AHAT) e^{ iN Tr[ \AHAT\mathbf{A} ] }
+                           e^{ -i Tr[ \AHAT\mathbf{S}^{\top} \mathbf{S} ] }
+                           e^{  N\beta Tr[\tfrac{1}{N} \TMAT^{\top}\mathbf{A}_{2}\TMAT ] } .
+\end{align}
+
+\begin{align}
+\label{eqn:IZG_Gamma1}
+\IZG =  \ln\INTA  d\mu(\mathbf{A}) 
+            e^{  N\beta Tr[\tfrac{1}{N} \TMAT^{\top}\mathbf{A}_{2}\TMAT ] } \times
+           \Gamma_1  ,
+\end{align}
+
+\begin{align}
+\label{eqn:dMuS}
+d\mu(\mathbf{S)} = \prod_{\mu=1}^{N}d\mu(\mathbf{s}_{\mu})=\prod_{\mu=1}^{N}d\mathbf{s}_{\mu} ,
+\end{align}
+
+\begin{align}
+\label{eqn:int-out-J2}
+\Gamma_2 
+   =& \left[\INTsvec d\mathbf{s}e^{-\tfrac{1}{\sigma^{2}} \mathbf{s}\AHAT\mathbf{s}^{\top} }\right]^{N} \\
+   =& \left[\NORM_2 (det \AHAT)^{-1/2}\right]^{{N}}  ,
+\end{align}
+
+\begin{align}
+\label{eqn:norm_2}
+\NORM_2 := \left((2\pi)^{N/2}\sigma^{2}\right)^{M}  ,
+\end{align}
+
+\begin{align}
+\nonumber
+\ln\Gamma_2 
+   &=N\ln\NORM_2\left[( det \AHAT)^{-1/2} \right]  \\  \nonumber %  &=\tfrac{NM}{2}\ln (2\pi)^{N/2}\sigma^{2}-\tfrac{N}{2}\ln det\;\AHAT     \\ \nonumber
+&= \ln\NORM_2 -\tfrac{N}{2}\Trace{ \ln\AHAT }  ,
+\end{align}
+
+\begin{align}
+\label{eqn:log-Gamma}
+\Gamma_2 = e^{\NORM_2} e^{ -\tfrac{N}{2} Tr[ \ln\AHAT ] } 
+\end{align}
+
+\begin{align}
+  \label{eqn:CGamma1}
+  C_{\Gamma_1}
+  &= i \left(\frac{1}{(2\pi)^{NM/2}}\right) e^{\left((2\pi)^{N/2} \sigma^2\right)^M} \\ \nonumber
+ &= i \left(\frac{1}{(2\pi)^{NM/2}}\right) e^{\left((2\pi)^{N/2}(1/M)\right)^M}
+\end{align}
+
+\begin{align}
+\label{eqn:LambdaA}
+\Lambda(\AHAT)=\INTAHAT  d\mu(\AHAT) e^{-NI(\AHAT,\mathbf{A})}  ,
+\end{align}
+
+\begin{align}
+\label{eqn:IAA}
+I(\AHAT,\mathbf{A}) = -\Trace{ \AHAT\mathbf{A} } + \frac{1}{2}\Trace{ \ln\AHAT }  .
+\end{align}
+
+\begin{align}
+\label{eqn:LAMBDA}
+\Lambda(\AHAT)\rightarrow \sqrt{\dfrac{(2\pi)^{N/2}}{N\Vert I''\Vert}}e^{-N I^{*}(\AHAT, \mathbf{A})}  ,
+\end{align}
+
+\begin{align}
+  \label{eqn:IAA-sup}
+  I^{*}(\AHAT,\mathbf{A}) :=
+\underset{N\rightarrow\infty}{\lim} I(\AHAT,\mathbf{A}) =
+ \underset{\AHAT}{\sup}\left[-\Trace{\AHAT\mathbf{A}}+\frac{1}{2}\Trace{\ln\AHAT}\right]  ,
+\end{align}
+
+\begin{align}
+  \label{eqn:SP0}
+  I':=   \dfrac{\partial}{\partial\AHAT}I(\mathbf{A},\AHAT) =& -\mathbf{A}+\dfrac{1}{2\AHAT}=0  
+\end{align}
+
+\begin{align}
+  \label{eqn:Ixx}
+I''=\frac{\partial^2 }{\partial \hat{A}^2} I(\AHAT,\mathbf{A})= -\frac{1}{2} \left( \frac{1}{2} \hat{A}^{-1} \right) \otimes \left( \frac{1}{2} \hat{A}^{-1} \right) = -\frac{1}{8} \mathbf{A} \otimes \mathbf{A}
+\end{align}
+
+\begin{align}
+\label{eqn:IAA_2}
+I^{*}(\AHAT,\mathbf{A}) = -\Trace{ \mathbb{I} } + \frac{1}{2}\Trace{ \ln\mathbf{A} }  .
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_IAA}
+  \IZG 
+  & =  \tfrac{1}{N} \ln \left[ C_{\Gamma_1} e^{-N Tr[\mathbb{I}]}\int d\mu(\AMAT)
+  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AMAT_{2}\TMAT] }
+  e^{\tfrac{N}{2}Tr[\ln(|det\;\;\AMAT_{1}|)]}\right]  \\ \nonumber
+  & =
+    \tfrac{1}{N} \ln  C_{\Gamma_1}
+  - \Trace{\mathbb{I}}
+  + \tfrac{1}{N} \ln \left[ \int d\mu(\AMAT)
+    e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AMAT_{2}\TMAT] }
+    e^{\tfrac{N}{2}Tr[\ln(|det\;\;\AMAT_{1}|)]}\right]  .
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_integral}
+  \IZG 
+   =  \frac{1}{N} \ln \left[ \int d\mu(\AMAT))
+    e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AMAT_{2}\TMAT] }
+    e^{\tfrac{N}{2}Tr[\ln(|det\;\;\AMAT_{1}|)]}\right]  ,
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_braket}
+  \IZG = 
+  \frac{1}{N} \ln\left\langle
+  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AMAT_{2}\TMAT] }
+  e^{\tfrac{N}{2}Tr[\ln(|det\;\;\AMAT_{1}|)}
+  \right\rangle_{\AMAT}   .
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_integral2}
+  \IZG = \frac{1}{N}
+  \ln \int d\mu(\AECS)
+  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT] }
+  e^{\tfrac{N}{2}Tr[\ln(|det\;\;\AECS_{2}|)]}  ,
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_braket2}
+  \IZG = 
+  \ln \left\langle
+  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT] }
+  e^{\tfrac{N}{2}Tr[\ln(|det\;\;\AECS_{2}|)}
+  \right\rangle_{\AECS}  .
+\end{align}
+
+\begin{align}
+  \label{eqn:IFA}
+  \IZG \approx
+  \ln\left[
+  \left\langle
+  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT] }
+  \right\rangle_{\AECS}
+  \left\langle
+  e^{\tfrac{N}{2}Tr[\ln(|det\;\;\AECS_{2}|)}
+  \right\rangle_{\AECS} \right]
+\end{align}
+
+\begin{align}
+  \langle |det\;\;\AECS_{2}|\rangle_{\AECS}\approx  \langle |det\;\;\XECS| \rangle_{\XECS} .
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_final_hciz}
+  \IZG := & \frac{1}{N}\left\langle     \exp ( N\beta \Trace{\tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT })\right\rangle_{\AECS}  ,
+\end{align}
+
+\begin{align}
+  \label{eqn:IZG_final_integral}
+ \IZG  := & \frac{1}{N}\int d\mu(\AECS) \exp \left( N\beta \Trace{\tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT }\right)  ,
+  \end{align}
+
+\begin{align}
+  \label{eqn:IZG_final_tanaka}
+ \IZG  := & \frac{1}{N}\mathbb{E}_{\AECS}\left[ \exp \left( N\beta \Trace{\tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT }\right)\right]  ,
+\end{align}
+
+\begin{eqnarray}
+\label{eqn:QWick}
+\Gamma_1 = \NORM_1 \INTS d\mu(\mathbf{S})\INTiAHAT d\mu(i\AHAT) 
+           e^{ N  Tr[ \AHAT\mathbf{A} ] }
+           e^{ - Tr[ \AHAT\mathbf{S}^{\top} \mathbf{S}] } \\
+\label{eqn:QWick2}
+         = \NORM_1 \INTS d\mu(\mathbf{S})\INTiAHAT d\mu(i\AHAT) 
+           e^{ N  Tr[ \AHAT\mathbf{A} ] }
+           e^{ -Tr[ \mathbf{S}\AHAT\mathbf{S}^{\top} ] } ,
+\end{eqnarray}
+
+\begin{eqnarray}
+\label{eqn:QWick3}
+\Gamma_1  = \NORM_1
+           \INTiAHAT d\mu(\AHAT) 
+           e^{ N Tr[\AHAT\mathbf{A} ]}\times
+           \Gamma_2  ,
+\end{eqnarray}
+
+\begin{eqnarray}
+\label{eqn:QWick4}
+\Gamma_1  = i\NORM_1
+           \INTAHAT d\mu(\AHAT) 
+           e^{ N Tr[\AHAT\mathbf{A} ]}\times
+           \Gamma_2  .
+\end{eqnarray}
+
+\begin{eqnarray}
+  \label{eqn:gamma1}
+\Gamma_1  =& C_{\Gamma_1}\INTAHAT d\mu(\AHAT)   e^{ N Tr[ \AHAT\mathbf{A} ] }  e^{ -\tfrac{N}{2} Tr[ \ln\AHAT ] }  ,
+\end{eqnarray}
+
+\begin{equation}
+    C_{\Gamma_1}:=i\NORM_1 e^{\NORM_2}  .
+\end{equation}
+
+\begin{equation*}
+\Gamma_1 := \Gamma_1(\mathbf{A}) 
+         = \NORM_1 \INTS d\mu(\mathbf{S}) 
+                           \INTAHAT d\mu(\AHAT) e^{ iN Tr[ \AHAT\mathbf{A} ] }
+                                                           e^{ -i Tr[ \AHAT\mathbf{S}^{\top} \mathbf{S} ] } .
+\end{equation*}
+
+\begin{equation*}
+\Gamma_2 := \Gamma_2(\AHAT)
+         = \INTS d\mu(\mathbf{S})
+           e^{ -Tr[ \mathbf{S}\AHAT\mathbf{S}^{\top} ] } .
+\end{equation*}
+
+% File: ./A5_mlp3_details.tex
+
+$[0, 1]$
+
+$0$
+
+$1$
+
+$32$
+

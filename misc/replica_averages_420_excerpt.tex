@@ -1,0 +1,56 @@
+\paragraph{Replica Averages.}
+
+\charles{THIS SECTION MAY HAVE SOME ERRORS; NEEDS REVIEW}
+\michael{I don't quite get what we are trying to do with replicas. I would try to minimize their disucssion in the main text, maybe a few sentences and then point to a one-page appendix.  I think the main point is that we know they exist, they are very complicated and that is why we do the AA and high-T, and that adopting that strategy not only makes things easier, but is also very appropriate for a \SETOL like theory.  If we can put in some comments about how we think that $\alpha<2$ is a signature of atypicality,that could be a good thing to highlight, so just enough replica stuff to justify that claim.}
+
+In some cases, one may  %%We may also 
+want to average over \emph{all} possible sample datasets, called \Replicas,
+which are denoted $\REPLICA\in\mathcal{D}$ and indexed by $r$.
+\michael{By ``sample datasets we mean samples of the model/Gaussian, correct?  If so, what is $\NDX$ in the equation below, and why are both $\NDX$ and $\NDXIn$ in that equation? }
+This can be done by  %%In particular, we may do this when 
+evaluating the logarithm of the \PartitionFunction;
+for that, we write $\langle \ln Z_{n}(\XVEC) \rangle_{\mathcal{D}}$.
+Specifically, one uses the so-called \emph{Replica Trick}\cite{Edwards_1975}
+\begin{align}
+  \label{eqn:replicaTrick}
+  \langle\ln Z\rangle =\lim_{n\rightarrow 0}\dfrac{\langle Z\rangle^n - 1}{n},
+\end{align}
+where $\langle Z\rangle^n$ is a Replica of the Average Parition Function $\langle Z \rangle$.
+
+For example, lets say there are $(N_r\rightarrow\infty)$ possible \Replicas.
+We then could write
+\emph{\Replica Average} as
+\begin{align}
+  \label{eqn:logZreplica}
+  \langle \ln Z_{n}(\XVEC) \rangle_{\mathcal{D}}
+  :=
+  \dfrac{1}{N_r}\sum_{r=1}^{N_r}\ln\int d\mu(\NDX) e^{-\beta \DEREPLICA]},
+  \quad  %%\;
+  N_r\rightarrow\infty
+\end{align}
+where we have explicitly noted that $Z_{n}$ depends on the data variables $\XVEC$,
+and the \TotalEffectivePotential $\DEREPLICA$ is averaged over each specific \Replica $\REPLICA$,
+\begin{align}
+\DEREPLICA:=\sum_{\nu=1}^{n}\Delta E_{\mathcal{L}}(\WVEC,\XVEC_{\nu}),
+\;
+\XVEC_{\nu}\in\REPLICA
+\end{align}
+\michael{Im a little confused by this notation, and in particular the role of $\XVEC_{\nu}\in\REPLICA$. Are we saying that the $\XVEC_{\nu}$ are drawn from that distribution, in which case we can separate it with a ``quad like I did in the previous equation.  BTW, this may also clarify my confusion in the notation in the comment after \EQN~\ref{eqn:Emap}.}
+We may also write this as
+\begin{align}
+\DEREPLICA:=\int d\mu(\REPLICA)\Delta E_{\mathcal{L}}(\WVEC,\XVEC)  .
+\end{align}
+\michael{Is this equation an integral over the model/Gaussian data, in which case this expression is not the same as the previous one, which is a discrete sum.}
+
+\michael{This replica paragraph does not seem like the right place for the SPA.  Can we limit it, since this is the replica paragraph.  Even if it is rewording a sentence, like the next one to ``Because we are avoiding replia calcualtions in our SETOL approach, that means that when we do the SPA we can interpret the result as an effective hamiltonian ...'' Also, we have the SPA in this replica paragraph, below. That doesn't seem like the right place for it. We need it even though we are avoiding replicas.}
+The \EffectivePotential is a simple \emph{Mean-Field Effective Hamiltonian}, which is obtained through
+a \emph{\SaddlePointApproximation} (SPA, below).
+In the \AnnealedApproximation (AA), for the system under study,
+we take $n=1$, and the final result amounts to a Mean-Field (MF) treatment.
+In a full Replica calculation, one takes $n\rightarrow 0$; this ammends MF approach
+by incorporating the correlations in the system, i.e. the fluctuations between Replicas,
+within the \emph{Replica Symmetry Breaking}, or (RSB), anastz.\cite{Parisi_1980}
+Moving forward, we will not be doing any Replica calculations,
+however, our approach will use the similar  techniques from Replica theory.
+For more details, see Section~\ref{sxn:matgen}, and Appendices~\ref{sxn:TraceLogDerivation} and~\ref{sxn:tanaka}.
+

@@ -1,0 +1,396 @@
+\subsection{Derivation of the \TRACELOG Condition}
+\label{sxn:TraceLogDerivation}
+
+\subsubsection{Setting up the Saddle Point Approximation (SPA)}
+\label{sxn:TraceLogDerivation_A}
+
+\michael{Is the point of this subsubsection to derive Eq.~\ref{eqn:IAA_2} to plug into \EQN~\ref{eqn:betaIZG_S} to get the expression in terms of an HCIZ integral? If so, what is a good name for this subsubsection?}
+\charles{To set up the SPA}
+As in \EQN~\ref{eqn:IZG_dmuS}, 
+we can write \EQN~\ref{eqn:IZG_QT} in terms of the $\mathbf{A}_{2}$ form of the \Student Correlation matrix, 
+giving
+\begin{align}
+\IZG = \frac{1}{N}\ln\INTS d\mu(\mathbf{S}) \exp\left(N\beta \Trace{ \tfrac{1}{N}\TMAT^{\top} \mathbf{A}_{2} \TMAT } \right)
+\end{align}
+where the measure $d\mu(\mathbf{S})$ is the measure over all $N \times M$ Hermitian random matrices,
+although we really want to limit this to all $N \times M$ real matrices that resemble the \Teacher $\TMAT$,
+which we clarify below.
+\charles{KEEP THIS? (Also, we have added subscripts $(\SMAT, \AMAT, \SVEC, etc.)$ to the integrals as a visual guide for this derivation).}\michael{Let me go through first.}
+
+To transform $\IZG$ into a form we can evaluate using Tanaka's result, 
+we need to change the measure from an integral over all random $N \times M$ student weight matrices
+$d\mu(\mathbf{S})$ to an integral over all $N \times N$
+student correlation matrices $d\mu(\mathbf{A})$, i.e., $d\mu(\mathbf{S})\rightarrow d\mu(\mathbf{A})$.
+To accomplish this, we can insert an integral over the Dirac Delta function
+\begin{align}
+  \label{eqn:I}
+  \mathbf{I}:=\int d\mu(\AMAT)\delta(N\AMAT-\mathbf{S}^{\top}\mathbf{S})=\int d\mu(\mathbf{A})\delta(N\AMAT-\mathbf{S}^{\top}\mathbf{S})  .
+\end{align}
+
+\noindent
+(This is simply a resolution of the identity.)
+This gives
+\begin{align}
+\label{eqn:IZG_3}
+\IZG= \frac{1}{N} \ln \INTS d\mu(\mathbf{S})\INTA d\mu(\mathbf{A})
+           \delta\left( N\mathbf{A}-\mathbf{S}^{\top}\mathbf{S} \right) 
+           e^{ N\beta \Trace{ \tfrac{1}{N} \TMAT^{\top} \mathbf{A}_{2}\TMAT } } ,
+\end{align}
+where $d\mu(\mathbf{A})=\Probab{\mathbf{A}}d\mathbf{A}$ and $\Probab{\mathbf{A}}$ is the
+(still unspecified) probability density over the new random matrix $\mathbf{A}$. 
+%
+
+Let us express \EQN~\ref{eqn:IZG_3} in the limit as $N$ approaches infinity as
+\begin{align}
+  \label{eqn:IZG_4}
+  \frac{1}{N}\IZG =
+  \frac{1}{N} \ln
+  \int d\mu(\mathbf{A})
+  \int d\mu(\mathbf{S})
+  \delta(N\AMAT-\mathbf{S}^{\top}\mathbf{S})
+  e^{ N\beta \Trace{ \tfrac{1}{N} \TMAT^{\top}\mathbf{A}_{2}\TMAT } }  .
+\end{align}
+ 
+Now we assume we can first evaluate the term 
+\begin{align}
+  \lim_{N\rightarrow\infty} \int d\mu(\mathbf{S}) \delta(N\AMAT-\mathbf{S}^{\top}\mathbf{S})
+\end{align}
+in the limit as $N$ approaches infinity using a \SaddlePointApproximation (SPA).
+
+\begin{align}
+\delta(N\mathbf{A}-\mathbf{S}^{\top}\mathbf{S})
+   =\mathcal{N}_1\INTAHAT d\mu(\AHAT) e^{ iN \Trace{ \AHAT\mathbf{A} } }
+   e^{ -i \Trace{ \AHAT\mathbf{S}^{\top} \mathbf{S} } }  ,
+\end{align}
+
+\noindent
+(This is simply the matrix generalization of 
+$\delta(x)=\dfrac{1}{2\pi}\int_{-\infty}^{\infty} e^{i\hat{x}x}d\hat{x}$.
+Therefore, we can express the delta function as an exponential, giving)
+\begin{align}
+\label{eqn:Q2}
+\IZG = \frac{1}{N} \ln\INTS d\mu(\mathbf{S}) \INTA d\mu(\mathbf{A}) 
+                           \INTAHAT d\mu(\AHAT) e^{ iN \Trace{ \AHAT\mathbf{A} } }
+                           e^{ -i \Trace{ \AHAT\mathbf{S}^{\top} \mathbf{S} } }
+                           e^{  N\beta \Trace{ \tfrac{1}{N} \TMAT^{\top}\mathbf{A}_{2}\TMAT } } .
+\end{align}
+
+Rearranging terms, we obtain 
+\begin{align}
+\label{eqn:IZG_Gamma1}
+\IZG =  \frac{1}{N} \ln \INTA d\mu(\mathbf{A}) 
+            e^{  N\beta \Trace{ \tfrac{1}{N} \TMAT^{\top}\mathbf{A}_{2}\TMAT } } \times
+           \Gamma_1  ,
+\end{align}
+where we define $\Gamma_1$ as 
+\begin{equation*}
+\Gamma_1 := \Gamma_1(\mathbf{A}) 
+         = \mathcal{N}_1 \INTS d\mu(\mathbf{S}) 
+                           \INTAHAT d\mu(\AHAT) e^{ iN \Trace{ \AHAT\mathbf{A} } }
+                                                           e^{ -i \Trace{ \AHAT\mathbf{S}^{\top} \mathbf{S} } } .
+\end{equation*}
+We can simplify the complex integral in $\Gamma_1$ with the Wick Rotation $i\AHAT\rightarrow\AHAT$, giving
+\begin{eqnarray}
+\label{eqn:QWick}
+\Gamma_1 = \mathcal{N}_1 \INTS d\mu(\mathbf{S})\INTAHAT d\mu(\AHAT) 
+           e^{ N \Trace{ \AHAT\mathbf{A} } }
+           e^{ - \Trace{ \mathbf{S}\AHAT\mathbf{S}^{\top} } } \\
+\label{eqn:QWick2}
+         = \mathcal{N}_1 \INTS d\mu(\mathbf{S})\INTAHAT d\mu(\AHAT) 
+           e^{ N \Trace{ \AHAT\mathbf{A} } }
+           e^{ -\Trace{ \mathbf{S}\AHAT\mathbf{S}^{\top} } } ,
+\end{eqnarray}
+where the second line follows since the Trace is invariant under cyclic permutations (i.e., $\Trace{ABC}=\Trace{BCA}=\Trace{CAB}$).
+Swapping the order of the integrals yields
+\begin{eqnarray}
+\label{eqn:QWick3}
+\Gamma_1  = \mathcal{N}_1
+           \INTAHAT d\mu(\AHAT) 
+           e^{ N \Trace{ \AHAT\mathbf{A} } }\times
+           \Gamma_2  ,
+\end{eqnarray}
+where we define $\Gamma_2$ as
+\begin{equation*}
+\Gamma_2 := \Gamma_2(\AHAT)
+         = \INTS d\mu(\mathbf{S})
+           e^{ -\Trace{ \mathbf{S}\AHAT\mathbf{S}^{\top} } } .
+\end{equation*}
+
+\noindent
+(Change the integration limits back to the real line by setting $d\mu(i\AHAT)\rightarrow d\mu(\AHAT)$, thereby removing any complex prefactors.)
+\begin{eqnarray}
+\label{eqn:QWick4}
+\Gamma_1  = \mathcal{N}_1
+           \INTAHAT d\mu(\AHAT) 
+           e^{ N \Trace{ \AHAT\mathbf{A} } }\times
+           \Gamma_2  .
+\end{eqnarray}
+
+To evaluate $\Gamma_2$, we will make several mathematically convenient approximations.
+(These will yield an approximate expression which can be verified empirically.)
+\michael{MM TO DO: point explicitly to the main text where we made these explicit, if/when that is the case.}
+%
+We first assume for the purpose of changing measure that the (data) columns of $\mathbf{S}$ are
+statistically independent, so that the measure $d\mu(\mathbf{S})$ factors into $N$ Gaussian distributions
+\begin{align}
+\label{eqn:dMuS}
+d\mu(\mathbf{S}) = \prod_{\mu=1}^{N}d\mu(\mathbf{s}_{\mu})=\prod_{\mu=1}^{N}d\mathbf{s}_{\mu} ,
+\end{align}
+where $\mathbf{s}_{\mu}$ is an $M$-dimensional vector.
+The singular values of $\mathbf{S}$ are invariant to randomly permuting the columns or rows,
+so the resulting ESD does not change.  
+This is very different from permuting $\mathbf{S}$ element-wise, which will make the resulting ESD Marchenko-Pastur (MP).
+
+Using \EQN~\ref{eqn:dMuS}, 
+$\Gamma_2$ reduces to a simple Gaussian integral, which can be evaluated as a product of $N$ Gaussian integrals (over the $M \times M$ matrix $\AHAT$)
+\begin{align}
+\label{eqn:int-out-J2}
+\Gamma_2 
+   &= \left[\INTsvec d\mathbf{s} \exp\left(-\tfrac{1}{\sigma^{2}} \mathbf{s}\AHAT\mathbf{s}^{\top} \right)\right]^{N} \\
+   &= \left[\mathcal{N}_2 (\det \AHAT)^{-1/2}\right]^{N}  ,
+\end{align}
+where the normalization $\mathcal{N}_2$
+\begin{align}
+\label{eqn:norm_2}
+\mathcal{N}_2 := \left((2\pi)^{N/2}\sigma^{2}\right)^{M}  ,
+\end{align}
+\red{Moving forward, we need to fix the prefactors}
+where $\sigma^{2}=\frac{1}{N}$.
+
+Since $\Trace{\ln\AHAT}=\ln \det \AHAT$ for any square, non-singular matrix $\AHAT$, 
+it follows from \EQN~\ref{eqn:int-out-J2} that
+\begin{align}
+\nonumber
+\ln\Gamma_2 
+   &=N\ln\mathcal{N}_2 + N\ln\left[(\det \AHAT)^{-1/2} \right]  \\  \nonumber
+   &= N\ln\mathcal{N}_2 -\frac{N}{2}\Trace{ \ln\AHAT }  ,  
+\end{align}
+so that
+\begin{align}
+\label{eqn:log-Gamma}
+\Gamma_2 = \mathcal{N}_2 \exp\left( -\frac{N}{2} \Trace{ \ln\AHAT } \right) 
+\end{align}
+
+Substituting
+\EQN~\ref{eqn:log-Gamma}
+into \EQN~\ref{eqn:QWick3},
+we can write $\Gamma_1$ as
+\begin{eqnarray}
+  \label{eqn:gamma1}
+\Gamma_1  = C_{\Gamma_1} \INTAHAT d\mu(\AHAT) e^{ N \Trace{ \AHAT\mathbf{A} } } e^{ -\frac{N}{2} \Trace{ \ln\AHAT } }  ,
+\end{eqnarray}
+where
+\begin{equation}
+    C_{\Gamma_1}:=\mathcal{N}_1 \mathcal{N}_2 = \frac{1}{N^M} .
+\end{equation}
+
+Using Eqns.~\ref{eqn:norm_1} and~\ref{eqn:norm_2}, $C_{\Gamma_1}$ can be reduced to a pure number:
+\begin{align}
+  \label{eqn:CGamma1}
+  C_{\Gamma_1} = \frac{1}{N^M} .
+\end{align}
+
+\begin{align}
+\label{eqn:LambdaA}
+\Gamma_1 = C_{\Gamma_1} \INTAHAT d\mu(\AHAT) e^{-N I(\AHAT,\mathbf{A})}  ,
+\end{align}
+where
+\begin{align}
+\label{eqn:IAA}
+I(\AHAT,\mathbf{A}) = -\Trace{ \AHAT\mathbf{A} } + \frac{1}{2}\Trace{ \ln\AHAT }  .
+\end{align}
+
+We can formally evaluate the integral in \EQN~\ref{eqn:LambdaA} in the limit as $N$ approaches infinity using a \SaddlePointApproximation (SPA)
+(see Section~\ref{sxn:mathP}, \EQN~\ref{eqn:SPA}), as
+\begin{align}
+\label{eqn:LAMBDA}
+\Gamma_1 = C_{\Gamma_1} \INTAHAT d\mu(\AHAT) e^{-N I(\AHAT,\mathbf{A})}  \rightarrow \sqrt{\dfrac{(2\pi)^{N/2}}{N\Vert I\Vert}}e^{-N I^{*}(\AHAT, \mathbf{A})}  ,
+\end{align}
+where $I^{*}(\AHAT,\mathbf{A})$ is the maximum value, obtained using
+\begin{align}
+  \label{eqn:IAA-sup}
+  I^{*}(\AHAT,\mathbf{A}) :=
+  \underset{\AHAT}{\sup}\left[-\Trace{\AHAT\mathbf{A}}+\frac{1}{2}\Trace{\ln\AHAT}\right]  ,
+\end{align}
+where $I$ at the SPA is defined as
+\begin{align}
+  \label{eqn:SP0}
+  I := \frac{\partial}{\partial\AHAT}I(\mathbf{A},\AHAT) = -\mathbf{A} + \frac{1}{2}\AHAT^{-1} = 0  
+\end{align}
+and $I$ is defined as
+\begin{align}
+  \label{eqn:Ixx}
+  I = \frac{\partial^2 }{\partial \hat{A}^2} I(\AHAT,\mathbf{A}) = -\frac{1}{8} \mathbf{A} \otimes \mathbf{A}
+\end{align}
+where $\otimes$ is the Kronecker product, and $\mathbf{A} \otimes \mathbf{A}$ is the Hessian of $\mathbf{A}$.
+    
+Solving the SPA equation, we find that the auxiliary matrix is $\AHAT=\tfrac{1}{2}\mathbf{A}^{-1}$
+and the prefactor (Hessian) is given as
+\[
+\det \left( -\frac{1}{8} \mathbf{A} \otimes \mathbf{A} \right) = \left( -\frac{1}{8} \right)^{M^2} \left( \det (\mathbf{A}) \right)^M.
+\]
+
+\noindent
+Substituting for $\AHAT$ into the Rate Function (\EQN~\ref{eqn:IAA}), $I$ becomes
+\begin{align}
+\label{eqn:IAA_2}
+I^{*}(\AHAT,\mathbf{A}) = -\Trace{ \mathbb{I} } + \frac{1}{2}\Trace{ \ln\mathbf{A} }  .
+\end{align}
+
+\noindent
+In order for this result to be physically meaningful, 
+we need that if $I^{*}(\AHAT,\mathbf{A})$ grows,
+then it must grow slower than $N$, and,
+more importantly, that $|\det \mathbf{A}|$ be non-zero.
+Importantly, when $|\det \mathbf{A}|=1$ exactly, however, then $\Gamma_1$ becomes a constant,
+and this simplifies things considerably!
+
+\subsubsection{Casting the \GeneratingFunction $(\IZG)$ as an HCIZ Integral}
+\label{sxn:TraceLogDerivation_B}
+
+In this section, we express the \GeneratingFunction $\IZG$, 
+given in \EQN~\ref{eqn:IZG_dmuS} (equivalently, in \EQN~\ref{eqn:IZG_QT}), 
+as an HCIZ Integral, 
+as given in \EQN~\ref{eqn:IFA2_braket}.
+\michael{@charles: make sure I got those numbers correct. BTW, I think it makes sense to explicitly call out the HCIZ equation by itself in a self-contained statement, so then we can point to it rather than \EQN~\ref{eqn:IFA2_braket}, which uses HCIZ in our context; if so, would you do that?}
+\charles{You mean like what you did in Appendix A6, \EQN~\ref{eqn:hciz2}? That's good, and that can go early on, in section 3 or 4.}
+
+Inserting $I^{*}(\AHAT,\mathbf{A})$ from \EQN~\ref{eqn:IAA_2} into $\IZG$, we obtain
+\begin{align}
+  \label{eqn:IZG_IAA}
+  \IZG 
+  &= \frac{1}{N} \ln \left[ C_{\Gamma_1} e^{-N \Trace{\mathbb{I}}}\int d\mu(\AMAT)
+  e^{N\beta \Trace{ \tfrac{1}{N}\TMAT^{\top}\AMAT_{2}\TMAT } }
+  e^{\tfrac{N}{2}\Trace{\ln|\det\AMAT_{1}|}}\right]  \\ \nonumber
+  &= \frac{1}{N} \ln C_{\Gamma_1}
+  - \Trace{\mathbb{I}}
+  + \frac{1}{N} \ln \left[ \int d\mu(\AMAT)
+    e^{N\beta \Trace{ \tfrac{1}{N}\TMAT^{\top}\AMAT_{2}\TMAT } }
+    e^{\tfrac{N}{2}\Trace{\ln|\det\AMAT_{1}|}}\right]  .
+\end{align}
+
+\noindent
+Since $C_{\Gamma_1}$ is a constant, we can choose the branch such that $\ln C_{\Gamma_1}$ vanishes in the limit as $N$ approaches infinity, i.e., $\lim_{N\rightarrow\infty}\frac{1}{N}\ln C_{\Gamma_1} = 0$.
+Likewise, as long as the second term $\Trace{\mathbb{I}}$ does not depend on $N$, 
+it will vanish when we take the partial derivative of $\IZG$ to obtain the $\AVGNNGE$, in which case it is not important.  
+We can then simply write the \GeneratingFunction $\IZG$ as
+\begin{align}
+  \label{eqn:IZG_integral}
+  \IZG 
+   = \frac{1}{N} \ln \left[ \int d\mu(\AMAT)
+    e^{N\beta \Trace{ \tfrac{1}{N}\TMAT^{\top}\AMAT_{2}\TMAT } }
+    e^{\tfrac{N}{2}\Trace{\ln|\det\AMAT_{1}|}}\right]  ,
+\end{align}
+or, in \BraKet notation, as
+\begin{align}
+  \label{eqn:IZG_braket}
+  \IZG = 
+  \frac{1}{N} \ln\left\langle
+  e^{N\beta \Trace{ \tfrac{1}{N}\TMAT^{\top}\AMAT_{2}\TMAT } }
+  e^{\tfrac{N}{2}\Trace{\ln|\det\AMAT_{1}|}}
+  \right\rangle_{\AMAT}   .
+\end{align}
+
+In order to evaluate this integral, we must deal with the term $\Trace{\ln|\det\AMAT_{1}|}$.
+To do so, we will restrict both $\AMAT_{1}$ and $\AMAT_{2}$ to a low-rank subspace where $|\det\AMAT_{1}|$ is well defined.
+
+\paragraph{Restricting $\mathbf{A}$ to the Effective Correlation Space (ECS).}
+
+As discussed in Section~\ref{sxn:matgen}, 
+we expect the \Student \CorrelationMatrix $\mathbf{A}$ to resemble the \Teacher \CorrelationMatrix $\mathbf{X}$;
+specifically, we expect both $\mathbf{A}$ and $\mathbf{X}$ to have the same limiting ESD,
+$\rho^{\infty}_{\mathbf{A}}(\lambda)=\rho^{\infty}_{\mathbf{X}}(\lambda)$.
+Likewise, we might expect $|\det\mathbf{A}|$ to equal the empirically measured one, i.e.,
+$\mathbb{E}[|\det\mathbf{A}|]=|\det\mathbf{X}|$.
+However, in practice, 
+$|\det\mathbf{X}|\approx 1$, 
+even for very good models that have ESDs well-fitted to PL or TPL distributions, 
+because there are frequently a large number of very small eigenvalues ($\ln\lambda < 1.0$) in the bulk part of the ESD. 
+    
+Thus, for this result to be physically meaningful, we must restrict $\mathbf{A}$ (and $\mathbf{X}$)
+to an \EffectiveCorrelationSpace (ECS), 
+i.e., $\AECS$ (and $\XECS$), such that $\mathbb{E}[|\det\AECS|]=|\det\XECS|>0$.
+    
+We can now express $\IZG$ as an HCIZ integral in \EQN~\ref{eqn:IZG_integral} as
+\begin{align}
+  \label{eqn:IZG_integral2}
+  \IZG = \frac{1}{N}
+  \ln \int d\mu(\AECS) e^{N\beta \Trace{ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT } }
+  e^{\tfrac{N}{2}\Trace{\ln|\det\AECS_{2}|}}  ,
+\end{align}
+where we have now written $\AECS_{2}$ explicitly for clarity.
+\michael{We are talking about cutting off small eigenvalues, but then we seem to swap $\AECS_{1}$ and $\AECS_{2}$; need to clarify something.}
+\michael{I think it is okay; MM to confirm.}
+We may also write this using \BraKet notation as
+\begin{align}
+  \label{eqn:IZG_braket2}
+  \IZG = 
+  \frac{1}{N} \ln\left\langle
+  e^{N\beta \Trace{ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT } }
+  e^{\tfrac{N}{2}\Trace{\ln|\det\AECS_{2}|}}
+  \right\rangle_{\AECS}  .
+\end{align}
+
+\paragraph{Independent Fluctuation Approximation (IFA).}
+
+We now introduce a key approximation, the IFA, 
+in which we factor the terms in \EQN~\ref{eqn:IZG_braket2} into two distinct, 
+statistically independent averages over $\AECS$, giving
+\begin{align}
+  \label{eqn:IFA}
+  \IZG \approx
+  \ln\left[
+  \left\langle
+  e^{N\beta \Trace{ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT } }
+  \right\rangle_{\AECS}
+  \left\langle
+  e^{\tfrac{N}{2}\Trace{\ln|\det\AECS_{2}|}}
+  \right\rangle_{\AECS} \right]
+\end{align}
+
+\noindent
+Recall that we expect the \Student Correlation matrix to resemble that of the \Teacher.
+By resemblance, we mean that both matrices have the same limiting ESD, $\rho^{\infty}_{\AECS}=\rho^{\infty}_{\XECS}$.
+We also now assume we can estimate the expected value of $|\det\AECS|$ with the empirical estimate
+from the \Teacher, i.e.,
+\begin{align}
+  \langle |\det\AECS_{2}| \rangle_{\AECS}\approx  \langle |\det\XECS| \rangle_{\XECS} .
+\end{align}
+
+Fortunately, and rather remarkably, it turns out that when the PL exponent $\alpha=2$, we can
+select $\XECS$ such that $|\det\XECS|=1$ by simply defining the ECS as the eigen-components spanned by the PL tail.
+Therefore, in this analysis, we will replace $\mathbf{A}$ with $\AECS$, i.e., $\mathbf{A}\rightarrow\AECS$ 
+and set $|\det\AECS|=1$ exactly.
+\michael{MM: Iths par should maybe be moved to the main text.}
+
+\paragraph{The Final Generating Function $\IZG$ for the Quality (Squared) as an HCIZ Integral.}
+
+With this, we can write $\IZG$ as an HCIZ integral as in \EQN~\ref{eqn:hciz}
+(in \BraKet notation) as
+\begin{align}
+  \label{eqn:IZG_final_hciz}
+  \IZG = \frac{1}{N} \ln\left\langle \exp\left( N\beta \Trace{ \tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT } \right)\right\rangle_{\AECS}  ,
+\end{align}
+or explicitly as an integral as
+\begin{align}
+  \label{eqn:IZG_final_integral}
+ \IZG  = \frac{1}{N}\int d\mu(\AECS) \exp \left( N\beta \Trace{ \tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT } \right)  ,
+\end{align}
+or in Tanaka's notation as
+\begin{align}
+  \label{eqn:IZG_final_tanaka}
+ \IZG  = \frac{1}{N}\mathbb{E}_{\AECS}\left[ \exp \left( N\beta \Trace{ \tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT } \right)\right]  ,
+\end{align}
+where in each case $\AHAT$ is restricted to the \EffectiveCorrelationSpace (ECS) 
+such that $\Trace{\ln|\det\AHAT|}=0$ and $\AHAT$ is normalized to $M$.
+\michael{MM TO DO: This paragraph should be cleaned up.}
+
+We note that
+$$ \langle\cdots\rangle_{A} = \int \cdots \; d\mu(A) = \mathbb{E}_{A}[\cdots] $$
+are equivalent notations denoting the expected value (or average) over all \Student Correlation Matrices $\AECS$ spanning the ECS,
+$\AECS_{2}$ is a (random) $N\times N$ square (correlation) matrix, and
+$\TMAT$ is a (non-random) \Teacher $N\times M$ rectangular (weight) matrix.
+That is, $\TMAT$ is the actual layer weight matrix $\TMAT=\tilde{\mathbf{W}}$ of the model we wish to study
+(in the span of the ECS).
+Notice also that, here, $\beta$ is the inverse temperature and not the simple constant $1$ or $2$ as in \cite{Tanaka}.
+\michael{It seems like this paragraph should be somewhere else. Maybe the math section.}
