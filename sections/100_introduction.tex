@@ -1,0 +1,17 @@
+
+\section{Introduction}
+\label{sxn:intro}
+Deep Neural Networks (DNNs)—models in the field of Artificial Intelligence (AI)—have driven remarkable advances in multiple fields of science and engineering. AlphaFold has made significant progress in solving the protein folding problem.\cite{AlphaFold} Notably, the 2024 Nobel Prize in Physics was awarded to Hopfield and Hinton for developing early approaches to AI using techniques from \emph{Statistical Mechanics} (\STATMECH), and Jumper and Hassabis, along with Baker, received the 2024 Nobel Prize in Chemistry for their contributions to AlphaFold and computational protein design.\cite{Nobel2024Physics, Nobel2024Chemistry} Self-driving cars now roam the streets of major metropolitan cities like San Francisco. Large Language Models (LLMs) like ChatGPT have gained worldwide attention and initiated serious conversations about the possibility of creating an Artificial General Intelligence (AGI). Clearly, not a single area of science or engineering has ignored these remarkable advances in the field of AI and Neural Networks (NNs).
+
+Despite this remarkable progress in a research field spanning over 50 years, developing, training, and maintaining such complex models require staggering capital resources, limiting their development to only the largest and best-funded organizations. While many such entities have open-sourced some of their largest models (such as Llama and Falcon), using these models requires assuming they have been trained optimally, without significant defects that could limit, skew, or even invalidate their use downstream. Moreover, testing such models can be very expensive and complex to interpret.
+
+Because training and evaluating NNs is so hard, significant issues can manifest in many obvious and non-obvious ways. A primary research goal is to improve the efficiency and reduce the cost of training large NNs. A less known but critical issue arises in many industrial settings, specifically “selecting the best models to test.” This arises in industries such as ad-click prediction, search relevance, quantitative trading, and more. Frequently, one has several seemingly equally good models to choose from, but testing the model can be very expensive, time-consuming, and even risky to the business. Recently, researchers and practitioners have started to fine-tune such large open-source models using techniques such as LoRA and QLoRA. Such methods allow one to adapt a large, open-source NN to a small dataset, and very cheaply. However, in fine-tuning, one could unwittingly overfit the model to the small dataset, degrading its performance for its intended use. Despite these and many other problems, theory remains well behind practice, and there is an increasingly pressing need to develop \emph{practical predictive theory} to both improve the training of these very large NN models and to design new methods to make their use more reliable.
+
+Before discussing these methods, however, let us explain \emph{What is a SemiEmpirical Theory}
+
+\input{sections/110_intro_slt_vs_statmech}
+\input{sections/120_intro_htsr}
+\input{sections/130_intro_semiempirical}
+\input{sections/140_intro_setol}
+%\input{sections/150_intro_outline}
+

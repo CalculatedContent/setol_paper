@@ -1,0 +1,32 @@
+\paragraph{Generalization Gap vs. Model Quality}
+\label{sxn:SMOG_main-model_quality}
+
+We should distinguish between what is typically done in the \SLT literature versus the \STATMECH approaches.
+In \SLT, one is typically interested in modeling the \emph{\GeneralizationGap}.
+The \GeneralizationGap quantifies the difference between a models performance on training data versus unseen test data:
+\begin{align}
+  \label{eqn:gen_gap}
+  \mathcal{E}^{emp}_{gap}:= \TTE[\DXtrain]- \TGE[\DXtest]
+\end{align}
+In contrast, in \STATMECH approaches, one considers the \ModelGeneralizationError directly,
+which is sometimes called the \ModelQuality in the \SLT literature.
+\michael{I think SST looks at generalization error also.  I think this dichotomy isn't quite correct, and it convovles several issues.  It seems most connected with the par around \EQN~\ref{eqn:Qdef} and \EQN~\ref{eqn:GammaQdef}. Maybe we should combine this with that and put is somewhere, removing the incorrect claim/suggestion, and highlighting the ideas in the next par, which are key.
+}
+\charles{Thats not what this is about.  This is an important section that belongs here.
+needs some work}
+Model quality is an indication of the models accuracy, precision, recall, or any other relevant metric based on the task at hand.
+%Here, we mean that the \ModelGeneralizationError is a measure of the \ModelQuality on such OOD data.
+
+While related, in developing an analytic theory, the \GeneralizationGap and
+the \ModelQuality (or \ModelGeneralizationError) require conceptually different approaches.
+This is because the  \GeneralizationGap depends on a specific realization of the training data,
+whereas our \ModelGeneralizationError will be formulated on a random training data set
+(and then corrected later with empirical data).
+In this sense, any theory of the \GeneralizationGap  requires a formalism where the
+predicted model error is \Quenched to the training data, which is not what we want.
+In contrast, the \ModelGeneralizationError  will be formulated using the \AnnealedApproximation (AA),
+and is therefore both conceptually and mathematically simpler.
+\michael{These ideas seem key; they should either be combined with the par around \EQN~\ref{eqn:Qdef} and \EQN~\ref{eqn:GammaQdef}, or they should be in the intro.}
+
+\nred{Comment on our paper with YQ}
+
