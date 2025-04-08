@@ -46,7 +46,7 @@ Let us express \EQN~\ref{eqn:IZG_3} at large-$N$ as
 \begin{align}
   \label{eqn:IZG_4}
   \lim_{N\gg 1}\IZG =
-  \lim_{N\rightarrow\infty}\ln
+  \lim_{N\gg 1}\ln
   \int d\mu(\mathbf{A})
   \int d\mu(\mathbf{S})
   \delta(N\AMAT_{1}-\mathbf{S}^{\top}\mathbf{S})
@@ -96,12 +96,12 @@ Rearranging terms, we obtain
            \Gamma_1  ,
 \end{align}
 where we define $\Gamma_1$ as 
-\begin{equation*}
+\begin{align}
 \Gamma_1 := \Gamma_1(\AMAT_{1}) 
          = \NORM_1 \INTS d\mu(\mathbf{S}) 
                            \INTAHAT d\mu(\AHAT) e^{ iN Tr[ \AHAT\AMAT_{1} ] }
                                                            e^{ -i Tr[ \AHAT\mathbf{S}^{\top} \mathbf{S} ] } .
-\end{equation*}
+\end{align}
 We can simplify the complex integral in $\Gamma_1$ with the Wick Rotation $i\AHAT\rightarrow\AHAT$.
 \charles{The Wick rotation ensures that the Gaussian integral converges; need to check the signs here}
 We may expect $d\mu(\AHAT)$ to be invariant to rotations in the complex plane
@@ -170,7 +170,7 @@ it follows from \EQN~\ref{eqn:int-out-J2} that
 \begin{align}
 \nonumber
 \ln\Gamma_2 
-   &=N\ln\NORM_2\left[( det \AHAT)^{-1/2} \right]  \\  \nonumber %  &=\tfrac{NM}{2}\ln (2\pi)^{N/2}\sigma^{2}-\tfrac{N}{2}\ln det\;\AHAT     \\ \nonumber
+   &=N\ln\NORM_2\left[( det \AHAT)^{-1/2} \right]  \\   %  &=\tfrac{NM}{2}\ln (2\pi)^{N/2}\sigma^{2}-\tfrac{N}{2}\ln det\;\AHAT     
 &= N\ln\NORM_2 -\tfrac{N}{2}\Trace{ \ln\AHAT }  ,
 \end{align}
 so that
