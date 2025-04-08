@@ -33,7 +33,7 @@ see Table~\ref{tab:energies} for summary of types of ``Energies'' used throughou
     Output Layer Weight Matrix & $\mathbf{W}_{3}$ & $M\times 2$ \\ \hline
     \Teacher Weight Matrix & $\mathbf{T}$ & $N\times M$ \\ \hline
     \Student Weight Matrix & $\mathbf{S}$ & $N\times M$ \\ \hline
-    \StudentTeacher Overlap Matrix & $\OVERLAP=\mathbf{S}^T\mathbf{T}$ & $M\times M$ \\ \hline              
+    \StudentTeacher Overlap Matrix & $\OVERLAP=\tfrac{1}{N}\mathbf{S}^T\mathbf{T}$ & $M\times M$ \\ \hline              
     \Student \CorrelationMatrix 1 & $\mathbf{A}_{1}=\tfrac{1}{N}\mathbf{S}^{\top}\mathbf{S}$ & $M\times M$  \\ \hline
     \Student \CorrelationMatrix 2 & $\mathbf{A}_{2}=\tfrac{1}{N}\mathbf{S}\mathbf{S}^{\top}$ & $N\times N$  \\ \hline
    ~\ECS \Student \CorrelationMatrix 1 & $\AECS_{1}$ & $\MECS\times \MECS$  \\ \hline
@@ -60,7 +60,7 @@ see Table~\ref{tab:energies} for summary of types of ``Energies'' used throughou
 \begin{table}[h]
   \begin{tabular}{| l | c |}
     \hline
-    \Perceptron \StudentTeacher (ST) Overlap & $R=\SVEC^{\top}\TVEC=\sum_{i}s_{i}t_{i}$ \\ \hline
+    \Perceptron \StudentTeacher (ST) Overlap & $R=\tfrac{1}{N}\SVEC^{\top}\TVEC=\sum_{i}s_{i}t_{i}$ \\ \hline
     \StudentTeacher (ST) Overlap Operator& $\OVERLAP=\SMAT^{\top}\TMAT$ \\ \hline       
     Matrix Generalized ST Overlap & $\tfrac{1}{N^2}\OLAPSQD=\tfrac{1}{N^2}\Trace{\mathbf{RR}^{\top}}$  \\ \hline
     \StudentTeacher \SelfOverlap & $\eta(\boldsymbol{\xi})=\mathbf{y}^{\top}_{T}\mathbf{y}_{S}$  \\ \hline
