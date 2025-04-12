@@ -2,7 +2,7 @@
 \label{sxn:SMOG_main-student_teacher}
 %\label{sxn:ST-unified-intro}
 
-In this subsubsection, we present a unified view of the \emph{\StudentTeacher} (ST) model from both a practical and a theoretical perspective.  
+In this subsection, we present a unified view of the \emph{\StudentTeacher} (ST) model from both a practical and a theoretical perspective.  
 From the practical (\emph{operational}) side, imagine a real-world practitioner training a large-scale neural network (NN); call this NN the \Teacher.  
 We wish to assess the Teacher’s \emph{true} accuracy on ground-truth labels in consistently reproducing its own (possibly imperfect) outputs, one can train another network --the \Student--to mimic the Teacher’s predictions.  
 By comparing Student and Teacher outputs, one can approximate the Teacher’s generalization performance even without an explicit hold-out set.  
@@ -15,6 +15,8 @@ Under this approximation, one obtains closed-form expressions for the \StudentTe
 and thus for the Teacher’s overall error or accuracy.  
 These results lay the foundation for our \emph{\SemiEmpirical} approach, in which we supplement this theoretical form with empirical measurements (e.g., from the trained weight matrices) to account for real-world correlations in the data and the model’s internal structure.  
 
+\michaelB{Maybe some of those two pars should be in Section~\ref{sxn:trad_smog}.}
+
 \begin{enumerate}[label=4.3.\arabic*]
 \item
   \textbf{Operational Setup}
@@ -26,8 +28,8 @@ These results lay the foundation for our \emph{\SemiEmpirical} approach, in whic
 
   \item
     \textbf{Theoretical Student-Teacher Average Generalization Error $(\AVGSTGE)$}
-    In subsection~\ref{sxn:SMOG_main-st_av}  we outline how to derive $\AVGSTGE$ using the \AA.  
-    We introduce the key expressions that will serve as the starting point for our extended \SemiEmpirical theory in subsequent subsubsection.s
+    In subsection~\ref{sxn:SMOG_main-st_av}  we outline how to derive $\AVGSTGE$ using the AA.  
+    We introduce the key expressions that will serve as the starting point for our extended \SemiEmpirical theory in subsequent subsubsection.
 \end{enumerate}
 
 
