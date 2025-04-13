@@ -25,7 +25,7 @@ our \DataModel is a standard Gaussian $N(0,1)$ model for the input data
 \label{eqn:mwm_replace_1}
 \end{align}
 where $N(0,1)$ denotes a Gaussian distribution with zero mean and unit variance,
-\and $\XImu$ is normalized such that $\Vert\XImu\Vert=\tfrac{1}{M}$ for all $N$ data vectors.
+\and $\XImu$ is normalized such that $\Vert\XImu\Vert^{2}_{F}=\tfrac{1}{M}$ for all $N$ data vectors.
 \michaeladdressed{@charles: I just added a label there, in case you are keeping track of labels.}
 
 We make this distinction between Actual and \ModelData to emphasize that,
@@ -208,8 +208,7 @@ or, more simply,
 \end{align}
 
 We want to evaluate this as an \EffectivePotential $\EPSL(R)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:STerror}.
-To do this, we need to compute the average or \ExpectedValue over all possible input data $\XI$,
-an $N-$dimensional Gaussian vector (i.e., $d\mu(\XI)=\mathcal{D}\NDXI P(\NDXI)$).
+To do this, we need to compute the average or \ExpectedValue over all N possible input data vectors $\XI$ (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$).
 %
 %Using $\mathcal{N}$ as the normalization for the average, as yet unspecified, we obtain 
 \begin{align}
@@ -218,12 +217,12 @@ an $N-$dimensional Gaussian vector (i.e., $d\mu(\XI)=\mathcal{D}\NDXI P(\NDXI)$)
    = & \int d\mu(\NDXI)(1-\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI) \\ \label{eqn:XI_ST} 
    = & \int d\mu(\NDXI)-\int d\mu(\NDXI)\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI)  \\ \nonumber
    = & 1 - \int d\mu(\NDXI)\XI^{\top}\tfrac{1}{N}\SVEC^{\top}\TVEC\XI \\ \nonumber
-   = & 1 - \int d\mu(\NDXI)\XI^{\top} R\XI \\ \nonumber
-   = &1 - R\int d\mu(\NDXI)\XI^{\top}\XI,
+   = & 1 - \int d\mu(\XI)\XI^{\top} R\XI \\ \nonumber
+   = &1 - R\int d\mu(\XI)\XI^{\top}\XI,
 \end{align}
 where this holds because the elements of $\XI$ are i.i.d.
 Since $d\mu(\NDXI)$ is a measure over a (multi-variate) Gaussian distribution,
-if we normalize the data vectors $\XI$ to $\frac{1}{\sqrt{M}}$ (See Section~\ref{app:st-gen-err-annealed-ham}), then the second term on the R.H.S. is unity and we recover (i.e.,\EQN~\ref{eqn:epsl})
+The data vectors $\XI$ are normalized (See Section~\ref{app:st-gen-err-annealed-ham}) such that the second term on the R.H.S. is unity and we recover (i.e.,\EQN~\ref{eqn:epsl})
 \begin{align}
 \label{eqn:e0}
 \EPSL(R)=\langle\DETOPSTLL\rangle_{\AVGNDXI} =  1 - R .
