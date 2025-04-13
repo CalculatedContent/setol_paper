@@ -1,0 +1,214 @@
+\subsubsection{Operational Setup}
+\label{sxn:ST_OP_setup}
+\input{sections/student_teacher}
+
+Here, describe the basic setup of the classic \StudentTeacher model, taking an operational view from the perspective of a practitioner training real-world \Student and \Teacher models.  Specifically, we present the \AnnealedApproximation (AA) in a practical light,
+and use it explain the difference between computing the \emph{Empirical\GeneralizationError}, $\AVGEMPGE$, for the \emph{\TrueAccuracy}
+and for the \emph{\Precision} of a \Teacher model.
+
+\paragraph{Test Error of the Teacher}
+
+We start by describing how to obtain a simple formal expression for the empirical test errors of the \Teacher, first for the \TrueAccuracy.
+
+Let us say we have a model, called \Teacher $(T)$, which maps some \emph{actual} (i.e., correlated) data
+$\DATA\in\ADD$ to some known or \emph{true}  labels $(\Ytrue)$
+(where,  $\Ytrue$ is, say, an $N$-dimensional vector of binary labels).
+We might say that $\Ytrue$ represents the \emph{\GroundTruth} for the problem.
+Operationally, we train the \Teacher $T$ to reproduce or at least approximate the true labels $\Ytrue$.
+\begin{align}
+ T:\DATA\rightarrow \Yt \approx \Ytrue.
+\end{align}
+If $T$ reproduces the true labels exactly, we might say that the \Teacher has been
+trained to \emph{\Interpolation}, and, therefore, $\Yt = \Ytrue$.
+Indeed, most models today are trained to \emph{\Interpolation}, and we don't need to
+necessarily worry about the difference between the true and the predicted \Teacher labels.
+Formally, however, and to understand better the \AA, it is beneficial to discuss the implication
+of this distinction.
+
+Following \EQN~\ref{eqn:dnn_energy}, lets say the \Teacher outputs are specified
+by an  Energy function $E^{T}_{NN}$
+\begin{align}
+\label{eqn:T_ENN}
+\Yt=E_{NN}(T,\DATA) 
+\end{align}
+\footnote{Do not confuse the Energy/output function $E_{NN}$ with the energies $\mathbf{\Delta E}$  defined below to represent the ST error function(s).  We refer to outputs of $E_{NN}(\TVEC,\DATA )$, when applied to a data point $\DATA$, as energies because they are effectively un-normalized probabilities for the class outputs (for labels $\Ymu=1$ or $-1$).  }
+so that we may write the \emph{Empirical} \AverageTrainingError
+$\AVGEMPTE$
+as 
+\begin{align}
+\label{eqn:Eg_train}
+\AVGEMPTE:= \frac{1}{N^{train}}\sum_{\mu=1}^{N^{train}}\mathcal{L}[\Ytrain,E_{NN}(T,\DATAtrain)]  .
+\end{align}
+Ideally, we seek the \emph{True} \AverageGeneralizationError of the \Teacher, denoted  $\AVGGE^{T}$. 
+Of course, this is unknowable, but in practice, we estimate $\AVGGE^{T}$ 
+by measuring the error of the \Teacher predictions on some test (or hold-out) set $(\DATA^{test}, \MY^{test})$.
+We call this the \emph{Empirical \AverageGeneralizationError}, $\AVGEMPGE$, and write
+\begin{align}
+\label{eqn:Eg_test}
+ \AVGGE^{T}\approx \AVGEMPGE:= \frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}\mathcal{L}[\Ytest,E_{NN}(T,\DATAtest)] .
+\end{align}
+To measure the error, the loss function $\mathcal{L}$ may be a L1 $(\ell_1)$ or L2 $(\ell_2)$ loss;
+whereas for training a model, it is usually something like a cross-entropy loss, but this detail does matter later.
+
+If we don't have a hold-out set, however, we can still estimate $\AVGGE^{T}$ using the \Student-\Teacher approach.
+
+\paragraph{Estimating the Teacher Error with Students: Accuracy vs. Precision}
+
+Imagine training a \Student $(S)$  model (with a similar architecture as $T$, and acting on the same  
+dataset $\DATA\in\ADD$), which tries to  reproduce the \Teacher predictions:
+\begin{align}
+S:\DATA\rightarrow \Ys \approx \Yt  ,
+\end{align}
+and assume the \Student outputs $\Ys$ are given by the Energy output function $E^{S}_{NN}$
+\begin{align}
+\label{eqn:S_ENN}
+\Ys=E_{NN}(S,\DATA) ,
+\end{align}
+\input{sections/precision_fig}
+If the \Teacher is trained to \Interpolation, then the difference between
+the \Student and the \Teacher labels 
+estimates the true error, i.e., $\Vert\Ys-\Yt\Vert=\Vert\Ys-\Ytrue\Vert$,
+and this error is associated with the \TrainingAccuracy of the model in predicting the \GroundTruth.
+But if the \Teacher makes some errors, then $\Vert\Ys-\Yt\Vert$
+is now estimating the \Precision of the model.
+These two situations are depicted in Figure~\ref{fig:precision}.
+
+The \StudentTeacher model also explains why NNs can generalize even even when trained to \Interpolation on noisy data (which has been a source of confusion \cite{Understanding16_TR}).  In this model, the \GeneralizationError  $\AVGGE^{T}$ is a simple function of the overlap $R$ between the \Teacher $T$ and the \Students $S$, i.e., $\AVGGE^{T}\sim \THRMAVG{1-\EPSLR}$.  So even if the \Teacher $T$ is trained on noisy data, as long as there are \Students $S$ with significant overlap $R$ with the \Teacher, the \Teacher \GeneralizationError  $\AVGGE^{T}$  can be considerably small.  For more details, see \cite{MM17_TR_v1}
+
+
+\paragraph{Learning the Student}
+Moving forward, we will always assume the \Teacher is trained to \Interpolation because this
+actually corresponds to the \AnnealedApproximation, whereas if the \Teacher makes
+errors, we may need to consided  \Quenched averages, explained below.
+
+Imagine now that in order to estimate the empirical \AverageGeneralizationError, $\AVGEMPGE$,
+by training a very large number of Students, and computing the average ST error on some test set.
+Let us break the data set into training $\DATAtrain$ and test $\DATAtest$ examples, 
+train models on the training data (that is, find the optimal model weights), 
+and evaluate the $S$ and $T$ models on the test data.
+
+The \Student learning task can be written as in \EQN~(\ref{eqn:dnn_opt})
+as the following optimization problem over the training data:
+\begin{align}
+\underset{\{S'\}}{\argmin}\sum_{\mu=1}^{N^{train}}\mathcal{L}[E_{NN}(S',\DATAtrain),E_{NN}(T,\DATAtrain)]   ,
+\label{eqn:ST-learning-task}
+\end{align}
+%Notice that, at this step, the \Student $S$ and the \Teacher $T$ both depend explicitly on the specific choice of the training data $\DX_{train}$.  
+%That is, we could write $S[\DX^{train}], T[\DX^{train}]$.
+
+If the \Teacher is trained to \Interpolation, then the optimization problem in \EQN~\ref{eqn:ST-task} is
+training a \Student to reproduce the \GroundTruth labels, so that $\Ys\sim y_{\mu}^{true}$
+for both the training and test sets.
+\begin{align}
+\underset{\{S'\}}{\argmin}\sum_{\mu=1}^{N^{train}}\mathcal{L}[E_{NN}(S',\DATAtrain),\Ytrue]   ,
+\label{eqn:ST-learning-intepolation}
+\end{align}
+
+But if not, then the \Student is reproducing the possibly
+incorrect \Teacher labels, and, importantly, the \Student $S$ now depends explicitly
+on how the \Teacher was trained.  That is, we should denote that the learned
+\Student explicitly depending on $T$, i.e. $S\rightarrow S[T]$.
+This will be important below.
+
+\paragraph{The \AverageGeneralizationError}
+In either case, however, we may still estimate the Empirical \AverageGeneralizationError
+by replacing the test predictions in \EQN~\ref{eqn:Eg_test} with the student predictions
+$y_{\mu}^{test}\rightarrow \Ys$, and then averaging directly over the test data $\DATAtest$
+for all possible or available test examples.
+
+If we have a very large number of suitable Students
+(say, drawn from some random distribution), then we can try to estimate the 
+\AverageGeneralizationError of the \Teacher, i.e., $\TGE^{T}\approx\AVGEMPGE$.
+$\AVGEMPGE$ is given by an average loss, the average is 
+over all possible Students $N_S$,  and then  over all  $\Ntest$ test data points $\DATAtest\in\mathbf{D}$ 
+\begin{align}
+  \AVGEMPGE
+  &=
+  \frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}
+  \frac{1}{N_S}\sum_{S}
+  \mathcal{L}[E_{NN}(S,\DATAtest),E_{NN}(T,\DATAtest)]  \\ \nonumber
+    &=
+  \frac{1}{N_S}\sum_{S}
+    \frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}
+    \mathcal{L}[E_{NN}(S,\DATAtest),E_{NN}(T,\DATAtest)] ,
+\label{eqn:emp_gen_error}
+\end{align}
+where (ideally) $\Ntest$ is extremely large.
+
+In Bra-Ket notation, we may also write
+\begin{align}
+  \AVGEMPGE
+  &= \langle \langle \DETOPSTx \rangle_{S} \rangle_{\DXtest}\\ \nonumber
+  &= \langle \langle \DETOPSTx \rangle_{\DXtest} \rangle_{S}
+\end{align}
+where $\DETOPSTx:=\mathcal{L}[E_{NN}(S,\DATAtest),E_{NN}(T,\DATAtest)]$.
+For the empirical estimate, it does not matter what order we take the sums in,
+but we are not estimating the
+the True \AverageGeneralizationError  of the \Teacher, $\AVGGE^{T}$,
+unless $T$ is trained to \Interpolation.
+For the theoretical estimate, however, the order can be important, and this also depends on
+if $T$ is trained to \Interpolation or not.
+\footnote{This approach can be likened to the Bootstrap method~\cite{efron1993bootstrap} used for error estimation.  However, the Bootstrap method predominantly emphasizes variations in the input data $\NDX\in\mathbf{D}$, while in this context, we are essentially bootstrapping over the students $S$.}
+
+%\michael{Is this for the optimal values of the parameters in the learning task \EQN~(\ref{eqn:student-learning-task})%?  Presumably not, since we are averaging? }
+%\charles{Good question. We do not specify how the hyperparameters are selected.}
+
+\paragraph{Annealed vs. Quenched Averages}
+\nred{THIS NEEDS CLEANED UP}
+Recall that in the \STATMECH approach to computing errors, we do not break the data into
+training and test, but, instead, to obtain the \AverageGeneralizationError, $\AVGGE$, use
+the \GeneratingFunction approach. In doing this, we need to compute both the \ThermalAverage
+over the model weights ($S,T$), and also take the data average over the entire available model data set $\MDD$
+And the order can matter.
+
+In the case where the \Teacher is trained to \Interpolation, may may train the \Student 
+independently of \emph{when} the \Teacher.  
+But if \Teacher is \emph{not} trained to \Interpolation, then formally we must train the \Teacher
+first to obtain target predictions for the \Student.  That is, the \Student formally
+depends on the \Teacher, $S[T]$.
+The empirical errors in $T$ would then formally depend on the specific instantiation of the data  $\NDXIn\in\MDD$,
+and therefore, conceptually imagine that we must first average over the data
+before averaging over the weights.
+Training to \Interpolation correpsonds conceptually to working with a model
+in the \AnnealedApproximation, whereas not correpsonds to \Quenched case.
+
+Practically, when the \Teacher is not trained to \Interpolation, 
+we may need to resample the training data and training an ensemble of models to compensate for anomalies in training data (bad labels, noise, etc.) that may cause the underlying model to overfit to the training data.
+Theoretically, within \SMOG, this is equivalent to \emph{quenching} the system to the data (a term analogous to quickly cooling a physical system, frezing in any defects).
+In contrast, when one \emph{anneals} a physical system, one heats up and cools it down slowly, and repeatedly, thereby removing any defects (of data anomalies for NNs, or material defects in a physical system).
+
+In \STATMECH, one can perform a so-called quenched average using a replica calculation,
+effectively removing the dependence on test and/or training data
+from the final estimate for $\AVGEMPGE$.
+However, the theoretical quenched result may differ significantly from the annealed case when the underlying model is unrealizable~\cite{SST92}. 
+This may occur when the training data is very noisy and/or the model architecture is such that it can not correctly predict all the training labels.
+In such cases, the model will always have some finite, non-zero Average \TrainingError, $\AVGTE > 0$,
+even in the large-$N$ limit of infinite data.  In such a case, this indicates
+a highly complex error landscape with many local minima separated by extremely high barriers,
+and a slowing down of the dynamics.%
+\footnote{In modern ML parlance, one might say the model can not be evaluated at interpolation, although 
+in practice such a model might have a zero empirical \TrainingError since it may overfit the specific training data.}
+\michael{This seems like important discussion, but it is related to what is going on in Section~\ref{sxn:SMOG_main-spin_glass}; I feel like we should have a minimalistic discussion of things like spin glasses in the main text, and then have a self-contained appendix that goes into it in more detail, since it gets in the way of getting to Section~\ref{sxn:SMOG_main-st_av} and Section~\ref{sxn:matgen}.  }
+\charles{This is a minimal discussion.  }
+
+While it is commonplace to train ensembles and/or use cross-validation when training small models (as the above discussion assumes),
+this could be extremely expensive and impractical in modern ML, e.g., for very large models like LLMs~\cite{LLMS}.
+For such massive NNs, one needs a theory that can detect anomalies in training directly from observations during and/or after training.
+This is a hallmark of the \SETOL approach, and it distinguishes \SETOL from the classic \STATMECH approach.
+\michael{MM TO DO: Probably move that to the intro.  That is an important par, too imp to be buried here.}
+\charles{Not sure.  Intro is already long.  Maybe the conclusions}
+
+%That said, it may be beneficial in practice to use subsamples of the training data to train the \Teacher and the Students
+%when, say, the training data has mislabeled and/or noisy data.  With such bad data, the 
+%results could be quite different after taking this additional step.
+%Indeed, it is exactly these cases where the results differ theoretically as well as in practice.
+%We will take a deeper look at such case of noisy data below.
+
+%Importantly, we will not used the quenched form of $\mathcal{E}_{t}^{emp}$ because we will be able todetect
+%anomalies in the training data directly by looking at the fitted \SemiEmpirical HT parameter $\alpha$.
+
+be used to estimate the \AverageGeneralizationAccuracy (and not the \Precision),
+and which we will refer to more generally as a layer and/or model \Quality.
+
+\input{sections/smog_gen_gap}
+

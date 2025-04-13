@@ -1,0 +1,69 @@
+OAOA
+\paragraph{Empirical Motivation via Heavy-Tailed ESDs.}
+A central observation from prior work on modern, high-performing neural networks
+is that their layer-weight matrices often exhibit \emph{heavy-tailed} (HT) eigenvalue spectra.
+Informally, if $\rho(\lambda)$ is the Empirical Spectral Density (ESD) of a given layer,
+it can often be fit by a power law, $\rho(\lambda)\sim \lambda^{-\alpha}$,
+with $2 \lesssim \alpha \lesssim 6$ in many state-of-the-art (SOTA) models.
+Moreover, variations in $\alpha$ often correlate with changes in test accuracy.
+
+
+
+A main goal of \SETOL is to derive \LayerQuality metric for a general NN layer,
+$\Q\approx\Q^{NN}_{L}$, analogous to how
+the \HTSR $\alpha$ and/or $\hat{\alpha}$ metircs predict out-of-sample performance.
+
+
+The presence of the branch-cut suggests a situation that is similar in spirit to the RG solution
+characterizing a phase transtion, here with a critical exponent of $\alpha=2$, and between the \HeavyTailed
+(HT) and \VeryHeavyTailed (VHT) phases of learning of the \HTSR theory.
+
+
+\michael{MM: 12/13/24: this is how it is coming together in my mind in a way people could get.}
+We are interested in developing a practical predictive theory for modern neural networks.
+By this, we mean a theory with a strong theoretical basis that is practically useful in realistic settings (that include but certainly are not limited to the development of new training protocols).
+In particular, this does not include the development of bounding theorems that provide worst-case upper bounds, that is a more popular approach in statistial learning theory, and this requires that we go beyond the usual i.i.d. assumptions that underlie traditional approaches to statistical learning theory, random matrix theory, etc.
+The basis for our approach is provided by the statistical mechanics of learning and recent phenomenological work in Heavy-Tailed Self-Regularization theory that relied on heavy-tailed random matrix theory.
+This line of work identified the heavy-tailed structure of the eigenvalues of the weignt matrices of trained neural network models as key quantities that permit one (among other things) to predict trends in the quality of state-of-the-art neural networks, without access to any training data or testing data and without access to training protocols, hyperparameter schedules, or GPU compute.
+
+Motivated by these developments, as well as the increasing need for a practical predictive theory for users of extradordinarily large models, here we introduce into machine learning the idea of a semi-empirical theory, and we develop SETOL, a semi-empirical theory for modern neural networks.
+By semi-empirical, we mean that we parameterize the theory in terms of empirically-measured quantities, in this case the heavy-tailed spectral structure of trained weight matrices, and not hypothesized parameters based on uncheckable statistical assumptions.
+Far from naive curve fitting, however, we show that we can derive key quantities for SETOL from a two-step procedure: first, work with a matrix generalization of the traditional student-teacher model, and derive a one-step Wilson-style Renormalization Group theory; and second, use the Harish-Chandra-Itzykson-Zuber integral formula to evaluate the resulting quantities.
+As a byproduct of the first step, we discover a new inductive principle based on a conservation of a log-determinant; and we describe how this principle can lay the foundation for a universality theory of strongly-correlated (i.e., strongly-non-i.i.d.) systems (in particular, modern neural networks with parameters that are strongly-correlated since they have been trained to real data).
+Both of these are of independent interest in machine learning theory and practice.
+As a byproduct of the second step, we derive simple expressions that can be fit to and evaluated on even the largest existing models.
+We also show that we can evaluate key assumptions of our semi-empirical theory, providing the basis for statistical regression diagnostics for modern neural networks.
+
+
+
+
+
+\paragraph{XXX.  MISC STUFF TO PUT SOMEWHERE.}
+
+\michael{MM TO DO: where to put this?}
+To evaluate $\det\XECS$ empirically, we must choose the starting point of the tail $\lambda_{*}$ of the ESD.
+In the {\texttt{WeightWatcher}} code, this is done by fitting the tail to \PowerLaw (PL) or Truncated \PowerLaw (TPL), and then using
+a brute-force search using the standard Clauset estimator; here, however, we propose a different technique.
+
+\michael{MM TO DO: where to put this?}
+Also, notice that we have now shown that, under standard or modest
+ assumptions on $d\mu(\mathbf{S})$, 
+we have shown that the change of measure $d\mu(\mathbf{S})\rightarrow d\mu(\AECS)$
+leads to the familiar expression for the Jacobian $\det\AECS$, which acts
+like a volume preserving constraint.
+
+\michael{MM TO DO: Move the following somewhere.}
+The \TRACELOG was quite surprising, and suggests to us that the theory is really correct when the learning is optimal.
+We discuss the implications of this below in Section~\ref{sxn:discussion}.
+
+\michael{MM TO DO: Where to put?}
+we demonstrate (in Section~\ref{sxn:empirical} below) that this \emph{Trace Log Condition} holds extremely well when the ESD can be a fit to a PL with $\alpha\simeq 2$.
+We discuss this in more detail in Section~\ref{sxn:discussion}.
+
+\michael{MM TO DO: where to put this?}
+In our empirical Studies, below, we observe that nearly all \Teacher \emph{Correlation matrices} $\XECS=\frac{1}{N}\mathbf{T}\mathbf{T}^{\top}$ are \HeavyTailed (HT)
+(i.e., the ESD can be fit to a PL or TPL), but the underlying weight matrices themselves are not themselves HT (i.e., element-wise). 
+Moreover, argue that it is, in fact, the tail of the ESD that corresponds the majority of the generalizing components (i.e eigenvectors) of the layer weight matrices; we will show this below empirically in Section~\ref{sxn:empirical}.
+
+
+
