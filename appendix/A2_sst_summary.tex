@@ -40,7 +40,7 @@ the \FreeEnergy, defined for the model error as
 \end{align}
 where $d\mu(\NDXI):=\prod_{i=1}^{N}d\XI_{i} P(\NDXI)$ (see \EQN~\ref{eqn:pndx}) and
 where the data-dependent ST error, $\DETOPSTLL$, is defined in \EQN~\ref{eqn:DE_L},
-with an $\mathcal{L}=\ell_2$ loss.
+with an $\mathcal{L}=\ell_2$ loss.  \footnote{Also, recall that the Teacher $T$ is fixed and is not learned, so we do not integrate over $d\mu(\TVEC)$. In fact, for the (vector) Perceptron model, the Teacher $T$ weights are simply subsumed into the overlap $R$, and even in the more general cases, such as non-Linear/Boolean Perceptron, in the full Replica calculations, etc.  See the original literature for more details. \cite{Opper01,SST92,EngelAndVanDenBroeck} as well as \cite{MM17_TR}.}
 \charles{Do we need a $1/N$ to ensure the free energy is extensive ? I don't think we do because at the end we want to evaluate the
   generalization accuracy, so we need to take the partial w/r.t. $N$. But we need to check this and section 4.2 carefully.
 Of course, with the HCIZ integral, we have to be also be careful since we move the $1/N$ from the L.H.S. to the R.H.S of Tanaka just for this reason}
@@ -72,7 +72,7 @@ We now recall the definition of the \AnnealedHamiltonian, $\GANR$ (see \EQN~\ref
 \label{eqn:Gan0}
 \beta\GANR = \beta\HAN(\beta,\SVEC,\TVEC):=-\frac{1}{N}\ln \int d\mu(\NDXI)e^{-\beta\DETOPSTLL}  .
 \end{align}
-where we have denoted the Hamiltonian as $HAN(\beta,\SVEC,\TVEC)$ to indicated the explicit dependence on $\beta$,
+where we have denoted the Hamiltonian as $\HAN(\beta,\SVEC,\TVEC)$ to indicate the explicit dependence on $\beta$,
 and we have added $\beta$ to the R.H.S. to because the L.H.S. is unitless.
 %
 Using this definition, we can express the \Annealed \PartitionFunction, $Z^{an}_{\ND}$, in the AA in terms of the \Annealed Hamiltonian $\GANR$
