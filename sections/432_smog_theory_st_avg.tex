@@ -183,15 +183,17 @@ define the data-dependent ST error (\EQN~\ref{eqn:DE_L}) in terms of an $\ell_2$
 \nonumber
 =& N - (\YsVEC)^{\top} (\YtVEC) \\
 \label{eqn:deriveSTerror}
-=& N(1 - \ETA(\SVEC,\TVEC)),
+=& N(1 - \ETA(\SVEC,\TVEC,\XI)),
 \end{align}
-where we call $\ETA(\SVEC,\TVEC,\XI):=\tfrac{1}{N}\mathbf{y}_{S}^{\top}\mathbf{y}_{T}$
-the \emph{data-dependent \SelfOverlap}.
+where we define $\ETA(\SVEC,\TVEC,\XI):=\tfrac{1}{N}\mathbf{y}_{S}^{\top}\mathbf{y}_{T}$, called
+the \emph{data-dependent \SelfOverlap}; we expand this below.
 The expression $\ETA(\SVEC,\TVEC,\XI)$ is analogous to the ST overlap $R$, but before the data has been integrated out.
-The \SelfOverlap $\ETA(\SVEC,\TVEC,\XI)$ will appear later in \EQN~\ref{eqn:eta2} (in Section~\ref{sxn:matgen}), 
+It is convenient to work directly with
+the \SelfOverlap $\ETA(\SVEC,\TVEC,\XI)$ because it will appear later in \EQN~\ref{eqn:eta_mat_avg_def} (in Section~\ref{sxn:matgen}), 
 when formulating the matrix-generalized overlap operator~$\OVERLAP$.
 
-Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:ENN}), we can replace the label vectors $\YtVEC,\YsVEC$ as
+In defining $\ETA(\SVEC,\TVEC,\XI)$, we replace the labels $(\mathbf{y}_{S},\mathbf{y}_{T})$ with the Energy functions $E_{NN}$  that generate them, giving an expression in terms of the weights $(\SVEC,\TVEC)$ and the Gaussian data variables $(\XI)$. We will then integrate out the data variables, leaving an expression just in terms of the weights.  
+Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:dnn_energy}, \ref{eqn:S_ENN}, \ref{eqn:T_ENN}), we can replace the label vectors $\YtVEC,\YsVEC$ as
 \begin{align}
 \YsVEC=\SVEC^{\top}\XI,\;\;
 \YtVEC=\TVEC^{\top}\XI  ,
@@ -201,7 +203,7 @@ which gives
   \label{eqn:eta_vec_xi_def}
 \ETA(\SVEC,\TVEC,\XI) = \tfrac{1}{N}(\SVEC^{\top}\XI)^{\top} (\TVEC^{\top}\XI) = \tfrac{1}{N}\XI^{\top} (\SVEC^{\top} \TVEC )\XI   .
 \end{align}
-or, more simply,
+or, more simply, after integrating over the data, we have the \emph{data-independent \SelfOverlap}
 \begin{align}
   \label{eqn:eta_vec_avg_def}
 \ETA(\SVEC,\TVEC) = \langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\AVGNDXI}=\tfrac{1}{N}(\SVEC^{\top} \TVEC )
