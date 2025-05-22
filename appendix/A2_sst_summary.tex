@@ -34,7 +34,7 @@ the \FreeEnergy, defined for the model error as
 \langle-\beta F \rangle_{\AVGNDXI} 
    :=& \langle \ln Z \rangle_{\AVGNDXI} \\ 
 \nonumber
-   =&\left\langle \int d\mu(\SVEC)e^{-\beta\DETOPSTLL} \right\rangle_{\AVGNDXI}  \\ 
+   =&\left\langle \ln \int d\mu(\SVEC)e^{-\beta\DETOPSTLL} \right\rangle_{\AVGNDXI}  \\ 
 \label{eqn:qaF}
    =& \frac{1}{N}\int d\mu(\NDXI)\ln\int d\mu(\SVEC)e^{-\beta\DETOPSTLL}   ,
 \end{align}
@@ -89,7 +89,7 @@ Following Section~\ref{sxn:mathP_errors}, we can write the \emph{Average Model \
 in terms of \Annealed \PartitionFunction, $Z^{an}_{\ND}$:
 \begin{align}
  \label{eqn:AVGSTTE_AA}
-\AVGSTTE:= \frac{1}{\ND}\dfrac{\partial }{\partial \beta} Z^{an}_{\ND}
+\AVGSTTE:= \red{-}\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \ln Z^{an}_{\ND}
 \end{align}
 
 %Given $\GANR$ in \EQN~\ref{eqn:Gan0}, and in analogy with \EQN~\ref{eqn:avgte} in Section~\ref{sxn:mathP}, 
@@ -106,20 +106,21 @@ in terms of \Annealed \PartitionFunction, $Z^{an}_{\ND}$:
 %%% =\dfrac{\partial \HAN}{\partial \beta}  .
 %%%\end{align}
 %%%%
+\red{Maybe missibg a minus sign somewhere}
 This now lets us write the Average Model \TrainingError $\AVGSTTE$ in the AA in terms of the \AnnealedHamiltonian $\GANR$:
   \begin{align}
   \nonumber
   \AVGSTTE
    =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\dfrac{\partial \beta\HAN}{\partial \beta} e^{-\ND\beta\HAN(\beta,\SVEC,\TVEC)} \\ 
   \label{eqn:EtM2}
-   =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\langle  \mathbf{\Delta E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle_{\XItrain} e^{-\ND\beta\HAN(\beta,\SVEC,\TVEC)}  ,
+   =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\langle  \mathbf{\Delta E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle_{\AVGNDXI} e^{-\ND\beta\HAN(\beta,\SVEC,\TVEC)}  ,
   \end{align}
   where $\langle \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle^{\beta}_{\XItrain}$
-  is a \ThermalAverage but defined over the specific ST error in the AA for the chosen set of training data $\XItrain$, and is denoted by 
+  is a \ThermalAverage but defined over the specific ST error in the AA for the chosen set of training data $\XItrain=\NDXI$, and is denoted by 
  \begin{align}
-   \langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle^{\beta}_{\XItrain}:==\dfrac{\partial \beta\HAN}{\partial \beta}.
+   \langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle^{\beta}_{\AVGNDXI}:=\red{=}\dfrac{\partial \beta\HAN}{\partial \beta}.
  \end{align}
- This can be seen from
+ This can be seen from from expanding \EQN~\ref{eqn:Gan_def}
  \begin{align}
   \label{eqn:partial_Gan}
   \dfrac{\partial \beta\HAN}{\partial \beta}
@@ -129,7 +130,7 @@ This now lets us write the Average Model \TrainingError $\AVGSTTE$ in the AA in 
     &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXILL}\right)^{-1} \int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXILL}
 % &=  \frac{1}{\ND} \langle\DETOPXI\rangle_{\AVGNDXIn}
  \end{align}
-This is analagous to defining the average error $\DETOPXI$ as a \ThermalAverage, but as one over the data $\NDXIn$ instead of the weights.
+This is analogous to defining the average error $\DETOPXI$ as a \ThermalAverage, but as one over the data $\NDXIn$ instead of the weights.
 
 We can also write the \ModelGeneralizationError $\AVGSTGE$  as \BoltzmannWeightedAverage
 of $\epsilon(R)$, weighted by $\HAN(\beta,S;T)$ (as in (2.30) in \cite{SST92}), as:
@@ -240,7 +241,7 @@ where $M=N_f$ is  the number of features in the data, where the normalization $\
  =\left( \frac{M}{2\pi} \right)^{MN/2} .
 \end{align}
 \michaeladdressed{Is that factor $P(\NDXI)$ due to us working with matrices, i.e., it does not appear with vectors.}
-\charles{@michael: see main text section 4, its there}
+\charles{@michael: see main text section 4, it's there}
 
 \paragraph{The Total Data Sample Error $(\DETOPST)$ and the Matrix Normalization}
 First, let us express the matrix-generalized \TotalDataSampleError, $\DETOPST$, for a single layer,
@@ -251,10 +252,10 @@ in operator form (for each training example)
 \end{align}
 where $\IM$ is a diagonal matrix of dimension $M$.
 Notice that $\DETOPST$ scales as $N\times M$, the total number of parameters in the system.
-Also, importantly, in this representation, the normalization on becomes
+Also, importantly, in this representation, \red{RE-WRITE THIS}, the normalization on becomes
 \begin{align}
  \label{eqn:matNorm}
-\frac{1}{N}\Trace{\SMAT^{\top}\TMAT} = \Trace{\OVERLAP} = M
+\frac{1}{N}\Trace{\SMAT^{\top}\TMAT} = \Trace{\OVERLAP} \red{= M}
 \end{align}
 so that when all $M$ elements overlap, then the error is zero.
 %                                                                                                                                                                
@@ -271,7 +272,7 @@ We can define the data-dependent form (i.e., in the basis of the data $\XI$) as
 The definition of the \AnnealedHamiltonian, $\GANMAT$, for the matrix-generalized case must be extended to account for the $M$ parameters per training example, and is now given as
 \begin{align}
  \label{eqn:hanpp}
-  \GANMAT:=M\HANPP
+ \red{Tr} \GANMAT:=\red{Tr}M\HANPP
 \end{align}
 
 where the \AnnealedHamiltonian per-parameter, $\HANPP$, is obtained from \EQN~\ref{eqn:Gan0} as
@@ -290,10 +291,10 @@ where
 That is, $\HANPP$ represents the Energy or Error each of the $M$ parameters contributes
 (integrated over the $N$ training examples $\NDXI$).
 
-The goal will be to derive the high-Temperature \AnnealedHamiltonian, $\GANMATHT$, which is now
+The goal will be to derive the high-Temperature \AnnealedHamiltonian, $\GANMATHT$, which is now \red{something off here , is this Trace and little H?}
 \begin{align}
  \label{eqn:hanpp}
-  \GANMATHT:=M\HANPPHT
+  \GANMATHT:=M\HANPPHT  
 \end{align}
 
 If we were to evaluate the trace of $\HANPPHT$, then we could also define
@@ -317,7 +318,7 @@ Moreover, when taking $\ln \IH$, the $N$ term pulls down and become a prefactor
 \begin{align}
 -\ln \IH = -\ln\left[\int\mathcal{D}\XI \;[\cdots]\; \right]^{N}= -N\ln\left[\int\mathcal{D}\XI \;[\cdots]\; \right] .
 \end{align}
-Thus, as with the vector case, $\GANMAT$ is like a mean-field average over the data $\XI$, indepedent of the sample size $N$.
+Thus, as with the vector case, $\GANMAT$ is like a mean-field average over the data $\XI$, independent of the sample size $N$.
 Also, since the final result must scale as $N\times M$, the integral should scale as $M$, i.e.,
 $\left[\int\mathcal{D}\XI \;[\cdots]\; \right]\sim M$.
 
@@ -443,7 +444,7 @@ To start, observe that when $M=1$, \EQN~\ref{eqn:Gan_lnI_final_mwm} becomes
 \end{align}
 meaning that \EQN~\ref{eqn:Gan_lnI_final_mwm} reduces to \EQN~\ref{eqn:Gan2}, as desired.
 
-\paragraph{FIX THIS SECTION}
+\paragraph{\red{FIX THIS SECTION}}
 \charles{We want $\GANMATHT$ to represent the total energy per training example, so it should NOT include the $\tfrac{1}{M}$
 FIX THIS}
 This ensures the Hamiltonian scales as $M$ so the Free Energy scales as $N \times M$, the
@@ -456,7 +457,7 @@ Notice that for the final \LayerQualitySquared Hamiltonian $\HBARE$, this will c
     \IH\approx  \left[1  + \frac{2\beta}{M}\operatorname{Tr}[(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right]^{-N/2} ,
 \end{align}
 for any $M>1$.
-Given this, it follows from \EQN~{eqn:HANPP} and \EQN~\ref{eqn:Gan_lnI} that
+Given this, it follows from \EQN~\ref{eqn:HANPP} and \EQN~\ref{eqn:Gan_lnI} that
 \begin{align}
 \label{eqn:GANmat}
 \beta\GANMAT = \beta M \HANPP
@@ -466,7 +467,7 @@ Given this, it follows from \EQN~{eqn:HANPP} and \EQN~\ref{eqn:Gan_lnI} that
 which is of the same functional form as \EQN~\ref{eqn:Gan2}, as desired:
 \begin{align}
 \label{eqn:GANHTmatR}
-\GANMATHT = \IM-\OVERLAP = M-\OVERLAP
+\red{Tr}\GANMATHT = \red{Tr}\IM-\OVERLAP = M-\red{Tr}\OVERLAP
 \end{align}
 
 \michaeladdressed{MM TO DO: Revisit the following two paragraphs and where to put them, since at least some of this should be somewhere in the main text.}
