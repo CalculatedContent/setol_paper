@@ -667,6 +667,7 @@ In BraKet notation, \EQN~\ref{eqn:Gan_simplified} can be expressed as
     \beta\GAN:=  -\tfrac{1}{n}\ln\langle e^{-\beta\DETOPXI}\rangle_{\NDXIn}=  -\ln \langle e^{-\beta\Delta E(\WVEC,\XI)}\rangle_{\XI}.
 \end{eqnarray*}
 \michaelB{I think there is a normalization issue here, and this needs to be expressed i.t.o. $\langle \cdot \rangle_{\AVGNDXIn}$?}
+\charlesB{No, you have to look carefully. I'm fairly sure this is correct}
 
 Using $\GAN$, we can define the \emph{Annealed Parition Function}, $Z^{an}_{n}$, as
 %%\begin{align}
@@ -770,6 +771,7 @@ the first two terms:
 
 Let us now express $\GAN$ directly in terms of $\EPSLw=\langle\DETOPXI \rangle_{\AVGNDXIn}$ (see \EQN~\ref{eqn:epsl}) as a \ThermalAverage at high-T.
 \michaelB{Q: I thought that this quantity was already intensive, so why the extra factor of $1/n$?}
+charlesB{because the 1/n appears outside the ln, not in the exp}
 To do so, let's take a high-T expansion of \EQN~\ref{eqn:Gan_def} 
 %%(see below for a discussion of the high-T approximation) 
 by expanding the exponential to first order in $\beta$, to obtain
@@ -891,6 +893,7 @@ Likeswise, if we substitute \EQN~\ref{eqn:Zanht_def} into \EQN~\ref{eqn:avgge_de
    =&\langle\EPSLw \rangle_{\WVEC}^{\beta} .
 \end{align}
 \michaelB{How do these two results depend on labels? And the fact that we don't split into training/testing?  See comments above.  (SST uses labels, so that seems pretty connected to our semiempirical approach.)}
+\charlesB{The labels are implicit in the energy function, and fixed}
 Notice that both of these results arise because of the simple expression that appears in the exponent of $\ZANHT$, namely because $-n\beta\HANHT(\WVEC)=n\beta\EPSLw$.
 
 
@@ -978,6 +981,7 @@ Likewise, one can show that the \Quality $\Q$
 \end{align}
 We can then obtain $\Q$ by taking the appropriate partial derivative of its \GeneratingFunction, $\Gamma_{Q}$.
 \michaelB{MM TO DO: Do this; since I think that this will help the transition from $F$ to $\Gamma$ easier.}
+\charlesB{This is done in the Appendix}
 
 For technical reasons, however, we will actually define and use a
 \GeneratingFunction for the \AverageLayerQualitySquared $\QT$, denoted $\IZG$.
