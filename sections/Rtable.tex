@@ -1,0 +1,38 @@
+1;95;0c% Rtable.tex
+\begin{table}[h!]
+  \centering
+  \renewcommand{\arraystretch}{1.25} % Increase line spacing in table
+\begin{tabular}{|c|c|c|}
+  \hline
+  Model & \textbf{HTSR Universality Class} & \textbf{$R(z)$}\\  \hline
+  \hline
+  Discrete & Bulk$+$Spikes, MHT, HT & $\tfrac{1}{\MECS}\sum_{i=1}^{\MECS}\lambda_{i}$   \\ \hline
+  \hline
+  Wishart Models & &\\ \hline
+  Multiplicative-Wishart & HT/VHT& $\dfrac{\epsilon\phi z^2}{2 - \epsilon\phi^2 z^2}$ \\  \hline
+  Inverse Wishart & HT/VHT &  $\dfrac{\kappa-\sqrt{\kappa(\kappa-2z)}}{z}$   \\  \hline
+  \hline
+  L\'evy Wigner (LW) &   & \\  \hline
+  Free Cauchy (FC) ($\alpha_{l}=1$) & HT $\alpha=2$ & $a+i\gamma$ \\ \hline
+  General L\'evy  ($\alpha_{l}\ne 1$) & VHT $\alpha<2$   & $a+bz^{\alpha-2}$ \\  \hline
+\end{tabular}
+  \caption{Known \RTransforms for random matrix ensembles relevant to modeling heavy-tailed spectral densities (eigenvalues or singular values squared).
+    The \emph{Multiplicative-Wishart} model has two real, non-zero parameters, $\epsilon$ and $\phi$; for more details, see \cite{Pennington2017}.
+  For the \emph{Inverse Wishart}, as given by Bun~\cite{BunThesis}, $\kappa=\frac{1}{2}(Q-1)$ where, $q=\frac{1}{Q}=\frac{M}{N}\le 1$.
+  The \emph{L\'evy-Wigner} (LW) model describes Wigner-like square random matrices
+  (as opposed to Wishart-like or Correlation Matrices), where the elements are drawn from a L\'evy-Stable distribution.
+  The resulting LW ESD is Heavy-Tailed Power Law, and characterized by the L\'evy exponent $\alpha_{l}$.
+  The LW $R(z)$ is parameterized by a (real) shift parameter $a$,
+  a complex phase factor $b$ (that depends on 3 real parameters   $\alpha_{l}, \beta$, and $\gamma$),
+  and, of course, $\alpha_{l}$.
+  The Free Cauchy (FC) model is a special case of the IW model, corresponding to the L\'evy $\alpha_{l}=1$, and the \HTSR $\alpha=2$. 
+  We will extend the LW models to the rectangular case for our modeling purposes here by making
+  the association   $\alpha = \alpha_{l}+1$ for $\alpha\le 2$.
+  %$\alpha=\tfrac{1}{2}(\alpha_{l}+1)+1$ for $\alpha\le 2$.
+   (Also, wwe take thew variance $\sigma=1$ for all models.)
+   Generally speaking, the L\'evy $R(z)$ are more complicated; 
+   for more details, see~\cite{BJNx01_TR,BJNx06_TR,BJ09_TR}.
+}
+\label{tab:known_r_transforms}
+\end{table}
+

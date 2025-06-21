@@ -1,0 +1,39 @@
+% Gtable.tex  —  final closed-form (or leading-order) Layer Quality \Q
+\begin{table}[h!]
+  \centering
+  \renewcommand{\arraystretch}{2}
+  \small
+  \begin{tabular}{|c|p{2.5cm}|c|p{4.5cm}|}
+    \hline
+    \textbf{Model} & \textbf{Metric} & \textbf{$\log\Q$ (Approx.\ Log Quality)} & \textbf{Interpretation} \\ \hline\hline
+
+    Delta Function (Spikes)
+      & Tail Norm
+      & $\displaystyle \log\l\sum_{i=1}^{\MECS}\LambdaECS_{i}$
+      & The Frobenius-like Tail norm sums the $\LambdaECS_{i}$ in the \ECS. \\ \hline
+
+    Free Cauchy (FC)
+      & \ALPHA $\alpha$
+      & $\displaystyle \log\lambda_{max}\sim\frac{1}{\alpha}$
+      & The log \Quality scales as $\tfrac{1}{\alpha}$, showing why smaller $\alpha$ yields higher $\Q$. \\ \hline
+
+    L\'evy Wigner (LW)
+      & \ALPHAHAT $\hat{\alpha}$ 
+      & $\displaystyle (\alpha-1)\,\log\lambda_{\max}
+        \;+\;\mathrm{const.}$
+      & Similar to \ALPHAHAT, heavier tails ($\alpha\in(1,2)$) depress \LayerQuality. \\ \hline
+
+    Inverse Wishart\footnotemark
+      & ECS Boundary
+      & $\displaystyle 0.5\log\lambda_{\max}
+        \;+\;\mathrm{const.}$
+      & Branch cut defines the \ECS \\ \hline
+
+  \end{tabular}
+  \caption{Closed-form or leading-order expressions for the log \LayerQuality
+           $\log\Q$ derived from the integrated $R$–transform for each core
+           tail-model, simplified to show the relation to the ~\WW~\ALPHA and ~\ALPHAHAT metrics. }
+  \label{tab:htsr_layer_quality}
+\end{table}
+
+\footnotetext{See Appendix~\ref{sxn:IW}, Eq.\,(A.7.25): $|G(\lambda)|\approx1.138\,\lambda^{0.539}$.}
