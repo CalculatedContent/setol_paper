@@ -58,18 +58,21 @@ become the effective \SemiEmpirical parameters (i.e, $\alpha$, $\lambda_{max}$) 
 Section~\ref{sxn:r_transforms} presents several  models of different \RTransforms.
 Evaluating $\QT$ requires evaluating selecting an \RTransform $R(z)$ for the Teacher ESD,
 and also ensure that it is analytic and single-valued on the domain of interest-- the \ECS and/or tail of the ESD.
-We examine three possible models for $R(z)$: \emph{(i)} the \emph{Spikes-only model},
-\emph{(ii)} the \emph{Inverse Wishart} (IW) model, 
-and \emph{(iii)} the  \LevyWigner (LW) model.
-First, as a trivial case, the tail of ESD can be treated a collection of spikes,
-and the ESD is simply as a sum of Dirac delta functions; in this case,
-$\QT$ becomes a \red{``Tail Norm'' or ``Trace Norm'' ; check this}
+We examine four possible models for $R(z)$: \emph{(i)} the \emph{Bulk$+$Spikes} (BS),
+\emph{(ii)} the \emph{Free Cauchy} (FC) model, 
+\emph{(iii)} the \emph{Inverse Wishart} (IW) model, 
+and \emph{(iv)} the  \LevyWigner (LW) model.
+First, as a trivial case, the tail of ESD can be treated as a collection of spikes,
+and the ESD is simply a sum of Dirac delta functions; in this case,
+$\QT$ becomes a ``Tail Norm'', the Frobenius Norm of the PL tail.
 When the layer is \Ideal, i.e., $\alpha\sim 2$ and $\Det{\XECS}\sim 1$,
-one can use  \emph{Inverse Wishart} (IW) model. 
+one can use  \emph{Free Cauchy} (FC) model.  and the resulting \LayerQuality $\Q$
+is approximately the Spectral Norm $\lambda_{max}$.
+One can also use  \emph{Inverse Wishart} (IW) model. 
 As required, the IW \RTransform contains a \emph{branch cut} in the complex plane
-which aligns with the start of the \ECS /\PowerLaw  tail.
-Fnally, Using the \LevyWigner model, one can (at least formally) derive the \HTSR \ALPHAHAT metric.
-
+which aligns with the start of the \ECS \PowerLaw tail.
+Finally, Using the \LevyWigner model, one can model cases where
+$\alpha\le 2$ and derive the \HTSR \ALPHAHAT metric.
 \end{enumerate}
 
 \vspace*{1em}
