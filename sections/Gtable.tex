@@ -3,36 +3,41 @@
   \centering
   \renewcommand{\arraystretch}{2}
   \small
-  \begin{tabular}{|c|p{2.5cm}|c|p{4.5cm}|}
+  \begin{tabular}{|c|p{2.5cm}|c|c|} % Removed the last 'p{4.5cm}' column
     \hline
-    \textbf{Model} & \textbf{Metric} & \textbf{$\log\Q$ (Approx.\ Log Quality)} & \textbf{Interpretation} \\ \hline\hline
+    \textbf{Model} & \textbf{Tail Norm} & \textbf{WW Metric} & \textbf{$\log\mathcal{Q}$ (Log Quality)} \\ \hline\hline
 
-    Delta Function (Spikes)
-      & Tail Norm
-      & $\displaystyle \log\l\sum_{i=1}^{\MECS}\LambdaECS_{i}$
-      & The Frobenius-like Tail norm sums the $\LambdaECS_{i}$ in the \ECS. \\ \hline
+    Bulk$+$Spikes (BS)
+    & Frobenius Norm
+    & N/A
+    & $\displaystyle \log\left(\sum_{i=1}^{\MECS}\LambdaECS_{i}\right)$ \\ \hline
 
     Free Cauchy (FC)
-      & \ALPHA $\alpha$
-      & $\displaystyle \log\lambda_{max}\sim\frac{1}{\alpha}$
-      & The log \Quality scales as $\tfrac{1}{\alpha}$, showing why smaller $\alpha$ yields higher $\Q$. \\ \hline
-
+    & Spectral Norm
+    & \ALPHA $\;\;\alpha$
+    & $\displaystyle \log\lambda_{max}\sim\frac{1}{\alpha}$ \\ \hline
+    
     L\'evy Wigner (LW)
-      & \ALPHAHAT $\hat{\alpha}$ 
-      & $\displaystyle (\alpha-1)\,\log\lambda_{\max}
-        \;+\;\mathrm{const.}$
-      & Similar to \ALPHAHAT, heavier tails ($\alpha\in(1,2)$) depress \LayerQuality. \\ \hline
-
-    Inverse Wishart\footnotemark
-      & ECS Boundary
-      & $\displaystyle 0.5\log\lambda_{\max}
-        \;+\;\mathrm{const.}$
-      & Branch cut defines the \ECS \\ \hline
+    & Shatten Norm
+    & \ALPHAHAT $\;\;\hat{\alpha}$
+    & $\displaystyle (\alpha-1)\,\log\lambda_{\max} \;+\;\mathrm{const.}$ \\ \hline
+     \hline
+    Inverse Wishart (IW)\footnotemark
+    & ECS Boundary*
+    & \ALPHA $\;\;\alpha$
+    & $\displaystyle 0.5\log\lambda_{\max} \;+\;\mathrm{const.}$ \\ \hline
 
   \end{tabular}
   \caption{Closed-form or leading-order expressions for the log \LayerQuality
-           $\log\Q$ derived from the integrated $R$–transform for each core
-           tail-model, simplified to show the relation to the ~\WW~\ALPHA and ~\ALPHAHAT metrics. }
+            $\log\mathcal{Q}$ derived from the integrated $R$–transform for each core
+            tail-model, simplified to show the relation to the ~\WW~\ALPHA and ~\ALPHAHAT metrics.
+            For each model, we interpret the final result.
+            Bulk$+$Space (BS): Sums the $\LambdaECS_{i}$ in the \ECS, giving a Frobenius Tail norm.
+            Free Cauchy (FC): Yields the Spectral Norm, $\lambda_{max}$. Since this scales as $\tfrac{1}{\alpha}$, this explaines the~\HTSR~\ALPHA metric as it shows  why smaller $\alpha$ yields higher $\mathcal{Q}$.
+            L\'evy Wigner (LW): Yields a Shatten Norm, which can be approximated by~\ALPHAHAT, $\ALPHAHATEQN$,
+            Being for the VHT Universality class, it implies that heavier tails ($\alpha\in(1,2)$) depress \LayerQuality.
+            Inverse Wishart (IW): Also gives ~\ALPHA, and, importably, a branch cut that defines the \ECS Boundary *(not a Tail norm).
+             }
   \label{tab:htsr_layer_quality}
 \end{table}
 
