@@ -38,6 +38,15 @@ Notice also that we have added a $\beta$ term; this will be factored out later.
 %$\mathbf{\AMAT}$ should be an $M \times M$ matrix (i.e. $\mathbf{\AMAT}:=\tfrac{1}{N}\mathbf{S}^{T}\mathbf{S}$),
 %but we could also let $\mathbf{\AMAT}$ be an $N \times N$ matrix, (i.e $\mathbf{\AMAT}:=\tfrac{1}{N}\mathbf{S}\mathbf{S}^{T}$),
 %simply with $N-M$ zero eigenvalues.
+%\paragraph{Unitary‐invariant randomness.}
+To ensure the ensemble contains \emph{no information beyond the fixed spectrum} $\{\lambda_i\}$, impose invariance under every orthogonal rotation:
+\begin{equation}
+  d\mu(\mathbf{W}) \;=\; d\mu\!\bigl(\mathbf{U}\mathbf{W}\mathbf{U}^{\top}\bigr),
+  \qquad
+  \forall\,\mathbf{U}\in O(M).
+\end{equation}
+Haar‐averaging over $\mathbf{U}$ renders all eigenvector choices equally likely, so the HCIZ integral collapses to a pure eigenvalue problem; this isotropy drives the saddle‐point/large‐deviation steps in Eqns.~\ref{eqn:ZD_step1}–\ref{eqn:ZD_step2}.
+
 
 We can now represent the partition function
 $\ZD$, by inserting \EQN~\ref{eqn:dmuA} into \EQN~\ref{eqn:hciz_def}.

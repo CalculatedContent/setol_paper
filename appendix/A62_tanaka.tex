@@ -154,11 +154,8 @@ matrix
 $\AMAT_{2}$ in terms of the Dirac delta-function, $\delta(x)$, as
 \begin{equation}
 \label{eqn:rho-emp}
-    \tilde\rho_{\AMAT}(\lambda)=\sum_{i=1}^{N}\delta(\lambda-\lambda_{i})  .
+    \tilde\rho_{\AMAT}(\lambda)=\frac{1}{N}\sum_{i=1}^{N}\delta(\lambda-\lambda_{i})  .
 \end{equation}
-\nred{I hate that we use $\delta$ for
-    both the eigenvalues and as a delta function}
-%
 Using this, the \ExpectedValue of the Log-Determinant 
 in \ref{eqn:ln-det-discrete}
 can be expressed in terms of the ESD of
@@ -166,19 +163,16 @@ $\AMAT_{2}$ as
 \begin{align}
 \nonumber
 \Expected[\AMAT_{2}]{\ln\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)^{-1/2}}
-   & = -\dfrac{1}{2}\sum_{\mu=1}^{M}\dfrac{?}{?}\sum_{i=1}^{N}\int
+   & = -\dfrac{1}{2}\sum_{\mu=1}^{M}\sum_{i=1}^{N}\int
        d\lambda\ln(\DeltaMu-\lambda)\delta(\lambda-\lambda_{i}) \\ 
 \nonumber
-   & = -\dfrac{1}{2}\sum_{\mu=1}^{M}\red{N}?\int
+   & = -\dfrac{1}{2}\sum_{\mu=1}^{M}\int
        d\lambda\ln(\DeltaMu-\lambda)\sum_{i=1}^{N}\delta(\lambda-\lambda_{i}) \\ 
 \label{eqn:ln-det-rho}
-   & = -\dfrac{1 N}{2}\sum_{\mu=1}^{M}\int
+   & = -\dfrac{1}{2}\sum_{\mu=1}^{M}\int
        d\lambda\ln(\DeltaMu-\lambda)
-       \tilde\rho_{\AMAT}(\lambda)  .
+       N\tilde\rho_{\AMAT}(\lambda)  .
 \end{align}
-\michael{Is the first line a resolution of the identity? Are you concerned that a factor of $N$ enters there? If not, then where/why does the $N$ enter?}
-\nred{Check the normalization factor $N$ on the outside, and the above eqn}
-\charles{yes gotta check the $N$ factor}
 
 Let us insert this back into our
 expression for the generating function,
