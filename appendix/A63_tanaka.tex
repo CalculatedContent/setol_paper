@@ -15,13 +15,49 @@ and in the large-$N$ approximation, as
 where $I(\mathbf{X})$ is  \RateFunction, defined below,
 and  $\GNORM(\mathbf{X})$ is what we are eventually solving for.
 
-We first introduce a new change of measure, 
+\\
+
+\red{This is new, needs cleaning up}%--------------------------------------------------------------------
+\paragraph{Step 2.0} We start with the \emph{expected} partition function
+\begin{align}
+  \label{eqn:avg_ZD}
+  \EZDA
+  &=
+  \int d\mu(\AMAT)\int d\WMAT
+      \exp\Bigl[
+         \tfrac{\beta}{2}\Trace{\WMAT^{\TR}\AMAT\,\WMAT}
+        -\tfrac{\beta}{2}\Trace{\WMAT\DMAT\WMAT^{\TR}}
+      \Bigr].
+\end{align}
+The average over \AMAT\ affects only the first exponential; we
+\textbf{define} a matrix function $\GFANCY$, depending solely on
+$\XMAT=\frac1N\WMAT^{\TR}\WMAT$, by
+\begin{align}
+  \label{eqn:def_GFANCY}
+  \int d\mu(\AMAT)\,
+        \exp\Bigl[\tfrac{\beta}{2}\Trace{\WMAT^{\TR}\AMAT\,\WMAT}\Bigr]
+  &=
+  \exp\Bigl[\tfrac{\beta N}{2}\Trace{\GFANCY}\Bigr].
+\end{align}
+Inserting \eqref{eqn:def_GFANCY} into \eqref{eqn:avg_ZD} gives
+\begin{align}
+  \label{eqn:ZD_after_Aavg}
+  \EZDA
+  &=
+  \int d\WMAT
+      \exp\Bigl[
+         \tfrac{\beta N}{2}\Trace{\GFANCY}
+        -\tfrac{\beta}{2}\Trace{\WMAT\DMAT\WMAT^{\TR}}
+      \Bigr].
+\end{align}
+
+The now need to  determine an explicit form for
+$\GFANCY$. We introduce a new change of measure, 
  $d\mu(\mathbf{W})\rightarrow d\mu(\mathbf{X})$.
 Then, we show this lets us express $\EZDAONE$ as $\EZDX$ and to express it using the LDP.
-Next, we apply a SPA to solve for $\GMAX$
+Next, we apply a SPA to solve for $\GMAX=max\;\GNORM$.
 Importantly, we also show how to incorporate the inverse-Temperature $\beta$,
 which is new.
-\\
 
 \paragraph{Step 2.1}
 To define the transformation $d\mu(\mathbf{W})\rightarrow d\mu(\mathbf{X})$,  where (recall) $\mathbf{X}=\frac{1}{N}\mathbf{W}^{\top}\mathbf{W}$,
@@ -59,13 +95,12 @@ Next, we take a Wick Rotation, $i\XHAT\rightarrow \XHAT$, so that the terms unde
 \end{align}
 
 \paragraph{Step 2.3}
-We now insert \ref{eqn:dmuX} into \ref{eqn:ZD0}, which lets
-express $\ZD$ as an integral over the \Teacher Correlation matrices
-\nred{I SKIPPED A STEP HERE NEED TO FIX SORRY}
+We now insert \ref{eqn:dmuX} into~\ref{eqn:avg_ZD},  which lets
+express $\AZDA$ as an integral over the \Teacher Correlation matrices
 
 \begin{align}
   \nonumber
-  \ZD&=
+  \EZDA&=
   \frac{1}{2\pi} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
   e^{N\frac{\beta}{2} \Trace{\GFANCY}+\Trace{\hat{X}\mathbf{X}} }
   e^{-\frac{1}{2}\Trace{\hat{X}\mathbf{W}^{\top}\mathbf{W}}}
@@ -90,7 +125,7 @@ express $\ZD$ as an integral over the \Teacher Correlation matrices
   d\mu(\mathbf{\XMAT})  .
 \end{align}
 
-\nred{ABOVE IS OFF  and may be missing a $1/2$}
+\nred{Check for typos above, maybe missing a $1/2$}
 \paragraph{Step 2.4}
 We can now rearrange terms to make this expression look like the \EQN~\ref{eqn:LDP}
 %Let us write
