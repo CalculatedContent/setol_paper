@@ -345,7 +345,6 @@ where, by our normalization here, $\EPSLw \in [0,1]$.
 \michaelB{Q: Where does it follow from that $\EPSLw \le 1$?  And we we need that anywhere?  (Below it follows when we specialize to L2, etc., but I mean more generally, which is where we are here.)}
 The symbol $\EPSLw$ is our theoretical estimate of the sample average $\DETOPXI$ (\EQN~\ref{eqn:detox}),
 well-defined for any $n$.
-\michalB{Q: Is that eqn a typo, should be \EQN~\ref{eqn:average_data_sample_error}? If yes, this sentence should be up there.}
 We also call $\EPSLw$ the \emph{\EffectivePotential}, which will be made clear below.
 \michaelB{Some of the last ca 12 lines is redundant, but before I change anything, I want to clarify those thigns.}
 
@@ -360,7 +359,7 @@ It is also convenient to write \emph{\TotalEffectivePotential} as an Energy,
 This will only be useful when the \ThermodynamicLimit exists, and this
 can be reasonably expected for the \AnnealedApproximation (AA),
 which is the regime in which \SETOL will be developed.% 
-\footnote{We should note that, while our model training and generalization errors are always expressed energies, an energy is not necessarily a model error. \michael{@charles: this seems in passing, what is the significance of this comment. If not essential, maybe remove it.} }
+\footnote{We should note that, while our model training and generalization errors are always expressed energies, an energy is not necessarily a model error. 
 
 There is a related notion of \emph{\SizeConsistency},
 often introduced in Quantum Chemistry through the Linked Cluster Theorem~\cite{Hubbard1959,Brandow1963},
@@ -669,7 +668,7 @@ In BraKet notation, \EQN~\ref{eqn:Gan_simplified} can be expressed as
 \michaelB{I think there is a normalization issue here, and this needs to be expressed i.t.o. $\langle \cdot \rangle_{\AVGNDXIn}$?}
 \charlesB{No, you have to look carefully. I'm fairly sure this is correct}
 
-Using $\GAN$, we can define the \emph{Annealed Parition Function}, $Z^{an}_{n}$, as
+Using $\GAN$, we can define the \emph{Annealed Partition Function}, $Z^{an}_{n}$, as
 %%\begin{align}
 %%  \label{eqn:Zan_def}
 %%  \ZAN :=  \int d\mu(\WVEC) e^{-n\beta \GAN}.
@@ -961,10 +960,10 @@ for $\ETAw$ in \EQN~\ref{ref:defGammaQ}:
 \begin{align}
   \label{ref:defGammaQtoF}
   \beta\Gamma_{\Q^{ST}}
-  &= \ln\int d\mu(\WVEC) e^{n\beta(1\red{-}\EPSLw)} \\ \nonumber
-    &= \ln\int d\mu(\WVEC) e^{n\beta}e^{\red{-}n\beta\EPSLw} \\ \nonumber
-    &= \ln\left(\int d\mu(\WVEC) e^{n\beta}\right)+\ln\left(\int d\mu(\WVEC)e^{\red{-}n\beta\EPSLw}\right) \\ \nonumber
-   &= \ln e^{n\beta}+\ln\left(\int d\mu(\WVEC)e^{\red{-}n\beta\EPSLw}\right) \\ \nonumber
+  &= \ln\int d\mu(\WVEC) e^{n\beta(1-\EPSLw)} \\ \nonumber
+    &= \ln\int d\mu(\WVEC) e^{n\beta}e^{-n\beta\EPSLw} \\ \nonumber
+    &= \ln\left(\int d\mu(\WVEC) e^{n\beta}\right)+\ln\left(\int d\mu(\WVEC)e^{-n\beta\EPSLw}\right) \\ \nonumber
+   &= \ln e^{n\beta}+\ln\left(\int d\mu(\WVEC)e^{-n\beta\EPSLw}\right) \\ \nonumber
   &= \beta n-\beta F^{ST}
 \end{align}
 \michaelB{Confirm this $F$ is \EQN~\ref{eqn:F}, not \EQN~\ref{eqn_mm_f_b ar} (which I believe is $\overline{F}$). Maybe point to the correct one.)}
