@@ -86,27 +86,27 @@ such that they satisfy the Trace-Log Condition, i.e., $\lambda_{i}\ge \LAMBDADET
 \begin{figure}[t]
     \centering
     \subfigure[$lr=1\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_0_all_xmin.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_0_all_xmin.png}
         \label{fig:mlp3-trunc_err_epochs_xmin_1}
     }
     \subfigure[$lr=2\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_1_all_xmin.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_1_all_xmin.png}
         \label{fig:mlp3-trunc_err_epochs_xmin_2}
     }
     \subfigure[$lr=4\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_2_all_xmin.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_2_all_xmin.png}
         \label{fig:mlp3-trunc_err_epochs_xmin_4}
     }\\
     \subfigure[$lr=8\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_3_all_xmin.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_3_all_xmin.png}
         \label{fig:mlp3-trunc_err_epochs_xmin_8}
     }
     \subfigure[$lr=16\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_4_all_xmin.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_4_all_xmin.png}
         \label{fig:mlp3-trunc_err_epochs_xmin_16}
     }
     \subfigure[$lr=32\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_5_all_xmin.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_5_all_xmin.png}
         \label{fig:mlp3-trunc_err_epochs_xmin_32}
     }
     \caption{
@@ -172,27 +172,27 @@ significant amount of generalization comes from the gap between these tails, but
 \begin{figure}[t]
     \centering
     \subfigure[$lr=1\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_0_all_detX.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_0_all_detX.png}
         \label{fig:mlp3-trunc_err_epochs_detX_1}
     }
     \subfigure[$lr=2\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_1_all_detX.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_1_all_detX.png}
         \label{fig:mlp3-trunc_err_epochs_detX_2}
     }
     \subfigure[$lr=4\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_2_all_detX.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_2_all_detX.png}
         \label{fig:mlp3-trunc_err_epochs_detX_4}
     }\\
     \subfigure[$lr=8\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_3_all_detX.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_3_all_detX.png}
         \label{fig:mlp3-trunc_err_epochs_detX_8}
     }
     \subfigure[$lr=16\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_4_all_detX.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_4_all_detX.png}
         \label{fig:mlp3-trunc_err_epochs_detX_16}
     }
     \subfigure[$lr=32\times$]{
-        \includegraphics[width=4cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_5_all_detX.png}
+        \includegraphics[width=5cm]{img/truncated_error/mlp3_trunc_error_by_epochs_LR_5_all_detX.png}
         \label{fig:mlp3-trunc_err_epochs_detX_32}
     }
     \caption{
@@ -265,13 +265,13 @@ Learning rate is not explicitly shown, but its effect can be seen in the cluster
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=12cm]{img/truncated_error/mlp3_trunc_error_by_LR_alpha_all_xmin.png}
+  \includegraphics[width=15cm]{img/truncated_error/mlp3_trunc_error_by_LR_alpha_all_xmin.png}
   \caption{
         Train and test error gaps using the \POWERLAW~MSR, as a function of alpha in the FC1 and FC2 layers of MLP3 
         models, at the \emph{final epoch} of training. We can see that as alpha decreases towards $2$, (right to left), 
         $\Delta E_{train}$ and $\Delta E_{test}$ generally decrease as well, meaning that the closer $\ALPHA$ is to $2$, 
         the more the Effective Correllation Space explains the train and test predictions. The gap between un-truncated 
-        train and test error, (\EQN \ref{eqn:gen_gap},) generally decreases as well until $\alpha_{FC1} < 2$.
+        train and test error, (\EQN \ref{eqn:gen_gap},) decreases as well until $\alpha_{FC1} < 2$.
   }
   \label{fig:mlp3-alpha-generalization-gap}
 \end{figure}

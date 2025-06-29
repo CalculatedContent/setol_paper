@@ -34,7 +34,7 @@ In Figure~\ref{fig:mlp3-randesd-8}-\ref{fig:mlp3-randesd-16}, the purple line is
 This is analogous to the case where $\alpha$ crosses below $2$. 
 This suggests that the absolute Trace-Log is minimized when $\alpha\simeq2$, which (remarkably) is exactly when the \HTSR \Phenomenology predicts the layer is \Ideal.
 
-(Observe that \Ideal does not necessarily mean optimal under a finite sized training set, but rather that the finite sized system behaves the most similarly to its infinite limit.)
+(Observe that \Ideal does not necessarily mean optimal under a finite sized training set, but rather that the finite-sized system behaves the most similarly to its infinite limit.)
 \michaeladdressed{MM TO DO: Make sure that we define \Ideal somewhere, probably in the intro; and that parenthetical comment should probably go there.}
 \charles{This should be defined earlier in section 140}
 
@@ -42,15 +42,15 @@ This suggests that the absolute Trace-Log is minimized when $\alpha\simeq2$, whi
 \begin{figure}[t] %[h]
     \centering
     \subfigure[$LR=8\times$]{
-      \includegraphics[width=4cm]{./img/detX_plots/LR=8/FC1/ww.layer3.detX.png}
+      \includegraphics[width=5cm]{./img/detX_plots/LR=8/FC1/ww.layer3.detX.png}
         \label{fig:mlp3-randesd-8}
     }
     \subfigure[$LR=16\times$]{
-      \includegraphics[width=4cm]{./img/detX_plots/LR=16/FC1/ww.layer3.detX.png}
+      \includegraphics[width=5cm]{./img/detX_plots/LR=16/FC1/ww.layer3.detX.png}
         \label{fig:mlp3-randesd-16}
     }
     \subfigure[$LR=32\times$]{
-      \includegraphics[width=4cm]{./img/detX_plots/LR=32/FC1/ww.layer3.detX.png}
+      \includegraphics[width=5cm]{./img/detX_plots/LR=32/FC1/ww.layer3.detX.png}
         \label{fig:mlp3-randesd-32}
     }
     \caption{
@@ -87,19 +87,19 @@ Given that FC1 \emph{has} passed the critical $\alpha=2$ threshold, we conjectur
 \begin{figure}[t] %[h]
     \centering
     \subfigure[Layer FC1 for various learning rates]{
-        \includegraphics[width=6cm]{img/detX_plots/mlp3_detX_delta_LR_all_FC1.png}
+        \includegraphics[width=7cm]{img/detX_plots/mlp3_detX_delta_LR_all_FC1.png}
         \label{fig:mlp3-detx-lr_search_fc1}
     }
     \subfigure[Layer FC2 for various learning rates]{
-        \includegraphics[width=6cm]{img/detX_plots/mlp3_detX_delta_LR_all_FC2.png}
+        \includegraphics[width=7cm]{img/detX_plots/mlp3_detX_delta_LR_all_FC2.png}
         \label{fig:mlp3-detx-lr_search_fc2}
     }\\
     \subfigure[Layer FC1 for various batch sizes]{
-        \includegraphics[width=6cm]{img/detX_plots/mlp3_detX_delta_BS_all_FC1.png}
+        \includegraphics[width=7cm]{img/detX_plots/mlp3_detX_delta_BS_all_FC1.png}
         \label{fig:mlp3-detx-bs_search_fc1}
     }
     \subfigure[Layer FC2 for various batch sizes]{
-        \includegraphics[width=6cm]{img/detX_plots/mlp3_detX_delta_BS_all_FC2.png}
+        \includegraphics[width=7cm]{img/detX_plots/mlp3_detX_delta_BS_all_FC2.png}
         \label{fig:mlp3-detx-bs_search_fc2}
     }
     \caption{
@@ -129,19 +129,19 @@ approaches $0$.
 \begin{figure}[t] %[h]
     \centering
     \subfigure[VGG Series]{
-      \includegraphics[width=6cm]{./img/VggTest.png}
+      \includegraphics[width=7cm]{./img/VggTest.png}
       \label{fig:VGG_trend}
     }
     \subfigure[ResNet Series]{
-      \includegraphics[width=6cm]{./img/ResNetTest.png}
+      \includegraphics[width=7cm]{./img/ResNetTest.png}
       \label{fig:ResNet_trend}
     } \\
     \subfigure[ViT Series]{
-      \includegraphics[width=6cm]{./img/VIT_ESD_trends.png}
+      \includegraphics[width=7cm]{./img/VIT_ESD_trends.png}
       \label{fig:VIT_trend}
     }
     \subfigure[DenseNet Series]{
-      \includegraphics[width=6cm]{./img/DenseNetTest.png}
+      \includegraphics[width=7cm]{./img/DenseNetTest.png}
       \label{fig:DenseNet_trend}
     }
     \caption{Difference between the two $\lambda_{min}$ estimates, $\Delta\lambda_{min}$, (\EQN~\ref{eqn:D_lambda_min}), as a 
@@ -188,19 +188,19 @@ These results show how the single-layer \SETOL theory extends from the MLP3 mode
 \begin{figure}[t] %[h]
     \centering
     \subfigure[Falcon 7B]{
-      \includegraphics[width=6cm]{./img/FALCON7b_ESD_trends.png}
+      \includegraphics[width=7cm]{./img/FALCON7b_ESD_trends.png}
       \label{fig:falcon7B_trend}
     }
     \subfigure[Falcon 40B]{
-      \includegraphics[width=6cm]{./img/FALCON40b_ESD_trends.png}
+      \includegraphics[width=7cm]{./img/FALCON40b_ESD_trends.png}
       \label{fig:falcon40B_trend}
     }
     \subfigure[Llama 13B]{
-      \includegraphics[width=6cm]{./img/LLAMA_13b_ESD_trends.png}
+      \includegraphics[width=7cm]{./img/LLAMA_13b_ESD_trends.png}
       \label{fig:llama13B_trend}
     }
     \subfigure[Llama 65B]{
-      \includegraphics[width=6cm]{./img/LLAMA_65b_ESD_trends.png}
+      \includegraphics[width=7cm]{./img/LLAMA_65b_ESD_trends.png}
       \label{fig:llama65B_trend}
     }
     \caption{Difference between the two $\lambda_{min}$ estimates, $\Delta\lambda_{min} = \LAMBDAPL - \LAMBDADETX$, 
