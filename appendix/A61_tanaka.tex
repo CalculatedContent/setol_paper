@@ -14,6 +14,11 @@ in
 terms of the actual $M$ eigenvalues, $\left\{ \lambda_{i} \right\}_{i=1}^{M}$, of the \Teacher.
 
 
+\paragraph{Randomness assumption.}
+For real weights $\mathbf{W}$,  we assume an \emph{orthogonally invariant} ensemble,
+$d\mu(\mathbf W)=d\mu(\mathbf U\mathbf W\mathbf U^{\top})$ for all $\mathbf U\in O(M)$,
+mirroring the isotropic Gaussian initialisation widely used in neural networks.
+Crucially, Tanaka’s large-$N$ analysis shows the resulting HCIZ exponent depends only on the eigenvalue spectrum, so the final integrated–$R$ expression should remain applicable even when full rotational invariance is later broken in training.
 
 %%\paragraph{Representing $d\mu(\AMAT)$ with $d\mu(\WMAT)$ using the source matrix $\mathbf{D}$.}
 \paragraph{Using a source matrix $\mathbf{D}$ to represent $d\mu(\AMAT)$ with $d\mu(\WMAT)$.}
@@ -21,7 +26,7 @@ terms of the actual $M$ eigenvalues, $\left\{ \lambda_{i} \right\}_{i=1}^{M}$, o
 We consider all matrices $\mathbf{\AMAT}$ with the same limiting spectral density, $\rho_{\AMAT}^{\infty}(\lambda)$,
 as the limiting (\emph{empirical}) ESD of the \Teacher.
 That is, we want $\rho_{\AMAT}^{\infty}(\lambda)=\rho^{\infty}_{\WMAT}(\lambda)$, where $\TMAT=\WMAT$.
-\nred{Comment on the nature of the randomness required to be invariant under unitary transformations.}
+%\nred{Comment on the nature of the randomness required to be invariant under unitary transformations.}
 Of course, there are infinitely many weight matrices $\mathbf{W}$ with the same $M$ eigenvalues, $\left\{ \lambda_{i} \right\}_{i=1}^{M}$, as the \Teacher.
 Let us specify these matrices with the measure $d\mu(\mathbf{W})$.
 Doing this lets us then write the measure $d\mu(\mathbf{\AMAT})$ in terms of $d\mu(\mathbf{W})$ as:
@@ -39,13 +44,13 @@ Notice also that we have added a $\beta$ term; this will be factored out later.
 %but we could also let $\mathbf{\AMAT}$ be an $N \times N$ matrix, (i.e $\mathbf{\AMAT}:=\tfrac{1}{N}\mathbf{S}\mathbf{S}^{T}$),
 %simply with $N-M$ zero eigenvalues.
 %\paragraph{Unitary‐invariant randomness.}
-To ensure the ensemble contains \emph{no information beyond the fixed spectrum} $\{\lambda_i\}$, impose invariance under every orthogonal rotation:
-\begin{equation}
-  d\mu(\mathbf{W}) \;=\; d\mu\!\bigl(\mathbf{U}\mathbf{W}\mathbf{U}^{\top}\bigr),
-  \qquad
-  \forall\,\mathbf{U}\in O(M).
-\end{equation}
-Haar‐averaging over $\mathbf{U}$ renders all eigenvector choices equally likely, so the HCIZ integral collapses to a pure eigenvalue problem; this isotropy drives the saddle‐point/large‐deviation steps in Eqns.~\ref{eqn:ZD_step1}–\ref{eqn:ZD_step2}.
+%To ensure the ensemble contains \emph{no information beyond the fixed spectrum} $\{\lambda_i\}$, impose invariance under every orthogonal rotation:
+%\begin{equation}
+%  d\mu(\mathbf{W}) \;=\; d\mu\!\bigl(\mathbf{U}\mathbf{W}\mathbf{U}^{\top}\bigr),
+%  \qquad
+ % \forall\,\mathbf{U}\in O(M).
+%\end{equation}
+%Haar‐averaging over $\mathbf{U}$ renders all eigenvector choices equally likely, so the HCIZ integral collapses to a pure eigenvalue problem; this isotropy drives the saddle‐point/large‐deviation steps in Eqns.~\ref{eqn:ZD_step1}–\ref{eqn:ZD_step2}.
 
 
 We can now represent the partition function
