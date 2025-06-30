@@ -15,10 +15,7 @@ and in the large-$N$ approximation, as
 where $I(\mathbf{X})$ is  \RateFunction, defined below,
 and  $\GNORM(\mathbf{X})$ is what we are eventually solving for.
 
-\\
-
-\red{This is new, needs cleaning up}%--------------------------------------------------------------------
-\paragraph{Step 2.0} We start with the \emph{expected} partition function
+\paragraph{Step 2.0} We start with the \emph{expected} \PartitionFunction
 \begin{align}
   \label{eqn:avg_ZD}
   \EZDA
@@ -29,7 +26,7 @@ and  $\GNORM(\mathbf{X})$ is what we are eventually solving for.
         -\tfrac{\beta}{2}\Trace{\WMAT\DMAT\WMAT^{\TR}}
       \Bigr].
 \end{align}
-The average over \AMAT\ affects only the first exponential; we
+The average over \AMAT\ affects only the first exponential; applying the SPA, we
 \textbf{define} a matrix function $\GFANCY$, depending solely on
 $\XMAT=\frac1N\WMAT^{\TR}\WMAT$, by
 \begin{align}
@@ -39,6 +36,8 @@ $\XMAT=\frac1N\WMAT^{\TR}\WMAT$, by
   &=
   \exp\Bigl[\tfrac{\beta N}{2}\Trace{\GFANCY}\Bigr].
 \end{align}
+which will be valid in the large-$N$ approximation below.
+
 Inserting \eqref{eqn:def_GFANCY} into \eqref{eqn:avg_ZD} gives
 \begin{align}
   \label{eqn:ZD_after_Aavg}
