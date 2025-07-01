@@ -28,19 +28,19 @@ Using the ESD $\rho(\lambda)$, defined as
 \rho(\lambda):=\frac{1}{N}\sum_{i}\delta(\lambda-\lambda_{i})  ,
 \end{equation}
 %
-we can express the \emph{\GreensFunction} (or \emph{\Cauchy}-Stieltjes transform) by%
+we can express the \emph{\GreensFunction} (or \emph{\CauchyStieltjes} transform $C(z)$) by%
 \footnote{Please notice our naming and sign convention in \EQN~\ref{eqn:Cz}.
-Some authors equate the \GreensFunction $G(z)$ with
-the \Cauchy-Stieltjes transform, whereas we define $C(z)=-G(z)$.}
+We equate the \GreensFunction $G(z)$ with
+the (positive)\CauchyStieltjes transform, $G(z)=C(z)$.   Other works may use the opposite sign convention, $G(z)=-C(z)$.
 \begin{equation}
-\label{eqn:Gz}
-G(z):=\int \mathrm{d}\lambda \frac{\rho(\lambda)}{z-\lambda} .
+\label{eqn:Cz}
+G(z)=C(z):=\int \mathrm{d}\lambda \frac{\rho(\lambda)}{z-\lambda} .
 \end{equation}
 %
 From $G(z)$, we can recover the ESD, $\rho(\lambda)$, using the inversion relation
 \begin{equation}
 \label{eqn:GzInverse}
-\rho(\lambda)=\lim_{\epsilon\rightarrow 0+}\frac{1}{\pi}\mathrm{IM}(C(\lambda+i\epsilon))  ,
+\rho(\lambda)=\lim_{\epsilon\rightarrow 0+}\frac{1}{\pi}\mathrm{IM}(G(\lambda+i\epsilon))  ,
 \end{equation}
 where $\mathrm{IM}$ is the imaginary part of $G(z)$, and where the $\lim_{\epsilon\rightarrow 0+}$ means to take the limit approaching from the upper half of the complex plane.
 %
@@ -110,8 +110,6 @@ Let the tail of the ESD have $\MECS = M^{tail}$ eigenvalues that define the \ECS
 \end{equation}
 where the $\LambdaECS_{i}$ are normalized by $\tfrac{1}{M}$.
 
-\michaeladdressed{Let's sync, since I don't know what that phrase means in this context, and I want to make sure we didn't introduce a confusion above.}
-\charles{@michael: seriously?!  We have discussed this multiple times.  We dicussed it at dinner in New Orleans.}
 The \GreensFunction $G(z)$ is then
 \begin{equation}
 \label{eqn:spikes_model_1}
@@ -119,7 +117,7 @@ G(z) = \int d\lambda \dfrac{ \rho_{tail}(\lambda) }{z - \lambda} =
 \sum_{i=1}^{\MECS} \int d\lambda \dfrac{\delta(\lambda-\LambdaECS_{i}) }{z - \lambda} =
 \sum_{i=1}^{\MECS} \dfrac{1}{z-\LambdaECS_{i}}  ,
 \end{equation}
-and the Blue function for each invividual term $i$ is $\frac{1}{z-\LambdaECS_{i}}$, i.e., $B(z)=\LambdaECS_{i}+\frac{1}{z}$. 
+and the Blue function for each individual term $i$ is $\frac{1}{z-\LambdaECS_{i}}$, i.e., $B(z)=\LambdaECS_{i}+\frac{1}{z}$. 
 Now, using the additive property of the \RTransform, we can express the total $R(z)$ as the sum of the \RTransforms for the individual terms $i$, giving
 \begin{equation}
 \label{eqn:spikes_model_2}

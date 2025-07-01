@@ -20,7 +20,7 @@ and  $\GNORM(\mathbf{X})$ is what we are eventually solving for.
   \label{eqn:avg_ZD}
   \EZDA
   &=
-  \int d\mu(\AMAT)\int d\WMAT
+  \int d\mu(\AMAT)\int  d\mu(\WMAT)
       \exp\Bigl[
          \tfrac{\beta}{2}\Trace{\WMAT^{\TR}\AMAT\,\WMAT}
         -\tfrac{\beta}{2}\Trace{\WMAT\DMAT\WMAT^{\TR}}
@@ -43,7 +43,7 @@ Inserting \eqref{eqn:def_GFANCY} into \eqref{eqn:avg_ZD} gives
   \label{eqn:ZD_after_Aavg}
   \EZDA
   &=
-  \int d\WMAT
+  \int d\mu(\WMAT)
       \exp\Bigl[
          \tfrac{\beta N}{2}\Trace{\GFANCY}
         -\tfrac{\beta}{2}\Trace{\WMAT\DMAT\WMAT^{\TR}}
@@ -74,7 +74,7 @@ This lets us express the transformation of measure $d\mu(\mathbf{W})\rightarrow 
   &= \frac{1}{2\pi}\int_{-\infty}^{\infty} e^{i\frac{1}{2}
     \Trace{\hat{X}(N\mathbf{X}-\mathbf{W}^{\top}\mathbf{W})}
   }
-  d\mu(\mathbf{X})d\hat{X}  ,
+  d\mu(\mathbf{X})d\mu(\hat{X} ),
 \end{align}
 where $\hat{X}$ is a scalar (or really matrix of scalars),
 and we have a $1/2$ term for mathematical consistency below.
@@ -87,11 +87,16 @@ Here, we assume the Trace constraint is sufficient for our level of rigor.
 
 
 \paragraph{Step 2.2}
-Next, we take a Wick Rotation, $i\XHAT\rightarrow \XHAT$, so that the terms under the integral are all real (not complex), giving:
+Next, we take a Wick Rotation, 
+\footnote{The Wick rotation converts an oscialltory integral into an exponentially decaying one which should be well defined.  Technically, this is an analytic continuation which needs to be checked, but following standard practice in physics we will assume the resulting integral is analytic and therefore well defined and we will proceed onwards. }$i\XHAT\rightarrow \XHAT$, so that the terms under the integral are all real (not complex), giving:
 \begin{align}
   \label{eqn:dmuX}
-  d\mu(\mathbf{W}) &= \frac{1}{2\pi}\int_{-i\infty}^{i\infty} e^{\frac{1}{2}\Trace{\hat{X}(N\mathbf{X}-\mathbf{W}^{\top}\mathbf{W})}} d\mu(\mathbf{X})d\hat{X}  .
+  d\mu(\mathbf{W}) &= \red{\mathcal{N}_{Wick}}\int_{-i\infty}^{i\infty} e^{\red{-}\frac{1}{2}\Trace{\hat{X}(N\mathbf{X}-\mathbf{W}^{\top}\mathbf{W})}} d\mu(\mathbf{X})d\mu(\hat{X} ).
 \end{align}
+where $d\mu(\hat{X})$ is a measure over $\tfrac{M(M-1)}{2}$ Lagrange multipliers, and the normalization is  $$\mathcal{N}_{Wick}=(\frac{1}{2\pi i})^{\tfrac{M(M-1)}{2}}$$.
+
+
+\nred{The minus sign has not been propagated through yet and may be confusing; I will fix shortly. The final result is not changed.  }
 
 \paragraph{Step 2.3}
 We now insert \ref{eqn:dmuX} into~\ref{eqn:ZD_after_Aavg},  which lets
@@ -100,31 +105,30 @@ express $\AZDA$ as an integral over the \Teacher Correlation matrices
 \begin{align}
   \nonumber
   \EZDA&=
-  \frac{1}{2\pi} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
-  e^{N\frac{\beta}{2} \Trace{\GFANCY}+\Trace{\hat{X}\mathbf{X}} }
+  \red{\mathcal{N}_{Wick}} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
+  e^{N\frac{\beta}{2} \Trace{\GFANCY}+\frac{N}{2}\Trace{\hat{X}\mathbf{X}} }
   e^{-\frac{1}{2}\Trace{\hat{X}\mathbf{W}^{\top}\mathbf{W}}}
   e^{\frac{\beta}{2}\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}}
-  d\hat{X}  
+  d\mu(\hat{X} )
   d\mu(\mathbf{\XMAT}) \\ 
   \nonumber
   &=
-  \frac{1}{2\pi} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
-  e^{N\frac{\beta}{2}\Trace{\GFANCY}+ \frac{1}{2}\Trace{\hat{X}\mathbf{X}}}
+  \red{\mathcal{N}_{Wick}} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
+  e^{N\frac{\beta}{2}\Trace{\GFANCY}+ \frac{N}{2}\Trace{\hat{X}\mathbf{X}}}
   e^{-\frac{1}{2}\Trace{\mathbf{W}\hat{X}\mathbf{W}^{\top}}+
   \frac{\beta}{2}\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}}
-  d\hat{X}  
+  d\mu(\hat{X} )
   d\mu(\mathbf{\XMAT}) \\ 
   \label{eqn:ZD3}
     &=
-  \frac{1}{2\pi} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
+  \red{\mathcal{N}_{Wick}} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
   e^{N\frac{\beta}{2}\Trace{\GFANCY}+
-  \frac{1}{2}\Trace{\hat{X}\mathbf{X}}}
+  \frac{N}{2}\Trace{\hat{X}\mathbf{X}}}
   e^{\frac{1}{2}\Trace{\mathbf{W}(\beta\mathbf{D}-\hat{X})\mathbf{W}^{\top}}}
-  d\hat{X}  
+  d\mu(\hat{X} )
   d\mu(\mathbf{\XMAT})  .
 \end{align}
 
-\nred{Check for typos above, maybe missing a $1/2$}
 \paragraph{Step 2.4}
 We can now rearrange terms to make this expression look like the \EQN~\ref{eqn:LDP}
 %Let us write

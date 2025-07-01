@@ -48,7 +48,7 @@ Term by term, this gives:
 \end{equation}
 \begin{align}
 \dfrac{d}{d\lambda} \int \ln[\beta\delta(\lambda) - \lambda] \rho^{\infty}_{\AMAT}(\lambda) d\lambda
-&= \int \dfrac{d}{d\lambda} \ln[\beta\delta(\lambda) - \lambda] \rho^{\infty}_{\AMAT}(\lambda) d\lambda
+&= \int \dfrac{d}{d\lambda} \ln[\beta\delta(\lambda) - \lambda] \rho^{\infty}_{\AMAT}(\lambda) d\lambda \\ \nonumber
 &= \int \dfrac{d \beta\delta(\lambda)}{d\lambda}\dfrac{ \rho^{\infty}_{\AMAT}(\lambda)}{\beta\delta(\lambda) - \lambda}d\lambda  \\ \nonumber
 &=  \dfrac{d \beta\delta(\lambda)}{d\lambda}\int\dfrac{ \rho^{\infty}_{\AMAT}(\lambda)}{\beta\delta(\lambda) - \lambda}d\lambda
 \end{align}
@@ -68,18 +68,15 @@ Combining terms, this gives
 \end{equation}
 
 Notice since  $\beta\delta(\lambda) \approx \frac{1}{\lambda}$ for $\lambda \ll 1$, then
-as $\GNORM(0) = 0$ and we set the lower integrand to $0$ (for now).
+as $\GNORM(0) = 0$ and we set the lower integrand to $0$ (for now).  Even though Tanaka’s original proof assumes an analytic continuation without branch cuts, a heavy-tailed spectrum merely shifts the lower limit of the $R$-transform integral, so the expression for $\beta\mathcal G(\lambda)$ continues to hold.
 
-\red{THIS LAST PART MAY NEED SOME DISCUSSION: SEE TAnAKA 2007}
-
-To further connect these results with the \Cauchy transform $\mathcal{C}_{\AMAT}(z)$ and the \RTransform $R_{\AMAT}(z)$, we recall that the \Cauchy transform is given by:
-\nred{this is also defined in the main text; need to make sure we have the same sign convention}
+To further connect these to the \RTransform $R_{\AMAT}(z)$, we recall that the \CauchyStieltjes (or just \Cauchy See~\ref{eqn:Cz}) transform $\mathcal{C}_{\AMAT}(z)$  is given by:
 
 \begin{equation}
 \mathcal{C}_{\AMAT}(z) = \int \frac{\rho_{\AMAT}(\lambda)}{z - \lambda} d\lambda.
 \end{equation}
 
-The relationship between the \Cauchy transform and the \RTransform is expressed as:
+The relationship between the \Cauchy transform and the \RTransform is  then expressed as:
 
 \begin{equation}
 \mathcal{C}_{\AMAT}\left(R_{\AMAT}(z) + \frac{1}{z}\right) = z,
