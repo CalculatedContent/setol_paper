@@ -348,9 +348,6 @@ well-defined for any $n$.
 We also call $\EPSLw$ the \emph{\EffectivePotential}, which will be made clear below.
 \michaelB{Some of the last ca 12 lines is redundant, but before I change anything, I want to clarify those thigns.}
 
-\michaeladdressed{Im a little confused as to the logical flow.  We introduce the ``Total \DataModel Error (which I don't think we will use much), and then we talk about the large $n$ limit, then we introduce the ``Data-Averaged Model Error (I think to introduce the notation $\EPSLw$ which we will use a lot, but this is the thing that we are talking the alrge $n$ limit of so presumably it should be introduced first), and then we introduce the \emph{Total Data-Averaged Model Error} (Im not sure why, but I think it is since we want to connect total energy to a sum or single-particle energies, which is important for the SETOL approach)}
-\charles{@michael: We use this later several times, such as Appendix A2, \EQN~\ref{eqn:DETOPST}}
-
 It is also convenient to write \emph{\TotalEffectivePotential} as an Energy, 
 \begin{align}
  \label{eqn:detox}
@@ -359,8 +356,7 @@ It is also convenient to write \emph{\TotalEffectivePotential} as an Energy,
 This will only be useful when the \ThermodynamicLimit exists, and this
 can be reasonably expected for the \AnnealedApproximation (AA),
 which is the regime in which \SETOL will be developed.% 
-\footnote{We should note that, while our model training and generalization errors are always expressed energies, an energy is not necessarily a model error. 
-
+\footnote{We should note that, while our model training and generalization errors are always expressed energies, an energy is not necessarily a model error. }
 There is a related notion of \emph{\SizeConsistency},
 often introduced in Quantum Chemistry through the Linked Cluster Theorem~\cite{Hubbard1959,Brandow1963},
 which states that the \emph{average} energies and/or free energies $(\bar{F})$ of in particular a correlated system scale with $\mathcal{M}$,
