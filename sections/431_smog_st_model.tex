@@ -54,13 +54,14 @@ whereas for training a model, it is usually something like a cross-entropy loss,
 
 If we don't have a hold-out set, however, we can still estimate $\AVGGE^{T}$ using the \Student-\Teacher approach.
 
-\paragraph{Estimating the Teacher Error with Students: Accuracy vs. Precision}
+\paragraph{Estimating the Student-Teacher Error: Accuracy vs. Precision}
 Imagine we train a Student model $S$ (with the same architecture as the Teacher $T$) on the dataset $\mathcal D$, using $T$'s outputs as targets:
 \begin{equation*}
 S: \mathcal D \to y^{S}_\mu \approx y^{T}_\mu,
 \end{equation*}
 where $y^T_\mu = E_{NN}(T, x_\mu)$ are the teacher’s predicted labels or energies.
-
+\input{sections/precision_fig}
+Figure~\ref{fig:precision} illustrates the following two scenarios side by side:
 \begin{itemize}
   \item \textbf{Accuracy (Interpolation) regime:}
     If $T$ perfectly interpolates the true labels ($y^T_\mu = y^\text{true}_\mu$), then
@@ -72,8 +73,6 @@ where $y^T_\mu = E_{NN}(T, x_\mu)$ are the teacher’s predicted labels or energ
     \( \|y^S_\mu - y^T_\mu\| \)
     estimates how faithfully $S$ reproduces $T$ (its precision), rather than true accuracy.
 \end{itemize}
-
-Figure~\ref{fig:precision} illustrates these two scenarios side by side.
 
 By analyzing the Student–Teacher overlap $R = \tfrac1N \sum_\mu s^T t$, one can show that the average generalization error of $T$ depends simply on $1-R$ under the annealed approximation—even when $T$ was trained on noisy labels.  In practice, we exploit this fact by training a large ensemble of students to estimate $R$ and hence recover the teacher’s true error.
 %\paragraph{Estimating the Teacher Error with Students: Accuracy vs. Precision}
@@ -88,7 +87,7 @@ By analyzing the Student–Teacher overlap $R = \tfrac1N \sum_\mu s^T t$, one ca
 %\label{eqn:S_ENN}
 %\Ys=E_{NN}(S,\DATA) ,
 %\end{align}
-\input{sections/precision_fig}
+
 %If the \Teacher is trained to \Interpolation, then the difference between
 %the \Student and the \Teacher labels 
 %estimates the true error, i.e., $\Vert\Ys-\Yt\Vert=\Vert\Ys-\Ytrue\Vert$,
