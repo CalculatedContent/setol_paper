@@ -2,9 +2,11 @@
 \label{sxn:ST_OP_setup}
 \input{sections/student_teacher}
 
+
 Here, describe the basic setup of the classic \StudentTeacher model, taking an operational view from the perspective of a practitioner training real-world \Student and \Teacher models.  Specifically, we present the \AnnealedApproximation (AA) in a practical light,
 and use it explain the difference between computing the \emph{Empirical\GeneralizationError}, $\AVGEMPGE$, for the \emph{\TrueAccuracy}
-and for the \emph{\Precision} of a \Teacher model.
+and for the \emph{\Precision} of a \Teacher model. Table~\ref{tab;st_notation} summarizes some of the key notation we will be using in this section.
+\input{sections/table43}
 
 \paragraph{Test Error of the Teacher}
 
@@ -53,27 +55,49 @@ whereas for training a model, it is usually something like a cross-entropy loss,
 If we don't have a hold-out set, however, we can still estimate $\AVGGE^{T}$ using the \Student-\Teacher approach.
 
 \paragraph{Estimating the Teacher Error with Students: Accuracy vs. Precision}
+Imagine we train a Student model $S$ (with the same architecture as the Teacher $T$) on the dataset $\mathcal D$, using $T$'s outputs as targets:
+\begin{equation*}
+S: \mathcal D \to y^{S}_\mu \approx y^{T}_\mu,
+\end{equation*}
+where $y^T_\mu = E_{NN}(T, x_\mu)$ are the teacher’s predicted labels or energies.
 
-Imagine training a \Student $(S)$  model (with a similar architecture as $T$, and acting on the same  
-dataset $\DATA\in\ADD$), which tries to  reproduce the \Teacher predictions:
-\begin{align}
-S:\DATA\rightarrow \Ys \approx \Yt  ,
-\end{align}
-and assume the \Student outputs $\Ys$ are given by the Energy output function $E^{S}_{NN}$
-\begin{align}
-\label{eqn:S_ENN}
-\Ys=E_{NN}(S,\DATA) ,
-\end{align}
+\begin{itemize}
+  \item \textbf{Accuracy (Interpolation) regime:}
+    If $T$ perfectly interpolates the true labels ($y^T_\mu = y^\text{true}_\mu$), then
+    \( \|y^S_\mu - y^T_\mu\| = \|y^S_\mu - y^\text{true}_\mu\| \)
+    measures how well the student recovers the Ground Truth labels—i.e., the Student's \emph{training accuracy}.
+
+  \item \textbf{Precision (Noisy teacher) regime:}
+    If $T$ itself makes mistakes ($y^T_\mu \neq y^\text{true}_\mu$), then
+    \( \|y^S_\mu - y^T_\mu\| \)
+    estimates how faithfully $S$ reproduces $T$ (its precision), rather than true accuracy.
+\end{itemize}
+
+Figure~\ref{fig:precision} illustrates these two scenarios side by side.
+
+By analyzing the Student–Teacher overlap $R = \tfrac1N \sum_\mu s^T t$, one can show that the average generalization error of $T$ depends simply on $1-R$ under the annealed approximation—even when $T$ was trained on noisy labels.  In practice, we exploit this fact by training a large ensemble of students to estimate $R$ and hence recover the teacher’s true error.
+%\paragraph{Estimating the Teacher Error with Students: Accuracy vs. Precision}
+%
+%Imagine training a \Student $(S)$  model (with a similar architecture as $T$, and acting on the same  
+%dataset $\DATA\in\ADD$), which tries to  reproduce the \Teacher predictions:
+%\begin{align}
+%S:\DATA\rightarrow \Ys \approx \Yt  ,
+%\end{align}
+%and assume the \Student outputs $\Ys$ are given by the Energy output function $E^{S}_{NN}$
+%\begin{align}
+%\label{eqn:S_ENN}
+%\Ys=E_{NN}(S,\DATA) ,
+%\end{align}
 \input{sections/precision_fig}
-If the \Teacher is trained to \Interpolation, then the difference between
-the \Student and the \Teacher labels 
-estimates the true error, i.e., $\Vert\Ys-\Yt\Vert=\Vert\Ys-\Ytrue\Vert$,
-and this error is associated with the \TrainingAccuracy of the model in predicting the \GroundTruth.
-But if the \Teacher makes some errors, then $\Vert\Ys-\Yt\Vert$
-is now estimating the \Precision of the model.
-These two situations are depicted in Figure~\ref{fig:precision}.
-
-The \StudentTeacher model also explains why NNs can generalize even even when trained to \Interpolation on noisy data (which has been a source of confusion \cite{Understanding16_TR}).  In this model, the \GeneralizationError  $\AVGGE^{T}$ is a simple function of the overlap $R$ between the \Teacher $T$ and the \Students $S$, i.e., $\AVGGE^{T}\sim \THRMAVG{1-\EPSLR}$.  So even if the \Teacher $T$ is trained on noisy data, as long as there are \Students $S$ with significant overlap $R$ with the \Teacher, the \Teacher \GeneralizationError  $\AVGGE^{T}$  can be considerably small.  For more details, see \cite{MM17_TR_v1}
+%If the \Teacher is trained to \Interpolation, then the difference between
+%the \Student and the \Teacher labels 
+%estimates the true error, i.e., $\Vert\Ys-\Yt\Vert=\Vert\Ys-\Ytrue\Vert$,
+%and this error is associated with the \TrainingAccuracy of the model in predicting the \GroundTruth.
+%But if the \Teacher makes some errors, then $\Vert\Ys-\Yt\Vert$
+%is now estimating the \Precision of the model.
+%These two situations are depicted in Figure~\ref{fig:precision}.
+%
+The \StudentTeacher model also explains why NNs can generalize even when trained to \Interpolation on noisy data (which has been a source of confusion \cite{Understanding16_TR}).  In this model, the \GeneralizationError  $\AVGGE^{T}$ is a simple function of the overlap $R$ between the \Teacher $T$ and the \Students $S$, i.e., $\AVGGE^{T}\sim \THRMAVG{1-\EPSLR}$.  So even if the \Teacher $T$ is trained on noisy data, as long as there are \Students $S$ with significant overlap $R$ with the \Teacher, the \Teacher \GeneralizationError  $\AVGGE^{T}$  can be considerably small.  For more details, see \cite{MM17_TR_v1}
 
 
 \paragraph{Learning the Student}
@@ -154,7 +178,6 @@ if $T$ is trained to \Interpolation or not.
 %\charles{Good question. We do not specify how the hyperparameters are selected.}
 
 \paragraph{Annealed vs. Quenched Averages}
-\nred{THIS NEEDS CLEANED UP}
 Recall that in the \STATMECH approach to computing errors, we do not break the data into
 training and test, but, instead, to obtain the \AverageGeneralizationError, $\AVGGE$, use
 the \GeneratingFunction approach. In doing this, we need to compute both the \ThermalAverage
@@ -195,20 +218,6 @@ While it is commonplace to train ensembles and/or use cross-validation when trai
 this could be extremely expensive and impractical in modern ML, e.g., for very large models like LLMs~\cite{LLMS}.
 For such massive NNs, one needs a theory that can detect anomalies in training directly from observations during and/or after training.
 This is a hallmark of the \SETOL approach, and it distinguishes \SETOL from the classic \STATMECH approach.
-\michael{MM TO DO: Probably move that to the intro.  That is an important par, too imp to be buried here.}
-\charles{Not sure.  Intro is already long.  Maybe the conclusions}
-
-%That said, it may be beneficial in practice to use subsamples of the training data to train the \Teacher and the Students
-%when, say, the training data has mislabeled and/or noisy data.  With such bad data, the 
-%results could be quite different after taking this additional step.
-%Indeed, it is exactly these cases where the results differ theoretically as well as in practice.
-%We will take a deeper look at such case of noisy data below.
-
-%Importantly, we will not used the quenched form of $\mathcal{E}_{t}^{emp}$ because we will be able todetect
-%anomalies in the training data directly by looking at the fitted \SemiEmpirical HT parameter $\alpha$.
-
-be used to estimate the \AverageGeneralizationAccuracy (and not the \Precision),
-and which we will refer to more generally as a layer and/or model \Quality.
 
 \input{sections/smog_gen_gap}
 

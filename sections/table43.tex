@@ -1,0 +1,21 @@
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Symbol} & \textbf{Meaning} \\
+\midrule
+$T$                      & Teacher model (fixed network) \\
+$S$                      & Student model (trained to mimic $T$) \\
+$\mathcal D$             & True dataset of $(x,y)$ pairs \\
+$\widetilde{\mathcal D}$ & Gaussian‐field idealization of $\mathcal D$ \\
+$\varepsilon_T$          & True generalization error of $T$ (unknown) \\
+$\widehat\varepsilon$    & Empirical test‐set error estimate \\
+$\varepsilon_{ST}$       & Student–Teacher average gen. error \\
+$R$                      & Overlap $\displaystyle R=\tfrac{1}{N}S^\top T$ \\
+$\epsilon(R)$            & Annealed potential (e.g.\ $1-R$ for linear, high-T) \\
+\bottomrule
+\end{tabular}
+\caption{Key notation for the Student–Teacher operational setup.}
+\label{tab:st_notation}
+\end{table}

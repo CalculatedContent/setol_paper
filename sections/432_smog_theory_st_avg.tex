@@ -7,25 +7,25 @@ that can be used as the starting point for our extended \SemiEmpirical theory.
 
 %\input{data_mapping}
 
-\paragraph{The Data Model.}
+\paragraph{The Idealized Data}
 
 To develop a \SemiEmpirical theory of the \Teacher \GeneralizationError, $\TGE^{T}$, 
 instead of training and evaluating a NN model using real data $(\DX)$,
 we seek a simple, analytical expression with parameters that can be fit to empirical measurements.
-So in addition to using a model for our NN, we must specify a model for the data.
+So in addition to using a model for our NN, we must specify a idealized model for the data.
 In a real NN, the data $\DX$ is correlated, and, in fact, very strongly correlated;
 and this is reflected in the layer weight matrices.
 However, to be tractable, our starting theoretical expressions use uncorrelated (i.i.d) data.
 Formally, we must replace the correlated data 
 with some uncorrelated, random model of the data, i.e., $\XVEC\rightarrow\XI$.
 As described in Figure~\ref{fig:data_mapping},
-our \DataModel is a standard Gaussian $N(0,1)$ model for the input data
+our \DataModel is a standard Gaussian $N(0,\sigma^{2}\mathbb{I})$ model for the input data
 \begin{align}
-\DATA\rightarrow\XImu,\;\;\XImu\in N(0,1) ,
+\DATA\rightarrow\XImu,\;\;\XImu\in N(0,\sigma^{2}\mathbb{I}) ,
 \label{eqn:mwm_replace_1}
 \end{align}
-where $N(0,1)$ denotes a Gaussian distribution with zero mean and unit variance,
-\and $\XImu$ is normalized such that $\Vert\XImu\Vert^{2}_{F}=\tfrac{1}{M}$ for all $N$ data vectors.
+where $N(0,\sigma^{2}\mathbb{I})$ denotes a Gaussian distribution with zero mean and variance $\sigma^{2}=\tfrac{1}{M}$,
+\and $\XImu$ is normalized such that $\Vert\XImu\Vert^{2}_{F}=1$ for all $N$ data vectors.
 \michaeladdressed{@charles: I just added a label there, in case you are keeping track of labels.}
 
 We make this distinction between Actual and \ModelData to emphasize that,

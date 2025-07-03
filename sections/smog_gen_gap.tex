@@ -10,10 +10,6 @@ The \GeneralizationGap quantifies the difference between a models performance on
 \end{align}
 In contrast, in \STATMECH approaches, one considers the \ModelGeneralizationError directly,
 which is sometimes called the \ModelQuality in the \SLT literature.
-\michael{I think SST looks at generalization error also.  I think this dichotomy isn't quite correct, and it convovles several issues.  It seems most connected with the par around \EQN~\ref{eqn:Qdef} and \EQN~\ref{eqn:GammaQdef}. Maybe we should combine this with that and put is somewhere, removing the incorrect claim/suggestion, and highlighting the ideas in the next par, which are key.
-}
-\charles{Thats not what this is about.  This is an important section that belongs here.
-needs some work}
 Model quality is an indication of the models accuracy, precision, recall, or any other relevant metric based on the task at hand.
 %Here, we mean that the \ModelGeneralizationError is a measure of the \ModelQuality on such OOD data.
 
@@ -26,7 +22,5 @@ In this sense, any theory of the \GeneralizationGap  requires a formalism where 
 predicted model error is \Quenched to the training data, which is not what we want.
 In contrast, the \ModelGeneralizationError  will be formulated using the \AnnealedApproximation (AA),
 and is therefore both conceptually and mathematically simpler.
-\michael{These ideas seem key; they should either be combined with the par around \EQN~\ref{eqn:Qdef} and \EQN~\ref{eqn:GammaQdef}, or they should be in the intro.}
-
-\nred{Comment on our paper with YQ}
-
+Notably, the \HTSR model \Quality metric trend well when compared to the  \ModelGeneralizationError ,
+whereas methods from the \SLT literature tend to only describe the \GeneralizationGap  well.\cite{YTHx23_KDD}
