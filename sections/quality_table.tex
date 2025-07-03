@@ -1,0 +1,40 @@
+\begin{table}[H]
+\centering
+\small
+  \begin{tabular}{@{} l  p{0.50\linewidth}  l  c @{}}
+  \toprule
+\textbf{Symbol} 
+  & \textbf{Definition \& Formula} 
+  & & \textbf{Eq.\ \#} \\
+\midrule
+$\epsilon$  
+  & \EffectivePotential
+  & 
+    $\epsilon = \lim_{n\to\infty}\frac{1}{n}\bigl\langle \Delta E\bigr\rangle_{\mathrm{data}}$
+  & \ref{eqn:epsl} \\[1ex]
+
+$\eta$
+  & \SelfOverlap\ (average accuracy):
+  & $\eta = 1 - \epsilon$
+  & \ref{eqn:def_eta} \\[1ex]
+
+$\bar F$
+  & Average Free Energy:
+  & $\beta\,\bar F = -\frac{1}{n}\ln Z_n$
+  & \ref{eqn:mm_f_bar} \\[1ex]
+
+$\bar Q$
+  & Model \Quality\ (average self‐overlap):
+  & $\bar Q = \bigl\langle \eta \bigr\rangle_{\mathbf w}^\beta$
+  & \ref{eqn:model_qualities} \\[1ex]
+
+$\Gamma_{\bar Q}$
+  & Quality‐Generating Function:
+  & $\Gamma_{\bar Q} = 1 - \bar F$
+  & \ref{eqn:GammaBar} \\
+\bottomrule
+\end{tabular}
+\caption{Summary of the main intensive (average, per‐parameter) quantities.  Here $n$ is the number of free parameters.  The average model
+  \Quality~$\bar Q$ is the model’s average accuracy (one minus the error), and the Quality‐Generating function $\Gamma_{\bar Q}$ plays the same role as the free energy $\bar F$ but with an opposite sign convention.}
+\label{tab:intensive_quantities}
+\end{table}

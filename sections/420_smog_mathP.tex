@@ -116,16 +116,19 @@ The various symbols and other important results are summarized in the Appendix~\
 A basic issue in formulating \SETOL is that one typically trains one large (expensive) NN, i.e., one does not split the data into training and testing sets.
 Thus, we want a methodology to approximate quantities such as the generalization error or generalization accuracy that does not rely on traditional train-test splitting methods.
 \michaelB{Q: how does this lack of using training/testing split relate to that we ignore the $y$ below and/or that we are actually getting a notion of quality/accuracy, rather than error (related to $\Gamma$ versus $F$).}
-To accomplish this, we will ``model'' the data, and we will use \STATMECH to construct quantities (basically, free energies or generating functions) so that we can compute training/testing errors by taking appropriate derivatives of these quantities.
+To accomplish this, we idealize the empirical data distribution as Gaussian fields, and we will use \STATMECH to construct quantities (basically, free energies or generating functions) so that we can compute training/testing errors by taking appropriate derivatives of these quantities.
 
 In more detail, we imagine training a NN on $n$ training data instances, $\XVEC_{\mu}$, which are $m$-dimensional vectors,
 with labels $y_{\mu}$, chosen from a large but finite-size training data set $\ADD$.
 The goal of training the NN is to learn the $m$ weights of the vector $\WVEC$ (or, later, a weight matrix $\WMAT$) by running gradient descent to minimize
 a loss function $\mathcal{L}$ ($\ell_2$, cross-entropy, etc.). 
-We want to model the real-world NN using a simple model from which we can obtain 
+We want to approximate the actual network’s learning dynamics by an analytically tractable ensemble
+so that we can then obtain 
 analytic expressions for the \emph{\FreeEnergy} and \emph{\GeneratingFunction} we then use to compute
 Thermodynamic averages such as the \emph{\AverageGeneralizationError} $(\AVGGE)$ and
 \emph{\ModelQuality} $(\Q)$ (which is our approximation to the \emph{\AverageGeneralizationAccuracy}).
+
+
 
 \paragraph{Counting Samples and Features: $n$, $m$, $N$, and $M$.}
 We let the number of training samples be $n$ and the dimension 
@@ -136,12 +139,9 @@ of a layer’s weight matrix (i.e., an $N \times M$ matrix).
 We stress that here, in this subsection,  $n = N$ and $m = M$ only hold for our immediate analysis, 
 to avoid extra notation. When we move to matrix-based analyses, 
 we will revisit (and possibly distinguish) $N$ (layer input dimension) and $n$ (training-set size).
+\input{sections/dim_notation_table}
 
-\paragraph{Actual and Model Data and Energies.}
-
-%In this section $n=N$  of the model and the number of training examples, and $m=M$ is the number of features.
-%\footnote{In later sections, we will use capital $N$ and $M$, as $N$ will represent the number of inputs to the layer, and $M$ also will denote the normalization of the correlation matrices $(\XMAT, \AMAT)$. See, for example, Appendix~\ref{sxn:summary_sst92}.}
-\michael{@charles: let's sync to clarify, I feel like we are overloading something here. I think there are two concepts, the number of training examples, and the number of free parameters. And at least four letters ($m$, $n$, $M$, and $N$). I can work on the text to clarify, but I'm not sure what is what.}
+\paragraph{Actual and Idealized Data and Energies.}
 
 Consider having a large set $n=N$ of actual, real-world data, 
 \begin{align}
@@ -165,7 +165,6 @@ We call $\XVEC^{n},$ an $n$-dimensional sample (of the training data instances $
 
 We associate model errors
 with a (change in) energy $\Delta E_{\mathcal{L}}$. Smaller energies correspond to smaller errors and therefore better models.
-\michaelB{Q: The phrase ``model errors'' is confusing, since we refer to model the data above and this par is ``Actual and Model Data and Energies,'' so what does that refer to? Maybe ``prediction errors'' or ``errors in the prediction by the NN.''}
 For example, for the mean-squared-error (MSE) loss, one has
 \begin{align}
   \label{eqn:DEy}
@@ -183,7 +182,8 @@ $E_{NN}(\WVEC,\XVEC_{\mu})$ is output prediction of the NN, as in \EQN~\ref{eqn:
 To estimate quantities such as the generalization error or generalization accuracy, we will adopt an approach that involves
 replacing the real data with Gaussian data and
 the NN with a parametric model that we will fit with a \SemiEmpirical procedure (described later).
-To model the data, we specify the following mapping:
+Following the usual \StatisticalMechanics trick, we idealize the inputs as independent Gaussian fields.
+
 \begin{align}
 \label{eqn:model_real_world_expt}
   \ADD \rightarrow \MDD,\;\;\XVEC_{\mu} \rightarrow \XImu,\;\;  \Ymu \rightarrow y_{\mu}  ,
@@ -196,10 +196,6 @@ where we denote the model training and/or test data instances as $(\XI,y)$ such 
 Here,  $\XImu$ is a random vector (i.e., an $m$-dimensional random variable, $\XImu\in\mathbb{R}^{m}$ ),
 sampled from an i.i.d Gaussian distribution $\MDD$,
 and $y_{\mu}$ denotes the (binary) label and/or NN output.
-\michaeladdressed{MM: Clarify, since we are using the word model in a few different ways that will be confusing: model the training with Langevin; to compute things we model the real data with a Guassian; etc. }
-\michaeladdressed{ Why is Figure~\ref{fig:data_mapping} not here? This seems like the right place for it?  }
-We call $\XI^{n}$ an $n$-dimensional \emph{\ModelSample} from $\MDD$.
-\michaelB{Q: \ModelSample is a confusing name; can we just remove it and refer to it informally.}
 
 \subsubsection{BraKets, Expected Values, and Thermal Averages}
 \label{sxn:mathP_averages}
@@ -235,7 +231,7 @@ which is now a function of the entire set of  $n$ vectors $[\NDX]$
 This operator notation will provide useful later in Section~\ref{sxn:SMOG_main-st_av}
 (see \EQN~\ref{eqn:DE_L}) and in Appendix~\ref{sxn:summary_sst92}.
 
-We will not, however, work directly with Samples and Sample Averages.
+We will not, however, work directly with samples and sample averages.
 Instead, we will model them.
 %%\michael{By that, I think we mean that it is hard to compute them, so we will model them with Gaussian random variables with a model with a parameter to fit semi-empirically to data; correct?}
 %%\cformike{We discussed on the phone.  The idea is we compute the average as a derivative of a generating function that we know exactly, as opposed to say doing a monte carlo sample because the partition function $Z$ is intractable}
@@ -252,10 +248,6 @@ but to evaluate this we need to take an integral and/or \ExpectedValue over the 
 We need to compute various sums and integrals, 
 sampling from a model $\MDD$ for the actual data distribution $\ADD$,
 which will frequently (but not always) be defined as more familiar \ExpectedValues.
-\michaelB{Q: Do we ever have expectations over real data $\ADD$, or only always over modeled data $\MDD$.}
-\michael{@charles: that seems like a bad use of macros: ModelSamples splits out into two words, and in some places it is a noun; but here model is a capitalized verb, and ``Sample Averages'' is not a macro; and ExpectedValue is singular (the plural versus singular issue appears elsewhere with these macros).}
-\michael{It may be good to have a figure, perhaps in the intro, illustrating this shift, since it seems like the key conceptual shift.}
-\charles{This needs to all be done at once at the end of the proofreading}
 We will denote \ExpectedValues using physics \BraKet notion.
 Importantly, we use the term \ExpectedValue in the physics sense, and BraKets will denote an un-normalized sum or integral;
 %notation denotes an inner product in a Hilbert space of functions;
@@ -273,7 +265,8 @@ and if we want to express an n-dimensional average over $f()$ then we would expr
 \end{align}
 \michaelB{Q: Is that correct? I think we need to write it out explicitly, since below we introduce it but then go to a multi-dimensional integral.}
 \michaelB{NO, ITS WRONG.  MM TO FIX.  CHARLES FIXED.}
-where the BraKet $\langle\cdots\rangle_{\AVGNDXIn}$ deotes the integral over the \ModelData $\NDXIn$, but with the convention that the normalization $\tfrac{1}{n}$
+where the BraKet $\langle\cdots\rangle_{\AVGNDXIn}$ deotes the integral over the idealized
+Gaussian-field data $\NDXIn$, but with the convention that the normalization $\tfrac{1}{n}$
 appears inside the \BraKet implicitly.
 If this integral is normalized properly, then this denotes the familiar \ExpectedValue $\mathbb{E}_{\XI}[f(\XI)]$.
 \michaelB{Clarify what is ``properly.?? Either remove that sentence, or say that is what \EQN~\ref{eqn:EuT_normalized} is.}
@@ -294,11 +287,10 @@ In this case, we obtain:
 \end{align}
 where $P(\NDXIn)$ is an $n$-dimensional
 probability distribution (i.e., an $n$-dimensional Gaussian distribution), normalized to 1, and
-and where the subscript $\AVGNDXIn$ on the Ket reminds us this is an average or \ExpectedValue of a finite, $n$-size \ModelSample.
+and where the subscript $\AVGNDXIn$ on the Ket reminds us this is an average or \ExpectedValue of a finite, $n$-size sample of the ideal data.
 (This is used in both Sections~\ref{sxn:SMOG_main} and~\ref{sxn:matgen}.)
 The normalization $\tfrac{1}{n}$ is included in the defintion to ensure the \BraKet is a proper \ExpectedValue.
-\michaeladdressed{See comments above about $n$, since I was confused about $n$ was referring to, and I though $m$ was the dimensionality of the real and modeled data, and here we refer to ``$n$-dimensional Gaussian and ``$n$-size \ModelSample.}
-The measure $d\mu(\NDXIn)$ signifies a $n$ i.i.d Gaussian vector $\XI$, drawn from an $m$-dimensional data model vectors $\XI$.
+The measure $d\mu(\NDXIn)$ signifies a $n$ i.i.d Gaussian vector $\XI$, drawn from an $m$-dimensional idealized data vectors $\XI$.
 Also, in some cases, we make use the subscript $\NDXIn$ on the Ket as $\langle\cdots\rangle_{\NDXIn}$;  this represents an integral over the data, but not an average or \ExpectedValue.
 \michaeladdressed{@charles: clarify; that is $N$ vectors in $\mathbb{R}^{M}$ that are element-wise i.i.d. Gaussian?}
 %%\michael{Where we are using $M$ and $N$ rather than $m$ and $n$; is that a typo, or what should it be.}
@@ -309,6 +301,7 @@ Also, in some cases, we make use the subscript $\NDXIn$ on the Ket as $\langle\c
 A key requirement for the \ThermodynamicLimit in \STATMECH is \emph{\SizeExtensivity}:
 that physically meaningful quantities (i.e, total energies and free energies)
 scale linearly with the system size, $n=N$.
+Roughly, extensive quantities scale with system size, intensive ones do not.
 Along with this, Thermodynamic average quantities should be \emph{\SizeIntensive},
 meaning that they remain independent of $n=N$ as the system size increases.
 In our setting, \SizeExtensivity and \SizeIntensivity underpin the large-N limit,
@@ -468,7 +461,8 @@ Importantly, we will never calculate the average errors directly like this.
 %%\michael{I assume that sentence is imprecise; we are not calculating average errors (of samples, so in the sese as used above), but instead computing expectations (of the model/Gaussian variables), which of course should approximate the average errors; correct?}
 Instead, we will calculate them from partial derivatives of the \FreeEnergy $F$ (as shown below).
 %%\charles{We discussed on the phone can rediscuss if necessary}
-Also, in some cases, we may use $\langle \cdots \rangle^{\beta}_{\NDXIn}$ to denote what looks like a \ThermalAverage over the data; this will be explained below when it occurs.
+Also, we may use $\langle \cdots \rangle^{\beta}_{\NDXIn}$ to denote what looks like a \ThermalAverage over the data;
+this is not essential and only used once below and can be ignored for this section.
 
 \paragraph{Other Notation: Overbars, Superscripts and Subscripts.}
 \michael{The info in this paragraph should be elsewhere, maybe at the top of this or another section,
@@ -554,7 +548,7 @@ In the traditional \SMOG approach, one models the (\Typical) generalization beha
 by defining and computing the \ExpectedValue of the \FreeEnergy of the model.
 The full expected value  of the \FreeEnergy, $\beta F_{n}=-\ln Z_{n}$, with respect to the (model) data $\NDXIn$, is:
 \begin{align}
-\label{eqn_mm_f_b ar}
+\label{eqn:mm_f_bar}
   \mathbb{E}_{\NDXIn}[\beta F_n]=\beta\bar{F}:=-\langle \ln Z_{n}\rangle_{\AVGNDXIn},
 \end{align}
 \michaelB{Is that $\bar{F}$? }
@@ -912,11 +906,13 @@ In Appendix~\ref{sxn:XXX} we show how to obtain
 $\AVGTE^{an}$ and $\AVGGE^{an}$ obtain explicitly in this way using $Z^{an}$.
 
 
-%\paragraph{The Quality $(\Q)$ and its Generating Function $(\Gamma_{\Q})$}
+
 \subsubsection{The Quality $(\Q)$ and its Generating Function $(\Gamma_{\Q})$}
 Here, we explain how to define what we call the \Quality $\Q$, which is
 defined as the \ThermalAverage of the \SelfOverlap,  $\Q:=\THRMAVGw{\ETAw}$,
 and which can be obtained from the associated \emph{\Quality~\GeneratingFunction} $\Gamma_{\Q}$.
+See Table~\ref{tab:intensive_quantities} for a quick summary.
+\input{sections/quality_table}
 
 For our purposes below, we define the \ModelQuality (as in Eqn.~\ref{eqn:ProductNorm}) as our approximation to the
 \AverageGeneralizationAccuracy for our model. 

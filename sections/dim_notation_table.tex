@@ -1,0 +1,16 @@
+\begin{table}[H]
+\centering
+\begin{tabular}{c|l|l|l}
+\toprule
+\textbf{Symbol} & \textbf{Definition} & \textbf{Vector} & \textbf{Matrix} \\
+\midrule
+$n$ & Total number of free parameters in the model. & $n$ & $N \times M$ \\
+$m$ & Number of features per training sample. & $m$ & --- \\
+$N$ & Input dimension of a layer’s weight matrix. & --- & $N$ \\
+$M$ & Output dimension of a layer’s weight matrix. & --- & $M$ \\
+\bottomrule
+\end{tabular}
+\caption{In the \emph{vector} model, lowercase $n$ is the dimension of the weight vector (total parameters), and lowercase $m$ is the number of features per sample. In the \emph{matrix} model, uppercase $N$ and $M$ are the input and output dimensions of the weight matrix, resp., giving $n=N\times M$ free parameters.}
+\label{tab:dim_notation}
+\end{table}
+

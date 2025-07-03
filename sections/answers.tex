@@ -1,0 +1,69 @@
+\section*{NeurIPS Paper Checklist}
+
+\begin{enumerate}
+
+\item {\bf Claims}  
+    \item[] Answer: \answerYes{}  
+    \item[] Justification: The abstract promises (i) explicit layer-wise $\alpha$ control to stabilise training and (ii) empirical evidence that SETOL mitigates grokking; these are exactly the contributions developed in Sections 2–4.  
+
+\item {\bf Limitations}  
+    \item[] Answer: \answerYes{}  
+    \item[] Justification: A dedicated “Limitations” paragraph at the end of p.\,9 discusses dataset scale, sensitivity to hyper-parameters, and the restricted compute budget.  
+
+\item {\bf Theory assumptions and proofs}  
+    \item[] Answer: \answerNo{}  
+    \item[] Justification: Section 3 offers only a heuristic argument that the optimal tail–index is $\alpha\!\approx\!2$; no formal theorem, stated assumptions, or complete proof is provided.  
+
+\item {\bf Experimental result reproducibility}  
+    \item[] Answer: \answerNo{}  
+    \item[] Justification: Exact data splits, random seeds, and several key hyper-parameters are missing, and code is not yet available, preventing faithful replication.  
+
+\item {\bf Open access to data and code}  
+    \item[] Answer: \answerNo{}  
+    \item[] Justification: The manuscript cites a public GitHub repository that cannot be accessed anonymously; no temporary anonymised link or ZIP archive is supplied.  
+
+\item {\bf Experimental setting/details}  
+    \item[] Answer: \answerNo{}  
+    \item[] Justification: Optimiser type, learning-rate schedule, batch size, and epoch counts are mentioned only partially; full training/test splits are absent.  
+
+\item {\bf Experiment statistical significance}  
+    \item[] Answer: \answerNo{}  
+    \item[] Justification: Figures show a single training curve with an unlabeled $\pm\sigma$ band; the number of runs and the source of variance are not reported.  
+
+\item {\bf Experiments compute resources}  
+    \item[] Answer: \answerNo{}  
+    \item[] Justification: The paper quotes “11 h on a Quadro P2000” but omits per-experiment memory, CPU/GPU specs, and the total compute consumed (including failed runs).  
+
+\item {\bf Code of ethics}  
+    \item[] Answer: \answerYes{}  
+    \item[] Justification: No personal data, sensitive content, or human subjects are involved; the work complies with all points of the NeurIPS Code of Ethics (see Ethics note, p.\,8).  
+
+\item {\bf Broader impacts}  
+    \item[] Answer: \answerNo{}  
+    \item[] Justification: The manuscript contains no Broader-Impact or Societal-Impact discussion section.  
+
+\item {\bf Safeguards}  
+    \item[] Answer: \answerNA{}  
+    \item[] Justification: The study does not release high-risk models or large scraped datasets; no special safeguards are required.  
+
+\item {\bf Licenses for existing assets}  
+    \item[] Answer: \answerNo{}  
+    \item[] Justification: MNIST and PyTorch are used but their licenses and terms of use are not cited or discussed.  
+
+\item {\bf New assets}  
+    \item[] Answer: \answerNA{}  
+    \item[] Justification: The work introduces no new datasets, models, or code assets.  
+
+\item {\bf Crowdsourcing and research with human subjects}  
+    \item[] Answer: \answerNA{}  
+    \item[] Justification: The research does not involve any human participants or crowdsourcing.  
+
+\item {\bf Institutional review board (IRB) approvals or equivalent for research with human subjects}  
+    \item[] Answer: \answerNA{}  
+    \item[] Justification: No human-subject research was conducted; IRB approval is therefore not applicable.  
+
+\item {\bf Declaration of LLM usage}  
+    \item[] Answer: \answerNA{}  
+    \item[] Justification: Large language models are not an original or essential component of the methodology; they were used only for standard writing/editing support.  
+
+\end{enumerate}

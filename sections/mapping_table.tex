@@ -7,7 +7,7 @@
   \hline
   Quantity & Traditional \SMOG & \makecell{\LinearPerceptron \\ in Traditional \SMOG} & \makecell{Matrix Generalization \\ for \SETOL} \\ \hline
 
-  Total \DataModel Error 
+  Total (Idealized) Data Error 
     & $\DETOPXI$ (\ref{eqn:detox})
     & $\DETOPSTL$ (\ref{eqn:deriveSTerror}) 
     & $\DETOPNN$ (\ref{eqn:DE2}) \\ \hline
@@ -40,7 +40,7 @@
 \end{tabular}
 \caption{Summary of key quantities compared across traditional \SMOG models,  the \Student-\Teacher (ST) \LinearPerceptron--in the \AnnealedApproximation
 (AA) and at high-Temperature (high-T) and at large-$N$, and the matrix-generalized forms as the starting point to frame \SETOL.
-The Total \DataModel Error represents the difference between the model and its labels for the ST model between
+The Total Data Model Error represents the difference between the model and its labels for the ST model between
 the \Student and \Teacher predictions.
 The \AnnealedHamiltonian is the Energy function for this Error after it is averaged over the model for the training data
 (an $n$ or $N$-dimensional i.i.d. Gaussian model, i.e.,  $\NDXIn$ or $\NDXI$).
