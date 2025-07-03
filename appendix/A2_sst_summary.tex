@@ -186,7 +186,7 @@ which we recognize as the same as the data-averaged ST error $\epsilon(R)$ in \E
 \michael{@charles: also, there is a $1/N$ in \EQN~\ref{eqn:e0}; does that belong here.}
 
 
-\subsubsection{Annealed Hamiltonian $\GANMAT$ for the Single Layer Matrix-Generalized ST Error}
+\subsubsection{Annealed Hamiltonian $\GANMAT$ for the Matrix-Generalized ST Error}
 \label{sxn:appendix_Gan}
 
 In this section, we derive an expression for our matrix generalization of the \AnnealedHamiltonian of the \LinearPerceptron,
@@ -454,16 +454,22 @@ Given this, it follows from \EQN~\ref{eqn:Gan_lnI_final_mwm} and \EQN~\ref{eqn:G
 \beta\GANMAT 
 %= 
 %\beta M \HANPP
-  &:=  \frac{M}{2}\ln \left[1 + \frac{2\beta}{M}(\IM-\mathbf{R})\right]  ,
+  &:=  \frac{M}{2}\ln\det \left[1 + \frac{2\beta}{M}(\IM-\mathbf{R})\right]  ,
 \end{align}
-\michaeladdressed{@charles: I added that equation.}
-which is of the same functional form as \EQN~\ref{eqn:Gan2}, as desired:
+To obtain the high-Temperature form, we use
+\begin{align}
+\ln\det\!\Bigl[\IM + \epsilon\mathbb{M}\Bigr]
+\approx \mathrm{Tr}\!\bigl(\epsilon\mathbb{M}\bigr)
+\quad(\epsilon\ll 1),
+\end{align}
+with $\epsilon=\tfrac{2\beta}{M}$ and $\mathbb{M}=\IM-\OVERLAP$.   
+We mow obtain the folloiwing result for the matrx-generalized high-T of $\GANMATHT$ using
 \begin{align}
 \label{eqn:GANHTmatR}
 \Trace{\GANMATHT} = \Trace{\IM-\OVERLAP} = M-\Trace{\OVERLAP}
 \end{align}
+which is of the same functional form as \EQN~\ref{eqn:Gan2}, as desired:
 
-\michaeladdressed{MM TO DO: Revisit the following two paragraphs and where to put them, since at least some of this should be somewhere in the main text.}
 
 % We will use this normalization for both the \TRACELOG  condition and deriving the
 %  \Quality (Squared) \GeneratingFunction $\IZG$ in Section~\ref{sxn:matgen}.
