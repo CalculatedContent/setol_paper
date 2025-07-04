@@ -1,11 +1,8 @@
 \subsection{Computational Random Matrix Analysis}
 \label{sxn:comp_rmt}
-\nred{The presence of the branch cut at the start of the ECS complicates this section.
-  We may need to remove it entirely as it is probably deeply wrong
-  and save it for a future work.  Not super happy about that but time is limitted.
-  I will think some more on it
-  }
-The \RTransform is the generating function for the \emph{\FreeCumulants} of RMT.  Formally, one can define $R(z)$ as a series expansion in $z$,
+The \RTransform is the generating function for the \emph{\FreeCumulants} of RMT.
+Formally--and if we assume a model without a branch-cut or troublesome poles--
+one can define $R(z)$ as a series expansion in $z$,
 \begin{equation}
   \label{eqn:Rz_expansion}
   R(z) := \kappa_1 + \kappa_2 z + \kappa_3 z^2 + \ldots 
@@ -45,10 +42,6 @@ Using these definitions, we can estimate the \LayerQuality matrix $\QT$ for our 
 \GNI=\kappa_{1}\frac{\LambdaECS}{\MECS}+\frac{\kappa_{2}}{2}\left(\dfrac{\LambdaECS}{\MECS}\right)^{2}+\cdots
 \end{align}
 Note that we evaluate $\GN$ using eigenvalues normalized with $\tfrac{1}{\MECS}$.
-\nred{although this may not be obvious the way we have written things so far}
-\charles{We may not need to specify the $\tfrac{1}{\MECS}$ term anymore because I think the code now uses
-  the properly normalized $\XECS$, but I need to check carefully}
-\charles{Mention experimental section in XXX}
-
-
+This is implemented implemented in the ~\WW package.
+In Section~\Ref{sxn:empirical_comp_r_transforms}, we examine some examples of this approach to computing \LayerQualities directly.
 

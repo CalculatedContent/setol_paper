@@ -1,145 +1,85 @@
-\subsection{Basic Elements of the \SemiEmpirical Theory}
-\label{sxn:matgen_basic_elements}
+%\subsection{Basic Elements of the \SemiEmpirical Theory}
+%\label{sxn:matgen_basic_elements_concise}
 
-Here, we provide an overview of basic elements of our approach.
-
-\paragraph{Empirical results for a \SemiEmpirical Theory.}
-
-Here, we summarize the key empirical observations of SOTA NNs that we consider in formulating our approach.
-Many of these observations are well-established by prior work~\cite{MM18_TR_JMLRversion,MM20a_trends_NatComm,MM21a_simpsons_TR,YTHx22_TR,YTHx23_KDD};
-but others are new and presented here in Section~\ref{sxn:empirical}).
-After examining hundreds of well performing, SOTA NN models and thousands of their layer weight matrices $\mathbf{W}$, we observe the following general~properties.
-\begin{itemize}
-\item 
-  Weight matrices $\mathbf{W}$ of SOTA NNs generally have \emph{ESDs that are \HeavyTailed (HT)} and that
-  can be well-fit to a \PowerLaw (PL) distribution:  $\rho_{tail}(\lambda)\sim\lambda^{-\alpha}$.
-\item 
-  The (individual elements of the) weight matrices $\mathbf{W}$ themselves are generally \emph{not HT element-wise}, even when they do have HT ESDs.
-  % (although they may have exponentially decaying tails).
-\item 
-  When fitting the tail of the ESD to a PL, the PL exponent $\alpha$ typically falls in the range  $\alpha\in[2,6]$, indicating that the layer $\mathbf{W}$ matrices generally live in the Fat-Tailed Heavy Tailed Universality class from the \HTSR  theory.
-\michael{Mention of HTSR.}
-\michael{Mention of Fat.}
-\charles{???}
-\item 
-  Within that range, smaller layer $\alpha$ correlate well with improved overall model quality and/or high out-of-sample performance.
- (Other empirical metrics, such as better fits, i.e., smaller $D_{KS}$, exhibit a similar correlation.) 
- \michael{Have we defined $D_{KS}$.}\cformike{Yes}
+\begin{enumerate}[label=5.\arabic*]
 \item
- The layer-averaged PL \SHAPE metric \ALPHA $(\alpha)$ predicts trends in the test accuracies when varying regularization 
- hyperparameters (i.e., momentum, learning-rate, DropOut, etc.) on a single model, with fixed depth and/or architecture~\cite{MM18_TR_JMLRversion}.
-\item 
- The layer-averaged PL \SCALE-adjusted \SHAPE metric \ALPHAHAT $(\hat{\alpha})$ predicts trends in the test accuracies 
- when varying regularization hyperparameters and number of layers (depth)~\cite{MM21a_simpsons_TR,MM20a_trends_NatComm}.
-\end{itemize}
+\textbf{Matrix Generalization of the ST Model.}
+Section~\ref{sxn:matgen_mlp3} generalizes
+classical \STATMECH vector-based ST model of Section~\ref{sxn:SMOG_main-student_teacher}
+to obtain a \LayerQuality for a single layer in a NN.
+It starts by first formulating the learning problem for
+the  NN generalization accuracy or quality, $\Q^{NN}$,
+of a  3-layer MLP (MLP3).
+We then replace vectors with $N \times M$ matrices $\SVEC,\TVEC\rightarrow\SMAT,\TMAT$,
+and obtain and expression for the NN \SelfOverlap $\ETA(\SMAT,\TMAT,\XI)$,
+which then gives a matrix-generalized overlap operator
+$\OVERLAP:=\langle\ETA(\SMAT,\TMAT,\XI)\rangle_{\AVGNDXI}=\tfrac{1}{N}\SMAT^{\top}\TMAT$.
+This can be related to a single-layer matrix-generalization of the ST \AnnealedHamiltonian, 
+presented in Appendix~\ref{sxn:summary_sst92}, $\HANHT:=M-\OVERLAP$,
+where, importantly, the scalar overlap $R$ is now a matrix $\OVERLAP$ of $M$ adjustable parameters.
 
-\noindent
-These empirical observation are (very) general, but there are exceptions, and we would like to understand better when and why these arise.
-%in some cases, weight matrices $\mathbf{W}$ are too small, even if the model is well-trained; 
-%in some cases, the model or parts of the model are under-trained or over-trained, even if training/testing curves ``look good; 
-%n some cases, one can observe ``exceptions that prove the rule or extreme sensitivity to the PL/TPL fitting.
-%
-That being said, all of these quantities can be computed with the publicly-available \WW tool~\cite{weightwatcher_package}; and this enables one to reproduce prior work~\cite{MM18_TR_JMLRversion,MM20a_trends_NatComm,MM21a_simpsons_TR,YTHx22_TR,YTHx23_KDD} which has established these empirical facts.
-\michael{Probably remove this comment, given backward compatibility issues of codee WW calls.}
-\charles{If we are sure its in here earlier, sure}
+\item
+\textbf{The \LayerQualitySquared $\QT$}
+Section~\ref{sxn:matgen_quality_hciz} presents the expression for NN \LayerQualitySquared $\QT$.
+Following the ST analogy, we define a \ThermalAverage over possible \Student weight matrices $\SMAT$
+for the matrix overlap, giving $\Q^{NN}_{L}:=\THRMAVGIZ{\HANHT} =\THRMAVGIZ{\OVERLAP}$,
+For technical reasons, however, we actually seek the (approximate)  \LayerQualitySquared, $\QT\approx\Q^{2}$,
+defined as $\QT:=\THRMAVGIZ{\OLAPTOLAP}$.
+To evaluate $\QT$, rather than sampling all random \Student matrices $\SMAT$ directly,
+we switch measures to the \Student correlation matrices 
+$\AMAT_{2} = \tfrac{1}{N}\SMAT\SMAT^{\top}$.
+Importantly, we argue that the measures $d\mu(\AMAT_{1})\leftrightarrow d\mu(\AMAT_{2})$,
+can be interchanged for our purposes, making them effectively equivalent.
+This reparametrization leads us to an integral of the HCIZ type (as in \EQN~\ref{eqn:hciz_prelim})
+which, as shown by Tanaka \cite{Tanaka2007, Tanaka2008}.
 
-%Starting with these empirical observations, we now construct our \SETOL, thereby deriving the data-free \ALPHAHAT model quality metric.
+Then, we introduce the \EffectiveCorrelationSpace (\ECS), and two key approxmations,
+the \TRACELOG Condition and the \IndependentFluctuationApproximation (\IFA).
+The \TRACELOG condition states that the determinant of the (effective) \Student correlation matrix is unity, $\Det{\AECS}=1$.
+Critcially, this condition can be tested empirically by assuming the (effective) \Teacher correlation matrix
+also follows the \TRACELOG condition, $\Det{\XECS}=1$, and this is a key result of this work.
+Finally, we impose the \IFA (described below) because it is necessary for the final result.
 
+\item
+\textbf{The Large-$N$ limit}
+Section~\ref{sxn:matgen_evaluation_hciz} presents the core result,
+(as in \EQN~\ref{eqn:QT_result}),
+a closed-form or semi-analytic expressions for the \LayerQualitySquared $\QT$
+formed in the large-$N$ limit.
+Restricted to the \ECS, and under  the \TRACELOG condition and the \IFA, our
+HCIZ integral for $\QT$ becomes tractable at large-$N$, givin an expression that can be parameterized
+in terms of $\MECS$ eigenvalues $\LambdaECS$ of the \Teacher correlation matrix 
+restricted to the \ECS $\XECS$.
+In doing this, the $\MECS$ \Teacher eigenvalues are treated as experimental observables, and 
+become the effective \SemiEmpirical parameters (i.e, $\alpha$, $\lambda_{max}$) of our \SETOL.
 
-\paragraph{Conceptual relationship with prior \STATMECH approaches.}
-While the \SETOL approach relies on techniques from \SMOG (described in Section~\ref{sxn:SMOG_main}),
-there are several key conceptual differences.
-\begin{itemize}
-\item  We seek an approximate, formal expression for the \emph{Total Layer Quality (Squared)}  metric, $\QT$.
-       We will start with the \StudentTeacher average \GeneralizationError $\AVGSTGE$ for the \LinearPerceptron, in the \AnnealedApproximation, and in the \HighTemperature limit, i.e. $\AVGSTGE=\AVGE^{an}_{hT}$
-\item  We consider a \emph{fixed Teacher, rather than a distribution} over teachers (as in some \STATMECH theories~\cite{engelBook}). 
-  The \Teacher is associated with the (pre-trained) model we seek to analyze, describe, and make predictions about.
-\item  We call the ST \AverageGeneralizationAccuracy the model \emph{Quality}, formally defined as $\Q^{ST}=1-\AVGSTGE$
-  but expressed in terms of the appropriate derivative
-  of a \emph{Quality Generating Function} $\STG$ (i.e. \EQN~\ref{eqn:QT_result})
-\item  To generalize to matrices, the Teacher $T$ and Student $S$ $N$-dimensional \Perceptron vectors become $N\times M$ layer weight matrices.
-\item  We generalize the Quality Generating Function $\STG$ for the ST model to a \emph{Layer Quality (Squared) Generating Function}, denoted $\IZG$
-\item  We generalize the ST vector overlap $R$ to an overlap operator, $\OVERLAP$, where $\OVERLAP := \tfrac{1}{N}\mathbf{S}^{T}\mathbf{T}$ is an $M \times M$ matrix with at most $M$ non-zero eigenvalues.
-%\item  \cancel{We note that $\OLAPSQD$ can take one of two equivalent forms (Eqn.~\ref{eqn:R2}, 
-%       $\OLAPSQD=\tfrac{1}{N}\Trace{\TMAT\AMAT_{1}\TMAT^{\TR}}=\tfrac{1}{N}\Trace{\TMAT^{\TR}\AMAT_{2}\TMAT}$, where
-%       $\AMAT_{1}:=\tfrac{1}{N}\AMAT\AMAT^{\TR}$ and
-%       $\AMAT_{2}:=\tfrac{1}{N}\AMAT\AMAT^{\TR}$.}
-%  \michael{Are those equivalent, or is that an approx.}
-%  \charles{They should be identical since this is the Trace}
-\item  We define a the measure over all random Student Correlation matrices (Eqn.~\ref{eqn:dmuA})
-       $d\mu(\AMAT)$ such that $d\mu(\AMAT)=d\mu(\AMAT_1)=d\mu(\AMAT_2)$, 
-       so that we may interchange $\AMAT_{1}\leftrightarrow\AMAT_{2}$ as necessary.
-       \michaeladdressed{Is it really Haar, and how is that affected by the (maybe) approx.}
-\end{itemize}
+\item
+\textbf{Modeling the \HeavyTailed \RTransform}
+Section~\ref{sxn:r_transforms} presents several  models of different \RTransforms.
+Evaluating $\QT$ requires evaluating selecting an \RTransform $R(z)$ for the Teacher ESD,
+and also ensure that it is analytic and single-valued on the domain of interest-- the \ECS and/or tail of the ESD.
+We examine four possible models for $R(z)$: \emph{(i)} the \emph{Bulk$+$Spikes} (BS),
+\emph{(ii)} the \emph{Free Cauchy} (FC) model, 
+\emph{(iii)} the \emph{Inverse Wishart} (IW) model, 
+and \emph{(iv)} the  \LevyWigner (LW) model.
+First, as a trivial case, the tail of ESD can be treated as a collection of spikes,
+and the ESD is simply a sum of Dirac delta functions; in this case,
+$\QT$ becomes a ``Tail Norm'', the Frobenius Norm of the PL tail.
+When the layer is \Ideal, i.e., $\alpha\sim 2$ and $\Det{\XECS}\sim 1$,
+one can use  \emph{Free Cauchy} (FC) model.  and the resulting \LayerQuality $\Q$
+is approximately the Spectral Norm $\lambda_{max}$.
+Since $\lambda_{max}$ increases with decreasing $\alpha$, the FC model yields the \HTSR \ALPHA metric.
+One can also use  \emph{Inverse Wishart} (IW) model. 
+As required, the IW \RTransform contains a \emph{branch cut} in the complex plane
+which aligns with the start of the \ECS \PowerLaw tail.
+Finally, Using the \LevyWigner (LW) model, one can model cases where
+$\alpha\le 2$ and derive the \HTSR \ALPHAHAT metric.
+\end{enumerate}
 
+\vspace*{1em}
 
-\paragraph{Technical novelties in our matrix-based \SETOL approach.}
-Given the conceptual differences between our \SETOL setup and traditional \STATMECH approaches, there are several technical novelties which our approach requires.
-\begin{itemize}
-\item  We express $\QT$ (as opposed to $\Q$) as a Thermal Average over all student matrices, written as:  $\QT:=\THRMAVGIZ{\OLAPTOLAP}$.
-  \nred{We need to change: $\THRMAVGIZ{\OLAPSQD}\rightarrow\THRMAVGIZ{\OLAPTOLAP}$ everywhere}
-\item  We make two simplifying assumptions:
-       the \emph{\IndependentFluctuationApproximation} (\IFA) (see \EQN~\ref{eqn:IFA2}); and 
-       the Trace-Log Condition (\TRACELOG) (see \EQN~\ref{eqn:tlc_mm}).
-\item  We recast the integral over students, from a Thermal Average over random 
-       $\mathbf{S}$ matrices %%$S$ vectors 
-       to one over random 
-       $\mathbf{A}_1$ $(M \times M)$ Correlation matrices, via a change of measure $d\mu(\SMAT)\rightarrow d\mu(\AMAT)$.  
-\item  In performing this change of measure, 
-       we assume the generalizing components of the layer concentrate in the leading eigenvectors of the layer correlation matrix $\AMAT_1$, 
-       i.e., those that correspond to the tail of the layer ESD. 
-       This lets use formulate the problem in an \EffectiveCorrelationSpace and define the \emph{\EffectiveCorrelationMatrix} $\AECS_1$.
-\item  We assume the Effective Correlation matrix $\AECS_1$ satisfies the \TRACELOG condition, 
-       such that $\log\Det{\AECS_{1}}=0$. 
-       (See \EQN \ref{eqn:detX}.) 
-       Practically, this meams we can select the \EffectiveCorrelationSpace (\ECS) by the set of tail eigenvalues,
-       $\LambdaECS_{t}\in\rho_{tail}(\lambda)$, of the \Teacher ESD, satsifying $\sum_{t}\log\LambdaECS_{t}\approx 0$.
-       We denote  \ECS minimum eigenvalue as $\LambdaECSmin$.
-\item  We then extend the \TRACELOG condition, 
-       assuming it applies to both the other form of the \Student Correlation matrix, $\AMAT_2$, 
-       as well as the empirically measured (\Teacher) correlation matrices, $\XMAT_1$ and/or $\XMAT_2$.
-\item  We formulate the final expression for the \LayerQuality metric $\QT$ as the integrated \RTransform of 
-       $\rho_{tail}(\lambda)$, yielding a \GEN~$\GN:=\int^{\lambda}_{\LambdaECSmin}R(z)dz$.
-  This gives $\QT=\sum_{i}G(\LambdaECS_{i}$), where the sum is over all eigenvalues in the~\ECS.
-     \item  We parameterize the \GEN~$G(\LambdaECS)$ in terms of empirical spectral properties
-       of the Teacher weight matrix $\TECS:=\XECS$, restricted to the~\ECS.
-       These may be either the parameters of the PL fit $(\alpha, \lambda_{max})$, or the matrix moments $m_{k}:=\Trace{\XECS^{k}}$.
-       \item The \ECS minimum eigenvalue $\LambdaECSmin$ should correspond roughly to the branchcut of $R(z)$ necessary to make $R(z)$ analytic
-  and therefor integrable.
-
-\end{itemize}
-\michael{The above is a little awkward, since it is almost an outline of the analysis, which is redundant with part of Sec.~\ref{sxn:setol_overview}.}
-\charles{@michael: mark what to remove and what to keep based on the current 3.1.}
-
-Our final result gives a formal expression for \ALPHAHAT as an approximate \Annealed \FreeEnergy of matrix-generalized \LinearPerceptron,
-parameterized in terms of the PL exponent $\alpha$ of the HT ESD of the \Teacher correlation matrix $\mathbf{X}$.
-This is the ``hello world version of our \SETOL.
-
-We also provide a numerical approach to estimating trends the quality $\QT$, based evaluating the layer matrix moments $m_{k}$,
-to demonstrate the generality of the technique.
-
-\michael{Those two comments should probably go elsewhere.}
-
-\paragraph{A comment on ``mathematical rigor.''}
-Because we parameterize our \SETOL using \emph{empirical} properties of the \Teacher, we are free to introduce several key assumptions which may differ from a fully ``mathematically rigorous \emph{a priori} theory.''
-We can--and do--justify these assumptions through carefully designed experimemnts (in Section~\ref{sxn:empirical}).
-We leave it as future work to bridge that theoretical gap as appropriate.
-
-
-\charles{MOVE TO MAIN TEXT: The core idea here is to integrate over some set of possible \Teacher matrices,
-similar in spirit to the way in the classic ST model of the perceptron
-we average over a uniform distribution of \Teacher vectors $\mathbf{J}$.
-Note that, in a \Perceptron, the \Teacher vector $\mathbf{J}$ is a trivial model,
-and the only structure it has is the density, defined by the load parameter $\alpha$,
-therefore, when we average over all Teachers, any other significant structure
-is washed-out in the average.  But when the \Teacher is a matrix $\mathbf{W}$,
-it has significant and meaningful structure in its specific eigenvalues
-$\lambda_{i}$, and we can average over all possible Teachers correlation
-matrices $\mu(\mathbf{X})d\mathbf{X}$ as by considering all orthogonal transformations $\mathbf{O}^{T}\mathbf{XO}$
-with the same eigenvalues.  This average retains some significant
-structure of the original \Teacher, making it possible to derive an
-expression for the error that is semi-empirically parameterized by
-actual DNN matrices (and even with the additional assumptions such
-as having Gaussian prior over the data).
-}
-
+These core elements form a bridge between well-established empirical properties of large-scale NNs 
+and a tractable ST-based theory. In the subsequent sections, we formalize the key steps: 
+\emph{(i)} setting up the matrix-based ST problem, \emph{(ii)} defining our HCIZ integrals 
+over restricted correlation matrices (\ECS), and \emph{(iii)} analyzing the resulting 
+\emph{Layer Quality} (or \emph{Quality-Squared}) expressions in the large-$N$ limit.

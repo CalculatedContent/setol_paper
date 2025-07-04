@@ -59,12 +59,9 @@ In the \SETOL theory, when a model is very well-trained, the eigenvalues in the 
 % because its easier to interpret numerically. I checked and this (was) the only place where this equation was 
 % referenced, so I added another reference in the Section itself.}
 In Section~\ref{sxn:empirical-trace_log}, we provide a detailed analysis of this effect.
-%\item
-%\textbf{\ModelQuality: \SETOL Generalized norms.}
-%  \charles{We want to evaluate the different models for the \RTransform. This means
-%  (1) compare the Tail Norm to the matrix cummulants.
-%    (2) compute the alpha-hat metric with the correlation trap, and show that alpha-hat fixes this for FC1.
-%  }
+\item
+\textbf{Computational Model Qualities.}
+In Section~\ref{sxn:empirical_comp_r_transforms}, we empirically compare the HTSR layer-quality exponent $\alpha$ against the computational \RTransform-derived metric $\QT$ on fully trained MLP3 models. We show that for the FC1 layer, $\QT$ closely tracks $\alpha$ with small error bars and the expected batch-size trend, whereas for FC2, $\QT$ exhibits much larger variability—demonstrating that $\alpha$ provides a more stable and robust measure of layer quality.  
 \item
 \textbf{\CorrelationTraps.}
 Recall, from Section~\ref{sxn:Traps}, that if a layer weight matrix $\mathbf{W}$ has a \CorrelationTrap
@@ -94,6 +91,6 @@ The dominant generalizing components of $\mathbf{W}$ reside in $\mathbf{W}^{\EFF
 \input{sections/610_empirical_htsr}
 \input{sections/620_empirical_testing_ecs}
 \input{sections/630_empirical_eval_trace_log}
-%\input{sections/640_empirical_model_quality}
+\input{sections/640_empirical_model_quality}
 \input{sections/650_empirical_corr_trap}
 \input{sections/660_empirical_overloading}

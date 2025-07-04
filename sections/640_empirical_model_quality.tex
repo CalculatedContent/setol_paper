@@ -1,4 +1,4 @@
-\subsection{Model Quality: Computational \RTransforms}
+\subsection{Layer Qualities with Computational \RTransforms}
 \label{sxn:empirical_comp_r_transforms}
 
 In this Section, we look at how the \HTSR layer quality HT PL metric $\alpha$
@@ -11,7 +11,7 @@ both the batch size and the mean $\alpha$ metric to the
 mean $\QT$, and the results are quite different.
 
 
-\begin{figure}[t]
+\begin{figure}[h]
     \centering
     \subfigure[FC1 batch size vs $\QT$]{
         \includegraphics[width=6cm]{img/FC1_bs_vs_Q.png}
@@ -43,8 +43,7 @@ mean $\QT$, and the results are quite different.
 For FC1, as shown in Figure~\ref{fig:FC1_bs_vs_Q}, the quality metric \(\QT\) increases as the batch size decreases, following the expected trend. Notably, for batch size = 1, the quality metric exceeds $100\%$,
 which suggests that the layer may be overfit in this scenario, which is similar to results obtained earlier. Furthermore, in Figure~\ref{fig:FC1_alpha_vs_Q}, the quality metric \(\QT\) shows a strong correlation with the $\alpha$ metric, consistent with the theoretical predictions of the \HTSR framework.
 Earlier results suggest that the FC1 layer captures most of the correlation in the data,
-so it is interesting that this layer also has much smaller error bars, indicating more consistent computational
-quality across different batch sizes.
+so it is interesting that this layer also has much smaller error bars, indicating more consistent quality across different batch sizes.
 
 In contrast, for FC2, while the general trends are similar (as shown in Figures~\ref{fig:FC2_bs_vs_Q} and~\ref{fig:FC2_alpha_vs_Q}), the error bars on the quality metric $\QT$ are much larger. This indicates significantly higher variability in computational quality compared to FC1. The large error bars for FC2 suggest that, while the $\QT$ metric is theoretically grounded, it is less effective than the existing \HTSR layer quality metric $\alpha$, which exhibits greater stability and reliability in capturing layer behavior. These differences highlight the distinct computational characteristics of the two layers, with FC1 demonstrating more predictable trends that align closely with theoretical expectations.
 
