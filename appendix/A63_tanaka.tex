@@ -88,15 +88,15 @@ Here, we assume the Trace constraint is sufficient for our level of rigor.
 
 \paragraph{Step 2.2}
 Next, we take a Wick Rotation, 
-\footnote{The Wick rotation converts an oscialltory integral into an exponentially decaying one which should be well defined.  Technically, this is an analytic continuation which needs to be checked, but following standard practice in physics we will assume the resulting integral is analytic and therefore well defined and we will proceed onwards. }$i\XHAT\rightarrow \XHAT$, so that the terms under the integral are all real (not complex), giving:
+\footnote{The Wick rotation converts an oscialltory integral into an exponentially decaying one which should be well defined.  Technically, this is an analytic continuation which needs to be checked, but following standard practice in physics we will assume the resulting integral is analytic and therefore well defined and we will proceed onwards. }
+$i\XHAT\rightarrow -\XHAT$, so that the terms under the integral are all real (not complex), giving:
 \begin{align}
   \label{eqn:dmuX}
-  d\mu(\mathbf{W}) &= \red{\mathcal{N}_{Wick}}\int_{-i\infty}^{i\infty} e^{\red{-}\frac{1}{2}\Trace{\hat{X}(N\mathbf{X}-\mathbf{W}^{\top}\mathbf{W})}} d\mu(\mathbf{X})d\mu(\hat{X} ).
+  d\mu(\mathbf{W}) &= \red{\mathcal{N}_{Wick}}\int_{-i\infty}^{i\infty} e^{\frac{1}{2}\Trace{\hat{X}(N\mathbf{X}-\mathbf{W}^{\top}\mathbf{W})}} d\mu(\mathbf{X})d\mu(\hat{X} ).
 \end{align}
 where $d\mu(\hat{X})$ is a measure over $\tfrac{M(M-1)}{2}$ Lagrange multipliers, and the normalization is  $$\mathcal{N}_{Wick}=(\frac{1}{2\pi i})^{\tfrac{M(M-1)}{2}}$$.
 
-
-\nred{The minus sign has not been propagated through yet and may be confusing; I will fix shortly. The final result is not changed.  }
+\nred{Check normailzation}
 
 \paragraph{Step 2.3}
 We now insert \ref{eqn:dmuX} into~\ref{eqn:ZD_after_Aavg},  which lets
@@ -252,4 +252,3 @@ We can now write the maximum value of $\GNORM$, $\GMAX$, as
 \beta\GMAX = M \left( 1 + \ln \frac{2\pi}{\beta} \right) - \sum_{\mu=1}^{M} \min_{\beta\delta_{\mu}} \left[\beta\delta_{\mu}\lambda_{\mu}
 - \beta\GNORM(\lambda_{\mu}) + \ln \lambda_{\mu} \right]   .
 \end{equation}
-
