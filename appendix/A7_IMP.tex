@@ -1,0 +1,64 @@
+\subsection{The Inverse-MP (IMP) Model}
+\label{sxn:IMP}
+In this section, we rederive the integral $G(\lambda)[IMP]$ for the \InverseMP (IMP) model, focusing on the branch cut starting at $z = \kappa/2$ and extending to infinity. 
+This branch cut corresponds to the support of the ESD in this region. 
+We will:
+\begin{enumerate}
+\item Explain the presence of the branch cut and its implications.
+\item Show that $R(z)[IMP]$ becomes complex along this branch cut because the term under the square root becomes negative.
+\item Perform the integral $G(\lambda)[IMP]$, showing all steps.
+\item Compute the \emph{Real} part  $\Re[G(\lambda)[IMP]]$ 
+\end{enumerate}
+
+\subsubsection{The Branch Cut in the IMP Model}
+
+The R-transform for the IMP model is given by:
+\begin{align}
+\label{eqn:iw_r_transf}
+R(z)[IMP] = \frac{\kappa - \sqrt{\kappa(\kappa - 2z)}}{z},
+\end{align}
+where $\kappa > 0$ is a parameter related to the dimensions of the random matrices under consideration.
+\michael{Ref.}
+The function $\sqrt{\kappa(\kappa - 2z)}$ introduces a branch point at $z = \kappa/2$ because the argument of the square root becomes zero at this point:
+\begin{align}
+\kappa - 2z = 0 \quad \Rightarrow \quad z = \frac{\kappa}{2}.
+\end{align}
+For $z > \kappa/2$, the argument $\kappa - 2z$ becomes negative, and thus the square root becomes imaginary. 
+This leads to a branch cut starting at $z = \kappa/2$ and extending to $z = \infty$ along the real axis. 
+This branch cut affects the analyticity of $R(z)[IMP]$, and it must be carefully considered in the integral $G(\lambda)[IMP]$.
+
+\subsubsection{$R(z)[IMP]$ is Complex Along the Branch Cut}
+
+For $z > \kappa/2$, we have:
+\begin{align}
+\kappa - 2z < 0 \quad \Rightarrow \quad \sqrt{\kappa(\kappa - 2z)} = \sqrt{-\kappa(2z - \kappa)} = i \sqrt{\kappa(2z - \kappa)}.
+\end{align}
+%
+Therefore, $R(z)[IMP]$ becomes complex:
+\begin{align}
+R(z)[IMP] = \frac{\kappa - i \sqrt{\kappa(2z - \kappa)}}{z} = \frac{\kappa}{z} - i \frac{ \sqrt{ \kappa(2z - \kappa) } }{ z }.
+\end{align}
+%
+This expression shows that $R(z)[IMP]$ has both real and imaginary parts when $z > \kappa/2$.
+
+\subsubsection{Calculation of $G(\lambda)[IMP]$}
+
+We aim to compute the integral:
+\begin{align}
+G(\lambda)[IMP] := \int_{z_0}^\lambda \Re[R(z)[IMP]] , dz,
+\end{align}
+where $z_0 \geq \kappa/2$.
+
+Where the Real part of $R(z)[IMP]$ is
+\begin{align}
+\text{Re}[R(z)[IMP]] = \frac{\kappa}{z}.
+\end{align}
+%
+The integral of this is
+\begin{align}
+\Re[G(\lambda)[IMP]] = \int_{z_0}^\lambda \frac{\kappa}{z} , dz = \kappa \left[ \ln z \right]_{z_0}^\lambda = \kappa \left( \ln \lambda - \ln z_0 \right).
+\end{align}
+
+
+
+

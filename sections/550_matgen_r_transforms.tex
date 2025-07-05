@@ -1,7 +1,6 @@
 \subsection{Modeling the R-Transform}
 \label{sxn:r_transforms}
 
-
 To apply \SETOL, the model satisfy the \TRACELOG condition--which occurs during the case of  \IdealLearning.
 For most cases of NN models, the ESD are HT; and this, in practice, one usually would select $R(x)$ that reflects this.
 But to be more general, we formally extend the theory to allow the practioners to
@@ -162,23 +161,24 @@ Because $R(z)$ is independent of $z$, the integral is straightforward:
 \GN[\mathrm{FC}] = \int_{\LambdaECSmin}^{\lambda} R(z)[\mathrm{FC}]dz = (a + i\gamma)(\lambda - \LambdaECSmin).
 \end{equation}
 
-As above with the IW model, taking the modulus removes the phase factor in the $\GNECSI$, giving,
+%As above with the IW model, taking the modulus removes the phase factor in the $\GNECSI$, giving,
+As explained in Appendix~\ref{sxn:tanaka}, when $R(z)$ is complex,  we keep the \emph{Real} part $\GNECSI$, giving,
 \begin{equation}
 \label{eqn:free_cauchy_G_abs}
-\bigl|\GN[\mathrm{FC}]\bigr| = \sqrt{a^{2} + \gamma^{2}}(\lambda - \LambdaECSmin).
+\Re[\GN[\mathrm{FC}]] = a(\lambda - \LambdaECSmin).
 \end{equation}
 
 To obtain a formal expression for $\ALPHA$, we make two approximations.
 First, we take the lower cut-off to be near zero $(\LambdaECSmin \approx 0)$.
 \begin{equation}
 \label{eqn:free_cauchy_G_max}
-\bigl|\GN[\mathrm{FC}]\bigr|_{\LambdaECSmin \approx 0} \approx \lambda\sqrt{a^{2} + \gamma^{2}}
+\bigl|\GN[\mathrm{FC}]\bigr|_{\LambdaECSmin \approx 0} \approx a\lambda
 \end{equation}
 Second, we assume the \LayerQualitySquared is dominated by the largest term in the sum:
 \begin{equation}
 \label{eqn:free_cauchy_G_max2}
 \QT_{\mathrm{FC}} = \sum_{i=1}^{\MECS}\bigl|\GN[\mathrm{FC}]\bigr|_{\LambdaECSmin \approx 0}
-= \sum_{i}^{\MECS} \LambdaECS_{i}\sqrt{a^{2} + \gamma^{2}} \approx \lambda_{max}\sqrt{a^{2} + \gamma^{2}}
+= a\sum_{i}^{\MECS} \LambdaECS_{i} \approx a\lambda_{max}
 \end{equation}
 
 For the Heavy-Tailed ESDs, we genrally find that as $\lambda_{\max}$ increses, the \HTSR $\alpha$ decreases.
@@ -217,7 +217,7 @@ $\ALPHAHATEQN :=\ALPHAHATLONG)$ as a leading order term in the final expression 
       \includegraphics[width=7.5cm]{./img/IMPplotKappa1.25.png}
       \label{fig:IMPplotQ35}                                
       }
-      \caption{Example Inverse Marchenko-Pastur (IMP) distributions for $\kappa=0.5$ and $\kappa=1.0$,  along with Power Law (PL) fits of the generated distribution. Plots on Log-Log scale.}
+      \caption{Example \InverseMP (IMP) distributions for $\kappa=0.5$ and $\kappa=1.0$,  along with Power Law (PL) fits of the generated distribution. Plots on Log-Log scale.}
   \label{fig:IMPplots}                                                                                                      
 \end{figure}   
 
@@ -240,7 +240,7 @@ is an effective, simple model to illustrate the \SETOL case of \IdealLearning.
         \includegraphics[width=7.5cm]{img/Branch_Cut_Density_normalized.png}
         \label{fig:IMP_branch_cut}
     }
-    \caption{(a) The function $R(z)$ of the Inverse MP model, with a singularity at $z = \kappa/2$. (b) The branch cut in the empirical spectral density, corresponding to the tail for $\kappa = 0.5$.}
+    \caption{(a) The function $R(z)$ of the \InverseMP (IMP) model, with a singularity at $z = \kappa/2$. (b) The branch cut in the Empirical Spectral Density (ESD) at $\kappa = 0.5$.}
     \label{fig:R_branch_cut_combined}
 \end{figure}
 
@@ -256,74 +256,21 @@ We select the branch cut starting at $z=\kappa/2$ and ending at $z=\infty$,
 which allows us to at least formally defined the integral along the physically meaningful part of the ESD:
 \begin{equation}
 \label{eqn:IMP_model_1} 
-\GN[\mathrm{IMP}] := \int_{\LambdaECSmin}^{\lambda} R(z)[\mathrm{IMP}] dz  ,
+\GN[\mathrm{IMP}] := \int_{\LambdaECSmin}^{\lambda} \Re[R(z)][\mathrm{IMP}] dz  ,
 \end{equation}
-noting that we expect $\LambdaECSmin\ge\kappa/2$.
-\nred{Actually, I think we only need the real part, I need to redo this part}
+noting that we expect $\LambdaECSmin\ge\kappa/2$ and we take the \emph{Real} part of $R(z)$, $\Re[R(z)]$.
 
 It turns out, however, that due to the branch cut in $R(z)[\mathrm{IMP}]$,
 the function $\GN[\mathrm{IMP}]$ is not analytic in the domain we need. 
-To correct for this, we will instead model the \LayerQualitySquared using the modulus of $\GN[\mathrm{IMP}]$,
-\nred{Probably we just want the real part, I think with the Tananka integral the imaginary parts cancel; need to check again}
+To correct for this, we will instead model the \LayerQualitySquared using the \emph{Real Part} $\Re[\GN[\mathrm{IMP}]]$,
+which yields (See Appendix~\ref{sxn:IMP}):
 \begin{equation}
-\label{eqn:IMP_model_2} 
-|\GN[\mathrm{IMP}]| := \sqrt{\GN[\mathrm{IMP}]^{*}\GN[\mathrm{IMP}]}
+  \label{eqn:IMP_model_2}
+G(\lambda)[IMP] = \int_{z_0}^\lambda \frac{\kappa}{z} , dz = \kappa \left[ \ln z \right]_{z_0}^\lambda = \kappa \left( \ln \lambda - \ln z_0 \right).
 \end{equation}
-where $\GN[\mathrm{IMP}]^{*}$ is the complex conjugate of $\GN[\mathrm{IMP}]$.
-This is somewhat involved, so we present the full calculation in Appendix~\ref{sxn:IMP}
-
-
-
-Figure~\ref{fig:InverseMPGx} plots $|\GN[\mathrm{IMP}]|$ on Lin-lin and Log-log plots, on the range $\lambda\in(0.25, 100)$, and fits the it to a PL. 
-The fit follows the general trend of the function, but it is not terribly accurate.
-Still, from this plot, we can see that the \LayerQualitySquared has the same general trend as $\ALPHAHAT$ and/or a Shatten Norm.
-
-\begin{figure}[t]
-  \centering
-  \subfigure[$|\GNECSI\lbrack IMP\rbrack|$ Lin-lin plot and PL fit]{
-    \includegraphics[width=0.45\textwidth]{./img/Gx.png}
-        \label{fig:GxPlot}
-    }
-    \subfigure[$|\GNECSI\lbrack IMP\rbrack|$ Log-log plot and PL fit]{
-        \includegraphics[width=0.45\textwidth]{./img/logGx.png}
-        \label{fig:LogLogGxPlot}
-    }
-    \caption{Behavior of $\GN[\mathrm{IMP}]$ for the Inverse MP (IMP) model,
-       with a Power Law (PL) fit (red), $|\GN[\mathrm{IMP}]|\approx 1.138 \lambda^{0.539}$.
-      (a)  Lin-lin plot. (b) Log-log plot.
-}
-    \label{fig:InverseMPGx}
-\end{figure}
-
-%
-%\begin{figure}[t]
-%    \centering
-%    % Subfigure (a): G(x) Plot
-%    \subfigure[Inverse MP $\GNECSI$]{
-%        \includegraphics[width=0.45\textwidth]{./img/Gx.png}
-%        \label{fig:GxPlot}
-%    }
-%    % Subfigure (b): Log-log plot and power-law fit
-%    \subfigure[Log-log plot and power-law fit]{
-%        \includegraphics[width=0.45\textwidth]{./img/logGx.png}
-%        \label{fig:LogLogGxPlot}
-%    }
-%    \caption{Behavior of $\GNECSI$ for the Inverse MP (IMP) model. (a) $\GNECSI$ lin-lin plot. (b) Log-log plot of $\GNECSI$ with a Power Law (PL) fit, $\GNECSI\sim 2.8\lambda^{-3.0}$ }
-%    \label{fig:InverseMPGx}
-%\end{figure}
-%
-%Given an analytic expression for $\GNECSI$ (and $\kappa=0.25$), we can plot the $\GNECSI$ as a function of $\lambda$,
-%and then fit this to a Power Law; this is depicted in Figure~\ref{fig:InverseMPGx}.
-%The resulting fit gives $\GNECSI\simeq 2.8\lambda^{3.0}$.
-%We can now associate $\ALPHAHAT$ with $\log_{10}\QT$ by keep the leading order term
-%$(\lambda_{max}=\LambdaECS_{max}$)
-%
-%\begin{align}
-%  \label{eqn:IMP_alphahat}
-%  \ALPHAHATEQN:=\ALPHAHATLONG\approx\log_{10}\QT=\log_{10}\sum_{\LambdaECS}\GNECSII\approx\log_{10}\mathcal{G}(\lambda_{max}\sim (\alpha+1)\log_{10}\lambda_{max}
-%\end{align}
-%So for $\alpha=2.0$, $\log_{10}\QT\sim (\alpha+1)\log_{10}\lambda_{max}$, which is very close to $\alpha\log_{10}\lambda_{max}$. QED.
-
+Notice this expression is very similar to the expression for the Free Cauchy model above (\EQN~\ref{eqn:free_cauchy_G_max2}), except
+now it is terms of the logarithm of $\lambda$, and rescaled by $\kappa$.
+\nred{WHAT ELSE TO SAY?}
 
 \subsubsection{The Multiplicative-Wishart (MW) model}
 The Multiplicative-Wishart (MW) model  has two real, adjustable parameters $\epsilon,\phi$.
