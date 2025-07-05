@@ -1,13 +1,13 @@
-\subsection{Laurent Series of $R(z)[IW]$ at $z = 0$}
-\label{sxn:IW}
+\subsection{Laurent Series of $R(z)[IMP]$ at $z = 0$}
+\label{sxn:IMP}
 
-In this section, we derive the Laurent series of $R(z)[IW]$, as given in Eqn.~\ref{eqn:IW_Lseries}.
+In this section, we derive the Laurent series of $R(z)[IMP]$, as given in Eqn.~\ref{eqn:IMP_Lseries}.
 
 \subsubsection*{1. Starting Expression}
 
-The R-Transform for the Inverse Wishart (IW) model is given by:
+The R-Transform for the Inverse MP (IMP) model is given by:
 \begin{equation}
-R(z)[IW] = \frac{\kappa - \sqrt{\kappa(\kappa - 2z)}}{z}
+R(z)[IMP] = \frac{\kappa - \sqrt{\kappa(\kappa - 2z)}}{z}
 \end{equation}
 where  $\kappa > 0$  is a parameter related to the dimensions of the matrix.
 
@@ -46,20 +46,20 @@ Subtracting the square root from  $\kappa$:
 &= z + \frac{z^2}{2\kappa} + \frac{z^3}{2\kappa^2} + \frac{5z^4}{8\kappa^3} + \cdots
 \end{align}
 
-\subsubsection*{6. Divide by  z  to Obtain  R(z)[IW] }
+\subsubsection*{6. Divide by  z  to Obtain  R(z)[IMP] }
 
 Now, dividing by  $z$:
 \begin{align}
-R(z)[IW] &= \frac{\kappa - \sqrt{\kappa(\kappa - 2z)}}{z} \
+R(z)[IMP] &= \frac{\kappa - \sqrt{\kappa(\kappa - 2z)}}{z} \
 &= \frac{ z + \dfrac{z^2}{2\kappa} + \dfrac{z^3}{2\kappa^2} + \dfrac{5z^4}{8\kappa^3} + \cdots }{ z } \
 &= 1 + \frac{z}{2\kappa} + \frac{z^2}{2\kappa^2} + \frac{5z^3}{8\kappa^3} + \cdots
 \end{align}
 
 \subsubsection*{7. Summary of the Laurent Series}
 
-Thus, the Laurent series expansion of  $R(z)[IW]$  around  $z=0$ is:
+Thus, the Laurent series expansion of  $R(z)[IMP]$  around  $z=0$ is:
 \begin{align}
-R(z)[IW] &= 1 + \frac{z}{2\kappa} + \frac{z^2}{2\kappa^2} + \frac{5z^3}{8\kappa^3} + \frac{7z^4}{8\kappa^4} + \cdots
+R(z)[IMP] &= 1 + \frac{z}{2\kappa} + \frac{z^2}{2\kappa^2} + \frac{5z^3}{8\kappa^3} + \frac{7z^4}{8\kappa^4} + \cdots
 \end{align}
 The coefficient of the  $z^4$  term can be obtained by continuing the expansion:
 \begin{align}
@@ -68,21 +68,21 @@ The coefficient of the  $z^4$  term can be obtained by continuing the expansion:
 
 \subsubsection*{8. Implications}
 
-The series expansion shows that  $R(z)[IW]$   is analytic at  $z=0$ , as it can be represented by a power series in  $z$  with non-negative integer powers. This confirms that the apparent singularity at $z=0$  is removable.
+The series expansion shows that  $R(z)[IMP]$   is analytic at  $z=0$ , as it can be represented by a power series in  $z$  with non-negative integer powers. This confirms that the apparent singularity at $z=0$  is removable.
 
-Each term in the series corresponds to higher-order contributions to  $R(z)[IW]$ ,
+Each term in the series corresponds to higher-order contributions to  $R(z)[IMP]$ ,
 with coefficients decreasing as $\dfrac{1}{\kappa^n}$ for higher powers  n .
 This indicates that for large  $\kappa$,
-the higher-order terms become negligible, and  $R(z)[IW]$  is well-approximated by the leading terms.
+the higher-order terms become negligible, and  $R(z)[IMP]$  is well-approximated by the leading terms.
 
 \subsubsection*{9. Conclusion}
 
-We have derived the Laurent series of  $R(z)[IW]$  at  $z=0$  and shown that:
+We have derived the Laurent series of  $R(z)[IMP]$  at  $z=0$  and shown that:
 \begin{align}
-R(z)[IW] &= 1 + \frac{z}{2\kappa} + \frac{z^2}{2\kappa^2} + \frac{5z^3}{8\kappa^3} + \frac{7z^4}{8\kappa^4} + \cdots
+R(z)[IMP] &= 1 + \frac{z}{2\kappa} + \frac{z^2}{2\kappa^2} + \frac{5z^3}{8\kappa^3} + \frac{7z^4}{8\kappa^4} + \cdots
 \end{align}
 This expansion confirms the analyticity of
-$R(z)[IW]$  at $z=0$  and provides a practical tool for approximations  near this point.
+$R(z)[IMP]$  at $z=0$  and provides a practical tool for approximations  near this point.
 
 \nred{Now we have a problem, because I think we want the branch cut $z>\kappa/2$ so $\kappa$ has to be very small;
   need to think about this}
