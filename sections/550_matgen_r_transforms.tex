@@ -1,7 +1,7 @@
 \subsection{Modeling the R-Transform}
 \label{sxn:r_transforms}
 
-In this section, we explain how to select the \RTransform $R(z)$ and evaluate the~\GEN~$\GN$ under different modeling assumptions.
+
 To apply \SETOL, the model satisfy the \TRACELOG condition--which occurs during the case of  \IdealLearning.
 For most cases of NN models, the ESD are HT; and this, in practice, one usually would select $R(x)$ that reflects this.
 But to be more general, we formally extend the theory to allow the practioners to
@@ -197,49 +197,47 @@ as smaller $\alpha$ suggests higher quality layers and therefore a higher overal
 
 \subsubsection{Inverse Marchenko-Pastur Model of \IdealLearning}
 For a more realistic model of a layer ESD, 
-here, we consider the \InverseMP (IMP) model.
+here, we consider the \InverseMP (IMP) model.\cite{BunThesis}
 The IMP model treats the ESD of $\mathbf{X}^{-1}$ when the ESD of $\mathbf{X}$ itself is MP.
-As a parametiric model, it can be quite effective at treating VHT and HT (or \FatTailed) ESDs when the far tail decays very rapidly, like a TPL, and/or for $\alpha\le 4$.
+As a parametiric model, it can be quite effective at treating VHT and HT (or \FatTailed) ESDs,
+$\alpha\le 4$, but works best whenb $\alpha=2.0$.
 To do this, one simply considers the parameters $\kappa$ as an adjustable paremeter.
-\nred{I need to think this section through a bit more.  I think we may need more than 1 adjustable parameter, and the branch cut may or may not matter depending on those choices}
 %
 It is an excellent model for the ESD when $\alpha=2.0$ (and $Q=2$).
 Using this model, we can derive an expression for the \HTSR \ALPHAHAT \LayerQuality metric,
 $\ALPHAHATEQN :=\ALPHAHATLONG)$ as a leading order term in the final expression for $\log_{10}\QT$.
 
-This model 
-
 \begin{figure}[h]
     \centering
-    \subfigure[IMP Distribution, $\kappa=0.25$]{ 
-      \includegraphics[width=7cm]{./img/IWplotQ1.5.png}
+    \subfigure[IMP Distribution, $\kappa=0.5$]{ 
+      \includegraphics[width=7.5cm]{./img/IMPplotKappa0.5.png}
       \label{fig:IMPplotQ15}                               
     }                               
-      \subfigure[IMP Distribution, $\kappa=1.25$]{ 
-      \includegraphics[width=7cm]{./img/IWplotQ3.5.png}
+      \subfigure[IMP Distribution, $\kappa=1.0$]{ 
+      \includegraphics[width=7.5cm]{./img/IMPplotKappa1.25.png}
       \label{fig:IMPplotQ35}                                
       }
-      \caption{Example Inverse Marchenko-Pastur (IMP) distributions for $\kappa=0.25$ and $\kappa=1.25$,  along with Power Law (PL) fits of the generated distribution. Plots on Log-Log scale.\red{THESE NEED TO BE REDONE}}
+      \caption{Example Inverse Marchenko-Pastur (IMP) distributions for $\kappa=0.5$ and $\kappa=1.0$,  along with Power Law (PL) fits of the generated distribution. Plots on Log-Log scale.}
   \label{fig:IMPplots}                                                                                                      
 \end{figure}   
 
 In Figure~\ref{fig:IMPplots}, we fit some \Typical layer ESDs to an IMP distribution.
-When $\kappa=0.25$, the fitted $\alpha=1.91$, and the fit is a reasonably accurate model of the underlying Power Law
+When $\kappa=0.5$, $Q=2.0$ and the fitted $\alpha=1.08$, and the fit is a reasonably accurate model of the underlying Power Law
 distribution and the ~\WW PL fit.
-For  $\kappa=1.25$, the fitted $\alpha=2.92$ is larger, but the fit is not as good as a
+For  $\kappa=1.0$, $Q=3.0$ and the fitted $\alpha=2.64$ is larger, and the fit is not as good as a
 model. Generally speaking, $\alpha$ scales with $\kappa$, but the  free cumulants scale inversely with $\kappa$.
 So smaller $\alpha$ will give larger free cumulants and therefore a larger $\QT$.
-Importantly, as seen in Figure~\ref{fig:IMPplotQ15}, for $\alpha= 2.0$, the IMP model (with $\kappa=0.25$)
+Importantly, as seen in Figure~\ref{fig:IMPplotQ15}, for $\alpha= 2.0$, the IMP model (with $\kappa=0.5$)
 is an effective, simple model to illustrate the \SETOL case of \IdealLearning.
 
 \begin{figure}[t]
     \centering
     \subfigure[IMP $R(z)$, real $z$.]{
-        \includegraphics[width=7cm]{img/IW_R_transform_sides.png}
+        \includegraphics[width=7.5cm]{img/IW_R_transform_sides.png}
         \label{fig:IMP_R}
     }
     \subfigure[Branch cut at $z=\kappa/2$]{
-        \includegraphics[width=7cm]{img/Branch_Cut_Density_normalized.png}
+        \includegraphics[width=7.5cm]{img/Branch_Cut_Density_normalized.png}
         \label{fig:IMP_branch_cut}
     }
     \caption{(a) The function $R(z)$ of the Inverse MP model, with a singularity at $z = \kappa/2$. (b) The branch cut in the empirical spectral density, corresponding to the tail for $\kappa = 0.5$.}
@@ -261,20 +259,19 @@ which allows us to at least formally defined the integral along the physically m
 \GN[\mathrm{IMP}] := \int_{\LambdaECSmin}^{\lambda} R(z)[\mathrm{IMP}] dz  ,
 \end{equation}
 noting that we expect $\LambdaECSmin\ge\kappa/2$.
-\michael{Why do we have this par, if we are using quality squared. I need to understand.}
-\charles{@michael: whats the issue ?}
+\nred{Actually, I think we only need the real part, I need to redo this part}
 
 It turns out, however, that due to the branch cut in $R(z)[\mathrm{IMP}]$,
 the function $\GN[\mathrm{IMP}]$ is not analytic in the domain we need. 
 To correct for this, we will instead model the \LayerQualitySquared using the modulus of $\GN[\mathrm{IMP}]$,
+\nred{Probably we just want the real part, I think with the Tananka integral the imaginary parts cancel; need to check again}
 \begin{equation}
 \label{eqn:IMP_model_2} 
 |\GN[\mathrm{IMP}]| := \sqrt{\GN[\mathrm{IMP}]^{*}\GN[\mathrm{IMP}]}
 \end{equation}
 where $\GN[\mathrm{IMP}]^{*}$ is the complex conjugate of $\GN[\mathrm{IMP}]$.
 This is somewhat involved, so we present the full calculation in Appendix~\ref{sxn:IMP}
-\michael{MM TO DO: Go through.}
-\michael{Are we going to mention the result here since we will use it?}
+
 
 
 Figure~\ref{fig:InverseMPGx} plots $|\GN[\mathrm{IMP}]|$ on Lin-lin and Log-log plots, on the range $\lambda\in(0.25, 100)$, and fits the it to a PL. 
