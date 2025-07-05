@@ -201,8 +201,7 @@ here, we consider the \InverseWishart (IW) model.
 The IW model treats the ESD of $\mathbf{X}^{-1}$ when the ESD of $\mathbf{X}$ itself is MP.
 As a parametiric model, it can be quite effective at treating VHT and HT (or \FatTailed) ESDs when the far tail decays very rapidly, like a TPL, and/or for $\alpha\le 4$.
 To do this, one simply considers the parameters $\kappa$ as an adjustable paremeter.
-\michaeladdressed{Give a functional form, with $\kappa$ appearing.}
-\charles{@michael: do it yourself or don't suggest it}
+\nred{I need to think this section through a bit more.  I think we may need more than 1 adjustable parameter, and the branch cut may or may not matter depending on those choices}
 %
 It is an excellent model for the ESD when $\alpha=2.0$ (and $Q=2$).
 Using this model, we can derive an expression for the \HTSR \ALPHAHAT \LayerQuality metric,
@@ -236,11 +235,11 @@ is an effective, simple model to illustrate the \SETOL case of \IdealLearning.
 \begin{figure}[t]
     \centering
     \subfigure[IW $R(z)$, real $z$.]{
-        \includegraphics[width=4cm]{img/IW_R_transform_sides.png}
+        \includegraphics[width=7cm]{img/IW_R_transform_sides.png}
         \label{fig:IW_R}
     }
     \subfigure[Branch cut at $z=\kappa/2$]{
-        \includegraphics[width=4cm]{img/Branch_Cut_Density_normalized.png}
+        \includegraphics[width=7cm]{img/Branch_Cut_Density_normalized.png}
         \label{fig:IW_branch_cut}
     }
     \caption{(a) The function $R(z)$ of the Inverse Wishart model, with a singularity at $z = \kappa/2$. (b) The branch cut in the empirical spectral density, corresponding to the tail for $\kappa = 0.5$.}
