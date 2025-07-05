@@ -91,9 +91,17 @@ which implies:
 WLOG, as mentioned earlier, we can replace the lower bound on $\lambda$ from
 $0\rightarrow\LambdaECSmin$ to obtain
 \begin{equation}
-\beta\GNORM(\lambda) = \int_{\LambdaECSmin}^{\lambda} R_{\AMAT}(z) dz.
+\beta\GNORM(\lambda) = \int_{\LambdaECSmin}^{\lambda} \Re[R_{\AECS}(z]) dz.
 \end{equation}
-where $\LambdaECSmin$ corresponds to the start of the \EffectiveCorrelationSpace (\ECS).
+where $\LambdaECSmin$ corresponds to the start of the \EffectiveCorrelationSpace (\ECS),
+and, notably,  take the \emph{Real} part of $R(z)$.
+We take the Real part because the imaginary parts coming from the upper and lower lips of
+the cut cancel.\footnote{
+Alternatively, one might try to replace $R(z)$ by its modulus;
+doing so breaks the Legendre relation $G' = R$ and spoils the
+additivity of free cumulants.}
+
+
 
 
 
