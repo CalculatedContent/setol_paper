@@ -130,6 +130,10 @@ Importantly, the matrices $\mathbf{X}$  and $\mathbf{\AMAT}$ must be well approx
 by low rank matrices since the derivation in Tanaka requires this.  Fortunately,
 this appears to be generally true for the layers in very well trained DNNs,
 which is what allows us to apply this withing the~\ECS.
+In fact, technically we need to integrate over $d\mu(\AECS)$; this is straightforward
+as this simply changes the lower bound on the integral from $0\rightarrow\LambdaECSmin$,
+both above and in the subsequent derivation.
+\red{For now, we omit this detail; I may add it in later}
 
 Finally, we note that $\GNORM(\mathbf{X})$ is kind of \emph{Generalized Norm} because 
 it can be evaluated as a sum over a function of the $M$ eigenvalues $\lambda_{\mu}$ of the \Teacher
