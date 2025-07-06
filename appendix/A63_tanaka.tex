@@ -96,7 +96,6 @@ $i\XHAT\rightarrow -\XHAT$, so that the terms under the integral are all real (n
 \end{align}
 where $d\mu(\hat{X})$ is a measure over $\tfrac{M(M-1)}{2}$ Lagrange multipliers, and the normalization is  $$\mathcal{N}_{Wick}=(\frac{1}{2\pi i})^{\tfrac{M(M-1)}{2}}$$.
 
-\nred{Check normailzation}
 
 \paragraph{Step 2.3}
 We now insert \ref{eqn:dmuX} into~\ref{eqn:ZD_after_Aavg},  which lets
@@ -105,7 +104,7 @@ express $\EZDA$ as an integral over the \Teacher Correlation matrices
 \begin{align}
   \nonumber
   \EZDA&=
-  \red{\mathcal{N}_{Wick}} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
+  \mathcal{N}_{Wick} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
   e^{N\frac{\beta}{2} \Trace{\GFANCY}+\frac{N}{2}\Trace{\hat{X}\mathbf{X}} }
   e^{-\frac{1}{2}\Trace{\hat{X}\mathbf{W}^{\top}\mathbf{W}}}
   e^{\frac{\beta}{2}\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}}
@@ -113,7 +112,7 @@ express $\EZDA$ as an integral over the \Teacher Correlation matrices
   d\mu(\mathbf{\XMAT}) \\ 
   \nonumber
   &=
-  \red{\mathcal{N}_{Wick}} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
+  \mathcal{N}_{Wick} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
   e^{N\frac{\beta}{2}\Trace{\GFANCY}+ \frac{N}{2}\Trace{\hat{X}\mathbf{X}}}
   e^{-\frac{1}{2}\Trace{\mathbf{W}\hat{X}\mathbf{W}^{\top}}+
   \frac{\beta}{2}\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}}
@@ -121,7 +120,7 @@ express $\EZDA$ as an integral over the \Teacher Correlation matrices
   d\mu(\mathbf{\XMAT}) \\ 
   \label{eqn:ZD3}
     &=
-  \red{\mathcal{N}_{Wick}} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
+  \mathcal{N}_{Wick} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
   e^{N\frac{\beta}{2}\Trace{\GFANCY}+
   \frac{N}{2}\Trace{\hat{X}\mathbf{X}}}
   e^{\frac{1}{2}\Trace{\mathbf{W}(\beta\mathbf{D}-\hat{X})\mathbf{W}^{\top}}}
@@ -233,7 +232,6 @@ Finally, we express $I(\mathbf{X})$ in the form:
 I(\mathbf{X}) = \frac{1}{2} \left[ -M(1 + \ln(2\pi)) + \Trace{\mathbf{X}\beta\mathbf{D}} - \ln \Det{\mathbf{X}} \right].
 \end{equation}
 
-\nred{THE DERIVATION ABOVE FOR $\GFANCY$ may have some TYPOS: CHECK}
 \paragraph{Step 2.6}
 \begin{equation}
   \beta\GFANCY=\mathbb{M}(1+\ln 2\pi)+\beta\Trace{\GNORM(\mathbf{X})} - \Trace{\mathbf{X}\beta\mathbf{D}} +  \ln \Det{\mathbf{X}}.
