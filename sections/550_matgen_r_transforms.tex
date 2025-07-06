@@ -101,7 +101,6 @@ Here, \RTransform for the \ECS is sum of Dirac delta functions.
 This lets us compute the \LayerQuality $\Q$ in closed form in terms of the Teacher weight matrix
 $\TMAT=\WMAT$ as a Tail norm, the Frobenius norm of the tail eigenvectors.
 
-\michaeladdressed{What is the meaning of the thing we derive if the \TRACELOG condition doesn't hold? Do we have any control on it?  And what do you mean it doesn't hold? }
 Let the tail of the ESD have $\MECS = M^{tail}$ eigenvalues that define the \ECS, i.e.,  
 \begin{equation}
 \label{eqn:spikes_model_0}
@@ -266,7 +265,7 @@ To correct for this, we will instead model the \LayerQualitySquared using the \e
 which yields (See Appendix~\ref{sxn:IMP}):
 \begin{equation}
   \label{eqn:IMP_model_2}
-G(\lambda)[IMP] = \int_{z_0}^\lambda \frac{\kappa}{z} , dz = \kappa \left[ \ln z \right]_{z_0}^\lambda = \kappa \left( \ln \lambda - \ln z_0 \right).
+G(\lambda)[IMP] = \int_{\LambdaECSmin}^\lambda \frac{\kappa}{z} , dz = \kappa \left[ \ln z \right]_{\LambdaECSmin}^\lambda = \kappa \left( \ln \lambda - \ln \LambdaECSmin\right).
 \end{equation}
 Notice this expression is very similar to the expression for the Free Cauchy model above (\EQN~\ref{eqn:free_cauchy_G_max2}), except
 now it is terms of the logarithm of $\lambda$, and rescaled by $\kappa$.

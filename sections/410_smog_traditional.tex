@@ -76,18 +76,6 @@ various forms of the \AverageGeneralizationError $(\AVGGE)$, \PartitionFunction 
 \michaeladdressed{@charles: Can we just cange ``Generalization Accuracy'' to ``Model Quality'' and ``Model Accuracy'' since I think that will help to minimize confusion.  We should define what precisely is Model Quality and new notions.}
 
 \paragraph{The \StudentTeacher model.}
-\charles{@michael?  Removing for now ; we should discuss :
-XXX. PUT TWO OR THREE SENTENCES ON THE BASIC STUDENT SETUP; START WITH THE FOLLOWING AND REFINE.
-For simplicity, let's consider the classification of the elements of some input space $X$ into one of two classes, $\{0,1\}$.
-There is a \emph{target rule}, $T$, which is one particular mapping of the input space into the set of classes, as well as a \emph{hypothesis space}, $\mathcal{F}$, which consists  of the available mappings $f$ used to approximate the target $T$.
-The set $\mathcal{F}$ could, e.g., consist of NNs with a given structure.
-Given this setup, the problem of learning from examples is the following: on the basis of the classification determined by the target rule $T$ for the elements of a subset $\mathcal{X} \subset X$, which is the \emph{training set}, select an element of $\mathcal{F}$ and evaluate how well that element approximates $T$ on the complete input space $X$.
-One can think of the target rule $T$ as being a \emph{teacher}, and the goal of the \emph{student} is to approximate the teacher as well as possible.
-The \emph{generalization error} $\varepsilon$ is the probability of disagreement between the student/hypothesis and teacher/target on a randomly chosen subset of $X$.
-XXX. OLD STUFF VECTORS.
-XXX. NEW STUFF MATRICES.}
-
-%To express these integrals, the \SMOG approach models both Students $S$ and Teachers $T$ as \emph{weight vectors},
 We seek to compute and/or estimate the  \AverageGeneralizationAccuracy for a \emph{fixed} \Teacher Perceptron $T$
 by averaging over an ensemble of \Student $S$ \Perceptrons, in the \AnnealedApproximation (AA), and at
 \HighTemperature (high-T); we call this ST \ModelQuality, and denote it $\Q^{ST}$.
