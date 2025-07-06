@@ -226,7 +226,7 @@ $\ALPHAHATEQN :=\ALPHAHATLONG)$ as a leading order term in the final expression 
 In Figure~\ref{fig:IMPplots}, we generate a random IMP model ESD with $\kappa=0.5$, $Q=2.0$, fit the ESD
 to a PL, and find $\alpha=1.08$; this is a reasonably accurate model of an PL ESD for $\alpha\approx 2$.
 For larger $\kappa$, the fits are not as good, but the model is stil useful to suggest a heurstic model for the
-\LayerQuaiity in terms of the \HTSR $\alpha$.
+\LayerQuaiityy in terms of the \HTSR $\alpha$.
 In Figure~\ref{fig:IMPPlotKappaVsAlpha}, we show that there is a simple relationship betweem $\kappa$ and $\alpha$,
 which allows us to formally state $\alpha=2\;\kappa$.
 
@@ -356,7 +356,13 @@ The present $M$ normalisation clarifies that the VHT regime is meaningful \emph{
 indicating the layer amd therefore the model is overfit (in some unspecified way).
 
 
-\subsubsection{Summary of models.}
+\subsubsection{Summary of heurstic models.}
+Using the results for different \RTransforms, we can construct several different, related heurstic models for the \LayerQuality
+that resemble the very successful \WW \HTSR \ALPHA and \ALPHAHAT metrics.  These heurstic models allow us extend
+the \SETOL results for \Ideal learning (i.e. $\alpha=2$) to a wider range of NN layers, covering the \HTSR
+HT and VHT Universality classes and, correspondingly, NN layers that are both underfit $(\alpha>2)$
+and overfit $(\alpha<2)$.
+
 \input{sections/Gtable}
 Table~\ref{tab:htsr_layer_quality} consolidates the derived expressions for the log \LayerQuality, \(\log\Q\), across multiple \(R\)–transform models, each capturing distinct heavy-tail characteristics of the ESD within the \SETOL framework. The Discrete (Spikes) model yields a Frobenius-like tail norm by summing the effective eigenvalues in the \ECS, directly tying quality to tail magnitude (cf.\ \EQN~\ref{eqn:spikes_model_4}). The Free Cauchy (FC) model links \(\log\Q\) inversely to the \HTSR metric \ALPHA, demonstrating that smaller \(\alpha\) values enhance quality (cf.\ \EQN~\ref{eqn:free_cauchy_Q}). The L\'evy-Wigner (LW) model connects \(\log\Q\) to \ALPHAHAT through the term \((\alpha-1)\log\lambda_{\max}\), revealing how very heavy tails depress layer quality (cf.\ \EQN~\ref{eqn:LW_model_4}). The Inverse MP (IMP) model defines the \ECS boundary via a branch cut at \(\kappa/2\) and approximates \(\log\Q\) as \(0.5\log\lambda_{\max}\), providing a robust metric for \IdealLearning scenarios (cf.\ Figure~\ref{fig:InverseMPGx}). Each model thus offers a unique lens on layer quality, enabling direct mapping between theoretical \(R\)–transform assumptions and empirical \WW metrics.
 
