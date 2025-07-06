@@ -210,25 +210,25 @@ $\ALPHAHATEQN :=\ALPHAHATLONG)$ as a leading order term in the final expression 
     \centering
     \subfigure[IMP Distribution, $\kappa=0.5$]{ 
       \includegraphics[width=7.5cm]{./img/IMPplotKappa0.5.png}
-      \label{fig:IMPplotQ15}                               
+      \label{fig:IMPplotESD}                               
     }                               
       \subfigure[IMP Distribution, $\kappa=1.0$]{ 
       \includegraphics[width=7.5cm]{./img/IMPplotKappa1.25.png}
-      \label{fig:IMPplotQ35}                                
+      \label{fig:IMPPlotKappaVsAlpha}                                
       }
-      \caption{Example \InverseMP (IMP) distributions for $\kappa=0.5$ and $\kappa=1.0$,  along with Power Law (PL) fits of the generated distribution. Plots on Log-Log scale.}
+      \caption{
+        (\ref{fig:IMPplotESD}) plots a typical \InverseMP (IMP) ESD  $\kappa=0.5$,  along with Power Law (PL) fits, with PL exponent$\alpha=1.86$.
+        (\ref{fig:IMPPlotKappaVsAlpha}) depicts the linear relationship betweem $\kappa$ and $\alpha$.
+      }
   \label{fig:IMPplots}                                                                                                      
 \end{figure}   
 
-In Figure~\ref{fig:IMPplots}, we fit some \Typical layer ESDs to an IMP distribution.
-When $\kappa=0.5$, $Q=2.0$ and the fitted $\alpha=1.08$, and the fit is a reasonably accurate model of the underlying Power Law
-distribution and the ~\WW PL fit.
-
-For  $\kappa=1.0$, $Q=3.0$ and the fitted $\alpha=2.64$ is larger, and the fit is not as good as a
-model. Generally speaking, $\alpha$ scales with $\kappa$, but the  free cumulants scale inversely with $\kappa$.
-So smaller $\alpha$ will give larger free cumulants and therefore a larger $\QT$.
-Importantly, as seen in Figure~\ref{fig:IMPplotQ15}, for $\alpha= 2.0$, the IMP model (with $\kappa=0.5$)
-is an effective, simple model to illustrate the \SETOL case of \IdealLearning.
+In Figure~\ref{fig:IMPplots}, we generate a random IMP model ESD with $\kappa=0.5$, $Q=2.0$, fit the ESD
+to a PL, and find $\alpha=1.08$; this is a reasonably accurate model of an PL ESD for $\alpha\approx 2$.
+For larger $\kappa$, the fits are not as good, but the model is stil useful to suggest a heurstic model for the
+\LayerQuaiity in terms of the \HTSR $\alpha$.
+In Figure~\ref{fig:IMPPlotKappaVsAlpha}, we show that there is a simple relationship betweem $\kappa$ and $\alpha$,
+which allows us to formally state $\alpha=2\;\kappa$.
 
 \begin{figure}[t]
     \centering
