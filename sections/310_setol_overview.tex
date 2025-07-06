@@ -128,7 +128,7 @@ With these definitions in place, moving forward, the following key assumptions, 
   satisfies the condition that $\Trace{\ln\AECS_1}=\ln\Det{\AECS_1}=0$,
   so that the change of measure $d\mu(\SMAT) \rightarrow d\mu(\AECS) $ is Volume Preserving.
   This condition is derived explicitly in terms of $\AECS_1$, and therefore will hold for $\AECS_2$
-  (and the Teacher Correlation matrix, $\XECS=\frac{1}{N}\TMAT^{\top}\TMAT$).
+  (and the Teacher Correlation matrix, $\XECS=\frac{1}{N}\TMAT^{\TR}\TMAT$).
   Practically, this implies that the $\MECS$ eigenvalues $\LambdaECS$
   of the tail of the ESD must satisfy $\sum_{i=1}^{\MECS}\ln\LambdaECS_{i}\approx 0$.
   Experiments will test this assumption explicitly in Section~\ref{sxn:empirical-trace_log}.
@@ -207,7 +207,8 @@ applied at large-$N$,
 and where $\HEFF$ is defined implicitly through result for $\QT$ (Eqn.~\ref{eqn:QT_result}).
 The result is, formally, a sum of the integrated \RTransforms $\GNI$.
 In a sense, this result resembles (a non-perturbative form of) the Linked Cluster Theorem
-in that the log \PartitionFunction is expressed as a sum of integrated matrix-generalized cumulants and/or self-energy.  And in analogy with \SemiEmpirical theories of Quantum Chemistry, the \HTSR \ALPHA $(\alpha)$ and \ALPHAHAT $\ALPHAHATEQN)$ enter as renormalized empirical parameters.  MoSs importantly, the \ScaleInvariant \TRACELOG condition can be verified empirically (See Section~\ref{sxn:empirical}.  
+in that the log \PartitionFunction is expressed as a sum of integrated matrix-generalized cumulants and/or self-energy.  And in analogy with \SemiEmpirical theories of Quantum Chemistry, the \HTSR \ALPHA $(\alpha)$ and \ALPHAHAT $\ALPHAHATEQN)$ enter as renormalized empirical parameters.
+Most importantly, the \ScaleInvariant \TRACELOG condition can be verified empirically (See Section~\ref{sxn:empirical}.  
 Importantly, in analogy with the Wilson RG theory, 
 the \HTSR $\alpha=2$ resembles in spirit
 an RG \emph{Universal Critical Exponent} at a phase boundary being between the \HeavyTailed 

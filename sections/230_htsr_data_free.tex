@@ -22,7 +22,7 @@ A \SCALE-adjusted \SHAPE-based quality metric.
 \item
 \RANDDIST: $JSD[\rho^{emp}|(\rho_{rand}^{emp})]$.
 A \SHAPE-based, non-parametric quality metric, suitable for highly-accurate, epoch-by-epoch analysis.%
-\footnote{JSD is the Jensen-Shannon Divergence between the original ESD and the ESD of the layer weight matrix, randomized elementwise.}
+\footnote{JSD is the Jensen-Shannon Divergence between the original ESD and the ESD of the layer weight matrix, randomized element-wise.}
 \item
 \PLKS: $D_{KS}$.
 The KS-distance, or quality-of-fit, of the PL fits.  
@@ -42,7 +42,7 @@ Of particular interest here in our development of \SETOL are the PL-based \WW~\A
 \paragraph{From Layer-wise Quality Metrics to Layer-Averaged Model Quality Metrics.}
 One can use the \HTSR \Phenomenology to go beyond individual \LayerQuality metrics, to construct model quality metrics by averaging \LayerQuality metrics (over all layers that are not very small). 
 %%The PL \ALPHA and  \ALPHAHAT metrics in particular correlate remarkably well with reported test accuracies for a wide range of large and very well trained NN models~\cite{MM20a_trends_NatComm,MM19a_TR}.
-Existing \HTSR model quality metrics assume that all layers are statistically independent, so that the average model quality is just the average of the contributions from each weight matrix $\mathbf{W}$.%
+Existing \HTSR model quality metrics implicitly require that all layers are statistically independent, so that the average model quality is just the average of the contributions from each weight matrix $\mathbf{W}$.%
 \footnote{This independence assumption, clearly a mathematical convenience, gets us closer to a workable theory. One could go beyond a ``single layer theory'' by adding in intra-layer correlations empirically. The \WW tool does support this, but doing so is outside the scope of this work.}
 %
 Given a \LayerQuality metric, $\Q^{NN}_{L}(\mathbf{W})$, one can define the \emph{\ModelQuality} $\Q^{NN}$ metric for an entire model as 
@@ -70,11 +70,11 @@ This is because smaller layer $\alpha$ generally, but not always, corresponds to
 \footnote{The \LOGSPECTRALNORM can exhibit a Simpson's paradox when segmenting models by quality)~\cite{MM21a_simpsons_TR}.  Nevertheless, this metric may be useful when a PL fit can not be obtained, say, when $N\gg M$ and $M$ is very small, as with LSTMs,  U-Net architectures, etc.}
 \item
 The layer-averaged model quality metric \ALPHAHAT, $\log\Q^{NN}=\langle\alpha\log\lambda_{max}\rangle_{\bar{L}}=\langle\hat{\alpha}\rangle_{\bar{L}}$, incorporates both \SHAPE and \SCALE information.
-This can compensate for anomalies that can arise when (say) comparing models of different sizes or model qualities~\cite{MM21a_simpsons_TR} or when other issues cause unusualy large $\lambda_{max}$. See Section~\ref{sxn:Traps}).
+This can compensate for anomalies that can arise when (say) comparing models of different sizes or model qualities~\cite{MM21a_simpsons_TR} or when other issues cause unusually large $\lambda_{max}$. See Section~\ref{sxn:Traps}).
 \end{itemize}
 
 \noindent
-The layer-averaged \ALPHAHAT model quality metric has been been applied in a large meta-analysis of hundreds of SOTA 
+The layer-averaged \ALPHAHAT model quality metric has been applied in a large meta-analysis of hundreds of SOTA 
 pre-trained publicly-available NN models in CV and NLP~\cite{MM20a_trends_NatComm,YTHx22_TR,YTHx23_KDD,MM19a_TR}. 
 %
 Generally speaking, \HTSR shape-based metrics, when used appropriately, outperform all other metrics studied (including 

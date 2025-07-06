@@ -7,13 +7,14 @@ each roughly corresponding to a (Gaussian or HT) Universality class (of \RMT or 
 This is summarized in Table~\ref{tab:Uclass}. 
 A Universality class is a set of matrices having a common limiting spectral distribution, regardless of the other properties of their entries. 
 Of those, the most familiar is the Gaussian class, characterized by the Marchenko Pastur (MP) results from traditional \RMT~\cite{EW13,potters_bouchaud_2020}. 
-The Gaussian Universality class, however, is particularly poorly suited for analyzing realistic NNs---precisely becasue the ESDs of SOTA NNs are well-fit by HT distributions.
+The Gaussian Universality class, however, is particularly poorly suited for analyzing realistic NNs---precisely
+becausethe ESDs of SOTA NNs are well-fit by HT distributions.
 This should not be surprising: weight matrices of realistic NNs do \emph{not} have independent (i.i.d.)
 entries---their entries are strongly-correlated precisely because they provide a view into the correlated training data.
 
 To model strongly-correlated NN layer matrices, the \HTSR \Phenomenology characterizes NN layer weight matrices
 in terms of their ESDs (when a good PL fit can be found) by postulating that the (tail of the) eigenvalue spectrum $\rho(\lambda)$ 
-detemines how each layer contributes to the overall generalization.  
+determines how each layer contributes to the overall generalization.  
 To do this, the \HTSR approach models the strong-correlated layer weight matrices \emph{as if} they are actually i.i.d. HT random
 (i.e., entry-wise uncorrelated) matrices. 
 By doing this, one can  associate each $\rho(\lambda)$ with 
@@ -106,7 +107,7 @@ with exponent $\mu$.
 \paragraph{Heavy-Tailed Universality Classes of Random Pareto Matrices}
 For such an element-wise HT matrix, the theoretical \emph{limiting} ESD of a Pareto matrix is also PL,
 which allows us to related the fitted PL $\alpha$ with exponent $\alpha=a\mu+b$, to the Pareto exponent $\mu$.
-Ideally, for an infite width matrix ,  $a=\tfrac{1}{2}$ and $b=1$, but due to finite-size effects, however,
+Ideally, for an infinite width matrix ,  $a=\tfrac{1}{2}$ and $b=1$, but due to finite-size effects, however,
 we have found we must take $a\ge \tfrac{1}{2}$ and $b\ge 1$, giving
 \begin{align}
 W_{i,j}(\mu)\sim\dfrac{C}{x^{\mu +1}},\;\;\;\rho(\lambda)\sim\lambda^{-(a\mu+b)}.
@@ -197,6 +198,5 @@ This differs significantly than simply taking a general low-rank approximation t
 is chosen without insight from the \HTSR \Phenomenology. 
 The \SETOL theory formalizes this observation as a key assumption. We will revisit these model selection questions in 
 Section~\ref{sxn:setol_overview} below.
-\michael{This par seems to contain a main point. It should probably be above.}
 
 

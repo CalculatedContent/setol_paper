@@ -16,7 +16,7 @@ but, rather, from one or a few spuriously large matrix elements $W_{i,j}$ and/or
 We call these eigenvalues  \CorrelationTraps, denoted by $\lambda_{trap}$
 (i.e., see Section~\ref{sxn:empirical-correlation_trap}).
 
-Indeed, if we randomize $\mathbf{W}$ elementwise, i.e $\mathbf{W}\rightarrow\mathbf{W}^{rand}$, we
+Indeed, if we randomize $\mathbf{W}$ element-wise, i.e $\mathbf{W}\rightarrow\mathbf{W}^{rand}$, we
 expect the $W^{rand}_{i,j}$ matrix elements to be i.i.d and with a small mean
 (unless something odd happens during SGD training).
 Likewise, we expect the singular values of $\WMAT^{rand}$ to follow the MP distribution, to within
@@ -26,18 +26,6 @@ then the mean $W_{i,j}$ matrix element will also be anomalously large,
 and we can identify $\mathbf{W}$ as \ATypical.
 We must be careful, however, as we do not fully understand the origin of these atypicalities
 and do not claim that every one is associated with suboptimal generalization.
-
-%One way would be to look for  $\mathbf{W}$ is HT elementwise such that the $W_{i,j}$ are Pareto distributed,
-%with a PL exponent less tha $1.0$;  in this case, the mean is not well-defined .
-%This is not observed, however, as for most well trained NNs,
-%the $W_{i,i}$ are best fit to a Laplacian distribution, so the tail decays exponentially.
-
-%Never-the-less, we do frequently observe cases in large, pretrained models
-%4%where the layer  $\mathbf{W}$  exhbits  an anomalously large mean caused
-%ne or a few anmoloulsy large $W_{i,i}$ and/or rank-1 perturbatons,
-%which are manifest as spuriously large eigenvalues.
-%The presence of such anomalies in a weight matrix suggests
-%that the matrix is  \ATypical; we call these anomalies \CorrelationTraps.
 
 By a \emph{\CorrelationTrap}, we mean that some anomaly in the training of $\mathbf{W}$ resulted
 in one or more spuriously large eigenvalues $\lambda_{trap}$ in $W^{rand}$,
@@ -63,25 +51,6 @@ size, or, equivalently, increasing the learning rate, and that this is associate
 and small $\alpha$.
 We seek to identify specific ways of identifying such traps because we 
 reason that the self-organization of correlations may be disrupted by the presence of foreign large eigenvalues – or that failed learning may produce them as a by-product.
-
-
-%Using the \HTSR \Phenomenology, we can classify (some of) the features of the weight matrix itself
-%that seem to arise from suboptimal training and that make an ESD more HT than desired and/or
-%deformm the empirical ESD $\rho^{emp}(\lambda)$.
-%We call these \SCALE~anomalies.
-%Such \SCALE~anomalies may arise when training with an excessively small batch size (see Section~\ref{sxn:empirical}), 
-%an unusually large learning rate, or just when the layer regularization fails.
-%\michael{Why call them scale anomalies, i.e., why introduce a new term.}
-%Indeed, when training NNs, frequently the weight matrices may need to be clipped during
-%training to ensure good results. 
-%\michael{Who does that clipping.}
-%The \HTSR \Phenomenology also suggests that mean-recentering may be beneficial as well.
-%In these situations, the PL fits may show spuriously small PL exponents $\alpha$, and this
-%is sometimes reflected, detectable, and even correctable.
-%We call these \CorrelationTraps; they
-%alter the shape of the ESD, reducing the quality of the PL fits,
-%making $\alpha$ smaller than expected.
-
 
 \paragraph{Detecting Correlation Traps with \RMT.}
 
