@@ -2,7 +2,6 @@
 \label{sxn:htsr_setup}
 
 We can write the \EnergyLandscape function 
-\michaeladdressed{I don't think it is quite a generating function, we should be a bit more pedantic here}
 (or NN output function) for a 
 %%\emph{\Typical} 
 NN with $L$ layers as
@@ -19,8 +18,6 @@ from spin-glass and protein folding theories~\cite{DerridaREM1981, BryngelsonWol
 For simplicity of exposition here (\HTSR can be applied much more broadly), we ignore the structural details of the layers (dense or not, convolutions or not, residual/skip connections, etc.).
 We also ignore the biases $b_{l}$ (because they can be subsumed into the weight matrices),
 and we treat each layer as though it contains a single weight matrix $\mathbf{W}_{L}$.
-%\michael{Do we need most of that paragraph?  It confused people before, and it will likely do that again.  If not, I can try a rewrite to get a few of the ideas in.}
-%\charles{Agreed, but this how we describe it in the JMLR paper! the notation is confusing because what we really want is the Loss here is what we call below $\Delta E$.  The problem is to make this consistent with LeCuns notation, or to clarify the difference.  See LeCun 2006\cite{LCHRx06}.}
 We imagine training (or fine-tuning) this model on labeled data $\{\mathbf{x}_{\mu},y_{\mu}\}\in\mathcal{D}$, where $ \mathbf{x}_\mu $ is the $\mu$-th input vector and $y_\mu$ is its corresponding label (e.g., for binary classification, $y_{\mu}\in\{-1,1\}$).
 We expect to use backprop via some variant of stochastic gradient descent (SGD) to minimize some loss functional, $\mathcal{L}$ (such as $\ell_2$, cross-entropy, etc.):  
 \begin{equation}
@@ -43,11 +40,8 @@ The \EmpiricalSpectralDensity (ESD) of $\mathbf{W}$, denoted $\rho^{emp}(\lambda
 \end{equation}
 Given a model, we can compute the ESDs of all of its layers, as well as other metrics below,
 with the open-source \WW tool~\cite{WW}.%
-\footnote{For practical purposes, the \WW tool computes $\rho^{emp}(\lambda)$ by forming the Singular Value Decomposition (SVD) of the layer weight matrices $\mathbf{W}$,
-computing the eigenvalues $\lambda=\sigma^{2}$ from the singular values $\sigma$, and (when useful) smoothing them with a Kernel Density Estimator (KDE). 
-For some calculations, such as the \TRACELOG condition, we must also select the appropriate normalization of $\mathbf{W}$,
-\michaeladdressed{MM TO DO: maybe clarify.}
-}
+\footnote{For practical purposes, the \WW tool computes $\rho^{emp}(\lambda)$ by forming the Singular Value Decomposition (SVD) of the layer weight matrices $\mathbf{W}$, computing the eigenvalues $\lambda=\sigma^{2}$ from the singular values $\sigma$, and (when useful) smoothing them with a Kernel Density Estimator (KDE). For some calculations, such as the \TRACELOG condition, we must also select the appropriate normalization of $\mathbf{W}$.}
+
 
 Based on empirical results based on thousands of pre-trained models and tens of thousand of layers~\cite{MM18_TR_JMLRversion,MM20a_trends_NatComm,MM21a_simpsons_TR,YTHx23_KDD}, 
 it is generally observed that the 
@@ -132,12 +126,6 @@ the \WW \ALPHAHAT~metric combines \SHAPE~and \SCALE~information.
 Also, as opposed to other applications of PL fits~\cite{CSN09_powerlaw,BouchaudPotters03}, in our analysis,
 the start of the tail, $\lambda_{min}=\LambdaPLmin$, plays a particularly important role because it
 identifies the subspace of the strongest generalizing eigencomponents (i.e., $\XECS$, below) in each layer.
-%%%Although not examined in this work, the \HTSR approach expects the eigenvectors in the tail to have lower vector entropy and/or to be more localized, on% average, than eigenvectors in the bulk.
-%(The other dominant subspace arises
-%from the \SETOL approach (below), and is determined by the 
-%\TRACELOG condition, described in Section~\ref{sxn:ideal_learning}. When these two subspaces  coalescence, we argue
-%that this is a condition of \emph{\IdealLearning}. )
-\michaeladdressed{MM TO DO: Last few sentences are redundant, so smooth out.  But better to incoprorate that distinction more clearly above.}
 
 \begin{table}[t] %[ht!]
 \begin{center}
@@ -152,9 +140,7 @@ identifies the subspace of the strongest generalizing eigencomponents (i.e., $\X
     Rank Collapse       & NA            & NA                & NA        \\ \hline
   \end{tabular}
 \end{center}
-\caption{\HTSR~Heavy-Tailed Universality classes of \RMT. See Table~1 of \cite{MM18_TR_JMLRversion} for more details.
-         \michaeladdressed{What is the point of the ``**'' in Rank Collapse?}
-        }
+\caption{\HTSR~Heavy-Tailed Universality classes of \RMT. See Table~1 of \cite{MM18_TR_JMLRversion} for more details.    }
 \label{tab:Uclass}
 \end{table}
 
