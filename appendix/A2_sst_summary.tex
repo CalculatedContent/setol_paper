@@ -38,7 +38,7 @@ the \FreeEnergy, defined for the model error as
 \label{eqn:qaF}
    =& \frac{1}{N}\int d\mu(\NDXI)\ln\int d\mu(\SVEC)e^{-\beta\DETOPSTLL}   ,
 \end{align}
-where $d\mu(\NDXI):=\prod_{i=1}^{N}d\XI_{i} P(\NDXI)$ (see \EQN~\ref{eqn:pndx}) and
+where $d\mu(\NDXI):=\prod_{i=1}^{N}d\XI_{i} P(\NDXI)$ and
 where the data-dependent ST error, $\DETOPSTLL$, is defined in \EQN~\ref{eqn:DE_L},
 with an $\mathcal{L}=\ell_2$ loss.  \footnote{Also, recall that the Teacher $T$ is fixed and is not learned, so we do not integrate over $d\mu(\TVEC)$. In fact, for the (vector) Perceptron model, the Teacher $T$ weights are simply subsumed into the overlap $R$, and even in the more general cases, such as non-Linear/Boolean Perceptron, in the full Replica calculations, etc.  See the original literature for more details. \cite{Opper01,SST92,EngelAndVanDenBroeck} as well as \cite{MM17_TR}.}
 \charles{Do we need a $1/N$ to ensure the free energy is extensive ? I don't think we do because at the end we want to evaluate the
@@ -191,8 +191,7 @@ which we recognize as the same as the data-averaged ST error $\epsilon(R)$ in \E
 
 In this section, we derive an expression for our matrix generalization of the \AnnealedHamiltonian of the \LinearPerceptron,
 in the AA and the high-T approximation, when student and teachers are are modeled as $N \times M$ matrices $\WMAT$,
-i.e., $\GANR\rightarrow\GANMAT$.
-See \EQN~\ref{xxx}, which has the same form as \EQN~\ref{eqn:Gan0} for the vector case.
+i.e., $\GANR\rightarrow\GANMAT$, which has the same form as \EQN~\ref{eqn:Gan0} for the vector case.
 \michael{MM TO DO: Something is not right about that, since that is pointing to the definition and not the final expression.}
 \charles{@michael: lets disucss we need to close this out}
 %
@@ -285,7 +284,7 @@ That is, $\HANPP$ represents the Energy or Error each of the $M$ parameters cont
 
 The goal will be to derive the high-Temperature \AnnealedHamiltonian, $\GANMATHT$, which is now  defined such that:
 \begin{align}
- \label{eqn:hanpp}
+ \label{eqn:hanpp2}
   \Trace{\GANMATHT}:=M\Trace{\HANPPHT  }
 \end{align}
 
