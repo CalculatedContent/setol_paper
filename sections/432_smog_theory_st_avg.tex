@@ -85,7 +85,7 @@ The measure $d\mu(\NDXI)$ will end up being a Gaussian measure over $N$ samples
 (see Appendix~\ref{sxn:summary_sst92}), and the intent is to evaluate it
 in the large-$N$ limit, thereby sampling all possible inputs in the model space, $\XI\in\MDD$.
 
-As in \EQN~\ref{eqn:finalEgen} (Section~\ref{sxn:mathP}), by applying the AA, we can rewrite the \AverageSTGeneralizationError, $\AVGSTGE$:
+As in Section~\ref{sxn:mathP}, by applying the AA, we can rewrite the \AverageSTGeneralizationError, $\AVGSTGE$:
 first, a simple average over all the possible inputs $\XI$; and, 
 second, then as a Thermal average over all Students $S$, in the AA, and at high-T 
 \begin{align}
@@ -129,7 +129,7 @@ for the \LinearPerceptron, in the \Annealed and High-T approximations.
 We want an expression for the data average of the ST test error, from \EQN~\ref{eqn:STerror}, generalized from \Perceptron vectors to NN layer weight matrices.
 \michael{MM TO DO: reword that sentence, since it is a bit confusing, since we are vectors here, and I moved the matrix stuff below to the next section.}
 For the \Perceptron, one obtains different expressions for the ST error function, depending on 
-the type of activation function $h(x)$ in \EQN~\ref{eqn:ENN};
+the type of activation function $h(x)$ in \EQN~\ref{eqn:dnn_energy};
 The simplest are the Linear and Boolean \Perceptrons, and
 for both (and with $\ell_2$ loss),
  $\EPSL(\SVEC,\TVEC)$ is simply a function of the ST overlap $R$~\cite{SST92}.

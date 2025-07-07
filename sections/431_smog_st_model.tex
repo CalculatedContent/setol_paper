@@ -58,6 +58,7 @@ If we don't have a hold-out set, however, we can still estimate $\AVGGE^{T}$ usi
 Imagine we train a Student model $S$ (with the same architecture as the Teacher $T$) on the dataset $\mathcal D$, using $T$'s outputs as targets:
 \begin{equation*}
 S: \mathcal D \to y^{S}_\mu \approx y^{T}_\mu,
+\label{eqn:S_ENN}
 \end{equation*}
 where $y^T_\mu = E_{NN}(T, x_\mu)$ are the teacher’s predicted labels or energies.
 
@@ -121,7 +122,7 @@ as the following optimization problem over the training data:
 %Notice that, at this step, the \Student $S$ and the \Teacher $T$ both depend explicitly on the specific choice of the training data $\DX_{train}$.  
 %That is, we could write $S[\DX^{train}], T[\DX^{train}]$.
 
-If the \Teacher is trained to \Interpolation, then the optimization problem in \EQN~\ref{eqn:ST-task} is
+If the \Teacher is trained to \Interpolation, then the NN optimization problem 
 training a \Student to reproduce the \GroundTruth labels, so that $\Ys\sim y_{\mu}^{true}$
 for both the training and test sets.
 \begin{align}

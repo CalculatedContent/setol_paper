@@ -8,13 +8,13 @@ integral over random \Student matrices, $\THRMAVGIZ{\cdots}$, called an HCIZ int
 \label{sxn:matgen_quality_hciz_A}
 
 For our matrix generalization, we need to express the \LayerQuality $\Q$ in terms of the data-averaged
-\SelfOverlap in \EQN~\ref{eqn:def-mat-epsilon-R} for a individual layer.
+\SelfOverlap in \EQN~\ref{eqn:eta_mat_avg_def} for a individual layer.
 \begin{itemize}
 \item
 \textbf{Student-Teacher Overlap  $\mathbf{R}$}
 For the vector-based \Perceptron ST model, the data-averaged \SelfOverlap appears in the expression for the
 \LayerQuality  in \EQN~\ref{eqn:QST_final}, and is just the ST vector overlap  $R=\frac{1}{N}\SVEC^{\top}\TVEC$. 
-For our matrix generalization, we can define
+We can define
 \begin{equation}
 \mathbf{R} = \tfrac{1}{N} \mathbf{S}^{T} \mathbf{T}  .
 \end{equation}
@@ -22,7 +22,7 @@ For the vector-based ST model, the ST \Quality $\Q^{ST}$ in \EQN~\ref{eqn:QST_fi
 the \ThermalAverage $\Q^{ST}(R)=\THRMAVG{R}$. Here, we want something similar.
 \item
 \textbf{Model and Layer Qualities $\Q^{NN}$, $\Q^{NN}_{L}$}
-For our matrix generalization, the \ModelQuality $\Q^{NN}$ ,
+We deifine the \ModelQuality $\Q^{NN}$ ,
 as explained in Subsection~\ref{sxn:htsr-metics}, \EQN~\ref{eqn:ProductNorm},
 will be a product of individual NN Layer Qualities $\Q^{NN}_{L}$,
 and, as in \EQN~\ref{eqn:model_qualities}
