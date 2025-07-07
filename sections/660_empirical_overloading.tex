@@ -7,7 +7,7 @@ XXX.  HOW PRECISELY TO FRAME.
 
 \michaeladdressed{This par should go somewhere.  Where?}
 \charles{@michael: again, no changes to section 6}
-Obtaining a value of $\alpha$ outside the $\alpha \gtrsim 2$ range is indicative of ``overloading~\cite{SST92,Gar88} that layer. 
+Obtaining a value of $\alpha$ outside the $\alpha \gtrsim 2$ range is indicative of ``overloading~\cite{SST92} that layer. 
 This can be accomplished, e.g., by training only one layer in the MLP3 model.
 As the two layers have very different sizes, we see markedly different behaviors, that are nevertheless consistent with theory.
 
@@ -17,7 +17,8 @@ However, for the theory to be useful in practice, we must also examine how it pe
 Of particular interest, we would like to examine the theory under conditions where the training dynamics slows down, i.e., when it is in a ``glassy
 or meta-stable state. 
 One way we can do this is to train only one layer, and freeze the rest. 
-Doing so overloads the single trainable weight matrix, as a function of the ratio of examples to trainable parameters~\cite{SST92,Gar88,MM17_TR}, and we expect this to cause $\alpha_{FC1}$ or $\alpha_{FC2}$ to drop well below $2$.
+Doing so overloads the single trainable weight matrix, as a function of the ratio of examples to trainable
+parameters~\cite{SST92,Gardner_1988,MM17_TR}, and we expect this to cause $\alpha_{FC1}$ or $\alpha_{FC2}$ to drop well below $2$.
 
 \michaeladdressed{@chris: reorganize the figures in this section, like we discussed.  Also, organie the text properly into each subsubsection.}
 \chris{Ive split the figures and re-organized. Lets discuss.}
