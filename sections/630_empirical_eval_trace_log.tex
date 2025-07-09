@@ -168,8 +168,8 @@ Layer matrices from all models in each series are pooled to generate the plots.%
 \footnote{For convolutional layers, the \WW tool first computes eigenvalues for all channels-to-channels linear operators separately, and then pools them in order to compute $\alpha$, $\LAMBDAPL$ and $\LAMBDADETX$. For instance, in a $64\times 64\times 3\times 3$ weight tensor, there would be $9$ separate linear operators of $64\times 64$, giving $576$ eigenvalues, which would then be pooled to compute $\alpha$, $\LAMBDAPL$ and $\LAMBDADETX$.} 
 Notice that in Figure~\ref{fig:VGG_trend} -- \ref{fig:DenseNet_trend}, $\Delta\lambda_{min}$ approaches zero as $\alpha\rightarrow 2$ from above. 
 Individual points may have a large $\Delta\lambda_{min}$ for an $\alpha$ near to $2$, but the overall trend is apparent. 
-The rapid decrease of $\Delta\lambda_{min}$ as $\alpha$ approaches $2$ from above, implies that the PL tail rapidly 
-takes on a unit Trace-Log (if it doesnt already have it.)
+The rapid decrease of $\Delta\lambda_{min}$ as $\alpha$ approaches $2$ from above implies that the PL tail rapidly 
+takes on a unit Trace-Log (if it doesn't already have it.)
 
 As we saw in comparison of Figures~\ref{fig:mlp3-msr-results-xmin} and~\ref{fig:mlp3-msr-results-detX}, 
 (Section~\ref{sxn:trunc_err_epochs},) the \TRACELOG tail is generally larger, and always has highly generalizing 
@@ -179,10 +179,10 @@ clearly in Figure~\ref{fig:CV_ESD_trends} in the condensing of the ``funnel shap
 
 Recall from Figure~\ref{fig:mlp3-detx-gap} that layer FC1 dominated the model, (Table~\ref{tab:mlp3},) producing a clear 
 progression of $\alpha$ and $\Delta\lambda_{min}$ towards $(2, 0)$, as a function of learning rate or batch size, whereas FC2 showed a slightly less clear relationship. 
-In larger models having dozens of layers, we would not expect any one layer to dominate as thoroughly.
-Moreover, it is the architecture that varies between models in each series, not (necessarily) the hyperparameters, meaning that there would not be a straight linem, as in Figures~\ref{fig:mlp3-detx-lr_search_fc1} and~\ref{fig:mlp3-detx-bs_search_fc1}. 
-However, with all of the layers contributing to varying degrees, we nevertheless see a clear trend in both plots of Figure~\ref{fig:CV_ESD_trends}. 
-These results show how the single-layer \SETOL theory extends from the MLP3 model, which is dominated by a single layer, to larger models where many layers interact in complex ways.
+In larger models having dozens or hundreds of layers, we would not expect any one layer to dominate as thoroughly.
+Moreover, it is the architecture that varies between models in each series, not (necessarily) the hyperparameters, meaning that there would not be a straight line, as in Figures~\ref{fig:mlp3-detx-lr_search_fc1} and~\ref{fig:mlp3-detx-bs_search_fc1}. 
+However, with all of the layers contributing to varying degrees, we nevertheless see a clear trend in all plots of Figure~\ref{fig:CV_ESD_trends}. 
+These results show how the single-layer \SETOL theory extends from the MLP3 model, which is dominated by a single layer, to larger models where many layers interact in complex ways, but still reflect the same overall trend.
 
 
 \begin{figure}[t] %[h]

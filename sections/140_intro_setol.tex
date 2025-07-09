@@ -27,19 +27,19 @@ in neural networks.
 
 \begin{itemize}
 \item
-  \textbf{Derivation of the HTSR Layer Quality metrics $\ALPHA$ and  $\ALPHAHAT$}
+  \textbf{Derivation of the HTSR Layer Quality metrics $\ALPHA$ and  $\ALPHAHAT$}.
   The \SETOL approach takes as input the
   \EmpiricalSpectralDensity (ESD) of the layers
   of trained NN, and  derives an expression for the approximate \emph{\AverageGeneralizationAccuracy}
-  of a multi-layer NN, We call this approximation the \emph{\ModelQuality}, denoted $\Q^{NN}$
-  This \ModelQuality is  expressed as product of individual \LayerQuality terms, $\Q^{NN}_{L}$,
-  which themselves can  then 
+  of a multi-layer NN. We call this approximation the \emph{\ModelQuality}, denoted $\Q^{NN}$.
+  This \ModelQuality is expressed as a product of individual \LayerQuality terms, $\Q^{NN}_{L}$,
+  which themselves can then 
   be directly related to the \HTSR Power Law (PL) empirical $\ALPHA$ ($\alpha$)
   and $\ALPHAHAT$  ($\ALPHAHATEQN=\ALPHAHATLONG$) metrics.
 
   In particular, the \LayerQualitySquared, $\QT\approx[\Q^{NN}_{L}]^{2}$, is
-  expressed the logarithm of an \HCIZtext integral, the \ThermalAverage of an \EffectivePotential
-  for a matrix-generalized form the Linear Student-Teacher model of classical \STATMECH. This \HCIZtext
+  expressed as the logarithm of an \HCIZtext integral, which is the \ThermalAverage of an \EffectivePotential
+  for a matrix-generalized form of the Linear Student-Teacher model of classical \STATMECH. This \HCIZtext
   integral evaluates into the sum of integrated \RTransforms
   from \RMT, or, equivalently, as a sum of integrated matrix cumulants.
   From this, the \HTSR $\ALPHAHAT$ metric can be derived in the special case of \IdealLearning.
@@ -53,7 +53,7 @@ in neural networks.
      By \IdealLearning, we mean that the specific NN layer has optimally converged, capturing as
      much of the information as possible in the training data without overfitting to any part of it.
      In defining this, and deriving our results, we have discovered (and are proposing) a new condition
-     for \IdealLearning, which is associated with the \Universality of the \HTSR theory
+     for \IdealLearning, which is associated with the \Universality of the \HTSR theory:
    \begin{itemize}
       \item 
         \textbf{\HTSR Condition for Ideal Learning.}

@@ -12,7 +12,7 @@ Relatedly, can we derive these metrics from first principles?
 
 \noindent
 To answer these questions, we will derive a general expression for the \LayerQuality, $\Q$, of a NN.
-Although many modern NNs have many layers, we adopt a single-layer viewpoint (like a matrix-generalized Student–Teacher) because in \SMOG theory the multi-layer generalization can be factorized or approximated.
+Although many modern NNs have many layers, we adopt a single-layer viewpoint (like a matrix-generalized Student–Teacher) because in \StatisticalMechanicsOfGeneralization (\SMOG) theory~\cite{SST92,STS90} the multi-layer generalization can be factorized or approximated.
 For this, we will obtain by simple averaging our model quality metrics, under effectively a single layer approximation, that correspond to \ALPHA and \ALPHAHAT.
 
 
@@ -27,13 +27,13 @@ which indicates the generalizing components of the layer concentrate into a low-
 (see Sections~\ref{sxn:empirical-effective_corr_space} and \ref{sxn:empirical-trace_log}),
 and that the empirical estimates of the \SETOL \TRACELOG condition align remarkably well with predictions from the \HTSR
 theory under \Ideal conditions (see Sections~\ref{sxn:empirical-test_acc}).
-We also examine how the \HTSR predictions (i.e., the HT PL exponent $\alpha$) behave under non-\Ideal conditions (see Sections~\ref{sxn:empirical-correlation_trap} and \ref{sxn:hysteresis_effect}).)
+We also examine how the \HTSR predictions (i.e., the HT PL exponent $\alpha$) behave under non-\Ideal conditions (see Sections~\ref{sxn:empirical-correlation_trap} and \ref{sxn:hysteresis_effect}).
 \michael{Does that outline belong here.}
 %
 In the following, we will outline key conceptual aspects of \SETOL.
-In Section~\ref{sxn:setol_overview}, \michael{we do such-and-such};
-In Section~\ref{sxn:ideal_learning}, \michael{we do such-and-such}; and
-In Section~\ref{sxn:HT_ESDs}.
+In Section~\ref{sxn:setol_overview}, we give an overview of \SETOL;
+In Section~\ref{sxn:ideal_learning}, we describe the conditions of \Ideal learning under \SETOL and how they differ from those of \HTSR; and
+In Section~\ref{sxn:HT_ESDs} we describe conditions that deviate from this.
 
 
 \input{sections/310_setol_overview}

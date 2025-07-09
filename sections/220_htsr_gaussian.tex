@@ -122,7 +122,7 @@ Table~\ref{tab:Uclass} delimits the HT matrices
 into sub-categories (as shown in the bottom four rows)  based on the behaviors of $\alpha$ as a function of $\mu$.
 
 Figure~\ref{fig:HT-esds} illustrates how the fitted PL exponent $\alpha$ corresponds to the actual Pareto exponent $\mu$ 
-for different aspect ratios $Q=M/M$.a
+for different aspect ratios $Q=M/M$.
 Figure~\ref{fig:HT-esds-a} displays the ESDs of three different i.i.d. $1000\times1000$ HT random matrices, with $\mu=1,3,5$, on a Log-Log scale.  
 Notice that smaller $\mu$, and therefore smaller $\alpha$, corresponds to heavier (i.e., larger) tails.
 Figure~\ref{fig:HT-esds-b} shows how the empirically fit PL exponent $\alpha$ can vary with the theoretical $\mu$ for an associated $\mathbf{W}(\mu)$.
@@ -133,11 +133,11 @@ strongly on the aspect ratio $Q$, and $\alpha\in[2,6]$.
 For $\mu>4$, the fitted $\alpha$ saturates for each specific value of $Q$.
 
 We emphasize that we only model the ESDs of the NN layer weight matrices using the
-same Universality class to that an associated with the ESD of an random, i.i.d, HT Pareto matrix.
+same Universality class to that associated with the ESD of a random, i.i.d, HT Pareto matrix.
 In fact, the elements $W_{i,j}$ do not at all appear as if they have been
 drawn from a HT Pareto distribution, and, in contrast, are almost always well fit to a Laplacian distribution.
 Also, despite these strong finite-size effects, empirically one finds that the ESDs arising large, well trained,
-modern NNs can frequently be well fit  to a PL (or TPL), and that the fitted $\alpha\in [2,6]$ for $80-90\%$
+modern NNs can frequently be well fit to a PL (or TPL), and that the fitted $\alpha\in [2,6]$ for $80-90\%$
 of NN layers.  Notably, we rarely find $\alpha<2$ in the best performing, open source, pretrained DNNs.
 
 \charles{Not sure where to put this..see text also}
@@ -148,7 +148,7 @@ the \HTSR \Phenomenology uses Pareto matrices as  a guide.
 However, as we will see in Section~\ref{sxn:HT_ESDs}, this analogy should be treated with caution because there are 
 cases where it breaks down.
 
-No matter why matrix ESD is HT, it can be difficult to reliably estimating the $\alpha$ parameter when
+No matter why a matrix ESD is HT, it can be difficult to reliably estimate the $\alpha$ parameter when
 the true $\alpha$ is large. For Pareto matrices of the size investigated here, 
 an observed $\alpha$ above $6$ is uninformative --- the tail will decay very rapidly indeed,
 leaving very little of it to study.

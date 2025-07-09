@@ -20,7 +20,7 @@ These large $\lambda$ could be \DragonKings, \emph{\CorrelationTraps}, or some o
 
 In order to apply the HTSR \Phenomenology most effectively, one must be able to identify various spurious factors and
 distinguish real correlations from any other large eigenvalues, including the effects of both
-extreme eigenvalues $\lambda$, individual matrix elements $W_{i,j}$, and rank-$1$ perturbations in $\WMAT$
+extreme eigenvalues $\lambda$, individual matrix elements $W_{i,j}$, and rank-$1$ perturbations in $\WMAT$.
 In one case the ESD is HT primarily due to correlations that help the model generalize, whereas
 in another when the ESD may be more HT than expected due to suboptimal training, mis-labeled data, etc.
 In extreme cases, spurious eigenvalues can push the weight matrix
@@ -31,7 +31,7 @@ When training a model with SGD, one may only achieve  a sub-optimal result
 when using overly large learning rates / small batch sizes, (see Section~\ref{sxn:empirical}),
 from poor hyper-parameter settings,
 or simply because direct regularization fails. In such cases, the \HTSR approach allows one to detect
-potential problems by looking for large eigenvalues~\emph{not} resulting from correlations.\cite{GSZ20_TR}
+potential problems by looking for large eigenvalues~\emph{not} resulting from correlations~\cite{GSZ20_TR}.
 
 Importantly, in the context of the \SETOL theory, we can now identify such empirical anomalies
 due to \ATypical layer weight matrices $\mathbf{W}$, a key factor when models break down.

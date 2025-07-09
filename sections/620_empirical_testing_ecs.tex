@@ -162,11 +162,12 @@ Here again we can see the ``phase-transition-like behavior of the train error, a
 
 % \michael{@chris: we should have a few sentences on why the Delta-Error-Test is so flat.}
 Perhaps most interestingly of all, we see that under the \TRACELOG~MSR, $\Delta E_{test}$ is flat \emph{throughout 
-training}, and for all learning rates. Considering that this implies that there is \emph{no} point in training where the 
-\TRACELOG tail generalizes badly, this is a rather striking observation. It also bears noticing that under the 
-\POWERLAW~MSR, (Figure~\ref{fig:mlp3-msr-results-xmin},) this is decidedly not the case, meaning that a small, but 
-significant amount of generalization comes from the gap between these tails, but none at all comes from the bulk.
-\nred{confusing}
+training}, and for all learning rates. This implies that there is \emph{no} point in training where the 
+\TRACELOG tail generalizes badly. In other words, almost none of the out-of-sample variance falls outside of the \EffectiveCorrelationSpace, as the \TRACELOG~MSR over-estimates the \EffectiveCorrelationSpace. It also bears noticing that under the 
+\POWERLAW~MSR, (Figure~\ref{fig:mlp3-msr-results-xmin},) this is decidedly not the case, because the \POWERLAW~MSR \emph{under}-estimates the \EffectiveCorrelationSpace. As we will see in \ref{sxn:empirical-trace_log}, as \ALPHA approaches $2$, the gap between the two MSRs goes to $0$.
+%This means that a small, but 
+%significant amount of generalization comes from the gap between these tails, but none at all %comes from the bulk.
+%\nred{confusing}
 
 
 \begin{figure}[t]
@@ -219,10 +220,9 @@ larger $\Delta E_{train}$ or $\Delta E_{test}$
 than the \TRACELOG~MSR, which is biased towards under-estimating $\lambda_{min}$. 
 %
 Second,
-in both Figure~\ref{fig:mlp3-msr-results-xmin} and~\ref{fig:mlp3-msr-results-detX}, we can see that $\Delta E_{test}$ is consisitently lower than $\Delta E_{train}$. 
+in both Figure~\ref{fig:mlp3-msr-results-xmin} and~\ref{fig:mlp3-msr-results-detX}, we can see that $\Delta E_{test}$ is consistently lower than $\Delta E_{train}$. 
 Clearly, truncating has a larger effect on train predictions, meaning that no matter how long the model is trained, some 
-of the train predictions are still derived from the bulk. 
-Yet, the test predictions are far less affected, meaning that the \EffectiveCorrelationSpace contributes to the models ability to generalize.
+of the train predictions are still derived from the bulk. The fact that they remain is evidence that the gradient does not degrade them, meaning that they were most likely contributing spuriously correct answers. Yet, the test predictions are far less affected, meaning that only the \EffectiveCorrelationSpace contributes to the models ability to generalize.
 % \michael{I as assuming that fig refers to Fig \ref{fig:mlp3-msr-results-detX} and not to Fig \ref{fig:mlp3-msr-results-xmin}? If, flesh out and put in the previous par.
 % }
 % \chris{Lets discuss. Im not sure what youre referring to here.}

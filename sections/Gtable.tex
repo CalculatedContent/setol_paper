@@ -2,7 +2,7 @@
 \begin{table}[h!]
   \centering
   \renewcommand{\arraystretch}{2}
-  \begin{tabular}{|c|p{2.5cm}|c|c|} % Removed the last 'p{4.5cm}' column
+  \begin{tabular}{|c|p{3cm}|c|c|} % Removed the last 'p{4.5cm}' column
     \hline
     \textbf{Model} & \textbf{Tail Norm} & \textbf{WW Metric} & \textbf{$\log\mathcal{Q}$ (Log Quality)} \\ \hline\hline
 
@@ -21,10 +21,10 @@
     & \ALPHAHAT $\;\;\hat{\alpha}$
     & $\displaystyle (\alpha-1)\,\log\lambda_{\max}$ \\ \hline
      \hline
-    \InverseMP (MP)\footnotemark
-    & ECS Boundary*
+    \InverseMP (MP)
+    & ECS Boundary
     & \ALPHAHAT $\;\;\hat{\alpha}$
-    & $\displaystyle \alpha[\log\lambda_{\max}-\log\lambda_{\min}]$ \\ \hline
+    & $\displaystyle 2\alpha[\log\lambda_{\max}-\log\lambda_{\min}]$ \\ \hline
 
   \end{tabular}
   \caption{Closed-form or leading-order expressions for the log \LayerQuality
@@ -39,5 +39,3 @@
              }
   \label{tab:htsr_layer_quality}
 \end{table}
-
-\footnotetext{See Appendix~\ref{sxn:IMP}, Eq.\,(A.7.25): $|G(\lambda)|\approx1.138\,\lambda^{0.539}$.}

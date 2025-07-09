@@ -4,7 +4,7 @@
 \charles{Some old text here I need to clean up}
 
 Our \SETOL formulates a parametric expression for the \LayerQuality $\Q$ using a matrix-generalization of the classic \StudentTeacher (ST)
-model from the \StatisticalMechanicsOfGeneralization (\SMOG) theory of the 1990s~\cite{SST92,STS90}, evaluated using
+model from the \SMOG theory of the 1990s~\cite{SST92,STS90}, evaluated using
 recent advances in the evaluation of so-called HCIZ random matrix integrals~\cite{potters_bouchaud_2020,Tanaka2007, Tanaka2008},
 such that the final expression for $\Q$ can be written in terms of empirically measured statistical properties of the layer ESD.
 We summarize our basic approach here; see Section~\ref{sxn:matgen} for a detailed derivation, and see Section~\ref{sxn:empirical} for a detailed empirical analysis.
@@ -21,7 +21,7 @@ In this case, the model \Quality, $\Q^{ST}$ is exactly the AA, high-T \AverageGe
 $\Q^{ST}:=1-\AVGE^{ST}_{gen}=\THRMAVG{R}$.
 For an MLP or general NN, each layer Energy is associated with a
 \LayerQuality $\Q$, which we identify as the average contribution an
-individual layer makes to the overall generalized accuracy.
+individual layer makes to the overall generalized accuracy,
 (i.e $1-\AVGE^{NN}_{gen}$) for a multilayer perceptron (MLP).
 
 For technical reasons (below), we will seek the
@@ -168,8 +168,8 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
 %\michael{No, I understand that.  What I am asking is: how do we want to describe the difference between \SemiEmpirical and \SETOL?  I think \SETOL is our particular model and setup; but \SemiEmpirical is a more general approach (meaning, in particular, it may not need a bolded name here).  }
 %\charles{OK, well we have a section (140) where we discuss nuclear physics; what about there ?}
 
-To apply the theory, one must choose and \RTransform $R(z)$ for	the \Teacher that models 
-the tail of the ESD $\rho^{emp}_{T}(\lambda)$, and which can
+To apply the theory, one must choose an \RTransform $R(z)$ for	the \Teacher that models 
+the tail of the ESD $\rho^{emp}_{T}(\lambda)$, and that can be
 parameterized by some measurable property.
 This may include the number of Spikes $\lambda^{spike}$, the fitted PL exponent $\alpha$,
 the maximum eigenvalue $\lambda_{max}$, or even the entire tail $\rho^{tail}_{T}(\lambda)$.
