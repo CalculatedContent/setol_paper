@@ -45,9 +45,9 @@ This expression shows that $R(z)[IMP]$ has both real and imaginary parts when $z
 
 We aim to compute the integral:
 \begin{align}
-G(\lambda)[IMP] := \int_{z_0}^\lambda \Re[R(z)[IMP]] , dz,
+G(\lambda)[IMP] := \int_{\LambdaCutoffMin}^\lambda \Re[R(z)[IMP]] , dz,
 \end{align}
-where $z_0 \geq \kappa/2$.
+where $\LambdaCutoffMin \geq \kappa/2$.
 
 Where the Real part of $R(z)[IMP]$ is
 \begin{align}
@@ -56,7 +56,7 @@ Where the Real part of $R(z)[IMP]$ is
 %
 The integral of this is
 \begin{align}
-\Re[G(\lambda)[IMP]] = \int_{z_0}^\lambda \frac{\kappa}{z} , dz = \kappa \left[ \ln z \right]_{z_0}^\lambda = \kappa \left( \ln \lambda - \ln z_0 \right).
+\Re[G(\lambda)[IMP]] = \int_{\LambdaCutoffMin}^\lambda \frac{\kappa}{z} , dz = \kappa \left[ \ln z \right]_{\LambdaCutoffMin}^\lambda = \kappa \left( \ln \lambda - \ln \LambdaCutoffMin \right).
 \end{align}
 
 

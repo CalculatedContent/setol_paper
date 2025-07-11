@@ -8,35 +8,39 @@ Section~\ref{sxn:matgen_mlp3} generalizes
 classical \STATMECH vector-based ST model of Section~\ref{sxn:SMOG_main-student_teacher}
 to obtain a \LayerQuality for a single layer in a NN.
 It starts by first formulating the learning problem for
-the  NN generalization accuracy or quality, $\Q^{NN}$,
-of a  3-layer MLP (MLP3).
+the NN generalization accuracy or quality, $\Q^{NN}$,
+of a 3-layer MLP (MLP3).
 We then replace vectors with $N \times M$ matrices $\SVEC,\TVEC\rightarrow\SMAT,\TMAT$,
 and obtain and expression for the NN \SelfOverlap $\ETA(\SMAT,\TMAT,\XI)$,
 which then gives a matrix-generalized overlap operator
 $\OVERLAP:=\langle\ETA(\SMAT,\TMAT,\XI)\rangle_{\AVGNDXI}=\tfrac{1}{N}\SMAT^{\top}\TMAT$.
 This can be related to a single-layer matrix-generalization of the ST \AnnealedHamiltonian, 
 presented in Appendix~\ref{sxn:summary_sst92}, $\HANHT:=M-\OVERLAP$,
-where, importantly, the scalar overlap $R$ is now a matrix $\OVERLAP$ of $M$ adjustable parameters.
+where, importantly, the scalar overlap $R$ is now a matrix $\OVERLAP$ of $M\times M$ adjustable parameters.
 
 \item
 \textbf{The \LayerQualitySquared $\QT$}
 Section~\ref{sxn:matgen_quality_hciz} presents the expression for NN \LayerQualitySquared $\QT$.
 Following the ST analogy, we define a \ThermalAverage over possible \Student weight matrices $\SMAT$
-for the matrix overlap, giving $\Q^{NN}_{L}:=\THRMAVGIZ{\HANHT} =\THRMAVGIZ{\OVERLAP}$,
+for the matrix overlap, giving $\Q^{NN}_{L}:=\THRMAVGIZ{\HANHT} =\THRMAVGIZ{\OVERLAP}$.
 For technical reasons, however, we actually seek the (approximate)  \LayerQualitySquared, $\QT\approx\Q^{2}$,
 defined as $\QT:=\THRMAVGIZ{\OLAPTOLAP}$.
 To evaluate $\QT$, rather than sampling all random \Student matrices $\SMAT$ directly,
-we switch measures to the \Student correlation matrices 
-$\AMAT_{2} = \tfrac{1}{N}\SMAT\SMAT^{\top}$.
-Importantly, we argue that the measures $d\mu(\AMAT_{1})\leftrightarrow d\mu(\AMAT_{2})$,
+we switch measures to the (Outer) \Student Correlation matrices\footnote{
+We adopt the convention ``Inner'' for smaller, $M\times M$ full rank \Student correlation matrices, and ``Outer'' for larger, $N\times N$ rank-deficient \Student Correlation matrices.
+Note that both are scaled as $1 / N$ meaning that their nonzero eigenvalues are the same.
+} 
+$\AMAT_N = \tfrac{1}{N}\SMAT\SMAT^{\top}$ along with their Inner counterparts
+$\AMAT_M = \tfrac{1}{N}\SMAT^{\top}\SMAT$.
+Importantly, we argue that the measures $d\mu(\AMAT_M)\leftrightarrow d\mu(\AMAT_N)$,
 can be interchanged for our purposes, making them effectively equivalent.
-This reparametrization leads us to an integral of the HCIZ type (as in \EQN~\ref{eqn:hciz_prelim})
-which, as shown by Tanaka \cite{Tanaka2007, Tanaka2008}.
+This reparameterization leads us to an integral of the HCIZ type (as in \EQN~\ref{eqn:hciz_prelim})
+which, as shown by Tanaka \cite{Tanaka2007, Tanaka2008}, can be described in terms of its R-transform.
 
-Then, we introduce the \EffectiveCorrelationSpace (\ECS), and two key approxmations,
+Then, we introduce the \EffectiveCorrelationSpace (\ECS), and two key approximations,
 the \TRACELOG Condition and the \IndependentFluctuationApproximation (\IFA).
 The \TRACELOG condition states that the determinant of the (effective) \Student correlation matrix is unity, $\Det{\AECS}=1$.
-Critcially, this condition can be tested empirically by assuming the (effective) \Teacher correlation matrix
+Critically, this condition can be tested empirically by assuming the (effective) \Teacher correlation matrix
 also follows the \TRACELOG condition, $\Det{\XECS}=1$, and this is a key result of this work.
 Finally, we impose the \IFA (described below) because it is necessary for the final result.
 
@@ -46,8 +50,8 @@ Section~\ref{sxn:matgen_evaluation_hciz} presents the core result,
 (as in \EQN~\ref{eqn:QT_result}),
 a closed-form or semi-analytic expressions for the \LayerQualitySquared $\QT$
 formed in the large-$N$ limit.
-Restricted to the \ECS, and under  the \TRACELOG condition and the \IFA, our
-HCIZ integral for $\QT$ becomes tractable at large-$N$, givin an expression that can be parameterized
+Restricted to the \ECS, and under the \TRACELOG condition and the \IFA, our
+HCIZ integral for $\QT$ becomes tractable at large-$N$, giving an expression that can be parameterized
 in terms of $\MECS$ eigenvalues $\LambdaECS$ of the \Teacher correlation matrix 
 restricted to the \ECS $\XECS$.
 In doing this, the $\MECS$ \Teacher eigenvalues are treated as experimental observables, and 
@@ -55,7 +59,7 @@ become the effective \SemiEmpirical parameters (i.e, $\alpha$, $\lambda_{max}$) 
 
 \item
 \textbf{Modeling the \HeavyTailed \RTransform}
-Section~\ref{sxn:r_transforms} presents several  models of different \RTransforms.
+Section~\ref{sxn:r_transforms} presents several models of different \RTransforms.
 Evaluating $\QT$ requires evaluating selecting an \RTransform $R(z)$ for the Teacher ESD,
 and also ensure that it is analytic and single-valued on the domain of interest-- the \ECS and/or tail of the ESD.
 We examine four possible models for $R(z)$: \emph{(i)} the \emph{Bulk$+$Spikes} (BS),

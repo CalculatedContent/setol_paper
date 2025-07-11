@@ -34,11 +34,11 @@ see Table~\ref{tab:energies} for summary of types of ``Energies'' used throughou
     \Teacher Weight Matrix & $\mathbf{T}$ & $N\times M$ \\ \hline
     \Student Weight Matrix & $\mathbf{S}$ & $N\times M$ \\ \hline
     \StudentTeacher Overlap Matrix & $\OVERLAP=\tfrac{1}{N}\mathbf{S}^T\mathbf{T}$ & $M\times M$ \\ \hline              
-    \Student \CorrelationMatrix 1 & $\mathbf{A}_{1}=\tfrac{1}{N}\mathbf{S}^{\top}\mathbf{S}$ & $M\times M$  \\ \hline
-    \Student \CorrelationMatrix 2 & $\mathbf{A}_{2}=\tfrac{1}{N}\mathbf{S}\mathbf{S}^{\top}$ & $N\times N$  \\ \hline
-   ~\ECS \Student \CorrelationMatrix 1 & $\AECS_{1}$ & $\MECS\times \MECS$  \\ \hline
-   ~\ECS \Student \CorrelationMatrix 2 &$\AECS_{2}$ & $N \times N$  \\ \hline
-   ~\ECS \Teacher \CorrelationMatrix & $\XECS$ & $\MECS\times \MECS $  \\ \hline
+    Inner \Student \CorrelationMatrix & $\mathbf{A}_M=\tfrac{1}{N}\mathbf{S}^{\top}\mathbf{S}$ & $M\times M$  \\ \hline
+    Outer \Student \CorrelationMatrix & $\mathbf{A}_N=\tfrac{1}{N}\mathbf{S}\mathbf{S}^{\top}$ & $N\times N$  \\ \hline
+   Inner ~\ECS \Student \CorrelationMatrix & $\AECSM$ & $M\times M$  \\ \hline
+   Outer ~\ECS \Student \CorrelationMatrix &$\AECSN$ & $N \times N$  \\ \hline
+   ~\ECS \Teacher \CorrelationMatrix & $\XECS$ & $M\times M$  \\ \hline
     \hline
   \end{tabular}
   \caption{Summary of of various vectors and matrices, including their dimensions.}

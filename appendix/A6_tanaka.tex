@@ -11,7 +11,7 @@ For completeness, we restate it here using the notation of the main text:
 \underbrace{
   \Expected[\mathbf{\AMAT}]{
     \exp\left(\frac{\beta}{2}
-    \Trace{\mathbf{W}^{\top} \AMAT_{2} \mathbf{W}}
+    \Trace{\mathbf{W}^{\top} \AMAT_N \mathbf{W}}
     \right)
   }
  }_{\text{HCIZ Integral}}
@@ -19,8 +19,8 @@ For completeness, we restate it here using the notation of the main text:
 \end{equation}
 where 
 $\mathbf{W}$ is the $N\times M$ \Teacher weight matrix, 
-$\AMAT=\AMAT_{2}$ is the $N\times N$ \Student (correlation) matrix, 
-but $\beta$ is now the inverse-Temperature(because we are working with real matrices),
+$\AMAT=\AMAT_N$ is the $N\times N$ \Student (correlation) matrix, 
+but $\beta$ is now the inverse-Temperature (because we are working with real matrices),
 and we have added a $\tfrac{1}{2}$ (which will be clear later).
 $\GNORM(\lambda)$ is a complex analytic function of the eigenvalues $\lambda$ of (the \Teacher Correlation matrix) $\XMAT$, 
 whose functional form will depend on the structure of the limiting form of (the \Student) ESD $\rho_{\AMAT}^{\infty}(\lambda)$.
@@ -51,8 +51,8 @@ $\QT
 =\tfrac{\partial}{\partial \beta}\tfrac{1}{N}\IZGINF$
 (see \ref{eqn:IZG_QT}).
 We can introduce $\beta=\tfrac{1}{T}$ by
-simply changing the scale of $\AMAT_{2}$ since the final result is a sum of \RTransforms, which by definition
-are linear, i.e. $\GNORM(\beta\lambda)=\beta \GNORM(\lambda)$, however, it is instructive
+simply changing the scale of $\AMAT_N$ since the final result is a sum of \RTransforms, which by definition
+are linear, i.e., $\GNORM(\beta\lambda)=\beta \GNORM(\lambda)$, however, it is instructive
 to rederive the final result, with $\beta$ explicitly included.
 \michaeladdressed{@charles: what is the point of this comment?  Is it just that if temperature is constant, then the derivative is simple, since we dont need the chain rule.  Also, this comment is about applying this result; do we need it for the derivation?}
 
@@ -62,11 +62,11 @@ to rederive the final result, with $\beta$ explicitly included.
 
 \paragraph{Notation.}
 
-We start by re-writing the Tanaka result, \EQN~(\ref{eqn:hciz}),
+We start by rewriting the Tanaka result, \EQN~(\ref{eqn:hciz}),
 in our notation for the expected value $\Expected[\AMAT]{\cdots}$ operator, as follows:
 \begin{equation}
 \label{eqn:hciz2}
-  \tfrac{1}{2}\IZGINF = \lim_{N\gg 1} \ln \underbrace{ \int d\mu(\mathbf{\AMAT})\left[\exp\left(\frac{\beta}{2}\Trace{\mathbf{W}^{\top}\AMAT_{2}\mathbf{W}}\right)\right] }_{\mbox{HCIZ Integral}} 
+  \tfrac{1}{2}\IZGINF = \lim_{N\gg 1} \ln \underbrace{ \int d\mu(\mathbf{\AMAT})\left[\exp\left(\frac{\beta}{2}\Trace{\mathbf{W}^{\top}\AMAT_N\mathbf{W}}\right)\right] }_{\mbox{HCIZ Integral}} 
   = N\beta\tfrac{1}{2}\sum_{i=1}^{M}\GNORM(\lambda_{i})   .
 \end{equation}
 where we have added a $\tfrac{1}{2}$ for technical convenience (to make the connection with the LDP, below).
@@ -77,7 +77,7 @@ If we denote the internal HCIZ integral as
 %%MM%% This gives
 \begin{equation}
 \label{eqn:hciz_def}
-  \HCIZ := \int d\mu(\mathbf{\AMAT})\left[\exp\left(\frac{\beta}{2}\Trace{\mathbf{W}^{\top}\AMAT_{2}\mathbf{W}}\right)\right]  ,
+  \HCIZ := \int d\mu(\mathbf{\AMAT})\left[\exp\left(\frac{\beta}{2}\Trace{\mathbf{W}^{\top}\AMAT_N\mathbf{W}}\right)\right]  ,
  \end{equation}
 then it holds that %% Thus, %%MM%% such that
 \begin{equation}
@@ -120,11 +120,11 @@ For this, $\GNORM(\lambda)$ itself must either not explicitly depend on $N$ and/
 
 The trick here is we can choose an \RTransform of $\mathbf{\AMAT}$
 that is a simple analytic expression based on the observed
-the empirical spectral density (ESD) of the $\mathbf{X}$.
+empirical spectral density (ESD) of the $\mathbf{X}$.
 And this can readily be done for the ESDs for a wide range of layer weight matrices
-observed in modern DNNs because the their ESDs are \HeavyTailed \PowerLaw\cite{MM19_HTSR_ICML}.
+observed in modern DNNs because their ESDs are \HeavyTailed \PowerLaw\cite{MM19_HTSR_ICML}.
 We can then readily express the \Quality $\Q$ of the \Teacher
-layer in a simple functional form, (i.e  an approximate Shatten Norm),
+layer in a simple functional form, (i.e  an approximate Shatten Norm).
 
 Importantly, the matrices $\mathbf{X}$  and $\mathbf{\AMAT}$ must be well approximated
 by low rank matrices since the derivation in Tanaka requires this.  Fortunately,

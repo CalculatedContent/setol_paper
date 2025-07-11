@@ -52,12 +52,12 @@ Let us now express the average matrix-matrix overlap $\mathbf{R}$ in squared for
   \label{eqn:R2}
 \Trace{\OVERLAP^{2}} &:=\OLAPSQD  \\ \nonumber
 &=\frac{1}{N^{2}}\Trace{\mathbf{T}^{\TR}\mathbf{SS}^{\TR}\mathbf{T}}
-=\frac{1}{N}\Trace{\mathbf{T}^{\TR}\mathbf{A}_2\mathbf{T}}
+=\frac{1}{N}\Trace{\mathbf{T}^{\TR}\mathbf{A}_N\mathbf{T}}
 \end{align}
-where $\AMAT_{2}$ is the $N\times N$ form of the \Student correlation matrix,
-$\mathbf{A}_2:=\frac{1}{N}\mathbf{SS}^{\TR}$.
-We will also define the $M\times M$ matrix, $\AMAT_{1}=\frac{1}{N}\mathbf{S}^{\TR}\mathbf{S}$,
-used later.
+where $\AMATN$ is the $N\times N$ form of the \Student correlation matrix,
+$\mathbf{A}_N:=\frac{1}{N}\mathbf{SS}^{\TR}$.
+We will also define the $M\times M$ matrix, $\AMATM=\frac{1}{N}\mathbf{S}^{\TR}\mathbf{S}$,
+used later. Note that $\AMATM$ also has a $\frac 1 N$ factor, so that its non-zero eigenvalues will be the same as $\AMATN$, but has dimensions $M \times M$.
 
 \michaeladdressed{Clarify.}
 %It is argued that the \Student and \Teacher weight matrices (i.e., $\TMAT, \SMAT$) have
@@ -81,7 +81,7 @@ For more details, see Section~\ref{sxn:matgen}, and the Appendix, Section~\ref{s
 We can write $\IZG$ as an HCIZ Integral, 
 \begin{align}
   \label{eqn:QT_dS}
-  \IZG  &=  \ln\int d\mu(\mathbf{S})\exp\left(N\beta\Trace{\mathbf{T}^{\TR}\mathbf{A}_2\mathbf{T}}\right),
+  \IZG  &=  \ln\int d\mu(\mathbf{S})\exp\left(N\beta\Trace{\mathbf{T}^{\TR}\mathbf{A}_N\mathbf{T}}\right),
 \end{align}
 
 
@@ -124,11 +124,11 @@ With these definitions in place, moving forward, the following key assumptions, 
 %  Importantly, this lets interpret the \EQN~\ref{eqn:QT_HCIZ}  as acting only in this subspace.
   \item
   \textbf{The \TRACELOG Condition.}
-  The \Student correlation matrix $\AECS_1$ (when properly normalized)
-  satisfies the condition that $\Trace{\ln\AECS_1}=\ln\Det{\AECS_1}=0$,
+  The Effective \Student correlation matrix $\AECSM$ 
+  satisfies the condition that $\Trace{\ln\AECSM}=\ln\Det{\AECSM}=0$,
   so that the change of measure $d\mu(\SMAT) \rightarrow d\mu(\AECS) $ is Volume Preserving.
-  This condition is derived explicitly in terms of $\AECS_1$, and therefore will hold for $\AECS_2$
-  (and the Teacher Correlation matrix, $\XECS=\frac{1}{N}\TMAT^{\TR}\TMAT$).
+  This condition is derived explicitly in terms of $\AECSM$, and therefore will hold for $\AECSN$
+  (and by assumption the Teacher Correlation matrix, $\XECS=\frac{1}{N}\TMAT^{\TR}\TMAT=\frac{1}{N}\mathbf{P}_{ecs}\TMAT^{\TR}\TMAT$).
   Practically, this implies that the $\MECS$ eigenvalues $\LambdaECS$
   of the tail of the ESD must satisfy $\sum_{i=1}^{\MECS}\ln\LambdaECS_{i}\approx 0$.
   Experiments will test this assumption explicitly in Section~\ref{sxn:empirical-trace_log}.
@@ -140,9 +140,9 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
   We have
   \begin{align}
   \label{eqn:IZGINF_HCIZ}
-  \IZGINF = \lim_{N\gg 1}\ln\int d\mu(\AECS)\exp\left(\beta\Trace{\mathbf{T}^{\TR}\AECS_2\mathbf{T}}\right) %= \beta\sum_{i=1}^{\MECS}\GNECS
+  \IZGINF = \lim_{N\gg 1}\ln\int d\mu(\AECS)\exp\left(\beta\Trace{\mathbf{T}^{\TR}\AECSN\mathbf{T}}\right) %= \beta\sum_{i=1}^{\MECS}\GNECS
   \end{align}
-  where  measure $d\mu(\AECS)$ lets us average over all \Student Correlation matrices $\AECS_{2}$ which
+  where  measure $d\mu(\AECS)$ lets us average over all \Student Correlation matrices $\AECSN$ which
   lie in the~\ECS space and which ``resemble'' the \Teacher, 
   where by ``resemble'' we mean that they share the same form of the tail of
   their limiting ESDs,
@@ -158,7 +158,7 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
   \end{align}
   where $\GNI$ is a \emph{\GEN}, and is  defined as the integrated \emph{\RTransform} $R(z)$ of the \Teacher
   layer ESD (where $z\in\mathbb{C}$), such that $\GN:= \int_{\LambdaECSmin}^{\lambda}R(z)dz$
-  and $\LambdaECSmin$  encapsulates  the~\ECS (and selects the desired branch-cut of $R(z)$
+  and $\LambdaECSmin$  encapsulates  the~\ECS (and, for some choices of $R(z)$,  selects the desired branch-cut of $R(z)$
   so that it is both single-valued and analytic).
 \end{itemize}
 
@@ -184,11 +184,11 @@ Because the ESD is frequently \HeavyTailed (HT), this
 at $z\le \LambdaECSmin$, corresponding roughly at or before the start of the \ECS.
 In a sense, selecting the branch-cut $R(z)$ forces one to define the \ECS.
 
-To complete the theopry, we
+To complete the theory, we
 will also show that the \HTSR PL \LayerQuality metrics \ALPHA $(\alpha)$  and \ALPHAHAT $(\ALPHAHATEQN)$
 can be formally derived directly from the \SETOL \LayerQuality $\Q$ by selecting the appropriate
 \RTransform $R(z)$. In Section~\ref{sxn:r_transforms} we provide several possible
-model $R(z)$ and the resulting \LayerQuality $\Q$.
+models of $R(z)$ and the resulting \LayerQuality $\Q$.
 \michaeladdressed{Huh?}
 
 \paragraph{Renormalization Group Effective Hamiltonian}
@@ -208,13 +208,13 @@ and where $\HEFF$ is defined implicitly through result for $\QT$ (Eqn.~\ref{eqn:
 The result is, formally, a sum of the integrated \RTransforms $\GNI$.
 In a sense, this result resembles (a non-perturbative form of) the Linked Cluster Theorem
 in that the log \PartitionFunction is expressed as a sum of integrated matrix-generalized cumulants and/or self-energy.  And in analogy with \SemiEmpirical theories of Quantum Chemistry, the \HTSR \ALPHA $(\alpha)$ and \ALPHAHAT $\ALPHAHATEQN)$ enter as renormalized empirical parameters.
-Most importantly, the \ScaleInvariant \TRACELOG condition can be verified empirically (See Section~\ref{sxn:empirical}.  
+Most importantly, the \ScaleInvariant \TRACELOG condition can be verified empirically (See Section~\ref{sxn:empirical}.)
 Importantly, in analogy with the Wilson RG theory, 
 the \HTSR $\alpha=2$ resembles in spirit
 an RG \emph{Universal Critical Exponent} at a phase boundary being between the \HeavyTailed 
 (HT) and the \VeryHeavyTailed (VHT) phase of learning of the \HTSR theory.
 This observation strengthens our argument that the \HTSR HT and VHT phases
-are analogous to the generalizing and overfit phases, resp.,
+are analogous to the generalizing and overfit phases, respectively,
 of the classical \SMOG theories of NN learning.
 
 

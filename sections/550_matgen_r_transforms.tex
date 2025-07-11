@@ -13,8 +13,8 @@ The goal of this section is to obtain formal expressions for the \LayerQuality, 
 given in terms of what we somewhat imprecisely refer to as a \GEN.
 In many cases, however, the resulting approximate expressions for $\Q$ do take the
 form well-known norms, including the Frobenius norm, the Spectral norm, and the Shatten norm.
-The models for $R(z)$  we use are presented in Table~\ref{tab:known_r_transforms} ,and
-the final expression for the \LayerQuality $\Q$ for each model are given in Table~~\ref{tab:htsr_layer_quality}.
+The models for $R(z)$  we use are presented in Table~\ref{tab:known_r_transforms}.
+The inal expression for the \LayerQuality $\Q$ extended \emph{semi-empirically} to the non-ideal layers that can then be used to obtain the \HTSR \ALPHA and \ALPHAHAT metrics; these  are given in Table~~\ref{tab:htsr_layer_quality}.
 
 \subsubsection{Elementary Random Matrix Theory}
 \label{sxn:r_transforms:elementary_rmt}
@@ -71,7 +71,7 @@ That is, we can given $R(z)=R(z)_{tail}+R(z)_{bulk}$, we only need $R(z)\approx 
 
 \charles{Describe $R(z)$ is a power series, and how we take $\int dz R(z)$ and why we restirct the integral, contours, etc}
 
-
+Before moving forward, it is first necessary to demonstrate the \RTransform $R(z)$ exists for the power-law ESDs that arise in \SETOL; this is shown in Appendix~\ref{sxn:RTransformExists}.  Specially, it is shown that while the $R(z)$ does not formally exist for a pure power-law (PL) tail with $\alpha=2$, it does generally exist for \emph{Truncated} power-law (TPL) tails, defined such that $\lambda\in[\LambdaECSmin, \LambdaECS]^{max}$.  This is sufficient for our purposes here.
 
 \subsubsection{Known \RTransforms and Analytic (Formal) Models}
 \label{sxn:r_transforms:known_r_transforms}
@@ -196,11 +196,11 @@ as smaller $\alpha$ suggests higher quality layers and therefore a higher overal
 
 \subsubsection{Inverse Marchenko-Pastur Model of \IdealLearning}
 For a more realistic model of a layer ESD, 
-here, we consider the \InverseMP (IMP) model.\cite{BunThesis}
+here, we consider the \InverseMP (IMP) model~\cite{BunThesis}.
 The IMP model treats the ESD of $\mathbf{X}^{-1}$ when the ESD of $\mathbf{X}$ itself is MP.
-As a parametiric model, it can be quite effective at treating VHT and HT (or \FatTailed) ESDs,
-$\alpha\le 4$, but works best whenb $\alpha=2.0$.
-To do this, one simply considers  $\kappa$, and the variance, $\sigma^2$ (not shown), as an adjustable paremeters.
+As a parametric model, it can be quite effective at treating VHT and HT (or \FatTailed) ESDs,
+$\alpha\le 4$, but works best when $\alpha=2.0$.
+To do this, one simply considers  $\kappa$,  as an adjustable parameter which effectively captures the rank or soft-rank of an ECS-like space in these non-ideal layers.
 %
 It is an excellent model for the ESD when $\alpha=2.0$ (and $Q=2$).
 Using this model, we can derive an expression for the \HTSR \ALPHAHAT \LayerQuality metric,
@@ -284,7 +284,7 @@ We will not consider this model further here and instead leave this for future w
 
 \subsubsection{Levy-Wigner Models and the \ALPHAHAT Metric}
 
-eHere, we consider General Levy-Wigner (LW) model..
+Here, we consider General Levy-Wigner (LW) model..
 We show how to obtain the \WW~\ALPHAHAT metric by modeling VHT ESDs with an approximation to a Levy distribution, suitable
 for cases where the \HTSR $\alpha\le 2$.  
 
@@ -294,9 +294,9 @@ We model these VHT ESDs  \emph{as if} they follows a Levy-Stable distribution, g
 The  \LevyWigner (LW) model treats  $\mathbf{X}$ as if it were a \Wigner matrix (and not actually a rectnalgyle correlation  matrix),
 s we must decide how to map the \HTSR $\alpha$ to the L\'evy $\alpha_{l}$; for this, we select $\alpha_{l}=\alpha-1$.
 (See in Table~\ref{tab:known_r_transforms}.)
-The LW model is defined in terms of 3 paremeters:
+The LW model is defined in terms of 3 parameters:
 $a$ is a shift parameter, and $b$ is a complex phase factor depending on 2 real factors, $\beta$ and $\gamma$.
-Strictly the ESD for an LW model, $\rho_{LW}(\lambda)$, is defined by its characteristic function (i.e., the Fourier Transform of $\rho_{LW}(\lambda)$), but we  when the ESD is VHT, $\rho_{LW}(\lambda)\sim\lambda^{-\alpha_{l}-1}$, and  when $\alpha_{l}\approx 1$, the ESD resembles a PL HT ESD with the \HTSR $\alpha\approx 2$.
+Strictly the ESD for an LW model, $\rho_{LW}(\lambda)$, is defined by its characteristic function (i.e., the Fourier Transform of $\rho_{LW}(\lambda)$), but when the ESD is VHT, $\rho_{LW}(\lambda)\sim\lambda^{-\alpha_{l}-1}$, and when $\alpha_{l}\approx 1$, the ESD resembles a PL HT ESD with the \HTSR $\alpha\approx 2$.
 
 Let us model the \RTransform of our \VeryHeavyTailed (VHT) ESDs as
 \begin{align}
@@ -305,8 +305,8 @@ R(z)[\mathrm{LW}] & = bz^{\alpha_{l}-1},\;\alpha_{l}\in(0,1) \\ \nonumber
   & = bz^{\alpha-2},\;\alpha\in(0,2),
 \end{align}
 where $b$ is an unspecified constant (possibly negative and/or complex).
-This is not a particualry good model for VHT ESDs in practice; it is simply an approximate model
-we choose to obtain a formal expresion.
+This is not a particularly good model for VHT ESDs in practice; it is simply an approximate model, and
+we choose to obtain a formal expression.
 
 Integrating $R(z)[\mathrm{LW}]$, and (as above) taking the approximation $\LambdaECSmin\approx 0$, we obtain 
 \begin{equation}
@@ -314,7 +314,7 @@ Integrating $R(z)[\mathrm{LW}]$, and (as above) taking the approximation $\Lambd
 \GN[\mathrm{LW}] \approx \tfrac{b}{\alpha-2} \lambda^{\alpha-2}  .
 \end{equation}
 %
-For simplicity, if we now choose $b=\alpha_{l}=\alpha-2$, then  $\QT_{\mathrm{LW}}$ takes the form of a Shatten Norm
+For simplicity, if we now choose $b=\alpha_{l}=\alpha-2$, then $\QT_{\mathrm{LW}}$ takes the form of a Shatten Norm
 \begin{equation}
   \label{eqn:LW_model_2}
   \QT_{\mathrm{LW}} = \frac{1}{\MECS}\sum_{i}^{\MECS}\lambda^{\alpha-1}  .
@@ -326,20 +326,20 @@ Taking the logarithm of $\QT_{\mathrm{HT}} $, we obtain
 \log \QT[\mathrm{LW}] \approx (\alpha-1)\log\lambda
 \end{equation}
 
-As with the Free Cauchy (FC), let us approxmate $\QT$ by the largest term in the sum over $\GNECSI$, and then let $\lambda=\lambda_{max}$, giving
+As with the Free Cauchy (FC), let us approximate $\QT$ by the largest term in the sum over $\GNECSI$, and then let $\lambda=\lambda_{max}$, giving
 \begin{equation} 
 \label{eqn:LW_model_4} 
 \ALPHAHATEQN = \log_{10} \QT_{\mathrm{LW}} \approx (\alpha-1)\log\lambda_{max}   .
 \end{equation}
-We present this as a formal example, noting that is slightly different from the result for the IMP model
+We present this as a formal example, noting that it is slightly different from the result for the IMP model.
 (See Table~\ref{table:htsr_layer_quality}). 
-We do not claim this is a valid empirical model, as we have not attempted to fit a real-world ESD to Levy-stable distribtion.  
-We leave this to a future study, noting, however, there has been some work doing such fits~\cite{li2024exploring}.
+We do not claim this is a valid empirical model, as we have not attempted to fit a real-world ESD to Levy-stable distribution.  
+We leave this to a future study, noting however, there has been some work doing such fits~\cite{li2024exploring}.
 
-Ideally, we would like to have an rigorous expression for $R(z)$ not just
+Ideally, we would like to have a rigorous expression for $R(z)$ not just
 in the case of \IdealLearning but also for the entire \FatTailed Universality class.
-This is non-trivial to obtain and we will attempt this in a future work.
-Fow now, we will take a different approach, and evaluate $R(z)$ explicitly using numerical techniques.
+This is nontrivial to obtain and we will attempt this in a future work.
+For now, we will take a different approach and evaluate $R(z)$ explicitly using numerical techniques.
 
 \paragraph{Scaling insight.}
 For the VHT Universality class, we may expect $\lambda_{\max}$ to be fairly large such that
@@ -349,22 +349,22 @@ $\log_{10}\lambda_{max}$ simultaneously \emph{increases} in the VHT class.
 This opposing interplay explains why correlation traps produce small $\alpha$ yet yield deceptively moderate quality scores.
 
 \paragraph{Historical remark.}
-An earlier study on \ALPHAHAT,reported the opposite trend, with $\ALPHAHAT$ decreasing with increasing model quality.
-This is because we employed an un–normalised covariance, suggesting that $\lambda_{max}<1$ and $\log_{10}\lambda_{max}<0$
+An earlier study on \ALPHAHAT, reported the opposite trend, with $\ALPHAHAT$ decreasing with increasing model quality.
+This is because we employed an un–normalized covariance, suggesting that $\lambda_{max}<1$ and $\log_{10}\lambda_{max}<0$
 (although we have not rigorously checked this).
-The present $M$ normalisation clarifies that the VHT regime is meaningful \emph{only} when $\alpha<2$,
-indicating the layer amd therefore the model is overfit (in some unspecified way).
+The present $M$ normalization clarifies that the VHT regime is meaningful \emph{only} when $\alpha<2$,
+indicating the layer and therefore the model is overfit (in some unspecified way).
 
 
-\subsubsection{Summary of heurstic models.}
-Using the results for different \RTransforms, we can construct several different, related heurstic models for the \LayerQuality
-that resemble the very successful \WW \HTSR \ALPHA and \ALPHAHAT metrics.  These heurstic models allow us extend
-the \SETOL results for \Ideal learning (i.e. $\alpha=2$) to a wider range of NN layers, covering the \HTSR
-HT and VHT Universality classes and, correspondingly, NN layers that are both underfit $(\alpha>2)$
+\subsubsection{Summary of heuristic models.}
+Using the results for different \RTransforms, we can construct several different, related heuristic models for the \LayerQuality
+that resemble the very successful \WW \HTSR \ALPHA and \ALPHAHAT metrics.  These heuristic models allow us extend
+the \SETOL results for \Ideal learning (i.e., $\alpha=2$) to a wider range of NN layers, covering the \HTSR
+HT and VHT Universality classes and correspondingly, NN layers that are both underfit $(\alpha>2)$
 and overfit $(\alpha<2)$.
 
 \input{sections/Gtable}
-Table~\ref{tab:htsr_layer_quality} consolidates the derived expressions for the log \LayerQuality, \(\log\Q\), across multiple \(R\)–transform models, each capturing distinct heavy-tail characteristics of the ESD within the \SETOL framework. The Discrete (Spikes) model yields a Frobenius-like tail norm by summing the effective eigenvalues in the \ECS, directly tying quality to tail magnitude (cf.\ \EQN~\ref{eqn:spikes_model_4}). The Free Cauchy (FC) model links \(\log\Q\) inversely to the \HTSR metric \ALPHA, demonstrating that smaller \(\alpha\) values enhance quality (cf.\ \EQN~\ref{eqn:free_cauchy_Q}). The L\'evy-Wigner (LW) model connects \(\log\Q\) to \ALPHAHAT through the term \((\alpha-1)\log\lambda_{\max}\), revealing how very heavy tails depress layer quality (cf.\ \EQN~\ref{eqn:LW_model_4}). The Inverse MP (IMP) model defines the \ECS boundary via a branch cut at \(\kappa/2\) and approximates \(\log\Q\) as \(0.5\log\lambda_{\max}\), providing a robust metric for \IdealLearning scenarios. Each model thus offers a unique lens on layer quality, enabling direct mapping between theoretical \(R\)–transform assumptions and empirical \WW metrics.
+Table~\ref{tab:htsr_layer_quality} consolidates the derived expressions for the log \LayerQuality, \(\log\Q\), across multiple \(R\)–transform models, each capturing distinct heavy-tail characteristics of the ESD within the \SETOL framework. The Discrete (Spikes) model yields a Frobenius-like tail norm by summing the effective eigenvalues in the \ECS, directly tying quality to tail magnitude (cf. \EQN~\ref{eqn:spikes_model_4}). The Free Cauchy (FC) model links \(\log\Q\) inversely to the \HTSR metric \ALPHA, demonstrating that smaller \(\alpha\) values enhance quality (cf. \EQN~\ref{eqn:free_cauchy_Q}). The L\'evy-Wigner (LW) model connects \(\log\Q\) to \ALPHAHAT through the term \((\alpha-1)\log\lambda_{\max}\), revealing how very heavy tails depress layer quality (cf.\ \EQN~\ref{eqn:LW_model_4}). The Inverse MP (IMP) model defines the \ECS boundary via a branch cut at \(\kappa/2\) and approximates \(\log\Q\) as \(0.5\log\lambda_{\max}\), providing a robust metric for \IdealLearning scenarios. Each model thus offers a unique lens on layer quality, enabling direct mapping between theoretical \(R\)–transform assumptions and empirical \WW metrics.
 
 \paragraph{Practical Implications for Neural Network Analysis}
 These models empower researchers to tailor layer-quality assessments to specific \HTSR universality classes, boosting the predictive power of \WW metrics like \ALPHA and \ALPHAHAT. The Discrete model excels when the ESD exhibits clear eigenvalue spikes, delivering a sharp quality signal for Bulk$+$Spikes layers. The FC model supports \IdealLearning by linking quality directly to \(1/\alpha\), which simplifies cross-layer comparisons. The LW model helps detect overfitting by adjusting for \CorrelationTraps via \ALPHAHAT in very heavy-tailed regimes. Finally, the IMP model offers a parametric fit for both HT and VHT tails, with \(\kappa\) tuning alignment to real-world ESDs (cf.\ Figure~\ref{fig:IMPplots}). By integrating these models, practitioners can compute precise layer-quality metrics that optimize both performance and interpretability.

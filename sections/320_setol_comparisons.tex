@@ -40,7 +40,7 @@ NN has the lowest \GeneralizationError (and highest \ModelQuality) possible for 
 
 \michael{This par should maybe be above.}
 Previous results have shown that the \HTSR quality metrics (\ALPHA,  \ALPHAHAT, etc.)  correlate very well with reported test accuracies,
-as well as model quality on epoch-by-epoch basis.
+as well as model quality on an epoch-by-epoch basis~\cite{MM18_TR_JMLRversion,KFWB13}.
 \michael{Refs. And clarify.}
 These results hold because, as indicated by the \HTSR theory, the PL exponent $\alpha$ characterizes both the quality of the layer and provides an after-the-fact measure of the amount of regularization.%
 \footnote{By ``after-the-fact'', we mean that it provides a measure of the regularization in a layer, along the lines of the self-regularization interpretation of \HTSR Theory~\cite{MM18_TR_JMLRversion}. However, we do \emph{not} recommend that it be used as an explicit regularization parameter. Informally, this is since the ``easiest way to obtain HT ESDs is to make weight matrices HT element-wise; but this is \emph{not} what is observed in practice, and thus this is precisely \emph{not} what \HTSR Theory and our new \SETOL approach are designed to model.}

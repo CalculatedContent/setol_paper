@@ -31,10 +31,10 @@
 %%%Notice also that, here,  $\beta$ is the inverse-Temperature and not the simple constant $1$ or $2$ as in \cite{Tanaka}.
 %%%
 %%%\nred{REPEATED AGAIN}
-To generate the Average \Quality, $\QT$, we first  take the large-$N$ limit of $\IZG$
+To generate the Average \Quality, $\QT$, we first take the large-$N$ limit of $\IZG$
 \begin{equation}
   \label{eqn:IZG_limit}
-  %  \IZGINF := \lim_{N\gg 1}\IZG = \lim_{N\gg 1}\ln\; \mathbb{E}_{\AECS}\left[\exp N\beta\left( \tfrac{1}{N}\Trace{ \TMAT^{\top}\AECS_{2}\TMAT } \right)\right] ,
+  %  \IZGINF := \lim_{N\gg 1}\IZG = \lim_{N\gg 1}\ln\; \mathbb{E}_{\AECS}\left[\exp N\beta\left( \tfrac{1}{N}\Trace{ \TMAT^{\top}\AECSN\TMAT } \right)\right] ,
 \IZGINF := \lim_{N \gg 1} \IZG 
 = \lim_{N \gg 1} \ln \; 
   \Expected[\AECS]{ 
@@ -42,8 +42,8 @@ To generate the Average \Quality, $\QT$, we first  take the large-$N$ limit of $
       N \beta \Trace{\tfrac{1}{N}\TMAT^{\top}\,\AECS_{2}\,\TMAT}
   } 
 \end{equation}
-and then take the appropriate partial derivative ,
-analogously to as we did for $\AVGSTGE$; see Section~\ref{sxn:quality} for more details.
+and then take the appropriate partial derivative,
+analogously to how we did for $\AVGSTGE$; see Section~\ref{sxn:quality} for more details.
 This gives (as in \EQN~\ref{eqn:QT_def})
 \begin{align}
 \label{eqn:IZG_generate_Q2}
@@ -56,34 +56,34 @@ and we expect both results to be yield the same expression.
 
 This HCIZ integral in \EQN~\ref{eqn:IZG_limit} can be evaluated
 (i.e in the large-$N$ limit) using a result by Tanaka ---provided
-the matrix $\AECS_{2}$ is low rank, which holds when the \TRACELOG condition is satisfied.
+the matrix $\AECSN$ is low rank, which holds when the \TRACELOG condition is satisfied.
 Thus, moving forward, we will assume an
 \EffectiveCorrelationSpace (\ECS) of rank $\MECS$, where $\LambdaECSmin$ is the $M^{th}$-largest eigenvalue of $\XECS$,
-and defines the start of the~\ECS (and whatever branchcut is necssary to integrate $R(z)$).
+and defines the start of the~\ECS (and whatever branch-cut is necessary to integrate $R(z)$).
 
 Tanaka's result for the~\ECS can be expressed as:
 \begin{equation}
   \label{eqn:tanaka_result}
   \underset{N\gg 1}{\lim}\frac{1}{N}\ln
-\Expected[\AECS]{\exp\left(\beta \Trace{\TMAT^{\top}\AECS_{2}\TMAT}\right)}
+\Expected[\AECS]{\exp\left(\beta \Trace{\TMAT^{\top}\AECSN\TMAT}\right)}
   =\beta\sum\limits_{i=1}^{\MECS}\;\GNECSI,
 \end{equation}
 where the sum now only includes the eigenvalues of $\XECS$ (in the~\ECS), $\beta=\tfrac{1}{T}$
 is the Inverse-Temperature, and $\LambdaECS$ is an eigenvalue of $\XECS$, the Teacher
 Correlation matrix projected into the \ECS space.
-$\AECS_{2}$ is the $N \times N$ form of the \Student Correlation matrix,
+$\AECSN$ is the $N \times N$ form of the \Student Correlation matrix,
 with $N-M$ non-zero eigenvalues, and $\TMAT$ is the $N\times M$ \Teacher  weight matrix
 (also effectively projected into the \ECS, i.e. $\TMAT=\TECS$ here).
 $\GNI$ is the \GEN, defined below.
 \footnote{We use the notation $\Expected[\AECS]{\cdots}$ for expected value and placed $\tfrac{1}{N}$ on the L.H.S.
 to help the reader compare this to the original expressions in~\cite{Tanaka2007, Tanaka2008}.
-Also,  in \cite{Tanaka2007, Tanaka2008},$\beta=1|2$, but, in fact, if one inserts $-\beta$ as an inverse-Temperature into the final expression, it simply factors out.}
+Also,  in \cite{Tanaka2007, Tanaka2008},$\beta=1|2$, but, in fact, if one inserts $-\beta$ as an inverse temperature into the final expression, it simply factors out.}
 This gives
 \begin{equation}
 \label{eqn:tanaka_result2}
 \IZGINF = N\beta\sum\limits_{i=1}^{\MECS}\;\GNECSI,
 \end{equation}
-\michaeladdressed{State this in a self contained way, with rank assumptins, etc.}
+\michaeladdressed{State this in a self contained way, with rank assumptions, etc.}
 
 
 This gives a final expression for the Average \LayerQuality (Squared) $\QT$ as

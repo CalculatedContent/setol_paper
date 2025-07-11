@@ -129,7 +129,7 @@ We now want to express
 %the Log-Determinant, $\ln\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)$,
 the generating function $\ZD$ 
 in \ref{eqn:hciz-exp-ln}
-in terms of an integral over the continuous, limiting spectral density
+in terms of an integral over the continuous limiting spectral density
 $\rho_{\AMAT}(\lambda)$ of the correlation matrix $\AMAT_{2}$.  
 
 First, we express the Determinant of the matrix $\mathbf{\Delta}-\mathbf{\Lambda}$ in terms of discrete eigenvalues:
@@ -151,7 +151,7 @@ We can express %Define
 the ESD, $\tilde\rho_{\AMAT}(\lambda)$, of the 
 Student Correlation 
 matrix
-$\AMAT_{2}$ in terms of the Dirac delta-function, $\delta(x)$, as
+$\AMAT_N$ in terms of the Dirac delta-function, $\delta(x)$, as
 \begin{equation}
 \label{eqn:rho-emp}
     \tilde\rho_{\AMAT}(\lambda)=\frac{1}{N}\sum_{i=1}^{N}\delta(\lambda-\lambda_{i})  .
@@ -159,10 +159,10 @@ $\AMAT_{2}$ in terms of the Dirac delta-function, $\delta(x)$, as
 Using this, the \ExpectedValue of the Log-Determinant 
 in \ref{eqn:ln-det-discrete}
 can be expressed in terms of the ESD of
-$\AMAT_{2}$ as
+$\AMAT_N$ as
 \begin{align}
 \nonumber
-\Expected[\AMAT_{2}]{\ln\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)^{-1/2}}
+\Expected[\AMAT_N]{\ln\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)^{-1/2}}
    & = -\dfrac{1}{2}\sum_{\mu=1}^{M}\sum_{i=1}^{N}\int
        d\lambda\ln(\DeltaMu-\lambda)\delta(\lambda-\lambda_{i}) \\ 
 \nonumber
@@ -212,7 +212,7 @@ as
 
 Using the Self-Averaging Property,
 \begin{equation}
-   \ln \EZDATWO \simeq \Expected[\mathbf{A}_1]{\ln \ZD} ,
+   \ln \EZDATWO \simeq \Expected[\mathbf{A}_M]{\ln \ZD} ,
 \end{equation}
 It follows from \EQN~\ref{eqn:Z-rho-2}
 that

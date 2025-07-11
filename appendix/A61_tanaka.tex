@@ -5,11 +5,11 @@
 To evaluate \ref{eqn:hciz2},
 we %%MM%% In setting up the problem for this paper, we 
 want to integrate over all \Student Correlation matrices $\mathbf{\AMAT}$
-that ``resemble the \Teacher Correlation matrix $\mathbf{X}$.  
+that ``resemble'' the \Teacher Correlation matrix $\mathbf{X}$.  
 To %%MM%% So, first, we need to 
 formalize this idea,
 we need to %%MM%% which requires that we 
-define the measure over ``all desired $\mathbf{\AMAT}$, $d\mu(\mathbf{\AMAT})$, 
+define the measure over ``all desired'' $\mathbf{\AMAT}$, $d\mu(\mathbf{\AMAT})$, 
 in 
 terms of the actual $M$ eigenvalues, $\left\{ \lambda_{i} \right\}_{i=1}^{M}$, of the \Teacher.
 
@@ -60,11 +60,11 @@ possible (\Teacher) weight matrices $\mathbf{W}$
 \begin{equation}
   \label{eqn:ZD0}
     \ZD=\int d\mu(\mathbf{W})\exp[\frac{\beta}{2}\left
-    (\Trace{\mathbf{W}^{\top}\AMAT_{2}\mathbf{W}}-\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}  
+    (\Trace{\mathbf{W}^{\top}\AMAT_N\mathbf{W}}-\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}  
     \right)]  ,
 \end{equation}
 %where the matrix $\mathbf{D}$ is the called the \SourceMatrix.
-\michaeladdressed{@charles: What is this a ``modification of? I get it if it is just a regularized objective, with Lagrange parameters to be determined; but are we going to use it as a generating function or partition function of some effective physical system? Maybe a sentence or two saying why doing this modification makes sense. This is probably just going to be a vector of prices or lagrange parameters that control the constraint satisfaction?}
+\michaeladdressed{@charles: What is this a ``modification of? I get it if it is just a regularized objective, with LaGrange parameters to be determined; but are we going to use it as a generating function or partition function of some effective physical system? Maybe a sentence or two saying why doing this modification makes sense. This is probably just going to be a vector of prices or lagrange parameters that control the constraint satisfaction?}
 \michaeladdressed{Also, $Z(D)$ versus $\ZD$?}
 Observe that this integral only converges when all the eigenvalues of $\DMAT$, 
 $\left\{ \DeltaMu \right\}_{\mu=1}^{M}$, 
@@ -79,7 +79,7 @@ The eigenvalues of $\mathbf{D}$ will turn out to Lagrange Multipliers, needed la
 To evaluate the large-$N$ case of $\IZG$ (see \ref{eqn:hciz_def2},~\ref{eqn:hciz_def3}), 
 we assume that the distribution of possible \Teacher correlation matrices,
 $\mu(\mathbf{X})$, satisfies a \emph{Large Deviation Principle (LDP)}.
-A LDP applies to probability distributions that take an exponential form,
+An LDP applies to probability distributions that take an exponential form,
 such that $\mu(\mathbf{X})=e^{-N I(\mathbf{X})}d\mu(\mathbf{X})$,
 where  $I(\mathbf{X})$ is Entropy or Rate function $I(\mathbf{X})$.
 \michael{REF.}
@@ -91,7 +91,7 @@ where  $I(\mathbf{X})$ is Entropy or Rate function $I(\mathbf{X})$.
 %either cut off at the largest eigenvalue $\lambda^{max}$
 %and/or with an exponential decay~\cite{YTHx22_TR}.
 %)))}
-In applying a LDP, we effectively restrict measure of student correlation matrices $\mathbf{\AMAT}$
+In applying an LDP, we effectively restrict measure of student correlation matrices $\mathbf{\AMAT}$
 to those most similar to the empirically observed \Teacher correlation matrix $\mathbf{X}$.
 %
 We expect the measure over all \Teacher correlation matrices
@@ -125,7 +125,7 @@ relations, Eqns.~\ref{eqn:ZD_step1} and ~\ref{eqn:ZD_step2}:
    \textbf{Obtaining an integral transform of $\rho^{\infty}_{\AMAT}(\lambda)$.}
    First, we expand and reduce \EQN~\ref{eqn:ZD0} and evaluate the expected value of
    $\EZDA=\EZDATWO$ in the large-$N$ limit by expressing the $\rho_{\AMAT}(\lambda)$
-   for the $N\times N$ matrix $\AMAT=\mathbf{A}_{2}=\tfrac{1}{N}\SMAT\SMAT^{\top}$
+   for the $N\times N$ matrix $\AMAT=\mathbf{A}_N=\tfrac{1}{N}\SMAT\SMAT^{\top}$
    in the continuum representation, i.e., as ]
    $\rho^{emp}_{\AMAT}(\lambda)\rightarrow \rho^{\infty}_{\AMAT}(\lambda)$, to obtain:
    \begin{equation}
@@ -138,7 +138,7 @@ relations, Eqns.~\ref{eqn:ZD_step1} and ~\ref{eqn:ZD_step2}:
    \item
    \textbf{Forming the \SaddlePointApproximation (SPA).}
    We evaluate \EQN~\ref{eqn:ZD0} as the expected value of $\EZDA=\EZDAONE$
-   for the $M \times M$ matrix $\AMAT=\mathbf{A}_{1}=\tfrac{1}{N}\SMAT^{\top}\SMAT$
+   for the $M \times M$ matrix $\AMAT=\mathbf{A}_M=\tfrac{1}{N}\SMAT^{\top}\SMAT$
    (but explicitly in terms of $d\mu(\mathbf{X})$).
    Then, taking in the large-$N$ approximation using the SPA,
     (and which can be done implicitly using the LDP), we obtain

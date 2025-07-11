@@ -218,7 +218,7 @@ when describing the Student-Teacher model.
 %
 For that reason, for now, we
 will assume that the $\MY_{\mu}$ is \emph{implicit} in $\Delta E_{\ell_2}$,
-will drop the $\MY_{\mu}$ and $y^{n}$ symbols,   
+will drop the $\MY_{\mu}$ and $y^{n}$ symbols, 
 and just write this total error / energy difference as
 \begin{align}
   \label{eqn:detox_FIXLATER}
@@ -264,7 +264,6 @@ and if we want to express an n-dimensional average over $f()$ then we would expr
     \langle f(\NDXIn) \rangle_{\AVGNDXIn} := \frac{1}{n} \int d\mu(\NDXIn) f(\NDXIn)  
 \end{align}
 \michaelB{Q: Is that correct? I think we need to write it out explicitly, since below we introduce it but then go to a multi-dimensional integral.}
-\michaelB{NO, ITS WRONG.  MM TO FIX.  CHARLES FIXED.}
 where the BraKet $\langle\cdots\rangle_{\AVGNDXIn}$ deotes the integral over the idealized
 Gaussian-field data $\NDXIn$, but with the convention that the normalization $\tfrac{1}{n}$
 appears inside the \BraKet implicitly.
@@ -1084,20 +1083,20 @@ This will take the form of an HCIZ integral,
 \label{eqn:hciz_prelim}
 %\IZG := \lim_{N\gg 1}\ln \underbrace{\int d\mu(\AMAT) \exp[\beta\Trace{\AMAT\BMAT}] }_{\mbox{HCIZ Integral}} 
 %  \approx N\beta\Trace{\mathcal{G}_{A}(\BMAT/N)}  ,
-\IZG := \lim_{N\gg 1}\ln \underbrace{\int d\mu(\AMAT) \exp[N\beta\Trace{\AMAT_{2}\XMAT_{ 2}}] }_{\mbox{HCIZ Integral}} 
+\IZG := \lim_{N\gg 1}\ln \underbrace{\int d\mu(\AMAT) \exp[N\beta\Trace{\AMAT_N\XMAT_N}] }_{\mbox{HCIZ Integral}} 
   \approx N\beta\Trace{\mathcal{G}_{A}(\lambda)}  ,
 \end{align}
 that is evaluated in the ``large-N limit`` (here, meaning as $N \gg 1$, but not at the limit $N=\infty$).
 \michaeladdressed{MM TO DO: fix the following.}
-Here,  $\AMAT$ and $\XMAT$ are  $N \times N$ Hermetian matrices, $d\mu(\AMAT)$ is a measure
+Here,  $\AMAT_N$ and $\XMAT_N$ are $N \times N$ Hermetian matrices, (See Appendix \ref{sxn:appendix_A} for notation,) $d\mu(\AMAT)$ is a measure
 over all random (Orthogonal) matrices (see \EQN~\ref{eqn:dmuA}),
 and $\mathcal{G}_{A}()$ is a \red{\GEN} 
 (different from $\Gamma$, above), defined in \EQN~\ref{eqn:generating_function_A} in Section~\ref{sxn:matgen}. 
 In applying this, we will actually write $\Trace{\AMAT\XMAT}=\tfrac{1}{N}\Trace{\AMAT\WMAT\WMAT^{\top}}=\tfrac{1}{N}\Trace{\WMAT^{\top}\AMAT\WMAT}$,
-where $\mathbf{W}$ is an $N \times M$ layer weight matrix, and $\AMAT=\AMAT_{2}:=\tfrac{1}{N}\SMAT\SMAT^{\top}$ is a layer
-Correlation matrix, and, here,  $\XMAT=\XMAT_2=\tfrac{1}{N}\WMAT\WMAT^{\top}$).
+where $\mathbf{W}$ is an $N \times M$ layer weight matrix, and $\AMAT=\AMAT_N:=\tfrac{1}{N}\SMAT\SMAT^{\top}$ is an (outer) layer
+Correlation matrix, and, here,  $\XMAT=\XMAT_N=\tfrac{1}{N}\WMAT\WMAT^{\top}$).
 Moreover, to evaluate this, we will need to restrict $\AMAT$ (and $\XMAT$)
-to the lower-rank \EffectiveCorrelationSpace (\ECS),  i.e., $\AMAT\rightarrow\AECS$.
+to the lower-rank \EffectiveCorrelationSpace (\ECS),  i.e., $\AMAT\rightarrow\AECS$. ($\XMAT$ is already restricted to the span of $\XECS$ by \ECS assumption.)
 \michaelB{MM TO DO: I think that once I put in the derivation for $\Q$ by taking the appropriate partial derivative of $\Gamma_{Q}$, then it will be easier to place this, since this subsection has always come out of the blue, but that would make it smoother.}
 
 Notice this looks similar to \SaddlePointApproximation (SPA), but where the more complicated function
@@ -1126,7 +1125,7 @@ with the final result
     \IZGINF:=N\beta\sum_{i=1}^{\MECS}\int^{\LambdaECS_{i}}_{\LambdaECSmin} dz R(z) ,
 \end{align}
 where $R(z)$ is a complex function, the \RTransform of the ESD $\rho(\lambda)$ of the \Teacher, and $\LambdaECS_{i}$ are the eigenvalues of \Teacher \CorrelationMatrix $\XECS$, restricted to the~\ECS.
-For more details, see Section~\ref{sxn:matgen} and Appendicies~\ref{sxn:TraceLogDerivation} and~\ref{sxn:tanaka}.
+For more details, see Section~\ref{sxn:matgen} and Appendices~\ref{sxn:TraceLogDerivation} and~\ref{sxn:tanaka}.
 
 \paragraph{Branch Cuts and Phase Behavior.}
 Free energies ($F,\Gamma$)  often exhibit \emph{branch cuts} when expressed as analytic functions 
@@ -1146,5 +1145,5 @@ corresponding to the \ECS.
 We argue that this cut signifies a \emph{phase boundary}—an abrupt change
 in the system’s correlation structure and corresponds to an emerging singularity in the \LayerQuality.
 Even though we perform only a single exact RG step , 
-(rather than fully iterating a renormalization flow), the appearance of a branch cut in $\IZGINF$ wil encode
-non-trivial \emph{phase-like} behavior in the \SETOL \HeavyTailed matrix model.
+(rather than fully iterating a renormalization flow), the appearance of a branch cut in $\IZGINF$ will encode
+nontrivial \emph{phase-like} behavior in the \SETOL \HeavyTailed matrix model.

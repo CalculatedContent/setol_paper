@@ -8,7 +8,7 @@ We follow the first arguments by Tanaka\cite{Tanaka2007} (which follows Cherrier
       = M \left( 1 + \ln \frac{2\pi}{\beta} \right) - \sum_{\mu=1}^{M} \min_{\beta\delta_{\mu}} \left[\beta\delta_{\mu}\lambda_{\mu}
       - \beta\GNORM(\lambda_{\mu}) + \ln \lambda_{\mu} \right]   .
 \end{align}
-By cancelling the $\ln \frac{2\pi}{\beta}$ term from both sides, we obtain
+By canceling the $\ln \frac{2\pi}{\beta}$ term from both sides, we obtain
 \begin{align}
    -\sum_{\mu=1}^{M}\int \ln(\beta\delta_{\mu}-\lambda)\rho^{\infty}_{\AMAT}(\lambda)d\lambda
    =
@@ -38,7 +38,7 @@ where we need to  define  $ \beta\delta(\lambda)$, which (not to be confused wit
 the functional dependence between the eigenvalues of the source matrix $\DMAT$ and the \Student \CorrelationMatrix $\AMAT$.
 
 $\GNORM(\lambda)$ is computed by minimizing over $\delta$, ensuring the relationship holds for the entire spectrum.
-So let us take the derivative of $\beta\GNORM$ w/r.t $\lambda$. 
+So let us take the derivative of $\beta\GNORM$ w.r.t. $\lambda$. 
 Term by term, this gives:
 \begin{equation}
 \dfrac{d}{d\lambda} \beta\delta(\lambda)\lambda = \beta\delta(\lambda) + \dfrac{d \beta\delta(\lambda)}{d\lambda} \lambda
@@ -53,7 +53,7 @@ Term by term, this gives:
 &=  \dfrac{d \beta\delta(\lambda)}{d\lambda}\int\dfrac{ \rho^{\infty}_{\AMAT}(\lambda)}{\beta\delta(\lambda) - \lambda}d\lambda
 \end{align}
 
-We can now simplify by  defining $\delta(\lambda)$ implicitly by the integral relation
+We can now simplify by defining $\delta(\lambda)$ implicitly by the integral relation
 \begin{equation}
 \lambda = \int \frac{\rho^{\infty}_{\AMAT}(\lambda)}{\beta\delta(\lambda) - \lambda} d\lambda.
 \end{equation}

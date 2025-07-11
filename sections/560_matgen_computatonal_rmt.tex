@@ -14,7 +14,7 @@ in terms of the matrix moments $m_{k}$\cite{potters_bouchaud_2020}, defined (her
   m_{k}:=\Trace{\XECS^{k}}=\sum_{i=1}^{\MECS}(\LambdaECS)^{k}
 \end{equation}
 where $\LambdaECS_{k}$ is the k-th eigenvalue of the effective correlation matrix $\mathbf\XECS$,
-which  has been mean-centered and normalized by its standard deviation.
+which has been mean-centered and normalized by its standard deviation.
 
 The free cumulants are defined recursively as
 \begin{equation}
@@ -34,14 +34,13 @@ The first 5 \emph{\Cumulants} are, explicitly,
 \end{align}
 
 Using these definitions, we can estimate the \LayerQuality matrix $\QT$ for our experimental models
-(in Section~\ref{sxn:empirical} by computing  $\GN$ for the effective correlation space
-(i.e. the tail of the layer ESD), however it is defined.  That is, we use
-
+(in Section~\ref{sxn:empirical} by computing $\GN$ for the effective correlation space
+(i.e., the tail of the layer ESD,) however it may be defined.  That is, we use
 \begin{align}
   \label{eqn:G_lambda_series}
 \GNI=\kappa_{1}\frac{\LambdaECS}{\MECS}+\frac{\kappa_{2}}{2}\left(\dfrac{\LambdaECS}{\MECS}\right)^{2}+\cdots
 \end{align}
 Note that we evaluate $\GN$ using eigenvalues normalized with $\tfrac{1}{\MECS}$.
-This is implemented implemented in the ~\WW package.
+This is implemented in the ~\WW package.
 In Section~\Ref{sxn:empirical_comp_r_transforms}, we examine some examples of this approach to computing \LayerQualities directly.
 
