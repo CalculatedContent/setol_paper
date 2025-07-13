@@ -43,10 +43,10 @@ between the \Teacher layer weight matrix $\TMAT$ and a similar \emph{\Student} (
 The notation $\THRMAVGIZ{\cdots}$ denotes a \ThermalAverage over
 all \Student weight matrices $\mathbf{S}$ that resemble the \Teacher weight matrix $\mathbf{T}$.
 By ``resemble'', the \SETOL approach assumes that 
-%$\mathbf{S}$ lies in the same \HTSR Universality class as the $\mathbf{T}$, and, even more, that 
 the ESD of $\mathbf{S}$ has the same \emph{limiting} form as $\mathbf{T}$, placing them in the same \HTSR Universality class.
 This is made more precise below.
 
+\paragraph{The Overlap $\OVERLAP$, and the Inner and Outer forms of $\AMAT$, $\AMATM$ and $\AMATN$, resp.}
 Let us now express the average matrix-matrix overlap $\mathbf{R}$ in squared form using:
 \begin{align}
   \label{eqn:R2}
@@ -54,10 +54,10 @@ Let us now express the average matrix-matrix overlap $\mathbf{R}$ in squared for
 &=\frac{1}{N^{2}}\Trace{\mathbf{T}^{\TR}\mathbf{SS}^{\TR}\mathbf{T}}
 =\frac{1}{N}\Trace{\mathbf{T}^{\TR}\mathbf{A}_N\mathbf{T}}
 \end{align}
-where $\AMATN$ is the $N\times N$ form of the \Student correlation matrix,
+where $\AMATN$ is called the \emph{Outer} \Student correlation matrix, and is  the $N\times N$ form of the \Student correlation matrix,  
 $\mathbf{A}_N:=\frac{1}{N}\mathbf{SS}^{\TR}$.
-We will also define the $M\times M$ matrix, $\AMATM=\frac{1}{N}\mathbf{S}^{\TR}\mathbf{S}$,
-used later. Note that $\AMATM$ also has a $\frac 1 N$ factor, so that its non-zero eigenvalues will be the same as $\AMATN$, but has dimensions $M \times M$.
+We will also define the  the \emph{Inner} \Student correlation matrix,  the $M\times M$ matrix, $\AMATM=\frac{1}{N}\mathbf{S}^{\TR}\mathbf{S}$, which is 
+used later. Note that $\AMATM$ also has a $\frac 1 N$ factor, so that its non-zero eigenvalues will be the same as $\AMATN$, but has dimensions $M \times M$. We will denote the Outer  $\AMATN$ and Innder $\AMATM$ forms when the context demands it, and will simply use the general form $\AMAT$ when they can be interchanged.
 
 \michaeladdressed{Clarify.}
 %It is argued that the \Student and \Teacher weight matrices (i.e., $\TMAT, \SMAT$) have
@@ -68,11 +68,12 @@ used later. Note that $\AMATM$ also has a $\frac 1 N$ factor, so that its non-ze
 %methods, both described below.
 \michaeladdressed{MM TO DO: Dense.  Where is the best place for this par.}
 
+\paragraph{The Quality-Squared Generating Function $\IZG$.}
 As explained in Section~\ref{sxn:mathP}, this \QualitySquared is more readily obtained as 
 the derivative of the \LayerQualitySquared \GeneratingFunction, $\IZG$, defined as
 \begin{align}
   \label{eqn:IZG_QT}
-  \QT := \dfrac{1}{\beta}\dfrac{\partial }{\partial N} \lim_{N\gg 1}\IZG
+  \QT := \dfrac{1}{\beta}\dfrac{\partial }{\partial \ND} \lim_{N\gg 1}\IZG
 \end{align}
 $\IZG$ is essentially ($\beta$ times) a \emph{\FreeEnergy} for the (approximate) \LayerQualitySquared.
 (see Section~\ref{sxn:SMOG_main}, and the Appendix, Section~\ref{sxn:quality}).
@@ -81,10 +82,9 @@ For more details, see Section~\ref{sxn:matgen}, and the Appendix, Section~\ref{s
 We can write $\IZG$ as an HCIZ Integral, 
 \begin{align}
   \label{eqn:QT_dS}
-  \IZG  &=  \ln\int d\mu(\mathbf{S})\exp\left(N\beta\Trace{\mathbf{T}^{\TR}\mathbf{A}_N\mathbf{T}}\right),
+  \IZG  &= \red{\tfrac{1}{N}} \ln\int d\mu(\mathbf{S})\exp\left(\ND \beta N\Trace{\mathbf{T}^{\TR}\mathbf{A}_N\mathbf{T}}\right),
 \end{align}
-
-
+\nred{which is like a (negative) Free Energy, and averaged over all possible outputs $N$}
 
 The \SETOL approach then seeks to express $\IZG$ in~\EQN~\ref{eqn:QT_dS} as an HCIZ integral (and in the large-N limit)~\cite{potters_bouchaud_2020,Tanaka2007,Tanaka2008}.
 We evaluate this at large-$N$, and write
@@ -106,8 +106,6 @@ We evaluate this at large-$N$, and write
 %%%we  formulate the  $\IZG$ using the form $\AMAT_2$.
 %%%%Also, and importantly, the change in measure from $d\mu(\mathbf{S})$ to $d\mu(\mathbf{\tilder{A}})$
 %is needed in order to apply the HCIZ  integral.
-\michaeladdressed{I feel like expositionally it may be good to highlight this in the intro also and to have a bullet highlighting the rule from \HTSR for selecting the generalizing subspace; that will make it easier in the next subsection to highlight how the two connect.}
-\charles{Lets discuss.  The intro has some of this. and a lot more}
 With these definitions in place, moving forward, the following key assumptions, which can be tested empirically, must hold:
 \begin{itemize}
   \item
@@ -124,11 +122,10 @@ With these definitions in place, moving forward, the following key assumptions, 
 %  Importantly, this lets interpret the \EQN~\ref{eqn:QT_HCIZ}  as acting only in this subspace.
   \item
   \textbf{The \TRACELOG Condition.}
-  The Effective \Student correlation matrix $\AECSM$ 
-  satisfies the condition that $\Trace{\ln\AECSM}=\ln\Det{\AECSM}=0$,
+  The Effective Student correlation matrix $\AECS$ 
+  satisfies the condition that $\Trace{\ln\AECS}=\ln\Det{\AECS}=0$,
   so that the change of measure $d\mu(\SMAT) \rightarrow d\mu(\AECS) $ is Volume Preserving.
-  This condition is derived explicitly in terms of $\AECSM$, and therefore will hold for $\AECSN$
-  (and by assumption the Teacher Correlation matrix, $\XECS=\frac{1}{N}\TMAT^{\TR}\TMAT=\frac{1}{N}\mathbf{P}_{ecs}\TMAT^{\TR}\TMAT$).
+  This condition is derived explicitly in terms of Inner form,  $\AECSM$, and will also  hold for the Outer form, $\AECSN$
   Practically, this implies that the $\MECS$ eigenvalues $\LambdaECS$
   of the tail of the ESD must satisfy $\sum_{i=1}^{\MECS}\ln\LambdaECS_{i}\approx 0$.
   Experiments will test this assumption explicitly in Section~\ref{sxn:empirical-trace_log}.
@@ -140,33 +137,25 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
   We have
   \begin{align}
   \label{eqn:IZGINF_HCIZ}
-  \IZGINF = \lim_{N\gg 1}\ln\int d\mu(\AECS)\exp\left(\beta\Trace{\mathbf{T}^{\TR}\AECSN\mathbf{T}}\right) %= \beta\sum_{i=1}^{\MECS}\GNECS
+  \IZGINF = \lim_{N\gg 1}\red{\tfrac{1}{N}}\ln\int d\mu(\AECS)\exp\left(\ND\beta\Trace{\mathbf{T}^{\TR}\AECSN\mathbf{T}}\right) %= \beta\sum_{i=1}^{\MECS}\GNECS
   \end{align}
-  where  measure $d\mu(\AECS)$ lets us average over all \Student Correlation matrices $\AECSN$ which
+  where  measure $d\mu(\AECS)$ lets us average over all (Outer) \Student Correlation matrices $\AECSN$ explicitly, which
   lie in the~\ECS space and which ``resemble'' the \Teacher, 
   where by ``resemble'' we mean that they share the same form of the tail of
   their limiting ESDs,
   i.e., $\rho^{\infty}_{\AECS}(\lambda)\sim\rho^{\infty}_{\XECS}(\lambda)$.
   \item
   \textbf{The Layer Quality (Squared) $\QT$ is a~\GEN.}
-  \michael{We need to figure out what to call that, I think norm isn't right, is it a generating function.}
-  \charles{OK go ahead.}
   The final expression for $\QT$ can be written as the derivative of $\IZGINF$  as
   \begin{align}
     \label{eqn:QT_result}
-    \QT = \dfrac{1}{\beta}\dfrac{\partial}{\partial N}\IZGINF = \sum_{i=1}^{\MECS}\GNI
+    \QT = \dfrac{1}{\beta}\dfrac{\partial}{\partial \ND}\IZGINF = \sum_{i=1}^{\MECS}\GNI
   \end{align}
-  where $\GNI$ is a \emph{\GEN}, and is  defined as the integrated \emph{\RTransform} $R(z)$ of the \Teacher
+  where $\GNI$ is, albeit imprecisely, a \emph{\GEN} of sortd, and is  defined as the integrated \emph{\RTransform} $R(z)$ of the \Teacher
   layer ESD (where $z\in\mathbb{C}$), such that $\GN:= \int_{\LambdaECSmin}^{\lambda}R(z)dz$
   and $\LambdaECSmin$  encapsulates  the~\ECS (and, for some choices of $R(z)$,  selects the desired branch-cut of $R(z)$
   so that it is both single-valued and analytic).
 \end{itemize}
-
-
-\michael{MM TO DO: Somewhere we need to distinguish between \SemiEmpirical in general and our specific \SETOL approach.}
-%\charles{TRY THIS: These two key, testable assumptions allow \SETOL to move beyond the \HTSR \Phenomenology to derive a more rigorous expression of model \GeneralizationError. It does so by leveraging spectral properties of weight matrices that permit deeper characterization of ways in which weight \emph{matrices} can be similar -- or \ATypical -- which is something parameter \emph{vectors} cannot.}
-%\michael{No, I understand that.  What I am asking is: how do we want to describe the difference between \SemiEmpirical and \SETOL?  I think \SETOL is our particular model and setup; but \SemiEmpirical is a more general approach (meaning, in particular, it may not need a bolded name here).  }
-%\charles{OK, well we have a section (140) where we discuss nuclear physics; what about there ?}
 
 To apply the theory, one must choose an \RTransform $R(z)$ for	the \Teacher that models 
 the tail of the ESD $\rho^{emp}_{T}(\lambda)$, and that can be
@@ -175,9 +164,9 @@ This may include the number of Spikes $\lambda^{spike}$, the fitted PL exponent 
 the maximum eigenvalue $\lambda_{max}$, or even the entire tail $\rho^{tail}_{T}(\lambda)$.
 This may be a formal expression, a computational procedure, or some combination.
 
-To integrate $R(x)$, however, to have a physicaly meaningful result,
+To integrate $R(x)$, however, to have a physically meaningful result,
 one must ensure that $R(z)$ is both
-analytic and single-valued on domain of interest, namely, the \ECS (and therefore
+analytic and single-valued on the domain of interest, namely, the \ECS (and therefore
 the (PL) tail of the ESD),  $z \ge \LambdaECSmin$.
 Because the ESD is frequently \HeavyTailed (HT), this
 \RTransform $R(z)$ may have a branch-cut, and it is expected that this will occur
@@ -189,7 +178,6 @@ will also show that the \HTSR PL \LayerQuality metrics \ALPHA $(\alpha)$  and \A
 can be formally derived directly from the \SETOL \LayerQuality $\Q$ by selecting the appropriate
 \RTransform $R(z)$. In Section~\ref{sxn:r_transforms} we provide several possible
 models of $R(z)$ and the resulting \LayerQuality $\Q$.
-\michaeladdressed{Huh?}
 
 \paragraph{Renormalization Group Effective Hamiltonian}
 The formulation of SETOL closely parallels the construction of an \EffectiveHamiltonian~$\HEFF$
@@ -200,7 +188,7 @@ and rewrite Eqn.\ref{eqn:IZGINF_HCIZ} in terms of an \emph{\Renormalized} \Effec
 that spans the \EffectiveCorrelationSpace~(\ECS). Formally, we have:
 \begin{align}
 \label{eqn:RG}
-\ln \int d\mu(\SMAT)e^{N\beta \operatorname{Tr}[\HBARE]} \;\xrightarrow{RG}\; \lim_{N\gg 1}\ln \int d\mu(\AECS)e^{N\beta \operatorname{Tr}[\HEFF]} 
+\red{\tfrac{1}{N}}\ln \int d\mu(\SMAT)e^{\ND \beta N \operatorname{Tr}[\HBARE]} \;\xrightarrow{RG}\; \lim_{N\gg 1}\red{\tfrac{1}{N}}\ln \int d\mu(\AECS)e^{\ND \beta N \operatorname{Tr}[\HEFF]} 
 \end{align}
 where the RG transformation is defined by the \ScaleInvariant \TRACELOG condition,
 applied at large-$N$,

@@ -5,12 +5,12 @@ to  establish \EQN~\ref{eqn:ZD_step2}, \charles{in Steps $2.1-2.6$}.
 
 Using the LDP (and following similar approaches in spin glass theory \cite{PP95}),
 below we will show that we can write the expected value of $\ZD$ 
-in terms of $d\mu(\mathbf{X})$ now (which is equivalent to $d\mu(\AMAT_{1})$)
+in terms of $d\mu(\mathbf{X})$ now (which is equivalent to $d\mu(\AMATM)$)
 and in the large-$N$ approximation, as
 \begin{equation}
   \label{eqn:LDP}
  \lim_{N \gg 1} \EZDAONE=
-  \int\exp\left(\beta N \Trace{\GNORM(\mathbf{X})}-NI(\mathbf{X})+o(N)\right)d\mu(\mathbf{X})
+  \int\exp\left(\ND\beta N \Trace{\GNORM(\mathbf{X})}-NI(\mathbf{X})+o(N)\right)d\mu(\mathbf{X})
 \end{equation}
 where $I(\mathbf{X})$ is \RateFunction, defined below,
 and $\GNORM(\mathbf{X})$ is what we are eventually solving for.
@@ -18,44 +18,48 @@ and $\GNORM(\mathbf{X})$ is what we are eventually solving for.
 \paragraph{Step 2.0} We start with the \emph{expected} \PartitionFunction
 \begin{align}
   \label{eqn:avg_ZD}
-  \EZDA
+  \EZDATWO
   &=
   \int d\mu(\AMAT)\int  d\mu(\WMAT)
       \exp\Bigl[
-         \tfrac{\beta}{2}\Trace{\WMAT^{\TR}\AMAT\,\WMAT}
-        -\tfrac{\beta}{2}\Trace{\WMAT\DMAT\WMAT^{\TR}}
+         \tfrac{\ND\beta}{2}\Trace{\WMAT^{\TR}\AMATN\,\WMAT}
+        -\tfrac{\ND\beta}{2}\Trace{\WMAT\DMAT\WMAT^{\TR}}
       \Bigr].
 \end{align}
-The average over $\AMAT$ affects only the first exponential; applying the SPA, we
+The average over $\AMATN$ affects only the first exponential; applying the SPA, we
 \textbf{define} a matrix function $\GFANCY$, depending solely on
 $\XMAT=\frac1N\WMAT^{\TR}\WMAT$, by
 \begin{align}
   \label{eqn:def_GFANCY}
   \int d\mu(\AMAT)\,
-        \exp\Bigl[\tfrac{\beta}{2}\Trace{\WMAT^{\TR}\AMAT\,\WMAT}\Bigr]
+        \exp\Bigl[\tfrac{\ND\beta}{2}\Trace{\WMAT^{\TR}\AMATN\,\WMAT}\Bigr]
   &=
-  \exp\Bigl[\tfrac{\beta N}{2}\Trace{\GFANCY}\Bigr].
+  \exp\Bigl[\tfrac{\ND\beta N}{2}\Trace{\GFANCY}\Bigr].
 \end{align}
 which will be valid in the large-$N$ approximation below.
 
-Inserting \eqref{eqn:def_GFANCY} into \eqref{eqn:avg_ZD} gives
+We now note that given the duality of measures, we can assert 
+\begin{equation}
+\EZDA=\EZDAONE=\EZDATWO.
+\end{equation}
+This lets us insert \eqref{eqn:def_GFANCY} into \eqref{eqn:avg_ZD} and then write
 \begin{align}
   \label{eqn:ZD_after_Aavg}
   \EZDA
   &=
   \int d\mu(\WMAT)
       \exp\Bigl[
-         \tfrac{\beta N}{2}\Trace{\GFANCY}
-        -\tfrac{\beta}{2}\Trace{\WMAT\DMAT\WMAT^{\TR}}
+         \tfrac{\ND\beta N}{2}\Trace{\GFANCY}
+        -\tfrac{\ND\beta}{2}\Trace{\WMAT\DMAT\WMAT^{\TR}}
       \Bigr].
 \end{align}
 
 The now need to determine an explicit form for
 $\GFANCY$. We introduce a new change of measure, 
  $d\mu(\mathbf{W})\rightarrow d\mu(\mathbf{X})$.
-Then, we show this lets us express $\EZDAONE$ as $\EZDX$ and to express it using the LDP.
+Then, we show this lets us express $\EZDA$ as $\EZDX$ and to express it using the LDP.
 Next, we apply a SPA to solve for $\GMAX=max\;\GNORM$.
-Importantly, we also show how to incorporate the inverse-Temperature $\beta$,
+Importantly, we also show how to incorporate the inverse-Temperature $\ND\beta$,
 which is new.
 
 \paragraph{Step 2.1}
@@ -87,15 +91,14 @@ Here, we assume the Trace constraint is sufficient for our level of rigor.
 
 
 \paragraph{Step 2.2}
-Next, we take a Wick Rotation, 
-\footnote{The Wick rotation converts an oscillatory integral into an exponentially decaying one which should be well defined.  Technically, this is an analytic continuation which needs to be checked, but following standard practice in physics we will assume the resulting integral is analytic and therefore well defined and we will proceed onward. }
+Next, we take a Wick Rotation%
+\footnote{The Wick rotation converts an oscillatory integral into an exponentially decaying one which should be well defined.  Technically, this is an analytic continuation which needs to be checked, but following standard practice in physics we will assume the resulting integral is analytic and therefore well defined and we will proceed onward. },
 $i\XHAT\rightarrow -\XHAT$, so that the terms under the integral are all real (not complex), giving:
 \begin{align}
   \label{eqn:dmuX}
-  d\mu(\mathbf{W}) &= \red{\mathcal{N}_{Wick}}\int_{-i\infty}^{i\infty} e^{\frac{1}{2}\Trace{\hat{X}(N\mathbf{X}-\mathbf{W}^{\top}\mathbf{W})}} d\mu(\mathbf{X})d\mu(\hat{X} ).
+  d\mu(\mathbf{W}) &= \mathcal{N}_{Wick}\int_{-i\infty}^{i\infty} e^{\frac{1}{2}\Trace{\hat{X}(N\mathbf{X}-\mathbf{W}^{\top}\mathbf{W})}} d\mu(\mathbf{X})d\mu(\hat{X} ).
 \end{align}
-where $d\mu(\hat{X})$ is a measure over $\tfrac{M(M-1)}{2}$ Lagrange multipliers, and the normalization is  $$\mathcal{N}_{Wick}=(\frac{1}{2\pi i})^{\tfrac{M(M-1)}{2}}$$.
-
+where $d\mu(\hat{X})$ is a measure over $\tfrac{M(M-1)}{2}$ Lagrange multipliers, and the normalization is $\mathcal{N}_{Wick}=(\frac{1}{2\pi i})^{\tfrac{M(M-1)}{2}}$.
 
 \paragraph{Step 2.3}
 We now insert \ref{eqn:dmuX} into~\ref{eqn:ZD_after_Aavg}, which lets us
@@ -105,25 +108,25 @@ express $\EZDA$ as an integral over the \Teacher Correlation matrices.
   \nonumber
   \EZDA&=
   \mathcal{N}_{Wick} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
-  e^{N\frac{\beta}{2} \Trace{\GFANCY}+\frac{N}{2}\Trace{\hat{X}\mathbf{X}} }
+  e^{N\frac{\ND\beta}{2} \Trace{\GFANCY}+\frac{N}{2}\Trace{\hat{X}\mathbf{X}} }
   e^{-\frac{1}{2}\Trace{\hat{X}\mathbf{W}^{\top}\mathbf{W}}}
-  e^{\frac{\beta}{2}\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}}
+  e^{\frac{\ND\beta}{2}\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}}
   d\mu(\hat{X} )
   d\mu(\mathbf{\XMAT}) \\ 
   \nonumber
   &=
   \mathcal{N}_{Wick} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
-  e^{N\frac{\beta}{2}\Trace{\GFANCY}+ \frac{N}{2}\Trace{\hat{X}\mathbf{X}}}
+  e^{N\frac{\ND\beta}{2}\Trace{\GFANCY}+ \frac{N}{2}\Trace{\hat{X}\mathbf{X}}}
   e^{-\frac{1}{2}\Trace{\mathbf{W}\hat{X}\mathbf{W}^{\top}}+
-  \frac{\beta}{2}\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}}
+  \frac{\ND\beta}{2}\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}}
   d\mu(\hat{X} )
   d\mu(\mathbf{\XMAT}) \\ 
   \label{eqn:ZD3}
     &=
   \mathcal{N}_{Wick} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
-  e^{N\frac{\beta}{2}\Trace{\GFANCY}+
+  e^{N\frac{\ND\beta}{2}\Trace{\GFANCY}+
   \frac{N}{2}\Trace{\hat{X}\mathbf{X}}}
-  e^{\frac{1}{2}\Trace{\mathbf{W}(\beta\mathbf{D}-\hat{X})\mathbf{W}^{\top}}}
+  e^{\frac{1}{2}\Trace{\mathbf{W}(\ND\beta\mathbf{D}-\hat{X})\mathbf{W}^{\top}}}
   d\mu(\hat{X} )
   d\mu(\mathbf{\XMAT})  .
 \end{align}
@@ -135,7 +138,7 @@ We can now rearrange terms to make this expression look like the \EQN~\ref{eqn:L
 %\michael{Huh?}
 %\charles{SOME EXPLANATIONS NEEDED: }
 %\begin{equation}
-%  \EZDA=\int\exp\left(\beta N\Trace{\GNORM}-NI(\mathbf{X})+o(N)\right)d\mu(\mathbf{X})
+%  \EZDA=\int\exp\left(\ND\beta N\Trace{\GNORM}-NI(\mathbf{X})+o(N)\right)d\mu(\mathbf{X})
 %\end{equation}
 
 
@@ -156,15 +159,15 @@ and $\mathbf{\check{X}}$ is a (matrix of) \emph{Lagrange Multiplier}(s).  $\math
 which, in turn, is defined in terms of the source matrix $\mathbf{D}$,
 \begin{equation}
 \label{eqn:X_density}
-p(\mathbf{x})=\exp\left(-\tfrac{1}{2}\mathbf{x}^{\top}\beta\mathbf{D}\mathbf{x}\right)  .
+p(\mathbf{x})=\exp\left(-\tfrac{1}{2}\mathbf{x}^{\top}\ND\beta\mathbf{D}\mathbf{x}\right)  .
 \end{equation}
 %
 The moment generating function $ \mathbb{M}(\mathbf{\check{X}})$ is then given by
 %
 \begin{equation}
 \mathbb{M}(\mathbf{\check{X}}) 
-   = \int \exp\left(-\frac{1}{2}\mathbf{x}^T(\beta\mathbf{D} - \mathbf{\check{X}})\mathbf{x}\right) d\mathbf{x} 
-   = (2\pi)^{\frac{M}{2}} \Det{\beta\mathbf{D} - \mathbf{\check{X}}}^{-\frac{1}{2}}  .
+   = \int \exp\left(-\frac{1}{2}\mathbf{x}^T(\ND\beta\mathbf{D} - \mathbf{\check{X}})\mathbf{x}\right) d\mathbf{x} 
+   = (2\pi)^{\frac{M}{2}} \Det{\ND\beta\mathbf{D} - \mathbf{\check{X}}}^{-\frac{1}{2}}  .
 \end{equation}
 
 \paragraph{Step 2.5}
@@ -177,7 +180,7 @@ by solving for the stationary conditions
 First, let us compute $ \ln \mathbb{M}(\mathbf{\check{X}}) $ as:
 %
 \begin{equation}
-\ln \mathbb{M}(\mathbf{\check{X}}) = \frac{M}{2} \ln(2\pi) - \frac{1}{2} \ln \Det{\beta\mathbf{D} - \mathbf{\check{X}}}.
+\ln \mathbb{M}(\mathbf{\check{X}}) = \frac{M}{2} \ln(2\pi) - \frac{1}{2} \ln \Det{\ND\beta\mathbf{D} - \mathbf{\check{X}}}.
 \end{equation}
 \michael{Make det notation consistent throughout.}
 \charles{OK lets double check that everywhere;}
@@ -186,36 +189,36 @@ Substituting this into the expression for the Legendre transform, we obtain:
 %
 \begin{equation}
 I(\mathbf{X},\mathbf{\check{X}}) 
-   = \sup_{\mathbf{\check{X}}} \left[\frac{1}{2} \Trace{\mathbf{X} \mathbf{\check{X}}} - \frac{M}{2} \ln(2\pi) + \frac{1}{2} \ln \Det{\beta\mathbf{D} - \mathbf{\check{X}}} \right].
+   = \sup_{\mathbf{\check{X}}} \left[\frac{1}{2} \Trace{\mathbf{X} \mathbf{\check{X}}} - \frac{M}{2} \ln(2\pi) + \frac{1}{2} \ln \Det{\ND\beta\mathbf{D} - \mathbf{\check{X}}} \right].
 \end{equation}
 %
 The supremum of this expression is attained at the value of $\mathbf{\check{X}}$ that satisfies:
 %
 \begin{equation}
-\frac{\partial}{\partial \mathbf{\check{X}}} \left[\frac{1}{2} \Trace{\mathbf{X} \mathbf{\check{X}}} + \frac{1}{2} \ln \Det{\beta\mathbf{D} - \mathbf{\check{X}}} \right] = 0.
+\frac{\partial}{\partial \mathbf{\check{X}}} \left[\frac{1}{2} \Trace{\mathbf{X} \mathbf{\check{X}}} + \frac{1}{2} \ln \Det{\ND\beta\mathbf{D} - \mathbf{\check{X}}} \right] = 0.
 \end{equation}
 %
 Taking the derivative, we obtain
 %
 \begin{equation}
-\frac{1}{2} \mathbf{X} + \frac{1}{2} (\beta\mathbf{D} - \mathbf{\check{X}})^{-1} = 0,
+\frac{1}{2} \mathbf{X} + \frac{1}{2} (\ND\beta\mathbf{D} - \mathbf{\check{X}})^{-1} = 0,
 \end{equation}
 %
 which simplifies to:
 %
 \begin{equation}
-\mathbf{X} = (\beta\mathbf{D} - \mathbf{\check{X}})^{-1} \quad \Rightarrow \quad \mathbf{\check{X}} = \beta\mathbf{D} - \mathbf{X}^{-1}.
+\mathbf{X} = (\ND\beta\mathbf{D} - \mathbf{\check{X}})^{-1} \quad \Rightarrow \quad \mathbf{\check{X}} = \ND\beta\mathbf{D} - \mathbf{X}^{-1}.
 \end{equation}
 %
-Substituting $ \mathbf{\check{X}} = \beta\mathbf{D} - \mathbf{X}^{-1} $ back into the expression for $ I(\mathbf{X})$, we obtain:
+Substituting $ \mathbf{\check{X}} = \ND\beta\mathbf{D} - \mathbf{X}^{-1} $ back into the expression for $ I(\mathbf{X})$, we obtain:
 %
 \begin{equation}
-I(\mathbf{X}) = \frac{1}{2} \left[\Trace{\mathbf{X} (\beta\mathbf{D} - \mathbf{X}^{-1})} - \frac{M}{2} \ln(2\pi) + \frac{1}{2} \ln \Det{\mathbf{X}^{-1}}\right].
+I(\mathbf{X}) = \frac{1}{2} \left[\Trace{\mathbf{X} (\ND\beta\mathbf{D} - \mathbf{X}^{-1})} - \frac{M}{2} \ln(2\pi) + \frac{1}{2} \ln \Det{\mathbf{X}^{-1}}\right].
 \end{equation}
 %
 %
 \begin{equation}
-\Trace{\mathbf{X}\beta\mathbf{D} - \mathbf{I}} = \Trace{\mathbf{X}\beta\mathbf{D}} - N,
+\Trace{\mathbf{X}\ND\beta\mathbf{D} - \mathbf{I}} = \Trace{\mathbf{X}\ND\beta\mathbf{D}} - N,
 \end{equation}
 \begin{equation}
 \ln \Det{\mathbf{X}^{-1}} = -\ln \Det{\mathbf{X}},
@@ -223,30 +226,30 @@ I(\mathbf{X}) = \frac{1}{2} \left[\Trace{\mathbf{X} (\beta\mathbf{D} - \mathbf{X
 we get:
 %
 \begin{equation}
-I(\mathbf{X}) = \frac{1}{2} \left[\Trace{\mathbf{X}\beta\mathbf{D}} - \ln \Det{\mathbf{X}} - M - M\ln(2\pi)\right].
+I(\mathbf{X}) = \frac{1}{2} \left[\Trace{\mathbf{X}\ND\beta\mathbf{D}} - \ln \Det{\mathbf{X}} - M - M\ln(2\pi)\right].
 \end{equation}
 
 Finally, we express $I(\mathbf{X})$ in the form:
 
 \begin{equation}
-I(\mathbf{X}) = \frac{1}{2} \left[ -M(1 + \ln(2\pi)) + \Trace{\mathbf{X}\beta\mathbf{D}} - \ln \Det{\mathbf{X}} \right].
+I(\mathbf{X}) = \frac{1}{2} \left[ -M(1 + \ln(2\pi)) + \Trace{\mathbf{X}\ND\beta\mathbf{D}} - \ln \Det{\mathbf{X}} \right].
 \end{equation}
 
 \paragraph{Step 2.6}
 \begin{equation}
-  \beta\GFANCY=\mathbb{M}(1+\ln 2\pi)+\beta\Trace{\GNORM(\mathbf{X})} - \Trace{\mathbf{X}\beta\mathbf{D}} +  \ln \Det{\mathbf{X}}.
+  \ND\beta\GFANCY=\mathbb{M}(1+\ln 2\pi)+\ND\beta\Trace{\GNORM(\mathbf{X})} - \Trace{\mathbf{X}\ND\beta\mathbf{D}} +  \ln \Det{\mathbf{X}}.
 \end{equation}
 
-We restrict our solution to those where $\XMAT$ and $\beta\mathbf{D}$ can be diagonalized simultaneously.
+We restrict our solution to those where $\XMAT$ and $\ND\beta\mathbf{D}$ can be diagonalized simultaneously.
 In particular, this lets us write
 \begin{equation}
-\Trace{\mathbf{X}\beta\mathbf{D}} = \sum_{\mu=1}^{M}\beta\delta_{\mu}\lambda_{\mu}   ,
+\Trace{\mathbf{X}\ND\beta\mathbf{D}} = \sum_{\mu=1}^{M}\ND\beta\delta_{\mu}\lambda_{\mu}   ,
 \end{equation}
-where $\beta\delta_{\mu}$ and $\lambda_{\mu}$ denote the eigenvalues of $\XMAT$ and $\beta\mathbf{D}$, resp.
+where $\ND\beta\delta_{\mu}$ and $\lambda_{\mu}$ denote the eigenvalues of $\XMAT$ and $\ND\beta\mathbf{D}$, resp.
 
 We can now write the maximum value of $\GNORM$, $\GMAX$, as
 \begin{equation}
 \label{eqn:gmax_final}
-\beta\GMAX = M \left( 1 + \ln \frac{2\pi}{\beta} \right) - \sum_{\mu=1}^{M} \min_{\beta\delta_{\mu}} \left[\beta\delta_{\mu}\lambda_{\mu}
-- \beta\GNORM(\lambda_{\mu}) + \ln \lambda_{\mu} \right]   .
+\ND\beta\GMAX = M \left( 1 + \ln \frac{2\pi}{\ND\beta} \right) - \sum_{\mu=1}^{M} \min_{\ND\beta\delta_{\mu}} \left[\ND\beta\delta_{\mu}\lambda_{\mu}
+- \ND\beta\GNORM(\lambda_{\mu}) + \ln \lambda_{\mu} \right]   .
 \end{equation}

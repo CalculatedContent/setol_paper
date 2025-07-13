@@ -1,7 +1,5 @@
 %MAIN
 \documentclass[11pt]{article}
-
-
 \addtolength{\textwidth}{1.4in}
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
@@ -11,56 +9,20 @@
 \newlength{\defbaselineskip}
 \setlength{\defbaselineskip}{\baselineskip}
 
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{framed}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{amsmath}
-\usepackage{cancel}
-\usepackage{xspace}
-
+\usepackage{lmodern}
 \usepackage{draftwatermark}
 % Customize the watermark
 \SetWatermarkText{DRAFT}
-\SetWatermarkScale{5}
+% \SetWatermarkScale{5}
 \SetWatermarkColor[gray]{0.85}
-
-%%% \usepackage{verbatim}
-\usepackage{graphicx}
-%\usepackage{caption}
-%%\DeclareCaptionType{copyrightbox}
-%\usepackage{subcaption}
-\usepackage{url}
-\usepackage{rotating}
-\usepackage{multirow}
-\usepackage{color}
-\usepackage{xcolor}
-%%\usepackage{enumitem}
-\usepackage{paralist}
-
-\usepackage{tikz}
-
-%\usepackage{subfig}
-\usepackage{subfigure}
-
-\usepackage{longtable} 
-\usepackage{makecell}
-
-\usepackage[multiple]{footmisc}
-\usepackage[section]{placeins}
-
-\usepackage{hyperref}
 
 \usepackage{lineno}
 \linenumbers
 
 %-----------------------------------------------------------------------!
-
-\include{macros/packages}
-\include{macros/macros}
-\include{macros/dedup_phrase_macros}
-
+\input{macros/packages}
+\input{macros/macros}
+\input{macros/dedup_phrase_macros}
 %-----------------------------------------------------------------------
 
 \begin{document}
@@ -107,7 +69,7 @@ Christopher Hinrichs\thanks{Onyx Point Systems, chris@onyxpointsystems.com}
 
 %\vspace{-2mm}
 \noindent
-\paragraph{Acknowledgements.}
+\paragraph{Acknowledgments.}
 We would like to thank Matt Lee of Triaxiom Capital and Carl Page of the Anthropocene Institute.
 We also thank Mirco Milletarì and Michael Mahoney for helpful conversations.
 %MWM would like to acknowledge DARPA, NSF, and ONR as well as the UC Berkeley BDD project and a gift from Intel for providing partial support of this work.

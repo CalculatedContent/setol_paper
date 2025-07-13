@@ -4,8 +4,7 @@
 
 The first way we identify $\mathbf{W}$ as \ATypical is when it has an anomalously large mean $(\bar{\WMAT})$;
 detecting this in general, however, requires more than just examining which elements $W_{i,j}$ are
-anomalously large.
-\michaeladdressed{Ugh.}
+anomalously large (because they may be a rank-1 perturbation consisting of more than one element).  Here, we can apply elementary RMT, as in the \HTSR approach.
 
 The \HTSR \Phenomenology states that NNs generalize better when their layers ESDs are more HT---precisely because the 
 tail eigenvalues arise from correlations in the weight matrices.
@@ -68,7 +67,7 @@ $\lambda^{+}_{bulk}$ is the MP bulk edge $\Delta_{TW}$ are the associated finite
 This procedure detects \emph{any} anomaly in the matrix weights that produce spuriously large eigenvalues. 
 It is implemented in \WW (using the randomize option), which was used to generate the plots in Figure~\ref{fig:scale-shape}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \subfigure[Well-formed ESD]{ 
       \includegraphics[width=7cm]{./img/shape-scale-a.png}
@@ -76,7 +75,7 @@ It is implemented in \WW (using the randomize option), which was used to generat
     }                               
     \subfigure[ESD with \CorrelationTrap]{                   
       \includegraphics[width=7cm]{./img/shape-scale-b.png}
-      \label{fig:scale-shape-b}                                                                                                      
+      \label{fig:scale-shape-b}                           
     }                                                                                                                            
     \caption{Comparison of a well-formed, Heavy-Tailed ESD (a) to one with a Correlation Trap (b), in the VGG16 model (FC2 layer)}
   \label{fig:scale-shape}                                                                                                      
@@ -84,12 +83,12 @@ It is implemented in \WW (using the randomize option), which was used to generat
 
 See Figure~\ref{fig:scale-shape-a}, which displays the (log)-ESD of a \Typical SOTA NN layer $\mathbf{X}$ (green), i.e., on a log-linear scale, along with the (log)-ESD of that layer after randomizing it element-wise (red).
 The two ESDs differ substantially:
-the ESD of the original weight matrix  $\mathbf{W}$ (green) is very HT, whereas 
-the ESD of the randomized weight matrix  $\mathbf{W}^{rand}$ (red) is an MP (and as predicted by the MP \RMT).
+the ESD of the original weight matrix $\mathbf{W}$ (green) is very HT, whereas 
+the ESD of the randomized weight matrix $\mathbf{W}^{rand}$ (red) is an MP (and as predicted by the MP \RMT).
 The orange line corresponds to the maximum eigenvalue of the randomized ESD.
 Note that it is at the MP bulk edge of the red plot, indicating that this ESD is not affected by unusually large elements or other weight anomalies.
 Here, we say that the ESD of $\mathbf{X}$ is HT, and that $\mathbf{W}$ is not HT element-wise.
-\HTSR says this layer is well-trained.
+\HTSR says this layer is well trained.
 
 Contrast this with Figure~\ref{fig:scale-shape-b}, which displays the (log)-ESD of a NN layer with a \CorrelationTrap.
 The ESD of $\mathbf{X}$ (green) is weakly HT, but it looks nothing like the ESD in Figure~\ref{fig:scale-shape-a}.

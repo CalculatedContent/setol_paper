@@ -7,7 +7,7 @@
 As in \EQN~\ref{eqn:IZG_dmuS}, 
 we can write \EQN~\ref{eqn:IZG_QT} in terms of the $\AMATN = \SMAT\SMAT^{\top}$ form of the Outer \Student Correlation matrix, giving
 \begin{align}
-\IZG = \ln\INTS d\mu(\SMAT) \exp\left(N\beta \Trace{ \tfrac{1}{N}\TMAT^{\top}\AMATN \TMAT } \right)
+\IZG = \ln\INTS d\mu(\SMAT) \exp\left(\ND\beta N \Trace{ \tfrac{1}{N}\TMAT^{\top}\AMATN \TMAT } \right)
 \end{align}
 where $d\mu(\SMAT)$ is the measure over all $N \times M$ real-valued random matrices,
 although we really want to limit this to all $N \times M$ real matrices that resemble the \Teacher $\TMAT$,
@@ -31,7 +31,7 @@ To accomplish this, we can insert an integral over the Dirac Delta function
 \label{eqn:IZG_3}
 \IZG= \ln \INTS d\mu(\SMAT)\INTA d\mu(\AMATM)
            \delta\left( N\AMATM-\SMAT^{\top}\SMAT \right) 
-           e^{ N\beta Tr[\tfrac{1}{N} \TMAT^{\top} \AMATN\TMAT ] } ,
+           e^{ \ND\beta N Tr[\tfrac{1}{N} \TMAT^{\top} \AMATN\TMAT ] } ,
 \end{align}
 \red{fix this} where $d\mu(\AMAT)=\Probab{\AMAT}d\AMAT$ and $\Probab{\AMAT}$ is the
 (still unspecified) probability density over the new random matrix $\AMAT$. 
@@ -44,7 +44,7 @@ Let us express \EQN~\ref{eqn:IZG_3} at large-$N$ as
   \int d\mu(\AMAT)
   \int d\mu(\SMAT)
   \delta(N\AMATM-\SMAT^{\top}\SMAT)
-  e^{ N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT]) }  .
+  e^{ \ND\beta N Tr[ \tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT]) }  .
 \end{align}
  
 Now we assume we can first evaluate the term 
@@ -76,14 +76,14 @@ so we can express the delta function as an exponential, giving
 \IZG = \NORM_1 \ln\INTS  d\mu(\SMAT) \INTA d\mu(\AMATM) 
                            \INTAHAT d\mu(\AHAT) e^{ iN Tr[ \AHAT\AMATM ] }
                            e^{ -i Tr[ \AHAT\SMAT^{\top} \SMAT ] }
-                           e^{  N\beta Tr[\tfrac{1}{N} \TMAT^{\top}\AMATN\TMAT ] } .
+                           e^{  \ND\beta N Tr[\tfrac{1}{N} \TMAT^{\top}\AMATN\TMAT ] } .
 \end{align}
 
 Rearranging terms, we obtain 
 \begin{align}
 \label{eqn:IZG_Gamma1}
 \IZG =  \ln\INTA  d\mu(\AMATM) 
-            e^{  N\beta Tr[\tfrac{1}{N} \TMAT^{\top}\AMATN\TMAT ] } \times
+            e^{  \ND\beta N Tr[\tfrac{1}{N} \TMAT^{\top}\AMATN\TMAT ] } \times
            \Gamma_1,
 \end{align}
 where we define $\Gamma_1$ as 
@@ -220,19 +220,14 @@ and the Hessian of $I$ becomes
   \label{eqn:Ixx}
 \frac{\partial^2 }{\partial \hat{A}^2} I(\AHAT,\AMATM)= -\frac{1}{2} \left( \frac{1}{2} \hat{A}^{-1} \right) \otimes \left( \frac{1}{2} \hat{A}^{-1} \right) = -\frac{1}{8} \AMATM \otimes \AMATM
 \end{align}
-where $\otimes$ is the Kronecker product. Using \EQN~\ref{eqn:SP0}, we have that $1 / 8$ $\AMATM \otimes \AMATM$ is the saddle point Hessian of $I$ w.r.t. $\AMATM$.
-
-Solving the SPA equation, we find that %the auxiliary matrix is $\AHAT=\tfrac{1}{2}\AMATM^{-1}$ and
-the prefactor (Hessian) is given as
-$ \Det{-\frac{1}{8} \AMATM \otimes \AMATM} = \left( -\frac{1}{8} \right)^{M^2} \left(  \Det{\AMATM} \right)^M$.
-
-\nred{ double check  prefactors.}
-
+where $\otimes$ is the Kronecker product. Using \EQN~\ref{eqn:SP0}, we have that $1 / 8$ $\AMATM \otimes \AMATM$ is the saddle point Hessian of $I$ w.r.t. $\AMATM$. Solving the SPA equation, we find that %the auxiliary matrix is $\AHAT=\tfrac{1}{2}\AMATM^{-1}$ and
+the prefactor (i.e. Hessian) is given as
+$ \Det{-\frac{1}{8} \AMATM \otimes \AMATM} = \left( -\frac{1}{8} \right)^{M^2} \left(  \Det{\AMATM} \right)^M$.   
 
 Substituting for $\AHAT$ into \RateFunction (\EQN~\ref{eqn:IAA}), $I$ becomes
 \begin{align}
 \label{eqn:IAA_2}
-I^{*}(\AHAT,\AMATM) = -\Trace{ \mathbb{I}_{M} } + \frac{1}{2}\Trace{ \ln\AMATM }   \\ \nonumber
+I^{*}(\AHAT,\AMATM) = -\Trace{ \IM } + \frac{1}{2}\Trace{ \ln\AMATM }   \\ \nonumber
  = -M + \frac{1}{2}\Trace{ \ln\AMATM }  .
 \end{align}
 
@@ -244,7 +239,7 @@ more importantly, that $\Det{\AMAT}$ be non-zero.
 Importantly, when $\Det{\AMAT}=1$ exactly, however, then $\Gamma_1$ becomes a constant,
 and this simplifies things considerably!
 
-\subsubsection{Casting the \GeneratingFunction $(\IZG)$ as an HCIZ Integral}
+\subsubsection{Casting the \GeneratingFunction \texorpdfstring{$(\IZG)$}{beta G} as an HCIZ Integral}
 \label{sxn:TraceLogDerivation_B}
 
 In this section, we express the \GeneratingFunction $\IZG$, 
@@ -259,13 +254,13 @@ Inserting $I^{*}(\AHAT,\AMAT)$ from \EQN~\ref{eqn:IAA_2} into $\IZG$, we obtain
   \label{eqn:IZG_IAA}
   \IZG 
   & =  \ln \left[ C_{\Gamma_1} e^{-NM}\int d\mu(\AMAT)
-  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
+  e^{\ND\beta N Tr[ \tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
   e^{\tfrac{N}{2}\ln(\Det{\AMATM})}\right]  \\ \nonumber
   & =
     \ln  C_{\Gamma_1}
   - NM
   +  \ln \left[ \int d\mu(\AMAT)
-    e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
+    e^{\ND\beta N Tr[ \tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
     e^{\tfrac{N}{2}\ln(\Det{\AMATM})}\right]  .
 \end{align}
 
@@ -280,7 +275,7 @@ We can then simply write the \GeneratingFunction $\IZG$  as in \EQN~\ref{eqn:IFA
   \label{eqn:IZG_integral}
   \IZG 
    =  \ln \left[ \int d\mu(\AMATM)
-    e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
+    e^{\ND\beta N Tr[ \tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
     e^{\tfrac{N}{2}\ln(\Det{\AMATM})}\right]  ,
 \end{align}
 or, in \BraKet notation, as
@@ -288,7 +283,7 @@ or, in \BraKet notation, as
   \label{eqn:IZG_braket}
   \IZG = 
    \ln\left\langle
-  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
+  e^{\ND\beta N Tr[ \tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
   e^{\tfrac{N}{2}\ln(\Det{\AMATM})}
   \right\rangle_{\AMATM}   .
 \end{align}
@@ -325,7 +320,7 @@ or, in \BraKet notation, as
 %  \label{eqn:IZG_integral2}
 %  \IZG = \red{\cancel{\frac{1}{N}}}
 %  \ln \int d\mu(\AECS)
-%  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT] }
+%  e^{\ND\beta N Tr[ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT] }
 %  e^{\tfrac{N}{2}\ln(\Det{\AECS})}  ,
 %\end{align}
 %where have now written $\AECS_{2}$ explicitly for clarity.
@@ -336,7 +331,7 @@ or, in \BraKet notation, as
 %  \label{eqn:IZG_braket2}
 %  \IZG = 
 %  \ln \left\langle
-%  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT] }
+%  e^{\ND\beta N Tr[ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT] }
 %  e^{\tfrac{N}{2}\ln(\Det{\AECS})}
 %  \right\rangle_{\AECS}  .
 %\end{align}
@@ -352,7 +347,7 @@ or, in \BraKet notation, as
 %  \IZG \approx
 %  \ln\left[
 %  \left\langle
-%  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT] }
+%  e^{\ND\beta N Tr[ \tfrac{1}{N}\TMAT^{\top}\AECS_{2}\TMAT] }
 %  \right\rangle_{\AECS}
 %  \left\langle
 %  e^{\tfrac{N}{2}\ln(\Det{\AECS})}
@@ -380,17 +375,17 @@ or, in \BraKet notation, as
 %in \BraKet notation as
 %\begin{align}
 %  \label{eqn:IZG_final_hciz}
-%  \IZG := & \red{\cancel{\frac{1}{N}}}\left\langle     \exp ( N\beta \Trace{\tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT })\right\rangle_{\AECS}  ,
+%  \IZG := & \red{\cancel{\frac{1}{N}}}\left\langle     \exp ( \ND\beta N \Trace{\tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT })\right\rangle_{\AECS}  ,
 %\end{align}
 %or explicitly as an integral as
 %\begin{align}
 %  \label{eqn:IZG_final_integral}
-% \IZG  := & \red{\cancel{\frac{1}{N}}}\int d\mu(\AECS) \exp \left( N\beta \Trace{\tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT }\right)  ,
+% \IZG  := & \red{\cancel{\frac{1}{N}}}\int d\mu(\AECS) \exp \left( \ND\beta N \Trace{\tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT }\right)  ,
 %  \end{align}
 %or in Tanakas notation as
 %\begin{align}
 %  \label{eqn:IZG_final_tanaka}
-% \IZG  := & \red{\cancel{\frac{1}{N}}}\mathbb{E}_{\AECS}\left[ \exp \left( N\beta \Trace{\tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT }\right)\right]  ,
+% \IZG  := & \red{\cancel{\frac{1}{N}}}\mathbb{E}_{\AECS}\left[ \exp \left( \ND\beta N \Trace{\tfrac{1}{N} \TMAT^{\top}\AECS_{2}\TMAT }\right)\right]  ,
 %\end{align}
 %where in each case $\AHAT$ is restricted to the \EffectiveCorrelationSpace (\ECS) 
 %such that $ln\Det{\AHAT}=0$ and $\AHAT$ is normalized to $M$.

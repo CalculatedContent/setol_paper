@@ -43,20 +43,20 @@ with the open-source \WW tool~\cite{WW}.%
 \footnote{For practical purposes, the \WW tool computes $\rho^{emp}(\lambda)$ by forming the Singular Value Decomposition (SVD) of the layer weight matrices $\mathbf{W}$, computing the eigenvalues $\lambda=\sigma^{2}$ from the singular values $\sigma$, and (when useful) smoothing them with a Kernel Density Estimator (KDE). For some calculations, such as the \TRACELOG condition, we must also select the appropriate normalization of $\mathbf{W}$.}
 
 
-Based on empirical results based on thousands of pre-trained models and tens of thousand of layers~\cite{MM18_TR_JMLRversion,MM20a_trends_NatComm,MM21a_simpsons_TR,YTHx23_KDD}, 
+Based on empirical results based on thousands of pretrained models and tens of thousands of layers~\cite{MM18_TR_JMLRversion,MM20a_trends_NatComm,MM21a_simpsons_TR,YTHx23_KDD}, 
 it is generally observed that the 
-best performing NNs have ESDs that are HT, and the \emph{tails} of these ESDs, $\rho_{tail}(\lambda)$, can be well fit to a PL, beyond some cutoff $\lambda\ge\lambda_{min}$.%
+best performing NNs have ESDs that are HT, and the \emph{tails} of these ESDs, $\rho_{tail}(\lambda)$, can be well fit to a PL, beyond some cutoff $\lambda\ge\LambdaMin$.%
 \footnote{Doing a large meta-analysis like this is tricky; but see~\cite{MM18_TR_JMLRversion,MM20a_trends_NatComm,MM21a_simpsons_TR,YTHx23_KDD}.  The \WW~tool provides a systematic, reproducible way to compute a PL fit (using an MLE method of Clauset et al.~\cite{CSN09_powerlaw}), as well other model metrics, including the \SPECTRALNORM, \RANDDIST, and \ALPHAHAT metrics~\cite{MM20a_trends_NatComm}.  Also, the ESD $\rho(\lambda)_{tail}$ is sometimes better fit by a Truncated \PowerLaw (TPL), due to finite-size effects.
-(agdin, this is important in practice, but we ignore this complexity in this initial discussion of \SETOL. ) }
+(again, this is important in practice, but we ignore this complexity in this initial discussion of \SETOL. ) }
 For a PL fit,
 \begin{equation}
-\rho_{tail}(\lambda):=\rho^{emp}(\lambda\ge\lambda_{min})\sim\lambda^{-\alpha} ,
+\rho_{tail}(\lambda):=\rho^{emp}(\lambda\ge\LambdaMin)\sim\lambda^{-\alpha} ,
 \label{eqn:rho_tail}
 \end{equation}
-where $\lambda_{min}$ is where the tail of the ESD starts (i.e., it is not the minimum eigenvalue, but the minimum eigenvalue in the tail of the ESD). 
+where $\LambdaMin$ is where the tail of the ESD starts (i.e., it is not the minimum eigenvalue, but the minimum eigenvalue in the tail of the ESD). 
 See Figure~\ref{fig:log-esds}.
-As such, the tail of the ESD ``starts'' at some value $\lambda_{min}$, called $xmin$ here, and it continues until the 
-maximum eigenvalue $\lambda_{max}$, called $xmax$ here
+As such, the tail of the ESD ``starts'' at some value $\LambdaMin$, called $xmin$ here, and it continues until the 
+maximum eigenvalue $\LambdaMax$, called $xmax$ here
 (labeled $xmax$ in the figure, shown by the orange line).
 We estimate $xmin$ and $\alpha$ jointly, using the method of~\cite{CSN09_powerlaw}, 
 as implemented in the \texttt{powerlaw} python package~\cite{ABP14}, 
@@ -70,29 +70,29 @@ likely to be the case when $\alpha$ and $xmin$ are not estimated \emph{jointly},
 
 \begin{figure}[t] %[h]
     \centering
-    \subfigure[Log-Log ESD]{ 
+    \subfigure[Log-Log ESD]{
       \includegraphics[width=7cm]{./img/fig1-1a.png}
-      \label{fig:log-log-esd}                                                                                                      
-    }                               
-    \subfigure[Lin-Lin ESD]{ 
+      \label{fig:log-log-esd}
+    }
+    \subfigure[Lin-Lin ESD]{
       \includegraphics[width=7cm]{./img/fig1-1b.png}
-      \label{fig:lin-lin-esd}                                                                                                      
-    }                               
-    \subfigure[Log-Lin ESD]{ 
+      \label{fig:lin-lin-esd}
+    }
+    \subfigure[Log-Lin ESD]{
       \includegraphics[width=7cm]{./img/fig1-1c.png}
-      \label{fig:log-lin-esd}                                                                                                      
-    }                               
-    \subfigure[$\lambda_{min}$ vs KS distance]{
+      \label{fig:log-lin-esd}
+    }
+    \subfigure[$\LambdaMin$ vs KS distance]{
       \includegraphics[width=7cm]{./img/fig1-1d.png}
-      \label{fig:xmin-DKS-esd}                                                                                                      
-    }                                                                                                                            
+      \label{fig:xmin-DKS-esd}
+    }                                     
     \caption{\textbf{Fitting ESDs within \HTSR.} 
-             Depiction of the ESD and results of PL fits for a typical well-trained layer of a modern NN (FC3 of VGG19), including both the actual and good PL fit (red) and a hypothetical bad PL fit (purple). 
-             The same ESD is plotted on a Log-Log (a), Lin-Lin (b) and Log-Lin (c) scales.
-             (d) depicts how the start of the PL tail, $\lambda_{min}$, varies with the quality of the PL fit (the $D_{KS}$ distance). 
-             All plots are generated using the open-source \WW tool. 
-             See the main text for details.
-            }
+         Depiction of the ESD and results of PL fits for a typical well-trained layer of a modern NN (FC3 of VGG19), including both the actual and good PL fit (red) and a hypothetical bad PL fit (purple). 
+         The same ESD is plotted on a Log-Log (a), Lin-Lin (b) and Log-Lin (c) scales.
+         (d) depicts how the start of the PL tail, $\LambdaMin$, varies with the quality of the PL fit (the $D_{KS}$ distance). 
+         All plots are generated using the open-source \WW tool. 
+         See the main text for details.
+    }
   \label{fig:log-esds}
 \end{figure}   
 
@@ -103,12 +103,12 @@ likely to be the case when $\alpha$ and $xmin$ are not estimated \emph{jointly},
 %% %\footnote{The \WW~tool finds the best PL fit automatically and reproducibly.}
 
 \paragraph{Fitting ESDs.}
-Choosing the start of the tail, $\lambda_{min}$, is important for \HTSR (and it will be very important for \SETOL, as we will describe below).
+Choosing the start of the tail, $\LambdaMin$, is important for \HTSR (and it will be very important for \SETOL, as we will describe below).
 See Figure~\ref{fig:log-esds} for a depiction of how this was done within \HTSR theory.
 Figures~\ref{fig:log-log-esd}-\ref{fig:log-lin-esd} show the results of both a ``good fit'' and a ``bad fit'' on the same ESD,
 while Figure~\ref{fig:xmin-DKS-esd} indicates the quality of fit.
-For the good fit, the start of the tail is the optimal value $\lambda_{min}=xmin$ (in red); and for the bad fit, it is a suboptimal $bad\;xmin$ (purple).
-Figure~\ref{fig:xmin-DKS-esd} depicts how the best fit is determined; it plots $xmin=\lambda_{min}$ versus the $D_{KS}$ 
+For the good fit, the start of the tail is the optimal value $\LambdaMin=xmin$ (in red); and for the bad fit, it is a suboptimal $bad\;xmin$ (purple).
+Figure~\ref{fig:xmin-DKS-esd} depicts how the best fit is determined; it plots $xmin=\LambdaMin$ versus the $D_{KS}$ 
 value, which is the Kolmogorov-Smirnov (KS) distance between the PL fit and the empirical data~\cite{CSN09_powerlaw}.
 Notice that there are two nearly degenerate minima on Figure~\ref{fig:xmin-DKS-esd}, corresponding to the good fit and the bad fit. 
 It is not uncommon to face such practical challenges, as real-world ESDs are often slightly deformed from a perfect PL density, e.g.,
@@ -125,7 +125,7 @@ the \SPECTRALNORM, $\lambda_{max}$, being a matrix norm, is a measure of the siz
 the fitted PL exponent \ALPHA, $\alpha$, being the slope of the tail of the ESD on a Log-Log plot, describes the \SHAPE~of the ESD; and
 the \WW \ALPHAHAT~metric combines \SHAPE~and \SCALE~information.
 Also, as opposed to other applications of PL fits~\cite{CSN09_powerlaw,BouchaudPotters03}, in our analysis,
-the start of the tail, $\lambda_{min}=\LambdaPLmin$, plays a particularly important role because it
+the start of the tail, $\LambdaMin=\LambdaPLmin$, plays a particularly important role because it
 identifies the subspace of the strongest generalizing eigencomponents (i.e., $\XECS$, below) in each layer.
 
 \begin{table}[t] %[ht!]

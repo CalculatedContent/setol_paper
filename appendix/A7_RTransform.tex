@@ -1,7 +1,7 @@
 %--------------------------------------------------------------------
 % R–transform existence for power-law spectra
 %--------------------------------------------------------------------
-\subsection{Existence of the Free $R$–Transform for Power-Law Spectra}
+\subsection{Existence of the Free \texorpdfstring{$R$}{R}–Transform for Power-Law Spectra}
 \label{sxn:RTransformExists}
 
 In this subsection, we examine when the \RTransform $R(z)$ does and does not exist
@@ -21,7 +21,7 @@ G_\mu(z)=\int_{\mathbb R}\frac{\rho(\lambda)}{z-\lambda}\,
 z\in\mathbb C\setminus\operatorname{supp}\mu .
 \end{equation}
 If $G_\mu(z)$ is \emph{holomorphic} at $z=\infty$ one may invert the map
-$w=G_\mu(z)$ in a neighbourhood of $w=0$ and define
+$w=G_\mu(z)$ in a neighborhood of $w=0$ and define
 \begin{equation}
 \label{eqn:RTransformExists_Rdef}
 R_\mu(z)=G_\mu^{-1}(z)-\frac{1}{w}.
@@ -120,7 +120,7 @@ Hence
 m_{1}=\frac{\alpha-1}{\alpha-2}\,\LambdaMin,
 \qquad
 m_{2}=\frac{\alpha-1}{\alpha-3}\,\LambdaMin^{2}
-\quad$alpha>3).
+\quad\alpha>3).
 \end{equation}
 The first two free cumulants are $\kappa_{1}=m_{1}$ and
 $\kappa_{2}=m_{2}-m_{1}^{2}$.
@@ -143,7 +143,7 @@ Using the finite cumulants one obtains
   \begin{equation}
   \label{eqn:RTransformExists_R3_final}
   R_{(3)}(z)=2\,\LambdaMin
-  \quad$text{constant}).
+  \quad\text{constant}).
   \end{equation}
   Only a zeroth-order free cumulant survives, but that is \emph{enough}
   for free convolution.
@@ -161,7 +161,7 @@ Using the finite cumulants one obtains
 These three cases show explicitly how \emph{incremental} changes in the
 tail exponent alter the analytic status of $G(z)$ and hence of $R(z)$. Since the  higher-order free cumulants diverge, the \RTransform cannot be a finite polynomial. It must either be an infinite series (where the terms beyond a certain point don't vanish) or, more strongly, exhibit non-analytic behavior (like the logarithmic terms present in $G(z)$) because its Taylor series coefficients (the cumulants) become infinite. Fortunately, $R(z)$ can be defined if we ensure that $\rho(\lambda)$ has compact support.
 %--------------------------------------------------------------------
-\subsubsection{Truncated $\alpha=2$ power law}
+\subsubsection{Truncated \texorpdfstring{$\alpha=2$}{alpha=2} power law}
 \label{sxn:RTransformExists:trunc2}
 
 Introduce a cut-off $\LambdaMax>\LambdaMin$ and set
@@ -233,12 +233,12 @@ within $[\LambdaMin,\LambdaMax]$.
 \end{enumerate}
 
 
-\subsubsection{Explicit $R$–transforms for the truncated tail}
+\subsubsection{Explicit \texorpdfstring{$R$}{R}–transforms for the truncated tail}
 \label{sxn:RTransformExists:explicit}
 
 We can also provide exact expressions for the leading terms (free cumulants) in $R(z)$ for $alpha=2,3,4$.
-The compact support $[\LambdaMin,\LambdaMax]=$[\LambdaECSmin,\LambdaECSmax]$ guarantees that every
-algebraic moment (and free cumulant) is finite.   Hence the Voiculescu series 
+The compact support $[\LambdaMin,\LambdaMax]=[\LambdaECSmin,\LambdaECSmax]$ guarantees that every
+algebraic moment (and free cumulant) is finite. Hence the Voiculescu series 
 
 \begin{equation}
 R_{\alpha}^{\mathrm{tr}}(z)=
@@ -248,7 +248,7 @@ R_{\alpha}^{\mathrm{tr}}(z)=
 
 \noindent converges for every $\alpha>1$.  
 Below we list the free cumulants $\kappa_{1}$, $\kappa_{2}$ and the resulting
-\(R(z)$ for the three exponents most relevant to \SETOL.
+$(R(z)$ for the three exponents most relevant to \SETOL.
 Higher cumulants follow from the recursion in
 Eqs.~\eqref{eqn:RTransformExists_mk}–\eqref{eqn:RTransformExists_m1m2} and
 need not be written out.
@@ -262,7 +262,7 @@ C_{2}=\frac{\LambdaMin\LambdaMax}{\LambdaMax-\LambdaMin},
 \end{equation}
 
 \begin{equation}
-\kappa_{1}=C_{2}\,\log\!\left\frac{\LambdaMax}{\LambdaMin},
+\kappa_{1}=C_{2}\,\log\!\frac{\LambdaMax}{\LambdaMin},
 \end{equation}
 
 \begin{equation}
@@ -286,7 +286,7 @@ C_{3}=\frac{2\,\LambdaMin^{2}\LambdaMax^{2}}{\LambdaMax^{2}-\LambdaMin^{2}},
 \end{equation}
 
 \begin{equation}
-\kappa_{2}=C_{3}\,\log\!\left\frac{\LambdaMax}{\LambdaMin}
+\kappa_{2}=C_{3}\,\log\!\frac{\LambdaMax}{\LambdaMin}
 -\kappa_{1}^{2},
 \end{equation}
 
@@ -325,6 +325,6 @@ R_{(4)}^{\mathrm{tr}}(z)=
 $\kappa_{1}$ fixes the mean scale of the heavy tail;
 $\kappa_{2}$ sets its leading spread.  
 Because both depend only on the empirical cut‑offs
-\(\LambdaMin$ and \(\LambdaMax$, the two–term truncation already delivers
+$\LambdaMin$ and $\LambdaMax$, the two–term truncation already delivers
 an accurate $R$–transform for free‑probability manipulations inside the
 \SETOL\ framework.

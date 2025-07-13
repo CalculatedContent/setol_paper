@@ -1,16 +1,18 @@
 \begin{table}[H]
 \centering
-\begin{tabular}{c|l|l|l}
+\begin{tabular}{l|l|l}
 \toprule
-\textbf{Symbol} & \textbf{Definition} & \textbf{Vector} & \textbf{Matrix} \\
+ \textbf{Definition} & \textbf{Vector} & \textbf{Matrix} \\
 \midrule
-$n$ & Total number of free parameters in the model. & $n$ & $N \times M$ \\
-$m$ & Number of features per training sample. & $m$ & --- \\
-$N$ & Input dimension of a layer’s weight matrix. & --- & $N$ \\
-$M$ & Output dimension of a layer’s weight matrix. & --- & $M$ \\
+ Total number of data samples used in training. & $\ND$ & $\ND$ \\
+ Number of features per training sample (Input dimension). & $m$ & $M$ \\
+ Dimension of layer output (Output dimension)  & $1$ & $N$ \\
+ Number of free parameters & $1$ & $N\times M$ \\
+ Total number of degrees of freedom & $\ND\times 1$ & $\ND\times N\times M$ \\
 \bottomrule
 \end{tabular}
-\caption{In the \emph{vector} model, lowercase $n$ is the dimension of the weight vector (total parameters), and lowercase $m$ is the number of features per sample. In the \emph{matrix} model, uppercase $N$ and $M$ are the input and output dimensions of the weight matrix, resp., giving $n=N\times M$ free parameters.}
+\caption{In the \emph{vector} model, lowercase $m$ is the dimension of the weight vector (total parameters), which is also the number of features per sample. In the vector case, there is one free parameter -- the overlap $R$ (or angle $\theta$) between student and teacher. In the \emph{matrix} model, uppercase $N$ and $M$ are the input and output dimensions of the weight matrix, resp., giving $n=N\times M$ free parameters.
+The total number of degrees of freedom is the number of training examples $\ND$ times the number of free parameters.}
 \label{tab:dim_notation}
 \end{table}
 

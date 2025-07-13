@@ -1,5 +1,5 @@
 %\subsection{Evaluating the HCIZ Integral in the Large-$N$ Limit}
-\subsection{Evaluating the Layer Quality $(\Q)$ in the Large-$N$ Limit}
+\subsection{Evaluating the Layer Quality \texorpdfstring{$(\Q)$}{Q} in the Large-\texorpdfstring{$N$}{N} Limit}
 \label{sxn:matgen_evaluation_hciz}
 
 %%%Here, we model the matrix-generalized Average ST \Quality (Squared)
@@ -26,7 +26,7 @@
 %%%are equivalent notation denoting the expected value (or average) over all \Student Correlation Matrices $\AECS$ spaning the~\ECS,
 %%%$\AECS_{2}$ is a (random) $N\times N$ square (correlation) matrix, and
 %%%$\TMAT$ is a (non-random) \Teacher $N\times M$ rectangular (weight) matrix.
-%%%That is, $\TMAT$ the actual layer weight matrix $\TMAT=\tilde{\mathbf{W}}$ of the model we wish to study
+%%%That is, $\TMAT$ the actual layer weight matrix $\TMAT=\tilde{\WMAT}$ of the model we wish to study
 %%%(but also only in the span of the~\ECS).
 %%%Notice also that, here,  $\beta$ is the inverse-Temperature and not the simple constant $1$ or $2$ as in \cite{Tanaka}.
 %%%
@@ -36,10 +36,11 @@ To generate the Average \Quality, $\QT$, we first take the large-$N$ limit of $\
   \label{eqn:IZG_limit}
   %  \IZGINF := \lim_{N\gg 1}\IZG = \lim_{N\gg 1}\ln\; \mathbb{E}_{\AECS}\left[\exp N\beta\left( \tfrac{1}{N}\Trace{ \TMAT^{\top}\AECSN\TMAT } \right)\right] ,
 \IZGINF := \lim_{N \gg 1} \IZG 
-= \lim_{N \gg 1} \ln \; 
+= \lim_{N \gg 1}   \red{\tfrac{1}{N}}
+\ln \; 
   \Expected[\AECS]{ 
     \exp\,
-      N \beta \Trace{\tfrac{1}{N}\TMAT^{\top}\,\AECS_{2}\,\TMAT}
+      N \beta \Trace{\tfrac{1}{N}\TMAT^{\top}\,\AECSN\,\TMAT}
   } 
 \end{equation}
 and then take the appropriate partial derivative,
@@ -47,9 +48,9 @@ analogously to how we did for $\AVGSTGE$; see Section~\ref{sxn:quality} for more
 This gives (as in \EQN~\ref{eqn:QT_def})
 \begin{align}
 \label{eqn:IZG_generate_Q2}
-\QT &:= \frac{1}{\beta}\frac{\partial }{\partial N}\IZGINF  \\ 
+\QT &:= \frac{1}{\beta}\frac{\partial }{\partial \ND}\IZGINF  \\ 
 &\underset{\text{high-}T}{\approx}
-\frac{1}{N}\frac{\partial }{\partial \beta}\IZGINF 
+\frac{1}{\ND}\frac{\partial }{\partial \beta}\IZGINF 
 \end{align}
 Notice that since we are at high-Temperature, it doesn't matter which partial derivative we take,
 and we expect both results to be yield the same expression.
@@ -65,8 +66,8 @@ Tanaka's result for the~\ECS can be expressed as:
 \begin{equation}
   \label{eqn:tanaka_result}
   \underset{N\gg 1}{\lim}\frac{1}{N}\ln
-\Expected[\AECS]{\exp\left(\beta \Trace{\TMAT^{\top}\AECSN\TMAT}\right)}
-  =\beta\sum\limits_{i=1}^{\MECS}\;\GNECSI,
+\Expected[\AECS]{\exp\left(\ND\beta \Trace{\TMAT^{\top}\AECSN\TMAT}\right)}
+  =\ND\beta\sum\limits_{i=1}^{\MECS}\;\GNECSI,
 \end{equation}
 where the sum now only includes the eigenvalues of $\XECS$ (in the~\ECS), $\beta=\tfrac{1}{T}$
 is the Inverse-Temperature, and $\LambdaECS$ is an eigenvalue of $\XECS$, the Teacher
@@ -81,7 +82,7 @@ Also,  in \cite{Tanaka2007, Tanaka2008},$\beta=1|2$, but, in fact, if one insert
 This gives
 \begin{equation}
 \label{eqn:tanaka_result2}
-\IZGINF = N\beta\sum\limits_{i=1}^{\MECS}\;\GNECSI,
+\IZGINF = \ND\beta\sum\limits_{i=1}^{\MECS}\;\GNECSI,
 \end{equation}
 \michaeladdressed{State this in a self contained way, with rank assumptions, etc.}
 
@@ -136,7 +137,7 @@ to start at $\LambdaECSmin$ is critical.
 \michael{@charles: if I understand things, the following (until the end of the section) is a big shift; we are going from doing Tanaka, to justifying why we use the empirical data; we should highlight it more clearly.}
 \charles{@michael: thats true}
 
-Since we expect the best Students matrices to resemble the actual \Teacher matrices, we expect the \Student correlation matrix $\AECS$ to have similar spectral properties to our actual empirical correlation matrices $\XECS$.
+Since we expect the best Student matrices to resemble the actual \Teacher matrices, we expect the \Student correlation matrix $\AECS$ to have similar spectral properties to our actual empirical correlation matrices $\XECS$.
 That is, from the perspective of \HTSR theory and the classification into \PhasesOfTraining~\cite{MM18_TR_JMLRversion}, we expect all the $\AECS$ to be in the same phase as $\XECS$ (and, in addition, to have the same PL exponent value).   That is, 
 \\
 \\

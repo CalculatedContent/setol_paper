@@ -2,7 +2,6 @@
 \label{sxn:ST_OP_setup}
 \input{sections/student_teacher}
 
-
 Here, describe the basic setup of the classic \StudentTeacher model, taking an operational view from the perspective of a practitioner training real-world \Student and \Teacher models.  Specifically, we present the \AnnealedApproximation (AA) in a practical light,
 and use it explain the difference between computing the \emph{Empirical\GeneralizationError}, $\AVGEMPGE$, for the \emph{\TrueAccuracy}
 and for the \emph{\Precision} of a \Teacher model. Table~\ref{tab:st_notation} summarizes some of the key notation we will be using in this section.
@@ -186,7 +185,7 @@ the \GeneratingFunction approach. In doing this, we need to compute both the \Th
 over the model weights ($S,T$), and also take the data average over the entire available model data set $\MDD$
 And the order can matter.
 
-In the case where the \Teacher is trained to \Interpolation, may may train the \Student 
+In the case where the \Teacher is trained to \Interpolation, may train the \Student 
 independently of \emph{when} the \Teacher.  
 But if \Teacher is \emph{not} trained to \Interpolation, then formally we must train the \Teacher
 first to obtain target predictions for the \Student.  That is, the \Student formally
@@ -194,8 +193,8 @@ depends on the \Teacher, $S[T]$.
 The empirical errors in $T$ would then formally depend on the specific instantiation of the data  $\NDXIn\in\MDD$,
 and therefore, conceptually imagine that we must first average over the data
 before averaging over the weights.
-Training to \Interpolation correpsonds conceptually to working with a model
-in the \AnnealedApproximation, whereas not correpsonds to \Quenched case.
+Training to \Interpolation corresponds conceptually to working with a model
+in the \AnnealedApproximation, whereas not doing so corresponds to \Quenched case.
 
 Practically, when the \Teacher is not trained to \Interpolation, 
 we may need to resample the training data and training an ensemble of models to compensate for anomalies in training data (bad labels, noise, etc.) that may cause the underlying model to overfit to the training data.

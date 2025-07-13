@@ -1,4 +1,4 @@
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 
 %-------------------------------%
@@ -33,7 +33,7 @@
     \draw[thick,red]  (0,0) -- (330:1.5); % same as -30°
 
     % Overlap formula
-    \node at (0,-1.75) {\( R = \frac{1}{N} (\mathbf{s}^\top \mathbf{t}) \)};
+    \node at (0,-1.75) {\( \AVGR = \frac{1}{\ND} (\mathbf{s}^\top \mathbf{t}) \)};
 
 \end{tikzpicture}
 \end{minipage}%
@@ -102,14 +102,14 @@
     \node[purple!80!black] at (27:0.65) {\(\theta\)};
 
     % Overlap formula
-    \node at (0,-1.75) {\( R = \frac{1}{N^2} \,\mathrm{Tr}\bigl(\mathbf{S}^\top \mathbf{T}\bigr) \)};
+    \node at (0,-1.75) {\( \AVGR = \frac{1}{NM} \,\mathrm{Tr}\bigl(\mathbf{S}^\top \mathbf{T}\bigr) \)};
 
 \end{tikzpicture}
 \end{minipage}
 
 % Main caption
 \caption{Comparison of 2D and 3D representations of the vector and matrix Student--Teacher overlap \(R\).
-\textbf{Left:} \(R = \tfrac{1}{N}\mathbf{s}^\top \mathbf{t}\).
-\textbf{Right:} \(R = \tfrac{1}{N^2}\,\mathrm{Tr}\bigl(\mathbf{S}^\top\mathbf{T}\bigr)\) with conic sections on the sphere (red \(\mathbf{S}\), blue \(\mathbf{T}\)), plus a purple wedge for the angle.}
+\textbf{Left:} \(\AVGR = \tfrac{1}{\ND}\mathbf{s}^\top \mathbf{t}\).  Averaged over $\ND$ data samples (implicitly normalized to $1/m$).
+\textbf{Right:} \(R = \tfrac{1}{NM}\,\mathrm{Tr}\bigl(\mathbf{S}^\top\mathbf{T}\bigr)\) with conic sections on the sphere (red \(\mathbf{S}\), blue \(\mathbf{T}\)), plus a purple wedge for the angle.  Averaged over matrix dimensions $N$ and $M$ (implicitly normalized over the data $1/\ND$).}
 \label{fig:overlaps}
 \end{figure}

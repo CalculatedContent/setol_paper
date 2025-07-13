@@ -2,8 +2,8 @@
 \label{sxn:appendix_A}
 
 See Table~\ref{tab:dimensions} for a summary of various vectors and matrices, including their dimensions;
-see Table~\ref{tab:symbols} for summary of various various symbols used throughout the text; and 
-see Table~\ref{tab:energies} for summary of types of ``Energies'' used throughout the text.
+see Table~\ref{tab:symbols} for a summary of various various symbols used throughout the text; and 
+see Table~\ref{tab:energies} for a summary of types of ``Energies'' used throughout the text.
 
 %\paragraph{Dimensions of various matrices and vectors.}
 %See Table~\ref{tab:dimensions} for a summary of various matrices and vectors used, including their dimensions.
@@ -12,7 +12,7 @@ see Table~\ref{tab:energies} for summary of types of ``Energies'' used throughou
 \renewcommand{\arraystretch}{1.2} % Increase row spacing
 
 \begin{center}
-\begin{table}[h]
+\begin{table}[ht]
   \begin{tabular}{| l | c | r |}
     \hline
     Number of NN Layers & index $L$ & $N_{L}$ \\ \hline
@@ -57,7 +57,7 @@ see Table~\ref{tab:energies} for summary of types of ``Energies'' used throughou
 \renewcommand{\arraystretch}{1.35} % Increase row spacing
 
 \begin{center}
-\begin{table}[h]
+\begin{table}[ht]
   \begin{tabular}{| l | c |}
     \hline
     \Perceptron \StudentTeacher (ST) Overlap & $R=\tfrac{1}{N}\SVEC^{\top}\TVEC=\tfrac{1}{N}\sum_{i}s_{i}t_{i}$ \\ \hline
@@ -87,9 +87,9 @@ see Table~\ref{tab:energies} for summary of types of ``Energies'' used throughou
     Effective Correlation Measure Transform & $d\mu(\mathbf{S})\rightarrow d\mu(\AECS)$ \\ \hline
     HCIZ Integral (Tanaka's Notation)&${\mathbb{E}_{\AECS}}[\exp(\beta\Trace{\TMAT^{\top}\AMAT\TMAT)}$\\ \hline
       HCIZ Integral  & 
-$\Expected[\AECS]{\exp\!\bigl(N\,\beta\,\mathrm{Tr}\bigl[\tfrac{1}{N}\,\TMAT^{\top}\,\AECS_{2}\,\TMAT\bigr]\bigr)}$
+$\Expected[\AECS]{\exp\!\bigl(\ND\beta N\,\mathrm{Tr}\bigl[\tfrac{1}{N}\,\TMAT^{\top}\,\AECSN\,\TMAT\bigr]\bigr)}$
 \\ \hline
-    \LayerQuality \GeneratingFunction & $\IZGINF := N\beta\sum_{\mu=1}^{\MECS}\int^{\LambdaECS_{\mu}}_{\LambdaECS_{\min}} dz R(z)$
+    \LayerQuality \GeneratingFunction & $\IZGINF := \ND\beta N\sum_{\mu=1}^{\MECS}\int^{\LambdaECS_{\mu}}_{\LambdaECS_{\min}} dz R(z)$
  \\ \hline
     \GEN & $G_{A}(\gamma)=\int_{\LambdaECSmin}^{\LambdaECS}R_{A}(z)dz$ \\ \hline
 %    \RTransform (for Levy Matrix)& $R(z)=\nred{b}z^{\alpha-1}$ where \red{$\alpha=3$?or$2$} \\ \hline
@@ -125,9 +125,9 @@ $\Expected[\AECS]{\exp\!\bigl(N\,\beta\,\mathrm{Tr}\bigl[\tfrac{1}{N}\,\TMAT^{\t
 
 %\nred{Check $\mathcal{E}(R):=\langle \Delta E\rangle_{\XI}$.  Is this only at AA and highT?}
 
-\begin{table}[h]
+\begin{table}[ht]
   \hspace*{-2cm}
-\begin{tabular}{|p{10cm}|p{6cm}|p{2.25cm}|}
+\begin{tabular}{|p{10cm}|p{6.2cm}|p{2.25cm}|}
 \hline
 \textbf{Explanation} & \textbf{Examples} & \textbf{Refs} \\
 \hline
@@ -157,9 +157,9 @@ At high-T, the ST model Hamiltonian is: &
 $\beta\HANHT(R):=\beta(1-R)$ & ~\ref{eqn:e0},~\ref{eqn:Gan3} \\
 \hthinline
 The matrix-generalized ST model Hamiltonian: &
-$\beta\GANMAT:=\tfrac{1}{2}\ln[1 + 2\beta(\IM-\mathbf{R})]$  & ~\ref{eqn:GANmat} \\
+$\beta\GANMAT:=\tfrac{1}{2}\ln[1 + 2\beta\red{N}\Trace{\IM-\mathbf{R}}]$  & ~\ref{eqn:GANmat} \\
 At high-T, the matrix-generalized ST model Hamiltonian is: &
-$\GANMATHT:=\IM-\OVERLAP$ & ~\ref{eqn:GANHTmatR} \\
+$\GANMATHT:=\red{?}\IM-\OVERLAP$ & ~\ref{eqn:GANHTmatR} \\
 The \LayerQualitySquared Hamiltonian (for the Accuracy): &
 $\HBARE:=\OLAPTOLAP$ & ~\ref{eqn:RG},~\ref{eqn:HBARE} \\
 \hline

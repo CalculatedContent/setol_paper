@@ -1,4 +1,5 @@
-\subsubsection{Step 1. Forming the Integral Transformation of ESD $(\rho_{\AMAT}^{\infty}(\lambda))$}
+\subsubsection{Step 1. Forming the Integral Transformation of ESD 
+\texorpdfstring{$(\rho_{\AMAT}^{\infty}(\lambda))$}{rho(lambda)}}
 \label{sxn:tanaka_step1}
 We first establish \EQN~\ref{eqn:ZD_step1}, in Steps $1.1-1.4$.
 This is done by changing variables under a Unitary transformation, $\mathbf{W}\rightarrow\mathbf{\check{W}}$,
@@ -9,7 +10,7 @@ $\tilde{\rho}_{\AMAT}(\lambda)\rightarrow\rho^{\infty}_{\AMAT}(\lambda)$.
 \paragraph{Step 1.1}
 %\nred{We need to check all the equations, I might have flipped the transpose in the second term with the source matrix from right to left.}\michael{I think I fixed this, check.}
 To do so, let us first assume that \Teacher correlation matrix $\mathbf{X}$ and the source matrix $\mathbf{D}$
-are simultaneously diagonalizable  
+are simultaneously diagonalizable
 (i.e., their commutator is zero: $[\mathbf{X}, \mathbf{D}]=0$).
 \michael{@charles: where precisely is this assumption used?}
 \charles{Its used in Step 1.3 }
@@ -17,18 +18,18 @@ In this case, we may write the generating function $\ZD$ in \EQN~\ref{eqn:ZD0} a
 %
 \begin{align}
 \label{eqn:Z-diag}
-\ZD &= \int d\mu(\mathbf{W}) \exp\frac{\beta}{2}
+\ZD &= \int d\mu(\mathbf{W}) \exp\frac{\ND\beta}{2}
  \bigg( 
 \Trace{\mathbf{W}^{\top}\mathbf{U}^{\top}\mathbf{\Lambda}\mathbf{U}\mathbf{W}} 
 - \Trace{\mathbf{W}\mathbf{V}^{\top}\mathbf{\Delta}\mathbf{V}\mathbf{W}^{\top}} 
 \bigg)  ,
 \end{align}
-\michaeladdressed{How do we get this?  Is this just \ref{eqn:dmuA}, rewritten?  But we have changed $d\mathbf{W}$ to $d\mathbf{X}$ and changed $\beta$ to $1/2$?  Or does this use the assumption $[\mathbf{X}, \mathbf{D}]=0$?}
+\michaeladdressed{How do we get this?  Is this just \ref{eqn:dmuA}, rewritten?  But we have changed $d\mathbf{W}$ to $d\mathbf{X}$ and changed $\ND\beta$ to $1/2$?  Or does this use the assumption $[\mathbf{X}, \mathbf{D}]=0$?}
 where we have defined
 %
 \begin{equation}
 \label{eqn:diag-A-D}
-    \AMAT_{2}=\mathbf{U}^{\top}\mathbf{\Lambda}\mathbf{U},\;\;
+    \AMATN=\mathbf{U}^{\top}\mathbf{\Lambda}\mathbf{U},\;\;
     \mathbf{D}=\mathbf{V}^{\top}\mathbf{\Delta}\mathbf{V}  ,
 \end{equation}
 %
@@ -49,7 +50,7 @@ Since $\mathbf{U}^{\top}\mathbf{U}=\mathbf{I}$ and $\mathbf{V}^{\top}\mathbf{V}=
 we can insert these identities into $\ZD$ in \ref{eqn:Z-diag}, giving
 %
 \begin{align}\label{eqn:Z0-diag}
-\ZD &= \int d\mu(\mathbf{W}) \exp\frac{\beta}{2}\times  \\ \nonumber
+\ZD &= \int d\mu(\mathbf{W}) \exp\frac{\ND\beta}{2}\times  \\ \nonumber
 &\bigg(\Trace{(\mathbf{V}^{\top}\mathbf{V})\mathbf{W}^{\top}\mathbf{U}^{\top}\mathbf{\Lambda}\mathbf{U}\mathbf{W}(\mathbf{V}^{\top}\mathbf{V})} 
 -\Trace{(\mathbf{U}^{\top} \mathbf{U})\mathbf{W}\mathbf{V}^{\top} \mathbf{\Delta} \mathbf{V}\mathbf{W}^{\top}(\mathbf{U}^{\top} \mathbf{U})}\bigg)  .
 \end{align}
@@ -61,14 +62,14 @@ We can identify the reduced weight matrix $\mathbf{\check{W}}$ as
 \end{equation}
 Rearranging parentheses, this gives 
 \begin{align}
-\ZD &= \int d\mu(\mathbf{W}) \exp\frac{\beta}{2}\times  \\ \nonumber
+\ZD &= \int d\mu(\mathbf{W}) \exp\frac{\ND\beta}{2}\times  \\ \nonumber
 &\bigg(\Trace{\mathbf{V}^T(\mathbf{V}\mathbf{W}^T\mathbf{U}^T)\mathbf{\Lambda}(\mathbf{U}\mathbf{W}\mathbf{V}^T)\mathbf{V}}  
 -\Trace{ \mathbf{U}^{\top}(\mathbf{U} \mathbf{W}\mathbf{V}^{\top})\mathbf{\Delta}(\mathbf{V}\mathbf{W}^{\top} \mathbf{U}^{\top})\mathbf{U} }\bigg)  .
 \end{align}
 We can now express $\ZD$ in terms of $\mathbf{\check{W}}$ as
 \begin{align}
 \label{eqn:hciz-W-red}
-\ZD &= \int d\mu(\mathbf{W})\exp\frac{\beta}{2}
+\ZD &= \int d\mu(\mathbf{W})\exp\frac{\ND\beta}{2}
  \bigg(\Trace{\mathbf{V}^{\top}\mathbf{\check{W}}^{\top}\mathbf{\Lambda}\mathbf{\check{W}}\mathbf{V}} 
  -\Trace{\mathbf{U}^{\top}\mathbf{\check{W}}\mathbf{\Delta}\mathbf{\check{W}}^{\top}\mathbf{U}}\bigg)  .
 \end{align}
@@ -81,7 +82,7 @@ the reduced weight matrix $\mathbf{\check{W}}$, and
 the Jacobian $J(\mathbf{\check{W}})$ transformation for $d\mu(\mathbf{W})\rightarrow d\mu(\mathbf{\check{W}})$, as:
 \begin{align}
 \label{eqn:hciz-W-red2}
-    \ZD & =\int d\mu(\mathbf{\check{W}})J(\mathbf{\check{W}})\exp\frac{\beta}{2}
+    \ZD & =\int d\mu(\mathbf{\check{W}})J(\mathbf{\check{W}})\exp\frac{\ND\beta}{2}
  \bigg( \Trace{\mathbf{\check{W}}^{\top}\mathbf{\Lambda}\mathbf{\check{W}}} 
        -\Trace{\mathbf{\check{W}}\mathbf{\Delta} \mathbf{\check{W}}^{\top}} \bigg)  .
 \end{align}
@@ -96,7 +97,7 @@ integral using the standard relation for the functional determinant for infinite
 
 \begin{equation}
 \label{eqn:hciz-det}
-    \ZD=\left(\dfrac{2\pi}{\beta}\right)^{NM/2}\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)^{-1/2}
+    \ZD=\left(\dfrac{2\pi}{\ND\beta}\right)^{NM/2}\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)^{-1/2}
 \end{equation}
 where the Jacobian is unity for the Unitary transformation.
 \michaeladdressed{Is this $\mathbf{W}$ or $d\mathbf{\check{W}}$?  Also, this is a weight matrix, not an orthogonal matrix correct?  Meaning that the Jacobian being one is due to the Trace-Log condition?}
@@ -115,12 +116,12 @@ Let us insert $(\exp\ln)$ on the R.H.S. of \ref{eqn:hciz-det}, to obtain
 \begin{align}
 \nonumber
 \ZD
-  &=\exp\ln\bigg[\left(\dfrac{2\pi}{\beta}\right)^{NM/2}\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)^{-1/2}\bigg] \\ 
+  &=\exp\ln\bigg[\left(\dfrac{2\pi}{\ND\beta}\right)^{NM/2}\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)^{-1/2}\bigg] \\ 
 \nonumber
-  & =\exp\bigg[\left(\dfrac{NM}{2}\right)\ln\dfrac{2\pi}{\beta}-\dfrac{1}{2}\Trace{\ln\left(\mathbf{\Delta}-\mathbf{\Lambda}
+  & =\exp\bigg[\left(\dfrac{NM}{2}\right)\ln\dfrac{2\pi}{\ND\beta}-\dfrac{1}{2}\Trace{\ln\left(\mathbf{\Delta}-\mathbf{\Lambda}
 \right)}\bigg] \\ 
 \label{eqn:hciz-exp-ln}
-  & =\exp\bigg[\dfrac{NM}{2}\ln\dfrac{2\pi}{\beta}-\dfrac{1}{2}\ln\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)\bigg]  .
+  & =\exp\bigg[\dfrac{NM}{2}\ln\dfrac{2\pi}{\ND\beta}-\dfrac{1}{2}\ln\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)\bigg]  .
 \end{align}
 
 
@@ -130,7 +131,7 @@ We now want to express
 the generating function $\ZD$ 
 in \ref{eqn:hciz-exp-ln}
 in terms of an integral over the continuous limiting spectral density
-$\rho_{\AMAT}(\lambda)$ of the correlation matrix $\AMAT_{2}$.  
+$\rho_{\AMAT}(\lambda)$ of the correlation matrix $\AMATN$.  
 
 First, we express the Determinant of the matrix $\mathbf{\Delta}-\mathbf{\Lambda}$ in terms of discrete eigenvalues:
 \michaeladdressed{I think so; are you asking if we got the $M$ and $N$s correct?}
@@ -141,7 +142,7 @@ First, we express the Determinant of the matrix $\mathbf{\Delta}-\mathbf{\Lambda
 \end{equation}
 %
 This gives the Log-Determinant in terms of the $M$ (non-zero)
-eigenvalues of $\mathbf{D}$ and $\AMAT_{2}$, as
+eigenvalues of $\mathbf{D}$ and $\AMATN$, as
 \begin{equation}
 \label{eqn:ln-det-discrete}
     \ln\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)^{-1/2}=-\dfrac{1}{2}\sum_{\mu=1}^{M}\sum_{i=1}^{N}\ln\left(\DeltaMu-\lambda_{i}\right)  .
@@ -181,10 +182,10 @@ giving
 $\EZDATWO$ in terms of the ESD $\tilde{\rho}_{\AMAT}$ as
 \begin{equation}
 \label{eqn:Z-rho}
-    \EZDATWO=\exp\bigg\{\dfrac{N}{2}\big[M\ln\dfrac{2\pi}{\beta}-\sum_{\mu=1}^{M}\int
+    \EZDATWO=\exp\bigg\{\dfrac{N}{2}\big[M\ln\dfrac{2\pi}{\ND\beta}-\sum_{\mu=1}^{M}\int
         d\lambda\ln(\DeltaMu-\lambda)\tilde{\rho}_{\AMAT}(\lambda)\big]\bigg\}  .
 \end{equation}
-\michael{BTW, I get a $1/\beta$ on the second term, when I derive it, so I think we missed a $\beta$ in the numerator somewhere.}
+\michael{BTW, I get a $1/\ND\beta$ on the second term, when I derive it, so I think we missed a $\ND\beta$ in the numerator somewhere.}
 \charles{Yeah we gotta check all this very carefully}
 
 We can now replace
@@ -201,7 +202,7 @@ in \ref{eqn:Z-rho}
 as
 \begin{equation}
 \label{eqn:Z-rho-2}
-    \lim_{N\gg 1}\EZDATWO=\exp\bigg\{\dfrac{N}{2}\big[M\ln\dfrac{2\pi}{\beta}-
+    \lim_{N\gg 1}\EZDATWO=\exp\bigg\{\dfrac{N}{2}\big[M\ln\dfrac{2\pi}{\ND\beta}-
     \sum_{\mu=1}^{M}\int
         d\lambda\ln(\DeltaMu-\lambda)\rho^{\infty}_{\AMAT}(\lambda)\big]\bigg\}
 \end{equation}
@@ -218,7 +219,7 @@ It follows from \EQN~\ref{eqn:Z-rho-2}
 that
 \begin{equation}
    \lim_{N\gg 1} \ln \EZDATWO
-   \simeq \dfrac{N M}{2}\ln\dfrac{2\pi}{\beta}
+   \simeq \dfrac{N M}{2}\ln\dfrac{2\pi}{\ND\beta}
          -\dfrac{N}{2}\sum_{\mu=1}^{M}\int d\lambda\ln(\DeltaMu-\lambda)\rho^{\infty}_{\AMAT}(\lambda)  .
 \end{equation}
 %
@@ -226,12 +227,12 @@ The $N$-dependence now cancels out,
 \michael{How? / Why? / Or because of what we do in the next step?}
 \charles{@michael We took the log and the exp cancels out}
 and we are left an approximate expression due to the remaining dependence of the continuum limiting density
-$\rho^{\infty}_{\AMAT}(\lambda)$ (for $\AMAT=\mathbf{A}_{2}$)
+$\rho^{\infty}_{\AMAT}(\lambda)$ (for $\AMAT=\AMATN$)
 %
 \begin{equation}
 \label{eqn:ln-Z-Nlim2}
     \lim_{N \gg 1}\dfrac{2}{N}\ln \EZDATWO
-    = M\ln\dfrac{2\pi}{\beta}-\sum_{\mu=1}^{M}\int d\lambda\ln(\DeltaMu-\lambda)\rho^{\infty}_{\AMAT}(\lambda)  .
+    = M\ln\dfrac{2\pi}{\ND\beta}-\sum_{\mu=1}^{M}\int d\lambda\ln(\DeltaMu-\lambda)\rho^{\infty}_{\AMAT}(\lambda)  .
 \end{equation}
 \michael{We still have a factor of 2 issue}
 \charles{Where ?  }

@@ -33,12 +33,12 @@ Doing this lets us then write the measure $d\mu(\mathbf{\AMAT})$ in terms of $d\
 \begin{equation}
 \label{eqn:dmuA}
 d\mu(\mathbf{\AMAT}) 
-   := e^{- \frac{\beta}{2} Tr[\mathbf{W}\mathbf{D}\mathbf{W}^{\top}]} d\mu(\mathbf{W})  ,
+   := e^{- \frac{\ND\beta}{2} Tr[\mathbf{W}\mathbf{D}\mathbf{W}^{\top}]} d\mu(\mathbf{W})  ,
 \end{equation}
 where $\mathbf{D}$ is some $M \times M$ matrix, called the \SourceMatrix, to be specified below,
 and the $\tfrac{1}{2}$ here as well.
 Indeed, the key idea here will be to define $\mathbf{D}$ in such a way as to obtain the desired final result.
-Notice also that we have added a $\beta$ term; this will be factored out later.
+Notice also that we have added an $\ND\beta$ term; this will be factored out later.
 %Notice that we  define $\mathbf{\AMAT}$ through this change of measure, and 
 %$\mathbf{\AMAT}$ should be an $M \times M$ matrix (i.e. $\mathbf{\AMAT}:=\tfrac{1}{N}\mathbf{S}^{T}\mathbf{S}$),
 %but we could also let $\mathbf{\AMAT}$ be an $N \times N$ matrix, (i.e $\mathbf{\AMAT}:=\tfrac{1}{N}\mathbf{S}\mathbf{S}^{T}$),
@@ -59,9 +59,9 @@ $\ZD$ is now defined as an integral over all
 possible (\Teacher) weight matrices $\mathbf{W}$
 \begin{equation}
   \label{eqn:ZD0}
-    \ZD=\int d\mu(\mathbf{W})\exp[\frac{\beta}{2}\left
+    \ZD=\int d\mu(\mathbf{W})\exp\left[\frac{\ND\beta}{2}\left
     (\Trace{\mathbf{W}^{\top}\AMAT_N\mathbf{W}}-\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}  
-    \right)]  ,
+    \right)\right]  ,
 \end{equation}
 %where the matrix $\mathbf{D}$ is the called the \SourceMatrix.
 \michaeladdressed{@charles: What is this a ``modification of? I get it if it is just a regularized objective, with LaGrange parameters to be determined; but are we going to use it as a generating function or partition function of some effective physical system? Maybe a sentence or two saying why doing this modification makes sense. This is probably just going to be a vector of prices or lagrange parameters that control the constraint satisfaction?}
@@ -69,7 +69,7 @@ possible (\Teacher) weight matrices $\mathbf{W}$
 Observe that this integral only converges when all the eigenvalues of $\DMAT$, 
 $\left\{ \DeltaMu \right\}_{\mu=1}^{M}$, 
 are larger than the maximum eigenvalue of $\mathbf{\AMAT}$, i.e., when $\DeltaMu >\lambda_{max}$, for $\mu\in[1,M]$
-(although below this will become $\beta\DeltaMu >\lambda_{max}$).
+(although below this will become $\ND\beta\DeltaMu >\lambda_{max}$).
 Later, we will place $\mathbf{D}$ in diagonal form, and we will obtain an explicit expression for its $M$ eigenvalues in terms of the $M$ non-zero eigenvalues of $\mathbf{X}$.
 The eigenvalues of $\mathbf{D}$ will turn out to Lagrange Multipliers, needed later.
 
@@ -108,7 +108,7 @@ Truncated \PowerLaw (TPL).
 %\begin{equation}
 %  \label{eqn:EZD}
 %  \EZDA=
-%  \int\exp\left(\beta N Tr[\GNORM(\mathbf{X})]-NI(\mathbf{X})+o(N)\right)d\mu(\mathbf{X})
+%  \int\exp\left(\ND\beta N Tr[\GNORM(\mathbf{X})]-NI(\mathbf{X})+o(N)\right)d\mu(\mathbf{X})
 %\end{equation}
 %where $I(\mathbf{X})$ is the \RateFunction, defined below.
 %}
@@ -131,7 +131,7 @@ relations, Eqns.~\ref{eqn:ZD_step1} and ~\ref{eqn:ZD_step2}:
    \begin{equation}
       \label{eqn:ZD_step1}
       \lim_{N\gg 1}\dfrac{1}{N}
-      \ln\EZDATWO =M\ln(\dfrac{2\pi}{\beta})-\sum_{\mu=1}^{M}\int \ln(\delta_{\mu}-\lambda)\rho^{\infty}_{\AMAT}(\lambda)d\lambda  .
+      \ln\EZDATWO =M\ln(\dfrac{2\pi}{\ND\beta})-\sum_{\mu=1}^{M}\int \ln(\delta_{\mu}-\lambda)\rho^{\infty}_{\AMAT}(\lambda)d\lambda  .
    \end{equation}
    This gives us an $\EZDATWO$ in terms of an integral transform $\rho^{\infty}_{\AMAT}(\lambda)$, which we can model.\footnote{This integral of $\rho^{\infty}_{\AMAT}(\lambda)$  is related to the \emph{Shannon Transform}, an integral transform from information theory that is useful when analyzing the mutual information or the capacity of a communication channel~\cite{Tanaka2007}. }
    \michaeladdressed{I dont think thats obvious, is it? I thought the point was that is is convex/concave when $\delta_{\mu} >\lambda_{max}$, in which case it is a Laplace(?) transformation (which we can then invert)? Or is this something else?}
@@ -144,13 +144,13 @@ relations, Eqns.~\ref{eqn:ZD_step1} and ~\ref{eqn:ZD_step2}:
     (and which can be done implicitly using the LDP), we obtain
    \begin{equation}  
   \label{eqn:ZD1} 
-  \lim_{N \gg 1} \EZDAONE\simeq\int  \exp\left(\beta N\Trace{\GFANCY}\right)d\mu(\mathbf{X}) \approx \exp(\beta N\GMAX)
+  \lim_{N \gg 1} \EZDAONE\simeq\int  \exp\left(\ND\beta N\Trace{\GFANCY}\right)d\mu(\mathbf{X}) \approx \exp(\ND\beta N\GMAX)
 \end{equation}
   where  $\GFANCY$ depends on $\GNORM(\mathbf{X})$, and $\GMAX=\sup_{\XMAT}\GFANCY$.
   We can then write
    \begin{equation}
       \label{eqn:ZD_step2}
-      \lim_{N \gg 1}\dfrac{1}{N}\ln\EZDAONE \approx \beta\GMAX  ,
+      \lim_{N \gg 1}\dfrac{1}{N}\ln\EZDAONE \approx \ND\beta\GMAX  ,
    \end{equation}
 
  \item

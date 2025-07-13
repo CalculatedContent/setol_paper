@@ -1,7 +1,7 @@
 
 \begin{table}[t]
   \raggedright
-\hspace*{-0.5cm}% Adjust this value as needed
+\hspace*{-1.5cm}% Adjust this value as needed
 \renewcommand{\arraystretch}{1.25} % Increase line spacing in table
 \begin{tabular}{|c|c|c|c|}
   \hline
@@ -15,7 +15,7 @@
    Annealed Hamiltonian
     & $\HANHT=\EPSLw$ (\ref{eqn:epsl}) 
     & $\GANHTR=\EPSLSTx=1-R$ (\ref{eqn:e0}) 
-  & $\GANMATHT = \IM-\OVERLAP$ (\ref{eqn:GANHTmatR}) \\
+  & $\GANMATHT = \red{N}(\IM-\OVERLAP)$ (\ref{eqn:GANHTmatR}) \\
 
   (Data-Averaged Error) 
     & (AA, at high-T) 
@@ -24,7 +24,7 @@
 
     \SelfOverlap 
     & $\ETAw = 1-\EPSLw$ 
-    & $\ETA(\SVEC,\TVEC)=\tfrac{1}{N}\SVEC^{\top}\TVEC$ (\ref{eqn:eta_vec_avg_def})
+    & $\ETA(\SVEC,\TVEC)=\tfrac{1}{\ND}\SVEC^{\top}\TVEC$ (\ref{eqn:eta_vec_avg_def})
     & $\ETA(\SMAT,\TMAT)=\tfrac{1}{N}\SMAT^{\top}\TMAT$ (\ref{eqn:eta_mat_avg_def})  \\ \hline
     \hline
 
@@ -39,13 +39,13 @@
    & $\Q^{NN}:=\prod_{L} \Q^{NN}_{L}$ \\ \hline
 \end{tabular}
 \caption{Summary of key quantities compared across traditional \SMOG models,  the \Student-\Teacher (ST) \LinearPerceptron--in the \AnnealedApproximation
-(AA) and at high-Temperature (high-T) and at large-$N$, and the matrix-generalized forms as the starting point to frame \SETOL.
+(AA) and at high-Temperature (high-T) and at large-$\ND$, and the matrix-generalized forms as the starting point to frame \SETOL.
 The Total Data Model Error represents the difference between the model and its labels for the ST model between
 the \Student and \Teacher predictions.
 The \AnnealedHamiltonian is the Energy function for this Error after it is averaged over the model for the training data
-(an $n$ or $N$-dimensional i.i.d. Gaussian model, i.e.,  $\NDXIn$ or $\NDXI$).
-In the AA, the \AnnealedHamiltonian is equal to the \EffectivePotential.  For the ST model,  this is one minus the overlap, $(1-R)$;
-for the \SETOL, this is  the ($M$-dimensional) identity minus the overlap operator/matrix, $\IM-\OVERLAP$.
+(an $\ND$-dimensional i.i.d. Gaussian model, i.e.,  $\NDXIn$).
+In the AA, the \AnnealedHamiltonian is equal to the \EffectivePotential.  For the ST model,  this is one minus the average overlap, $(1-\AVGR)$;
+for the \SETOL, this is  the ($M$-dimensional) identity minus the overlap operator/matrix, $\red{N}(\IM-\OVERLAP)$.  \nred{average ?}
 The \SelfOverlap $\eta(\cdots)$ is used to describe the Accuracy (as opposed to the Error) for both the ST model and
 its matrix-generalized form.
 %Notice that $\eta(\XI)$, as defined,  has not yet been averaged over the model data $\XI^{N}$.
@@ -73,7 +73,7 @@ which gives
 \end{align}
 And this will become the RG \EffectiveHamiltonian.
 
-But we can not define an $\mathbf{H}$ for the Unsquared  $\Q$ using  $\sqrt{\OLAPTOLAP}$ because when write the \PartitionFunction
+But we can not define an $\mathbf{H}$ for the Unsquared $\Q$ using  $\sqrt{\OLAPTOLAP}$ because when write the \PartitionFunction
 we always use $\beta\operatorname{Tr}[\mathbf{H}(\SMAT)]$ in the exponential
 \begin{align}
   Z:=\int d\mu(\SMAT) e^{N\beta\operatorname{Tr}[\mathbf{H}(\SMAT)]}
@@ -82,7 +82,7 @@ and for $\Q$ the $\sqrt{\cdots}$ needs to appear outside the Trace
 
 \paragraph{Quality Approximation}
 Why do we work with the \LayerQualitySquared and not the \LayerQuality directly?
-For our matrix-genearlized model, we need to map
+For our matrix-generalized model, we need to map
 the \AnnealedHamiltonian for the \LinearPerceptron to a matrix,
 $\HANHT(\WVEC)\rightarrow\mathbf{H}(\WMAT)$ in such a way that the new
 Hamiltonian operator (i.e., matrix) is symmetric.  At high-T, we have $\HANHT(\WVEC)=\EPSLR=1-R$.

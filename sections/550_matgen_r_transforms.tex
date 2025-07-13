@@ -1,9 +1,9 @@
 \subsection{Modeling the R-Transform}
 \label{sxn:r_transforms}
 
-To apply \SETOL, the model satisfy the \TRACELOG condition--which occurs during the case of  \IdealLearning.
-For most cases of NN models, the ESD are HT; and this, in practice, one usually would select $R(x)$ that reflects this.
-But to be more general, we formally extend the theory to allow the practioners to
+To apply \SETOL, the model must satisfy the \TRACELOG condition--which occurs during the case of \IdealLearning.
+For most cases of NN models, the ESD are HT; and in practice, one usually would select $R(x)$ that reflects this.
+But to be more general, we formally extend the theory to allow the practitioners to
 both model the ESD as just a collection of discrete spikes, and to even correct for
 \CorrelationTraps and/or \VeryHeavyTailed (VHT) ESDs.
 Most importantly,  we derive expressions for both the~\WW~\ALPHA and~\ALPHAHAT metrics, valid
@@ -30,7 +30,7 @@ Using the ESD $\rho(\lambda)$, defined as
 we can express the \emph{\GreensFunction} (or \emph{\CauchyStieltjes} transform $C(z)$) by%
 \footnote{Please notice our naming and sign convention in \EQN~\ref{eqn:Cz}.
 We equate the \GreensFunction $G(z)$ with
-the (positive)\CauchyStieltjes transform, $G(z)=C(z)$.   Other works may use the opposite sign convention, $G(z)=-C(z)$.}
+the (positive) \CauchyStieltjes transform, $G(z)=C(z)$.   Other works may use the opposite sign convention, $G(z)=-C(z)$.}
 \begin{equation}
 \label{eqn:Cz}
 G(z)=C(z):=\int \mathrm{d}\lambda \frac{\rho(\lambda)}{z-\lambda} .
@@ -71,12 +71,12 @@ That is, we can given $R(z)=R(z)_{tail}+R(z)_{bulk}$, we only need $R(z)\approx 
 
 \charles{Describe $R(z)$ is a power series, and how we take $\int dz R(z)$ and why we restirct the integral, contours, etc}
 
-Before moving forward, it is first necessary to demonstrate the \RTransform $R(z)$ exists for the power-law ESDs that arise in \SETOL; this is shown in Appendix~\ref{sxn:RTransformExists}.  Specially, it is shown that while the $R(z)$ does not formally exist for a pure power-law (PL) tail with $\alpha=2$, it does generally exist for \emph{Truncated} power-law (TPL) tails, defined such that $\lambda\in[\LambdaECSmin, \LambdaECS]^{max}$.  This is sufficient for our purposes here.
+Before moving forward, it is first necessary to demonstrate the \RTransform $R(z)$ exists for the power-law ESDs that arise in \SETOL; this is shown in Appendix~\ref{sxn:RTransformExists}.  Specifically, it is shown that while the $R(z)$ does not formally exist for a pure power-law (PL) tail with $\alpha=2$, it does generally exist for \emph{Truncated} power-law (TPL) tails, defined such that $\lambda\in[\LambdaECSmin, \LambdaECS]^{max}$.  This is sufficient for our purposes here.
 
 \subsubsection{Known \RTransforms and Analytic (Formal) Models}
 \label{sxn:r_transforms:known_r_transforms}
 
-There only a few known analytic results for the explicit \RTransform $R(z)$.
+There are only a few known analytic results for the explicit \RTransform $R(z)$.
 The ones we need are in Table~\ref{tab:known_r_transforms}.
 Below, we review some of them, explaining what ESD they correspond to,
 and what the resulting \GEN~$G(\lambda)$ would be if applied
@@ -89,13 +89,13 @@ We can create plots to show how these models can treat heavy tails, and explain 
 \michael{We have five rows in the table but three subsubsxns below. How many do we have? Maybe make each a par rather than a subsubsxn.}
 \charles{@michael: this is low priority, can revisit later}
 
-\subsubsection{Discrete Model: Bulk$+$Spikes, MHT, HT}
+\subsubsection{Discrete Model: Bulk\texorpdfstring{$+$}{+}Spikes, MHT, HT}
 
-Here, we consider modeling the  tail ESD, $\rho_{tail}(\lambda)$, as a collection
+Here, we consider modeling the tail ESD, $\rho_{tail}(\lambda)$, as a collection
 of discrete spikes $\lambda_{spike}$, 
 where $\lambda_{spike}\ge \LambdaECSmin$.
 This could be for modeling an ESD in the Bulk$+$Spikes \HTSR Universality class,
-or it could be applied to an MHT or HT ESD as a discrete distributoon with
+or it could be applied to an MHT or HT ESD as a discrete distribution with
 no inherent structure; its a modeling choice.
 Here, \RTransform for the \ECS is sum of Dirac delta functions.
 This lets us compute the \LayerQuality $\Q$ in closed form in terms of the Teacher weight matrix
@@ -180,7 +180,7 @@ Second, we assume the \LayerQualitySquared is dominated by the largest term in t
 = a\sum_{i}^{\MECS} \LambdaECS_{i} \approx a\lambda_{max}
 \end{equation}
 
-For the Heavy-Tailed ESDs, we genrally find that as $\lambda_{\max}$ increses, the \HTSR $\alpha$ decreases.
+For the Heavy-Tailed ESDs, we generally find that as $\lambda_{\max}$ increases, the \HTSR $\alpha$ decreases.
 Juat for illustrative purposes,
 If we take $\log_{10}\lambda_{\max}\sim\frac{1}{\alpha}$ (assuming $\log_{10}\lambda_{\max}>1$), and take the square root of both sides,
 we obtain the desired result for the log \Quality, namely, that it scales inversely with $\alpha$
@@ -189,7 +189,7 @@ we obtain the desired result for the log \Quality, namely, that it scales invers
 \log_{10}\Q_{\mathrm{FC}} \sim \frac{1}{\alpha}
 \end{equation}
 
-If we extend this formally beyond the Ideal  case to $\alpha\ge 2$, we now can exlain why the \HTSR $\alpha$
+If we extend this formally beyond the Ideal  case to $\alpha\ge 2$, we now can explain why the \HTSR $\alpha$
 makes a good \LayerQuality metric in deep networks,
 as smaller $\alpha$ suggests higher quality layers and therefore a higher overall model quality and/or accuracy. 
 
@@ -197,7 +197,7 @@ as smaller $\alpha$ suggests higher quality layers and therefore a higher overal
 \subsubsection{Inverse Marchenko-Pastur Model of \IdealLearning}
 For a more realistic model of a layer ESD, 
 here, we consider the \InverseMP (IMP) model~\cite{BunThesis}.
-The IMP model treats the ESD of $\mathbf{X}^{-1}$ when the ESD of $\mathbf{X}$ itself is MP.
+The IMP model treats the ESD of $\XMAT^{-1}$ when the ESD of $\XMAT$ itself is MP.
 As a parametric model, it can be quite effective at treating VHT and HT (or \FatTailed) ESDs,
 $\alpha\le 4$, but works best when $\alpha=2.0$.
 To do this, one simply considers  $\kappa$,  as an adjustable parameter which effectively captures the rank or soft-rank of an ECS-like space in these non-ideal layers.
@@ -206,28 +206,28 @@ It is an excellent model for the ESD when $\alpha=2.0$ (and $Q=2$).
 Using this model, we can derive an expression for the \HTSR \ALPHAHAT \LayerQuality metric,
 $\ALPHAHATEQN :=\ALPHAHATLONG)$ as a leading order term in the final expression for $\log_{10}\QT$.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \subfigure[IMP Distribution, $\kappa=0.5$]{ 
       \includegraphics[width=7.5cm]{./img/IMPplotKappa0.5.png}
       \label{fig:IMPplotESD}                               
     }                               
-      \subfigure[IMP $\kappa$ vs. \HTSR $\alpha$]{ 
+    \subfigure[IMP $\kappa$ vs. \HTSR $\alpha$]{ 
       \includegraphics[width=7.5cm]{./img/kappa_vs_alpha_with_fit.png}
       \label{fig:IMPPlotKappaVsAlpha}                                
-      }
-      \caption{
-        (\ref{fig:IMPplotESD}) plots a typical \InverseMP (IMP) ESD  $\kappa=0.5$,  along with Power Law (PL) fits, with PL exponent$\alpha=1.86$.
-        (\ref{fig:IMPPlotKappaVsAlpha}) depicts the linear relationship betweem $\kappa$ and $\alpha$.
-      }
+    }
+    \caption{
+      (\ref{fig:IMPplotESD}) plots a typical \InverseMP (IMP) ESD  $\kappa=0.5$,  along with Power Law (PL) fits, with PL exponent$\alpha=1.86$.
+      (\ref{fig:IMPPlotKappaVsAlpha}) depicts the linear relationship between $\kappa$ and $\alpha$.
+    }
   \label{fig:IMPplots}                                                                                                      
 \end{figure}   
 
 In Figure~\ref{fig:IMPplots}, we generate a random IMP model ESD with $\kappa=0.5$, $Q=2.0$, fit the ESD
 to a PL, and find $\alpha=1.08$; this is a reasonably accurate model of an PL ESD for $\alpha\approx 2$.
-For larger $\kappa$, the fits are not as good, but the model is stil useful to suggest a heurstic model for the
+For larger $\kappa$, the fits are not as good, but the model is still useful to suggest a heuristic model for the
 \LayerQuality in terms of the \HTSR $\alpha$.
-In Figure~\ref{fig:IMPPlotKappaVsAlpha}, we show that there is a simple relationship betweem $\kappa$ and $\alpha$,
+In Figure~\ref{fig:IMPPlotKappaVsAlpha}, we show that there is a simple relationship between $\kappa$ and $\alpha$,
 which allows us to formally state $\alpha=2\;\kappa$.
 
 \begin{figure}[t]
@@ -274,24 +274,22 @@ By associating $\alpha=2\;\kappa$, we recover the \ALPHAHAT formular, albeit wit
 
 \subsubsection{The Multiplicative-Wishart (MW) model}
 The Multiplicative-Wishart (MW) model  has two real, adjustable parameters $\epsilon,\phi$.
-It treates $\mathbf{X}$ as resulting from product of random matrices, and is good for modeling an ESD with a Very Heavy Tail (VHT).
-It has been used previously to model the heavy tail of the Hessian matrix in NNs\cite{PW16_NIPS}.
+It treats $\XMAT$ as resulting from a product of random matrices, and is good for modeling an ESD with a Very Heavy Tail (VHT).
+It has been used previously to model the heavy tail of the Hessian matrix in NNs~\cite{PW16_NIPS}.
 This model would work better for fitting HT ESDs that decay slower than a PL or TPL.
 We note that unlike the IMP, the MW model does not have a branch cut at the ECS, but it does
-have $2$ poles, compicating the integration of the  \RTransform.
+have $2$ poles, complicating the integration of the \RTransform.
 We will not consider this model further here and instead leave this for future work.
 
 
 \subsubsection{Levy-Wigner Models and the \ALPHAHAT Metric}
-
 Here, we consider General Levy-Wigner (LW) model..
-We show how to obtain the \WW~\ALPHAHAT metric by modeling VHT ESDs with an approximation to a Levy distribution, suitable
-for cases where the \HTSR $\alpha\le 2$.  
+We show how to obtain the \WW~\ALPHAHAT metric by modeling VHT ESDs with an approximation to a Levy distribution, suitable for cases where the \HTSR $\alpha\le 2$.  
 
 The~\ALPHAHAT metric has been developed to adjust for \SCALE anomalies that arise from issues like \CorrelationTraps,
 rank collapse, and overfitting, which can in many cases make \ALPHA smaller than expected, and even smaller than $2$.
-We model these VHT ESDs  \emph{as if} they follows a Levy-Stable distribution, generated from a \LevyWigner random matrix.
-The  \LevyWigner (LW) model treats  $\mathbf{X}$ as if it were a \Wigner matrix (and not actually a rectnalgyle correlation  matrix),
+We model these VHT ESDs \emph{as if} they follow a Levy-Stable distribution, generated from a \LevyWigner random matrix.
+The \LevyWigner (LW) model treats $\XMAT$ as if it were a \Wigner matrix (and not actually a rectnalgyle correlation  matrix),
 s we must decide how to map the \HTSR $\alpha$ to the L\'evy $\alpha_{l}$; for this, we select $\alpha_{l}=\alpha-1$.
 (See in Table~\ref{tab:known_r_transforms}.)
 The LW model is defined in terms of 3 parameters:
@@ -332,7 +330,7 @@ As with the Free Cauchy (FC), let us approximate $\QT$ by the largest term in th
 \ALPHAHATEQN = \log_{10} \QT_{\mathrm{LW}} \approx (\alpha-1)\log\lambda_{max}   .
 \end{equation}
 We present this as a formal example, noting that it is slightly different from the result for the IMP model.
-(See Table~\ref{table:htsr_layer_quality}). 
+(See Table~\ref{tab:htsr_layer_quality}). 
 We do not claim this is a valid empirical model, as we have not attempted to fit a real-world ESD to Levy-stable distribution.  
 We leave this to a future study, noting however, there has been some work doing such fits~\cite{li2024exploring}.
 

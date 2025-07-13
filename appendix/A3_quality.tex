@@ -7,51 +7,51 @@ given in \EQN~\ref{eqn:betaIZG_S} in Section~\ref{sxn:matgen_quality_hciz_A}.
 For the required \FreeEnergy $\IZFE$, we will use the matrix-generalized Hamiltonian
 from \EQN~\ref{eqn:GANHTmatR} for the
 \LayerQuality, $\GANMATHT=\mathbb{I}_{M}-\OVERLAP$,
-giving a  Boltzmann distribution and the corresponding \ThermalAverage.  
+giving a Boltzmann distribution and the corresponding \ThermalAverage.  
 \michaeladdressed{@charles: I couldntt find where we actually had the equation $\EPSL(\mathbf{R}) = 1 - \sqrt{\OLAPSQD}$ in the main text; where is it?}
 \charles{@michael: \EQN~\ref{eqn:EPSL_mat}}
 Expanding this out, we have
 \begin{align}
   \label{eqn:IZFE0}
-  -\IZFE =& -  \ln \int d\mu(\mathbf{S}) \exp\left[-N\beta \operatorname{Tr}[\HANHT(\OVERLAP)]  \right] \\
+  -\IZFE =& -  \ln \int d\mu(\mathbf{S}) \exp\left[-\ND\beta N \operatorname{Tr}[\HANHT(\OVERLAP)]  \right] \\
 \end{align}
 We could also express $\IZFE$ In terms of the matrix-generalized \EffectivePotential $\EPSL(\OVERLAP)$
 (\EQN~\ref{eqn:EPSL_mat}), giving
 \begin{align}
-  -\IZFE =& -  \ln \int d\mu(\mathbf{S}) \exp\left[-N\beta \EPSL(\OVERLAP)  \right] 
+  -\IZFE =& -  \ln \int d\mu(\mathbf{S}) \exp\left[-\ND\beta N \EPSL(\OVERLAP)  \right] 
 \end{align}
 In analogy with \EQN~\ref{eqn:Gan_highT}, 
 as $\HANHT(\mathbf{R})=M-\OVERLAP$,  write
 \begin{align}
--\IZFE  =& -  \ln \int d\mu(\mathbf{S}) \exp\left[-N\beta \operatorname{Tr}[M-\OVERLAP]  \right] 
+-\IZFE  =& -  \ln \int d\mu(\mathbf{S}) \exp\left[-\ND\beta N \operatorname{Tr}[M-\OVERLAP]  \right] 
 \end{align}
 Using the approximation $\operatorname{Tr}[\OVERLAP]\approx\sqrt{\OLAPSQD}$, we have
 \begin{align}
   -\IZFE 
-\approx& - \ln \int d\mu(\mathbf{S}) \exp\left[-N\beta(M-\sqrt{\OLAPSQD} ) \right] \\ 
+\approx& - \ln \int d\mu(\mathbf{S}) \exp\left[-\ND\beta N(M-\sqrt{\OLAPSQD} ) \right] \\ 
 \label{eqn:IZFE1}
-=& -  \ln \int d\mu(\mathbf{S}) \exp[-NM\beta]\exp\left[N\beta\sqrt{\OLAPSQD}\right], \\
+=& -  \ln \int d\mu(\mathbf{S}) \exp[-\ND\beta NM]\exp\left[\ND\beta N\sqrt{\OLAPSQD}\right], \\
 \label{eqn:IZFE2}
-=& -  \ln e^{-NM\beta} \int d\mu(\mathbf{S}) \exp\left[N\beta\sqrt{\OLAPSQD}\right], \\
+=& -  \ln e^{-\ND\beta NM} \int d\mu(\mathbf{S}) \exp\left[\ND\beta N\sqrt{\OLAPSQD}\right], \\
 \label{eqn:IZFE3}
-=& -  \ln e^{-NM\beta} - \ln \int d\mu(\mathbf{S}) \exp\left[N\beta\sqrt{\OLAPSQD}\right], \\
+=& -  \ln e^{-\ND\beta NM} - \ln \int d\mu(\mathbf{S}) \exp\left[\ND\beta N\sqrt{\OLAPSQD}\right], \\
 \label{eqn:IZFE4}
-=& NM\beta - \ln \int d\mu(\mathbf{S}) \exp\left[\beta N\sqrt{\OLAPSQD}\right], 
+=& \ND\beta NM - \ln \int d\mu(\mathbf{S}) \exp\left[\beta N\sqrt{\OLAPSQD}\right], 
 \end{align}
 
-Notice that, as expected, the Free Energy scales $\IZFE$ as $N \times M$.
+Notice that, as expected, the Free Energy scales $\IZFE$ as $\ND \times N \times M$, the total number of degrees of freedom of the theory.
 \noindent
 Since \EQN~\ref{eqn:IZFE0} equals \EQN~\ref{eqn:IZFE1}, we can write the \FreeEnergy in terms of $\OLAPSQD$. From \EQN~\ref{eqn:IZFE4}, 
 we can identify a generating function ($\Gamma_{\Q}$) for the layer accuracy, or \Quality.
 For example, to compute the average \Quality $\Q$, we would use
 \begin{align}
   \label{eqn:IZG_Q}
-  \beta\Gamma^{IZ}_{\Q} :=  \ln \int d\mu(\mathbf{S}) \exp\left[N\beta\sqrt{\OLAPSQD}\right],
+  \beta\Gamma^{IZ}_{\Q} :=  \ln \int d\mu(\mathbf{S}) \exp\left[\ND\beta N\sqrt{\OLAPSQD}\right],
 \end{align}
 and to compute the average \Quality (squared) $\QT$, we would use
 \begin{align}
     \label{eqn:IZG_QT2}
-  \beta\Gamma^{IZ}_{\QT} :=  \ln \int d\mu(\mathbf{S}) \exp\left[N\beta\OLAPSQD\right] .
+  \beta\Gamma^{IZ}_{\QT} :=  \ln \int d\mu(\mathbf{S}) \exp\left[\ND\beta N\OLAPSQD\right] .
 \end{align}
 %Moving forward, we drop the $\QT$ subscript, so $\Gamma^{IZ}=\Gamma^{IZ}_{\QT}$, and we
 We have recovered \EQN~\ref{eqn:betaIZG_S}.
@@ -64,7 +64,7 @@ which is a symmetric operator, as desired.
 Consequently, we may also write
 \begin{align}
     \label{eqn:IZG_QT3}
-  \beta\Gamma^{IZ}_{\QT} :=  \ln \int d\mu(\mathbf{S}) \exp\left[N\beta \operatorname{Tr}[\HH_{\QT}]\right]  .
+  \beta\Gamma^{IZ}_{\QT} :=  \ln \int d\mu(\mathbf{S}) \exp\left[\ND\beta N \operatorname{Tr}[\HH_{\QT}]\right]  .
 \end{align}
 \michaeladdressed{MM TO DO: Note that I just put $\frac{1}{N}$ into those two equations, I don't fully see how we do the averaging to get it.}
 \charles{we have to adjust for the new $\tfrac{1}{M}$ term, which I need to think about.

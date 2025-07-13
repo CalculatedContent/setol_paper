@@ -12,14 +12,13 @@ In the Post-war era, the epistemological nature of nuclear theory changed,
 as it saw the development of \SemiEmpirical shell models of the nucleus.
 These models were formulated with rigor (in the physics sense)
 but also relied on heuristic assumptions and experimental data for accurate predictions.
-They  captured  the structure of atomic nuclei
+They captured the structure of atomic nuclei
 and could accurately describe various nuclear properties~\cite{Ivanenko1932, GoeppertMayer1949, Jensen1949}.
 The shell models, analogous to the electronic shell structure of atoms,
 represented a shift toward a more rigorous understanding of nuclear phenomena.
 
 About this time, \RMT~itself was also introduced by \emph{\Wigner}~\cite{Wigner55}
-to model the statistical patterns of the nuclear energy spectra of 
-strongly interacting heavy nuclei.
+to model the statistical patterns of the nuclear energy spectra of strongly interacting heavy nuclei.
 These patterns were universal, independent of the specific nucleus,
 suggesting that a probabilistic approach would be fruitful.
 In the following decades, \RMT saw many advances, including the development of
@@ -62,16 +61,16 @@ log partition function here as a sum of matrix cumulants from RMT.}
 
 Like modern NNs, these \SemiEmpirical methods of \QuantumChemistry
 worked well beyond their apparent range of validity,
-generalizing very well to out-of-distibution (OOD) data.  This led to the
+generalizing very well to out-of-distribution (OOD) data. This led to the
 search for a \SemiEmpirical \emph{Theory} to explain the
 remarkable performance of these phenomenological methods.
 Building on Brandow’s many-body formalism, Freed and collaborators
 \cite{freed1977, Freed1983}
 developed an \emph{ab initio} \EffectiveHamiltonian
-Theory of \SemiEmpirical methods  to explain the remarkable success of the \SemiEmpirical methods.
+Theory of \SemiEmpirical methods to explain the remarkable success of the \SemiEmpirical methods.
 Specifically, the values of the PPP empirical parameters could be directly computed by way of
 effective interactions, including both renormalized self-energies and higher-order terms.
- Somewhat later, in the 90s,
+ Somewhat later, in the 1990s,
  Martin et. al.~\cite{MartinFreed1996, Martin1996, Martin1996_CPL, Martin1998}
  extended and applied this \EffectiveHamiltonian theory
  and demonstrated the \Universality of the \SemiEmpirical PPP parameters numerically.
@@ -79,7 +78,7 @@ effective interactions, including both renormalized self-energies and higher-ord
  OOD performance of these methods.
  Crucially, this decades long line of work established a comprehensive
  analytic and numerical \emph{Theory} of \SemiEmpirical methods.
- That is, a framework that confirmed the empirically observed \Universality,
+ That is, a framework that confirmed the empirically observed \Universality
  provided theoretical justification for this,
  and enabled systematic improvements of the methods using numerical techniques.
   %bridging the gap between computationally expensive ab initio approaches and purely empirical techniques. This dual capability of providing explanatory power and enabling refinements made their contributions foundational to the evolution of computational \QuantumChemistry.
@@ -90,14 +89,12 @@ effective interactions, including both renormalized self-energies and higher-ord
  enabling the construction of an \EffectiveHamiltonian by \emph{integrating out} weakly-correlated degrees of freedom in a \ScaleInvariant way.
  It is particularly suited for critical points and phase boundaries --
  such as the phase boundary between generalization and memorization in spin glass models of neural networks --
- and, importantly,
- predicts the  exisitence of Universal Power Law (PL) exponents .
+ and, importantly, predicts the existence of Universal Power Law (PL) exponents .
  
  \paragraph{Relevance to Deep Learning}
- 
  In this sense, \SemiEmpirical theories of \NuclearPhysics and \QuantumChemistry,
- (as well as the \RenormalizationGroup approach),  seem particularly appropriate
-  for Deep Learning.
+ (as well as the \RenormalizationGroup approach), seem particularly appropriate
+ for Deep Learning.
   DNN models are complex black boxes that defy statistical descriptions in that
   they are commonly pre-trained on a large set of data; and than applied to new data sets in new domains via transfer learning.
   Most recently, the inexplicable success of transfer-learning is seen
@@ -112,6 +109,3 @@ However, regarding realistic models, it has been explicitly stated that
 Even in recent work applying \RMT~to NNs, it has been noted
 ``\emph{that we make no claim about trained weights, only random weights}''~\cite{Yang2021}.
 The weight matrices of a trained NN, however, are clearly \emph{not} simply random matrices---since they encode the specific correlations from the training data.
-
-
-%

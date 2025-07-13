@@ -176,7 +176,7 @@
 %\newcommand{\HCIZ}{\mathbb{Z}^{IZ}(\mathbf{A})}
 \newcommand{\HCIZ}{\mathbb{Z}^{IZ}}
 %
-\newcommand{\NDX}{\mathbf{x}^{n}}
+\newcommand{\NDX}{\mathbf{x}^{\red{n}}}
 
 % model training and generalization error
 % averagess
@@ -237,10 +237,10 @@
 %model Gaussian data
 \newcommand{\XI}{\boldsymbol{\xi}}
 \newcommand{\XImu}{\boldsymbol{\xi}_{\mu}}
-\newcommand{\NDXI}{\boldsymbol{\xi}^{N}}
+\newcommand{\NDXI}{\boldsymbol{\xi}^{\red{n}}}
 \newcommand{\NDXIn}{\boldsymbol{\xi}^{n}}
-\newcommand{\AVGNDXI}{{\small \overset{\rule{0.6em}{0.7pt}}{\boldsymbol{\xi}^{N}}}}
-\newcommand{\AVGNDXIn}{{\small \overset{\rule{0.6em}{0.7pt}}{\boldsymbol{\xi}^{n}}}}
+\newcommand{\AVGNDXI}{\overset{\rule{0.6em}{0.7pt}}{\scriptscriptstyle\boldsymbol{\xi}^{\red{n}}}}
+\newcommand{\AVGNDXIn}{\overset{\rule{0.6em}{0.7pt}}{\scriptscriptstyle\boldsymbol{\xi}^{n}}}
 \newcommand{\NDXIinfty}{\boldsymbol{\xi}^{\infty}}
 
 \newcommand{\XItest}{\boldsymbol{\xi}^{test}}
@@ -277,24 +277,25 @@
 \newcommand{\DEEPS}{\epsilon(\mathbf{w})}
 %\newcommand{\DEEPSX}{\epsilon(\mathbf{w}|\mathbf{x})}
 
-\newcommand{\DET}{\Delta E_{\mathcal{L}}(\mathbf{w},\XI)}
-\newcommand{\DETmu}{\Delta E_{\mathcal{L}}(\mathbf{w},\XI_{\mu})}
+\newcommand{\DEL}{\Delta E^{\red{2}}_{\mathcal{L}}}
+\newcommand{\DET}{\Delta E^{\red{2}}_{\mathcal{L}}(\mathbf{w},\XI)}
+\newcommand{\DETmu}{\Delta E^{\red{2}}_{\mathcal{L}}(\mathbf{w},\XI_{\mu})}
 
-\newcommand{\DETeff}{\Delta E^{eff}_{\mathcal{L}}(\mathbf{w},\XI)}
-\newcommand{\DETST}{\Delta E_{\mathcal{L}}(\SVEC,\TVEC,\XI)}
-\newcommand{\DETSTL}{\Delta E_{\mathcal{L}}(\SVEC,\TVEC,\XI)}
-\newcommand{\DETOPSTL}{\mathbf{\Delta {E}}_{\mathcal{L}}(\SVEC,\TVEC,\XI)}
-\newcommand{\DETOPSTx}{\mathbf{\Delta {E}}_{\mathcal{L}}(S,T,\DX)}
-\newcommand{\DETSTLL}{\Delta E_{\ell_2}(\SVEC,\TVEC,\XI)}
-\newcommand{\DETOP}{\mathbf{\Delta {E}}_{\mathcal{L}}(\mathbf{w})}
-\newcommand{\DETOPX}{\mathbf{\Delta {E}}_{\mathcal{L}}(\mathbf{w}, \NDX)}
-\newcommand{\DETOPXY}{\mathbf{\Delta {E}}_{\mathcal{L}}(\mathbf{w}, \NDX, \MY^{n})}
-\newcommand{\DETOPXI}{\mathbf{\Delta {E}}_{\mathcal{L}}(\mathbf{w}, \XI^{n})}
-\newcommand{\DETOPXILL}{\mathbf{\Delta {E}}_{\ell_2}(\mathbf{w}, \XI^{n})}
-\newcommand{\DETOPSTLL}{\mathbf{\Delta {E}}_{\ell_2}(\SVEC,\TVEC, \XI^{n})}
-\newcommand{\DETOPST}{\mathbf{\Delta {E}}_{\ell_2}(\SMAT,\TMAT)}
-\newcommand{\DETOPNN}{\mathbf{\Delta {E}}_{\ell_2}(\SMAT,\TMAT, \XI)}
-\newcommand{\DETOPNNXI}{\mathbf{\Delta {E}}_{\ell_2}(\SMAT,\TMAT|\XI^{n})}
+\newcommand{\DETeff}{\Delta E^{\red{2}}^{eff}_{\mathcal{L}}(\mathbf{w},\XI)}
+\newcommand{\DETST}{\Delta E^{\red{2}}^_{\mathcal{L}}(\SVEC,\TVEC,\XI)}
+\newcommand{\DETSTL}{\Delta E^{\red{2}}_{\mathcal{L}}(\SVEC,\TVEC,\XI)}
+\newcommand{\DETOPSTL}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(\SVEC,\TVEC,\XI)}
+\newcommand{\DETOPSTx}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(S,T,\DX)}
+\newcommand{\DETSTLL}{\Delta E^{\red{2}}_{\ell_2}(\SVEC,\TVEC,\XI)}
+\newcommand{\DETOP}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(\mathbf{w})}
+\newcommand{\DETOPX}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(\mathbf{w}, \NDX)}
+\newcommand{\DETOPXY}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(\mathbf{w}, \NDX, \MY^{n})}
+\newcommand{\DETOPXI}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(\mathbf{w}, \XI^{n})}
+\newcommand{\DETOPXILL}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\mathbf{w}, \XI^{n})}
+\newcommand{\DETOPSTLL}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SVEC,\TVEC, \XI^{n})}
+\newcommand{\DETOPST}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SMAT,\TMAT)}
+\newcommand{\DETOPNN}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SMAT,\TMAT, \XI)}
+\newcommand{\DETOPNNXI}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SMAT,\TMAT|\XI^{n})}
 \newcommand{\DETOT}{\mathcal{E}(\mathbf{w})}
 \newcommand{\DETOTXI}{\mathcal{E}(\mathbf{w}|\NDX)}
 %deprecated
@@ -302,27 +303,32 @@
 \newcommand{\DETOTXY}{\mathcal{E}(\mathbf{w}|\mathbf{x}^{n}, y^{n})}
 
 % Data set size
-\newcommand{\ND}{N}
+\newcommand{\ND}{\red{n}}
 
 % Matrices
 \newcommand{\SMAT}{{\mathbf{S}}}
 \newcommand{\TMAT}{{\mathbf{T}}}
 \newcommand{\WMAT}{{\mathbf{W}}}
 \newcommand{\AECS}{\tilde{\mathbf{A}}}
-\newcommand{\AECSM}{\tilde{\mathbf{A}}_{\small{M}}}
-\newcommand{\AECSN}{\tilde{\mathbf{A}}_{\small{N}}}
-\newcommand{\AMATM}{{\mathbf{A}}_{\small{M}}}
-\newcommand{\AMATN}{{\mathbf{A}}_{\small{N}}}
+\newcommand{\AECSM}{\tilde{\mathbf{A}}_{\text{\tiny M}}}
+\newcommand{\AECSN}{\tilde{\mathbf{A}}_{\text{\tiny N}}}
+\newcommand{\AMATM}{{\mathbf{A}}_{\text{\tiny M}}}
+\newcommand{\AMATN}{{\mathbf{A}}_{\text{\tiny N}}}
 \newcommand{\WECS}{\tilde{\mathbf{W}}}
 \newcommand{\XECS}{\tilde{\mathbf{X}}}
 \newcommand{\TECS}{\tilde{\mathbf{T}}}
 \newcommand{\LambdaECS}{\tilde{\lambda}}
 \newcommand{\LambdaMax}{\lambda_{max}}
 \newcommand{\LambdaMin}{\lambda_{0}}
+\newcommand{\EVEC}{{\red{\mathbf{E}}}}
+
 
 \newcommand{\LambdaECSmin}{\lambda^{ECS}_{min}}
 \newcommand{\LambdaECSmax}{\lambda^{ECS}_{max}}
 \newcommand{\LambdaPLmin}{\lambda^{PL}_{min}}
+
+%\newcommand{\LambdaCutoffMin}{\lambda^{Cutoff}_{min}}
+\newcommand{\LambdaCutoffMin}{\lambda_{0}}
 
 \newcommand{\MECS}{\tilde{M}}
 \newcommand{\kECS}{\tilde{k}}
@@ -386,15 +392,16 @@
 \newcommand{\EZDA}{\mathbb{E}_{\AMAT}[\ZIZ]}
 \newcommand{\EZDX}{\mathbb{E}_{\XMAT}[\ZIZ]}
 \newcommand{\EZDW}{\mathbb{E}_{\WMAT}[\ZIZ]}
-\newcommand{\EZDAONE}{\mathbb{E}_{\AMATM}[\ZIZ]}
-\newcommand{\EZDATWO}{\mathbb{E}_{\AMATN}[\ZIZ]}
+\newcommand{\EZDAONE}{\mathbb{E}_{\AMAT_{M}}[\ZIZ]}
+\newcommand{\EZDATWO}{\mathbb{E}_{\AMAT_{N}}[\ZIZ]}
+
 
 \newcommand{\EQN}{Eqn.}
 \newcommand{\Det}[1]{\mbox{}{\text{det}}\left(#1\right)}
 %\newcommand{\DeltaMu}{\delta_{\mu}}
 \newcommand{\DeltaMu}{\vartheta_{\mu}}
-\newcommand{\IM}{\mathbf{I}_{\small{M}}} % identity operator
-\newcommand{\IH}{\mathbb{I}_{\small{H}}} % integral
+\newcommand{\IM}{\mathbf{I}_{\text{\tiny M}}} % identity operator
+\newcommand{\IH}{\mathbb{I}_{\text{\tiny H}}} % integral
 \newcommand{\DETX}{\texttt{DetX}\xspace}
 \newcommand{\ETA}{\eta\xspace}
 \newcommand{\ETAw}{\eta(\WVEC)\xspace}
@@ -404,3 +411,4 @@
 \newcommand{\ETAMLP}{\eta([\SMAT_l,\TMAT_l])\xspace}
 \newcommand{\ETAMAT}{\eta(\SMAT_l,\TMAT_l,\XI)\xspace}
 \newcommand{\ETAMATAVG}{\langle\eta(\SMAT_l,\TMAT_l,\XI)\rangle_{\AVGNDXI}\xspace}
+\newcommand{\AVGR}{\bar{R}\xspace}

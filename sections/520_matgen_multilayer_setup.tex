@@ -13,13 +13,13 @@ Ignoring the bias terms, \emph{Without Loss of Generality}, (WLOG), the NN outpu
  $E_{1\mu},E_{2\mu},E_{3\mu}$ for each layer, as defined in \EQN~\ref{eqn:dnn_energy}, are given by:
 \begin{align}
 \nonumber
-  E_{1\mu} &:= \frac{1}{\sqrt{N_1}} h (\mathbf{W}_1^\top \boldsymbol{\xi}_{\mu}) , \\
+  \EVEC_{1\mu} &:= \frac{1}{\sqrt{N_1}} h (\WMAT_1^\top \boldsymbol{\xi}_{\mu}) , \\
 \nonumber
-  E_{2\mu} &:= \frac{1}{\sqrt{N_2}} h (\mathbf{W}_2^\top \mathbf{Z}_{1\mu})     , \\
+  \EVEC_{2\mu} &:= \frac{1}{\sqrt{N_2}} h (\WMAT_2^\top \EVEC_{1\mu})     , \\
 \label{eqn:nflow}
-             y_{\mu} := E_{3\mu} &= \frac{1}{\sqrt{N_3}} h (\mathbf{W}_{3}^\top \mathbf{Z}_{2\mu})     ,
+             y_{\mu} := \EVEC_{3\mu} &= \frac{1}{\sqrt{N_3}} h (\WMAT_{3}^\top \EVEC_{2\mu})     ,
 \end{align}
-where $h$ is a general function or functional, denoting either a non-linear activation or a more complex layer structure, such as a CNN or an RNN.
+where $\EVEC$ denotes a vector of energies or NN outputs, and $h$ is a general function or functional, denoting either a non-linear activation or a more complex layer structure, such as a CNN or an RNN.  Note that for binary classification, $\EVEC_3{\mu}=1|-1$ is just a binary number.  
 We can consider $h(\cdot)$ to be an (unspecified) activation function.
 
 Let us specify the ST error, or Energy difference, specifically in terms of the L2 or RMSE loss:
@@ -28,9 +28,10 @@ Let us specify the ST error, or Energy difference, specifically in terms of the 
 \DETOPNN = \frac{1}{2}\sum_{\mu=1}^{\ND} (\Ys - \Yt)^2.
 \end{equation}
 
-We now start to develop the self-overlap \(\eta\) using \(\mathbf{S} - \mathbf{T}\):
+We now start to develop the self-overlap \(\eta\) using \(\SMAT - \TMAT\):
 
-\subsubsection{Data-Dependent Multi-Layer ST Self-Overlap $(\ETA(\SMAT,\TMAT))$}
+\subsubsection{Data-Dependent Multi-Layer ST Self-Overlap
+\texorpdfstring{$(\ETA(\SMAT,\TMAT))$}{ETA(S, T)}}
 
 It is convenient to rewrite $\Delta \mathbf{\hat{E}}$ in \EQN~\ref{eqn:DE} as:
 \begin{align}
@@ -38,7 +39,7 @@ It is convenient to rewrite $\Delta \mathbf{\hat{E}}$ in \EQN~\ref{eqn:DE} as:
 \DETOPNN
    := \frac{1}{2} \Trace{ (\Ys - \Yt)^\top (\Ys - \Yt) }
    = N - \Trace{ (\YsVEC)^{\top} \, \YtVEC  }
-   = N(1 - \ETAMLPXI)
+   = \ND(1 - \ETAMLPXI)
 \end{align}
 where the \SelfOverlap $\ETAMLPXI$
 is of the same form as the (vector) \LinearPerceptron (in \EQN~\ref{eqn:deriveSTerror}).
@@ -51,14 +52,14 @@ we can write the formal expression of the ST error for the simple MLP3 model as:
 \label{eqn:overlap1}
 \ETAMLPAVG  \\ \nonumber
 & =\langle\ETA(\SMAT_1,\SMAT_2,\SMAT_3,\TMAT_1,\TMAT_2,\TMAT_3,\boldsymbol{\xi})\rangle_{\AVGNDXI}  \\ \nonumber
-& :=  \Trace{
-    \frac{1}{\sqrt{N_3}} h\left(\mathbf{S}_3^{\top} 
-    \frac{1}{\sqrt{N_2}} h\left(\mathbf{S}_2^{\top} 
-    \frac{1}{\sqrt{N_1}} h\left(\mathbf{S}_1^{\top} \boldsymbol{\xi} \right)\right)\right)^{\top} 
+& :=  \frac{1}{\ND ?}\Trace{
+    \frac{1}{\sqrt{N_3}} h\left(\SMAT_3^{\top} 
+    \frac{1}{\sqrt{N_2}} h\left(\SMAT_2^{\top} 
+    \frac{1}{\sqrt{N_1}} h\left(\SMAT_1^{\top} \boldsymbol{\xi} \right)\right)\right)^{\top} 
     \times
-    \frac{1}{\sqrt{N_3}} h\left(\mathbf{T}_3^{\top} 
-    \frac{1}{\sqrt{N_2}} h\left(\mathbf{T}_2^{\top} 
-    \frac{1}{\sqrt{N_1}} h\left(\mathbf{T}_1^{\top} \boldsymbol{\xi} \right)\right)\right)
+    \frac{1}{\sqrt{N_3}} h\left(\TMAT_3^{\top} 
+    \frac{1}{\sqrt{N_2}} h\left(\TMAT_2^{\top} 
+    \frac{1}{\sqrt{N_1}} h\left(\TMAT_1^{\top} \boldsymbol{\xi} \right)\right)\right)
   }.
 \end{align}
 
@@ -70,11 +71,7 @@ $\ETA(\SMAT,\TMAT)$, a single layer \SelfOverlap.
 As a next step, we show which assumptions are needed in order to reformulate the setup as
 an effectively a single layer linear model for a NN.
 
-\michael{The following change to single layer holds for L2 and non-L2, correct?  If so, why mention L2 in \EQN~\ref{eqn:DE} and \EQN~\ref{eqn:DE2}, and then go back to more general in \EQN~\ref{eqn:overlap1}.}
-\charles{um no I think the square is necessary }
-
 \subsubsection{A Single Layer Matrix Model}
-
 Following others in the literature~\cite{SMG2013_TR}, and for simplicity, one can restrict to the simplifying case that the function $h(x)$ is the identity function.
 To evaluate \EQN~\ref{eqn:overlap1}, there are three possibilities.
 First, we can multiply all the matrices together, and treat a multi-layer NN effectively as a single layer.
@@ -82,10 +79,10 @@ Under this assumption, \EQN \ref{eqn:overlap1} simplifies to
 %
 \begin{align}
 \label{eqn:overlap2}
-  \ETAMLPAVG &= \tfrac{1}{N_3 \, N_2 \, N_1} 
+  \ETAMLPAVG &= \frac{1}{\ND}\tfrac{1}{N_3 \, N_2 \, N_1} 
   \Trace{ \boldsymbol{\xi}^\top 
-    \mathbf{S}_1 \mathbf{S}_2 \mathbf{S}_3 
-    \mathbf{T}_3^{\top} \mathbf{T}_2^{\top} \mathbf{T}_1^{\top} 
+    \SMAT_1 \SMAT_2 \SMAT_3 
+    \TMAT_3^{\top} \TMAT_2^{\top} \TMAT_1^{\top} 
     \boldsymbol{\xi} }.
 \end{align}
 While this is possible, it would not lead to layer-by-layer insights (as \HTSR-based approaches do).
@@ -93,7 +90,8 @@ While this is possible, it would not lead to layer-by-layer insights (as \HTSR-b
 Second, we could attempt to expand \EQN~\ref{eqn:overlap2} into inter- and intra-layer terms, 
 which we could readily do if the $S$ and $T$ matrices were square and the same shape, and then apply Wick's theorem:
 \begin{align}
-\ETAMLP\approx\prod_{l=1}^{L}\tfrac{1}{N_l}\ETAMATAVG=\prod_{l=1}^{L}\tfrac{1}{N_l}\Trace{ \XI^{\top} \mathbf{S}^{\top}_{l} \mathbf{T}_{l} \XI) } +\text{intra-layer cross terms}.
+\ETAMLP\approx\frac{1}{\ND}\prod_{l=1}^{L}\tfrac{1}{N_l}\ETAMATAVG=
+\frac{1}{\ND}\prod_{l=1}^{L}\tfrac{1}{N_l}\Trace{ \XI^{\top} \SMAT^{\top}_{l} \TMAT_{l} \XI) } +\text{intra-layer cross terms}.
 \end{align}
 However, these matrices are not square, and we don't know how to express the intra-layer cross terms.
 %
@@ -102,14 +100,15 @@ By ignoring the intra-layer cross-terms, let us write the single-layer self-over
 \begin{align}
   \label{eqn:eta}
   \ETAMAT =
-        \ETAMATAVG\rightarrow \tfrac{1}{N} \Trace{ \XI^{\top} \mathbf{S}^{\top}_{l} \mathbf{T}_{l} \XI }  .
+        \ETAMATAVG\rightarrow \
+        \tfrac{1}{\ND}\tfrac{1}{N} \Trace{ \XI^{\top} \SMAT^{\top}_{l} \TMAT_{l} \XI }  .
 \end{align}
 This third approach is the one we will adopt.
 Moving forward, we will drop the layer subscript, $l$, and we will consider a \SETOL as a single-layer theory.
 
 
-\subsubsection{The Matrix-Generalized ST Overlap $(\ETA(\SMAT,\TMAT)$)}
-
+\subsubsection{The Matrix-Generalized ST Overlap 
+\texorpdfstring{$(\ETA(\SMAT,\TMAT)$)}{ETA(S, T)}.}
 We can now relate the \SelfOverlap for the NN layer $\ETA(\XI)_{l}$ in \EQN~\ref{eqn:eta}
 as a matrix-generalized form of the ST \EffectivePotential $\EPSL(R)=1-R$.
 \michaeladdressed{We are calling it \EffectivePotential there; not sure if we are going to use that term or the other, consistently throughout.}
@@ -117,7 +116,7 @@ Since we can interpret the Trace as an expected value over the model data $\NDXI
 \begin{align}
   \label{eqn:eta_mat_avg_def}
   \ETA(\SMAT,\TMAT)
-  :=\tfrac{1}{N} \Trace{\mathbf{S}^{\top}\mathbf{T}} 
+  :=\tfrac{1}{\ND ?}\tfrac{1}{N} \Trace{\SMAT^{\top}\TMAT} 
 \end{align}
 This is the matrix generalized form of \EQN~\ref{eqn:QST_final} for the \LayerQuality.
-
+\nred{The $1/\ND$ will be implicit in the matrices because they are observables}

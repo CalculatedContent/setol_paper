@@ -13,18 +13,18 @@ For our matrix generalization, we need to express the \LayerQuality $\Q$ in term
 \item
 \textbf{Student-Teacher Overlap  $\mathbf{R}$}
 For the vector-based \Perceptron ST model, the data-averaged \SelfOverlap appears in the expression for the
-\LayerQuality  in \EQN~\ref{eqn:QST_final}, and is just the ST vector overlap  $R=\frac{1}{N}\SVEC^{\top}\TVEC$. 
-We can define
+\LayerQuality  in \EQN~\ref{eqn:QST_final}, and is just the average ST vector overlap $R=\frac{1}{\ND}\SVEC^{\top}\TVEC$. 
+We can define \red{need to explain that the $\ND$ average is implicit in the matrices because they are measurables, and the $1/N$ is necessary for reasons we need to expand on and clarify}
 \begin{equation}
-\mathbf{R} = \tfrac{1}{N} \mathbf{S}^{T} \mathbf{T}  .
+\mathbf{R} = \tfrac{1}{N} \SMAT^{T} \TMAT  .
 \end{equation}
 For the vector-based ST model, the ST \Quality $\Q^{ST}$ in \EQN~\ref{eqn:QST_final} is expressed as
-the \ThermalAverage $\Q^{ST}(R)=\THRMAVG{R}$. Here, we want something similar.
+the \ThermalAverage $\Q^{ST}(\AVGR)=\THRMAVG{\AVGR}$. Here, we want something similar.
 \item
 \textbf{Model and Layer Qualities $\Q^{NN}$, $\Q^{NN}_{L}$}
-We deifine the \ModelQuality $\Q^{NN}$ ,
+We define the \ModelQuality $\Q^{NN}$ ,
 as explained in Subsection~\ref{sxn:htsr-metics}, \EQN~\ref{eqn:ProductNorm},
-will be a product of individual NN Layer Qualities $\Q^{NN}_{L}$,
+to be a product of individual NN Layer Qualities $\Q^{NN}_{L}$,
 and, as in \EQN~\ref{eqn:model_qualities}
 approximates the total NN \AverageGeneralizationAccuracy $(1-\AVGGE^{NN})$:
 \begin{equation}
@@ -61,109 +61,108 @@ matrix-generalized NN \LayerQuality $\Q^{NN}_{L}$ (above) as
  that we can 
 \begin{align}
   \label{eqn:TraceR2withA2}
-  \OLAPSQD:=\frac{1}{N^{2}}\Trace{\TMAT^{\top}\SMAT\SMAT^{\top}\TMAT}
-  =\frac{1}{N^{2}}\Trace{\TMAT^{\top}\mathbf{A}_N\TMAT}  .
+  \QT :=\OLAPSQD
+  =\frac{1}{N^{2}}\Trace{\TMAT^{\top}\SMAT\SMAT^{\top}\TMAT}
+  =\frac{1}{N}\Trace{\TMAT^{\top}\AMATN\TMAT}  .
 \end{align}
-This choice places $\QT$ in the form of the HCIZ integral, as in \EQN~\ref{eqn:hciz_prelim}.
-See Appendix~\ref{sxn:tanaka} for a detailed discussion of why we choose $\AMAT=\AMAT_N$ here.
-  
+This choice, (as opposed to $\Trace{\OVERLAP\OVERLAP^{\top}}$, which would correspond with \EQN~\ref{eqn:A1},) places $\QT$ in the form of the HCIZ integral, as in \EQN~\ref{eqn:hciz_prelim}.
+See Appendix~\ref{sxn:tanaka} for a detailed discussion of why we define $\QT$ using the \emph{Outer} Student Correlation matrix $\AMATN$ (defined in Section~\ref{sxn:setol}, and  \EQN~\ref{eqn:A2} below).
 \item
  \textbf{\GeneratingFunction}
- For the vector-based ST model, we could compute $\Q^{ST}$ using a generating function, $\STG$,
+For the vector-based ST model, we could compute $\Q^{ST}$ using a generating function, $\STG$.
 For our matrix generalization, we compute $\Q$ from a \emph{\LayerQualitySquared \GeneratingFunction} $\IZG$, given as
 \begin{align}
   \label{eqn:betaIZG_S}
-  \IZG:=  \ln \int d\mu(\mathbf{S}) \exp\left[N\beta\OLAPSQD\right] .
+  \IZG:=  \red{\frac{1}{N}}\ln \int d\mu(\SMAT) \exp\left[\ND\beta N\OLAPSQD\right] .
 \end{align}
-See Appendix~\ref{sxn:quality} for the derivation of \EQN~\ref{eqn:betaIZG_S} (and recall the discussion in Section~\ref{sxn:mathP})
-. 
-\michaeladdressed{@charles: we have two things, \emph{AverageLayerQualitySquared} in \EQN~\ref{eqn:QT_2} and \emph{\AverageLayerQualitySquared} in \EQN~\ref{eqn:betaIZG_S}, with basically the same name.}\charles{@michael This is a typo}.
+\nred{Need to explain why we take $1/N$. We are implicitly fixing the effective load $N/\ND$ to be constant. This is similar in spirit to an infinitely wide network.}
+See Appendix~\ref{sxn:quality} for the derivation of \EQN~\ref{eqn:betaIZG_S} (and recall the discussion in Section~\ref{sxn:mathP}). 
+
 
 \end{itemize}
 %
 
-We can not evaluate \EQN~\ref{eqn:betaIZG_S} directly; but we will be able to evaluate it if we transform it into an HCIZ integral (as in \EQN~\ref{eqn:hciz_prelim}). To do this, however, requires a trick which will allow us to work with different forms of the Student $\AMAT$ (and Teacher $\XMAT$) Correlation matrices.
-\michaeladdressed{@charles: I like having the main new notions introduced as bullets; but how does \EQN~\ref{eqn:QT_2} and \EQN~\ref{eqn:betaIZG_S} relate to \EQN~\ref{eqn:IZG_generate_Q2} below, after we take the limit.  We are using the same symbol.}
+We cannot evaluate \EQN~\ref{eqn:betaIZG_S} directly; but we will be able to evaluate it if we transform it into an HCIZ integral (as in \EQN~\ref{eqn:hciz_prelim}). To do this, however, requires a trick which will allow us to work with different forms of the Student $\AMAT$ (and Teacher $\XMAT$) Correlation matrices.
+
 
 
 \paragraph{From weight matrices to Correlation matrices.}
 To evaluate $\QT$ in terms of derivatives of \EQN~\ref{eqn:betaIZG_S}, we need to introduce the change of measure:
 \begin{align}
   \label{eqn:changeOfMeasure}
-  d\mu(\mathbf{S})\rightarrow d\mu(\mathbf{A}) ,
+  d\mu(\SMAT)\rightarrow d\mu(\AMAT) ,
 \end{align}
-and then restrict $d\mu(\mathbf{A})$ to resemble just the generalizing eigencomponents of the \Teacher correlation matrix $\mathbf{X}$.
+and then restrict $d\mu(\AMAT)$ to resemble just the generalizing eigencomponents of the \Teacher correlation matrix $\XMAT$.
 %
 %MM%
 %MM%We now introduce the change of measure
 %MM%\begin{align}
 %MM%  \label{eqn:changeOfMeasure}
-%MM%  d\mu(\mathbf{S})\rightarrow d\mu(\mathbf{A})
+%MM%  d\mu(\SMAT)\rightarrow d\mu(\AMAT)
 %MM%\end{align}
 %MM%So before we evaluate $\QT$, we need to do this change of measure,
-%MM%and do so that we restrict $d\mu(\mathbf{A})$ to resemble the just the
-%MM%generalizing eigen-components of the \Teacher correlation matrix $\mathbf{X}$.
+%MM%and do so that we restrict $d\mu(\AMAT)$ to resemble the just the
+%MM%generalizing eigen-components of the \Teacher correlation matrix $\XMAT$.
 %MM%
-%\paragraph{Two choices for $\mathbf{A}$}
-We have two choices for the \Student \CorrelationMatrix $\mathbf{A}$, call them $\mathbf{A}_M$
-and $\mathbf{A}_N$, defined as:
+%\paragraph{Two choices for $\AMAT$}
+We have two choices for the \Student \CorrelationMatrix $\AMAT$, call them $\AMATM$
+(Inner) and $\AMATN$ (Outer), defined as:
 \begin{eqnarray}
   \label{eqn:A1}
-  \mathbf{A}_M &:=& \frac{1}{N}\mathbf{S}^{\top}\mathbf{S} \quad\mbox{(which is $M \times M$)} \\
+ \textrm{(Inner) }\;\AMATM&:=& \frac{1}{N}\SMAT^{\top}\SMAT \quad\mbox{(which is $M \times M$)} \\
   \label{eqn:A2}
-  \mathbf{A}_N &:=& \frac{1}{N}\mathbf{S}\mathbf{S}^{\top} \quad\mbox{(which is $N \times N$)} .
+ \textrm{(Outer) }\;\AMATN &:=& \frac{1}{N}\SMAT\SMAT^{\top} \quad\mbox{(which is $N \times N$)} .
 \end{eqnarray}
 Note that $\frac{1}{N}$ is the correct scaling on each of these.
 \EQN~\ref{eqn:A1} is consistent with our definition of the layer \CorrelationMatrix, and we use it as the starting point
 below to derive the \VolumePreserving \TRACELOG condition (Appendix~\ref{sxn:TraceLogDerivation}).
-\EQN~\ref{eqn:A2} is consistent with Tanaka, which requires $\mathbf{A}$ be $N\times N$, but
-the we still need the a \emph{Duality of Measures} to rederive this (Appendix~\ref{sxn:tanaka}).\cite{Tanaka2007, Tanaka2008}
+\EQN~\ref{eqn:A2} is consistent with Tanaka, which requires $\AMAT$ be $N\times N$, but
+we still need a \emph{Duality of Measures} to rederive this (Appendix~\ref{sxn:tanaka})~\cite{Tanaka2007, Tanaka2008}.
 
 \paragraph{Duality of measures.}
-For either form of $\mathbf{A}$, the measure $d\mu(\mathbf{A})$ is the same because we will restrict the measures to the~\ECS
+For either form of $\AMAT$, the measure $d\mu(\AMAT)$ is the same because we will restrict the measures to the~\ECS
 space of non-zero eigenvalues $(\lambda_{i}\gg 0)$.
-We note that $\mathbf{A}_M$ and $\mathbf{A}_N$ have the same eigenvalues $\lambda_{i}$, or ESD,
-up to the additional zero eigenvalues $(\lambda_{i}=0)$ in the null space of $\mathbf{A}_N$.  
-Consequently, both forms of $\AMAT$ have the same $N-M$ non-zero eigenvalues, the same non-zero part
-of the ESD $(\rho(\lambda)\gg 0)$, and the same Trace $(\Trace{\mathbf{A}_M}=\Trace{\mathbf{A}_N})$.
+We note that $\AMATM$ and $\AMATN$ have the same eigenvalues $\lambda_{i}$, or ESD,
+up to the additional zero eigenvalues $(\lambda_{i}=0)$ in the null space of $\AMATN$.  
+Consequently, both forms of $\AMAT$ have %the same $N-M$ zero eigenvalues, No they don't.
+the same non-zero part
+of the ESD $(\rho(\lambda)\gg 0)$, and the same Trace $(\Trace{\AMATM}=\Trace{\AMATN})$.
 In the large-N approximation, the ESD of (either form of)
-$\mathbf{A}$, $\rho^{\infty}_{\mathbf{A}}(\lambda)$,
+$\AMAT$, $\rho^{\infty}_{\AMAT}(\lambda)$,
 becomes continuous (and bounded), but remains zero in the null space.
+(Notice that following the physics approach, in the limit, $N$ remains finite but we nevertheless assume a continuous spectrum)
 Consequently,
 when integrating over the eigenvalues  $\lambda$, one can interchange
-$\mathbf{A}_M$  with $\mathbf{A}_N$, such that
+$\AMATM$  with $\AMATN$, such that
 \begin{align}
- \int d\mu(\mathbf{A})\;[\cdots]\;\leftrightarrow  \int d\lambda\;[\cdots]\; \rho^{\infty}_{\mathbf{A}_M}(\lambda) \leftrightarrow  \int d\lambda\;[\cdots]\; \rho^{\infty}_{\mathbf{A}_N}(\lambda)
+ \int d\mu(\AMAT)\;[\cdots]\;\leftrightarrow  \int d\lambda\;[\cdots]\; \rho^{\infty}_{\AMATM}(\lambda) \leftrightarrow  \int d\lambda\;[\cdots]\; \rho^{\infty}_{\AMATN}(\lambda)
 \end{align}
 This equivalence will be essential both to derive the \TRACELOG condition (Section ~\ref{sxn:TraceLogDerivation}),
 and to (re)derive the core result by Tanaka (Section ~\ref{sxn:tanaka}).
 Additionally and WLOG, we may occasionally denote the Student Correlation matrix as
-$\AECS$ instead of explicitly using  $\mathbf{A}_M$ and $\mathbf{A}_N$.
+$\AECS$ instead of explicitly using  $\AMATM$ and $\AMATN$.
 
 \michaeladdressed{Give Tanaka ref, and tweak exposition.}
 \michaeladdressed{Tweak, since that is true, but the way RMT touches it is different in subtle ways we dont want to get into.}
-%\footnote{If we define $d\mu(\mathbf{A})$ as a Haar measure, it is still is restricted to \emph{at least} only
+%\footnote{If we define $d\mu(\AMAT)$ as a Haar measure, it is still is restricted to \emph{at least} only
 %the strictly non-zero eigenvalues, $\lambda\gg 0$. (That is, not even approximately zero.)
-%The measure $d\mu(\mathbf{A})$ can be expressed as
+%The measure $d\mu(\AMAT)$ can be expressed as
 %\begin{align}
 %  \label{eqn:dmuA}
-%   d\mu(\mathbf{A}) := \left( \prod_{i < j} |\lambda_i - \lambda_j| \right) \, d\lambda_1 \, d\lambda_2 \cdots d\lambda_M \, dO
+%   d\mu(\AMAT) := \left( \prod_{i < j} |\lambda_i - \lambda_j| \right) \, d\lambda_1 \, d\lambda_2 \cdots d\lambda_M \, dO
 %\end{align}
 %where:
 %\begin{itemize}
-%\item $( \lambda_1, \lambda_2, \ldots, \lambda_M)$ are the nonzero eigenvalues of $\mathbf{A}$, be it $\mathbf{A}_{1}$ or $\mathbf{A}_{2}$ ,
+%\item $( \lambda_1, \lambda_2, \ldots, \lambda_M)$ are the nonzero eigenvalues of $\AMAT$, be it $\AMATM$ or $\AMATN$ ,
 %\item $ \prod_{i < j} |\lambda_i - \lambda_j| $ is the Vandermonde determinant,
 %\item $dO$ is the Haar measure on the orthogonal group $O(M)$ (the group of $M\times M$ orthogonal matrices)
 %\end{itemize}
-%Moving forward, we use $d\mu(\mathbf{A})$ to denote $d\mu(\mathbf{A}_{1})$ and $d\mu(\mathbf{A}_{2})$ since they are interchangeab%le.}
+%Moving forward, we use $d\mu(\AMAT)$ to denote $d\mu(\AMATM)$ and $d\mu(\AMATN)$ since they are interchangeab%le.}
 %
-%Importantly, both forms of $\mathbf{A}$ have the same eigenvalues $\lambda$,
-%up to the $N-M$ zero eigenvalues of $\mathbf{A}_{2}$; and, because of this, 
+%Importantly, both forms of $\AMAT$ have the same eigenvalues $\lambda$,
+%up to the $N-M$ zero eigenvalues of $\AMATN$; and, because of this, 
 %we will see they are somewhat interchangeable--if we restrict them to effectively the same subspace defined by the same eigenvalues.
 
-
-\michaeladdressed{I think this par is overstating; similar to the comment above; depending on other sections, we may want to cut back or adjust.}
-\cformike{OK, like what ? PLease restate}
 
 
 \subsubsection{Evaluating the Average Quality (Squared) Generating Function }
@@ -173,14 +172,14 @@ $\AECS$ instead of explicitly using  $\mathbf{A}_M$ and $\mathbf{A}_N$.
 %and since $\OVERLAP := \tfrac{1}{N}\SMAT^{\top}\TMAT$,
 We can write the generating function $\IZG$ 
 in \EQN~\ref{eqn:betaIZG_S} 
-in terms of $\mathbf{A}_N$, giving, as in Eqn.~\ref{eqn:QT_dS}, 
+in terms of $\AMATN$, giving, as in Eqn.~\ref{eqn:QT_dS}, 
 \begin{align}
   \label{eqn:IZG_dmuS}
-  \IZG = \ln \int d\mu(\SMAT)  e^{ N\beta Tr[\tfrac{1}{N}\TMAT^T\mathbf{A}_N\TMAT]) }  .
+  \IZG = \red{\frac{1}{N}}\ln \int d\mu(\SMAT)  e^{ \ND\beta N Tr[\tfrac{1}{N}\TMAT^T\AMATN\TMAT]) }  .
 \end{align}
 To recast \EQN~\ref{eqn:IZG_dmuS} as an HCIZ integral, as in \EQN~\ref{eqn:hciz_prelim},
-we must perform change of measure,
- from $N\times M$ \Student weight matrices $\mathbf{S}$ to $N\times N$ \Student Correlation matrices $\mathbf{A}_N$, as in \EQN~\ref{eqn:changeOfMeasure}.
+we must perform a change of measure,
+ from $N\times M$ \Student weight matrices $\SMAT$ to $N\times N$ Outer \Student Correlation matrices $\AMATN$, as in \EQN~\ref{eqn:changeOfMeasure}.
 
 %\begin{align} 
 %  \label{eqn:dmuStoA}
@@ -196,22 +195,24 @@ we obtain the following expression: %for $\IZG$:
   \nonumber 
   \IZG 
   &\approx 
+    \red{\frac{1}{N}}
   \ln \int d\mu(\AMAT)
-  e^{N\beta Tr[\tfrac{1}{N}\TMAT^{\top}\AMAT_N\TMAT] }
-  e^{\tfrac{N}{2}\ln(\Det{\AMAT_M})} \\
+  e^{\ND\beta N Tr[\tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
+  e^{\tfrac{N}{2}\ln(\Det{\AMATM})} \\
   & = 
+  \red{\frac{1}{N}}
   \ln
   \left\langle
-  e^{N\beta Tr[\tfrac{1}{N}\TMAT^{\top}\AMAT_N\TMAT] }
-  e^{\tfrac{N}{2}\ln(\Det{\AMAT_M})}
+  e^{\ND\beta N Tr[\tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
+  e^{\tfrac{N}{2}\ln(\Det{\AMATM})}
     \right\rangle_{\AMAT}
 \end{align}
-where the latter expresses the former in \BraKet notation.
+where the latter expresses the former in \BraKet notation. Since the measures of $\AMATM$ and $\AMATN$ are equivalent, this evaluates to the same quantity regardless of which is used.
 \michael{I think this is the first place where we use multiple notations for an integral.  We should use only one in the main text, probably the integral form. Let's sync before I do this.}
 \charles{@michael: Eh. Maybe. Lots to edit}
 This expression is derived in Appendix~\ref{sxn:TraceLogDerivation} (see \EQN~\ref{eqn:IZG_integral}):
-it contains the original overlap term that depends $\mathbf{A}_N$ as well as a new term from
-the transformation that depends on $\Det{\AMAT_M}$ that is not yet defined.
+it contains the original overlap term that depends $\AMATN$ as well as a new term from
+the transformation that depends on $\Det{\AMATM}$ that is not yet defined.
 
 %We should emphasize that \EQN~\ref{eqn:IFA2_braket}
 %is a formal expression, since we have an integral with respect to the measure $d\mu(\AMAT_{1})$
@@ -229,33 +230,33 @@ Currently, \EQN~\ref{eqn:IFA2_integral} is a ``formal'' expression,
 and we have not identified and/or justified its realm of applicability.
 Fortunately, we have empirical evidence to suggest that this can be
 made ``physically'' meaningful, by ``restricting'' the integral
-to the tail of the ESD.
+to the tail of the Empirical Spectral Density (ESD). Since the ESD is an empirical object, this is where the theory becomes Semi-Empirical.
 %Doing so will permit us to express $\IZG$ as an HCIZ integral (as in \EQN~\ref{eqn:hciz_prelim}),
 %To do this, we make the following assumptions.
 %In order to do this, we need to make simplifying assumptions.
 
-Prior work on HTSR theory indicates that the generalizing parts of a layer weight matrix concentrate
+Prior work on HTSR theory indicates that during training the generalizing parts of a layer weight matrix concentrate
 into $\rho_{tail}^{emp}(\lambda)$, the tail of the ESD, as the ESD becomes more \PowerLaw (PL),
-and layer PL exponent  $\alpha\rightarrow\ 2$ (from above)~\cite{MM19_HTSR_ICML,MM20_SDM,MM18_TR_JMLRversion,MM20a_trends_NatComm,YTHx23_KDD}. 
+and layer PL exponent  $\alpha\rightarrow\ 2+$ (from above)~\cite{MM19_HTSR_ICML,MM20_SDM,MM18_TR_JMLRversion,MM20a_trends_NatComm,YTHx23_KDD}. 
 \michael{Mention of HTSR}
 This suggests the integral in \EQN~\ref{eqn:QT}
 should instead average over a low rank subspace spanned \emph{only by} the generalizing eigen-components of the
-student layer correlation matrix, $\mathbf{A}_M=\tfrac{1}{N}\mathbf{S}^{\top}\mathbf{S}$
-(or, equivalently, $\mathbf{A}_N$).
+student layer Inner Correlation matrix, $\AMATM=\tfrac{1}{N}\SMAT^{\top}\SMAT$
+(or equivalently, the Outer Correlation matrix $\AMATN$).
 We call this subspace the \EffectiveCorrelationSpace (\ECS).
 
-Let $\AECS$ be the matrix spanned by the largest $\MECS$ eigen-components $\mathbf{A}$
-(in either form, $\mathbf{A}_M$ or $\mathbf{A}_N$).
+Let $\AECS$ be the matrix spanned by the largest $\MECS$ eigen-components $\AMAT$
+in either form, $\AMATM$ (Inner) or $\AMATN$ (Outer), and using physics BraKet notation, giving
 \begin{align}
   \label{sqn:AecsDefined}
-  \AECS:=\mathbf{P}_{\EFF}\mathbf{A},\;\;  \mathbf{P}_{\EFF}:= \sum_{i=1}^{\MECS}|\lambda_{i}\rangle\langle\lambda_{i}|
-\end{align}%
+  \AECS:=\mathbf{P}_{\EFF}\AMAT,\;\;  \mathbf{P}_{\EFF}:= \sum_{i=1}^{\MECS}|\lambda_{i}\rangle\langle\lambda_{i}|
+\end{align}
 where $\mathbf{P}_{\EFF}$ is the projection operator onto the subspace spanned by the eigenvector
-$|\lambda_{i}\rangle$  associated with the eigenvalue $\lambda_{i}$ of $\mathbf{A}_M$ or, equivalently, $\mathbf{A}_N$.
-We denote the corresponding \Student correlation matrices with tilde, as follows:
+$|\lambda_{i}\rangle$  associated with the eigenvalue $\lambda_{i}$ of $\AMATM$ or, equivalently, $\AMATN$.
+We denote the corresponding projected \Student correlation matrices with a tilde, as follows:
 \begin{align}
-  \AMAT_M \rightarrow \AECSM\;\; \text{such that}\;\; d\mu(\AMAT_M) \rightarrow d\mu(\AECSM) \\ \nonumber
-  \AMAT_N \rightarrow \AECSN\;\; \text{such that}\;\; d\mu(\AMAT_N) \rightarrow d\mu(\AECSN)  \nonumber
+  \AMATM \rightarrow \AECSM\;\; \text{such that}\;\; d\mu(\AMATM) \rightarrow d\mu(\AECSM) \\ \nonumber
+  \AMATN \rightarrow \AECSN\;\; \text{such that}\;\; d\mu(\AMATN) \rightarrow d\mu(\AECSN)  \nonumber
 \end{align}
 where now the matrices $\AECSM$ and $\AECSN$ are restricted to the \ECS, and the measure $d\mu(\AECSM)$ is similarly restricted.
  See Appendix~\ref{sxn:TraceLogDerivation} for a more detailed discussion of this.
@@ -263,12 +264,12 @@ where now the matrices $\AECSM$ and $\AECSN$ are restricted to the \ECS, and the
 When an ESD is \emph{\FatTailed} the~\ECS is at least as large if not larger than the PL tail of the ESD.
 \michael{Mention of Fat.}
 \charles{@michael: so what ?}
-For an ESD with $\alpha\ge 2$, The generalizing eigen-components, i.e.$|\lambda_{i}\rangle$, will mostly
+For an ESD with $\alpha\ge 2$, the generalizing eigen-components, i.e.$|\lambda_{i}\rangle$, will mostly
 concentrate into the tail of the ESD, but some will remain in the bulk, so
 the~\ECS will be larger than the tail.
 In this case that $\MECS\ge M^{tail}$,
 and
-$\rho_{ECS}(\lambda)\supseteq\rho_{tail}(\lambda)$, as depicted in Figure \red{XXX}.
+$\rho_{ECS}(\lambda)\supseteq\rho_{tail}(\lambda)$, as depicted in Figure~\ref{fig:ECS_space}.
 When $\alpha=2$,  the layer is \Ideal (as in Section~\ref{sxn:setol_overview}),
 in that all of the generalizing eigen-components to have now concentrated completely into the tail, so that
  $\MECS=M^{tail}$,
@@ -281,10 +282,10 @@ frequently also has many near-zero eigenvalues.)
 \\
 This leads to the following Model Selection Rule (MSR) for the \ECS:
 \begin{quote}
-  When transforming the measure $d\mu(\mathbf{S}) \rightarrow d\mu(\AECS)$, we invoke an eigenvalue cutoff rule that
-  prescribes how to replace $\mathbf{A}$ with a low-rank effective matrix $\mathbf{A}\rightarrow\AECS$,
+  When transforming the measure $d\mu(\SMAT) \rightarrow d\mu(\AECS)$, we invoke an eigenvalue cutoff rule that
+  prescribes how to replace $\AMAT$ with a low-rank effective matrix $\AMAT\rightarrow\AECS$,
   where the cutoff $\LambdaECS\ge\LambdaECSmin$ is chosen so that the~\ECS at least contains the PL tail
-  and, importantly, such that $\det(\AMAT)=\det(\AMAT_M)=\det(\AMAT_N)$ is well defined.  
+  and, importantly, such that $\det(\AMAT)=\det(\AMATM)=\det(\AMATN)$ is well defined.  
 \end{quote}
 Formally, this means that when we evaluate the \Quality (squared) $\QT$, \GeneratingFunction $\IZG$
 or other relevant averages, we restrict the measure (i.e., integral or sum) to the eigencomponents in the tail of the ESD of
@@ -299,19 +300,21 @@ Restricted to the~\ECS, we now replace \EQN~\ref{eqn:IFA2_integral} with:
   \nonumber 
   \IZG 
   &=
+    \red{\frac{1}{N}}
   \ln \int d\mu(\AECS)
-  e^{N\beta Tr[\tfrac{1}{N}\TMAT^{\top}\AECSN\TMAT] }
+  e^{\ND\beta N Tr[\tfrac{1}{N}\TMAT^{\top}\AECSN\TMAT] }
   e^{\tfrac{N}{2}\ln(\Det{\AECSM})} \\
   \label{eqn:IFA2_braket}
   & =
+    \red{\frac{1}{N}}
   \ln
   \left\langle
-  e^{N\beta Tr[\tfrac{1}{N}\TMAT^{\top}\AECSN\TMAT] }
+  e^{\ND\beta N Tr[\tfrac{1}{N}\TMAT^{\top}\AECSN\TMAT] }
   e^{\tfrac{N}{2}\ln(\Det{\AECSM})}
     \right\rangle_{\AECS}
 \end{align}
 where we have used the formal Duality of Measures, $d\mu(\AECS)=d\mu(\AECSM)=d\mu(\AECSN)$.
-\footnote{Also, while we could replace $\TMAT\rightarrow\TECS$, but to simplify the notation we do not do this.}
+\footnote{Also, we could replace $\TMAT\rightarrow\TECS$, but to simplify the notation we do not do this.}
 
 \subsubsection{Two Simplifying Assumptions: the \IFA and \TRACELOG Condition}
 \label{sxn:matgen_quality_hciz_C}
@@ -324,15 +327,17 @@ It now remains how to define the cutoff for the~\ECS space. To accomplish this, 
 This condition states that the two terms appearing in the exponential of \EQN~\ref{eqn:IFA2_braket} are statistically independent:
 \begin{align}
   \label{eqn:IFA2}
-  \IZG \approx \ln
+  \IZG \approx 
+    \red{\frac{1}{N}}
+\ln
   \left\langle
-  e^{N\beta Tr[ \tfrac{1}{N}\TMAT^{\top}\AECSN\TMAT] }
+  e^{\ND\beta N Tr[ \tfrac{1}{N}\TMAT^{\top}\AECSN\TMAT] }
   \right\rangle_{\AECS}
   \left\langle
   e^{\tfrac{N}{2}\ln(\Det{\AECSM})}
     \right\rangle_{\AECS}.
 \end{align}
-
+%\red{Do we even need this? With \TRACELOG, the second term goes to 1 with or without \IFA. The next paragraph is the last mention of \IFA in the entire paper...}
 \item
 \textbf{The Trace Log Condition (\TRACELOG).}
 This condition states that the determinant of the \Student (and \Teacher) Correlation matrix is unity, such that:
@@ -343,20 +348,20 @@ This condition states that the determinant of the \Student (and \Teacher) Correl
 \Trace{\ln \AECS}=0  ,
 \end{align}
 (and with $\AMAT$ additionally normalized to $M$, as explained in the Appendix, Section~\ref{app:st-gen-err-annealed-ham})
-so that when we replace the measure over \Student layer weight matrices $d\mu(\mathbf{S})$ with a measure over all \Student Correlation matrices $d\mu(\mathbf{A})$,
+so that when we replace the measure over \Student layer weight matrices $d\mu(\SMAT)$ with a measure over all \Student Correlation matrices $d\mu(\AMAT)$,
 \emph{restricted to the~\ECS}, the second term in \EQN~\ref{eqn:IFA2} becomes unity
-$\langle \exp\left[\tfrac{N}{2} \Trace{ \ln[det\;\AMAT_M] } \right]\rangle_{\AECS}=1$,
+$\langle \exp\left[\tfrac{N}{2} \Trace{ \ln[det\;\AMATM] } \right]\rangle_{\AECS}=1$,
 and vanishes in the final expression for $\IZG$.
 \end{itemize}
 
 \noindent
 At this point, the \IFA is made purely for mathematical convenience, i.e., 
 we have not demonstrated it empirically, but it is not implausible as a statistical modeling assumption. 
-On the other hand, we can test the \TRACELOG condtion empirically;
+On the other hand, we can test the \TRACELOG condition empirically;
 this is a critical part of our \SETOL approach.
 
 
-Notably, when taking the large-$N$ approximation of $\IZG$, we effectively  do this independently in two steps.
+Notably, when taking the large-$N$ approximation of $\IZG$, we effectively do this independently in two steps.
 First, we apply a \SaddlePointApproximation (SPA) to the second term in \EQN~\ref{eqn:IFA2},
 leading to the \TRACELOG condition (see Appendix~\ref{sxn:TraceLogDerivation}).
 %A consequence of this is that the second term is
@@ -364,18 +369,18 @@ leading to the \TRACELOG condition (see Appendix~\ref{sxn:TraceLogDerivation}).
 %  \langle \exp\left[\tfrac{N}{2} \ln\det{\AMAT_{1}}]  \right]\rangle_{\AMAT}=1 ,
 % \end{align}
 %and vanishes in the final expression for $\IZG$ (i.e., \EQN~\ref{eqn:IZG_final_hciz}).
-Most importantly, we can test the \TRACELOG condtion empirically,
-and this is another  critical part and justification of our \SETOL approach.
+Most importantly, we can test the \TRACELOG condition empirically,
+and this is another critical part and justification of our \SETOL approach.
 Second, when applying the result by Tanaka (\EQN~\ref{eqn:hciz_tanaka}),
 we are applying an SPA to the result, but assuming we are
 restricted to the~\ECS.
 
-\paragraph{Empirical Tests of the \TRACELOG Condtion and the~\ECS}
+\paragraph{Empirical Tests of the \TRACELOG Condition and the~\ECS.}
 
 Since we require that the students resemble the fixed \Teacher, a reasonable estimate for the average of the Student
 Correlation matrix $\AECS$
-(either $\AECSM$ or $\AECSN$)  (in the~\ECS)  is the point estimate provided by the actual (known) fixed \Teacher correlation matrix $\XECS$, so that
-\begin{align}
+(either $\AECSM$ or $\AECSN$)  (in the~\ECS)  is the point estimate provided by the actual (known) fixed \Teacher correlation matrix $\XECS$, which is assumed to be known. %\red{Is $\XECS$ known, or is it just known to be in a Universality class? I thought we need Universality classes because $\XECS$ can't be known. (Besides, if it were known, we would train models in a whole different way, and WeightWatcher would use both $\XECS$ and $\AECS$...)} so that
+\begin{align} 
 \label{eqn:IFA-ppint}
 \Big\langle \det\AECSM\Big\rangle_{\AECS}=
 \Big\langle \det\AECSN\Big\rangle_{\AECS}
@@ -387,14 +392,14 @@ ESD of $\XECS$, i.e., $\lambda_{t}\ge\LambdaECSmin$.
 How should one choose $\LambdaECSmin$ in this expression?
 We already know that most NNs layers have \FatTailed ESDs, but
 if the \Teacher ESD is simply \emph{\RandomLike} or even Bulk+Spikes, then the expected value
-$\langle\Det{\mathbf{A}_M}\rangle$ itself of the determinant
-of a random full rank \Student Correlation matrix $\mathbf{A}_M$
+$\langle\Det{\AMATM}\rangle$ itself of the determinant
+of a random full rank \Student Correlation matrix $\AMATM$
 might be well defined and easy to estimate, and we might not even need to define the lower rank~\ECS.
 Indeed, in these cases, the correlated eigencomponents, if they exist, may be buried in the bulk
 region of the ESD and not readily identifiable.
 But because $\rho_{tail}^{emp}(\lambda)$ is \FatTailed
 and \PowerLaw (PL), this poses some difficulty,
-which is why need to first define the \EffectiveCorrelationSpace (\ECS).
+which is why we need to first define the \EffectiveCorrelationSpace (\ECS).
 
 
 \begin{figure}[t]
@@ -402,7 +407,7 @@ which is why need to first define the \EffectiveCorrelationSpace (\ECS).
   \includegraphics[width=10cm]{./img/ECS_space.png}
   \caption{The image depicts a typical
     \EmpiricalSpectralDensity (ESD) of a layer correlation matrix $\XMAT$, with \WW Power-Law (PL) exponent
-    $\alpha=2.0$.%, normalized such that $\Trace{\XMAT}=\Vert\mathbf{W}\Vert^{2}_{F}=N$.
+    $\alpha=2.0$.%, normalized such that $\Trace{\XMAT}=\Vert\WMAT\Vert^{2}_{F}=N$.
     The green and red shaded regions depict
     eigenvalues $\lambda$ in the \EffectiveCorrelationSpace (\ECS) of $\XECS$, defined by $\lambda>\lambda_{min}^{ECS}$.
     The x-axis displays the eigenvalues on the log scale, $\ln\lambda$.
@@ -418,27 +423,27 @@ which is why need to first define the \EffectiveCorrelationSpace (\ECS).
 
 Because the \Teacher ESD is most likely MHT and PL, 
 if we choose $\lambda_{min}^{ECS}$ too small, and the tail extends too far into the bulk region of the ESD,
-then for all practical purpose $\Det{\XECS}\ll 1$.
+then for all practical purposes $\Det{\XECS}\ll 1$.
 On the other hand, if we choose $\lambda_{min}^{ECS}$ too large,
 then we only capture very large eigenvalues, and for all practical purposes $\Det{\XECS} \gg 1$.
 Therefore, if we set the scale of $\XECS$ appropriately, we can choose a $\lambda_{min}^{ECS}$ such that $\Det{\XECS}=1$.
 In this case, by choosing $\LambdaECSmin$ appropriately, we can estimate the expected value of
-$\langle\Det{\mathbf{A}_M}\rangle$  with an empirical point estimate over the \Teacher Correlation matrix, which is unity.
+$\langle\Det{\AMATM}\rangle$  with an empirical point estimate over the \Teacher Correlation matrix, which is unity.
 \begin{equation}
 \label{eqn:detX}
 \vert\det\XECS\vert \simeq 1 ; \quad \Trace{ \ln\XECS } = \ln\vert\det\XECS\vert \simeq 0  .
 \end{equation} 
 
-This expression now be used in a practical calculation to define a low-rank subspace that both allows us to evaluate the HCIZ integral,
+This expression can now be used in a practical calculation to define a low-rank subspace that both allows us to evaluate the HCIZ integral,
 and to identify, in principle, generalizing components of the layer.
-We also refer to \EQN~\ref{eqn:detX} the \TRACELOG condition, which is technically its empirical form.
+We also refer to \EQN~\ref{eqn:detX} as the \TRACELOG condition, which is technically its empirical form.
 \michaeladdressed{Note by abuse of terminology.}
 For example, Figure~\ref{fig:ECS_space} depicts the eigenvalues in the~\ECS for a \Typical ESD with PL $\alpha=2.0$,
-(normalized such that $\Trace{\XMAT}=\Vert\mathbf{W}\Vert_{F}=N$).
-Notice that the start of the PL tail,  $(\lambda_{min}^{PL})$, is very close to the start of the~\ECS tail. $(\LambdaECSmin$,
+(normalized such that $\Trace{\XMAT}=\Vert\WMAT\Vert_{F}=N$).
+Notice that the start of the PL tail, $(\lambda_{min}^{PL})$, is very close to the start of the~\ECS tail. $(\LambdaECSmin)$,
 i.e. $\Delta \lambda_{min}:=\LambdaECSmin-\LambdaPLmin\approx 0$.
 Also, notice that while there are many large eigenvalues, $\ln\lambda>1.0$, there are numerous small eigenvalues as well,
-$\ln\lambda<1.0$, such that the $\sum\ln\lambda\approx 0$ for $\lambda\ge\lambda_{min}^{ECS}$.
+$\ln\lambda<1.0$, such that the $\sum\ln\lambda\approx 0$ for $\lambda\ge\lambda_{min}^{ECS}$. In other words, the red and green shaded areas have the same measure.
 Additional plots like Figure~\ref{fig:ECS_space}, generated with \WW,  can be found in Section~\ref{sxn:empirical},
 in Figure~\ref{fig:mlp3-detx-gap}
 as well as plots of $\Delta \lambda_{min}$ vs. the \WW PL $\alpha$ for several real-world examples,

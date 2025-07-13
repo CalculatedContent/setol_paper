@@ -13,7 +13,7 @@ Although the functional form for these quantities will be the same for the vecto
 
 
 %%\subsubsection{Average Student-Teacher Model Generalization Error $(\AVGSTGE)$ and the Annealed Hamiltonian $(\GANR)$}
-\subsubsection{Annealed Hamiltonian $\GANR$ when Student and Teachers are Vectors}
+\subsubsection{Annealed Hamiltonian \texorpdfstring{$\GANR$}{H(R)} when Student and Teachers are Vectors}
 \label{app:st-gen-err-annealed-ham}
 
 In this section, we derive an expression for the Annealed Hamiltonian $\GANR$, 
@@ -50,7 +50,7 @@ If we apply the AA (see \EQN~\ref{eqn:AA} and \EQN~\ref{eqn:Jensens}) to \EQN~\r
 \label{eqn:qaFan}
 \langle-\beta F \rangle_{\AVGNDXI} \simeq 
 %%   \ln \langle Z \rangle_{\AVGNDXI} = 
-   \ln \frac{1}{N}\int d\mu(\NDXI) \int d\mu(\SVEC) e^{-\beta\DETOPSTLL}   .
+   \ln \frac{1}{\ND}\int d\mu(\NDXI) \int d\mu(\SVEC) e^{-\beta\DETOPSTLL}   .
 \end{align}
 %
 Notice that we have interchanged the logarithm $(\ln)$ and
@@ -63,14 +63,14 @@ We will now switch the order of integration in \EQN~\ref{eqn:qaFan}, giving
 \label{eqn:qaFan3}
 \langle-\beta F \rangle_{\AVGNDXI} \simeq 
 %%   \ln \langle Z \rangle_{\AVGNDXI} = 
-   \ln \int d\mu(\SVEC)\frac{1}{N}\int d\mu(\NDXI)e^{-\beta\DETOPSTLL)}   .
+   \ln \int d\mu(\SVEC)\frac{1}{\ND}\int d\mu(\NDXI)e^{-\beta\DETOPSTLL)}   .
 \end{align}
 
 
 We now recall the definition of the \AnnealedHamiltonian, $\GANR$ (see \EQN~\ref{eqn:Gan_def} in Section~\ref{sxn:mathP}, which is analogous to \EQN~(2.31) of \cite{SST92}):
 \begin{align}
 \label{eqn:Gan0}
-\beta\GANR = \beta\HAN(\beta,\SVEC,\TVEC):=-\frac{1}{N}\ln \int d\mu(\NDXI)e^{-\beta\DETOPSTLL}  .
+\beta\GANR = \beta\HAN(\beta,\SVEC,\TVEC):=-\frac{1}{\ND}\ln \int d\mu(\NDXI)e^{-\beta\DETOPSTLL}  .
 \end{align}
 where we have denoted the Hamiltonian as $\HAN(\beta,\SVEC,\TVEC)$ to indicate the explicit dependence on $\beta$,
 and we have added $\beta$ to the R.H.S. to because the L.H.S. is unitless.
@@ -83,13 +83,11 @@ Using this definition, we can express the \Annealed \PartitionFunction, $Z^{an}_
 Z^{an}_{\ND}:=\ND\langle Z\rangle_{\AVGNDXI}=\int d\mu(\SVEC)e^{-\ND\beta\HAN(\beta,\SVEC.\TVEC)}  .
 \end{align}
 
-\michael{Here, we have a subscript $N$ and in the main text I think we have a subscript $n$ for the same thing. Is it different, or is it a typo.}
-\charles{@michael: I used $n$ for the intro 4.1/4.2, and large $N$ for the specific cases here and above.  I thought it would be clearer so things dont get mixed up. Not sure about $\ND$. }
 Following Section~\ref{sxn:mathP_errors}, we can write the \emph{Average Model \TrainingError} $\AVGSTTE$, in the AA,
 in terms of \Annealed \PartitionFunction, $Z^{an}_{\ND}$:
 \begin{align}
  \label{eqn:AVGSTTE_AA}
-\AVGSTTE:= \red{-}\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \ln Z^{an}_{\ND}
+\AVGSTTE:= \red{-}\frac{1}{\nred{n}}\dfrac{\partial }{\partial \beta} \ln Z^{an}_{\ND}
 \end{align}
 
 %Given $\GANR$ in \EQN~\ref{eqn:Gan0}, and in analogy with \EQN~\ref{eqn:avgte} in Section~\ref{sxn:mathP}, 
@@ -180,13 +178,13 @@ By \EQN~\ref{eqn:Gan_highT_final}, this gives
 \begin{align}
 \label{eqn:Gan4}
 \EPSL(R) =
-\langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI \rangle_{\AVGNDXI} \simeq 1-R\;\;\text{as}\;N\rightarrow\infty  ,
+\langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI \rangle_{\AVGNDXI} \simeq 1-R\;\;\text{as}\;\ND\rightarrow\infty  ,
 \end{align}
 which we recognize as the same as the data-averaged ST error $\epsilon(R)$ in \EQN~\ref{eqn:e0}.
 \michael{@charles: also, there is a $1/N$ in \EQN~\ref{eqn:e0}; does that belong here.}
 
 
-\subsubsection{Annealed Hamiltonian $\GANMAT$ for the Matrix-Generalized ST Error}
+\subsubsection{Annealed Hamiltonian \texorpdfstring{$\GANMAT$}{H(R)} for the Matrix-Generalized ST Error}
 \label{sxn:appendix_Gan}
 
 In this section, we derive an expression for our matrix generalization of the \AnnealedHamiltonian of the \LinearPerceptron,
@@ -206,7 +204,7 @@ We will need to evaluate an average over the $N$ random $M$-dimensional training
 which are i.i.d Gaussian with $0$ mean and $\sigma^{2}$ variance:
 \begin{equation}
   \label{eqn:XInorm}
-  \Vert \XI \Vert^2 :=\frac{1}{N} \sum_{\mu=1}^{N} \XI_\mu \XI_\mu^{\top} = \sigma^{2}\IM ,
+  \Vert \XI \Vert^2 :=\frac{1}{\ND} \sum_{\mu=1}^{\ND} \XI_\mu \XI_\mu^{\top} = \sigma^{2}\IM ,
 \end{equation}
 where $\XI_{\mu}$ is a vector of length $M$, and $\IM$ is an $M \times M$ identity matrix.
 \michaeladdressed{Use $I$ instead of $\IM$ here, and use somethin like $\chi$ for that.}
@@ -230,49 +228,55 @@ Let the probability distribution over the $N$ data vectors~be
   \label{eqn:pndx_vec}
   &= \XINORM \exp\left[-\frac{M}{2}\sum_{\mu=1}^{N}\|\XI_{\mu}\|^2\right] ,
 \end{align}
-where $M=N_f$ is  the number of features in the data, where the normalization $\XINORM$ is
+where $M=N_f$ is the number of features in the data, where the normalization $\XINORM$ is
 \begin{align}
 \label{eqn:xinorm}
 \XINORM 
-:=\left( \frac{1}{\sqrt{(2 \pi \sigma^2)^M}} \right)^{N}
- =\left( \frac{M}{2\pi} \right)^{MN/2} .
+:=\left( \frac{1}{\sqrt{(2 \pi \sigma^2)^M}} \right)^{\ND}
+ =\left( \frac{M}{2\pi} \right)^{\ND M/2} .
 \end{align}
-\michaeladdressed{Is that factor $P(\NDXI)$ due to us working with matrices, i.e., it does not appear with vectors.}
-\charles{@michael: see main text section 4, it's there}
 
 \paragraph{The Total Data Sample Error $(\DETOPST)$ and the Matrix Normalization}
 First, let us express the matrix-generalized \TotalDataSampleError, $\DETOPST$, for a single layer,
-in operator form (for each training example)
+in operator form (for each  of the $\ND$ training examples)
 \begin{align}
  \label{eqn:DETOPST}
- \frac{1}{N}\DETOPST  := \Trace{\IM - \frac{1}{N}\SMAT^{\top}\TMAT} = M - \Trace{\OVERLAP}
+ \frac{1}{\ND}\DETOPST  := \Trace{\IM - \frac{1}{N}\SMAT^{\top}\TMAT} = M - \Trace{\OVERLAP} 
 \end{align}
+\nred{ This might need to be 
+\begin{align}
+ \frac{1}{\ND}\DETOPST := N\Trace{\IM - \frac{1}{N}\SMAT^{\top}\TMAT} = NM - N\Trace{\OVERLAP} 
+\end{align}
+}
 where $\IM$ is a diagonal matrix of dimension $M$.
-Notice that $\DETOPST$ scales as $N\times M$, the total number of parameters in the system.
+\red{Note that the matrices are by default data-averaged empirical quantities, so we can drop the $1/\ND$ on the RHS}
+
+Also, notice that $\DETOPST$ scales as $N\times M$, the total number of parameters in the system.
 Also,  importantly, when all the overlaps are perfect, then the error is zero, i.e. if $\Trace{\OVERLAP}=M$ then $\DETOPST=0$.
                                                                         
 We can define the data-dependent form (i.e., in the basis of the data $\XI$) as
 \begin{align}
 \nonumber
 \DETOPNN
-   :=& \sum_{\mu=1}^{N} (\XI^{\mu})^{\top} \left( \IM - \frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \\
+   :=& \red{N}\sum_{\mu=1}^{\ND} (\XI^{\mu})^{\top} \left( \IM - \frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \\
 \label{eqn:DETOPNN}
-    =&  \sum_{\mu=1}^{N} \sum_{i,j=1}^{M} \XI_i^{\mu} \left( \delta_{ij} - \frac{1}{N} [\SMAT^{\top}\TMAT]_{ij} \right) \XI_j^{\mu}  .
+    =&  \red{N}\sum_{\mu=1}^{\ND} \sum_{i,j=1}^{M} \XI_i^{\mu} \left( \delta_{ij} - \frac{1}{N} [\SMAT^{\top}\TMAT]_{ij} \right) \XI_j^{\mu}  .
 \end{align}
 
 \paragraph{The \AnnealedHamiltonian (per-parameter, $\HANPP)$}
-The definition of the \AnnealedHamiltonian, $\GANMAT$, for the matrix-generalized case must be extended to account for the $M$ parameters per training example.  We then have that the total energy is then the sum of the entries of $M$ independent parts, as expected by \SizeConsistency:
+\nred{I think this needs to be per $N$ parameter}
+The definition of the \AnnealedHamiltonian, $\GANMAT$, for the alized case must be extended to account for the $M$ parameters per training example.  We then have that the total energy is then the sum of the entries of $M$ independent parts, as expected by \SizeConsistency:
 \begin{align}
  \label{eqn:hanpp}
- \Trace{\GANMAT}=M\Trace{\HANPP}
+ \Trace{\GANMAT}=M\left(\red{N}\Trace{\HANPP}\right)
 \end{align}
 where the \AnnealedHamiltonian per-parameter, $\HANPP$, is obtained from \EQN~\ref{eqn:Gan0} as
 \begin{align}
 \label{eqn:Gan_lnI}
 \beta\HANPP
-   &:=-\frac{1}{N}\ln   \int\mathcal{D}\NDXI \, e^{-\beta \DETOPST} P(\NDXI) \\
+   &:=-\frac{1}{\ND}\ln   \int\mathcal{D}\NDXI \, e^{-\beta \DETOPST} P(\NDXI) \\
 \nonumber
-   &=-\frac{1}{N}\ln \IH ,
+   &=-\frac{1}{\ND}\ln \IH ,
 \end{align}
 where
 \begin{align}
@@ -285,7 +289,7 @@ That is, $\HANPP$ represents the Energy or Error each of the $M$ parameters cont
 The goal will be to derive the high-Temperature \AnnealedHamiltonian, $\GANMATHT$, which is now  defined such that:
 \begin{align}
  \label{eqn:hanpp2}
-  \Trace{\GANMATHT}:=M\Trace{\HANPPHT  }
+  \Trace{\GANMATHT}:=M\red{N}\left(\Trace{\HANPPHT  }\right)
 \end{align}
 
 If we were to evaluate the trace of $\HANPPHT$, then we could also define
@@ -298,18 +302,16 @@ which would be like a mean-field potential, but we need something different for 
 
 %%We now evaluate the integral over $d\mu(\NDXI)$ in \EQN~\ref{eqn:Gan0}. 
 
-To evaluate the integral, notice that $\IH$ is really just an average over i.i.d. data, and so it is just a product over $N$ independent terms
+To evaluate the integral, notice that $\IH$ is really just an average over i.i.d. data, and so it is just a product over $\ND$ independent terms \red{(1 for each training example)}
 \begin{align}
-\IH := \int\mathcal{D}\NDXI  e^{-\beta \DETOPST} P(\NDXI)  \rightarrow\left[\int\mathcal{D}\XI \;[\cdots]\; \right]^{N} ,
+\IH := \int\mathcal{D}\NDXI  e^{-\beta \DETOPST} P(\NDXI)  \rightarrow\left[\int\mathcal{D}\XI \;[\cdots]\; \right]^{\ND} ,
 \end{align}
 as in \EQN~\ref{eqn:I_4} below.
-\michael{I don't know what ``as in'' means.  We should not be forward pointing in a derivation.  If we mean that we will use this below, let's have a separate sentence that makes that explicit.}
-\charles{@michael: fix it}
 Moreover, when taking $\ln \IH$, the $N$ term pulls down and become a prefactor
 \begin{align}
--\ln \IH = -\ln\left[\int\mathcal{D}\XI \;[\cdots]\; \right]^{N}= -N\ln\left[\int\mathcal{D}\XI \;[\cdots]\; \right] .
+-\ln \IH = -\ln\left[\int\mathcal{D}\XI \;[\cdots]\; \right]^{\ND}= -\ND\ln\left[\int\mathcal{D}\XI \;[\cdots]\; \right] .
 \end{align}
-Thus, as with the vector case, $\GANMAT$ is like a mean-field average over the data $\XI$, independent of the sample size $N$.
+Thus, as with the vector case, $\GANMAT$ is like a mean-field average over the data $\XI$, indepedent of the sample size $N$.
 Also, since the final result must scale as $N\times M$, the integral should scale as $M$, i.e.,
 $\left[\int\mathcal{D}\XI \;[\cdots]\; \right]\sim M$.
 
@@ -318,25 +320,25 @@ If we substitute $\DETOPNN$, \EQN~\ref{eqn:DETOPNN}, into the integral $\IH$, \E
 \begin{align}
 \label{eqn:I_1} 
 \IH 
-  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{N} (\XI^{\mu})^{\top} \left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) P(\NDXI)  \\
+  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{\ND} (\XI^{\mu})^{\top} \red{N}\left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) P(\NDXI)  \\
 \nonumber
 %%  \IH
-  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{N} (\XI^{\mu})^{\top} \left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) \NORM \exp\left( - \sum_{\mu=1}^{N} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right)  \\
+  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{\ND} (\XI^{\mu})^{\top} \red{N}\left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) \NORM \exp\left( - \sum_{\mu=1}^{N} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right)  \\
     \nonumber
     %%  \IH
   &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
-    -\beta\sum_{\mu=1}^{N} (\XI^{\mu})^{\top} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
-    - \sum_{\mu=1}^{N} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right) \\ 
+    -\beta\sum_{\mu=1}^{\ND} (\XI^{\mu})^{\top} \red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
+    - \sum_{\mu=1}^{\ND} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right) \\ 
 \nonumber
   &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
-    -\frac{1}{2\sigma^2}\sum_{\mu=1}^{N}2\beta\sigma^{2} (\XI^{\mu})^{\top} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
+    -\frac{1}{2\sigma^2}\sum_{\mu=1}^{\ND}2\beta\sigma^{2} (\XI^{\mu})^{\top} \red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
     +  \Vert\XI^{\mu}\Vert^{2} \right) \\ 
 \label{eqn:I_3} 
   &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
     -\frac{1}{2\sigma^2}      
-      \sum_{\mu=1}^{N}
+      \sum_{\mu=1}^{\ND}
           (\XI^{\mu})^{\top}[
-      2\beta\sigma^{2} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)+\IM] (\XI^{\mu})\right)  .
+      2\beta\sigma^{2}\red{N} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)+\IM] (\XI^{\mu})\right)  .
 \end{align}
 %
 By combining the exponents, we obtain
@@ -357,81 +359,77 @@ By combining the exponents, we obtain
     \left(\mathbf{M}
     \right)
     \XI
-    \right]^{N}   ,
+    \right]^{\ND}   ,
 \end{align}
-where $\mathbf{M}=2\beta\sigma^{2}(\IM - \tfrac{1}{N}\SMAT^{\top}\TMAT)+\IM$ is an $M \times M$ matrix.
-
+where $\mathbf{M}=2\beta\sigma^{2}\red{N}(\IM - \tfrac{1}{N}\SMAT^{\top}\TMAT)+\IM$ is an $M \times M$ matrix.
 We now use the familiar property of multi-variant Gaussian integrals,
 \begin{align}
 \label{eqn:det_M}
-\int d\mathbf{x}  e^{-\frac{1}{2\sigma^{2}}(\mathbf{x})^{\top}\mathbf{M}(\mathbf{x}) } = (2\pi\sigma^{2})^{m/2}\frac{1}{\sqrt{\Det{ \mathbf{M}}}}
+\int d\mathbf{x}  e^{-\frac{1}{2\sigma^{2}}(\mathbf{x})^{\top}\mathbf{M}(\mathbf{x}) } = (2\pi\sigma^{2})^{M/2}\frac{1}{\sqrt{\Det{ \mathbf{M}}}}
 \end{align}
 where $\mathbf{x}$ is an $m$-dim vector (with zero mean),
-and $\mathbf{M}$ is a square postive-definite matrix, and $\Det{ \mathbf{M}}$ is the determinant of $\mathbf{M}$.
+and $\mathbf{M}$ is a square positive-definite matrix, and $\Det{ \mathbf{M}}$ is the determinant of $\mathbf{M}$.
+\nred{Add an $N$ below and make sure it works out}
 \charles{We can simplify this considerably if we treat $\NORM$ above first}
 %
 Using \EQN~\ref{eqn:det_M}, we can rewrite $\IH$ in \EQN~\ref{eqn:I_4} as
 \begin{align}
 \label{eqn:I_5}
-\IH &=   \NORM\left[\frac{(2\pi\sigma^{2})^{M/2}}{\sqrt{\Det{ \mathbf{M}}}}\right]^{N} \\ \nonumber
+\IH &=   \NORM\left[\frac{(2\pi\sigma^{2})^{M/2}}{\sqrt{\Det{ \mathbf{M}}}}\right]^{\ND} \\ \nonumber
     &=   \NORM(2\pi\sigma^2)^{NM/2}\left[
-         \sqrt{\Det{ 2\beta\sigma^2(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)+\IM}}\right]^{-N}  \\
+         \sqrt{\Det{ 2\beta\sigma^2(\IM-\tfrac{1}{}\SMAT^{\top}\TMAT)+\IM}}\right]^{-\ND}  \\
 %%\end{align}
 %%%
 %%\begin{align}
 \label{eqn:I_6}
 %%\IH 
-   &=  \left( \frac{1}{2\pi\sigma^{2}} \right)^{MN/2}
+   &=  \left( \frac{1}{2\pi\sigma^{2}} \right)^{N M/2}
        (2\pi \sigma^{2})^{M/2}
-         \left[\sqrt{\Det{ \IM + 2\beta\sigma^{2}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)}}\right]^{-N}  ,
+         \left[\sqrt{\Det{ \IM + 2\beta\sigma^{2}\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)}}\right]^{-\ND}  ,
 \end{align}
 where \EQN~\ref{eqn:I_6} follows by inserting $\XINORM$ from \EQN~\ref{eqn:xinorm}.
 We can now identify $\sigma^{2}=\tfrac{1}{M}$ to obtain
 \begin{align}
 \nonumber
-\IH &= \left[\sqrt{\Det{ \IM + 2\beta\sigma^{2}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)}}\right]^{-N}   \\ 
+\IH &= \left[\sqrt{\Det{ \IM + 2\beta\sigma^{2}\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)}}\right]^{-\ND}   \\ 
 \nonumber
-    &= \left[\sqrt{\Det{ \IM  + \tfrac{2\beta}{MN}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})}\right]^{-N} \\ 
+    &= \left[\sqrt{\Det{ \IM  + \tfrac{2\beta}{M}\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})}\right]^{-\ND} \\ 
 \label{eqn:I_7}
-    &= \left[\Det{ \IM  + \tfrac{2\beta}{M}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-N/2}  .
+    &= \left[\Det{ \IM  + \tfrac{2\beta}{M}\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}  .
 \end{align}
 
-\paragraph{Large-$N$ Approximation.}
+\paragraph{Large-$\ND$ Approximation:\red{the Thermodynamic limit}.}
 Using the expression
 %%\begin{align}
 $
 \det(\IM+\epsilon\mathbf{\Omega})\approx1+\epsilon\Trace{\mathbf{\Omega}}  ,
 $
 %%\end{align}
-\michaeladdressed{@charles: I inlined that equation.}
 which holds for an arbitrary matrix $\Omega$ for small $\epsilon$,
 we can evaluate the determinant in \EQN~\ref{eqn:I_7} in the large-$N$ approximation, 
 which gives
 \begin{align}
   \label{eqn:I_8}
-  \IH &\approx  \left[1  + \tfrac{2\beta}{M}(\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-N/2}   .
+  \IH &\approx  \left[1  + \tfrac{2\beta}{M}\red{N}(\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}   .
 \end{align}
 Inserting this into \EQN~\ref{eqn:Gan_lnI}, we obtain
 \begin{align}
 \label{eqn:Gan_lnI_final_mwm}
 \beta\HANPP
-   &=-\frac{1}{N}\ln \left[1  + \tfrac{2\beta}{M}(\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-N/2}   .
+   &=-\frac{1}{\ND}\ln \left[1  + \tfrac{2\beta}{M}\red{N}(\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}   .
 \end{align}
-\michaeladdressed{@charles: I just added that equation.}
-
-
   
-\paragraph{Matrix-Generalized ST Error $\GANMATHT$ when $M=1$.}
-To start, observe that when $M=1$, \EQN~\ref{eqn:Gan_lnI_final_mwm} becomes
+\paragraph{Matrix-Generalized ST Error $\GANMATHT$ when $\nred{N}=1$.}
+To start, observe that when $\red{N}=1$, \EQN~\ref{eqn:Gan_lnI_final_mwm} becomes
 \begin{align}
 \nonumber
-\beta\GANMAT\vert_{M=1}
-&= \beta\HANPP|\vert_{M=1}  \\ 
-  &=  -\frac{1}{N}\ln  \left[1  + 2\beta(1-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right]^{-N/2} \\ 
+\beta\GANMAT\vert_{\red{N}=1}
+&= \beta\HANPP\vert_{\red{N}=1}  \\ 
+  &=  -\frac{1}{\ND}\ln  \left[1  + 2\beta\red{\frac{1}{M}Tr}(1-\SVEC^{\top}\TVEC)\right]^{-\ND/2} \\ 
 \nonumber
-  &= \frac{1}{2}\ln  \left[1  + 2\beta(1-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right] \\ 
+  &= \frac{1}{2}\ln  \left[1  + 2\beta\red{\frac{1}{M}Tr}(M-\SVEC^{\top}\TVEC)\right] \\ 
 \label{eqn:GANmat_m_equals_1}
-  &=  \frac{1}{2}\ln \left[1 + 2\beta(1-\mathbf{R})\right]  ,
+  &=  \frac{1}{2}\ln \left[1 + 2\beta(1-R)\right]  ,
 \end{align}
 meaning that \EQN~\ref{eqn:Gan_lnI_final_mwm} reduces to \EQN~\ref{eqn:Gan2}, as desired.
 
@@ -444,7 +442,7 @@ Notice that for the final \LayerQualitySquared Hamiltonian $\HBARE$, this will c
 \charles{@michael: working on this, but IDK its  about A1 and A2; REWORKING THIS:}
 \begin{align}
   \label{eqn:I_9}
-    \IH\approx  \left[1  + \frac{2\beta}{M}\operatorname{Tr}[(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right]^{-N/2} ,
+    \IH\approx  \left[1  + \frac{2\beta}{M}\red{N}\operatorname{Tr}[(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right]^{-\ND/2} ,
 \end{align}
 for any $M>1$.
 Given this, it follows from \EQN~\ref{eqn:Gan_lnI_final_mwm} and \EQN~\ref{eqn:Gan_lnI} that we can define 
@@ -462,7 +460,7 @@ To obtain the high-Temperature form, we use
 \quad(\epsilon\ll 1),
 \end{align}
 with $\epsilon=\tfrac{2\beta}{M}$ and $\mathbb{M}=\IM-\OVERLAP$.   
-We mow obtain the folloiwing result for the matrx-generalized high-T of $\GANMATHT$ using
+We now obtain the following result for the matrix-generalized high-T of $\GANMATHT$ using
 \begin{align}
 \label{eqn:GANHTmatR}
 \Trace{\GANMATHT} = \Trace{\IM-\OVERLAP} = M-\Trace{\OVERLAP}
