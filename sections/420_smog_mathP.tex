@@ -1045,12 +1045,13 @@ To evaluate $\QT$ we will be in both
 In particular, the \ThermodynamicLimit refers to the case where all \Thermodynamic averages remain \SizeIntensive as the system size $\ND$ increases. For NNs there is an additional constraint that the ratio $m/n$, i.e., the load, remains constant~\cite{SST92,MM17_TR_v1}. 
  For the ST model of the \Perceptron, however, the \Thermodynamic averages we need to compute do not depend on $m$,
 so this constraint is not necessary.
-Later, when we form our matrix generalization of the ST model, we will also take a large-$\ND$ limit, and in doing so, the effective load $N/\ND$ will effectively remain constant (although this is not strictly enforced) and, in doing so, require that the final result will be \SizeConsistent.
-We can approximate the asymptotic behavior of integrals we will encounter (e.g., the \FreeEnergy $F$ and/or \PartitionFunction $Z$) in a large-N limit by using the \SaddlePointApproximation (SPA), where $\ND$ a matrix dimension now. In the case of the $F$ and/or $Z$, we assume that we can apply the SPA:
-\nred{Replace $\EPSL$ with $\GANMAT$ or NM\EPLS
+Later, when we form our matrix generalization of the ST model, we will also essentially take a large-$\ND$ limit in that we assume we are in the ]\ThermodynamicLimit, and in doing so, the effective load $N/\ND$ will effectively remain constant (although this is not strictly enforced) and, in doing so, require that the final result will be \SizeConsistent.
+We can approximate the asymptotic behavior of integrals we will encounter (e.g., the \FreeEnergy $F$ and/or \PartitionFunction $Z$) in a large-N limit by using the \SaddlePointApproximation (SPA), where $N$ is a matrix dimension now, and we seek a kind of mean-field theory over the $N$ interacting feature vectors. In the case of the $F$ and/or $Z$, we assume that we can apply the SPA:
+\nred{Replace $\EPSL$ something that scales as $N$.  WHat is below is correct for a typical mean field theory, but not how we are using it.}
+
 \begin{align}
   \label{eqn:SPA}
-  \int d\mu(\WVEC) e^{-\ND\red{\ND}\beta\EPSL(\WVEC)}\approx \sqrt{\tfrac{2\pi}{\ND\EPSL(\WVEC^{*})}} e^{-n\beta\EPSL(\WVEC^{*})}  ,
+  \int d\mu(\WVEC) e^{-\ND\beta\EPSL(\WVEC)}\approx \sqrt{\tfrac{2\pi}{\ND\EPSL(\WVEC^{*})}} e^{-n\beta\EPSL(\WVEC^{*})}  ,
 \end{align}
 where $\WVEC^{*}$ satisfies the saddle point equations:
 \begin{align}
