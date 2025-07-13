@@ -75,7 +75,7 @@ the derivative of the \LayerQualitySquared \GeneratingFunction, $\IZG$, defined 
   \label{eqn:IZG_QT}
   \QT := \dfrac{1}{\beta}\dfrac{\partial }{\partial \ND} \lim_{N\gg 1}\IZG
 \end{align}
-$\IZG$ is essentially ($\beta$ times) a \emph{\FreeEnergy} for the (approximate) \LayerQualitySquared.
+$\IZG$ is essentially ($\beta$ times) a \emph{negative \FreeEnergy} for the (approximate) \LayerQualitySquared.
 (see Section~\ref{sxn:SMOG_main}, and the Appendix, Section~\ref{sxn:quality}).
 For more details, see Section~\ref{sxn:matgen}, and the Appendix, Section~\ref{sxn:summary_sst92}).
 
@@ -84,13 +84,13 @@ We can write $\IZG$ as an HCIZ Integral,
   \label{eqn:QT_dS}
   \IZG  &= \red{\tfrac{1}{N}} \ln\int d\mu(\mathbf{S})\exp\left(\ND \beta N\Trace{\mathbf{T}^{\TR}\mathbf{A}_N\mathbf{T}}\right),
 \end{align}
-\nred{which is like a (negative) Free Energy, and averaged over all possible outputs $N$}
 
 The \SETOL approach then seeks to express $\IZG$ in~\EQN~\ref{eqn:QT_dS} as an HCIZ integral (and in the large-N limit)~\cite{potters_bouchaud_2020,Tanaka2007,Tanaka2008}.
 We evaluate this at large-$N$, and write
 \begin{equation}
   \IZGINF:=\lim_{N\gg 1}\IZG
 \end{equation}
+\nred{The results is effectively expressed in the limit of fixed load $N/\ND$, giving a kind of mean-field theory over $N$ interacting feature vectors of length $M$.}
 %%%must restrict the matrices to a lower rank subspace, called the~\ECS,
 %%%i.e.,  $\mathbf{\tilde{A}}$. 
 %%%We also must change the measure from an integral over \Student weight matrices
