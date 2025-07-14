@@ -129,14 +129,13 @@ For the \Perceptron, one obtains different expressions for the ST error function
 the type of activation function $h(x)$ in \EQN~\ref{eqn:dnn_energy};
 The simplest are the Linear and Boolean \Perceptrons, and
 for both (and with $\ell_2$ loss),
- $\EPSL(\SVEC,\TVEC)$ is simply a function of the \emph{average} ST overlap $\AVGR$~\cite{SST92}.
+ $\EPSL(\SVEC,\TVEC)$ is simply a function of the ST overlap $\AVGR$~\cite{SST92}.
 This gives $\EPSLSTx\rightarrow\EPSL(\AVGR)$, where
 \begin{align}
   \label{eqn:Rdef}
-\AVGR=\frac{1}{\ND}\SVEC^{\top}\TVEC=\frac{1}{\ND}\sum_{i=1}^{m}s_{i}t_{i},
+\AVGR=\SVEC^{\top}\TVEC=\sum_{i=1}^{m}s_{i}t_{i},
 \end{align}
 which is simply the dot product between the $m$-dimensional \Student $\SVEC$ and \Teacher $\TVEC$ weight vectors, and normalized by the number of training instances $\ND$.
-\red{Something is off.  This might be due to choosing the data vectors with variance $1/m$. Need to check this}
 For a \LinearPerceptron~\cite{SST92},% 
 \footnote{In the classic approach for the ST model, the theory examined different expressions $\EPSL(\AVGR)$.
 For example, one can consider the  Boolean \Perceptron~\cite{SST92,Ros62}, with activation function $h(x)=\mbox{sgn}(x)$, 
@@ -151,8 +150,7 @@ with activation function $h(x)=x$,  the error function is
 \EPSL(\AVGR)=1-\AVGR  .
 \label{eqn:LinearPerceptronError}
 \end{align}
-
-
+Since the data vectors are normalized to $1/m$, the average overlap $\AVGR\in[-1,1]$.  And, importantly, the number of free parameters becomes $1$.
 
 \input{sections/overlap_figure}
 %\caption{Comparison of 2D and 3D representations of matrix overlap $R$. (a) 2D visualization of vector overlap $R = \cos(\theta) $.
@@ -172,6 +170,7 @@ define the data-dependent ST error (\EQN~\ref{eqn:DE_L}) in terms of an $\ell_2$
 %\label{eqn:deriveSTerror}
 %   =&  1 - \eta(\XI),
 %\end{align}
+\red{THIS SECTION HAS SOME TYPOS}
 
 \begin{align}
 \nonumber
@@ -181,9 +180,10 @@ define the data-dependent ST error (\EQN~\ref{eqn:DE_L}) in terms of an $\ell_2$
 \nonumber
 =& \ND - (\YsVEC)^{\top} (\YtVEC) \\
 \label{eqn:deriveSTerror}
-=& \ND(1 - \ETA(\SVEC,\TVEC,\XI)),
+=& \ND(1 - \ETA(\SVEC,\TVEC,\red{\NDXI})),
 \end{align}
-where we define $\ETA(\SVEC,\TVEC,\XI):=\tfrac{1}{\ND}\mathbf{y}_{S}^{\top}\mathbf{y}_{T}$, called
+where we define $\ETA(\SVEC,\TVEC,\red{\NDXI}):=
+\tfrac{1}{\ND}\mathbf{y}_{S}^{\top}\mathbf{y}_{T}$, called
 the \emph{data-dependent \SelfOverlap}; we expand this below.
 The expression $\ETA(\SVEC,\TVEC,\XI)$ is analogous to the ST overlap $R$, but before the data has been integrated out.
 It is convenient to work directly with
@@ -199,13 +199,13 @@ Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:dnn_energ
 which gives
 \begin{align}
   \label{eqn:eta_vec_xi_def}
-\ETA(\SVEC,\TVEC,\XI) = \tfrac{1}{\ND}(\SVEC^{\top}\XI)^{\top} (\TVEC^{\top}\XI) = \tfrac{1}{\ND}\XI^{\top} (\SVEC^{\top} \TVEC )\XI 
+\ETA(\SVEC,\TVEC,\XI) =\red{\tfrac{1}{\ND}\sum_{\mu=1}^{\ND}} (\SVEC^{\top}\XI)^{\top} (\TVEC^{\top}\XI) = \red{\tfrac{1}{\ND}\sum_{\mu=1}^{\ND}}\XI^{\top}_{\red{\mu}}  (\SVEC^{\top} \TVEC )\XI_{\red{\mu}} 
 \end{align}
-\red{Are we missing a $1/m$ somewhere}
+\red{THIS SECTION HAS SOME TYPOS}
 or, more simply, after integrating over the data, we have the \emph{data-independent \SelfOverlap}
 \begin{align}
   \label{eqn:eta_vec_avg_def}
-\ETA(\SVEC,\TVEC) = \langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\AVGNDXI}=\tfrac{1}{\ND}(\SVEC^{\top} \TVEC )
+\ETA(\SVEC,\TVEC) = \langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\AVGNDXI}=\SVEC^{\top} \TVEC 
 \end{align}
 
 We want to evaluate this as an \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:STerror}.
@@ -238,7 +238,7 @@ and the \AverageSTGeneralizationError $\STGE(\AVGR)$ is then obtained by averagi
 \AVGSTGE(\AVGR)=\THRMAVG{\EPSL(\AVGR)}=
 \THRMAVG{1-\langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\AVGNDXI}}=
 \THRMAVG{1-\ETA(\SVEC,\TVEC)}=
-\THRMAVG{1-\tfrac{1}{\ND}\SVEC^{\top}\TVEC}=
+\THRMAVG{1-\cancel{\tfrac{1}{\ND}}\SVEC^{\top}\TVEC}=
 \THRMAVG{(1-\AVGR)}  ,
 \end{align}
 where $\THRMAVG{\cdots}$ is a \ThermalAverage over the \Student weight vector $\SVEC$.
@@ -251,7 +251,7 @@ is just the \AverageGeneralizationAccuracy, so we can write
        = \THRMAVG{1 - \EPSL(\AVGR)} 
        = \THRMAVG{\langle\ETA(\SVEC, \TVEC, \XI)\rangle_{\AVGNDXI}} 
        = \THRMAVG{\ETA(\SVEC, \TVEC)} 
-       = \THRMAVG{\tfrac{1}{\ND}\SVEC^{\top}\TVEC} 
+       = \THRMAVG{\cance;{\tfrac{1}{\ND}}\SVEC^{\top}\TVEC} 
        = \THRMAVG{\AVGR}.
 \end{align}
 \EQN~\ref{eqn:QST_final} is the starting point for deriving a \SEMIEMP theory for the \WW quality metrics (\ALPHA,\ALPHAHAT);

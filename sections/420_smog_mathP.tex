@@ -159,7 +159,7 @@ WLOG, we assume that $\XVEC_{\mu}$ is normalized such that the Frobenius norm sq
   \Vert\XVEC_{\mu}\Vert^{2}_{F} := \sum_{i=1}^{m} \XVEC_{\mu,i}^{2}=\tfrac{1}{m}
 \end{equation}
 \michaelB{Q: I just noticed that this means that the matrix $X$ consisting of all $m$ of those vectors has the scaling $\|X\|_F^2 = \frac{\ND}{m^2}$, which seems unusual; is that correct.}
-We call $\XVEC^{\ND}$ an $\ND$-dimensional sample (of the training data instances $\XVEC$) from $\ADD$. \red{I'm really not comfortable calling $\ND$ the only dimension. $\XVEC_{\mu}$ is $\ND \times m$ dimensional.} 
+We call $\XVEC^{\ND}$ an $\ND$-sized sample (of the training data instances $\XVEC$) from $\ADD$. 
 % See below We may or may not specify the labels for this sample, depending on the context.
 
 We define model errors
@@ -167,12 +167,9 @@ as a difference in energy $\DEL$ between the student's and teacher's output, sin
 For example, for the mean-squared-error (MSE) loss, one has
 \begin{align}
   \label{eqn:DEy}
-  \Delta E^{\red{2}}_{\mathcal{L}}(\WVEC,\XVEC_{\mu},\MY_{\mu}):= (\MY_{\mu}-E_{NN}(\WVEC,\XVEC_{\mu}))^{2}  ,
+  \DEL(\WVEC,\XVEC_{\mu},\MY_{\mu}):= (\MY_{\mu}-E_{NN}(\WVEC,\XVEC_{\mu}))^{2}  ,
 \end{align}
-\red{Are we sure it's accurate to call a squared difference ``$\DEL^{2}$''? A $\Delta$ of something should just be a difference.}
-where 
-%MM%the loss is the L2 loss, $\mathcal{L}=\ell_2$, and 
-$E_{NN}(\WVEC,\XVEC_{\mu})$ is output prediction of the (student) NN, as in \EQN~\ref{eqn:dnn_energy}.
+where $E_{NN}(\WVEC,\XVEC_{\mu})$ is output prediction of the (student) NN, as in \EQN~\ref{eqn:dnn_energy}.
 
 \michaeladdressed{To clarify: by modeling and ``real-worldexperiment, I think that what we are saying is that there is a training process on a particular dataset, and we are modeling the quality/generalization with the following, which includes replacing the real data with Gaussian data and the NN with a parameteric form that we will fit semi-empirically.}
 \michael{@charles: we are going back and forth between Quality and Accuracy and various Errors; probably stick with errors, and introduce the Qualty/Accuracy in the subsubsection below.}
@@ -241,31 +238,30 @@ but to evaluate this we need to take an integral and/or \ExpectedValue over the 
 
 \paragraph{Expected Values.}
 
-We need to compute various sums and integrals, 
-sampling from a model $\MDD$ for the actual data distribution $\ADD$,
-which will frequently (but not always) be defined as more familiar \ExpectedValues.
+We need to compute various sums and integrals, sampling from a model $\MDD$ for the actual data distribution $\ADD$, and also over $\ND$-sized data samples (or data sets).
+This will frequently (but not always) be defined as more familiar \ExpectedValues.
 We will denote \ExpectedValues using physics \BraKet notion.
 Importantly, we use the term \ExpectedValue in the physics sense, and BraKets will denote an un-normalized sum or integral;
 %notation denotes an inner product in a Hilbert space of functions;
-when the quantity is to normalized, we will denote the normalization explicitly.
-For example, given a function $f(\XI)$, 
-we write the BraKet integral as:
+when the quantity is to be normalized, we will denote the normalization explicitly.
+For example, given a function $f(\XI)$, we write the BraKet integral as:
 \begin{align}
  \label{eqn:EuT}
- \langle f(\XI) \rangle_{\XI}:=\int d\mu(\XI) f(\XI)  ,
+ \langle f(\XI) \rangle_{\XI}:=\int d\mu(\XI) f(\XI)  .
 \end{align}
-and if we want to express an n-dimensional average over $f()$ then we would express this as 
+We would express an $\ND$-sized sample average over $f()$ as 
 \begin{align}
     \label{eqn:EuT_normalized}
-    \langle f(\NDXIn) \rangle_{\AVGNDXIn} := \frac{1}{\ND} \int d\mu(\NDXIn) f(\NDXIn)  
+    \langle f(\NDXIn) \rangle_{\AVGNDXIn} :=& \frac{1}{\ND} \int d\mu(\NDXIn) f(\NDXIn) \nonumber \\
+    =& \frac{1}{\ND} \left[\prod_{\mu=1}^{\ND} \int d\XI_{\mu}P(\XI_{\mu}) \right] \left[ \sum_{\mu=1}^{\ND}f(\XI_{\mu}) \right].
 \end{align}
-where the BraKet $\langle\cdots\rangle_{\AVGNDXIn}$ denotes the integral over the idealized
-Gaussian-field data $\NDXIn$, but with the convention that the normalization $\tfrac{1}{\ND}$
+The BraKet $\langle\cdots\rangle_{\AVGNDXIn}$ denotes an integral over an $\ND$-sized sample of idealized
+Gaussian-field data $\NDXIn$, with the convention that summation over $\ND$ points and normalization $\tfrac{1}{\ND}$
 appears inside the \BraKet implicitly.
-If this integral is normalized properly, then this denotes the familiar \ExpectedValue $\mathbb{E}_{\XI}[f(\XI)]$.
-\michaelB{Clarify what is ``properly.?? Either remove that sentence, or say that is what \EQN~\ref{eqn:EuT_normalized} is.}
-For a more complicated example, consider how to compute \ExpectedValue of the \DataSampleError.
-That is, we want to model the average \DataSampleError using:
+% If this integral is normalized properly, then this denotes the familiar \ExpectedValue $\mathbb{E}_{\XI}[f(\XI)]$.
+% \michaelB{Clarify what is ``properly.?? Either remove that sentence, or say that is what \EQN~\ref{eqn:EuT_normalized} is.}
+For example, consider how to compute \ExpectedValue of the \DataSampleError:
+% That is, we want to model the average \DataSampleError using:
 \begin{align}
   \label{eqn:Emap}
   \frac{1}{\ND}\DETOPX \xrightarrow{\text{Expected Value}} \langle \DETOPXI \rangle_{\AVGNDXIn}  , %= \DETOT = n \EPSLw.
@@ -281,16 +277,14 @@ In this case, we obtain:
   \frac{1}{\ND}\sum_{\mu=1}^{\ND}\int d\XI_{\mu}P(\XI_{\mu})\DETmu  , 
     \label{eqn:average_data_sample_error}
 \end{align}
-where $P(\NDXIn)$ is an $\ND$-dimensional Gaussian distribution,
-%probability distribution (i.e., an $\ND$-dimensional Gaussian distribution), 
-normalized to 1, and where the subscript $\AVGNDXIn$ on the Ket indicates this is an %average or 
-\ExpectedValue of a finite, $\ND$-size \emph{sample} of the ideal data -- note how the probability measure becomes a product of measures.
+where $P(\NDXIn)$ is a product of $\ND$ i.i.d. $m$-dimensional Gaussian distributions.
+The subscript $\AVGNDXIn$ indicates this is an
+\ExpectedValue of an average of an $\ND$-size \emph{sample} of ideal data, where the \ExpectedValue is taken over datasets, and the average is over data points within each sample. The third line follows because the $\ND$ samples are i.i.d.
 (This is used in both Sections~\ref{sxn:SMOG_main} and~\ref{sxn:matgen}.)
-The normalization $\tfrac{1}{\ND}$ is included in the definition to ensure the \BraKet is a proper \ExpectedValue of an average.
-The measure $d\mu(\NDXIn)$ signifies a single $\ND$ vector $\XI$, drawn from an $m$-dimensional idealized Gaussian distribution.
-Also, in some cases, we make use the subscript $\NDXIn$ on the Ket as $\langle\cdots\rangle_{\NDXIn}$;  this represents an integral over the data, but not an average or \ExpectedValue.
-\red{This is not quite right -- a BraKet value is always an Expected Value of something, by definition. Here we're saying we want it to be the Expected Value \emph{of} a sample average. The expectation is taken over samples, and the average is computed from each sample.}
-\michaeladdressed{@charles: clarify; that is $\ND$ vectors in $\mathbb{R}^{M}$ that are element-wise i.i.d. Gaussian?}
+Thus, the implicit normalization $\tfrac{1}{\ND}$ ensures the \BraKet is a proper \ExpectedValue of a sample average.
+%The measure $d\mu(\NDXIn)$ signifies a single $\ND$ vector $\XI$, drawn from an $m$-dimensional idealized Gaussian distribution.
+A subscript $\NDXIn$ on the Ket as $\langle\cdots\rangle_{\XI}$ would represent an integral over potential data points, not an average of a data sample (i.e., there would be no $1/\ND$ prefactor).
+% \michaeladdressed{@charles: clarify; that is $\ND$ vectors in $\mathbb{R}^{M}$ that are element-wise i.i.d. Gaussian?}
 %%\michael{Where we are using $M$ and $\ND$ rather than $m$ and $\ND$; is that a typo, or what should it be.}
 %%\cformike{I use $n,m$ in this section, $\ND$, $M$ elsewhere since they can mean different things when we generalize to a layer.  We can fix if its too confusion, or maybe just explain above.}
 %
@@ -320,10 +314,9 @@ Here, the notation $(n \gg 1)$ means $\ND$ grows arbitrarily large, but is not n
 at the limit point $(n=\infty)$.
 The \TotalDataSampleError $\DETOPXI$ is \SizeExtensive, whereas the
 average $\langle\DETOPXI\rangle_{\AVGNDXIn}$ is \SizeIntensive.
-\michaelB{Q: Is that a typo? Now, I'm confused, isn't there an extra $\frac{1}{\ND}$ factor there. ()}
-%This average is described below, and will be very useful in Sections~\ref{sxn:SMOG_main-st_av} and~\ref{sxn:matgen}.
 This limit will be implicit later when taking a \SaddlePointApproximation (see below).
 \footnote{As we are working within a ``physics-level of rigor, we take some liberties in evaluating these large-N limits; and we leave the formal proofs for future work. \michael{This comment should be in the intro, not in a footnote here.  Move later, since I don't have the token for the intro for now. } }
+\nred{This is a little weird to have the square on this and ask it to be size extensive.  We should at least comment on this  See also SST92  eqn 2.1}
 
 The data-averaged error  $\langle \DETOPXI \rangle_{\AVGNDXIn}$ will appear frequently below.
 For compatibility with \cite{SST92}, we denote it using the symbol $\EPSLw$:
@@ -451,7 +444,7 @@ When discussing quantities such as the \FreeEnergy $(F)$,
 training and test errors/eneries $(\mathcal{E})$, 
 the \LayerQuality $(\mathcal{Q})$, etc.,
 we will place a bar over the symbol (i.e., $\bar{F}$, $\bar{\mathcal{E}}$, $\Q$, etc.) when referring to
-an average over $\ND$
+an average over $\ND$.
 Otherwise, we will refer to these quantities as the total (averaged) energy, error, quality, etc.
 
 \charles{Finally, in this preliminary Section, we represent the dimensions with lower case $n,m$, but elsewhere
@@ -629,7 +622,8 @@ This will be a critical piece needed to generalize the vector-based ST \Perceptr
 \michaelB{Probably don't mention here, but backpoint to here from where we do that.}
 In BraKet notation, \EQN~\ref{eqn:Gan_simplified} can be expressed as
 \begin{eqnarray*}
-    \beta\GAN:=  -\tfrac{1}{\ND}\ln\langle e^{-\beta\DETOPXI}\rangle_{\NDXIn}=  -\ln \langle e^{-\beta\DET\rangle_{\XI}.
+    \beta\GAN:=  -\tfrac{1}{\ND}\ln\left\langle e^{-\beta\DETOPXI}\right\rangle_{\NDXIn}= 
+    -\ln \left\langle e^{-\beta\DET}\right\rangle_{\XI}.
 \end{eqnarray*}
 \michaelB{I think there is a normalization issue here, and this needs to be expressed i.t.o. $\langle \cdot \rangle_{\AVGNDXIn}$?}
 \charlesB{No, you have to look carefully. I'm fairly sure this is correct}
@@ -748,7 +742,7 @@ by expanding the exponential to first order in $\beta$, to obtain
 %=&  - \ln\langle 1-\beta\DETOPXI \rangle_{\AVGNDXIn} \\ \nonumber
 %=&  - \frac{1}{\ND}\left(\ln\langle 1\rangle_{\AVGNDXIn}-\langle\beta\DETOPXI \rangle_{\AVGNDXIn}\right) \\ \nonumber
 =&\;\langle \beta\DETOPXI \rangle_{\AVGNDXIn} \\ \nonumber
-=&\;\beta (n\EPSLw)\\ 
+=&\;\frac{1}{\ND}\beta(\DETOT)\\ 
 \label{eqn:Gan_highT_final}
 =&\;\beta \EPSLw  .
 \end{align}
@@ -982,7 +976,23 @@ become sharply peaked, and
 For a NN, \SelfAveraging implies that the weights $\WVEC$ are \emph{\Typical} of the distribution,
 and therefore the NN can generalize to similar but unseen test examples.
 
+\red{\paragraph{The Saddle Point Approximation (SPA) and Mean Field Theories}.
+A typical model in \STATMECH is to construct a Mean-Field Theory, formulated using a \SaddlePointApproximation (SPA). The SPA is a large-$\ND$ approximation and is used to describe the system interactions at large-$\ND$, forming the average or mean interaction over the data.
+Here, we would write
 
+\begin{align}
+  \label{eqn:SPA}
+  \int d\mu(\WVEC) e^{-\ND\beta\EPSL(\WVEC)}\approx \sqrt{\tfrac{2\pi}{\ND\EPSL(\WVEC^{*})}} e^{-n\beta\EPSL(\WVEC^{*})}  ,
+\end{align}
+where $\WVEC^{*}$ satisfies the saddle point equations:
+\begin{align}
+  \EPSL(\WVEC^{*}):=\tfrac{\partial}{\partial \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}=0 \\
+  \EPSL(\WVEC^{*}):=\tfrac{\partial^{2}}{\partial^{2} \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}>0  .
+\end{align}
+(EXPLAIN WHY WE NEED THE SECOND TERM?)
+To apply the SPA rigorously, we expect that $\EPSL(\WVEC)$ decays exponentially,  In this work, we will use the SPA in the Appendices \ref{sxn:TraceLogDerivation} and \ref{sxn:tanaka},
+giving us an \emph{effective} (or renormalized) mean-field theory, but not averaged over the training data. 
+}
 
 \paragraph{When the \Thermodynamic limit fails: \ATypical behavior.}
 When the \ThermodynamicLimit fails to exist, the \FreeEnergy will contain additional, non-extensive terms, i.e.,
@@ -1047,7 +1057,8 @@ In particular, the \ThermodynamicLimit refers to the case where all \Thermodynam
 so this constraint is not necessary.
 Later, when we form our matrix generalization of the ST model, we will also essentially take a large-$\ND$ limit in that we assume we are in the ]\ThermodynamicLimit, and in doing so, the effective load $N/\ND$ will effectively remain constant (although this is not strictly enforced) and, in doing so, require that the final result will be \SizeConsistent.
 We can approximate the asymptotic behavior of integrals we will encounter (e.g., the \FreeEnergy $F$ and/or \PartitionFunction $Z$) in a large-N limit by using the \SaddlePointApproximation (SPA), where $N$ is a matrix dimension now, and we seek a kind of mean-field theory over the $N$ interacting feature vectors. In the case of the $F$ and/or $Z$, we assume that we can apply the SPA:
-\nred{Replace $\EPSL$ something that scales as $N$.  WHat is below is correct for a typical mean field theory, but not how we are using it.}
+\nred{Replace $\EPSL$ something that scales as $N$.  WHat is below is correct for a typical mean field theory, but not how we are using it.
+OR keep it above, explain this is a mean-field theory, and then explain later we are constructing a mean field theory, but over the $N$ interacting vectors, not the $n$ data points.}
 
 \begin{align}
   \label{eqn:SPA}
