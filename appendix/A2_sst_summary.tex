@@ -23,10 +23,6 @@ when student and teachers are are modeled as $N$-vectors.
 From this, we obtain an expression for the data-averaged ST error $\EPSL(R)$, 
 which is the same as the expression given in \EQN~\ref{eqn:e0}.
 
-
-\michael{MM TO DO: Deal with this comment, then remove: This is SST, i.e., for the vector case, correct?  And the point of this section is to derive \EQN~\ref{eqn:Gan4} below and \EQN~\ref{eqn:e0} / \EQN~\ref{eqn:AVGSTGE_R} in the main text, i.e., that $\epsilon = \epsilon(R)$?  }
-\charles{@michael: ???}
-
 The procedure starts by computing the associated quenched average of
 the \FreeEnergy, defined for the model error as
 \begin{align}
@@ -155,7 +151,7 @@ averaged over \emph{all} possible data inputs, i.e., not just over the specific 
 In the high-T (small $\beta$) limit, the two model errors become formally equivalent
 (i.e., $\AVGSTTE=\AVGSTGE$ as $T\rightarrow\infty$).
 To show this, consider the \AnnealedHamiltonian $\GANR$, for the \LinearPerceptron with the $\ell_2$ loss. 
-As shown in \EQN~(C6) of~\cite{SST92}, this takes a simple analytic form--in the large-$N$ limit--in terms of the ST overlap $R$:
+As shown in \EQN~(C6) of~\cite{SST92}, this takes a simple analytic form--in the \LargeN limit in $\ND$--in terms of the ST overlap $R$:
 \begin{align}
 \label{eqn:Gan2}
 \GANR = \dfrac{1}{2}\ln\left[{1+2\beta(1-R)}\right]  .
