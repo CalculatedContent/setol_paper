@@ -33,11 +33,12 @@ We now start to develop the  matrix generalized form of the self-overlap \(\eta\
 \subsubsection{Data-Dependent Multi-Layer ST Self-Overlap
 \texorpdfstring{$(\ETA(\SMAT,\TMAT))$}{ETA(S, T)}}
 
-It is convenient to rewrite $\Delta \mathbf{\hat{E}}$ in \EQN~\ref{eqn:DE} as:
+Following the same approach in Section~\ref{sxn:SMOG_main-st_av}
+}, it is convenient to rewrite $\Delta \mathbf{\hat{E}}$ in \EQN~\ref{eqn:DE} as:
 \begin{align}
 \label{eqn:DE2}
 \DETOPNN
-   := \frac{1}{2} \Trace{ (\Ys - \Yt)^\top (\Ys - \Yt) }
+   := \frac{1}{2} \Trace{ (\YsVEC - \YtVEC)^\top (\YsVEC - \YtVEC) }
    = \ND - \Trace{ (\YsVEC)^{\top} \, \YtVEC  }
    = \ND - \ETAMLPXI
 \end{align}

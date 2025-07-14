@@ -233,6 +233,9 @@
 \newcommand{\YsVEC}{\mathbf{y}^{S}}
 \newcommand{\YtVEC}{\mathbf{y}^{T}}
 \newcommand{\Ymu}{\MY_{\mu}}
+\newcommand{\YsIS}[1]{\MY_{\mu=#1}^{S}}
+\newcommand{\YtIS}[1]{\MY_{\mu=#1}^{T}}
+
 
 %model Gaussian data
 \newcommand{\XI}{\boldsymbol{\xi}}
@@ -294,7 +297,7 @@
 \newcommand{\DETOPXILL}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\mathbf{w}, \XI^{n})}
 \newcommand{\DETOPSTLL}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SVEC,\TVEC, \XI^{n})}
 \newcommand{\DETOPST}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SMAT,\TMAT)}
-\newcommand{\DETOPNN}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SMAT,\TMAT, \XI)}
+\newcommand{\DETOPNN}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SMAT,\TMAT, \NDXI)}
 \newcommand{\DETOPNNXI}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SMAT,\TMAT|\XI^{n})}
 \newcommand{\DETOT}{\mathcal{E}(\mathbf{w})}
 \newcommand{\DETOTXI}{\mathcal{E}(\mathbf{w}|\NDX)}

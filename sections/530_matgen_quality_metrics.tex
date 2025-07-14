@@ -76,7 +76,7 @@ For the vector-based ST model, we could compute $\Q^{ST}$ using a generating fun
 For our matrix generalization, we compute $\Q$ from a \emph{\LayerQualitySquared \GeneratingFunction} $\IZG$, given as
 \begin{align}
   \label{eqn:betaIZG_S}
-  \IZG:=  \red{\frac{1}{N}}\ln \int d\mu(\SMAT) \exp\left[\ND\beta N\OLAPSQD\right] .
+  \IZG:=  \red{\tfrac{1}{N}}\ln \int d\mu(\SMAT) \exp\left[\ND\beta N\OLAPSQD\right] .
 \end{align}
 \nred{Need to explain why we take $1/N$. We are implicitly fixing the effective load $N/\ND$ to be constant. This is similar in spirit to an infinitely wide network.}
 See Appendix~\ref{sxn:quality} for the derivation of \EQN~\ref{eqn:betaIZG_S} (and recall the discussion in Section~\ref{sxn:mathP}). 
@@ -178,7 +178,7 @@ in \EQN~\ref{eqn:betaIZG_S}
 in terms of $\AMATN$, giving, as in Eqn.~\ref{eqn:QT_dS}, 
 \begin{align}
   \label{eqn:IZG_dmuS}
-  \IZG = \red{\frac{1}{N}}\ln \int d\mu(\SMAT)  e^{ \ND\beta N Tr[\tfrac{1}{N}\TMAT^T\AMATN\TMAT]) }  .
+  \IZG = \red{\tfrac{1}{N}}\ln \int d\mu(\SMAT)  e^{ \ND\beta N Tr[\tfrac{1}{N}\TMAT^T\AMATN\TMAT]) }  .
 \end{align}
 To recast \EQN~\ref{eqn:IZG_dmuS} as an HCIZ integral, as in \EQN~\ref{eqn:hciz_prelim},
 we must perform a change of measure,
@@ -198,12 +198,12 @@ we obtain the following expression: %for $\IZG$:
   \nonumber 
   \IZG 
   &\approx 
-    \red{\frac{1}{N}}
+    \red{\tfrac{1}{N}}
   \ln \int d\mu(\AMAT)
   e^{\ND\beta N Tr[\tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
   e^{\tfrac{N}{2}\ln(\Det{\AMATM})} \\
   & = 
-  \red{\frac{1}{N}}
+  \red{\tfrac{1}{N}}
   \ln
   \left\langle
   e^{\ND\beta N Tr[\tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT] }
@@ -303,13 +303,13 @@ Restricted to the~\ECS, we now replace \EQN~\ref{eqn:IFA2_integral} with:
   \nonumber 
   \IZG 
   &=
-    \red{\frac{1}{N}}
+    \red{\tfrac{1}{N}}
   \ln \int d\mu(\AECS)
   e^{\ND\beta N Tr[\tfrac{1}{N}\TMAT^{\top}\AECSN\TMAT] }
   e^{\tfrac{N}{2}\ln(\Det{\AECSM})} \\
   \label{eqn:IFA2_braket}
   & =
-    \red{\frac{1}{N}}
+    \red{\tfrac{1}{N}}
   \ln
   \left\langle
   e^{\ND\beta N Tr[\tfrac{1}{N}\TMAT^{\top}\AECSN\TMAT] }
@@ -331,7 +331,7 @@ This condition states that the two terms appearing in the exponential of \EQN~\r
 \begin{align}
   \label{eqn:IFA2}
   \IZG \approx 
-    \red{\frac{1}{N}}
+    \red{\tfrac{1}{N}}
 \ln
   \left\langle
   e^{\ND\beta N Tr[ \tfrac{1}{N}\TMAT^{\top}\AECSN\TMAT] }

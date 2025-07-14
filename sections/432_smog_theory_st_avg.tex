@@ -150,7 +150,7 @@ with activation function $h(x)=x$,  the error function is
 \EPSL(\AVGR)=1-\AVGR  .
 \label{eqn:LinearPerceptronError}
 \end{align}
-Since the data vectors are normalized to $1/m$, the overlap $\AVGR\in[-1,1]$.  And, importantly, the number of free parameters becomes $1$.
+Since the data vectors are normalized to $1/m$, the overlap $\AVGR\in[\red{-1},1]$.  And, importantly, the number of free parameters becomes $1$.
 
 \input{sections/overlap_figure}
 %\caption{Comparison of 2D and 3D representations of matrix overlap $R$. (a) 2D visualization of vector overlap $R = \cos(\theta) $.
@@ -162,73 +162,70 @@ Since the data vectors are normalized to $1/m$, the overlap $\AVGR\in[-1,1]$.  A
 \paragraph{Derivation of the  ST error $(\EPSL(\AVGR))$ for the Linear Perceptron.}
 %\nred{WARNING: there may be some mistakes here}
 To derive \EQN~\ref{eqn:LinearPerceptronError},
-define the data-dependent ST error (\EQN~\ref{eqn:DE_L}) in terms of an $\ell_2$ loss function
-%\begin{align}
-%\nonumber
-%\Delta \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) = & \frac{1}{2} (\Ys - \Yt)^T(\Ys - \Yt) 
-%   = 1 - (\YsVEC)^{\top}(\YtVEC) \\ 
-%\label{eqn:deriveSTerror}
-%   =&  1 - \eta(\XI),
-%\end{align}
+define the data-dependent ST error (\EQN~\ref{eqn:DE_L}) in terms of an $\ell_2$ loss function.
 
-\red{THIS SECTION NEEDS TO BE REWORKED and has lots of errors/  SEE SECTION 5.1 for a much better presentation}
+Write the data-averaged ST error as
+\begin{align}
+\nonumber
+\DETOPSTLL= & \frac{1}{2} \sum_{\mu=1}^{\ND}(\Ys - \Yt)^{\top} (\Ys - \Yt)
+\label{eqn:defineTerror}
+\end{align}
+
+Define the $\ND$-dimensional label vectors  
+$\YsVEC:=[\YsIS{1}, \YsIS{2}, \cdots, \YsIS{\ND}]$ and 
+$\YsVEC:=[\YtIS{1}, \YtIS{2}, \cdots, \YtIS{\ND}]$.
+This lets us write 
 
 \begin{align}
 \nonumber
-\DETOPSTLL= & \frac{1}{2} \red{\operatorname{Tr}}(\YsVEC - \YtVEC)^{\top} (\YsVEC - \YtVEC) \\
+\DETOPSTLL= & \frac{1}{2} \Trace{(\YsVEC - \YtVEC)^{\top} (\YsVEC - \YtVEC)} \\
 \nonumber
-=& \frac{1}{2} \big[(\YsVEC)^{\top} \YsVEC - 2 (\YsVEC)^{\top} \YtVEC + (\YtVEC)^{\top} \YtVEC \big] \\
+=& \frac{1}{2} \Trace{(\YsVEC)^{\top} \YsVEC - 2 (\YsVEC)^{\top} \YtVEC + (\YtVEC)^{\top} \YtVEC } \\
 \nonumber
-=& \ND - (\YsVEC)^{\top} (\YtVEC) \\
+=& \ND - \Trace{(\YsVEC)^{\top} (\YtVEC)}\\
 \label{eqn:deriveSTerror}
-=& \ND- \ETA(\SVEC,\TVEC,\red{\NDXI}),
+=& \ND- \Trace{\ETA(\SVEC,\TVEC,\red{\NDXI})},
 \end{align}
-where we define $\ETA(\SVEC,\TVEC,\red{\NDXI}):=\mathbf{y}_{S}^{\top}\mathbf{y}_{T}$, called
-the \emph{data-dependent \SelfOverlap}; we expand this below.
+where we define  the  \emph{data-dependent \SelfOverlap}:
+\begin{equation}
+\ETA(\SVEC,\TVEC,\red{\NDXI}):=(\YsVEC)^{\top}(\YtVEC)
+\end{equation}
+
 The expression $\ETA(\SVEC,\TVEC,\NDXI)$ is analogous to the ST overlap $R$, but before the data has been integrated out.
 It is convenient to work directly with
 the \SelfOverlap $\ETA(\SVEC,\TVEC,\NDXI)$ because it will appear later in \EQN~\ref{eqn:eta_mat_avg_def} (in Section~\ref{sxn:matgen}), 
 when formulating the matrix-generalized overlap operator~$\OVERLAP$.
 
-In defining $\ETA(\SVEC,\TVEC,\NDXI)$, we replace the labels $(\mathbf{y}_{S},\mathbf{y}_{T})$ with the Energy functions $E_{NN}$  that generate them, giving an expression in terms of the weights $(\SVEC,\TVEC)$ and the Gaussian data variables $(\XI)$. We will then integrate out the data variables, leaving an expression just in terms of the weights.  
-Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:dnn_energy}, \ref{eqn:S_ENN}, \ref{eqn:T_ENN}), we can replace the label vectors $\YtVEC,\YsVEC$, where each of the $\ND$ elements if gi ven by
+In defining $\ETA(\SVEC,\TVEC,\NDXI)$, we replace the individual labels $(\Ys,\Yt)$ with the Energy functions $E_{NN}$  that generate them, giving an expression in terms of the weights $(\SVEC,\TVEC)$ and the Gaussian data variables $(\XI)$. We will then integrate out the data variables, leaving an expression just in terms of the weights.  
+Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:dnn_energy}, \ref{eqn:S_ENN}, \ref{eqn:T_ENN}), write
 \begin{align}
-\YsVEC_{\mu}=\SVEC^{\top}\XI_{\mu},\;\;
-\YtVEC_{\mu}=\TVEC^{\top}\XI_{\mu}  ,
+\Ys=\SVEC^{\top}\XI_{\mu},\;\;
+\Yt=\TVEC^{\top}\XI_{\mu}  .
 \end{align}
-which gives
+This now gives the data-dependent \SelfOverlap explicitly as
 \begin{align}
   \label{eqn:eta_vec_xi_def}
 \ETA(\SVEC,\TVEC,\NDXI) =\red{\sum_{\mu=1}^{\ND}} (\SVEC^{\top}\XI_{\mu})^{\top} (\TVEC^{\top}\XI_{\mu}) = \red{\sum_{\mu=1}^{\ND}}\XI^{\top}_{\red{\mu}}  (\SVEC^{\top} \TVEC )\XI_{\red{\mu}} 
 \end{align}
-\red{THIS SECTION HAS SOME TYPOS}
-or, more simply, after integrating over the data, we have the \emph{data-independent \SelfOverlap}
+After integrating over the data, we have the \emph{data-independent \SelfOverlap}
 \begin{align}
   \label{eqn:eta_vec_avg_def}
-\ETA(\SVEC,\TVEC) = \langle\ETA(\SVEC,\TVEC,\NDXI)\rangle_{\AVGNDXI}=\SVEC^{\top} \TVEC 
+\ETA(\SVEC,\TVEC) := \langle\ETA(\SVEC,\TVEC,\NDXI)\rangle_{\AVGNDXI}
+   = & \frac{1}{\ND}\int d\mu(\NDXI)\ETA(\SVEC,\TVEC,\NDXI) \\ \nonumber
+= & \frac{1}{\ND}\int d\mu(\NDXI)\sum_{\mu=1}^{\ND}\XI_{\mu}^{\top}\SVEC^{\top}\TVEC\XI_{\mu} \\ \nonumber
+= & \frac{1}{\ND}\int d\mu(\NDXI)\sum_{\mu=1}^{\ND}\XI_{\mu}^{\top}\AVGR\XI_{\mu} \\ \nonumber
+= & \AVGR\;\frac{1}{\ND}\sum_{\mu=1}^{\ND}\int d\mu(\XI_{\mu})\XI_{\mu}^{\top}\XI_{\mu} \\ \nonumber
+   = &\AVGR.
 \end{align}
+\nred{WHAT SHOULD WE SAY HERE ?
+where the  holds because the elements of $\XI$ are i.i.d.
+Since $d\mu(\NDXI)$ is a measure over a (multi-variate) Gaussian distribution (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$), and because data vectors $\XI$ are normalized you unity (See Section~\ref{app:st-gen-err-annealed-ham}) .}
 
-We want to evaluate this as an \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:STerror}.
-To do this, we need to compute the average or \ExpectedValue over all $\ND$ possible input data vectors $\NDXI$ (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$).
-%
-\red{BELOW IS WRONG NEEDS FIXED. SEE ALSO SECTION 5.1 below where the notation is more clear.  MAKE THESE CONSISTENT}
-\begin{align}
- \langle\DETOPSTLL\rangle_{\AVGNDXI}  
-   = & \int d\mu(\NDXI)(1-\ETA(\XI)) \\ \nonumber
-   = & \int d\mu(\NDXI)(1-\XI^{\top}\tfrac{1}{\ND}\SVEC^{\top}\TVEC\XI) \\ \label{eqn:XI_ST} 
-   = & \int d\mu(\NDXI)-\int d\mu(\NDXI)\XI^{\top}\tfrac{1}{\ND}\SVEC^{\top}\TVEC\XI)  \\ \nonumber
-   = & 1 - \int d\mu(\NDXI)\XI^{\top}\tfrac{1}{\ND}\SVEC^{\top}\TVEC\XI \\ \nonumber
-   = & 1 - \int d\mu(\XI)\XI^{\top} \AVGR\XI \\ \nonumber
-   = &1 - \AVGR\int d\mu(\XI)\XI^{\top}\XI,
-\end{align}
-where this holds because the elements of $\XI$ are i.i.d.
-Since $d\mu(\NDXI)$ is a measure over a (multi-variate) Gaussian distribution,
-The data vectors $\XI$ are normalized (See Section~\ref{app:st-gen-err-annealed-ham}) such that the second term on the R.H.S. is unity and we recover (i.e.,\EQN~\ref{eqn:epsl})
+We can not obtain the \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:epsl} as
 \begin{align}
 \label{eqn:e0}
 \EPSL(\AVGR)=\langle\DETOPSTLL\rangle_{\AVGNDXI} =  1 - \AVGR .
 \end{align}
-
 
 In traditional \STATMECH (e.g., \cite{SST92}), one is interested in how the \emph{\TotalModelGeneralizationError} $\TGE(\AVGR)$ depends on $\AVGR$.
 With these simple error functions, \EQN~\ref{eqn:MGE} reduces to a function over $\AVGR$,
