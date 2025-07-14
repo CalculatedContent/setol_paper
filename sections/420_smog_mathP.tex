@@ -622,8 +622,7 @@ In BraKet notation, \EQN~\ref{eqn:Gan_simplified} can be expressed as
     \beta\GAN:=  -\tfrac{1}{\ND}\ln\left\langle e^{-\beta\DETOPXI}\right\rangle_{\NDXIn}= 
     -\ln \left\langle e^{-\beta\DET}\right\rangle_{\XI}.
 \end{eqnarray*}
-\michaelB{I think there is a normalization issue here, and this needs to be expressed i.t.o. $\langle \cdot \rangle_{\AVGNDXIn}$?}
-\charlesB{No, you have to look carefully. I'm fairly sure this is correct}
+
 
 Using $\GAN$, we can define the \emph{Annealed Partition Function}, $Z^{an}_{\ND}$, as
 %%\begin{align}
@@ -726,8 +725,6 @@ the first two terms:
 
 
 Let us now express $\GAN$ directly in terms of $\EPSLw=\langle\DETOPXI \rangle_{\AVGNDXIn}$ (see \EQN~\ref{eqn:epsl}) as a \ThermalAverage at high-T.
-\michaelB{Q: I thought that this quantity was already intensive, so why the extra factor of $1/n$?}
-charlesB{because the 1/n appears outside the ln, not in the exp}
 To do so, let's take a high-T expansion of \EQN~\ref{eqn:Gan_def} 
 %%(see below for a discussion of the high-T approximation) 
 by expanding the exponential to first order in $\beta$, to obtain
@@ -838,8 +835,6 @@ Likeswise, if we substitute \EQN~\ref{eqn:Zanht_def} into \EQN~\ref{eqn:avgge_de
    } \\ \nonumber
    =&\langle\EPSLw \rangle_{\WVEC}^{\beta} .
 \end{align}
-\michaelB{How do these two results depend on labels? And the fact that we don't split into training/testing?  See comments above.  (SST uses labels, so that seems pretty connected to our semiempirical approach.)}
-\charlesB{The labels are implicit in the energy function, and fixed}
 Notice that both of these results arise because of the simple expression that appears in the exponent of $\ZANHT$, namely because $-n\beta\HANHT(\WVEC)=n\beta\EPSLw$.
 
 
@@ -927,8 +922,6 @@ Likewise, one can show that the \Quality $\Q$
   \Q = \THRMAVGw{\langle\ETA(\WVEC,\XI)\rangle_{\AVGNDXIn}} =\THRMAVGw{\ETA(\WVEC)}
 \end{align}
 We can then obtain $\Q$ by taking the appropriate partial derivative of its \GeneratingFunction, $\Gamma_{Q}$.
-\michaelB{MM TO DO: Do this; since I think that this will help the transition from $F$ to $\Gamma$ easier.}
-\charlesB{This is done in the Appendix}
 
 For technical reasons, however, we will actually define and use a
 \GeneratingFunction for the \AverageLayerQualitySquared $\QT$, denoted $\IZG$.
@@ -972,9 +965,8 @@ become sharply peaked, and
 For a NN, \SelfAveraging implies that the weights $\WVEC$ are \emph{\Typical} of the distribution,
 and therefore the NN can generalize to similar but unseen test examples.
 
-\red{\paragraph{The Saddle Point Approximation (SPA) and Mean Field Theories}.
-A typical model in \STATMECH is to construct a Mean-Field Theory, formulated using a \SaddlePointApproximation (SPA). The SPA is a \LargeN approximation and is used to describe the system interactions at \LargeN, forming the average or mean interaction over the data.
-Here, we would write
+\paragraph{The Saddle Point Approximation (SPA) }In \STATMECH, one is frequently faced with intractable integrals, and one common solution is to apply \SaddlePointApproximation (SPA). The SPA is a \LargeN approximation and is used to describe the system interactions at \LargeN, forming the average or mean interaction over the data.
+For example, when considering the \LargeN in $\ND$ case, we could write
 
 \begin{align}
   \label{eqn:SPA}
@@ -985,10 +977,19 @@ where $\WVEC^{*}$ satisfies the saddle point equations:
   \EPSL(\WVEC^{*}):=\tfrac{\partial}{\partial \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}=0 \\
   \EPSL(\WVEC^{*}):=\tfrac{\partial^{2}}{\partial^{2} \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}>0  .
 \end{align}
-(EXPLAIN WHY WE NEED THE SECOND TERM?)
-To apply the SPA rigorously, we expect that $\EPSL(\WVEC)$ decays exponentially,  In this work, we will use the SPA in the Appendices \ref{sxn:TraceLogDerivation} and \ref{sxn:tanaka},
-giving us an \emph{effective} (or renormalized) mean-field theory, but not averaged over the training data. 
-}
+which guarantees that the solution $\EPSL(\WVEC^{*})$ is at the minimum.
+The SPA can be applied to many \LargeN integrals, as long as the integrand decays exponentially,  
+
+\paragraph{Wick Rotation} When working with complex oscillatory integrands, $i.e., e^{iNf(x)}$,   
+the SPA is frequently combined with a \emph{\WickRotation}, 
+which is used to convert an oscillatory integral to an exponentially decaying one:
+The \WickRotation is an analytic continuation that rotates the integration variable by 90 degrees, i.e., $x \to \pm i x$, deforming the integration contour to pass through a saddle point of the integrand:
+\begin{equation}
+x\rightarrow ix,\;\;e^{iNf(x)}\rightarrow e^{-Nf(ix)},
+\end{equation}
+This is typically used in formal sense; that is, one assumes the resulting complex integrand is both analytic and well-behaved.
+One would then apply the SPA in the \LargeN in $N$ case.
+Below, we will do just this, and  use the SPA with a Wick Rotation in the both Appendices \ref{sxn:TraceLogDerivation} and \ref{sxn:tanaka}.
 
 \paragraph{When the \Thermodynamic limit fails: \ATypical behavior.}
 When the \ThermodynamicLimit fails to exist, the \FreeEnergy will contain additional, non-extensive terms, i.e.,
@@ -1005,25 +1006,28 @@ present empirical results where we suspect the model is overfit
 (in Section~\ref{sxn:empirical-correlation_trap})
 and, additionally, where we observe glassy behavior, which we refer to as a \emph{Hysteresis Effect}
 (in Section~\ref{sxn:hysteresis_effect}).
-\michaeladdressed{This par seems out of place here; it should probably be earlier when we say something about \Replicas.}
 
 
 \subsubsection{From vectors to matrices.} 
-In moving from the vector Perceptron model to the matrix models used in \SETOL, we will need some additional mathematical concepts, including the notion of \SizeConsistency, the Saddle Point Approximation (SPA),  HCIZ integrals, etc.
-
-
-\paragraph{\SizeConsistency,}  
-The notion of \emph{\SizeConsistency} is a notion commonly 
-used Quantum Chemistry to describe interacting , correlated systemns.
-Here, we will move from a single $m$-dimensional \Perceptron vector $\WVEC$ 
+We will move from a single $m$-dimensional \Perceptron vector $\WVEC$ 
 to a matrix of $N \times M$ weights, which can be thought of
 as $N$ interacting vectors of dimension $M$.
 Moreover, in the Student-Teacher (ST) model used below,
 in the vector case, the $m$ degrees of freedom are integrate out,
-whereas for the matrix case, we will retain the 'a reduced set' of the  $M$ degrees of freedom, $\mathcal{M}$.  To do this, we need to ensure the final
-\FreeEnergies and related quantities like the \LayerQuality scale properly.
+whereas for the matrix case, we will retain the 'a reduced set' of the  $M$ degrees of freedom, $\mathcal{M}$.  To do this, we need to ensure the \FreeEnergies and related quantities like the \AverageLayerQualitySquared scale properly.
 
-\SizeConsistency is often introduced through the Linked Cluster Theorem~\cite{Hubbard1959,Brandow1963},
+\SETOL uses two \LargeN approximations, the \Thermodynamic limit, which is a \LargeN limit in $\ND$, and the \emph{\WideLayer limit}, which is a \LargeN limit in $N$ 
+\begin{itemize}
+    \item \Thermodynamic limit: $\ND\gg 1$ (the number of training examples)
+    \item \WideLayer limit: $N\gg 1$ (the larger matrix dimension)
+\end{itemize}
+Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking both, we assume implicitly that the \emph{layer load}, $N/\ND$, remains constant, which is consistent with classical \STATMECH theories of learning\cite{MM17_TR} (although we do not enforce this explicitly here).  
+In doing this, we expect the matrix-generalized total Energies $(F, H^{an}, \cdots)$ to be \SizeExtensive in $\ND$ and $N$,  the average quantities to be \SizeIntensive in both, 
+and, as discussed below, \emph{\SizeConsistent} in $M$ and/or $\mathcal{M}$.
+
+\paragraph{\SizeConsistency,}  
+The notion of \emph{\SizeConsistency} is a notion commonly 
+used Quantum Chemistry to describe interacting , correlated systems. It is often introduced through the Linked Cluster Theorem~\cite{Hubbard1959,Brandow1963},
 which states that the \emph{average} energies and/or free energies $(\bar{F})$ of in particular a correlated system scale with $\mathcal{M}$,
 the number of ``independent interacting components'':
 \begin{align}
@@ -1037,42 +1041,38 @@ and it ensure that our layer and model Qualities  remain well-behaved as we incr
 For a simple example, see Appendix~\ref{sxn:summary_sst92}
  where we derive the expression for the matrix-generalized
 \AnnealedHamiltonian $\HAN$.  
-Both \SizeExtensivity (in $\ND$) and \SizeConsistency (in $M$)
+Both \SizeExtensivity (in $\ND$ and $N$) and \SizeConsistency (in $M$)
 are crucial in our \SETOL analysis:  they justify taking the \LargeN approximation for matrix integrals, and they ensure
 our resulting the HCIZ integral--a sum of integrated RMT cumulants (below)--
 scales with the dimension of the \EffectiveCorrelationSpace (\ECS), $\mathcal{M}=\MECS$.
-\michael{Q: is that true? I thought one justified the \LargeN approx, and the other justifies the HCIZ result.}
+%
+%\nred{THE paragraph below needs redone, a lot removed}
+%\paragraph{The \LargeN limit and the \SaddlePointApproximation (SPA).}
+%To evaluate $\QT$ we will be in both 
+% the \ThermodynamicLimit and a different \LargeN limit
+%In particular, the \ThermodynamicLimit refers to the case where all \Thermodynamic averages remain \SizeIntensive as the system size $\ND$ increases. For %Ns there is an additional constraint that the ratio $m/n$, i.e., the load, remains constant~\cite{SST92,MM17_TR_v1}. 
+ %For the ST model of the \Perceptron, however, the \Thermodynamic averages we need to compute do not depend on $m$,
+s%o this constraint is not necessary.
+L%ater, when we form our matrix generalization of the ST model, we will also essentially take a \LargeN limit in that we assume we are in the ]\ThermodynamicLimit, and in doing so, the effective load $N/\ND$ will effectively remain constant (although this is not strictly enforced) and, in doing so, require that the final result will be \SizeConsistent.
+%We can approximate the asymptotic behavior of integrals we will encounter (e.g., the \FreeEnergy $F$ and/or \PartitionFunction $Z$) in a \LargeN limit by using the \SaddlePointApproximation (SPA), where $N$ is a matrix dimension now, and we seek a kind of mean-field theory over the $N$ interacting feature vectors. In the case of the $F$ and/or $Z$, we assume that we can apply the SPA:
+%\nred{Replace $\EPSL$ something that scales as $N$.  WHat is below is correct for a typical mean field theory, but not how we are using it.
+%OR keep it above, explain this is a mean-field theory, and then explain later we are constructing a mean field theory, but over the $N$ interacting vectors, not the $n$ data points.}
 
-
-\nred{THIS PARAGRAPH ENEDS WORK}
-\paragraph{The \LargeN limit and the \SaddlePointApproximation (SPA).}
-To evaluate $\QT$ we will be in both 
- the \ThermodynamicLimit and a different \LargeN limit
-In particular, the \ThermodynamicLimit refers to the case where all \Thermodynamic averages remain \SizeIntensive as the system size $\ND$ increases. For NNs there is an additional constraint that the ratio $m/n$, i.e., the load, remains constant~\cite{SST92,MM17_TR_v1}. 
- For the ST model of the \Perceptron, however, the \Thermodynamic averages we need to compute do not depend on $m$,
-so this constraint is not necessary.
-Later, when we form our matrix generalization of the ST model, we will also essentially take a \LargeN limit in that we assume we are in the ]\ThermodynamicLimit, and in doing so, the effective load $N/\ND$ will effectively remain constant (although this is not strictly enforced) and, in doing so, require that the final result will be \SizeConsistent.
-We can approximate the asymptotic behavior of integrals we will encounter (e.g., the \FreeEnergy $F$ and/or \PartitionFunction $Z$) in a \LargeN limit by using the \SaddlePointApproximation (SPA), where $N$ is a matrix dimension now, and we seek a kind of mean-field theory over the $N$ interacting feature vectors. In the case of the $F$ and/or $Z$, we assume that we can apply the SPA:
-\nred{Replace $\EPSL$ something that scales as $N$.  WHat is below is correct for a typical mean field theory, but not how we are using it.
-OR keep it above, explain this is a mean-field theory, and then explain later we are constructing a mean field theory, but over the $N$ interacting vectors, not the $n$ data points.}
-
-\begin{align}
-  \label{eqn:SPA}
-  \int d\mu(\WVEC) e^{-\ND\beta\EPSL(\WVEC)}\approx \sqrt{\tfrac{2\pi}{\ND\EPSL(\WVEC^{*})}} e^{-n\beta\EPSL(\WVEC^{*})}  ,
-\end{align}
-where $\WVEC^{*}$ satisfies the saddle point equations:
-\begin{align}
-  \EPSL(\WVEC^{*}):=\tfrac{\partial}{\partial \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}=0 \\
-  \EPSL(\WVEC^{*}):=\tfrac{\partial^{2}}{\partial^{2} \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}>0  .
-\end{align}
-To apply the SPA rigorously, we expect that $\EPSL(\WVEC)$ decays exponentially,
-whereas we will be working with \HeavyTailed (HT)/Power-Law (PL) distributions.
-At first glance, this might seem problematic.
-These distributions, however, can also be modelled as Truncated Power Laws (TPL) because of the finite-size effects. 
-This suggests we can apply the SPA formally, assuming (but not checking) that the finite-size effects will satisfy the requirements we need.
-The SPA will play a central role when we evaluate the matrix-generalized form of our model and the HCIZ integrals that arise.
-
-
+%\begin{align}
+ % \label{eqn:SPA}
+  %\int d\mu(\WVEC) e^{-\ND\beta\EPSL(\WVEC)}\approx \sqrt{\tfrac{2\pi}{\ND\EPSL(\WVEC^{*})}} e^{-n\beta\EPSL(\WVEC^{*})}  ,
+\%end{align}
+%where $\WVEC^{*}$ satisfies the saddle point equations:
+%\begin{align}
+%  \EPSL(\WVEC^{*}):=\tfrac{\partial}{\partial \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}=0 \\
+%  \EPSL(\WVEC^{*}):=\tfrac{\partial^{2}}{\partial^{2} \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}>0  .
+%\end{align}
+%To apply the SPA rigorously, we expect that $\EPSL(\WVEC)$ decays exponentially,
+%whereas we will be working with \HeavyTailed (HT)/Power-Law (PL) distributions.
+%At first glance, this might seem problematic.
+%These distributions, however, can also be modelled as Truncated Power Laws (TPL) because of the finite-size effects. 
+%This suggests we can apply the SPA formally, assuming (but not checking) that the finite-size effects will satisfy the requirements we need.
+%The SPA will play a central role when we evaluate the matrix-generalized form of our model and the HCIZ integrals that arise.
 
 \subsubsection{HCIZ Integrals}
 \label{sxn:mathP_hciz}
@@ -1080,15 +1080,12 @@ The SPA will play a central role when we evaluate the matrix-generalized form of
 To generalize the Linear ST \Perceptron (in the AA, and at high-T) from \Perceptron vectors to MLP matrices,
 we need to generalize the thermal average over the $m$-dimensional \Perceptron weight vectors $(\WVEC=\SVEC)$
 to an integral over NN \Student $N \times M$ weight matrices ($\WMAT=\mathbf{S}$).
-\michael{thermal is not in macro.}
 The resulting \PartitionFunction and \FreeEnergy will be expressed with what is called an HCIZ integral.
 (See Tanaka~\cite{Tanaka2007, Tanaka2008}, Gallucio et al.~\cite{Bouchaud1998} and/or Parisi~\cite{PP95}, and also \EQN~\ref{eqn:tanaka_result} in Section~\ref{sxn:matgen}.)
 As in \EQN~\ref{eqn:IZGINF_HCIZ}, we will define a \emph{\LayerQuality \GeneratingFunction}, $\IZG$, for the \LayerQuality (squared).
 This will take the form of an HCIZ integral,
 \begin{align}
-\label{eqn:hciz_prelim}
-%\IZG := \lim_{N\gg 1}\ln \underbrace{\int d\mu(\AMAT) \exp[\beta\Trace{\AMAT\BMAT}] }_{\mbox{HCIZ Integral}} 
-%  \approx N\beta\Trace{\mathcal{G}_{A}(\BMAT/N)}  ,
+\label{eqn:hciz_prelim},
 \IZGINF := \lim_{N\gg 1}\frac{1}{N}\ln \underbrace{\int d\mu(\AMAT) \exp[\ND\beta N\Trace{\AMAT_N\XMAT_N}] }_{\mbox{HCIZ Integral}} 
   \approx \ND\beta\Trace{\mathcal{G}_{A}(\lambda)}  ,
 \end{align}
@@ -1097,7 +1094,7 @@ that is evaluated in the ``\LargeN limit`` (here, meaning as $N \gg 1$, but not 
 Here,  $\AMAT_N$ and $\XMAT_N$ are $N \times N$ Hermetian matrices, (See Appendix \ref{sxn:appendix_A} for notation,) $d\mu(\AMAT)$ is a measure
 over all random (Orthogonal) matrices (see \EQN~\ref{eqn:dmuA}),
 and $\mathcal{G}_{A}()$ is a called  \GEN 
-(whichbndifferent from $\Gamma$, above, and will be made clear in Section~\ref{sxn:r_transforms} ) , defined in \EQN~\ref{eqn:generating_function_A} in Section~\ref{sxn:matgen}. 
+(which are different from $\Gamma$, above, and will be made clear in Section~\ref{sxn:r_transforms} ) , defined in \EQN~\ref{eqn:generating_function_A} in Section~\ref{sxn:matgen}. 
 In applying this, we will actually write $\Trace{\AMAT\XMAT}=\tfrac{1}{N}\Trace{\AMAT\WMAT\WMAT^{\top}}=\tfrac{1}{N}\Trace{\WMAT^{\top}\AMAT\WMAT}$,
 where $\mathbf{W}$ is an $N \times M$ layer weight matrix, and $\AMAT=\AMAT_N:=\tfrac{1}{\ND}\SMAT\SMAT^{\top}$ is an (outer) layer
 Correlation matrix, and, here,  $\XMAT=\XMAT_N=\tfrac{1}{N}\WMAT\WMAT^{\top}$).
