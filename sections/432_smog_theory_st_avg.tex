@@ -150,7 +150,7 @@ with activation function $h(x)=x$,  the error function is
 \EPSL(\AVGR)=1-\AVGR  .
 \label{eqn:LinearPerceptronError}
 \end{align}
-Since the data vectors are normalized to $1/m$, the average overlap $\AVGR\in[-1,1]$.  And, importantly, the number of free parameters becomes $1$.
+Since the data vectors are normalized to $1/m$, the overlap $\AVGR\in[-1,1]$.  And, importantly, the number of free parameters becomes $1$.
 
 \input{sections/overlap_figure}
 %\caption{Comparison of 2D and 3D representations of matrix overlap $R$. (a) 2D visualization of vector overlap $R = \cos(\theta) $.
@@ -170,11 +170,12 @@ define the data-dependent ST error (\EQN~\ref{eqn:DE_L}) in terms of an $\ell_2$
 %\label{eqn:deriveSTerror}
 %   =&  1 - \eta(\XI),
 %\end{align}
-\red{THIS SECTION HAS SOME TYPOS}
+
+\red{THIS SECTION NEEDS TO BE REWORKED and has lots of errors/  SEE SECTION 5.1 for a much better presentation}
 
 \begin{align}
 \nonumber
-\DETOPSTLL= & \frac{1}{2} (\YsVEC - \YtVEC)^{\top} (\YsVEC - \YtVEC) \\
+\DETOPSTLL= & \frac{1}{2} \red{\operatorname{Tr}}(\YsVEC - \YtVEC)^{\top} (\YsVEC - \YtVEC) \\
 \nonumber
 =& \frac{1}{2} \big[(\YsVEC)^{\top} \YsVEC - 2 (\YsVEC)^{\top} \YtVEC + (\YtVEC)^{\top} \YtVEC \big] \\
 \nonumber
@@ -208,9 +209,9 @@ or, more simply, after integrating over the data, we have the \emph{data-indepen
 \end{align}
 
 We want to evaluate this as an \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:STerror}.
-To do this, we need to compute the average or \ExpectedValue over all $\ND$ possible input data vectors $\NDXI (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$).
+To do this, we need to compute the average or \ExpectedValue over all $\ND$ possible input data vectors $\NDXI$ (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$).
 %
-\red{BELOW IS WRONG NEEDS FIED}
+\red{BELOW IS WRONG NEEDS FIXED. SEE ALSO SECTION 5.1 below where the notation is more clear.  MAKE THESE CONSISTENT}
 \begin{align}
  \langle\DETOPSTLL\rangle_{\AVGNDXI}  
    = & \int d\mu(\NDXI)(1-\ETA(\XI)) \\ \nonumber
