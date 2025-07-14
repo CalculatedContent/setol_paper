@@ -80,7 +80,7 @@ we define the  \EffectivePotential for the data-averaged ST \GeneralizationError
 \end{align}
 The measure $d\mu(\NDXI)$ will end up being a Gaussian measure over $\ND$ samples
 (see Appendix~\ref{sxn:summary_sst92}), and the intent is to evaluate it
-in the large-$n$ limit, thereby sampling all possible inputs in the model space, $\XI\in\MDD$.
+in the \LargeN limit in $\ND$, thereby sampling all possible inputs in the model space, $\XI\in\MDD$.
 
 As in Section~\ref{sxn:mathP}, by applying the AA, we can rewrite the \AverageSTGeneralizationError, $\AVGSTGE$:
 first, a simple average over all the possible inputs $\XI$; and, 
@@ -91,15 +91,13 @@ second, then as a Thermal average over all Students $S$, in the AA, and at high-
 \end{align}
 (Recall that in this regime $\AVGSTGE=\AVGGE^{an,hT}$.)
 
-
 In the classic \STATMECH approach, the average $\THRMAVG{\cdots}$ is
 a \ThermalAverage in the canonical ensemble with $\beta$ fixed,
 as explained in Section~\ref{sxn:mathP}.  Here, we will do something similar, as the \Student
 average $\THRMAVG{\cdots}$ will be computed from the associated
 generating function $\IZG$ for the matrix-generalized case  (i.e., an HCIZ integral defined over all students,
-and in both the large-$n$ \Thermodynamic and large-$N$ limits).)
+and in both the \LargeN \Thermodynamic limit in $\ND$, and "wide" \largeN  limit in $N$).)
 
-\michael{MM TO DO: The content of this par is good, it just probably needs to be moved.}
 Recall that above, the empirical estimate for $\AVGEMPGE$ depended on a
 specific instantiation of the model for the training data $\DATAtrain$,
 i.e  $\AVGSTGE$ is \Quenched to the training data.
@@ -113,7 +111,6 @@ The final expression for $\AVGSTGE$, derived below,
 will be generalized to $\AVGNNGE$, matrix-generalization of  the classic \STATMECH formula
 for the \LinearPerceptron, in the \Annealed and High-T approximations.
 (see Appendix~\ref{sxn:summary_sst92}). 
-
 
 %%\subsubsection{The Effective Potential as a function of the overlap $(\EPSL(\AVGR))$}
 \paragraph{The Annealed Potential as a function of the overlap $(\EPSL(\AVGR))$.}

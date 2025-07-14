@@ -18,17 +18,17 @@ We define
 \begin{equation}
 \mathbf{R} = \tfrac{1}{N} \SMAT^{T} \TMAT  .
 \end{equation}
-\red{Here, the overlap matrix $\OVERLAP$ describes the average interaction between $N$ interacting $M$-dimensional (feature) vectors.  We have dropped $1/\ND$ term because the the matrices are empirical measurables and are therefore implicitly averaged over the data.
+\red{The overlap matrix $\OVERLAP$ describes the average interactions between $N$ interacting $M$-dimensional layer (i.e., feature) vectors.  We have dropped $1/\ND$ term because the matrix $\TMAT$ is an empirical ''measurable'' and therefore  $\TMNAT$ and $\SMAT$ are implicitly averaged over the data.
 }
 
 For the vector-based ST model, the ST \Quality $\Q^{ST}$ in \EQN~\ref{eqn:QST_final} is expressed as
-the \ThermalAverage $\Q^{ST}(\AVGR)=\THRMAVG{\AVGR}$. Here, we want something similar.
+the \ThermalAverage $\Q^{ST}(\AVGR)=\THRMAVG{\AVGR}$. We seek a similar formal expression for the matrx-generalized \LayerQuality $\Q^{NN}_{L}$.
 \item
 \textbf{Model and Layer Qualities $\Q^{NN}$, $\Q^{NN}_{L}$}
 We define the \ModelQuality $\Q^{NN}$ ,
 as explained in Subsection~\ref{sxn:htsr-metics}, \EQN~\ref{eqn:ProductNorm},
 to be a product of individual NN Layer Qualities $\Q^{NN}_{L}$,
-and, as in \EQN~\ref{eqn:model_qualities}
+and, as in \EQN~\ref{eqn:model_qualities},
 approximates the total NN \AverageGeneralizationAccuracy $(1-\AVGGE^{NN})$:
 \begin{equation}
  \Q^{NN}:=\prod_{L}\Q^{NN}_{L}\approx 1-\AVGGE^{NN} 
@@ -78,7 +78,7 @@ For our matrix generalization, we compute $\Q$ from a \emph{\LayerQualitySquared
   \label{eqn:betaIZG_S}
   \IZG:=  \red{\tfrac{1}{N}}\ln \int d\mu(\SMAT) \exp\left[\ND\beta N\OLAPSQD\right] .
 \end{align}
-\nred{Need to explain why we take $1/N$. We are implicitly fixing the effective load $N/\ND$ to be constant. This is similar in spirit to an infinitely wide network.}
+\nred{We normalize the $\IZG$ because we are going to take the \LargeN limit in $N$, and we need to keep the \Quality finite.  This allows us to implicitly fix the effective load of the layer, $N/\ND$, as $\IZG$ is also in the \ThermodynamicLimit and therefore at \LargeN in $\ND$, although we do not explicitly set $N/\ND$.  This is similar in spirit to an infinitely wide network.}
 See Appendix~\ref{sxn:quality} for the derivation of \EQN~\ref{eqn:betaIZG_S} (and recall the discussion in Section~\ref{sxn:mathP}). 
 
 
