@@ -180,10 +180,9 @@ define the data-dependent ST error (\EQN~\ref{eqn:DE_L}) in terms of an $\ell_2$
 \nonumber
 =& \ND - (\YsVEC)^{\top} (\YtVEC) \\
 \label{eqn:deriveSTerror}
-=& \ND(1 - \ETA(\SVEC,\TVEC,\red{\NDXI})),
+=& \ND- \ETA(\SVEC,\TVEC,\red{\NDXI}),
 \end{align}
-where we define $\ETA(\SVEC,\TVEC,\red{\NDXI}):=
-\tfrac{1}{\ND}\mathbf{y}_{S}^{\top}\mathbf{y}_{T}$, called
+where we define $\ETA(\SVEC,\TVEC,\red{\NDXI}):=\mathbf{y}_{S}^{\top}\mathbf{y}_{T}$, called
 the \emph{data-dependent \SelfOverlap}; we expand this below.
 The expression $\ETA(\SVEC,\TVEC,\XI)$ is analogous to the ST overlap $R$, but before the data has been integrated out.
 It is convenient to work directly with
@@ -199,7 +198,7 @@ Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:dnn_energ
 which gives
 \begin{align}
   \label{eqn:eta_vec_xi_def}
-\ETA(\SVEC,\TVEC,\XI) =\red{\tfrac{1}{\ND}\sum_{\mu=1}^{\ND}} (\SVEC^{\top}\XI)^{\top} (\TVEC^{\top}\XI) = \red{\tfrac{1}{\ND}\sum_{\mu=1}^{\ND}}\XI^{\top}_{\red{\mu}}  (\SVEC^{\top} \TVEC )\XI_{\red{\mu}} 
+\ETA(\SVEC,\TVEC,\XI) =\red{\sum_{\mu=1}^{\ND}} (\SVEC^{\top}\XI)^{\top} (\TVEC^{\top}\XI) = \red{\sum_{\mu=1}^{\ND}}\XI^{\top}_{\red{\mu}}  (\SVEC^{\top} \TVEC )\XI_{\red{\mu}} 
 \end{align}
 \red{THIS SECTION HAS SOME TYPOS}
 or, more simply, after integrating over the data, we have the \emph{data-independent \SelfOverlap}
@@ -209,9 +208,9 @@ or, more simply, after integrating over the data, we have the \emph{data-indepen
 \end{align}
 
 We want to evaluate this as an \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:STerror}.
-To do this, we need to compute the average or \ExpectedValue over all $\ND$ possible input data vectors $\XI$ (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$).
+To do this, we need to compute the average or \ExpectedValue over all $\ND$ possible input data vectors $\NDXI (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$).
 %
-%Using $\mathcal{N}$ as the normalization for the average, as yet unspecified, we obtain 
+\red{BELOW IS WRONG NEEDS FIED}
 \begin{align}
  \langle\DETOPSTLL\rangle_{\AVGNDXI}  
    = & \int d\mu(\NDXI)(1-\ETA(\XI)) \\ \nonumber
@@ -238,7 +237,7 @@ and the \AverageSTGeneralizationError $\STGE(\AVGR)$ is then obtained by averagi
 \AVGSTGE(\AVGR)=\THRMAVG{\EPSL(\AVGR)}=
 \THRMAVG{1-\langle\ETA(\SVEC,\TVEC,\XI)\rangle_{\AVGNDXI}}=
 \THRMAVG{1-\ETA(\SVEC,\TVEC)}=
-\THRMAVG{1-\cancel{\tfrac{1}{\ND}}\SVEC^{\top}\TVEC}=
+\THRMAVG{1-\SVEC^{\top}\TVEC}=
 \THRMAVG{(1-\AVGR)}  ,
 \end{align}
 where $\THRMAVG{\cdots}$ is a \ThermalAverage over the \Student weight vector $\SVEC$.
@@ -251,7 +250,7 @@ is just the \AverageGeneralizationAccuracy, so we can write
        = \THRMAVG{1 - \EPSL(\AVGR)} 
        = \THRMAVG{\langle\ETA(\SVEC, \TVEC, \XI)\rangle_{\AVGNDXI}} 
        = \THRMAVG{\ETA(\SVEC, \TVEC)} 
-       = \THRMAVG{\cance;{\tfrac{1}{\ND}}\SVEC^{\top}\TVEC} 
+       = \THRMAVG{\SVEC^{\top}\TVEC} 
        = \THRMAVG{\AVGR}.
 \end{align}
 \EQN~\ref{eqn:QST_final} is the starting point for deriving a \SEMIEMP theory for the \WW quality metrics (\ALPHA,\ALPHAHAT);
