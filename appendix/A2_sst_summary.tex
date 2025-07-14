@@ -196,33 +196,29 @@ for ``data-averaged ST error'' (i.e., \EffectivePotential) $\EPSL(R)$ that is of
 %
 The difference will be that in the vector case we take $R=\tfrac{1}{N}\SVEC^{\top}\TVEC$, while in the matrix case we take $R=\tfrac{1}{N}\SMAT^{\top}\TMAT$.
 
-We will need to evaluate an average over the $N$ random $M$-dimensional training data vectors $\XI$,
-which are i.i.d Gaussian with $0$ mean and $\sigma^{2}$ variance:
+We will need to evaluate an average over the $\ND$ random $M$-dimensional training data vectors $\NDXI$,
+which are i.i.d Gaussian with $0$ mean and $\sigma^{2}$ variance: \nred{CHECK THIS  }
 \begin{equation}
   \label{eqn:XInorm}
-  \Vert \XI \Vert^2 :=\frac{1}{\ND} \sum_{\mu=1}^{\ND} \XI_\mu \XI_\mu^{\top} = \sigma^{2}\IM ,
+  \Vert \NDXI \Vert^2 :=\cancel{\frac{1}{\ND}} \sum_{\mu=1}^{\ND} \XI_\mu \XI_\mu^{\top} = \sigma^{2}\IM ,
 \end{equation}
-where $\XI_{\mu}$ is a vector of length $M$, and $\IM$ is an $M \times M$ identity matrix.
-\michaeladdressed{Use $I$ instead of $\IM$ here, and use somethin like $\chi$ for that.}
-\charles{@michael: now using $\IM$ ; can change to macro later low priority}
+where each $\XI_{\mu}$ is a vector of length $M$, and $\IM$ is an $M \times M$ identity matrix.
 %
 The expected value of the squared norm is:
 \begin{equation}
 \mathbb{E}[\Vert \XI_{\mu} \Vert^2] = M \sigma^2 .
 \end{equation}
 If we let $\sigma^{2}\sim\tfrac{1}{M}$, 
-\michaeladdressed{@charles: why is that a sim, not an equal sign.}
-\charles{@michael: might be $\sigma^{2}\sim\tfrac{2}{M}$ I dont recall}
 then $\mathbb{E}[\Vert \XI_{\mu} \Vert^2]=1$, i.e., the data vectors can be normalized to $1$.
 %
 Let the probability distribution over the $N$ data vectors~be
 \begin{align}
 \nonumber
-  P(\NDXI) &= \prod_{\mu=1}^{N} \left( \frac{1}{\sqrt{(2 \pi \sigma^2)^M}} \right) e^{-\frac{\|\XI_{\mu}\|^2}{2 \sigma^2}} \\ 
+  P(\NDXI) &= \prod_{\mu=1}^{\ND} \left( \frac{1}{\sqrt{(2 \pi \sigma^2)^M}} \right) e^{-\frac{\|\XI_{\mu}\|^2}{2 \sigma^2}} \\ 
 \nonumber
-  &= \left( \frac{1}{\sqrt{(2 \pi \sigma^2)^M}} \right)^{N} \exp\left[-\frac{M}{2}\sum_{\mu=1}^{N}\|\XI_{\mu}\|^2\right] \\ 
+  &= \left( \frac{1}{\sqrt{(2 \pi \sigma^2)^M}} \right)^{\ND} \exp\left[-\frac{M}{2}\sum_{\mu=1}^{\ND}\|\XI_{\mu}\|^2\right] \\ 
   \label{eqn:pndx_vec}
-  &= \XINORM \exp\left[-\frac{M}{2}\sum_{\mu=1}^{N}\|\XI_{\mu}\|^2\right] ,
+  &= \XINORM \exp\left[-\frac{M}{2}\sum_{\mu=1}^{\ND}\|\XI_{\mu}\|^2\right] ,
 \end{align}
 where $M=N_f$ is the number of features in the data, where the normalization $\XINORM$ is
 \begin{align}
@@ -260,8 +256,7 @@ We can define the data-dependent form (i.e., in the basis of the data $\XI$) as
 \end{align}
 
 \paragraph{The \AnnealedHamiltonian (per-parameter, $\HANPP)$}
-\nred{I think this needs to be per $N$ parameter}
-The definition of the \AnnealedHamiltonian, $\GANMAT$, for the alized case must be extended to account for the $M$ parameters per training example.  We then have that the total energy is then the sum of the entries of $M$ independent parts, as expected by \SizeConsistency:
+The definition of the \AnnealedHamiltonian, $\GANMAT$, for the idealized case must be extended to account for the $N\times M$ parameters per training example.  We then have that the total energy is then the sum of the entries of $M$ independent parts, as expected by \SizeConsistency:
 \begin{align}
  \label{eqn:hanpp}
  \Trace{\GANMAT}=M\left(\red{N}\Trace{\HANPP}\right)
@@ -373,7 +368,7 @@ Using \EQN~\ref{eqn:det_M}, we can rewrite $\IH$ in \EQN~\ref{eqn:I_4} as
 \label{eqn:I_5}
 \IH &=   \NORM\left[\frac{(2\pi\sigma^{2})^{M/2}}{\sqrt{\Det{ \mathbf{M}}}}\right]^{\ND} \\ \nonumber
     &=   \NORM(2\pi\sigma^2)^{NM/2}\left[
-         \sqrt{\Det{ 2\beta\sigma^2(\IM-\tfrac{1}{}\SMAT^{\top}\TMAT)+\IM}}\right]^{-\ND}  \\
+         \sqrt{\Det{ 2\beta\sigma^2\red{N}(\IM-\tfrac{1}{}\SMAT^{\top}\TMAT)+\IM}}\right]^{-\ND}  \\
 %%\end{align}
 %%%
 %%\begin{align}
@@ -394,15 +389,15 @@ We can now identify $\sigma^{2}=\tfrac{1}{M}$ to obtain
     &= \left[\Det{ \IM  + \tfrac{2\beta}{M}\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}  .
 \end{align}
 
-\paragraph{Large-$\ND$ Approximation:\red{the Thermodynamic limit}.}
-Using the expression
+\paragraph{The High-Temperature Limit.}
+In the high-T approximation, $\beta$ becomes small, giving the expression
 %%\begin{align}
 $
 \det(\IM+\epsilon\mathbf{\Omega})\approx1+\epsilon\Trace{\mathbf{\Omega}}  ,
 $
 %%\end{align}
-which holds for an arbitrary matrix $\Omega$ for small $\epsilon$,
-we can evaluate the determinant in \EQN~\ref{eqn:I_7} in the large-$N$ approximation, 
+which holds for an arbitrary matrix $\Omega$ for small $\epsilon$.
+Using this, we can evaluate the determinant in \EQN~\ref{eqn:I_7} in the large-$N$ approximation, 
 which gives
 \begin{align}
   \label{eqn:I_8}
@@ -414,6 +409,11 @@ Inserting this into \EQN~\ref{eqn:Gan_lnI}, we obtain
 \beta\HANPP
    &=-\frac{1}{\ND}\ln \left[1  + \tfrac{2\beta}{M}\red{N}(\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}   .
 \end{align}
+
+This form of the Hamiltonian, $\GANMAT$, however, is not symmetric, and we will
+eventually want a symmetric operator or matrix.
+Fortunately, the high-T form, $\GANMATHT$, can be made symmetric, as
+shown below.  But first, let show that this result is consistent with the our previous Percpetron result.
   
 \paragraph{Matrix-Generalized ST Error $\GANMATHT$ when $\nred{N}=1$.}
 To start, observe that when $\red{N}=1$, \EQN~\ref{eqn:Gan_lnI_final_mwm} becomes
@@ -421,13 +421,13 @@ To start, observe that when $\red{N}=1$, \EQN~\ref{eqn:Gan_lnI_final_mwm} become
 \nonumber
 \beta\GANMAT\vert_{\red{N}=1}
 &= \beta\HANPP\vert_{\red{N}=1}  \\ 
-  &=  -\frac{1}{\ND}\ln  \left[1  + 2\beta\red{\frac{1}{M}Tr}(1-\SVEC^{\top}\TVEC)\right]^{-\ND/2} \\ 
+  &=  -\frac{1}{\ND}\ln  \left[1  + 2\beta\red{\tfrac{1}{M}Tr}(1-\SVEC^{\top}\TVEC)\right]^{-\ND/2} \\ 
 \nonumber
-  &= \frac{1}{2}\ln  \left[1  + 2\beta\red{\frac{1}{M}Tr}(M-\SVEC^{\top}\TVEC)\right] \\ 
+  &= \frac{1}{2}\ln  \left[1  + 2\beta\red{\tfrac{1}{M}Tr}(M-\SVEC^{\top}\TVEC)\right] \\ 
 \label{eqn:GANmat_m_equals_1}
   &=  \frac{1}{2}\ln \left[1 + 2\beta(1-R)\right]  ,
 \end{align}
-meaning that \EQN~\ref{eqn:Gan_lnI_final_mwm} reduces to \EQN~\ref{eqn:Gan2}, as desired.
+where we recall that $\SVEC$ and $\TVEC$ are implicitly normalized to $1/m$, where here $m=M$.  This result shows that \EQN~\ref{eqn:Gan_lnI_final_mwm} reduces to \EQN~\ref{eqn:Gan2}, as desired.
 
 \charles{We want $\GANMATHT$ to represent the total energy per training example, so it should NOT include the $\tfrac{1}{M}$
 FIX THIS}
@@ -459,7 +459,7 @@ with $\epsilon=\tfrac{2\beta}{M}$ and $\mathbb{M}=\IM-\OVERLAP$.
 We now obtain the following result for the matrix-generalized high-T of $\GANMATHT$ using
 \begin{align}
 \label{eqn:GANHTmatR}
-\Trace{\GANMATHT} = \Trace{\IM-\OVERLAP} = M-\Trace{\OVERLAP}
+\Trace{\GANMATHT}\vert_{N=1} = \Trace{\IM-\OVERLAP} = M-\Trace{\OVERLAP}
 \end{align}
 which is of the same functional form as \EQN~\ref{eqn:Gan2}, as desired:
 
@@ -473,7 +473,4 @@ which is of the same functional form as \EQN~\ref{eqn:Gan2}, as desired:
 %  in the opensource~\WW package for these two features.
 
 
-This form of the Hamiltonian, $\GANMAT$, however, is not symmetric, and we will
-eventually want a symmetric operator or matrix.
-Fortunately, the high-T form, $\GANMATHT$, can be made symmetric, as
-shown below.
+
