@@ -317,7 +317,6 @@ For convenience and for compatibility with \cite{SST92}, we denote it using the 
 \end{align}
 \michaelB{Q: Why do we not have the $\lim_{n\gg 1}$ notation there?}
 where, by our normalization here, $\EPSLw \in [0,1]$.
-\michaelB{Q: Where does it follow from that $\EPSLw \le 1$?  And we we need that anywhere?  (Below it follows when we specialize to L2, etc., but I mean more generally, which is where we are here.)}
 The symbol $\EPSLw$ is our theoretical estimate of the sample average $\DETOPXI$ (\EQN~\ref{eqn:detox}),
 well-defined for any $\ND$.
 We also call $\EPSLw$ the \emph{\EffectivePotential}, which will be made clear below.
@@ -343,11 +342,11 @@ This will distinction will be clarified in the Section~\ref{sxn:SMOG_main-studen
 The average accuracy is simply one minus the error.
 To represent this,
 we introduce the \emph{\SelfOverlap} $\ETA$, which is defined generally as
+\nred{something off here ?}
 \begin{align}
  \label{eqn:def_eta}
  \ETA(\WVEC) := 1-\EPSLw \in[0,1] ,
 \end{align}
-\nred{CHECK is this $0,1$ or $-1,1$}
 and which 
 describes the ``overlap'' between the true and the predicted labels.
 Unlike here, however, in later sections
@@ -1005,7 +1004,7 @@ to a matrix model of $N \times M$ weights, which can be thought of
 as $N$ interacting vectors of dimension $M$.
 Moreover, in the Student-Teacher (ST) model used below,
 in the vector case, the $m$ degrees of freedom are integrate out,
-whereas for the matrix case, we will retain the 'a reduced set' of the  $M$ degrees of freedom, $\mathcal{M}$.  To do this, we need to ensure the \FreeEnergies and related quantities like the \AverageLayerQualitySquared scale properly.
+whereas for the matrix case, we will retain the 'a reduced set' of the  $M$ degrees of freedom, $\mathcal{M}$.  To do this, we need to ensure the \FreeEnergies and related quantities like the \LayerQualitySquared to scale properly.
 
 \SETOL uses two \LargeN approximations, the \Thermodynamic limit, which is a \LargeN limit in $\ND$, and the \emph{\WideLayer limit}, which is a \LargeN limit in $N$:
 \begin{itemize}

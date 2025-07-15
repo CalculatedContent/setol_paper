@@ -24,7 +24,7 @@ We begin with some useful notions definitions from \RandomMatrixTheory.
 Using the ESD $\rho(\lambda)$, defined as
 \begin{equation}
 \label{eqn:rgo}
-\rho(\lambda):=\frac{1}{N}\sum_{i}\delta(\lambda-\lambda_{i})  ,
+\rho(\lambda):=\frac{1}{M}\sum_{i=1}^{M}\delta(\lambda-\lambda_{i})  ,
 \end{equation}
 %
 we can express the \emph{\GreensFunction} (or \emph{\CauchyStieltjes} transform $C(z)$) by%
@@ -71,7 +71,7 @@ That is, we can given $R(z)=R(z)_{tail}+R(z)_{bulk}$, we only need $R(z)\approx 
 
 \charles{Describe $R(z)$ is a power series, and how we take $\int dz R(z)$ and why we restirct the integral, contours, etc}
 
-Before moving forward, it is first necessary to demonstrate the \RTransform $R(z)$ exists for the power-law ESDs that arise in \SETOL; this is shown in Appendix~\ref{sxn:RTransformExists}.  Specifically, it is shown that while the $R(z)$ does not formally exist for a pure power-law (PL) tail with $\alpha=2$, it does generally exist for \emph{Truncated} power-law (TPL) tails, defined such that $\lambda\in[\LambdaECSmin, \LambdaECS]^{max}$.  This is sufficient for our purposes here.
+Before moving forward, it is first necessary to demonstrate the \RTransform $R(z)$ exists for the power-law ESDs that arise in \SETOL; this is shown in Appendix~\ref{sxn:RTransformExists}.  Specifically, it is shown that while the $R(z)$ does not formally exist for a pure power-law (PL) tail with $\alpha=2$, it does generally exist for \emph{Truncated} power-law (TPL) tails, defined such that the domain is compact, i.e., $\lambda\in[\LambdaECSmin, \LambdaECS]^{max}$.  This is sufficient for our purposes here.
 
 \subsubsection{Known \RTransforms and Analytic (Formal) Models}
 \label{sxn:r_transforms:known_r_transforms}
@@ -217,8 +217,8 @@ $\ALPHAHATEQN :=\ALPHAHATLONG)$ as a leading order term in the final expression 
       \label{fig:IMPPlotKappaVsAlpha}                                
     }
     \caption{
-      (\ref{fig:IMPplotESD}) plots a typical \InverseMP (IMP) ESD  $\kappa=0.5$,  along with Power Law (PL) fits, with PL exponent$\alpha=1.86$.
-      (\ref{fig:IMPPlotKappaVsAlpha}) depicts the linear relationship between $\kappa$ and $\alpha$.
+      (\ref{fig:IMPplotESD}) plots a typical \InverseMP (IMP) ESD  $\kappa=0.5$,  along with Power Law (PL) fits, with PL exponent $\alpha=1.86$.
+      (\ref{fig:IMPPlotKappaVsAlpha}) depicts the linear relationship between $\kappa$ and $\alpha$ for a few randomly generated examples.
     }
   \label{fig:IMPplots}                                                                                                      
 \end{figure}   
@@ -270,7 +270,7 @@ G(\lambda)[IMP] = \int_{\LambdaECSmin}^\lambda \frac{\kappa}{z}\;dz = \kappa \le
 \end{equation}
 Notice this expression is very similar to the expression for the Free Cauchy model above (\EQN~\ref{eqn:free_cauchy_G_max2}), except
 now it is terms of the logarithm of $\lambda$, and rescaled by $\kappa$.
-By associating $\alpha=2\;\kappa$, we recover the \ALPHAHAT formular, albeit with a different normalization .
+By associating $\alpha=2\;\kappa$, we recover the \ALPHAHAT formular, albeit with a different normalization.
 
 \subsubsection{The Multiplicative-Wishart (MW) model}
 The Multiplicative-Wishart (MW) model  has two real, adjustable parameters $\epsilon,\phi$.
@@ -284,7 +284,7 @@ We will not consider this model further here and instead leave this for future w
 
 \subsubsection{Levy-Wigner Models and the \ALPHAHAT Metric}
 Here, we consider General Levy-Wigner (LW) model..
-We show how to obtain the \WW~\ALPHAHAT metric by modeling VHT ESDs with an approximation to a Levy distribution, suitable for cases where the \HTSR $\alpha\le 2$.  
+We show how to obtain the \WW \ALPHAHAT metric by modeling VHT ESDs with an approximation to a Levy distribution, suitable for cases where the \HTSR $\alpha\le 2$.  
 
 The~\ALPHAHAT metric has been developed to adjust for \SCALE anomalies that arise from issues like \CorrelationTraps,
 rank collapse, and overfitting, which can in many cases make \ALPHA smaller than expected, and even smaller than $2$.
@@ -318,10 +318,15 @@ For simplicity, if we now choose $b=\alpha_{l}=\alpha-2$, then $\QT_{\mathrm{LW}
   \QT_{\mathrm{LW}} = \frac{1}{\MECS}\sum_{i}^{\MECS}\lambda^{\alpha-1}  .
 \end{equation}
 %
+Selecting the largest eigenvalue as the dominant term in the sum gives
+\begin{equation}
+\label{eqn:LW_model_2max}
+  \QT_{\mathrm{LW}} \approx \lambda_{max}^{\alpha-1}  .
+\end{equation}
 Taking the logarithm of $\QT_{\mathrm{HT}} $, we obtain 
 \begin{equation}
 \label{eqn:LW_model_3} 
-\log \QT[\mathrm{LW}] \approx (\alpha-1)\log\lambda
+\log \QT[\mathrm{LW}] \approx (\alpha-1)\log\lambda_{max}
 \end{equation}
 
 As with the Free Cauchy (FC), let us approximate $\QT$ by the largest term in the sum over $\GNECSI$, and then let $\lambda=\lambda_{max}$, giving

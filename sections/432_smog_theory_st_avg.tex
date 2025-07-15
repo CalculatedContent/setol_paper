@@ -146,7 +146,8 @@ with activation function $h(x)=x$,  the error function is
 \EPSL(\AVGR)=1-\AVGR  .
 \label{eqn:LinearPerceptronError}
 \end{align}
-Since the data vectors are normalized to $1/m$, the overlap $\AVGR\in[\red{-1},1]$.  And, importantly, the number of free parameters becomes $1$.
+Since the data vectors are \emph{implicitly normalized to $1/m$}, the overlap $\AVGR\in[0,1]$. 
+That is, there are no \emph{no inversely-correlated} Students that predict more than half the Teacher labels incorrectly.  And, importantly, the number of free parameters becomes $1$.
 
 \input{sections/overlap_figure}
 %\caption{Comparison of 2D and 3D representations of matrix overlap $R$. (a) 2D visualization of vector overlap $R = \cos(\theta) $.
@@ -169,7 +170,7 @@ Write the data-averaged ST error as
 
 Define the $\ND$-dimensional label vectors  
 $\YsVEC:=[\YsIS{1}, \YsIS{2}, \cdots, \YsIS{\ND}]$ and 
-$\YsVEC:=[\YtIS{1}, \YtIS{2}, \cdots, \YtIS{\ND}]$.
+$\YtVEC:=[\YtIS{1}, \YtIS{2}, \cdots, \YtIS{\ND}]$.
 This lets us write 
 
 \begin{align}
@@ -201,7 +202,7 @@ Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:dnn_energ
 This now gives the data-dependent \SelfOverlap explicitly as
 \begin{align}
   \label{eqn:eta_vec_xi_def}
-\ETA(\SVEC,\TVEC,\NDXI) =\red{\sum_{\mu=1}^{\ND}} (\SVEC^{\top}\XI_{\mu})^{\top} (\TVEC^{\top}\XI_{\mu}) = \red{\sum_{\mu=1}^{\ND}}\XI^{\top}_{\red{\mu}}  (\SVEC^{\top} \TVEC )\XI_{\red{\mu}} 
+\ETA(\SVEC,\TVEC,\NDXI) =\sum_{\mu=1}^{\ND} (\SVEC^{\top}\XI_{\mu})^{\top} (\TVEC^{\top}\XI_{\mu}) = \sum_{\mu=1}^{\ND}\XI^{\top}_{\red{\mu}}  (\SVEC^{\top} \TVEC )\XI_{\red{\mu}} 
 \end{align}
 After integrating over the data, we have the \emph{data-independent \SelfOverlap}
 \begin{align}
@@ -213,10 +214,10 @@ After integrating over the data, we have the \emph{data-independent \SelfOverlap
 = & \AVGR\;\frac{1}{\ND}\sum_{\mu=1}^{\ND}\int d\mu(\XI_{\mu})\XI_{\mu}^{\top}\XI_{\mu} \\ \nonumber
    = &\AVGR.
 \end{align}
-\nred{WHAT SHOULD WE SAY HERE ?
+
 where the third equality holds because $\AVGR$ is a scalar constant, and the fourth holds because the elements of $\XI$ are i.i.d. and normalized to unit variance.
 % Since $d\mu(\NDXI)$ is a measure over a (multi-variate) Gaussian distribution (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$), and because data vectors $\XI$ are normalized you unity 
-(See Section~\ref{app:st-gen-err-annealed-ham}) .}
+(See Section~\ref{app:st-gen-err-annealed-ham}) .
 
 We can now obtain the \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:epsl} as
 \begin{align}
@@ -237,7 +238,7 @@ and the \AverageSTGeneralizationError $\STGE(\AVGR)$ is then obtained by averagi
 \end{align}
 where $\THRMAVG{\cdots}$ is a \ThermalAverage over the \Student weight vector $\SVEC$.
 
-The \ModelQuality for the ST \Perceptron, $\Q^{ST}$
+The \ModelQuality for the ST \Perceptron, $\Q^{ST}$,
 is just the \AverageGeneralizationAccuracy, so we can write
 \begin{align}
 \label{eqn:QST_final}

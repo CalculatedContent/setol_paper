@@ -17,7 +17,7 @@ This can be related to a single-layer matrix-generalization of the ST \AnnealedH
 presented in Appendix~\ref{sxn:summary_sst92},
 $\HANHT:=\red{N}(M-\OVERLAP$),
 where, importantly, the scalar overlap $R$ is now a matrix $\OVERLAP$ of $M\times M$ adjustable parameters.
-\red{And, importantly, being empirical quantities, the weight matrices are implicitly normalized to $1/\ND$.}
+\red{Importantly, being empirical quantities, the weight matrices are implicitly normalized by $1/\ND$.  And, like the ST vectors, also implicitly normalized by $1/M$.}
 
 \item
 \textbf{The \LayerQualitySquared $\QT$.}
@@ -39,18 +39,20 @@ This reparameterization leads us to an integral of the HCIZ type (as in \EQN~\re
 which, as shown by Tanaka \cite{Tanaka2007, Tanaka2008}, is expressed in terms of an R-transform.
 
 Then, we introduce the \EffectiveCorrelationSpace (\ECS), and two key approximations,
-the Exact Renormalization Group (\TRACELOG) Condition and the \IndependentFluctuationApproximation (\IFA).
+the \IndependentFluctuationApproximation (\IFA) and
+the Exact Renormalization Group (\TRACELOG) Condition.
+We impose the \IFA (described below) because it is necessary for the final result.
 The \TRACELOG condition states that the determinant of the (effective) \Student correlation matrix is unity, $\Det{\AECS}=1$.
 Critically, this condition can be tested empirically by assuming the (effective) \Teacher correlation matrix
-also follows the \TRACELOG condition, $\Det{\XECS}=1$, and this is a key result of this work.
-Finally, we impose the \IFA (described below) because it is necessary for the final result.
+also follows the \TRACELOG condition, $\Det{\XECS}=1$. \textbf{The empirically testable \ERG conditional is a key result of this work}.
+
 
 \item
 \textbf{The \LargeN limit in $N$}
 Section~\ref{sxn:matgen_evaluation_hciz} presents the core result,
 (as in \EQN~\ref{eqn:QT_result}),
 closed-form or semi-analytic expression(s) for the \LayerQualitySquared $\QT$
-formed in the "wide" \LargeN limit in $N$.
+formed in the \WideLayer \LargeN limit in $N$.
 Restricted to the \ECS, and under the \TRACELOG condition and the \IFA, our
 HCIZ integral for $\QT$ becomes tractable at large-$N$, giving an expression that can be parameterized
 in terms of $\MECS$ eigenvalues $\LambdaECS$ of the \Teacher correlation matrix 
