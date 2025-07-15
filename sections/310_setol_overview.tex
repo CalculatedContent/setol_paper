@@ -90,7 +90,7 @@ We evaluate this at large-$N$, and write
 \begin{equation}
   \IZGINF:=\lim_{N\gg 1}\IZG
 \end{equation}
-\nred{The results is effectively expressed in the limit of fixed load $N/\ND$, giving a kind of mean-field theory over $N$ interacting feature vectors of length $M$.}
+\nred{The result is effectively expressed in the limit of fixed load $N/\ND$, analogous to a  renormalized mean-field  (i.e., \SemiEmpirical) theory over $N$ interacting feature vectors of length $M$.}
 %%%must restrict the matrices to a lower rank subspace, called the~\ECS,
 %%%i.e.,  $\mathbf{\tilde{A}}$. 
 %%%We also must change the measure from an integral over \Student weight matrices
@@ -154,7 +154,7 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
   where $\GNI$ is, albeit imprecisely, a \emph{\GEN} of sortd, and is  defined as the integrated \emph{\RTransform} $R(z)$ of the \Teacher
   layer ESD (where $z\in\mathbb{C}$), such that $\GN:= \int_{\LambdaECSmin}^{\lambda}R(z)dz$
   and $\LambdaECSmin$  encapsulates  the~\ECS (and, for some choices of $R(z)$,  selects the desired branch-cut of $R(z)$
-  so that it is both single-valued and analytic).
+  so that it is both analytic and well-behaved) .
 \end{itemize}
 
 To apply the theory, one must choose an \RTransform $R(z)$ for	the \Teacher that models 
@@ -176,7 +176,7 @@ In a sense, selecting the branch-cut $R(z)$ forces one to define the \ECS.
 To complete the theory, we
 will also show that the \HTSR PL \LayerQuality metrics \ALPHA $(\alpha)$  and \ALPHAHAT $(\ALPHAHATEQN)$
 can be formally derived directly from the \SETOL \LayerQuality $\Q$ by selecting the appropriate
-\RTransform $R(z)$. In Section~\ref{sxn:r_transforms} we provide several possible
+\RTransform $R(z)$ and making empirically motivated approximations. In Section~\ref{sxn:r_transforms} we provide several possible
 models of $R(z)$ and the resulting \LayerQuality $\Q$.
 
 \paragraph{Renormalization Group Effective Hamiltonian}

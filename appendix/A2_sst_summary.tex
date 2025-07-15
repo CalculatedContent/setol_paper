@@ -231,17 +231,17 @@ where $M=N_f$ is the number of features in the data, where the normalization $\X
 \paragraph{The Total Data Sample Error $(\DETOPST)$ and the Matrix Normalization}
 First, let us express the matrix-generalized \TotalDataSampleError, $\DETOPST$, for a single layer,
 in operator form (for each  of the $\ND$ training examples)
-\begin{align}
- \label{eqn:DETOPST}
- \frac{1}{\ND}\DETOPST  := \Trace{\IM - \frac{1}{N}\SMAT^{\top}\TMAT} = M - \Trace{\OVERLAP} 
-\end{align}
-\nred{ This might need to be 
+%\begin{align}
+% \label{eqn:DETOPST}
+% \frac{1}{\ND}\DETOPST  := \Trace{\IM - \frac{1}{N}\SMAT^{\top}\TMAT} = M - \Trace{\OVERLAP} 
+%\end{align}
+\nred{ 
 \begin{align}
  \frac{1}{\ND}\DETOPST := N\Trace{\IM - \frac{1}{N}\SMAT^{\top}\TMAT} = NM - N\Trace{\OVERLAP} 
 \end{align}
 }
 where $\IM$ is a diagonal matrix of dimension $M$.
-\red{Note that the matrices are by default data-averaged empirical quantities, so we can drop the $1/\ND$ on the RHS}
+\red{Note that the matrices are by default data-averaged empirical quantities, so we can drop the $1/\ND$ on the RHS.}
 
 Also, notice that $\DETOPST$ scales as $N\times M$, the total number of parameters in the system.
 Also,  importantly, when all the overlaps are perfect, then the error is zero, i.e. if $\Trace{\OVERLAP}=M$ then $\DETOPST=0$.
@@ -256,7 +256,9 @@ We can define the data-dependent form (i.e., in the basis of the data $\XI$) as
 \end{align}
 
 \paragraph{The \AnnealedHamiltonian (per-parameter, $\HANPP)$}
-The definition of the \AnnealedHamiltonian, $\GANMAT$, for the idealized case must be extended to account for the $N\times M$ parameters per training example.  We then have that the total energy is then the sum of the entries of $M$ independent parts, as expected by \SizeConsistency:
+The definition of the \AnnealedHamiltonian, $\GANMAT$, for the idealized case must be extended to account for the $N\times M$ parameters per training example.  We then have that the total energy is then the sum of the entries of $M$ (feature) vectors, as expected by 
+\SizeExtensivity in $N$ and
+\SizeConsistency in $M$:
 \begin{align}
  \label{eqn:hanpp}
  \Trace{\GANMAT}=M\left(\red{N}\Trace{\HANPP}\right)
@@ -284,7 +286,7 @@ The goal will be to derive the high-Temperature \AnnealedHamiltonian, $\GANMATHT
 \end{align}
 
 If we were to evaluate the trace of $\HANPPHT$, then we could also define
-a matrx-generalized \EffectivePotential,
+a matrix-generalized \EffectivePotential for each parameter:
 \begin{align}
   \label{eqn:EPSL_mat}
   \EPSL(\OVERLAP):=\Trace{\HANPPHT},
@@ -311,18 +313,18 @@ If we substitute $\DETOPNN$, \EQN~\ref{eqn:DETOPNN}, into the integral $\IH$, \E
 \begin{align}
 \label{eqn:I_1} 
 \IH 
-  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{\ND} (\XI^{\mu})^{\top} \red{N}\left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) P(\NDXI)  \\
+  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{\ND} \red{N}(\XI^{\mu})^{\top} \left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) P(\NDXI)  \\
 \nonumber
 %%  \IH
-  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{\ND} (\XI^{\mu})^{\top} \red{N}\left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) \NORM \exp\left( - \sum_{\mu=1}^{N} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right)  \\
+  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{\ND} \red{N}(\XI^{\mu})^{\top} \left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) \NORM \exp\left( - \sum_{\mu=1}^{N} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right)  \\
     \nonumber
     %%  \IH
   &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
-    -\beta\sum_{\mu=1}^{\ND} (\XI^{\mu})^{\top} \red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
+    -\beta\sum_{\mu=1}^{\ND} \red{N}(\XI^{\mu})^{\top} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
     - \sum_{\mu=1}^{\ND} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right) \\ 
 \nonumber
   &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
-    -\frac{1}{2\sigma^2}\sum_{\mu=1}^{\ND}2\beta\sigma^{2} (\XI^{\mu})^{\top} \red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
+    -\frac{1}{2\sigma^2}\sum_{\mu=1}^{\ND}2\beta\sigma^{2} \red{N}(\XI^{\mu})^{\top} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
     +  \Vert\XI^{\mu}\Vert^{2} \right) \\ 
 \label{eqn:I_3} 
   &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
@@ -360,8 +362,6 @@ We now use the familiar property of multi-variant Gaussian integrals,
 \end{align}
 where $\mathbf{x}$ is an $m$-dim vector (with zero mean),
 and $\mathbf{M}$ is a square positive-definite matrix, and $\Det{ \mathbf{M}}$ is the determinant of $\mathbf{M}$.
-\nred{Add an $N$ below and make sure it works out}
-\charles{We can simplify this considerably if we treat $\NORM$ above first}
 %
 Using \EQN~\ref{eqn:det_M}, we can rewrite $\IH$ in \EQN~\ref{eqn:I_4} as
 \begin{align}
@@ -444,11 +444,11 @@ for any $M>1$.
 Given this, it follows from \EQN~\ref{eqn:Gan_lnI_final_mwm} and \EQN~\ref{eqn:Gan_lnI} that we can define 
 \begin{align}
 \label{eqn:GANmat}
-\beta\GANMAT 
-%= 
-%\beta M \HANPP
-  &:=  \frac{M}{2}\ln\det \left[1 + \frac{2\beta}{M}(\IM-\mathbf{R})\right]  ,
+\beta\GANMAT \vert_{N=1}
+  &:=  \frac{M}{2}\Trace{\ln\det \left[1 + \frac{2\beta}{M}(\IM-\mathbf{R})\right]}  ,
 \end{align}
+and reduces to the same functional form as \EQN~\ref{eqn:Gan2}, as desired, when $R$ is implicitly normalized by $M=m$. \nred{CHECK THIS}
+
 To obtain the high-Temperature form, we use
 \begin{align}
 \ln\det\!\Bigl[\IM + \epsilon\mathbb{M}\Bigr]
@@ -461,7 +461,6 @@ We now obtain the following result for the matrix-generalized high-T of $\GANMAT
 \label{eqn:GANHTmatR}
 \Trace{\GANMATHT}\vert_{N=1} = \Trace{\IM-\OVERLAP} = M-\Trace{\OVERLAP}
 \end{align}
-which is of the same functional form as \EQN~\ref{eqn:Gan2}, as desired:
 
 
 % We will use this normalization for both the \TRACELOG  condition and deriving the

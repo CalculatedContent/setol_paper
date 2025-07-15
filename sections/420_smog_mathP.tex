@@ -94,7 +94,7 @@ using the \FreeEnergy as a \GeneratingFunction, and how these errors are related
   along with the concepts of \SelfAveraging and \WickRotations.
 %
 \item 
-  \textbf{From the ST Perceptron to  Matrix Model.} 
+  \textbf{From the ST Perceptron to q Matrix Model.} 
   Finally, in Section~\ref{sxn:from_vectors}, we introduce the physical concepts necessary to understand the \SETOL matrix model, including the \WideLayer \LargeN limit and the notion of \SizeConsistency.  We  then describe how to obtain the \LayerQuality $\Q$ from a matrix-generalized \ThermalAverage over random matrices, called an HCIZ integral.
 \end{enumerate}
 The various symbols and other important results are summarized in the Appendix~\ref{sxn:appendix_A}
@@ -502,7 +502,7 @@ for the model or layer under consideration (see below).
 
 In the traditional \SMOG approach, one models the (\Typical) generalization behavior of a NN
 by defining and computing the \ExpectedValue of the \FreeEnergy of the model.
-The full expected value  of the \FreeEnergy, $\beta F_{\ND}=-\ln Z_{\ND}$, with respect to the (model) data $\NDXIn$, is:
+The full expected value  of the \FreeEnergy, $\beta F_{\ND}=-\ln Z_{\ND}$, with respect to the (idealized) data $\NDXIn$, is:
 \begin{align}
 \label{eqn:mm_f_bar}
   \mathbb{E}_{\NDXIn}[\beta F_n]=\beta\bar{F}:=-\langle \ln Z_{\ND}\rangle_{\AVGNDXIn},
@@ -710,8 +710,6 @@ the first two terms:
 %%then we can obtain the desired training and/or test errors using the generating function properties of the partition function.
 %%%%\michael{@charels: In most places, you have a short par like this as a preamble to motivate the subsequent par.  But here it points to something three pars below.  And the next two pars (I think) will show that \TrainingError and \GeneralizationError become equivalent in the AA/high-T limit.  If Im correct, we just need slightly better sign-posting.}
 %%\charles{Yeah that could be.  Maybe add some references to the sections and be clearer}
-\michael{@charles: if we are going to present the AA this way, i.e., i.t.o. the partition function and not other things that we do the AA on below, then it probably makes sense to derive other things below from the partition function, rather than have each thing done separately.}
-\charles{This was here but it was too long, so it is now in  in ``generating\_functions\_420\_excerpt.tex''. }
 
 
 Let us now express $\GAN$ directly in terms of $\EPSLw=\langle\DETOPXI \rangle_{\AVGNDXIn}$ (see \EQN~\ref{eqn:epsl}) as a \ThermalAverage at high-T.
@@ -998,10 +996,10 @@ and, additionally, where we observe glassy behavior, which we refer to as a \emp
 (in Section~\ref{sxn:hysteresis_effect}).
 
 
-\subsubsection{From the ST Perceptron to  Matrix Model.} 
+\subsubsection{From the ST Perceptron to a Matrix Model.} 
 \label{sxn:from_vectors}
-We will move from a single $m$-dimensional \Perceptron vector $\WVEC$ 
-to a matrix of $N \times M$ weights, which can be thought of
+In Section~\ref{sxn:matgen}, wee will move from a single $m$-dimensional \Perceptron vector $\WVEC$ 
+to a matrix model of $N \times M$ weights, which can be thought of
 as $N$ interacting vectors of dimension $M$.
 Moreover, in the Student-Teacher (ST) model used below,
 in the vector case, the $m$ degrees of freedom are integrate out,
