@@ -183,25 +183,25 @@ models of $R(z)$ and the resulting \LayerQuality $\Q$.
 
 \paragraph{Renormalization Group Effective Hamiltonian}
 The formulation of SETOL closely parallels the construction of an \EffectiveHamiltonian~$\HEFF$
-via the \WilsonExactRenormalizationGroup~(RG) approach. Consider a \emph{\Bare} Hamiltonian $\HBARE$ for the \LayerQualitySquared,
+via the \WilsonExactRenormalizationGroup~(\ERG) approach. Consider a \emph{\Bare} Hamiltonian $\HBARE$ for the \LayerQualitySquared,
 defined as $\HBARE:= \mathbf{R}^{\TR}\mathbf{R}$.
 We can express Eqn.\ref{eqn:QT_dS} in terms of this \Bare Hamiltonian $\HBARE$,
 and rewrite Eqn.\ref{eqn:IZGINF_HCIZ} in terms of an \emph{Renormalized} \EffectiveHamiltonian~$\HEFF$
 that spans the \EffectiveCorrelationSpace~(\ECS). Formally, we have:
 \begin{align}
 \label{eqn:RG}
-\red{\tfrac{1}{N}}\ln \int d\mu(\SMAT)e^{\ND \beta N \operatorname{Tr}[\HBARE]} \;\xrightarrow{RG}\; \lim_{N\gg 1}\red{\tfrac{1}{N}}\ln \int d\mu(\AECS)e^{\ND \beta N \operatorname{Tr}[\HEFF]} 
+\red{\tfrac{1}{N}}\ln \int d\mu(\SMAT)e^{\ND \beta N \operatorname{Tr}[\HBARE]} \;\xrightarrow{ERG}\; \lim_{N\gg 1}\red{\tfrac{1}{N}}\ln \int d\mu(\AECS)e^{\ND \beta N \operatorname{Tr}[\HEFF]} 
 \end{align}
-where the RG transformation is defined by the \ScaleInvariant \TRACELOG condition,
+where the\ERG transformation is defined by the \ScaleInvariant \TRACELOG condition,
 applied at large-$N$,
 and where $\HEFF$ is defined implicitly through result for $\QT$ (Eqn.~\ref{eqn:QT_result}).
 The result is, formally, a sum of the integrated \RTransforms $\GNI$.
 In a sense, this result resembles (a non-perturbative form of) the Linked Cluster Theorem
 in that the log \PartitionFunction is expressed as a sum of integrated matrix-generalized cumulants and/or self-energy.  And in analogy with \SemiEmpirical theories of Quantum Chemistry, the \HTSR \ALPHA $(\alpha)$ and \ALPHAHAT $\ALPHAHATEQN)$ enter as renormalized empirical parameters.
 Most importantly, the \ScaleInvariant \TRACELOG condition can be verified empirically (See Section~\ref{sxn:empirical}.)
-Importantly, in analogy with the Wilson Exact RG theory, 
+Importantly, in analogy with the \WilsonExactRenormalizatonGroup theory, 
 the \HTSR $\alpha=2$ resembles in spirit
-an RG \emph{Universal Critical Exponent} at a phase boundary being between the \HeavyTailed 
+an \ERG \emph{Universal Critical Exponent} at a phase boundary being between the \HeavyTailed 
 (HT) and the \VeryHeavyTailed (VHT) phase of learning of the \HTSR theory.
 This observation strengthens our argument that the \HTSR HT and VHT phases
 are analogous to the generalizing and overfit phases, respectively,

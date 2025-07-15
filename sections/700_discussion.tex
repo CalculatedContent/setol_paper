@@ -67,8 +67,8 @@ Conceptually, \SETOL parallels well-known \emph{\SemiEmpirical} methods in quant
 chemistry~\cite{Martin1996, Martin1996_CPL,Martin1998}, wherein complicated many-body Hamiltonians are approximated by 
 effective theories, but fitted or validated using empirical data. By retaining only the largest spectral modes 
 (\ECS) and imposing the \TRACELOG condition, we can describe crucial low-rank correlations while discarding less 
-relevant interactions, much like in Freed--Martin Effective Hamiltonian theories and/or Wilson’s \RenormalizationGroup 
-(RG) approach.\cite{PhysRevLett.69.800}
+relevant interactions, much like in Freed--Martin Effective Hamiltonian theories and/or Wilson’s  \ExactRenormalizationGroup 
+(ERG) approach.\cite{PhysRevLett.69.800}
 \end{enumerate}
 
 \vspace{1em}
@@ -79,7 +79,7 @@ the \ECS is akin to performing a \emph{single step} of the Wilson Exact Renormal
 In doing this, we are discarding bulk “uninteresting” degrees of freedom in favor of the strongly correlated 
 HT \emph{long-ranged} modes. This leads to an effective model with fewer degrees of freedom but 
 \emph{renormalized} interactions--interactions that are dominated by the largest eigenvalues.
-This analogy with RG theory suggests that the \HTSR phenomenology, where $\alpha\in[2,6]$ in the Fat-Tailed
+This analogy with \ERG theory suggests that the \HTSR phenomenology, where $\alpha\in[2,6]$ in the Fat-Tailed
 \Universality Class, is essentially describing a near-critical phase  when
 $\alpha \approx 2$ and satisfies $\ln\!\bigl(\prod \lambda_i\bigr)\approx 0$ in its ECS.
 Departing from  this point ($\alpha<2$) leads to suboptimal results, consistent with the multi-phase 
@@ -88,7 +88,7 @@ pictures in \STATMECH spin glass theories of learning~\cite{SST92,Gardner_1988,E
 \vspace{1em}
 \noindent
 \textbf{Toward Understanding “Why Deep Learning Works.”}
-A key question in deep learning theory is why large neural networks achieve strong generalization despite operating in highly non-convex optimization landscapes. From the perspective of RG exact theory, this phenomenon can be partially understood through the concentration of generalization-relevant components. Specifically, models trained in regimes exhibiting \emph{L\'{e}vy-like}
+A key question in deep learning theory is why large neural networks achieve strong generalization despite operating in highly non-convex optimization landscapes. From the perspective of \ERG theory, this phenomenon can be partially understood through the concentration of generalization-relevant components. Specifically, models trained in regimes exhibiting \emph{L\'{e}vy-like}
  or \emph{Power-Law (PL)} couplings lead to the emergence of effective low-dimensional descriptions, where irrelevant modes are suppressed. The \WW \ALPHA metric quantitatively captures this concentration by characterizing how the optimization landscape stabilizes near criticality, with $\alpha \approx 2$ signaling optimal generalization in a near-critical regime.
 
 \vspace{1em}
@@ -103,9 +103,9 @@ effective energy landscape is for each layer, with $\alpha\approx 2$ signifying 
 
 \subsection{Future Directions}
 
-\paragraph{1.\quad Multi-Layer RG and Layer Interactions.}
+\paragraph{1.\quad Multi-Layer \ERG and Layer Interactions.}
 While \SETOL is formulated per-layer, modern DNNs stack many layers, each potentially with different $\alpha$. 
-An improved approach would treat layer-layer interactions, potentially with a multi-step RG or other
+An improved approach would treat layer-layer interactions, potentially with a multi-step \ERG or other
 approach, that could track how these exponents evolve or couple across depth. It is possible 
 that certain layers (e.g.\ final fully-connected heads in LLMs) exhibit $\alpha$ far from 2, while others 
 converge near 2---raising questions about how best to address or combine them.
