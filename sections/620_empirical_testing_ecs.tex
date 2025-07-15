@@ -161,7 +161,7 @@ weights, some of which is then removed by truncation. As epochs progress, this e
 Here again we can see the ``phase-transition-like behavior of the train error, as the error bars are wide early on, up to a transition having an abnormally large error bar, after which they stabilize.
 
 % \michael{@chris: we should have a few sentences on why the Delta-Error-Test is so flat.}
-Perhaps most interestingly of all, we see that under the \TRACELOG~MSR, $\Delta E_{test}$ is flat \emph{throughout 
+Perhaps most interestingly of all, we see that under the \TRACELOG Model Selection Rule (MSR), $\Delta E_{test}$ is flat \emph{throughout 
 training}, and for all learning rates. This implies that there is \emph{no} point in training where the 
 \TRACELOG tail generalizes badly. In other words, almost none of the out-of-sample variance falls outside of the \EffectiveCorrelationSpace, as the \TRACELOG~MSR over-estimates the \EffectiveCorrelationSpace. It also bears noticing that under the 
 \POWERLAW~MSR, (Figure~\ref{fig:mlp3-msr-results-xmin},) this is decidedly not the case, because the \POWERLAW~MSR \emph{under}-estimates the \EffectiveCorrelationSpace. As we will see in \ref{sxn:empirical-trace_log}, as \ALPHA approaches $2$, the gap between the two MSRs goes to $0$.

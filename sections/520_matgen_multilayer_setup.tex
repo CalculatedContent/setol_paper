@@ -19,7 +19,7 @@ Ignoring the bias terms, \emph{Without Loss of Generality}, (WLOG), the NN outpu
 \label{eqn:nflow}
              y_{\mu} := \EVEC_{3\mu} &= \frac{1}{\sqrt{N_3}} h (\WMAT_{3}^\top \EVEC_{2\mu})     ,
 \end{align}
-where $\EVEC$ denotes a vector of energies or NN outputs, and $h$ is a general function or functional, denoting either a non-linear activation or a more complex layer structure, such as a CNN or an RNN.  Note that for binary classification, $\EVEC_3{\mu}=1|-1$ is just a binary number.  
+where $\EVEC_{\#\mu}$ denotes a vector of energies or NN outputs for that layer, and $h$ is a general function or functional, denoting either a non-linear activation or a more complex layer structure, such as a CNN or an RNN.  Note that for binary classification, $\EVEC_3{\mu}=1|-1$ is just a binary number.  
 We can consider $h(\cdot)$ to be an (unspecified) activation function.
 
 As in \EQN~\ref{eqn:deriveSTerror}, let us specify the ST error, or Energy difference, specifically in terms of the L2 or RMSE loss:
@@ -52,21 +52,19 @@ we can write the formal expression of the ST error for the simple MLP3 model as:
 \begin{align}
 \label{eqn:overlap1}
 \ETAMLPAVG  \\ \nonumber
-& =\langle\ETA(\SMAT_1,\SMAT_2,\SMAT_3,\TMAT_1,\TMAT_2,\TMAT_3,\boldsymbol{\xi})\rangle_{\AVGNDXI}  \\ \nonumber
-& :=  \frac{1}{\ND ?}\Trace{
+& =\langle\ETA(\SMAT_1,\SMAT_2,\SMAT_3,\TMAT_1,\TMAT_2,\TMAT_3,\NDXI)\rangle_{\AVGNDXI}  \\ \nonumber
+& :=  \frac{1}{\ND}\Trace{
     \frac{1}{\sqrt{N_3}} h\left(\SMAT_3^{\top} 
     \frac{1}{\sqrt{N_2}} h\left(\SMAT_2^{\top} 
-    \frac{1}{\sqrt{N_1}} h\left(\SMAT_1^{\top} \boldsymbol{\xi} \right)\right)\right)^{\top} 
+    \frac{1}{\sqrt{N_1}} h\left(\SMAT_1^{\top} \NDXI \right)\right)\right)^{\top} 
     \times
     \frac{1}{\sqrt{N_3}} h\left(\TMAT_3^{\top} 
     \frac{1}{\sqrt{N_2}} h\left(\TMAT_2^{\top} 
-    \frac{1}{\sqrt{N_1}} h\left(\TMAT_1^{\top} \boldsymbol{\xi} \right)\right)\right)
+    \frac{1}{\sqrt{N_1}} h\left(\TMAT_1^{\top} \NDXI \right)\right)\right)
   }.
 \end{align}
 
 So far, we have not used any particular assumption on the form of the NN or the data, 
-\michael{But this is the model Gaussian data, not the real data}
-\charles{Yeah, I guess thats in the notation, but we have not integrated out the data yet.  We can rephrase this}
 other than that the layer structure used to write the explicit expression for the form eventually needed,
 $\ETA(\SMAT,\TMAT)$, a single layer \SelfOverlap.
 As a next step, we show which assumptions are needed in order to reformulate the setup as
@@ -102,7 +100,7 @@ By ignoring the intra-layer cross-terms, let us write the single-layer self-over
   \label{eqn:eta}
   \ETAMAT =
         \ETAMATAVG\rightarrow \
-        \tfrac{1}{\ND}\tfrac{1}{N} \Trace{ \XI^{\top} \SMAT^{\top}_{l} \TMAT_{l} \XI }  .
+        \tfrac{1}{\ND}\tfrac{1}{N} \Trace{ \XI^{\top} \SMAT^{\top}_{l} \TMAT_{l} \NDXI }  .
 \end{align}
 This third approach is the one we will adopt.
 Moving forward, we will drop the layer subscript, $l$, and we will consider a \SETOL as a single-layer theory.
@@ -119,6 +117,6 @@ Since we can interpret the Trace as an expected value over the model data $\NDXI
   \ETA(\SMAT,\TMAT)
   :=\tfrac{1}{N} \Trace{\SMAT^{\top}\TMAT} 
 \end{align}
-\nred{Importatnly, the $1/\ND$ will be implicit in the matrices because they are observables}
+\nred{Importatnly, the $1/\ND$ will be implicit in the $\TMAT$ and $\SMAT$ matrices because they represent empirical observables. In other words, the weights are the learned parameters, effectively averaged over the entire real-world training data set $\ADD$}
 This is the matrix generalized form of \EQN~\ref{eqn:QST_final} for the \LayerQuality.
 

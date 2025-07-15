@@ -13,11 +13,11 @@ This theory was developed in the 1980s and 1990s~\cite{SST90,SST92,Gardner_1985,
 \renewcommand{\arraystretch}{1.15} % Increases row height
 \begin{tabular}{c|c}
   \textbf{Statistical Physics} & \textbf{Neural Network Learning}                      \\ \hline
-  Gaussian field variables     & Gaussian i.i.d data  $\NDXI\in\mathcal{D}$            \\ \hline
+  Gaussian field variables     & Gaussian i.i.d (idealized) data  $\NDXI\in\mathcal{D}$            \\ \hline
   State Configuration          & Trained / Learned weights $\WVEC$                     \\ \hline
   State Energy Difference      & Training and Generalization Errors  $\AVGTE, \AVGGE$  \\ \hline
-  Temperature                  & Amount of stochasticity present during training $T$       \\ \hline
-  \AnnealedApproximation       & Average over data first, then weights $\WVEC$.                          \\ \hline
+  Temperature                  & Amount of regularization present during training $T$       \\ \hline
+  \AnnealedApproximation       & Average over data $\NDXI$ first, then weights $\WVEC$.                          \\ \hline
   \ThermalAverage              & Expectation w.r.t. the distribution of trained models \\ \hline
   \FreeEnergy                  & Generating function for the error(s) $F$             \\ \hline
 \end{tabular}
@@ -35,7 +35,7 @@ This theory was developed in the 1980s and 1990s~\cite{SST90,SST92,Gardner_1985,
   \ModelQuality $\Q$          & \makecell{Generalization accuracy, \\in the AA and at high-T }      \\ \hline
   \LayerQuality $\Q$          & \makecell{Layer contribution to the accuracy, \\in the AA and at high-T}       \\ \hline
   \LayerQualitySquared $\QT$ &  \LayerQuality squared, used for technical reasons \\ \hline
-  \Quality \GeneratingFunction $\Gamma_{\Q}, \Gamma_{\QT}$   & Generating function for quality    \\ \hline
+  \Quality \GeneratingFunction $\Gamma_{\Q}, \Gamma_{\QT}$   & Generating function for \Quality    \\ \hline
   \AnnealedHamiltonian $H^{an}$                & \makecell{Energy function, \\for errors or accuracies}             \\ \hline
   \EffectiveHamiltonian $H^{eff}$     & \makecell{Exact energy function, \\but restricted to a low-rank subspace}      \\ \hline
 \end{tabular}
@@ -53,8 +53,7 @@ In traditional \SMOG theory, one maps the learning process of a NN to the states
 The mapping is given in Table~\ref{table:statMech_to_NNs}.
 \SMOG theory models the SGD training of a \emph{\Perceptron} on the data, $\NDX$, to learn the optimal weights, $\WVEC$, as a Langevin process.%
 \footnote{Typically, we have no guarantee of the true equilibrium in a high‐dim nonconvex landscape; so, when the \emph{\ThermodynamicLimit} exists,
-the Langevin process converges or relaxes to the thermodynamic equilibrium.}
-The power of the \STATMECH approach comes from the fact that the core concept of \ThermalAverages corresponds to taking the expectation of a given quantity only \emph{over the set of trained models}, as opposed to uniformly over all possible models (or in a worst-case sense, over all possible models in a model class).
+the Langevin process converges or relaxes to the thermodynamic equilibrium.} The power of the \STATMECH approach comes from the fact that the core concept of \ThermalAverages corresponds to taking the expectation of a given quantity only \emph{over the set of trained models}, as opposed to uniformly over all possible models (or in a worst-case sense, over all possible models in a model class).
 This capability is particularly compelling in light of the \STATMECH capacity to characterize disordered 
 systems with complex non-convex energy landscape (which can even be \emph{\Glassy}, characterized by a
 highly non-convex landscape~\cite{SST92, STS90, engel2001statistical},

@@ -17,7 +17,7 @@ This can be related to a single-layer matrix-generalization of the ST \AnnealedH
 presented in Appendix~\ref{sxn:summary_sst92},
 $\HANHT:=\red{N}(M-\OVERLAP$),
 where, importantly, the scalar overlap $R$ is now a matrix $\OVERLAP$ of $M\times M$ adjustable parameters.
-\red{And, importantly, being empirical quantities, the matrices are implicitly normalized to $1/\ND$.}
+\red{And, importantly, being empirical quantities, the weight matrices are implicitly normalized to $1/\ND$.}
 
 \item
 \textbf{The \LayerQualitySquared $\QT$.}
@@ -36,10 +36,10 @@ $\AMATM = \tfrac{1}{N}\SMAT^{\top}\SMAT$.
 Importantly, we argue that the measures $d\mu(\AMATM)\leftrightarrow d\mu(\AMATN)$,
 can be interchanged for our purposes, making them effectively equivalent.
 This reparameterization leads us to an integral of the HCIZ type (as in \EQN~\ref{eqn:hciz_prelim})
-which, as shown by Tanaka \cite{Tanaka2007, Tanaka2008}, can be described in terms of its R-transform.
+which, as shown by Tanaka \cite{Tanaka2007, Tanaka2008}, is expressed in terms of an R-transform.
 
 Then, we introduce the \EffectiveCorrelationSpace (\ECS), and two key approximations,
-the \TRACELOG Condition and the \IndependentFluctuationApproximation (\IFA).
+the Exact Renormalization Group (\TRACELOG) Condition and the \IndependentFluctuationApproximation (\IFA).
 The \TRACELOG condition states that the determinant of the (effective) \Student correlation matrix is unity, $\Det{\AECS}=1$.
 Critically, this condition can be tested empirically by assuming the (effective) \Teacher correlation matrix
 also follows the \TRACELOG condition, $\Det{\XECS}=1$, and this is a key result of this work.
@@ -75,7 +75,7 @@ one can use  \emph{Free Cauchy} (FC) model.  and the resulting \LayerQuality $\Q
 is approximately the Spectral Norm $\LambdaMax$.
 Since $\LambdaMax$ increases with decreasing $\alpha$, the FC model yields the \HTSR \ALPHA metric.
 One can also use  \emph{\InverseMP} (IMP) model. 
-As required, the IMP \RTransform contains a \emph{branch cut} in the complex plane
+Being a model for the full \Teacher ESD (not just the tail) the IMP \RTransform contains a \emph{branch cut} in the complex plane
 which aligns with the start of the \ECS \PowerLaw tail.
 Finally, Using the \LevyWigner (LW) model, one can model cases where
 $\alpha\le 2$ and derive the \HTSR \ALPHAHAT metric.

@@ -149,6 +149,7 @@ WLOG, we assume that $\XVEC_{\mu}$ is normalized such that the Frobenius norm sq
   \label{eqn:XVEC_norm}
   \Vert\XVEC_{\mu}\Vert^{2}_{F} := \sum_{i=1}^{m} \XVEC_{\mu,i}^{2}=\tfrac{1}{m}
 \end{equation}
+\nred{I don't think this normalization is correct, double check}
 We call $\XVEC^{\ND}$ an $\ND$-sized sample (of the training data instances $\XVEC$) from $\ADD$. 
 % See below We may or may not specify the labels for this sample, depending on the context.
 
@@ -273,7 +274,7 @@ The subscript $\AVGNDXIn$ indicates this is an
 (This is used in both Sections~\ref{sxn:SMOG_main} and~\ref{sxn:matgen}.)
 Thus, the \red{implicit} normalization $\tfrac{1}{\ND}$ ensures the \BraKet is a proper \ExpectedValue of a sample average.
 %The measure $d\mu(\NDXIn)$ signifies a single $\ND$ vector $\XI$, drawn from an $m$-dimensional idealized Gaussian distribution.
-A subscript $\XI$ on the Ket as $\langle\cdots\rangle_{\XI}$ would represent an integral over potential data points, not an average of a data sample (i.e., there would be no $1/\ND$ prefactor).
+A subscript $\XI$ on the Ket as $\langle\cdots\rangle_{\XI}$ indicates that the integral over potential data points, not an average of a data sample (i.e., there would be no $1/\ND$ prefactor).
 % \michaeladdressed{@charles: clarify; that is $\ND$ vectors in $\mathbb{R}^{M}$ that are element-wise i.i.d. Gaussian?}
 %%\michael{Where we are using $M$ and $\ND$ rather than $m$ and $\ND$; is that a typo, or what should it be.}
 %%\cformike{I use $n,m$ in this section, $\ND$, $M$ elsewhere since they can mean different things when we generalize to a layer.  We can fix if its too confusion, or maybe just explain above.}
@@ -288,7 +289,7 @@ Along with this, Thermodynamic average quantities should be \emph{\SizeIntensive
 meaning that they remain independent of $\ND$ (or $N$) as the system size increases.
 In our setting, \SizeExtensivity and \SizeIntensivity underpin the so-called \LargeN limit,
 ensuring that macroscopic observables become independent of
-microscopic fluctuations.
+microscopic fluctuations so that the system approaches equilibrium as expected.
 
 As an example of \SizeExtensivity and \SizeIntensivity, 
 we write the \ExpectedValue (i.e., the data-average) of \DataSampleError $\DETOPXI$ (\EQN~\ref{eqn:average_data_sample_error})
@@ -376,7 +377,7 @@ data $\langle\cdots\rangle_{\XI},
 \langle\cdots\rangle_{\NDXI},
 \langle\cdots\rangle_{\AVGNDXI}$
 \end{center}
-When averaging over the data, the subscript will appear with a bar (i.e. $\AVGNDXIn$), but when just integrating over the data, no bar will appear (i.e., $\NDXIn$). 
+When averaging over the data $\NDXI$,  the subscript will appear with a bar (i.e. $\AVGNDXIn$), but when just integrating over the data, no bar will appear (i.e., $\NDXIn$). 
 We also reuse these symbols for other quantities, such as the $\ZANHT$, $\AVGGE^{an,hT}$, $\GAN$, etc,
 but may mix-and-match subscripts and superscripts for visual clarity.
 
@@ -921,7 +922,7 @@ we can obtain $\QT$ (see Section~\ref{sxn:matgen} Eqn.~\ref{eqn:IZG_generate_Q2}
   \underset{\text{high-}T}{\approx}
 \frac{1}{\ND}\frac{\partial }{\partial \beta}\IZGINF
 \end{align}
-\nred{Replaced with $\IZGINF$}
+%\nred{Replaced with $\IZGINF$}
 See Section~\ref{sxn:matgen} and Appendix~\ref{sxn:quality} for more details.
 \michaeladdressed{Is this $1-F$ thing new to us, or does SST do it; and is the thing you are calling a generating function to ``generate'' it new to us? It is probably worth being a bit more pedantic here. }
 
@@ -947,7 +948,7 @@ Additionally, the Annealed and the Quenched averages,
 $\ln \langle Z_n \rangle_{\AVGNDXIn}$ and $\langle \ln Z_n \rangle_{\AVGNDXIn}$, respectively,
 become sharply peaked, and
 \begin{align}
-\langle \ln Z_n \rangle_{\AVGNDXIn} \approx \ln \langle Z_n \rangle_{\AVGNDXIn}, \quad \text{as } n \to \infty .
+\langle \ln Z_n \rangle_{\AVGNDXIn} \approx \ln \langle Z_n \rangle_{\AVGNDXIn}, \quad \text{as } \ND \gg 1\;\; \text{(grows arbitrarily large)}.
 \end{align}
 %%(although they are not strictly equal except at the limit $n = \infty$).
 For a NN, \SelfAveraging implies that the weights $\WVEC$ are \emph{\Typical} of the distribution,
@@ -958,14 +959,15 @@ For example, when considering the \LargeN in $\ND$ case, we could write
 
 \begin{align}
   \label{eqn:SPA}
-  \int d\mu(\WVEC) e^{-\ND\beta\EPSL(\WVEC)}\approx \sqrt{\tfrac{2\pi}{\ND\EPSL(\WVEC^{*})}} e^{-n\beta\EPSL(\WVEC^{*})}  ,
+  \int d\mu(\WVEC) e^{-\ND\beta\EPSL(\WVEC)}\approx \sqrt{\tfrac{2\pi}{\ND\EPSL(\WVEC^{*})}} e^{-n\beta\EPSL(\WVEC^{*})}  
+  , \quad \text{as } \ND \gg 1
 \end{align}
 where $\WVEC^{*}$ satisfies the saddle point equations:
 \begin{align}
   \EPSL(\WVEC^{*}):=\tfrac{\partial}{\partial \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}=0 \\
   \EPSL(\WVEC^{*}):=\tfrac{\partial^{2}}{\partial^{2} \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}>0  .
 \end{align}
-which guarantees that the solution $\EPSL(\WVEC^{*})$ is at the minimum.
+These equations guarantee that the solution $\EPSL(\WVEC^{*})$ is at the minimum.
 The SPA can be applied to many \LargeN integrals, as long as the integrand decays exponentially,  
 
 \paragraph{Wick Rotation} When working with complex oscillatory integrands, $i.e., e^{iNf(x)}$,   
@@ -1051,7 +1053,7 @@ This will take the form of an HCIZ integral,
 \IZGINF := \lim_{N\gg 1}\frac{1}{N}\ln \underbrace{\int d\mu(\AMAT) \exp[\ND\beta N\Trace{\AMAT_N\XMAT_N}] }_{\mbox{HCIZ Integral}} 
   \approx \ND\beta\Trace{\mathcal{G}_{A}(\lambda)}  ,
 \end{align}
-that is evaluated in the ``\LargeN limit`` (here, meaning as $N \gg 1$, but not at the limit $N=\infty$).
+that is evaluated in the ``\LargeN limit in $N$`` (here, meaning as $N \gg 1$, but not at the limit $N=\infty$).
 Here,  $\AMAT_N$ and $\XMAT_N$ are $N \times N$ Hermetian matrices, (See Appendix \ref{sxn:appendix_A} for notation,) $d\mu(\AMAT)$ is a measure
 over all random (Orthogonal) matrices (see \EQN~\ref{eqn:dmuA}),
 and $\mathcal{G}_{A}()$ is a called  \GEN 
@@ -1095,7 +1097,7 @@ may diverge or change character abruptly.
 In the context of our HCIZ-based construction, integrating a complex function like the $R(z)$-transform of
 a \HeavyTailed ESD can produce precisely this phenomenon.
 For example, if $R(z)$ has a square-root term, i.e., $(\sqrt{z-c})$, then it will have a branch cut at $z=c$,
-and the \GeneratingFunction (i.e.,  Effective Free Energy) $\IZGINF$
+and the \GeneratingFunction (i.e.,  negative Effective Free Energy) $\IZGINF$
 will be non-analytic and we must choose the appropriate, physically meaningful branch, i.e., $(z>c)$,
 corresponding to the \ECS.
 We argue that this cut signifies a \emph{phase boundary}—an abrupt change

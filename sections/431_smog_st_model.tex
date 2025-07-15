@@ -3,7 +3,7 @@
 \input{sections/student_teacher}
 
 Here, describe the basic setup of the classic \StudentTeacher model, taking an operational view from the perspective of a practitioner training real-world \Student and \Teacher models.  Specifically, we present the \AnnealedApproximation (AA) in a practical light,
-and use it explain the difference between computing the \emph{Empirical\GeneralizationError}, $\AVGEMPGE$, for the \emph{\TrueAccuracy}
+and use it explain the difference between computing the \emph{Empirical \GeneralizationError}, $\AVGEMPGE$, for the \emph{\TrueAccuracy}
 and for the \emph{\Precision} of a \Teacher model. Table~\ref{tab:st_notation} summarizes some of the key notation we will be using in this section.
 \input{sections/table43}
 
@@ -193,7 +193,7 @@ depends on the \Teacher, $S[T]$.
 The empirical errors in $T$ would then formally depend on the specific instantiation of the data  $\NDXIn\in\MDD$,
 and therefore, conceptually imagine that we must first average over the data
 before averaging over the weights.
-Training to \Interpolation corresponds conceptually to working with a model
+\emph{Training to \Interpolation} corresponds conceptually to working with a model
 in the \AnnealedApproximation, whereas not doing so corresponds to \Quenched case.
 
 Practically, when the \Teacher is not trained to \Interpolation, 

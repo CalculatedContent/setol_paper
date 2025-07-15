@@ -6,13 +6,18 @@
 \midrule
 $T$                      & Teacher model (fixed network) \\
 $S$                      & Student model (trained to mimic $T$) \\
-$\mathcal D$             & True dataset of $(x,y)$ pairs \\
-$\widetilde{\mathcal D}$ & Gaussian‐field idealization of $\mathcal D$ \\
+$\ADD$             & True dataset of $(x,y)$ pairs \\
+${\mathcal D}$ & Gaussian‐field idealization of $\mathcal D$ \\
 $\varepsilon_T$          & True generalization error of $T$ (unknown) \\
 $\widehat\varepsilon$    & Empirical test‐set error estimate \\
-$\varepsilon_{ST}$       & Student–Teacher average gen. error \\
-$\AVGR$                      & Average Overlap $\displaystyle \AVGR=\tfrac{1}{\ND}S^\top T$ \\
-$\epsilon(R)$            & Annealed potential (e.g.\ $1-AVGR$ for linear, high-T) \\
+$\varepsilon_{ST}$       & Student–Teacher average generalization error \\
+$\SVEC,\;\TVEC$                      & Student and Teacher weight vectors \\
+$\Ys,\;\Yt$                      & Student and Teacher labels $(+1|-1)$  for example $\mu$\\
+$\AVGR$                      & Student-Teacher  Overlap $\displaystyle \AVGR=\SVEC^\top \TVEC$ \\
+$\epsilon(R)$            & \EffectivePotential (i.e.,\ $1-\AVGR$) \\
+$\eta(\SVEC,\TVEC)$            & \SelfOverlap (i.e., $\AVGR$) \\
+$\Q^{ST}$            & Student-Teacher Perceptron \Quality \\
+
 \bottomrule
 \end{tabular}
 \caption{Key notation for the Student–Teacher operational setup.}

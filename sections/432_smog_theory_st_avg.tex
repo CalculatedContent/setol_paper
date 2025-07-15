@@ -25,8 +25,7 @@ our \DataModel is a standard Gaussian $N(0,\sigma^{2}\mathbb{I})$ model for the 
 \label{eqn:mwm_replace_1}
 \end{align}
 where $N(0,\sigma^{2}\mathbb{I})$ denotes a Gaussian distribution with zero mean and variance $\sigma^{2}=\tfrac{1}{M}$,
-\and $\XImu$ is normalized such that $\Vert\XImu\Vert^{2}_{F}=1$ for all $\ND$ data vectors.
-\michaeladdressed{@charles: I just added a label there, in case you are keeping track of labels.}
+\and $\XImu$ is normalized such that $\Vert\XImu\Vert^{2}_{F}=1$ for all $\ND$ data vectors.  The full idealized sample is denoted $\NDXI$, and is an $n\times m$ matrix, or, equivalently, a $n$-dimensional vector  of $m$-dimensional vectors $\XI$.
 
 We make this distinction between Actual and \ModelData to emphasize that,
 later, we will use our so-called \SemiEmpirical procedure to
@@ -215,10 +214,11 @@ After integrating over the data, we have the \emph{data-independent \SelfOverlap
    = &\AVGR.
 \end{align}
 \nred{WHAT SHOULD WE SAY HERE ?
-where the  holds because the elements of $\XI$ are i.i.d.
-Since $d\mu(\NDXI)$ is a measure over a (multi-variate) Gaussian distribution (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$), and because data vectors $\XI$ are normalized you unity (See Section~\ref{app:st-gen-err-annealed-ham}) .}
+where the third equality holds because $\AVGR$ is a scalar constant, and the fourth holds because the elements of $\XI$ are i.i.d. and normalized to unit variance.
+% Since $d\mu(\NDXI)$ is a measure over a (multi-variate) Gaussian distribution (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$), and because data vectors $\XI$ are normalized you unity 
+(See Section~\ref{app:st-gen-err-annealed-ham}) .}
 
-We can not obtain the \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:epsl} as
+We can now obtain the \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:epsl} as
 \begin{align}
 \label{eqn:e0}
 \EPSL(\AVGR)=\langle\DETOPSTLL\rangle_{\AVGNDXI} =  1 - \AVGR .
@@ -256,7 +256,6 @@ To generalize this expression, we will start with the \SelfOverlap $\ETA(\SMAT,\
 Before doing this, however, we note that 
 we can obtain this expression for $\STGE$ by defining the
 \AnnealedHamiltonian $\HANHT(\AVGR)$, at high-Temperature, as in Section~\ref{sxn:mathP}, \EQN~\ref{eqn:Gan_highT_final}.
-\nred{I H a fcn or avg R?}
 Indeed, it is really $\HANHT(\AVGR)=\EPSL(\AVGR)$ that we must generalize to the matrix case, which we do (using a technique
 similar to a Replica calculation, but still in the AA).
 For more details, see Appendix~\ref{sxn:summary_sst92}.
