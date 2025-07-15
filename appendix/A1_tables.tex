@@ -17,7 +17,7 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
     \hline
     Number of NN Layers & index $L$ & $N_{L}$ \\ \hline
     Number of Data Examples & index $\mu$ & $\ND=N_{D}$ \\ \hline
-    Number of (input) Features & index $i,j$ & $N_{f}$ \\ \hline
+    Number of (input) Features & index $i,j$ & $m=N_{f}$ \\ \hline
     Actual Data (Matrix) & $D$ & $N_{f}\times N_{D}$ \\ \hline
     Model Data (Matrix) & $\mathcal{D}$ & $N_{f}\times N$ \\ \hline    
     \Teacher \Perceptron Weight Vector & $\TVEC$ & $m$ \\ \hline    
@@ -60,13 +60,13 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
 \begin{table}[ht]
   \begin{tabular}{| l | c |}
     \hline
-    \Perceptron \StudentTeacher (ST) Overlap & $R=\tfrac{1}{N}\SVEC^{\top}\TVEC=\tfrac{1}{N}\sum_{i}s_{i}t_{i}$ \\ \hline
+    \Perceptron \StudentTeacher (ST) Overlap & $R=\SVEC^{\top}\TVEC=\sum_{i}s_{i}t_{i}$ \\ \hline
     \StudentTeacher (ST) Overlap Operator& $\OVERLAP=\tfrac{1}{N}\SMAT^{\top}\TMAT$ \\ \hline       
     Matrix Generalized ST Overlap & $\tfrac{1}{N^2}\OLAPSQD$  \\ \hline
-    \StudentTeacher \SelfOverlap & $\eta(\boldsymbol{\xi})=\mathbf{y}^{\top}_{T}\mathbf{y}_{S}$  \\ \hline
+    \StudentTeacher \SelfOverlap & $\eta(\NDXI)=\mathbf{y}^{\top}_{T}\mathbf{y}_{S}$  \\ \hline
     $\ell_2$-Energy Difference or $\ell_2$-Error & $\DETSTLL$ \\ \hline
     $\ell_2$-Energy Difference Operator Form & $\DETOPSTLL:=\sum_{\XI}\DETSTLL$ \\ \hline
-    $\ell_2$-Energy Difference Matrix Operator Form & $\DETOPST:=\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT$\\ \hline
+    $\ell_2$-Energy Difference Matrix Operator Form & $\DETOPST:=\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)$\\ \hline
     \EffectivePotential  & $\epsilon(R)=\epsilon(S,T)=\langle\DETOPSTLL\rangle_{\AVGNDXI}$ \\ \hline
     \LinearPerceptron  $\epsilon(R)$ at high-T, large-$N$ & $\epsilon(R)=1-R$ \\ \hline
     \AnnealedApproximation (AA)& $\langle\ln Z\rangle_{\AVGNDXI}=\ln\langle Z\rangle_{\AVGNDXI}$ \\ \hline
@@ -85,7 +85,7 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
     \TRACELOG Determinant Relation & $\Trace{\ln\mathbf{A}}=\ln\det\mathbf{A}$ \\ \hline
     \TRACELOG (Volume Preserving) Condition & $\Trace{\ln\mathbf{A}}=0$ or $\det\mathbf{A}=1$ \\ \hline
     Effective Correlation Measure Transform & $d\mu(\mathbf{S})\rightarrow d\mu(\AECS)$ \\ \hline
-    HCIZ Integral (Tanaka's Notation)&${\mathbb{E}_{\AECS}}[\exp(\beta\Trace{\TMAT^{\top}\AMAT\TMAT)}$\\ \hline
+    HCIZ Integral (Tanaka's Notation)&${\mathbb{E}_{\AECS}}[\exp(\ND\beta\Trace{\TMAT^{\top}\AMAT\TMAT)}$\\ \hline
       HCIZ Integral  & 
 $\Expected[\AECS]{\exp\!\bigl(\ND\beta N\,\mathrm{Tr}\bigl[\tfrac{1}{N}\,\TMAT^{\top}\,\AECSN\,\TMAT\bigr]\bigr)}$
 \\ \hline
@@ -145,9 +145,9 @@ Or between the outputs of the \Student and the \Teacher NNs. & $\mathbf{\Delta {
 \textbf{\AnnealedHamiltonian (and Potentials)} & $\HAN$ $(\mathcal{E}(R), \EPSL(R))$ & Sec.~\ref{sxn:mathP_annealed},\ref{sxn:summary_sst92} \\
 \hthinline
 The \EffectivePotential (for the Error) is defined as:  &
-$\EPSL(R)=\tfrac{1}{N}\mathcal{E}(R)=\langle \mathbf{\Delta {E}}\rangle_{\AVGNDXI}$ & ~\ref{eqn:e0}\\
+$\EPSL(R)=\tfrac{1}{\ND}\mathcal{E}(R)=\langle \mathbf{\Delta {E}}\rangle_{\AVGNDXI}$ & ~\ref{eqn:e0}\\
 The \AnnealedHamiltonian (for the Error):  &
-$\beta\HAN:=\tfrac{1}{N}\ln\langle e^{-\beta\mathbf{\Delta {E}}}\rangle_{\NDXI}$ & ~\ref{eqn:Gan_def},~\ref{eqn:Gan0} \\
+$\beta\HAN:=\tfrac{1}{\ND}\ln\langle e^{-\beta\mathbf{\Delta {E}}}\rangle_{\NDXI}$ & ~\ref{eqn:Gan_def},~\ref{eqn:Gan0} \\
 At high-T, the relation between $\HANHT$ and $\EPSL(R)$ is &
 $\HANHT(R):=\EPSLR$ & ~\ref{eqn:Gan_highT} \\
 \hthinline

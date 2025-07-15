@@ -21,10 +21,10 @@ G_\mu(z)=\int_{\mathbb R}\frac{\rho(\lambda)}{z-\lambda}\,
 z\in\mathbb C\setminus\operatorname{supp}\mu .
 \end{equation}
 If $G_\mu(z)$ is \emph{holomorphic} at $z=\infty$ one may invert the map
-$w=G_\mu(z)$ in a neighborhood of $w=0$ and define
+$z=G_\mu(z)$ in a neighborhood of $z=0$ and define
 \begin{equation}
 \label{eqn:RTransformExists_Rdef}
-R_\mu(z)=G_\mu^{-1}(z)-\frac{1}{w}.
+R_\mu(z)=G_\mu^{-1}(z)-\frac{1}{z}.
 \end{equation}
 Obstructions to the existence of $R_\mu$ therefore coincide with
 non-analytic terms in the Laurent series of $G_\mu$ about $z=\infty$.
@@ -33,8 +33,8 @@ These can be easily removed, however, by considering that $\rho(\lambda)$ is alw
 \subsubsection{Model and notation}
 \label{sxn:RTransformExists:model}
 
-We first model a \emph{bare} power-law tail regularised only by a hard
-infrared cut-off $\LambdaMin>0$:
+We first model a \emph{bare} power-law tail regularized only by a hard
+lower cut-off $\LambdaMin>0$:
 \begin{equation}
 \label{eqn:RTransformExists_density_bare}
 \rho_{\alpha}(\lambda)=

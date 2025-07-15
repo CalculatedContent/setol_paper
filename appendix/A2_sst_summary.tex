@@ -445,9 +445,9 @@ Given this, it follows from \EQN~\ref{eqn:Gan_lnI_final_mwm} and \EQN~\ref{eqn:G
 \begin{align}
 \label{eqn:GANmat}
 \beta\GANMAT \vert_{N=1}
-  &:=  \frac{M}{2}\Trace{\ln\det \left[1 + \frac{2\beta}{M}(\IM-\mathbf{R})\right]}  ,
+  &:=  \frac{M}{2}\ln\det \left[1 + \frac{2\beta}{M}(\IM-\mathbf{R})\right]  ,
 \end{align}
-and reduces to the same functional form as \EQN~\ref{eqn:Gan2}, as desired, when $R$ is implicitly normalized by $M=m$. \nred{CHECK THIS}
+and reduces to the same functional form as \EQN~\ref{eqn:Gan2}, as desired (recalling that $\SVEC$ and $\TVEC$ are implicitly normalized by $M=m$).
 
 To obtain the high-Temperature form, we use
 \begin{align}
