@@ -75,6 +75,8 @@ the derivative of the \LayerQualitySquared \GeneratingFunction, $\IZG$, defined 
   \label{eqn:IZG_QT}
   \QT := \dfrac{1}{\beta}\dfrac{\partial }{\partial \ND} \lim_{N\gg 1}\IZG
 \end{align}
+\red{where $\ND$ is the number of training examples in the model.}
+
 $\IZG$ is essentially ($\beta$ times) a \emph{negative \FreeEnergy} for the (approximate) \LayerQualitySquared.
 (see Section~\ref{sxn:SMOG_main}, and the Appendix, Section~\ref{sxn:quality}).
 For more details, see Section~\ref{sxn:matgen}, and the Appendix, Section~\ref{sxn:summary_sst92}).
@@ -151,7 +153,7 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
     \label{eqn:QT_result}
     \QT = \dfrac{1}{\beta}\dfrac{\partial}{\partial \ND}\IZGINF = \sum_{i=1}^{\MECS}\GNI
   \end{align}
-  where $\GNI$ is, albeit imprecisely, a \emph{\GEN} of sortd, and is  defined as the integrated \emph{\RTransform} $R(z)$ of the \Teacher
+  where $\GNI$ is, albeit imprecisely, a \emph{\GEN}, and is  defined as the integrated \emph{\RTransform} $R(z)$ of the \Teacher
   layer ESD (where $z\in\mathbb{C}$), such that $\GN:= \int_{\LambdaECSmin}^{\lambda}R(z)dz$
   and $\LambdaECSmin$  encapsulates  the~\ECS (and, for some choices of $R(z)$,  selects the desired branch-cut of $R(z)$
   so that it is both analytic and well-behaved) .
@@ -164,14 +166,14 @@ This may include the number of Spikes $\lambda^{spike}$, the fitted PL exponent 
 the maximum eigenvalue $\lambda_{max}$, or even the entire tail $\rho^{tail}_{T}(\lambda)$.
 This may be a formal expression, a computational procedure, or some combination.
 
-To integrate $R(x)$, however, to have a physically meaningful result,
+To integrate $R(z)$, however, to have a physically meaningful result,
 one must ensure that $R(z)$ is both
 analytic and single-valued on the domain of interest, namely, the \ECS (and therefore
 the (PL) tail of the ESD),  $z \ge \LambdaECSmin$.
 Because the ESD is frequently \HeavyTailed (HT), this
 \RTransform $R(z)$ may have a branch-cut, and it is expected that this will occur
-at $z\le \LambdaECSmin$, corresponding roughly at or before the start of the \ECS.
-In a sense, selecting the branch-cut $R(z)$ forces one to define the \ECS.
+at $z\approx\LambdaECSmin$, corresponding roughly at or before the start of the \ECS (i.e., at the peak of the ESD on a log scale).
+Selecting the branch-cut $R(z)$ provides an additional physical meaning to the \ECS.
 
 To complete the theory, we
 will also show that the \HTSR PL \LayerQuality metrics \ALPHA $(\alpha)$  and \ALPHAHAT $(\ALPHAHATEQN)$
@@ -184,7 +186,7 @@ The formulation of SETOL closely parallels the construction of an \EffectiveHami
 via the \WilsonExactRenormalizationGroup~(RG) approach. Consider a \emph{\Bare} Hamiltonian $\HBARE$ for the \LayerQualitySquared,
 defined as $\HBARE:= \mathbf{R}^{\TR}\mathbf{R}$.
 We can express Eqn.\ref{eqn:QT_dS} in terms of this \Bare Hamiltonian $\HBARE$,
-and rewrite Eqn.\ref{eqn:IZGINF_HCIZ} in terms of an \emph{\Renormalized} \EffectiveHamiltonian~$\HEFF$
+and rewrite Eqn.\ref{eqn:IZGINF_HCIZ} in terms of an \emph{Renormalized} \EffectiveHamiltonian~$\HEFF$
 that spans the \EffectiveCorrelationSpace~(\ECS). Formally, we have:
 \begin{align}
 \label{eqn:RG}

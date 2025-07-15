@@ -1,16 +1,16 @@
 
-\subsection{Evaluating the Trace-Log Condition}
+\subsection{Evaluating the \TRACELOG  Condition}
 \label{sxn:empirical-trace_log}
 
 %Here, 
-Having established that the PL tail of the ESD, defined by eigenvalues above $\LAMBDAPL$, is a major factor in determining model quality in the MLP3 model, we now examine how well the Trace-Log Condition compares with it. 
+Having established that the PL tail of the ESD, defined by eigenvalues above $\LAMBDAPL$, is a major factor in determining model quality in the MLP3 model, we now examine how well the \TRACELOG  Condition compares with it. 
 In particular, we demonstrate that when the tail of a layer ESD is described well by the \HTSR \Phenomenology, i.e., when 
 it is well-fit by a PL with $\rho(\lambda)_{tail}\sim\lambda^{-\alpha}$, with PL exponent $\alpha\simeq2$, then the 
-eigenvalues in the tail defined by the PL fit, i.e., $\lambda\ge\LAMBDAPL$, \emph{also} satisfy the Trace-Log Condition 
+eigenvalues in the tail defined by the PL fit, i.e., $\lambda\ge\LAMBDAPL$, \emph{also} satisfy the \TRACELOG  Condition 
 of \EQN~\ref{eqn:detX}---\emph{a key assumption of the \SETOL theory}.
 This is a rather remarkable empirical result that couples \HTSR and \SETOL; it has its basis in our \SETOL derivation; and it provides the basis for an inductive principle that is based on the product of eigenvalues rather than an eigenvalue gap.
 
-We can denote the eigenvalue that best fits the Trace-Log Condition as $\LAMBDADETX$. 
+We can denote the eigenvalue that best fits the \TRACELOG  Condition as $\LAMBDADETX$. 
 Then, to measure how well this condition holds, we can compute
 \begin{align}
         \label{eqn:D_lambda_min}
@@ -32,7 +32,7 @@ As learning rate increases, the red and purple lines draw closer, and they are c
 (Compare this with Figure~\ref{fig:mlp3-alphas-lr}, Section~\ref{sxn:empirical-test_acc}, which shows that this corresponds with an increase in test accuracy, up to $lr=16\times$, but at $lr=32\times$ \ALPHA fell below $2$ and accuracy suffered.) 
 In Figure~\ref{fig:mlp3-randesd-8}-\ref{fig:mlp3-randesd-16}, the purple line is left of the red line; but in Figure~\ref{fig:mlp3-randesd-32}, the red and purple lines cross, such that $\LAMBDAPL < \LAMBDADETX$.
 This is analogous to the case where $\alpha$ crosses below $2$. 
-This suggests that the absolute Trace-Log is minimized when $\alpha\simeq2$, which (remarkably) is exactly when the \HTSR \Phenomenology predicts the layer is \Ideal.
+This suggests that the absolute \TRACELOG  is minimized when $\alpha\simeq2$, which (remarkably) is exactly when the \HTSR \Phenomenology predicts the layer is \Ideal.
 
 (Observe that \Ideal does not necessarily mean optimal under a finite sized training set, but rather that the finite-sized system behaves the most similarly to its infinite limit.)
 \michaeladdressed{MM TO DO: Make sure that we define \Ideal somewhere, probably in the intro; and that parenthetical comment should probably go there.}
@@ -169,7 +169,7 @@ Layer matrices from all models in each series are pooled to generate the plots.%
 Notice that in Figure~\ref{fig:VGG_trend} -- \ref{fig:DenseNet_trend}, $\Delta\lambda_{min}$ approaches zero as $\alpha\rightarrow 2$ from above. 
 Individual points may have a large $\Delta\lambda_{min}$ for an $\alpha$ near to $2$, but the overall trend is apparent. 
 The rapid decrease of $\Delta\lambda_{min}$ as $\alpha$ approaches $2$ from above implies that the PL tail rapidly 
-takes on a unit Trace-Log (if it doesn't already have it.)
+takes on a unit \TRACELOG  (if it doesn't already have it.)
 
 As we saw in comparison of Figures~\ref{fig:mlp3-msr-results-xmin} and~\ref{fig:mlp3-msr-results-detX}, 
 (Section~\ref{sxn:trunc_err_epochs},) the \TRACELOG tail is generally larger, and always has highly generalizing 

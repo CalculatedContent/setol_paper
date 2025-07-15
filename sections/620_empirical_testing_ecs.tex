@@ -9,7 +9,7 @@ How shall we \emph{test the assumption} of the \EffectiveCorrelationSpace?
 Recall that the \SETOL theory estimates model quality by evaluating the ST \GeneralizationError as an integral over the theoretical training data $\boldsymbol{\xi}$.
 This integral assumes each layer weight matrix can be replaced with an effectively lower rank form, i.e., $\mathbf{W}\rightarrow\mathbf{W}^{\EFF}$, corresponding to the span of the eigencomponents defined by the tail of the ESD, $\rho_{tail}(\lambda)$. 
 In the \HTSR \Phenomenology, the tail is defined by the fact that $\rho_{tail}(\lambda)$ follows a PL distribution, above some minimal value $\lambda_{min}$.
-In our \SETOL theory, the tail is defined by choosing the minimal value $\lambda_{min}$ to satisfy the Empirical Trace-Log condition.
+In our \SETOL theory, the tail is defined by choosing the minimal value $\lambda_{min}$ to satisfy the Empirical \TRACELOG  condition.
 %
 These methods of realizing $\mathbf{W}^{\EFF}$ are essentially \emph{Model Selection Rules} (MSRs) for the \EffectiveCorrelationSpace. 
 %By ``\ModelSelectionRule, we refer to a procedure to choose a $\lambda_{min}$ such that all eigenvalues above $\lambda_{min}$ are included in the tail. 
@@ -54,7 +54,7 @@ $\lambda_i \ge \LAMBDAPL$, where $\LAMBDAPL$ is the start of the PL tail, as det
 \item 
 The \TRACELOG~MSR: 
 All eigenvalues lying in the tail of the ESD, 
-such that they satisfy the Trace-Log Condition, i.e., $\lambda_{i}\ge \LAMBDADETX$, where $\prod\lambda_{i:\lambda_i \ge \LAMBDADETX}\simeq 1$.
+such that they satisfy the \TRACELOG  Condition, i.e., $\lambda_{i}\ge \LAMBDADETX$, where $\prod\lambda_{i:\lambda_i \ge \LAMBDADETX}\simeq 1$.
 \end{itemize}
 \chris{CH TODO: Find a place to call out the need for Normalizing $W$ to Frobenius norm = $M$.}
 
