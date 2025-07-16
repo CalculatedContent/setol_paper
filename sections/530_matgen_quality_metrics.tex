@@ -16,11 +16,11 @@ For the vector-based \Perceptron ST model, the data-averaged \SelfOverlap appear
 \LayerQuality  in \EQN~\ref{eqn:QST_final}, and is just the average ST vector overlap $R=\frac{1}{\ND}\SVEC^{\top}\TVEC$. 
 We define 
 \begin{equation}
-\mathbf{R} = \tfrac{1}{N} \SMAT^{T} \TMAT  .
+\mathbf{R} =  \SMAT^{T} \TMAT  .
 \end{equation}
-\red{The overlap matrix $\OVERLAP$ describes the average interactions between $N$ interacting $M$-dimensional layer (i.e., feature) vectors.  Also, notice that we have dropped $1/\ND$ term.}
+The overlap matrix $\OVERLAP$ describes the average interactions between $N$ interacting $M$-dimensional layer (i.e., feature) vectors.  Also, notice that we have dropped $1/\ND$ term.
 For the vector-based ST model, the ST \Quality $\Q^{ST}$ in \EQN~\ref{eqn:QST_final} is expressed as
-the \ThermalAverage $\Q^{ST}(\AVGR)=\THRMAVG{\AVGR}$. We seek a similar formal expression for the matrx-generalized \LayerQuality $\Q^{NN}_{L}$.
+the \ThermalAverage $\Q^{ST}(\AVGR)=\THRMAVG{\AVGR}$. We seek a similar formal expression for the individual matrx-generalized \LayerQuality $\Q^{NN}_{L}$.
 \item
 \textbf{Model and Layer Qualities $\Q^{NN}$, $\Q^{NN}_{L}$}
 We define the \ModelQuality $\Q^{NN}$ ,
@@ -76,7 +76,7 @@ For our matrix generalization, we compute $\Q$ from a \emph{\LayerQualitySquared
   \label{eqn:betaIZG_S}
   \IZG:=  \red{\tfrac{1}{N}}\ln \int d\mu(\SMAT) \exp\left[\ND\beta N\OLAPSQD\right] .
 \end{align}
-\nred{We normalize the $\IZG$ because we are going to take the \LargeN limit in $N$, and we need to keep the \Quality finite.  This allows us to implicitly fix the effective load of the layer, $N/\ND$, as $\IZG$ is also in the \ThermodynamicLimit and therefore at \LargeN in $\ND$, although we do not explicitly set $N/\ND$.}
+We normalize the $\IZG$ because we are going to take the \LargeN limit in $N$, and we need to keep the \LayerQuality finite.  This allows us to implicitly fix the effective load of the layer, $N/\ND$, as $\IZG$ is also in the \ThermodynamicLimit and therefore at \LargeN in $\ND$, although we do not explicitly set $N/\ND$.
 See Appendix~\ref{sxn:quality} for the derivation of \EQN~\ref{eqn:betaIZG_S} (and recall the discussion in Section~\ref{sxn:mathP}). 
 
 
@@ -242,25 +242,25 @@ and layer PL exponent  $\alpha\rightarrow\ 2+$ (from above)~\cite{MM19_HTSR_ICML
 \michael{Mention of HTSR}
 This suggests the integral in \EQN~\ref{eqn:QT}
 should instead average over a low rank subspace spanned \emph{only by} the generalizing eigen-components of the
-student layer Inner Correlation matrix, $\AMATM=\tfrac{1}{N}\SMAT^{\top}\SMAT$
+student Inner Correlation matrix, $\AMATM=\tfrac{1}{N}\SMAT^{\top}\SMAT$
 (or equivalently, the Outer Correlation matrix $\AMATN$).
-We call this subspace the \EffectiveCorrelationSpace (\ECS).
+\textbf{We call this subspace the \EffectiveCorrelationSpace (\ECS).}
 
 Let $\AECS$ be the matrix spanned by the largest $\MECS$ eigen-components $\AMAT$
 in either form, $\AMATM$ (Inner) or $\AMATN$ (Outer), and using physics BraKet notation, giving
 \begin{align}
   \label{sqn:AecsDefined}
-  \AECS:=\mathbf{P}_{\EFF}\AMAT,\;\;  \mathbf{P}_{\EFF}:= \sum_{i=1}^{\MECS}|\lambda_{i}\rangle\langle\lambda_{i}|
+  \AECS:=\mathbf{P}_{\EFF}\AMAT,\;\;  \mathbf{P}_{\EFF}:= \sum_{i=1}^{\MECS}|\LambdaECS_{i}\rangle\langle\LambdaECS_{i}|
 \end{align}
 where $\mathbf{P}_{\EFF}$ is the projection operator onto the subspace spanned by the eigenvector
-$|\lambda_{i}\rangle$  associated with the eigenvalue $\lambda_{i}$ of $\AMATM$ or, equivalently, $\AMATN$.
+$|\LambdaECS_{i}\rangle$  associated with the eigenvalue $\LambdaECS_{i}$ of $\AMATM$ or, equivalently, $\AMATN$.
 We denote the corresponding projected \Student correlation matrices with a tilde, as follows:
 \begin{align}
   \AMATM \rightarrow \AECSM\;\; \text{such that}\;\; d\mu(\AMATM) \rightarrow d\mu(\AECSM) \\ \nonumber
   \AMATN \rightarrow \AECSN\;\; \text{such that}\;\; d\mu(\AMATN) \rightarrow d\mu(\AECSN)  \nonumber
 \end{align}
-where now the matrices $\AECSM$ and $\AECSN$ are restricted to the \ECS, and the measure $d\mu(\AECSM)$ is similarly restricted.
- See Appendix~\ref{sxn:TraceLogDerivation} for a more detailed discussion of this.
+where now the matrices $\AECSM$ and $\AECSN$ are restricted to the \ECS, and the measure $d\mu(\AECSM)$ is similarly restricted.  We denote the eigenvalue $\lambda$ with the tilde, $\LambdaECS$, when we want to emphasize it is in the \ECS--\emph{but may drop the tilde} if it is clear from the context.
+ See Appendix~\ref{sxn:TraceLogDerivation} for more..
    
 When an ESD is \emph{\FatTailed} the~\ECS is at least as large if not larger than the PL tail of the ESD.
 \michael{Mention of Fat.}

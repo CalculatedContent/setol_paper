@@ -11,7 +11,7 @@ For completeness, we restate it here using the notation of the main text:
 \underbrace{
   \Expected[\mathbf{\AMAT}]{
     \exp\left(\frac{\ND\beta}{2}
-    \Trace{\mathbf{W}^{\top} \AMAT_N \mathbf{W}}
+    \Trace{\mathbf{W}^{\top} \AMATN \mathbf{W}}
     \right)
   }
  }_{\text{HCIZ Integral}}
@@ -20,7 +20,7 @@ For completeness, we restate it here using the notation of the main text:
 where 
 $\mathbf{W}$ is the $N\times M$ \Teacher weight matrix, 
 $\AMAT=\AMAT_N$ is the $N\times N$ \Student (correlation) matrix, 
-but $\ND\beta$ is now the inverse-Temperature (because we are working with real matrices),
+but $\beta$ is now the inverse-Temperature (because we are working with real matrices), $\ND$ is the size of the training set, 
 and we have added a $\tfrac{1}{2}$ (which will be clear later).
 $\GNORM(\lambda)$ is a complex analytic function of the eigenvalues $\lambda$ of (the \Teacher Correlation matrix) $\XMAT$, 
 whose functional form will depend on the structure of the limiting form of (the \Student) ESD $\rho_{\AMAT}^{\infty}(\lambda)$.
@@ -41,20 +41,20 @@ I am in the process of cleaning this up.
 }
 
 To apply this result, we note that
-while the term $\ND\beta$ is just a constant in~\cite{Tanaka2008}
+while the term $\beta$ is just a constant in~\cite{Tanaka2008}
 ($1$ or $2$, depending on whether the random matrix is real or complex),
-it is not actually inverse Temperature $\ND\beta=\tfrac{1}{T}$ in the original derivation.
-Still, we seek a final result that is linear in $\ND\beta=\tfrac{1}{T}$,
+it is not actually inverse Temperature $\beta=\tfrac{1}{T}$ in the original derivation.
+Still, we seek a final result that is linear in $\beta=\tfrac{1}{T}$,
 so that we can easily evaluate $\QT$ in the high-T limit, i.e.
 $\QT
-=\tfrac{\partial}{\partial N}\tfrac{1}{\ND\beta}\IZGINF
-=\tfrac{\partial}{\partial \ND\beta}\tfrac{1}{N}\IZGINF$
+=\tfrac{\partial}{\partial \ND}\tfrac{1}{\beta}\IZGINF
+=\tfrac{\partial}{\partial \beta}\tfrac{1}{\ND}\IZGINF$
 (see \ref{eqn:IZG_QT}).
-We can introduce $\ND\beta=\tfrac{1}{T}$ by
+We can introduce the new term $\ND\beta$ by
 simply changing the scale of $\AMAT_N$ since the final result is a sum of \RTransforms, which by definition
 are linear, i.e., $\GNORM(\ND\beta\lambda)=\ND\beta \GNORM(\lambda)$, however, it is instructive
 to rederive the final result, with $\ND\beta$ explicitly included.
-\michaeladdressed{@charles: what is the point of this comment?  Is it just that if temperature is constant, then the derivative is simple, since we dont need the chain rule.  Also, this comment is about applying this result; do we need it for the derivation?}
+
 
 %%Also, notice there is an extra $\tfrac{1}{2}$ term in the exponential; this term will factor out later, but it is added here to make it easier to see how to apply the \emph{Large Deviation Principle} (LDP); this not essential but is nice to have
 %%\nred{I may remove this}
@@ -87,7 +87,7 @@ then it holds that \nred{I think we need $1/N$ below and we need to justify it}
 from which it follows that %%MM%% or, equivalently,
 \begin{equation}
 \label{eqn:hciz_def3}
-  \IZGINF := \red{\frac{1}{N}}\lim_{N \gg 1} \ln\HCIZ  .
+  \IZGINF := \lim_{N \gg 1} \red{\frac{1}{N}}\ln\HCIZ  .
 \end{equation}
 
 The SPA approximates the \PartitionFunction $\HCIZ$, which is now an HCIZ integral,  by its peak value.

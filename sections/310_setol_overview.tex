@@ -34,16 +34,16 @@ of the matrix-generalized overlap ($\Trace{\OVERLAP^{2}}$),
 where $\OVERLAP^{2}$ can be thought of as a \Hamiltonian for the \QualitySquared  $(\HBARE=\OVERLAP^{\top}\OVERLAP)$.
 
 In \EQN~\ref{eqn:QT}, the so-called \emph{\Teacher} ($T$) is the NN model under consideration,
-%where $\mathbf{T}$ and $\mathbf{S}$  are the \Teacher and \Student layer weight matrices, resp,
+%where $\TMAT$ and $\SMAT$  are the \Teacher and \Student layer weight matrices, resp,
 and 
 %$\mathbf{R}$ 
-$\mathbf{R}:=\frac{1}{N}{\mathbf{S}^{\TR}\mathbf{T}}$
+$\mathbf{R}:=\frac{1}{N}{\SMAT^{\TR}\TMAT}$
 denotes the ST overlap operator 
 between the \Teacher layer weight matrix $\TMAT$ and a similar \emph{\Student} ($S$) layer weight matrix $\SMAT$.
 The notation $\THRMAVGIZ{\cdots}$ denotes a \ThermalAverage over
-all \Student weight matrices $\mathbf{S}$ that resemble the \Teacher weight matrix $\mathbf{T}$.
+all \Student weight matrices $\SMAT$ that resemble the \Teacher weight matrix $\TMAT$.
 By ``resemble'', the \SETOL approach assumes that 
-the ESD of $\mathbf{S}$ has the same \emph{limiting} form as $\mathbf{T}$, placing them in the same \HTSR Universality class.
+the ESD of $\SMAT$ has the same \emph{limiting} form as $\TMAT$, placing them in the same \HTSR Universality class.
 This is made more precise below.
 
 \paragraph{The Overlap $\OVERLAP$, and the Inner and Outer forms of $\AMAT$, $\AMATM$ and $\AMATN$, resp.}
@@ -51,22 +51,20 @@ Let us now express the average matrix-matrix overlap $\mathbf{R}$ in squared for
 \begin{align}
   \label{eqn:R2}
 \Trace{\OVERLAP^{2}} &:=\OLAPSQD  \\ \nonumber
-&=\frac{1}{N^{2}}\Trace{\mathbf{T}^{\TR}\mathbf{SS}^{\TR}\mathbf{T}}
-=\frac{1}{N}\Trace{\mathbf{T}^{\TR}\mathbf{A}_N\mathbf{T}}
+&=\frac{1}{N^{2}}\Trace{\TMAT^{\TR}\SMAT\SMAT^{\TR}\TMAT}
+=\frac{1}{N}\Trace{\TMAT^{\TR}\AMATN\TMAT}
 \end{align}
-where $\AMATN$ is called the \emph{Outer} \Student correlation matrix, and is  the $N\times N$ form of the \Student correlation matrix,  
-$\mathbf{A}_N:=\frac{1}{N}\mathbf{SS}^{\TR}$.
-We will also define the  the \emph{Inner} \Student correlation matrix,  the $M\times M$ matrix, $\AMATM=\frac{1}{N}\mathbf{S}^{\TR}\mathbf{S}$, which is 
-used later. Note that $\AMATM$ also has a $\frac 1 N$ factor, so that its non-zero eigenvalues will be the same as $\AMATN$, but has dimensions $M \times M$. We will denote the Outer  $\AMATN$ and Innder $\AMATM$ forms when the context demands it, and will simply use the general form $\AMAT$ when they can be interchanged.
+where $\AMATN$ is called the \emph{Outer} \Student correlation matrix, and is  the $N\times N$ form of the \Student correlation matrix,
+$\AMATN:=\frac{1}{N}\mathbf{SS}^{\TR}$.
+We will also define the $M\times M$ \emph{Inner} \Student correlation matrix $\AMATM=\frac{1}{N}\SMAT^{\TR}\SMAT$, which is 
+used later. Note that $\AMATM$ also has a $\frac 1 N$ factor, so that its non-zero eigenvalues will be the same as $\AMATN$, but has dimensions $M \times M$. We will denote the Outer $\AMATN$ and Inner $\AMATM$ forms when the context demands it, and will simply use the general form $\AMAT$ when they can be interchanged.
 
-\michaeladdressed{Clarify.}
 %It is argued that the \Student and \Teacher weight matrices (i.e., $\TMAT, \SMAT$) have
 %specific generalizing eigencomponents that, after training,
 %concentrate in a low rank subspace, called the \emph{\EffectiveCorrelationSpace} (\ECS)
 %(and that this space satisfies the \TRACELOG condition, described below).
 %This is both consistent with the empirical observations and necessary to apply the HCIZ integral
 %methods, both described below.
-\michaeladdressed{MM TO DO: Dense.  Where is the best place for this par.}
 
 \paragraph{The Quality-Squared Generating Function $\IZG$.}
 As explained in Section~\ref{sxn:mathP}, this \QualitySquared is more readily obtained as 
@@ -75,7 +73,7 @@ the derivative of the \LayerQualitySquared \GeneratingFunction, $\IZG$, defined 
   \label{eqn:IZG_QT}
   \QT := \dfrac{1}{\beta}\dfrac{\partial }{\partial \ND} \lim_{N\gg 1}\IZG
 \end{align}
-\red{where $\ND$ is the number of training examples in the model.}
+where $\ND$ is the number of training examples used to train the model.
 
 $\IZG$ is essentially ($\beta$ times) a \emph{negative \FreeEnergy} for the (approximate) \LayerQualitySquared.
 (see Section~\ref{sxn:SMOG_main}, and the Appendix, Section~\ref{sxn:quality}).
@@ -84,7 +82,7 @@ For more details, see Section~\ref{sxn:matgen}, and the Appendix, Section~\ref{s
 We can write $\IZG$ as an HCIZ Integral, 
 \begin{align}
   \label{eqn:QT_dS}
-  \IZG  &= \red{\tfrac{1}{N}} \ln\int d\mu(\mathbf{S})\exp\left(\ND \beta N\Trace{\mathbf{T}^{\TR}\mathbf{A}_N\mathbf{T}}\right),
+  \IZG  &= \red{\tfrac{1}{N}} \ln\int d\mu(\SMAT)\exp\left(\ND \beta N\Trace{\TMAT^{\TR}\AMATN\TMAT}\right),
 \end{align}
 
 The \SETOL approach then seeks to express $\IZG$ in~\EQN~\ref{eqn:QT_dS} as an HCIZ integral (and in the large-N limit)~\cite{potters_bouchaud_2020,Tanaka2007,Tanaka2008}.
@@ -92,21 +90,21 @@ We evaluate this at large-$N$, and write
 \begin{equation}
   \IZGINF:=\lim_{N\gg 1}\IZG
 \end{equation}
-\nred{The result is effectively expressed in the limit of fixed load $N/\ND$, analogous to a  renormalized mean-field  (i.e., \SemiEmpirical) theory over $N$ interacting feature vectors of length $M$.}
+The result is effectively expressed in the limit of fixed load $N/\ND$, analogous to a renormalized mean-field  (i.e., \SemiEmpirical) theory over $N$ interacting (feature) vectors of length $M$.
 %%%must restrict the matrices to a lower rank subspace, called the~\ECS,
 %%%i.e.,  $\mathbf{\tilde{A}}$. 
 %%%We also must change the measure from an integral over \Student weight matrices
 %%%to an integral over \Student Correlation matrices, i.e., 
 %%%\begin{align}
 %%%  \label{eqn:change_measure}
-%%%  d\mu(\mathbf{S})\rightarrow d\mu(\mathbf{\tilde{A}}) ,
+%%%  d\mu(\SMAT)\rightarrow d\mu(\mathbf{\tilde{A}}) ,
 %%%\end{align}
 %%%We can define a single measure for either form of \Student correlation matrix, restricted to the~\ECS,
 %%%such that 
 %%%$d\mu(\mathbf{\tilde{A}})=d\mu(\mathbf{\tilde{A}}_1)=d\mu(\mathbf{\tilde{A}}_2)$.
 %%%This will be important as we need the form $\AMAT_1$ to derive the \TRACELOG condition, below, but
 %%%we  formulate the  $\IZG$ using the form $\AMAT_2$.
-%%%%Also, and importantly, the change in measure from $d\mu(\mathbf{S})$ to $d\mu(\mathbf{\tilder{A}})$
+%%%%Also, and importantly, the change in measure from $d\mu(\SMAT)$ to $d\mu(\mathbf{\tilder{A}})$
 %is needed in order to apply the HCIZ  integral.
 With these definitions in place, moving forward, the following key assumptions, which can be tested empirically, must hold:
 \begin{itemize}
@@ -139,7 +137,7 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
   We have
   \begin{align}
   \label{eqn:IZGINF_HCIZ}
-  \IZGINF = \lim_{N\gg 1}\red{\tfrac{1}{N}}\ln\int d\mu(\AECS)\exp\left(\ND\beta\Trace{\mathbf{T}^{\TR}\AECSN\mathbf{T}}\right) %= \beta\sum_{i=1}^{\MECS}\GNECS
+  \IZGINF = \lim_{N\gg 1}\red{\tfrac{1}{N}}\ln\int d\mu(\AECS)\exp\left(\ND\beta\Trace{\TMAT^{\TR}\AECSN\TMAT}\right) %= \beta\sum_{i=1}^{\MECS}\GNECS
   \end{align}
   where  measure $d\mu(\AECS)$ lets us average over all (Outer) \Student Correlation matrices $\AECSN$ explicitly, which
   lie in the~\ECS space and which ``resemble'' the \Teacher, 
@@ -192,8 +190,8 @@ that spans the \EffectiveCorrelationSpace~(\ECS). Formally, we have:
 \label{eqn:RG}
 \red{\tfrac{1}{N}}\ln \int d\mu(\SMAT)e^{\ND \beta N \operatorname{Tr}[\HBARE]} \;\xrightarrow{ERG}\; \lim_{N\gg 1}\red{\tfrac{1}{N}}\ln \int d\mu(\AECS)e^{\ND \beta N \operatorname{Tr}[\HEFF]} 
 \end{align}
-where the \ERG transformation is defined by the \ScaleInvariant change of measure ,
-applied in a \LargeN expansion,
+where the \ERG transformation is defined by the \ScaleInvariant change of measure,
+applied in the \WideLayer \LargeN limit in $N$,
 and where $\HEFF$ is defined implicitly through result for $\QT$ (Eqn.~\ref{eqn:QT_result}).
 The result is, formally, a sum of the integrated \RTransforms $\GNI$.
 In a sense, this result resembles (a non-perturbative form of) the Linked Cluster Theorem

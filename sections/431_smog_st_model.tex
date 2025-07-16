@@ -76,7 +76,7 @@ Figure~\ref{fig:precision} illustrates the following two scenarios side by side:
     estimates how faithfully $S$ reproduces $T$ (its precision), rather than true accuracy.
 \end{itemize}
 
-By analyzing the Student–Teacher overlap $R = \sum_\mu s^T t$, one can show that the average generalization error of $T$ depends simply on $1-R$ under the annealed approximation—even when $T$ was trained on noisy labels.  In practice, we exploit this fact by training a large ensemble of students to estimate $R$ and hence recover the teacher’s true error.
+By analyzing the Student–Teacher overlap $R = \sum_\mu s^T t$, one can show that the average generalization error of $T$ depends simply on $1-R$ under the annealed approximation—-even when $S$ was trained on noisy labels. In practice, we exploit this fact by training a large ensemble of students to estimate $R$ and hence recover the teacher’s true error.
 %\paragraph{Estimating the Teacher Error with Students: Accuracy vs. Precision}
 %
 %Imagine training a \Student $(S)$  model (with a similar architecture as $T$, and acting on the same  
@@ -104,7 +104,7 @@ The \StudentTeacher model also explains why NNs can generalize even when trained
 \paragraph{Learning the Student}
 Moving forward, we will always assume the \Teacher is trained to \Interpolation because this
 actually corresponds to the \AnnealedApproximation, whereas if the \Teacher makes
-errors, we may need to consided  \Quenched averages, explained below.
+errors, we may need to consider \Quenched averages, explained below.
 
 Imagine now that in order to estimate the empirical \AverageGeneralizationError, $\AVGEMPGE$,
 by training a very large number of Students, and computing the average ST error on some test set.
@@ -207,7 +207,7 @@ from the final estimate for $\AVGEMPGE$.
 However, the theoretical quenched result may differ significantly from the annealed case when the underlying model is unrealizable~\cite{SST92}. 
 This may occur when the training data is very noisy and/or the model architecture is such that it can not correctly predict all the training labels.
 In such cases, the model will always have some finite, non-zero Average \TrainingError, $\AVGTE > 0$,
-even in the \LargeN limit of infinite data $\ND=\infty$.  In such a case, this indicates
+even in the \LargeN limit of infinite data $\ND=\infty$. In such a case, this indicates
 a highly complex error landscape with many local minima separated by extremely high barriers,
 and a slowing down of the dynamics.%
 \footnote{In modern ML parlance, one might say the model can not be evaluated at interpolation, although 

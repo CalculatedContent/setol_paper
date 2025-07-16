@@ -132,9 +132,9 @@ This gives $\EPSLSTx\rightarrow\EPSL(\AVGR)$, where
 \AVGR=\SVEC^{\top}\TVEC=\sum_{i=1}^{m}s_{i}t_{i}, \;\;\AVGR\in[0,1].
 \end{align}
 which is simply the dot product between the $m$-dimensional \Student $\SVEC$ and \Teacher $\TVEC$ weight vectors.
- Notice that the data vectors are normalized such that $\Vert\SVEC\Vert_{F}=\Vert\T
+ Notice that the data vectors are normalized such that $\Vert\SVEC\Vert_{F}=\Vert
 \TVEC\Vert_{F}=1$ and 
-we assume there \emph{no inversely-correlated} Students that predict more than half the Teacher labels incorrectly.  And, importantly, the number of free parameters becomes $1$.
+we assume there are \emph{no inversely-correlated} Students that predict more than half the Teacher labels incorrectly. And, importantly, the number of free parameters becomes $1$.
 
 For a \LinearPerceptron~\cite{SST92},% 
 \footnote{In the classic approach for the ST model, the theory examined different expressions $\EPSL(\AVGR)$.
@@ -185,7 +185,7 @@ This lets us write
 \label{eqn:deriveSTerror}
 =& \ND- \Trace{\ETA(\SVEC,\TVEC,\red{\NDXI})},
 \end{align}
-where we define  the  \emph{data-dependent \SelfOverlap}:
+where we define the \emph{data-dependent \SelfOverlap}:
 \begin{equation}
 \ETA(\SVEC,\TVEC,\red{\NDXI}):=(\YsVEC)^{\top}(\YtVEC)
 \end{equation}
@@ -195,7 +195,7 @@ It is convenient to work directly with
 the \SelfOverlap $\ETA(\SVEC,\TVEC,\NDXI)$ because it will appear later in \EQN~\ref{eqn:eta_mat_avg_def} (in Section~\ref{sxn:matgen}), 
 when formulating the matrix-generalized overlap operator~$\OVERLAP$.
 
-In defining $\ETA(\SVEC,\TVEC,\NDXI)$, we replace the individual labels $(\Ys,\Yt)$ with the Energy functions $E_{NN}$  that generate them, giving an expression in terms of the weights $(\SVEC,\TVEC)$ and the Gaussian data variables $(\XI)$. We will then integrate out the data variables, leaving an expression just in terms of the weights.  
+In defining $\ETA(\SVEC,\TVEC,\NDXI)$, we replace the individual labels $(\Ys,\Yt)$ with the Energy functions $E_{NN}$ that generate them, giving an expression in terms of the weights $(\SVEC,\TVEC)$ and the Gaussian data variables $(\XI)$. We will then integrate out the data variables, leaving an expression just in terms of the weights.  
 Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:dnn_energy}, \ref{eqn:S_ENN}, \ref{eqn:T_ENN}), we can write the labels as
 \begin{align}
 \Ys=\SVEC^{\top}\XI_{\mu},\;\;
@@ -246,18 +246,17 @@ is just the \AverageGeneralizationAccuracy, so we can write
 \label{eqn:QST_final}
 \Q^{ST} := 1 - \AVGSTGE(\AVGR) 
        = \THRMAVG{1 - \EPSL(\AVGR)} 
-       = \THRMAVG{\langle\ETA(\SVEC, \TVEC, \XI)\rangle_{\AVGNDXI}} 
+       = \THRMAVG{\langle\ETA(\SVEC, \TVEC, \NDXI)\rangle_{\AVGNDXI}} 
        = \THRMAVG{\ETA(\SVEC, \TVEC)} 
        = \THRMAVG{\SVEC^{\top}\TVEC} 
        = \THRMAVG{\AVGR}.
 \end{align}
 \EQN~\ref{eqn:QST_final} is the starting point for deriving a \SEMIEMP theory for the \WW quality metrics (\ALPHA,\ALPHAHAT);
 see Section~\ref{sxn:matgen_mlp3}.
-To generalize this expression, we will start with the \SelfOverlap $\ETA(\SMAT,\TMAT,\XI)$ for a
+To generalize this expression, we will start with the \SelfOverlap $\ETA(\SMAT,\TMAT,\NDXI)$ for a
 \MultiLayerPerceptron (MLP3) in Section~\ref{sxn:matgen}.
 
-Before doing this, however, we note that 
-we can obtain this expression for $\STGE$ by defining the
+Before doing this, however, we note that we can obtain this expression for $\STGE$ by defining the
 \AnnealedHamiltonian $\HANHT(\AVGR)$, at high-Temperature, as in Section~\ref{sxn:mathP}, \EQN~\ref{eqn:Gan_highT_final}.
 Indeed, it is really $\HANHT(\AVGR)=\EPSL(\AVGR)$ that we must generalize to the matrix case, which we do (using a technique
 similar to a Replica calculation, but still in the AA).

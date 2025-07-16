@@ -44,7 +44,7 @@ Following the same approach in Section~\ref{sxn:SMOG_main-st_av}
 \end{align}
 where the \SelfOverlap $\ETAMLPXI$
 is of the same form as the (vector) \LinearPerceptron (in \EQN~\ref{eqn:deriveSTerror}).
-Note that $\ETAMLPXI$ depends on the (model) data $\boldsymbol{\xi}$
+Note that $\ETAMLPXI$ depends on the (model) data $\NDXI$
 because we have not evaluated the expected value $\langle \cdots \rangle_{\NDXI}$ yet.
 
 Using the general expression from \EQN~\ref{eqn:nflow} for the action of the NN on the input data $\boldsymbol{\xi}$,
@@ -90,7 +90,7 @@ Second, we could attempt to expand \EQN~\ref{eqn:overlap2} into inter- and intra
 which we could readily do if the $S$ and $T$ matrices were square and the same shape, and then apply Wick's theorem:
 \begin{align}
 \ETAMLP\approx\frac{1}{\ND}\prod_{l=1}^{L}\tfrac{1}{N_l}\ETAMATAVG=
-\frac{1}{\ND}\prod_{l=1}^{L}\tfrac{1}{N_l}\Trace{ \XI^{\top} \SMAT^{\top}_{l} \TMAT_{l} \XI) } +\text{intra-layer cross terms}.
+\frac{1}{\ND}\prod_{l=1}^{L}\tfrac{1}{N_l}\Trace{ (\NDXI)^{\top} \SMAT^{\top}_{l} \TMAT_{l} (\NDXI)) } +\text{intra-layer cross terms}.
 \end{align}
 However, these matrices are not square, and we don't know how to express the intra-layer cross terms.
 %
@@ -100,7 +100,7 @@ By ignoring the intra-layer cross-terms, let us write the single-layer self-over
   \label{eqn:eta}
   \ETAMAT =
         \ETAMATAVG\rightarrow \
-        \tfrac{1}{\ND}\tfrac{1}{N} \Trace{ \XI^{\top} \SMAT^{\top}_{l} \TMAT_{l} \NDXI }  .
+        \tfrac{1}{\ND}\tfrac{1}{N} \Trace{ (\NDXI)^{\top} \SMAT^{\top}_{l} \TMAT_{l} (\NDXI) }  .
 \end{align}
 This third approach is the one we will adopt.
 Moving forward, we will drop the layer subscript, $l$, and we will consider a \SETOL as a single-layer theory.
