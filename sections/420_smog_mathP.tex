@@ -1010,7 +1010,7 @@ whereas for the matrix case, we will retain the\emph{'a reduced set} of the  $M$
 \SETOL uses two \LargeN approximations, the \Thermodynamic limit, which is a \LargeN limit in $\ND$, and the \emph{\WideLayer limit}, which is a \LargeN limit in $N$:
 \begin{itemize}
     \item \Thermodynamic limit: $m \gg 1$ (the number of parameters or features, fixed load: $m/\ND = 1$)
-    \item \LargeN limit in n: $\n\gg 1$ (the number of training examples, fixed load: $m/\ND = 1$)
+    \item \LargeN limit in n: $n\gg 1$ (the number of training examples, fixed load: $m/\ND = 1$)
     \item \WideLayer limit: $N\gg 1$ (the larger matrix dimension)
 \end{itemize}
 Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking both \LargeN limts, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number of feature vectors per data point, remains constant, which is consistent with classical \STATMECH theories of learning\cite{MM17_TR} (although we do not enforce this explicitly here).  
