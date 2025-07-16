@@ -149,7 +149,6 @@ WLOG, we assume that $\XVEC_{\mu}$ is normalized such that the Frobenius norm sq
   \label{eqn:XVEC_norm}
   \Vert\XVEC_{\mu}\Vert^{2}_{F} := \sum_{i=1}^{m} \XVEC_{\mu,i}^{2}=1
 \end{equation}
-\red{CHECK THIS}
 We call $\XVEC^{\ND}$ an $\ND$-sized sample (of the training data instances $\XVEC$) from $\ADD$. 
 % See below We may or may not specify the labels for this sample, depending on the context.
 
@@ -272,7 +271,7 @@ where $P(\NDXIn)$ is a product of $\ND$ i.i.d. $m$-dimensional Gaussian distribu
 The subscript $\AVGNDXIn$ indicates this is an
 \ExpectedValue of an average of an $\ND$-size \emph{sample} of ideal data, where the \ExpectedValue is taken over datasets, and the average is over data points within each sample. The third line follows because the $\ND$ samples are i.i.d.
 (This is used in both Sections~\ref{sxn:SMOG_main} and~\ref{sxn:matgen}.)
-Thus, the \red{implicit} normalization $\tfrac{1}{\ND}$ ensures the \BraKet is a proper \ExpectedValue of a sample average.
+The normalization $\tfrac{1}{\ND}$ ensures the \BraKet is a proper \ExpectedValue of a sample average.
 %The measure $d\mu(\NDXIn)$ signifies a single $\ND$ vector $\XI$, drawn from an $m$-dimensional idealized Gaussian distribution.
 A subscript $\XI$ on the Ket as $\langle\cdots\rangle_{\XI}$ indicates that the integral over potential data points, not an average of a data sample (i.e., there would be no $1/\ND$ prefactor).
 % \michaeladdressed{@charles: clarify; that is $\ND$ vectors in $\mathbb{R}^{M}$ that are element-wise i.i.d. Gaussian?}
@@ -341,11 +340,10 @@ This will distinction will be clarified in the Section~\ref{sxn:SMOG_main-studen
 \michael{Q: why is this le 1 (see above)?  If not, then, we can still define the generating function for the accuracy to be negative of the generating function for the error.}
 The average accuracy is simply one minus the error.
 To represent this,
-we introduce the \emph{\SelfOverlap} $\ETA$, which is defined generally as
-\nred{something off here ?}
+we introduce the \emph{\SelfOverlap} $\ETA(\WVEC)$, which is defined generally as
 \begin{align}
  \label{eqn:def_eta}
- \ETA(\WVEC) := 1-\EPSLw \in[0,1] ,
+ \ETA(\WVEC) := 1 -\EPSLw ,\;\;\ETA(\WVEC)\in[0,1] ,
 \end{align}
 and which 
 describes the ``overlap'' between the true and the predicted labels.

@@ -145,9 +145,9 @@ $
 $
 In both cases, perfect learning occurs when $R=1$~\cite{SST92}.
 }
-with activation function $h(x)=x$,  the error function is
+with activation function $h(x)=x$,  we can obtain the error function as
 \begin{align}
-\EPSL(\AVGR)=1-\AVGR\,
+\EPSL(\AVGR)=1-\AVGR.
 \label{eqn:LinearPerceptronError}
 \end{align}
 
@@ -196,7 +196,7 @@ the \SelfOverlap $\ETA(\SVEC,\TVEC,\NDXI)$ because it will appear later in \EQN~
 when formulating the matrix-generalized overlap operator~$\OVERLAP$.
 
 In defining $\ETA(\SVEC,\TVEC,\NDXI)$, we replace the individual labels $(\Ys,\Yt)$ with the Energy functions $E_{NN}$  that generate them, giving an expression in terms of the weights $(\SVEC,\TVEC)$ and the Gaussian data variables $(\XI)$. We will then integrate out the data variables, leaving an expression just in terms of the weights.  
-Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:dnn_energy}, \ref{eqn:S_ENN}, \ref{eqn:T_ENN}), write
+Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:dnn_energy}, \ref{eqn:S_ENN}, \ref{eqn:T_ENN}), we can write the labels as
 \begin{align}
 \Ys=\SVEC^{\top}\XI_{\mu},\;\;
 \Yt=\TVEC^{\top}\XI_{\mu}  .
@@ -206,9 +206,9 @@ This now gives the data-dependent \SelfOverlap explicitly as
   \label{eqn:eta_vec_xi_def}
 \ETA(\SVEC,\TVEC,\NDXI) =\sum_{\mu=1}^{\ND} (\SVEC^{\top}\XI_{\mu})^{\top} (\TVEC^{\top}\XI_{\mu}) = \sum_{\mu=1}^{\ND}\XI^{\top}_{\red{\mu}}  (\SVEC^{\top} \TVEC )\XI_{\red{\mu}} 
 \end{align}
-After integrating over the data, we have the \emph{data-independent \SelfOverlap}
+After integrating over the data, we have the \emph{data-independent \SelfOverlap}, $ETA(\SVEC,\TVEC)$:
 \begin{align}
-  \label{eqn:eta_vec_avg_def}
+\label{eqn:eta_vec_avg_def}
 \ETA(\SVEC,\TVEC) := \langle\ETA(\SVEC,\TVEC,\NDXI)\rangle_{\AVGNDXI}
    = & \frac{1}{\ND}\int d\mu(\NDXI)\ETA(\SVEC,\TVEC,\NDXI) \\ \nonumber
 = & \frac{1}{\ND}\int d\mu(\NDXI)\sum_{\mu=1}^{\ND}\XI_{\mu}^{\top}\SVEC^{\top}\TVEC\XI_{\mu} \\ \nonumber
@@ -221,7 +221,7 @@ where the third equality holds because $\AVGR$ is a scalar constant, and the fou
 % Since $d\mu(\NDXI)$ is a measure over a (multi-variate) Gaussian distribution (i.e., $d\mu(\NDXI)=\mathcal{D}\NDXI P(\NDXI)$), and because data vectors $\XI$ are normalized you unity 
 (See Section~\ref{app:st-gen-err-annealed-ham}) .
 
-We can now obtain the \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error, as in \EQN~\ref{eqn:epsl} as
+We can now obtain the \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error (see \EQN~\ref{eqn:epsl}),  as in \EQN~\ref{eqn:LinearPerceptronError},
 \begin{align}
 \label{eqn:e0}
 \EPSL(\AVGR)=\langle\DETOPSTLL\rangle_{\AVGNDXI} =  1 - \AVGR .
