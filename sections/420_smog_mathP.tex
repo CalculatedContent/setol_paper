@@ -94,7 +94,7 @@ using the \FreeEnergy as a \GeneratingFunction, and how these errors are related
   along with the concepts of \SelfAveraging and \WickRotations.
 %
 \item 
-  \textbf{From the ST Perceptron to q Matrix Model.} 
+  \textbf{From the ST Perceptron to a Matrix Model.} 
   Finally, in Section~\ref{sxn:from_vectors}, we introduce the physical concepts necessary to understand the \SETOL matrix model, including the \WideLayer \LargeN limit and the notion of \SizeConsistency.  We  then describe how to obtain the \LayerQuality $\Q$ from a matrix-generalized \ThermalAverage over random matrices, called an HCIZ integral.
 \end{enumerate}
 The various symbols and other important results are summarized in the Appendix~\ref{sxn:appendix_A}
@@ -144,12 +144,12 @@ where
 $\XVEC_{\mu}\in\mathbb{R}^{m}$ is an $m$-dimensional real vector, 
 $\MY_{\mu}$ is a binary label taking values $\{-1,1\}$, and 
 $\ADD$ denotes the finite-size dataset.
-WLOG, we assume that $\XVEC_{\mu}$ is normalized such that the Frobenius norm squared is $\tfrac{1}{m}$:
+WLOG, we assume that $\XVEC_{\mu}$ is normalized such that the Frobenius norm squared is unity:
 \begin{equation}
   \label{eqn:XVEC_norm}
-  \Vert\XVEC_{\mu}\Vert^{2}_{F} := \sum_{i=1}^{m} \XVEC_{\mu,i}^{2}=\tfrac{1}{m}
+  \Vert\XVEC_{\mu}\Vert^{2}_{F} := \sum_{i=1}^{m} \XVEC_{\mu,i}^{2}=1
 \end{equation}
-\nred{I don't think this normalization is correct, double check}
+\red{CHECK THIS}
 We call $\XVEC^{\ND}$ an $\ND$-sized sample (of the training data instances $\XVEC$) from $\ADD$. 
 % See below We may or may not specify the labels for this sample, depending on the context.
 
@@ -1079,7 +1079,7 @@ We can write
 with the final result
   \begin{align}
     \label{eqn:hciz_tanaka}
-    \IZGINF:=\ND\beta\sum_{i=1}^{\MECS}\int^{\LambdaECS_{i}}_{\LambdaECSmin} dz R(z) ,
+    \IZGINF=\ND\beta\sum_{i=1}^{\MECS}\int^{\LambdaECS_{i}}_{\LambdaECSmin} dz R(z) ,
 \end{align}
 where $R(z)$ is a complex function, the \RTransform of the ESD $\rho(\lambda)$ of the \Teacher, and $\LambdaECS_{i}$ are the eigenvalues of \Teacher \CorrelationMatrix $\XECS$, restricted to the~\ECS.
 For more details, see Section~\ref{sxn:matgen} and Appendices~\ref{sxn:TraceLogDerivation} and~\ref{sxn:tanaka}.
