@@ -1,8 +1,9 @@
-\subsection{Student~-Teacher Model}
+\subsection{Student~-Teacher Perceptron}
 \label{sxn:SMOG_main-student_teacher}
 %\label{sxn:ST-unified-intro}
 
-In this subsection, we present a unified view of the \emph{\StudentTeacher} (ST) model from both a practical and a theoretical perspective.  
+In this subsection, we present a unified view of the \emph{\StudentTeacher} (ST) \Perceptron 
+model from both a practical and a theoretical perspective.  
 From the practical (\emph{operational}) side, imagine a real-world practitioner training a large-scale neural network (NN); call this NN the \Teacher.  
 We wish to assess the Teacher’s \emph{true} accuracy on ground-truth labels in consistently reproducing its own (possibly imperfect) outputs, one can train another network --the \Student--to mimic the Teacher’s predictions.  
 By comparing Student and Teacher outputs, one can approximate the Teacher’s generalization performance even without an explicit hold-out set.  

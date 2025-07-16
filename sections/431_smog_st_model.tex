@@ -76,7 +76,7 @@ Figure~\ref{fig:precision} illustrates the following two scenarios side by side:
     estimates how faithfully $S$ reproduces $T$ (its precision), rather than true accuracy.
 \end{itemize}
 
-By analyzing the Student–Teacher overlap $R = \tfrac1N \sum_\mu s^T t$, one can show that the average generalization error of $T$ depends simply on $1-R$ under the annealed approximation—even when $T$ was trained on noisy labels.  In practice, we exploit this fact by training a large ensemble of students to estimate $R$ and hence recover the teacher’s true error.
+By analyzing the Student–Teacher overlap $R = \sum_\mu s^T t$, one can show that the average generalization error of $T$ depends simply on $1-R$ under the annealed approximation—even when $T$ was trained on noisy labels.  In practice, we exploit this fact by training a large ensemble of students to estimate $R$ and hence recover the teacher’s true error.
 %\paragraph{Estimating the Teacher Error with Students: Accuracy vs. Precision}
 %
 %Imagine training a \Student $(S)$  model (with a similar architecture as $T$, and acting on the same  

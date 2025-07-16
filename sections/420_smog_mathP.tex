@@ -997,12 +997,12 @@ and, additionally, where we observe glassy behavior, which we refer to as a \emp
 
 \subsubsection{From the ST Perceptron to a Matrix Model.} 
 \label{sxn:from_vectors}
-In Section~\ref{sxn:matgen}, wee will move from a single $m$-dimensional \Perceptron vector $\WVEC$ 
+In Section~\ref{sxn:matgen}, we will move from a single $m$-dimensional \Perceptron vector $\WVEC$ 
 to a matrix model of $N \times M$ weights, which can be thought of
-as $N$ interacting vectors of dimension $M$.
+as $N$ interacting (feature) vectors of dimension $M$.
 Moreover, in the Student-Teacher (ST) model used below,
-in the vector case, the $m$ degrees of freedom are integrate out,
-whereas for the matrix case, we will retain the 'a reduced set' of the  $M$ degrees of freedom, $\mathcal{M}$.  To do this, we need to ensure the \FreeEnergies and related quantities like the \LayerQualitySquared to scale properly.
+in the vector case, the $m$ degrees of freedom if the feature vectors are integrated out,
+whereas for the matrix case, we will retain the\emph{'a reduced set} of the  $M$ degrees of freedom, $\MECS$.  To do this, we need to ensure the \FreeEnergies and related quantities like the \LayerQualitySquared to scale properly.
 
 \SETOL uses two \LargeN approximations, the \Thermodynamic limit, which is a \LargeN limit in $\ND$, and the \emph{\WideLayer limit}, which is a \LargeN limit in $N$:
 \begin{itemize}
@@ -1011,29 +1011,29 @@ whereas for the matrix case, we will retain the 'a reduced set' of the  $M$ degr
 \end{itemize}
 Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking both, we assume implicitly that the \emph{layer load}, $N/\ND$, the number of feature vectors per data point, remains constant, which is consistent with classical \STATMECH theories of learning\cite{MM17_TR} (although we do not enforce this explicitly here).  
 In doing this, we expect the matrix-generalized total Energies $(F, H^{an}, \cdots)$ to be \SizeExtensive in $\ND$ and $N$,  the average quantities to be \SizeIntensive in both, 
-and, as discussed below, \emph{\SizeConsistent} in $M$ and/or $\mathcal{M}$.
+and, as discussed below, \emph{\SizeConsistent} in $M$ and/or $\MECS$.
 
 \paragraph{\SizeConsistency,}  
 The notion of \emph{\SizeConsistency} is a notion commonly 
 used Quantum Chemistry to describe interacting , correlated systems. It is often introduced through the Linked Cluster Theorem~\cite{Hubbard1959,Brandow1963},
-which states that the \emph{average} energies and/or free energies $(\bar{F})$ of in particular a correlated system scale with $\mathcal{M}$,
+which states that the \emph{average} energies and/or free energies $(\bar{F})$ of in particular a correlated system scale with $\MECS$,
 the number of ``independent interacting components'':
 \begin{align}
   \label{eqn:LCT}
-  -\beta \bar{F}=\langle \ln Z \rangle_{\AVGNDXIn} &= \sum_{\mu=1}^{\mathcal{M}}\text{(Connected Components)} \\ \nonumber
-  &= \sum_{\mu=1}^{\mathcal{M}}\text{Cumulants($\mu$)+higher order terms} 
+  -\beta \bar{F}=\langle \ln Z \rangle_{\AVGNDXIn} &= \sum_{\mu=1}^{\MECS}\text{(Connected Components)} \\ \nonumber
+  &= \sum_{\mu=1}^{\MECS}\text{Cumulants($\mu$)+higher order terms} 
 \end{align}
 For \SETOL, below, these connected components will be the matrix-generalized cumulants from RMT.
 In Quantum Chemistry, this is analogous to ensuring the renormalized Self-Energy and/or Effective Hamiltonian is \SizeConsistent.
 For NNs, \SizeConsistency appears when scaling the number of features in our matrix model,
-and it ensure that our layer Free Energy, etc.,  remain well-behaved as we increase $M$.
+and it ensure that our layer Free Energy, etc.,  remain well-behaved as we increase $\MECS$.
 For a simple example, see Appendix~\ref{sxn:summary_sst92}
  where we derive the expression for the matrix-generalized
 \AnnealedHamiltonian $\HAN$.  
-Both \SizeExtensivity (in $\ND$ and $N$) and \SizeConsistency (in $\mathcal{M}$ )
+Both \SizeExtensivity (in $\ND$ and $N$) and \SizeConsistency (in $\MECS$ )
 are crucial in our \SETOL analysis:  they justify taking the \LargeN approximation for matrix integrals, and they ensure
 our resulting the HCIZ integral--a sum of integrated RMT cumulants (below)--
-scales with the dimension of the \EffectiveCorrelationSpace (\ECS), $\mathcal{M}=\MECS$.  
+scales with the dimension of the \EffectiveCorrelationSpace (\ECS), $\MECS$.  
 
 
 \paragraph{HCIZ Integrals}
@@ -1050,7 +1050,7 @@ This will take the form of an HCIZ integral,
 \IZGINF := \lim_{N\gg 1}\frac{1}{N}\ln \underbrace{\int d\mu(\AMAT) \exp[\ND\beta N\Trace{\AMAT_N\XMAT_N}] }_{\mbox{HCIZ Integral}} 
   \approx \ND\beta\Trace{\mathcal{G}_{A}(\lambda)}  ,
 \end{align}
-that is evaluated in the ``\LargeN limit in $N$`` (here, meaning as $N \gg 1$, but not at the limit $N=\infty$).
+that is evaluated in the \emph{\LargeN limit in $N$} (here, meaning as $N \gg 1$, but not at the limit $N=\infty$).
 Here,  $\AMAT_N$ and $\XMAT_N$ are $N \times N$ Hermetian matrices, (See Appendix \ref{sxn:appendix_A} for notation,) $d\mu(\AMAT)$ is a measure
 over all random (Orthogonal) matrices (see \EQN~\ref{eqn:dmuA}),
 and $\mathcal{G}_{A}()$ is a called  \GEN 

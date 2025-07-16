@@ -197,10 +197,10 @@ for ``data-averaged ST error'' (i.e., \EffectivePotential) $\EPSL(R)$ that is of
 The difference will be that in the vector case we take $R=\tfrac{1}{N}\SVEC^{\top}\TVEC$, while in the matrix case we take $R=\tfrac{1}{N}\SMAT^{\top}\TMAT$.
 
 We will need to evaluate an average over the $\ND$ random $M$-dimensional training data vectors $\NDXI$,
-which are i.i.d Gaussian with $0$ mean and $\sigma^{2}$ variance: \nred{CHECK THIS  }
+which are i.i.d Gaussian with $0$ mean and $\sigma^{2}$ variance: 
 \begin{equation}
   \label{eqn:XInorm}
-  \Vert \NDXI \Vert^2 :=\cancel{\frac{1}{\ND}} \sum_{\mu=1}^{\ND} \XI_\mu \XI_\mu^{\top} = \sigma^{2}\IM ,
+  \Vert \NDXI \Vert^2 :=\sum_{\mu=1}^{\ND} \XI_\mu \XI_\mu^{\top} = \sigma^{2}\IM ,
 \end{equation}
 where each $\XI_{\mu}$ is a vector of length $M$, and $\IM$ is an $M \times M$ identity matrix.
 %
