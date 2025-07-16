@@ -282,13 +282,16 @@ A subscript $\XI$ on the Ket as $\langle\cdots\rangle_{\XI}$ indicates that the 
 \paragraph{\SizeExtensivity and \SizeIntensivity}
 A key requirement for the \ThermodynamicLimit in \STATMECH is \emph{\SizeExtensivity}:
 that physically meaningful quantities (i.e, total energies and free energies)
-scale linearly with the system size, $\ND$ (or $N$, below).
+scale linearly with the system size or number of parameters, i.e. $m$ (or $N\times M$, below).
 Extensive quantities scale with system size, intensive ones do not.
 Along with this, Thermodynamic average quantities should be \emph{\SizeIntensive},
-meaning that they remain independent of $\ND$ (or $N$) as the system size increases.
+meaning that they remain independent of $\ND$ (or $N\times M$, below) as the system size increases.
 In our setting, \SizeExtensivity and \SizeIntensivity underpin the so-called \LargeN limit,
 ensuring that macroscopic observables become independent of
 microscopic fluctuations so that the system approaches equilibrium as expected.
+
+In the theory of the \StatisticalMechanics of Generalization (\SMOG), however, one also holds the load $=n/m$ fixed when taking the \ThermodynamicLimit, and we will do the same\cite{Gardner_1985, SST92, engel2001statistical,MM17_TR}. In fact, we will take load to be unity, and not treat it explicitly. 
+Moreover,  we will use $\ND$  as the primary variable below as we are interested in how the Free Energy and other quantities change with $\ND$. That is, we use the notational convention in ~\cite{Solla2023} (as opposed to \cite{SST92}). \textbf{Consequently, for our purposes here, this means that the \ThermodynamicLimit and the '\LargeN limit in $\ND$' are effectively the same.}
 
 As an example of \SizeExtensivity and \SizeIntensivity, 
 we write the \ExpectedValue (i.e., the data-average) of \DataSampleError $\DETOPXI$ (\EQN~\ref{eqn:average_data_sample_error})
@@ -301,12 +304,12 @@ in the \LargeN limit as
   \sum_{\mu=1}^{\ND}\DEL(\WVEC,\XI_{\mu}) .
 \end{align}
 Here, the notation $(n \gg 1)$ means $\ND$ grows arbitrarily large, but is not necessarily
-at the limit point $(n=\infty)$.
+at the limit point $(n=\infty)$. And, again, the load is fixed, so $n\gg 1 \leftrightarrow m \gg 1$.
 The \TotalDataSampleError $\DETOPXI$ is \SizeExtensive, whereas the
 average $\langle\DETOPXI\rangle_{\AVGNDXIn}$ is \SizeIntensive.
 This limit will be implicit later when taking a \SaddlePointApproximation (see below).
 \footnote{As we are working within a ``physics-level of rigor, we take some liberties in evaluating these \LargeN limits; and we leave the formal proofs for future work. \michael{This comment should be in the intro, not in a footnote here.  Move later, since I don't have the token for the intro for now. } }
-\nred{This is a little weird to have the square on this and ask it to be size extensive.  We should at least comment on this  See also SST92  eqn 2.1}
+\nred{This is a little weird to have the square on this and ask it to be size extensive and units of energy.  We should at least comment on this  See also SST92  eqn 2.1.  Woud like to find a good solution}
 
 The data-averaged error  $\langle \DETOPXI \rangle_{\AVGNDXIn}$ will appear frequently below.
 For convenience and for compatibility with \cite{SST92}, we denote it using the symbol $\EPSLw$:
@@ -551,8 +554,8 @@ We may associate:
 %%$-\langle\ln Z_w(\NDXIn)\rangle_{\AVGNDXIn}$ to the (unitless) \Quenched \FreeEnergy, and
 %%$-\ln \langle Z_{\ND}(\NDXIn)\rangle_{\AVGNDXIn}$ to the (unitless) \Annealed \FreeEnergy.
 \begin{eqnarray*}
-    -\langle\ln Z_w(\NDXIn)\rangle_{\AVGNDXIn} &: \mbox{the (unitless) \Quenched \FreeEnergy} \\
-    -\ln \langle Z_{\ND}(\NDXIn)\rangle_{\AVGNDXIn} &: \mbox{the (unitless) \Annealed \FreeEnergy}.
+    -\beta\langle\ln Z_{\ND}(\NDXIn)\rangle_{\AVGNDXIn} &: \mbox{the \Quenched \FreeEnergy} \\
+    -\beta\ln \langle Z_{\ND}(\NDXIn)\rangle_{\AVGNDXIn} &: \mbox{the \Annealed \FreeEnergy}.
 \end{eqnarray*}
 Applying the AA amounts to applying Jensens inequality \emph{as an equality}, 
 and it allows will let us interchange integrals and logarithms when computing the data average:
@@ -884,7 +887,7 @@ Generally speaking, the \Quality \GeneratingFunction $\Gamma_{\Q}$ is defined in
 \end{align}
 
 For example, for the single-layer ST \Perceptron, $\Gamma_{\Q^{ST}}:=n-F^{ST}$
-(where $\ND$ here is also the number of free parameters for this model, and is in units of energy or error).
+(where $\ND$ here is also the number of degrees of freedom for this model, and is in units of energy or error).
 The term $\Gamma_{\Q^{ST}}$ is directly related to the \emph{Total} Free Energy $F^{ST}$, which can be seen by substituting \EQN~\ref{eqn:def_eta}
 for $\ETAw$ in \EQN~\ref{ref:defGammaQ}:
 \begin{align}
@@ -1006,10 +1009,11 @@ whereas for the matrix case, we will retain the\emph{'a reduced set} of the  $M$
 
 \SETOL uses two \LargeN approximations, the \Thermodynamic limit, which is a \LargeN limit in $\ND$, and the \emph{\WideLayer limit}, which is a \LargeN limit in $N$:
 \begin{itemize}
-    \item \Thermodynamic limit: $\ND\gg 1$ (the number of training examples)
+    \item \Thermodynamic limit: $m \gg 1$ (the number of parameters or features, fixed load: $m/\ND = 1$)
+    \item \LargeN limit in n: $\n\gg 1$ (the number of training examples, fixed load: $m/\ND = 1$)
     \item \WideLayer limit: $N\gg 1$ (the larger matrix dimension)
 \end{itemize}
-Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking both, we assume implicitly that the \emph{layer load}, $N/\ND$, the number of feature vectors per data point, remains constant, which is consistent with classical \STATMECH theories of learning\cite{MM17_TR} (although we do not enforce this explicitly here).  
+Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking both \LargeN limts, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number of feature vectors per data point, remains constant, which is consistent with classical \STATMECH theories of learning\cite{MM17_TR} (although we do not enforce this explicitly here).  
 In doing this, we expect the matrix-generalized total Energies $(F, H^{an}, \cdots)$ to be \SizeExtensive in $\ND$ and $N$,  the average quantities to be \SizeIntensive in both, 
 and, as discussed below, \emph{\SizeConsistent} in $M$ and/or $\MECS$.
 
