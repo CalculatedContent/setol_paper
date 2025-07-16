@@ -454,16 +454,16 @@ If one needs an average energy (or error),
 %or accuracy (or quality),
 it is often easier to calculate the associated \FreeEnergy and take corresponding partial derivatives
 than it is to compute that quantity directly via an expected value or \ThermalAverage.
-Generally speaking, a \FreeEnergy, $F_n$, is defined in terms of a partition function $Z_{\ND}$ as
+Generally speaking, a \FreeEnergy, $F_{\ND}$, is defined in terms of a partition function $Z_{\ND}$ as
 \begin{align}
 \label{eqn:F}
-\beta F_n:=-\ln Z_{\ND}.
+\beta F_{\ND}:=-\ln Z_{\ND}.
 \end{align}
 %%\michaeladdressed{Should there be a subscript $\ND$ on $F$, or not on $Z$?}
 %%\charles{@michael:.  Its on $Z$ to remind us of the $\ND$ dependence when we take the derivatives below}
 Keep in mind that $Z$ may actually be a function of the data $\XI$ (or some other variables),
 i.e., $Z(\XI)$, but we usually don't write this explicitly.
-Likewise, while  both $F_n$ and $Z_n$ depend explicitly on the system size $\ND$,
+Likewise, while  both $F_{\ND}$ and $Z_{\ND}$ depend explicitly on the system size $\ND$,
 we will only include these subscripts when emphasizing this.
 Also, $F$ has units of Energy or Temperature, so $\beta F=-\ln Z$ is a "unitless" \FreeEnergy.
 %
@@ -503,7 +503,7 @@ by defining and computing the \ExpectedValue of the \FreeEnergy of the model.
 The full expected value  of the \FreeEnergy, $\beta F_{\ND}=-\ln Z_{\ND}$, with respect to the (idealized) data $\NDXIn$, is:
 \begin{align}
 \label{eqn:mm_f_bar}
-  \mathbb{E}_{\NDXIn}[\beta F_n]=\beta\bar{F}:=-\langle \ln Z_{\ND}\rangle_{\AVGNDXIn},
+  \mathbb{E}_{\NDXIn}[\beta F_{\ND}]=\beta\bar{F}:=-\langle \ln Z_{\ND}\rangle_{\AVGNDXIn},
 \end{align}
 \michaelB{Is that $\bar{F}$? }
 where $\langle \ln Z_{\ND}\rangle_{\AVGNDXIn}$ means where we average over  the $\ND$ samples of the data ($\NDXIn$, of size $\ND$).  This is also called the \Quenched \FreeEnergy.
@@ -615,14 +615,14 @@ In BraKet notation, \EQN~\ref{eqn:Gan_simplified} can be expressed as
 Using $\GAN$, we can define the \emph{Annealed Partition Function}, $Z^{an}_{\ND}$, as
 %%\begin{align}
 %%  \label{eqn:Zan_def}
-%%  \ZAN :=  \int d\mu(\WVEC) e^{-n\beta \GAN}.
+%%  \ZAN :=  \int d\mu(\WVEC) e^{-\ND\beta \GAN}.
 %%\end{align}
 %%Substituting \EQN~\ref{eqn:Gan_def} into \EQN~\ref{eqn:Zan_def}, we can express $\ZAN$ as
 \begin{align}
   \label{eqn:Zan_def}
   \ZAN 
-  &:=  \int d\mu(\WVEC) e^{-n\beta \GAN} \\ \nonumber
-  &=\int d\mu(\WVEC) \exp\left[-n \left(- \frac{1}{\ND}\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)\right] \\ \nonumber
+  &:=  \int d\mu(\WVEC) e^{-\ND\beta \GAN} \\ \nonumber
+  &=\int d\mu(\WVEC) \exp\left[-\ND \left(- \frac{1}{\ND}\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)\right] \\ \nonumber
   &=  \int d\mu(\WVEC) \exp\left[\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right] \\ 
   \label{eqn:Zan_simple}
   &=  \int d\mu(\WVEC)  \int d\mu(\NDXIn)e^{-\beta\DETOPXI} .
@@ -668,23 +668,23 @@ the \PartitionFunction, i.e.,  $\ZANHT$, and subsequent results (below).
 To obtain the high-T result, we can write the Taylor expansion for $e^{\beta\DETOPXI}$ and keep
 the first two terms:
 \begin{align}
-  e^{-n\beta\DETOPXI} \simeq \underbrace{1 - \beta\DETOPXI}_{high-T}+ (\beta\DETOPXI)^{2} + \cdots  .
+  e^{-\ND\beta\DETOPXI} \simeq \underbrace{1 - \beta\DETOPXI}_{high-T}+ (\beta\DETOPXI)^{2} + \cdots  .
 \end{align}
 
 %The high-T approximation resembles the AA (or, rather, Jensens inequality as an equality), when applied to the \ThermalAverage as opposed to the data averages
 %%%%\nred{Something wrong here}
 %%%If we now evaluate $Z_{\ND}^{\red{an}}$ at high-T, we obtain
 %%%\begin{align}
-%%%  \red{\ZANHT}=\int d\mu(\WVEC)e^{-n\beta\EPSLw}
-%%%  &\approx \int d\mu(\WVEC) (1-n\beta\EPSLw) \\ \nonumber
-%%%  & = \int d\mu(\WVEC) - \int d\mu(\WVEC) n\beta\EPSLw \\ \nonumber
-%%%  & =-  \red{1-??}\int d\mu(\WVEC) n\beta\EPSLw 
+%%%  \red{\ZANHT}=\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}
+%%%  &\approx \int d\mu(\WVEC) (1-\ND\beta\EPSLw) \\ \nonumber
+%%%  & = \int d\mu(\WVEC) - \int d\mu(\WVEC) \ND\beta\EPSLw \\ \nonumber
+%%%  & =-  \red{1-??}\int d\mu(\WVEC) \ND\beta\EPSLw 
 %%%\end{align}
 %%%%If, in analogy with \EQN~\ref{eqn:Jensens}, 
 %%%%we switch the order of the integral and the logarithm, we obtain the same result as the high-T approximation:
 %%%%  \begin{align}
-%%%%    \int d\mu(\WVEC) \ln e^{-n\beta\EPSLw}
-%%%%    &= -\int d\mu(\WVEC)n\beta\EPSLw
+%%%%    \int d\mu(\WVEC) \ln e^{-\ND\beta\EPSLw}
+%%%%    &= -\int d\mu(\WVEC)\ND\beta\EPSLw
 %%%%  \end{align}
 %%%%  
 %%%%And while one might think of a high-T approximation as an ``aggressive'' application of the AA, 
@@ -698,7 +698,7 @@ the first two terms:
 %%%$\ZANHT$, as a \ThermalAverage over the data-averaged error, $n\EPSLw$ directly:
 %%%\begin{align}
 %%%  \label{eqn:ZanhT}
-%%%  \ZANHT :=  \int d\mu(\WVEC) e^{-n\beta \EPSLw}   .       %=  n\THRMAVGw{\EPSLw}  
+%%%  \ZANHT :=  \int d\mu(\WVEC) e^{-\ND\beta \EPSLw}   .       %=  n\THRMAVGw{\EPSLw}  
 %%%\end{align}
 %%%%%\michael{Is this eqn different than \EQN~\ref{eqn:Zan}? They look identical.}
 %%%%%\michael{@charles: there is some problem with labels. When I wrote that last comment, I was trying to refer to the equation above, not the one in the appendix.  So, two things: first, make unique labels; and second, what about the question. If they are the same, then probably best to point back rather than writing out a new equation, since it took me a while to figure out that we are almost rederiving the same thing.}
@@ -735,8 +735,8 @@ the Annelaed (i.e., data-averaged) error $\EPSLw$:
 \begin{align}
   \nonumber
   \label{eqn:Zanht_def}
-\ZANHT :=  &\int d\mu(\WVEC) e^{-n\beta\GANHT} \\ 
-  =  &\int d\mu(\WVEC) e^{-n\beta\EPSLw} 
+\ZANHT :=  &\int d\mu(\WVEC) e^{-\ND\beta\GANHT} \\ 
+  =  &\int d\mu(\WVEC) e^{-\ND\beta\EPSLw} 
 \end{align}
 %Also notice that in the AA,  $Z^{an}_{n,hT}=nZ^{an}_{1,hT}$.
 If we assume that at high-T we can make this approximation, 
@@ -801,11 +801,11 @@ To see this, substitute \EQN~\ref{eqn:Zanht_def} into \EQN~\ref{eqn:avgte_def}, 
 \begin{align}
   \label{eqn:avgge_anhT}
   \AVGGE^{an, hT} :=&\frac{1}{\ND}\dfrac{\partial (-\ln \ZANHT)}{\partial \beta}  \\ \nonumber
-   =& - \dfrac{1}{\ND}\dfrac{\partial}{\partial \beta}\ln\int d\mu(\WVEC)e^{-\beta n\EPSLw} \\  \nonumber
+   =& - \dfrac{1}{\ND}\dfrac{\partial}{\partial \beta}\ln\int d\mu(\WVEC)e^{-\ND\beta\EPSLw} \\  \nonumber
    =&  \dfrac{
-              \tfrac{1}{\ND}  \int  d\mu(\WVEC) n\EPSLw e^{-\beta n\EPSLw} 
+              \tfrac{1}{\ND}  \int  d\mu(\WVEC) n\EPSLw e^{-\ND\beta\EPSLw} 
              }{
-              \int  d\mu(\WVEC) e^{-\beta n\EPSLw} 
+              \int  d\mu(\WVEC) e^{-\ND\beta\EPSLw} 
    } \\ \nonumber
    =&\langle\EPSLw \rangle_{\WVEC}^{\beta} .
   \end{align}
@@ -813,15 +813,15 @@ Likeswise, if we substitute \EQN~\ref{eqn:Zanht_def} into \EQN~\ref{eqn:avgge_de
 \begin{align}
   \label{eqn:avgte_anhT}
     \AVGGE^{an, hT}  :=& \frac{1}{\beta}\dfrac{\partial (-\ln \ZANHT)}{\partial n} \\ \nonumber
-    =& - \dfrac{1}{\ND}\dfrac{\partial}{\partial \beta}\ln\int d\mu(\WVEC)e^{-\beta n\EPSLw} \\  \nonumber
+    =& - \dfrac{1}{\ND}\dfrac{\partial}{\partial \beta}\ln\int d\mu(\WVEC)e^{-\ND\beta\EPSLw} \\  \nonumber
    =&  \dfrac{
-              \tfrac{1}{\beta}  \int  d\mu(\WVEC) n\EPSLw e^{-\beta n\EPSLw} 
+              \tfrac{1}{\beta}  \int  d\mu(\WVEC) n\EPSLw e^{-\ND\beta\EPSLw} 
              }{
-     \int  d\mu(\WVEC) e^{-\beta n\EPSLw} 
+     \int  d\mu(\WVEC) e^{-\ND\beta\EPSLw} 
    } \\ \nonumber
    =&\langle\EPSLw \rangle_{\WVEC}^{\beta} .
 \end{align}
-Notice that both of these results arise because of the simple expression that appears in the exponent of $\ZANHT$, namely because $-n\beta\HANHT(\WVEC)=n\beta\EPSLw$.
+Notice that both of these results arise because of the simple expression that appears in the exponent of $\ZANHT$, namely because $-\ND\beta\HANHT(\WVEC)=\ND\beta\EPSLw$.
 
 
 This equivalence reflects the fact that when the system is large enough, adding a new data example to the
@@ -880,7 +880,7 @@ is analogous to a layer \FreeEnergy, but with the opposite sign convention.
 Generally speaking, the \Quality \GeneratingFunction $\Gamma_{\Q}$ is defined in the AA, and at high-T and is given as
 \begin{align}
   \label{ref:defGammaQ}
-  \beta\Gamma_{\Q} := \ln\int d\mu(\WVEC) e^{n\beta\ETAw}
+  \beta\Gamma_{\Q} := \ln\int d\mu(\WVEC) e^{\ND\beta\ETAw}
 \end{align}
 
 For example, for the single-layer ST \Perceptron, $\Gamma_{\Q^{ST}}:=n-F^{ST}$
@@ -890,11 +890,11 @@ for $\ETAw$ in \EQN~\ref{ref:defGammaQ}:
 \begin{align}
   \label{ref:defGammaQtoF}
   \beta\Gamma_{\Q^{ST}}
-  &= \ln\int d\mu(\WVEC) e^{n\beta(1-\EPSLw)} \\ \nonumber
-    &= \ln\int d\mu(\WVEC) e^{n\beta}e^{-n\beta\EPSLw} \\ \nonumber
-    &= \ln\left(\int d\mu(\WVEC) e^{n\beta}\right)+\ln\left(\int d\mu(\WVEC)e^{-n\beta\EPSLw}\right) \\ \nonumber
-   &= \ln e^{n\beta}+\ln\left(\int d\mu(\WVEC)e^{-n\beta\EPSLw}\right) \\ \nonumber
-  &= \beta n-\beta F^{ST}
+  &= \ln\int d\mu(\WVEC) e^{\ND\beta(1-\EPSLw)} \\ \nonumber
+    &= \ln\int d\mu(\WVEC) e^{\ND\beta}e^{-\ND\beta\EPSLw} \\ \nonumber
+    &= \ln\left(\int d\mu(\WVEC) e^{\ND\beta}\right)+\ln\left(\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}\right) \\ \nonumber
+   &= \ln e^{\ND\beta}+\ln\left(\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}\right) \\ \nonumber
+  &= \ND\beta -\beta F^{ST}
 \end{align}
 \michaelB{Confirm this $F$ is \EQN~\ref{eqn:F}, not \EQN~\ref{eqn_mm_f_b ar} (which I believe is $\overline{F}$). Maybe point to the correct one.)}
 Dividing by $\ND$, we can also recover the more general relation for the \emph{Average} Free Energy,
@@ -929,7 +929,7 @@ See Section~\ref{sxn:matgen} and Appendix~\ref{sxn:quality} for more details.
 The \ThermodynamicLimit is the \LargeN limit of the model, as $\ND$ grows arbitrarily large, i.e. $n \gg 1$.
 To express the average \FreeEnergy $\bar{F}$ in the \LargeN limit, we can write
 \begin{align}
-  -\beta\bar{F} = \lim_{n\gg 1}\frac{1}{\ND}\ln \int d\mu(\WVEC) e^{-n\beta\EPSL(\WVEC)}  .
+  -\beta\bar{F} = \lim_{n\gg 1}\frac{1}{\ND}\ln \int d\mu(\WVEC) e^{-\ND\beta\EPSL(\WVEC)}  .
 \end{align}
 When this \LargeN approximation is well behaved,
 then the total energy $\DETOT$ is extensive, i.e., when $\DETOT=n\EPSL(\WVEC)$;
@@ -942,10 +942,10 @@ the macroscopic properties are independent of fluctuations, etc.
 This also implies that the relevant averages
 (i.e., training and generalization errors) are the same for almost all samples, or \emph{realizations of the disorder}.
 Additionally, the Annealed and the Quenched averages,
-$\ln \langle Z_n \rangle_{\AVGNDXIn}$ and $\langle \ln Z_n \rangle_{\AVGNDXIn}$, respectively,
+$\ln \langle Z_{\ND} \rangle_{\AVGNDXIn}$ and $\langle \ln Z_{\ND} \rangle_{\AVGNDXIn}$, respectively,
 become sharply peaked, and
 \begin{align}
-\langle \ln Z_n \rangle_{\AVGNDXIn} \approx \ln \langle Z_n \rangle_{\AVGNDXIn}, \quad \text{as } \ND \gg 1\;\; \text{(grows arbitrarily large)}.
+\langle \ln Z_{\ND} \rangle_{\AVGNDXIn} \approx \ln \langle Z_{\ND} \rangle_{\AVGNDXIn}, \quad \text{as } \ND \gg 1\;\; \text{(grows arbitrarily large)}.
 \end{align}
 %%(although they are not strictly equal except at the limit $n = \infty$).
 For a NN, \SelfAveraging implies that the weights $\WVEC$ are \emph{\Typical} of the distribution,
@@ -956,7 +956,7 @@ For example, when considering the \LargeN in $\ND$ case, we could write
 
 \begin{align}
   \label{eqn:SPA}
-  \int d\mu(\WVEC) e^{-\ND\beta\EPSL(\WVEC)}\approx \sqrt{\tfrac{2\pi}{\ND\EPSL(\WVEC^{*})}} e^{-n\beta\EPSL(\WVEC^{*})}  
+  \int d\mu(\WVEC) e^{-\ND\beta\EPSL(\WVEC)}\approx \sqrt{\tfrac{2\pi}{\ND\EPSL(\WVEC^{*})}} e^{-\ND\beta\EPSL(\WVEC^{*})}  
   , \quad \text{as } \ND \gg 1
 \end{align}
 where $\WVEC^{*}$ satisfies the saddle point equations:

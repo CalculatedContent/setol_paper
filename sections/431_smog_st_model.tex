@@ -20,7 +20,7 @@ Operationally, we train the \Teacher $T$ to reproduce or at least approximate th
  T:\DATA\rightarrow \Yt \approx \Ytrue.
 \end{align}
 If $T$ reproduces the true labels exactly, we might say that the \Teacher has been
-trained to \emph{\Interpolation}, and, therefore, $\Yt = \Ytrue$.
+trained to \emph{\Interpolation}, and therefore, $\Yt = \Ytrue$.
 Indeed, most models today are trained to \emph{\Interpolation}, and we don't need to
 necessarily worry about the difference between the true and the predicted \Teacher labels.
 Formally, however, and to understand better the \AA, it is beneficial to discuss the implication
@@ -59,7 +59,7 @@ Imagine we train a Student model $S$ (with the same architecture as the Teacher 
 S: \mathcal D \to y^{S}_\mu \approx y^{T}_\mu,
 \label{eqn:S_ENN}
 \end{equation*}
-where $y^T_\mu = E_{NN}(T, x_\mu)$ are the teacher’s predicted labels or energies.
+where $y^T_\mu = E_{NN}(T, x_\mu)$ are the Teacher’s predicted labels or energies.
 
 \input{sections/precision_fig}
 
@@ -98,7 +98,7 @@ By analyzing the Student–Teacher overlap $R = \sum_\mu s^T t$, one can show th
 %is now estimating the \Precision of the model.
 %These two situations are depicted in Figure~\ref{fig:precision}.
 %
-The \StudentTeacher model also explains why NNs can generalize even when trained to \Interpolation on noisy data (which has been a source of confusion \cite{Understanding16_TR}).  In this model, the \GeneralizationError  $\AVGGE^{T}$ is a simple function of the overlap $R$ between the \Teacher $T$ and the \Students $S$, i.e., $\AVGGE^{T}\sim \THRMAVG{1-\EPSLR}$.  So even if the \Teacher $T$ is trained on noisy data, as long as there are \Students $S$ with significant overlap $R$ with the \Teacher, the \Teacher \GeneralizationError  $\AVGGE^{T}$  can be considerably small.  For more details, see \cite{MM17_TR_v1}
+The \StudentTeacher model also explains why NNs can generalize even when trained to \Interpolation on noisy data (which has been a source of confusion \cite{Understanding16_TR}). In this model, the \GeneralizationError $\AVGGE^{T}$ is a simple function of the overlap $R$ between the \Teacher $T$ and the \Students $S$, i.e., $\AVGGE^{T}\sim \THRMAVG{1-\EPSLR}$. So even if the \Teacher $T$ is trained on noisy data, as long as there are \Students $S$ with significant overlap $R$ with the \Teacher, the \Teacher \GeneralizationError $\AVGGE^{T}$ can be considerably small. For more details, see \cite{MM17_TR_v1}
 
 
 \paragraph{Learning the Student}
@@ -216,7 +216,7 @@ in practice such a model might have a zero empirical \TrainingError since it may
 \charles{This is a minimal discussion.  }
 
 While it is commonplace to train ensembles and/or use cross-validation when training small models (as the above discussion assumes),
-this could be extremely expensive and impractical in modern ML, e.g., for very large models like Large Language Models (LLMs)..
+this could be extremely expensive and impractical in modern ML, e.g., for very large models like Large Language Models (LLMs).
 For such massive NNs, one needs a theory that can detect anomalies in training directly from observations during and/or after training.
 This is a hallmark of the \SETOL approach, and it distinguishes \SETOL from the classic \STATMECH approach.
 

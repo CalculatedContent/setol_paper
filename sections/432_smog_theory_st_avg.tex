@@ -158,7 +158,7 @@ with activation function $h(x)=x$,  we can obtain the error function as
 
 
 %%\subsubsection{Derivation of the  ST error $(\EPSL(\AVGR))$ for the Linear Perceptron}
-\paragraph{Derivation of the  ST error $(\EPSL(\AVGR))$ for the Linear Perceptron.}
+\paragraph{Derivation of the ST error $(\EPSL(\AVGR))$ for the Linear Perceptron.}
 %\nred{WARNING: there may be some mistakes here}
 To derive \EQN~\ref{eqn:LinearPerceptronError},
 define the data-dependent ST error (\EQN~\ref{eqn:DE_L}) in terms of an $\ell_2$ loss function.
@@ -170,7 +170,7 @@ Write the data-averaged ST error as
 \label{eqn:defineTerror}
 \end{align}
 
-Define the $\ND$-dimensional label vectors  
+Define the $\ND$ label vectors  
 $\YsVEC:=[\YsIS{1}, \YsIS{2}, \cdots, \YsIS{\ND}]$ and 
 $\YtVEC:=[\YtIS{1}, \YtIS{2}, \cdots, \YtIS{\ND}]$.
 This lets us write 
@@ -182,8 +182,8 @@ This lets us write
 =& \frac{1}{2} \Trace{(\YsVEC)^{\top} \YsVEC - 2 (\YsVEC)^{\top} \YtVEC + (\YtVEC)^{\top} \YtVEC } \\
 \nonumber
 =& \ND - \Trace{(\YsVEC)^{\top} (\YtVEC)}\\
-\label{eqn:deriveSTerror}
 =& \ND- \Trace{\ETA(\SVEC,\TVEC,\red{\NDXI})},
+\label{eqn:deriveSTerror}
 \end{align}
 where we define the \emph{data-dependent \SelfOverlap}:
 \begin{equation}

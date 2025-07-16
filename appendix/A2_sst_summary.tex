@@ -83,7 +83,7 @@ Following Section~\ref{sxn:mathP_errors}, we can write the \emph{Average Model \
 in terms of \Annealed \PartitionFunction, $Z^{an}_{\ND}$:
 \begin{align}
  \label{eqn:AVGSTTE_AA}
-\AVGSTTE:= \red{-}\frac{1}{\nred{n}}\dfrac{\partial }{\partial \beta} \ln Z^{an}_{\ND}
+\AVGSTTE:= \red{-}\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \ln Z^{an}_{\ND}
 \end{align}
 
 %Given $\GANR$ in \EQN~\ref{eqn:Gan0}, and in analogy with \EQN~\ref{eqn:avgte} in Section~\ref{sxn:mathP}, 
@@ -234,14 +234,13 @@ in operator form (for each  of the $\ND$ training examples)
 %\begin{align}
 % \label{eqn:DETOPST}
 % \frac{1}{\ND}\DETOPST  := \Trace{\IM - \frac{1}{N}\SMAT^{\top}\TMAT} = M - \Trace{\OVERLAP} 
-%\end{align}
-\nred{ 
+%\end{align} 
 \begin{align}
  \frac{1}{\ND}\DETOPST := N\Trace{\IM - \frac{1}{N}\SMAT^{\top}\TMAT} = NM - N\Trace{\OVERLAP} 
 \end{align}
-}
+
 where $\IM$ is a diagonal matrix of dimension $M$.
-\red{Note that the matrices are by default data-averaged empirical quantities, so we can drop the $1/\ND$ on the RHS.}
+Note that the matrices are by default data-averaged empirical quantities, so we can drop the $1/\ND$ on the RHS.
 
 Also, notice that $\DETOPST$ scales as $N\times M$, the total number of parameters in the system.
 Also,  importantly, when all the overlaps are perfect, then the error is zero, i.e. if $\Trace{\OVERLAP}=M$ then $\DETOPST=0$.

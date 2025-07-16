@@ -72,7 +72,7 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
     \AnnealedApproximation (AA)& $\langle\ln Z\rangle_{\AVGNDXI}=\ln\langle Z\rangle_{\AVGNDXI}$ \\ \hline
     \AnnealedHamiltonian &  $\GAN$ \\ \hline
     \AnnealedHamiltonian at high-T &  $\GANHT=\EPSL(\WVEC)$ \\ \hline  
-   %\Annealed Partition Function & $Z^{an}_{n}=\THRMAVGw{n\GAN}$ \\ \hline
+   %\Annealed Partition Function & $Z^{an}{_\ND}=\THRMAVGw{n\GAN}$ \\ \hline
    % \Annealed Partition Function at high-T & $\ZANHT=\THRMAVGw{n\EPSLSTw}$ \\ \hline    
     Average \StudentTeacher \GeneralizationError & $\AVGGE^{ST}=\THRMAVG{\epsilon(R)}$ \\ \hline
     Average \StudentTeacher \GeneralizationAccuracy & $1-\AVGGE^{ST}=\THRMAVG{\eta(R)}$ \\ \hline
@@ -89,7 +89,7 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
       HCIZ Integral  & 
 $\Expected[\AECS]{\exp\!\bigl(\ND\beta N\,\mathrm{Tr}\bigl[\tfrac{1}{N}\,\TMAT^{\top}\,\AECSN\,\TMAT\bigr]\bigr)}$
 \\ \hline
-    \LayerQuality \GeneratingFunction & $\IZGINF := \ND\beta N\sum_{\mu=1}^{\MECS}\int^{\LambdaECS_{\mu}}_{\LambdaECS_{\min}} dz R(z)$
+    \LayerQuality \GeneratingFunction & $\IZGINF := \ND\beta \sum_{\mu=1}^{\MECS}\int^{\LambdaECS_{\mu}}_{\LambdaECS_{\min}} dz R(z)$
  \\ \hline
     \GEN & $G_{A}(\gamma)=\int_{\LambdaECSmin}^{\LambdaECS}R_{A}(z)dz$ \\ \hline
 %    \RTransform (for Levy Matrix)& $R(z)=\nred{b}z^{\alpha-1}$ where \red{$\alpha=3$?or$2$} \\ \hline

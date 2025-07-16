@@ -19,7 +19,7 @@ Ignoring the bias terms, \emph{Without Loss of Generality}, (WLOG), the NN outpu
 \label{eqn:nflow}
              y_{\mu} := \EVEC_{3\mu} &= \frac{1}{\sqrt{N_3}} h (\WMAT_{3}^\top \EVEC_{2\mu})     ,
 \end{align}
-where $\EVEC_{\#\mu}$ denotes a vector of energies or NN outputs for that layer, and $h$ is a general function or functional, denoting either a non-linear activation or a more complex layer structure, such as a CNN or an RNN.  Note that for binary classification, $\EVEC_3{\mu}=1|-1$ is just a binary number.  
+where $\EVEC_{\#\mu}$ denotes a vector of energies or NN outputs for that layer, and $h$ is a general function or functional, denoting either a non-linear activation or a more complex layer structure, such as a CNN or an RNN. Note that for binary classification, $\EVEC_3{\mu}=1|-1$ is just a binary number.
 We can consider $h(\cdot)$ to be an (unspecified) activation function.
 
 As in \EQN~\ref{eqn:deriveSTerror}, let us specify the ST error, or Energy difference, specifically in terms of the L2 or RMSE loss:
@@ -28,12 +28,11 @@ As in \EQN~\ref{eqn:deriveSTerror}, let us specify the ST error, or Energy diffe
 \DETOPNN = \frac{1}{2}\sum_{\mu=1}^{\ND} (\Ys - \Yt)^2.
 \end{equation}
 
-We now start to develop the  matrix generalized form of the self-overlap \(\eta\):
+We now start to develop the matrix generalized form of the self-overlap \(\eta\):
 
 \subsubsection{Data-Dependent Multi-Layer ST Self-Overlap \texorpdfstring{$(\ETA(\SMAT,\TMAT))$}{ETA(S, T)}}
 
-Following the same approach in Section~\ref{sxn:SMOG_main-st_av}
-}, it is convenient to rewrite $\Delta \mathbf{\hat{E}}$ in \EQN~\ref{eqn:DE} as:
+Following the same approach in Section~\ref{sxn:SMOG_main-st_av}, it is convenient to rewrite $\Delta \mathbf{\hat{E}}$ in \EQN~\ref{eqn:DE} as:
 \begin{align}
 \label{eqn:DE2}
 \DETOPNN
