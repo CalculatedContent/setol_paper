@@ -8,11 +8,7 @@ in Appendix~\ref{sxn:appendix_Gan}, we derive an expression for $\GANMAT$ for Ma
 From these, we will obtain expressions for the Average ST \ModelGeneralizationError $\AVGSTGE$ and the Average NN \ModelGeneralizationError $\AVGNNGE$, as well as for the corresponding data-averaged errors.
 Although the functional form for these quantities will be the same for the vector case and the matrix case, there are several important differences in the derivation of $\GANMAT$, most notably having to do with a normalization for the weight matrix. 
 
-\michael{@charles: in the interests of being pedantic, we are using $\GANR$ and $\GANMAT$ in at least some places when I think we mean $\GANHT$ and $\GANMATHT$.  I have not made this change consistently below, since I'm not sure how you use them elsewhere, but we should change that everywhere, one way or another , consistently.}
-\charles{@michael: I have tried to be very careful about this.  If there are typos, please point them out}
 
-
-%%\subsubsection{Average Student-Teacher Model Generalization Error $(\AVGSTGE)$ and the Annealed Hamiltonian $(\GANR)$}
 \subsubsection{Annealed Hamiltonian \texorpdfstring{$\GANR$}{H(R)} when Student and Teachers are Vectors}
 \label{app:st-gen-err-annealed-ham}
 
@@ -86,20 +82,7 @@ in terms of \Annealed \PartitionFunction, $Z^{an}_{\ND}$:
 \AVGSTTE:= \red{-}\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \ln Z^{an}_{\ND}
 \end{align}
 
-%Given $\GANR$ in \EQN~\ref{eqn:Gan0}, and in analogy with \EQN~\ref{eqn:avgte} in Section~\ref{sxn:mathP}, 
-%we can obtain the expected value of the data-averaged ST \TrainingError in \EQN~\ref{eqn:ST_train_error} 
-%\michael{which eqn precisely}
-%\charles{@michael: need to go back and check this since I changed $H\rightarrow\beta H$ everywhere}
-%by taking the derivative of $\GANR$ w.r.t $\beta$:
-%
-%%%\nred{check delta E}
-%%%\charles{Need to review this more carefully}
-%%%\begin{align}
-%%%  \label{eqn:Ga1}
-%%%\red{\Delta E(\SVEC,\TVEC)_{train}}:=\langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle_{\XItrain} 
-%%% =\dfrac{\partial \HAN}{\partial \beta}  .
-%%%\end{align}
-%%%%\red{Maybe missibg a minus sign somewhere}
+
 This now lets us write the Average Model \TrainingError $\AVGSTTE$ in the AA in terms of the \AnnealedHamiltonian $\GANR$:
   \begin{align}
   \nonumber
@@ -157,10 +140,7 @@ As shown in \EQN~(C6) of~\cite{SST92}, this takes a simple analytic form--in the
 \GANR = \dfrac{1}{2}\ln\left[{1+2\beta(1-R)}\right]  .
 \end{align}
 \EQN~\ref{eqn:Gan2} holds in the AA, but not in the High-T limit.
-%%
-%%We would like a simple expression for $\langle \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI \rangle_{\AVGNDXI}$, so we can use the full form of $\GANR$.
-%%\michael{@charles, clarify what is the point of that sentence in the logical flow.  Can't we just remove it, since what we want is \EQN~\ref{eqn:Gan4} below, and to get that it is sufficient to use the following approximation.}
-%%However, 
+
 If we evaluate $\dfrac{\partial \HAN}{\partial \beta}$ in the High-T (small $\beta$) limit, 
 then we can use the approximation $(\ln[1+x]\simeq x+\cdots)$ to obtain the High-T approximation:
 \begin{align}
@@ -186,9 +166,7 @@ which we recognize as the same as the data-averaged ST error $\epsilon(R)$ in \E
 In this section, we derive an expression for our matrix generalization of the \AnnealedHamiltonian of the \LinearPerceptron,
 in the AA and the high-T approximation, when student and teachers are are modeled as $N \times M$ matrices $\WMAT$,
 i.e., $\GANR\rightarrow\GANMAT$, which has the same form as \EQN~\ref{eqn:Gan0} for the vector case.
-\michael{MM TO DO: Something is not right about that, since that is pointing to the definition and not the final expression.}
-\charles{@michael: lets disucss we need to close this out}
-%
+
 From this, we obtain an expression for the data-averaged ST error $\EPSL(R)$, again when the student and teachers are are modeled as matrices.
 There is a subtle normalization issue here, about which we need to be careful.
 However, when we normalize appropriately, we will obtain an expression

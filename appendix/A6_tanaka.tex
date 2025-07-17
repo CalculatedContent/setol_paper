@@ -56,18 +56,14 @@ are linear, i.e., $\GNORM(\ND\beta\lambda)=\ND\beta \GNORM(\lambda)$, however, i
 to rederive the final result, with $\ND\beta$ explicitly included.
 
 
-%%Also, notice there is an extra $\tfrac{1}{2}$ term in the exponential; this term will factor out later, but it is added here to make it easier to see how to apply the \emph{Large Deviation Principle} (LDP); this not essential but is nice to have
-%%\nred{I may remove this}
-%%\michael{I would say include the 1/2, for expositional clarity; it helped me.}
-
 \paragraph{Notation.}
 
 We start by rewriting the Tanaka result, \EQN~(\ref{eqn:hciz}),
 in our notation for the expected value $\Expected[\AMAT]{\cdots}$ operator, as follows:
 \begin{equation}
 \label{eqn:hciz2}
-  \tfrac{1}{2\red{N}}\IZGINF = 
-  \red{\frac{1}{N}}\lim_{N\gg 1} \ln \underbrace{ \int d\mu(\mathbf{\AMAT})\left[\exp\left(\frac{\ND\beta}{2}\Trace{\mathbf{W}^{\top}\AMATN\mathbf{W}}\right)\right] }_{\mbox{HCIZ Integral}} 
+  \tfrac{1}{2N}\IZGINF = 
+  \tfrac{1}{N}\lim_{N\gg 1} \ln \underbrace{ \int d\mu(\mathbf{\AMAT})\left[\exp\left(\frac{\ND\beta}{2}\Trace{\mathbf{W}^{\top}\AMATN\mathbf{W}}\right)\right] }_{\mbox{HCIZ Integral}} 
   = \ND\beta \tfrac{1}{2}\sum_{i=1}^{M}\GNORM(\lambda_{i})   .
 \end{equation}
 where we have added a $\tfrac{1}{2}$ for technical convenience (to make the connection with the LDP, below).

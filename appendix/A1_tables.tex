@@ -64,9 +64,9 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
     \StudentTeacher (ST) Overlap Operator& $\OVERLAP=\tfrac{1}{N}\SMAT^{\top}\TMAT$ \\ \hline       
     Matrix Generalized ST Overlap & $\tfrac{1}{N^2}\OLAPSQD$  \\ \hline
     \StudentTeacher \SelfOverlap & $\eta(\NDXI)=\mathbf{y}^{\top}_{T}\mathbf{y}_{S}$  \\ \hline
-    $\ell_2$-Energy Difference or $\ell_2$-Error & $\DETSTLL$ \\ \hline
-    $\ell_2$-Energy Difference Operator Form & $\DETOPSTLL:=\sum_{\XI}\DETSTLL$ \\ \hline
-    $\ell_2$-Energy Difference Matrix Operator Form & $\DETOPST:=N(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)$\\ \hline
+    $\ell_2$-Energy or $\ell_2$-Error & $\DETSTLL$ \\ \hline
+    $\ell_2$-Energy Operator Form & $\DETOPSTLL:=\sum_{\XI}\DETSTLL$ \\ \hline
+    $\ell_2$-Energy Matrix Operator Form & $\DETOPST:=N(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)$\\ \hline
     \EffectivePotential  & $\epsilon(R)=\epsilon(S,T)=\langle\DETOPSTLL\rangle_{\AVGNDXI}$ \\ \hline
     \LinearPerceptron  $\epsilon(R)$ at high-T, large-$N$ & $\epsilon(R)=1-R$ \\ \hline
     \AnnealedApproximation (AA)& $\langle\ln Z\rangle_{\AVGNDXI}\approx\ln\langle Z\rangle_{\AVGNDXI}$ \\ \hline
@@ -83,7 +83,6 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
 
 
     \TRACELOG Trace-Log-Determinant Relation & $\Trace{\ln\mathbf{A}}=\ln\det\mathbf{A}$ \\ \hline
-    \TRACELOG (Volume Preserving) Condition & $\Trace{\ln\mathbf{A}}=0$ or $\det\mathbf{A}=1$ \\ \hline
     Effective Correlation Measure Transform & $d\mu(\mathbf{S})\rightarrow d\mu(\AECS)$ \\ \hline
     HCIZ Integral (Tanaka's Notation)&${\mathbb{E}_{\AECS}}[\exp(\ND\beta\Trace{\TMAT^{\top}\AMAT\TMAT)}$\\ \hline
       HCIZ Integral (\LargeN in $N$ explicit) & 
@@ -135,9 +134,9 @@ $\Expected[\AECS]{\exp\!\bigl(\ND\beta N\,\mathrm{Tr}\bigl[\tfrac{1}{N}\,\TMAT^{
 \hthinline
 The output of the NN given a single input data point. & &\ref{eqn:dnn_energy},\ref{eqn:T_ENN},\ref{eqn:S_ENN},\ref{eqn:nflow} \\
 \hline
-\textbf{Energy Difference or \StudentTeacher (ST) Error} & $\DEL$, $\DELBF$ (simplified)& Sec.~\ref{sxn:SMOG_main},~\ref{sxn:summary_sst92} \\
+\textbf{Energy or \StudentTeacher (ST) Error} & $\DEL$, $\DELBF$ (simplified)& Sec.~\ref{sxn:SMOG_main},~\ref{sxn:summary_sst92} \\
 \hthinline
-The difference squared between the output of a \Student NN and its prescribed Teacher label $y_T$ for a single data point &$\DEL:=(y_T-\SOUT)^2 $ & \ref{eqn:DEy} \\
+The squared between the output of a \Student NN and its prescribed Teacher label $y_T$ for a single data point &$\DEL:=(y_T-\SOUT)^2 $ & \ref{eqn:DEy} \\
 And as the total error for a sample of $\ND$ data points  &  $\DELBF=\sum_{\mu=1}^{n} \DEL$ & \ref{eqn:detopxy}  \\
 Or between the outputs of the \Student and the \Teacher NNs. & $
 \DELBF:=\sum_{\mu=1}^{n} (\SOUT - \TOUT)^2$ & \ref{eqn:DE_L},\ref{eqn:DE},\ref{eqn:DETOPNN} \\
@@ -189,13 +188,11 @@ For the ST \Perceptron, $\Q^{ST}$ is the generalization accuracy & $\Q^{ST}:= 1-
 in terms of the \SelfOverlap $\ETA(R)$ & $\Q^{ST}:= \THRMAVG{\ETA(R)}$ & \\
 In the AA, and at high-T, $\THRMAVG{\EPSL(R)}=1-R$ & $\Q^{ST}:= 1-\AVGGE^{an,ht} = \THRMAVG{R}$ & \ref{eqn:QST_final} \\
 For an MLP / NN, we approximate the total accuracy as a product of layer qualities $\Q$ (in the AA, at high-T) &  $\Q^{NN}:=\prod \Q^{NN}_{L}$ &  \ref{eqn:ProductNorm}\\
-For a matrix, the \LayerQualitySquared $\QT$ is an HCIZ integral   & $\QT:=\THRMAVGIZ{\OLAPTOLAP}$ &\ref{eqn:QT_1}\\
+For a matrix, the \LayerQualitySquared $\QT$ & $\QT:=\THRMAVGIZ{\OLAPTOLAP}$ &\ref{eqn:QT_1}\\
 We approximate $\Q$ using the quality squared & $\Q:=\sqrt{\QT}\approx Q^{NN}_{L}$ & \ref{eqn:QT},\ref{eqn:QT_2}\\
 \hline
 \end{tabular}
   \caption{Summary of types of ``Energies,'' with simplified examples of the notation, and references to definitions.
-           This is a guide to understanding how the various Energies are defined and used.
-           See the text for exact definitions, dependent variables, etc.
           }
 \label{tab:energies}
 \end{table}

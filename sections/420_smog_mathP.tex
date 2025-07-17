@@ -24,7 +24,7 @@ the error the NN makes on the data.
 We then explain how to take different kinds of \emph{\Thermodynamic} averages of the data,
 including \emph{Sample} and \emph{\ThermalAverages} and the implications,
 and the difference between computing errors and accuracies.
-Next, we define the \emph{FreeEnergy} $(F)$ for the error(s), and the \emph{GeneratingFunction} $(\Gamma)$
+Next, we define the \emph{FreeEnergy} $(F)$ for the error(s), and the \emph{GeneratingFunction}  $(\Gamma)$
 for the accuracy and/or quality.
 From here, we explain the \emph{AnnealedApproximation} (AA) and
 how to define the  \emph{\AnnealedHamiltonian}, $\GAN$, a crucial expression
@@ -224,7 +224,7 @@ but to evaluate this we need to take an integral and/or \ExpectedValue over the 
 
 \paragraph{Expected Values.}
 
-We need to compute various sums and integrals, sampling from a model $\MDD$ for the actual data distribution $\ADD$,  over $\ND$-sized data samples (or data sets), and also over distributions of weights ($\WVEC, \SVEC$) and weight matrices ($\WMAT, \SMAT, \AMAT, \cdots$).
+We need to compute various sums and integrals, sampling from a \emph{idealized} $\MDD$ for the \emph{actual} (i.e, real-world) data distribution $\ADD$,  over $\ND$-sized data samples (or data sets), and also over distributions of weights ($\WVEC, \SVEC$) and weight matrices ($\WMAT, \SMAT, \AMAT, \cdots$).
 This will frequently (but not always) be defined as more familiar \ExpectedValues.
 We will denote \ExpectedValues using physics \BraKet notion.
 Importantly, we use the term \ExpectedValue in the physics sense, and BraKets will denote an un-normalized sum or integral;
@@ -244,14 +244,14 @@ We would express an $\ND$-sized sample average over $f()$ as
 The BraKet $\langle\cdots\rangle_{\AVGNDXIn}$ denotes an integral over an $\ND$-sized sample of idealized
 Gaussian-field data $\NDXIn$, with the convention that summation over $\ND$ points and normalization $\tfrac{1}{\ND}$
 appears inside the \BraKet implicitly.
-% If this integral is normalized properly, then this denotes the familiar \ExpectedValue $\mathbb{E}_{\XI}[f(\XI)]$.
-% \michaelB{Clarify what is ``properly.?? Either remove that sentence, or say that is what \EQN~\ref{eqn:EuT_normalized} is.}
-For example, consider how to compute \ExpectedValue of the \DataSampleError:
-% That is, we want to model the average \DataSampleError using:
+
+For example, we treat an \ExpectedValue of the \DataSampleError , which is correlated when using real-world data $\ADD$, using the uncorrelated idealized data $\MDD$; this is specified with the following mapping:
 \begin{align}
   \label{eqn:Emap}
   \frac{1}{\ND}\DETOPX \xrightarrow{\text{Expected Value}} \langle \DETOPXI \rangle_{\AVGNDXIn}  , %= \DETOT = n \EPSLw.
 \end{align}
+where the BraKet $\langle\cdots\rangle_{\AVGNDXIn}$ deotes the integral over the idealized dataset $\NDXIn$, but with the convention that the normalization $\tfrac{1}{n}$
+appears inside the \BraKet implicitly.
 In this case, we obtain:
 \begin{align}
 \nonumber
