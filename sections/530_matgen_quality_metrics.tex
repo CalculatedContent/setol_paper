@@ -76,7 +76,7 @@ For our matrix generalization, we compute $\Q$ from a \emph{\LayerQualitySquared
   \label{eqn:betaIZG_S}
   \IZG:=  \red{\tfrac{1}{N}}\ln \int d\mu(\SMAT) \exp\left[\ND\beta N\OLAPSQD\right] .
 \end{align}
-We normalize the $\IZG$ because we are going to take the \LargeN limit in $N$, and we need to keep the \LayerQuality finite.  This allows us to implicitly fix the effective load of the layer, $\ND/N$, as $\IZG$ is also in the \ThermodynamicLimit and therefore at \LargeN in $\ND$, although we do not explicitly set $\ND/N$.
+We normalize the $\IZG$ because we are going to take the \LargeN limit in $N$, and we need to keep the \LayerQuality finite.  This allows us to implicitly fix the effective load of the layer, $\ND/N$, as $\IZG$ is also in the \ThermodynamicLimit and therefore at \LargeN in $\ND$, although we do not explicitly set the layer load $\ND/N$.
 See Appendix~\ref{sxn:quality} for the derivation of \EQN~\ref{eqn:betaIZG_S} (and recall the discussion in Section~\ref{sxn:mathP}). 
 \end{itemize}
 
@@ -373,10 +373,10 @@ Correlation matrix $\AECS$
 \label{eqn:IFA-ppint}
 \Big\langle \det\AECSM\Big\rangle_{\AECS}=
 \Big\langle \det\AECSN\Big\rangle_{\AECS}
-\simeq\det\XECS=\prod_{t}\lambda_{t}=1\;\;\forall\lambda_{t}\in\rho^{emp}_{tail}(\lambda) ,
+\simeq\det\XECS=\prod_{t}\lambda_{t}=1\;\;\forall\LambdaECS_{t}\in\rho^{emp}_{tail}(\lambda) ,
 \end{align}
-for all eigenvalues $\lambda_{t}$ in $\rho^{emp}_{tail}(\lambda)$ the tail of the
-ESD of $\XECS$, i.e., $\lambda_{t}\ge\LambdaECSmin$.
+for all eigenvalues $\LambdaECS_{t}$ in $\rho^{emp}_{tail}(\lambda)$ the tail of the
+ESD of $\XECS$, i.e., $\LambdaECS_{t}\ge\LambdaECSmin$.
 %
 How should one choose $\LambdaECSmin$ in this expression?
 We already know that most NNs layers have \FatTailed ESDs, but
@@ -386,9 +386,8 @@ of a random full rank \Student Correlation matrix $\AMATM$
 might be well defined and easy to estimate, and we might not even need to define the lower rank~\ECS.
 Indeed, in these cases, the correlated eigencomponents, if they exist, may be buried in the bulk
 region of the ESD and not readily identifiable.
-But because $\rho_{tail}^{emp}(\lambda)$ is \FatTailed
-and \PowerLaw (PL), this poses some difficulty,
-which is why we need to first define the \EffectiveCorrelationSpace (\ECS).
+Because $\rho_{tail}^{emp}(\lambda)$ is \FatTailed
+and \PowerLaw (PL), this poses some difficulty, we need to first define the \EffectiveCorrelationSpace (\ECS).
 
 
 \begin{figure}[t]

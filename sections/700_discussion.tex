@@ -81,22 +81,21 @@ HT \emph{long-ranged} modes. This leads to an effective model with fewer degrees
 \emph{renormalized} interactions--interactions that are dominated by the largest eigenvalues.
 This analogy with   \ERG theory suggests that the \HTSR phenomenology, where $\alpha\in[2,6]$ in the Fat-Tailed
 \Universality Class, is essentially describing a near-critical phase  when
-$\alpha \approx 2$ and satisfies $\ln\!\bigl(\prod \lambda_i\bigr)\approx 0$ in its ECS.
+$\alpha \approx 2$ and satisfies $\Trace{\ln \LambdaECS}=\ln\prod \LambdaECS_i\approx 0$ in its ECS.
 Departing from  this point ($\alpha<2$) leads to suboptimal results, consistent with the multi-phase 
 pictures in \STATMECH spin glass theories of learning~\cite{SST92,Gardner_1988,Eng01, EB01_BOOK}.
 
 \vspace{1em}
 \noindent
 \textbf{Toward Understanding “Why Deep Learning Works.”}
-A key question in deep learning theory is why large neural networks achieve strong generalization despite operating in highly non-convex optimization landscapes. From the perspective of   \ERG theory, this phenomenon can be partially understood through the concentration of generalization-relevant components. Specifically, models trained in regimes exhibiting \emph{L\'{e}vy-like}
- or \emph{Power-Law (PL)} couplings lead to the emergence of effective low-dimensional descriptions, where irrelevant modes are suppressed. The \WW \ALPHA metric quantitatively captures this concentration by characterizing how the optimization landscape stabilizes near criticality, with $\alpha \approx 2$ signaling optimal generalization in a near-critical regime.
+A key question in deep learning theory is why large neural networks achieve strong generalization despite operating in highly non-convex optimization landscapes. From the perspective of   \ERG theory, this phenomenon can be partially understood through the concentration of generalization-relevant components. Specifically, models trained in regimes exhibiting \emph{Power-Law (PL)} correlations lead to the emergence of effective low-dimensional descriptions, where irrelevant modes are suppressed. The \WW \ALPHA metric quantitatively captures this concentration by characterizing how the optimization landscape stabilizes near criticality, with $\alpha \approx 2$ signaling optimal generalization in a near-critical regime.
 
 \vspace{1em}
 \noindent
 \textbf{Relation to Levy Spin Glasses and Heavy-Tailed Random Matrix Models.}
 One longstanding puzzle is why large NNs avoid the worst of highly non-convex optimization, despite nominal 
-exponential degeneracies. \SETOL offers a partial explanation: if the trained model has \emph{Levy-like} or 
-\emph{PL} couplings, then typical spin-glass degeneracies can be lifted, leaving the layer in a finite number 
+exponential degeneracies. \SETOL offers a partial explanation: if the trained model has \emph{Levy-like} or VHT
+PL correlations, then typical spin-glass degeneracies can be lifted, leaving the layer in a finite number 
 of near-critical minima. In analogy with older work on \emph{Levy Spin Glasses}\cite{Bouchaud1998},  it is
 proposed  \WW \ALPHA  metric effectively measures how \emph{rugged yet stable} the
 effective energy landscape is for each layer, with $\alpha\approx 2$ signifying a sweet spot of \Ideal generalization.

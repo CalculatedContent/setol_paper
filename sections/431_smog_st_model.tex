@@ -3,7 +3,7 @@
 \input{sections/student_teacher}
 
 Here, describe the basic setup of the classic \StudentTeacher model, taking an operational view from the perspective of a practitioner training real-world \Student and \Teacher models.  Specifically, we present the \AnnealedApproximation (AA) in a practical light,
-and use it explain the difference between computing the \emph{Empirical \GeneralizationError}, $\AVGEMPGE$, for the \emph{\TrueAccuracy}
+and use it to explain the difference between computing the \emph{Empirical \GeneralizationError}, $\AVGEMPGE$, for the \emph{\TrueAccuracy}
 and for the \emph{\Precision} of a \Teacher model. Table~\ref{tab:st_notation} summarizes some of the key notation we will be using in this section.
 \input{sections/table43}
 
@@ -23,7 +23,7 @@ If $T$ reproduces the true labels exactly, we might say that the \Teacher has be
 trained to \emph{\Interpolation}, and therefore, $\Yt = \Ytrue$.
 Indeed, most models today are trained to \emph{\Interpolation}, and we don't need to
 necessarily worry about the difference between the true and the predicted \Teacher labels.
-Formally, however, and to understand better the \AA, it is beneficial to discuss the implication
+Formally, however, and to better understand the \AA, it is beneficial to discuss the implications
 of this distinction.
 
 Following \EQN~\ref{eqn:dnn_energy}, lets say the \Teacher outputs are specified
@@ -51,12 +51,12 @@ We call this the \emph{Empirical \AverageGeneralizationError}, $\AVGEMPGE$, and 
 To measure the error, the loss function $\mathcal{L}$ may be a L1 $(\ell_1)$ or L2 $(\ell_2)$ loss;
 whereas for training a model, it is usually something like a cross-entropy loss, but this detail does matter later.
 
-If we don't have a hold-out set, however, we can still estimate $\AVGGE^{T}$ using the \Student-\Teacher approach.
+If we don't have a hold-out set, however, we can still estimate $\AVGGE^{T}$ using the \ Student-Teacher approach.
 
 \paragraph{Estimating the Student-Teacher Error: Accuracy vs. Precision}
-Imagine we train a Student model $S$ (with the same architecture as the Teacher $T$) on the dataset $\mathcal D$, using $T$'s outputs as targets:
+Imagine we train a Student model $S$ (with the same architecture as the Teacher $T$) on the real-world dataset $\ADD$, using $T$'s outputs as targets:
 \begin{equation*}
-S: \mathcal D \to y^{S}_\mu \approx y^{T}_\mu,
+S: \ADD \to y^{S}_\mu \approx y^{T}_\mu,
 \label{eqn:S_ENN}
 \end{equation*}
 where $y^T_\mu = E_{NN}(T, x_\mu)$ are the Teacher’s predicted labels or energies.
@@ -76,7 +76,7 @@ Figure~\ref{fig:precision} illustrates the following two scenarios side by side:
     estimates how faithfully $S$ reproduces $T$ (its precision), rather than true accuracy.
 \end{itemize}
 
-By analyzing the Student–Teacher overlap $R = \sum_\mu s^T t$, one can show that the average generalization error of $T$ depends simply on $1-R$ under the annealed approximation—-even when $S$ was trained on noisy labels. In practice, we exploit this fact by training a large ensemble of students to estimate $R$ and hence recover the teacher’s true error.
+By analyzing the Student–Teacher overlap $R = \sum_\mu s^{\top} t$, one can show that the average generalization error of $T$ depends simply on $1-R$ under the annealed approximation—-even when $T$ was trained on noisy labels. In practice, we exploit this fact by training a large ensemble of students to estimate $R$ and hence recover the teacher’s true error.
 %\paragraph{Estimating the Teacher Error with Students: Accuracy vs. Precision}
 %
 %Imagine training a \Student $(S)$  model (with a similar architecture as $T$, and acting on the same  
@@ -106,7 +106,7 @@ Moving forward, we will always assume the \Teacher is trained to \Interpolation 
 actually corresponds to the \AnnealedApproximation, whereas if the \Teacher makes
 errors, we may need to consider \Quenched averages, explained below.
 
-Imagine now that in order to estimate the empirical \AverageGeneralizationError, $\AVGEMPGE$,
+Imagine now that to estimate the empirical \AverageGeneralizationError, $\AVGEMPGE$,
 by training a very large number of Students, and computing the average ST error on some test set.
 Let us break the data set into training $\DATAtrain$ and test $\DATAtest$ examples, 
 train models on the training data (that is, find the optimal model weights), 

@@ -68,7 +68,7 @@ in our notation for the expected value $\Expected[\AMAT]{\cdots}$ operator, as f
 \label{eqn:hciz2}
   \tfrac{1}{2\red{N}}\IZGINF = 
   \red{\frac{1}{N}}\lim_{N\gg 1} \ln \underbrace{ \int d\mu(\mathbf{\AMAT})\left[\exp\left(\frac{\ND\beta}{2}\Trace{\mathbf{W}^{\top}\AMATN\mathbf{W}}\right)\right] }_{\mbox{HCIZ Integral}} 
-  = \ND\beta \cancel{N}\tfrac{1}{2}\sum_{i=1}^{M}\GNORM(\lambda_{i})   .
+  = \ND\beta \tfrac{1}{2}\sum_{i=1}^{M}\GNORM(\lambda_{i})   .
 \end{equation}
 where we have added a $\tfrac{1}{2}$ for technical convenience (to make the connection with the LDP, below).
 If we denote the internal HCIZ integral as 
@@ -79,15 +79,15 @@ If we denote the internal HCIZ integral as
 \label{eqn:hciz_def}
   \HCIZ := \int d\mu(\mathbf{\AMAT})\left[\exp\left(\frac{\ND\beta}{2}\Trace{\mathbf{W}^{\top}\AMATN\mathbf{W}}\right)\right]  ,
  \end{equation}
-then it holds that \nred{I think we need $1/N$ below and we need to justify it}
+then it holds that 
 \begin{equation}
   \label{eqn:hciz_def2}
-  \IZG :=  \red{\frac{1}{N}}\ln\HCIZ  ,
+  \IZG :=  \red{\tfrac{1}{N}}\ln\HCIZ  ,
 \end{equation}
 from which it follows that %%MM%% or, equivalently,
 \begin{equation}
 \label{eqn:hciz_def3}
-  \IZGINF := \lim_{N \gg 1} \red{\frac{1}{N}}\ln\HCIZ  .
+  \IZGINF := \lim_{N \gg 1} \red{\tfrac{1}{N}}\ln\HCIZ  .
 \end{equation}
 
 The SPA approximates the \PartitionFunction $\HCIZ$, which is now an HCIZ integral,  by its peak value.

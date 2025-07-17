@@ -69,7 +69,7 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
     $\ell_2$-Energy Difference Matrix Operator Form & $\DETOPST:=\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)$\\ \hline
     \EffectivePotential  & $\epsilon(R)=\epsilon(S,T)=\langle\DETOPSTLL\rangle_{\AVGNDXI}$ \\ \hline
     \LinearPerceptron  $\epsilon(R)$ at high-T, large-$N$ & $\epsilon(R)=1-R$ \\ \hline
-    \AnnealedApproximation (AA)& $\langle\ln Z\rangle_{\AVGNDXI}=\ln\langle Z\rangle_{\AVGNDXI}$ \\ \hline
+    \AnnealedApproximation (AA)& $\langle\ln Z\rangle_{\AVGNDXI}\approx\ln\langle Z\rangle_{\AVGNDXI}$ \\ \hline
     \AnnealedHamiltonian &  $\GAN$ \\ \hline
     \AnnealedHamiltonian at high-T &  $\GANHT=\EPSL(\WVEC)$ \\ \hline  
    %\Annealed Partition Function & $Z^{an}{_\ND}=\THRMAVGw{n\GAN}$ \\ \hline
@@ -82,14 +82,14 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
     Average over~\ECS \Student Correlation Matrices & $ \langle \cdots \rangle^{\beta}_{\AECS}=\int \cdots d\mu(\AECS)=  \mathbb{E}_{\AECS}[\cdots]$ \\    \hline
 
 
-    \TRACELOG Determinant Relation & $\Trace{\ln\mathbf{A}}=\ln\det\mathbf{A}$ \\ \hline
+    \TRACELOG Trace-Log-Determinant Relation & $\Trace{\ln\mathbf{A}}=\ln\det\mathbf{A}$ \\ \hline
     \TRACELOG (Volume Preserving) Condition & $\Trace{\ln\mathbf{A}}=0$ or $\det\mathbf{A}=1$ \\ \hline
     Effective Correlation Measure Transform & $d\mu(\mathbf{S})\rightarrow d\mu(\AECS)$ \\ \hline
     HCIZ Integral (Tanaka's Notation)&${\mathbb{E}_{\AECS}}[\exp(\ND\beta\Trace{\TMAT^{\top}\AMAT\TMAT)}$\\ \hline
-      HCIZ Integral  & 
+      HCIZ Integral (\LargeN in $N$ explicit) & 
 $\Expected[\AECS]{\exp\!\bigl(\ND\beta N\,\mathrm{Tr}\bigl[\tfrac{1}{N}\,\TMAT^{\top}\,\AECSN\,\TMAT\bigr]\bigr)}$
 \\ \hline
-    \LayerQuality \GeneratingFunction & $\IZGINF := \ND\beta \sum_{\mu=1}^{\MECS}\int^{\LambdaECS_{\mu}}_{\LambdaECS_{\min}} dz R(z)$
+    \LayerQualitySquared \GeneratingFunction & $\IZGINF := \ND\beta \sum_{\mu=1}^{\MECS}\int^{\LambdaECS_{\mu}}_{\LambdaECS_{\min}} dz R(z)$
  \\ \hline
     \GEN & $G_{A}(\gamma)=\int_{\LambdaECSmin}^{\LambdaECS}R_{A}(z)dz$ \\ \hline
 %    \RTransform (for Levy Matrix)& $R(z)=\nred{b}z^{\alpha-1}$ where \red{$\alpha=3$?or$2$} \\ \hline
@@ -97,7 +97,7 @@ $\Expected[\AECS]{\exp\!\bigl(\ND\beta N\,\mathrm{Tr}\bigl[\tfrac{1}{N}\,\TMAT^{
     \PowerLaw ESD Tail for $\mathbf{X}$ & $\rho_{tail}(\lambda)\sim\lambda^{-\alpha}$ \\ \hline
     \EffectiveCorrelationSpace ESD Tail for $\mathbf{X}$ & $\rho^{ECS}_{tail}(\LambdaECS),\;\Trace{\ln\prod_{j=1}^{\MECS}\LambdaECS_{j}}=0$ \\ \hline
     Schatten Norm & $\Vert\mathbf{X}\Vert^{\alpha}_{\alpha}=\sum_{j}\lambda_{j}^{\alpha}$ \\ \hline
-    ECS Tail Norm & $\tfrac{1}{\MECS}\sum_{i}^{\MECS}\LambdaECS_{i},\;\;\LambdaECS_{i}\in\rho^{ECS}_{tail}(\LambdaECS)$\\ \hline
+    ECS Tail Norm & $\tfrac{1}{\MECS}\sum_{i}^{\MECS}\LambdaECS_{i},\;\;\LambdaECS_{i}\in\rho^{ECS}_{tail}(\lambda)$\\ \hline
     Spectral Norm & $\Vert\mathbf{X}\Vert_{\infty}=\lambda_{max}$ \\ \hline
     \WW Start of PL Tail & $\lambda^{PL}_{min}=\lambda_{min}$ \\ \hline
     Start of~\ECS Tail & $\lambda^{ECS}_{min}=\lambda^{|detX|=1}_{min}$ \\ \hline

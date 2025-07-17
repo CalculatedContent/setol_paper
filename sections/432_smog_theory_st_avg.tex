@@ -21,11 +21,11 @@ with some uncorrelated, random model of the data, i.e., $\XVEC\rightarrow\XI$.
 As described in Figure~\ref{fig:data_mapping},
 our \DataModel is a standard Gaussian $N(0,\sigma^{2}\mathbb{I})$ model for the input data
 \begin{align}
-\DATA\rightarrow\XImu,\;\;\XImu\in N(0,\sigma^{2}\mathbb{I}) ,
+\DATA\rightarrow\XImu,\;\;\XImu\in N(0,\sigma^{2}\IMm) ,
 \label{eqn:mwm_replace_1}
 \end{align}
-where $N(0,\sigma^{2}\mathbb{I})$ denotes a Gaussian distribution with zero mean and variance $\sigma^{2}=\tfrac{1}{m}$,
-\and $\XImu$ is normalized such that $\Vert\XImu\Vert^{2}_{F}=1$ for all $\ND$ data vectors.  The full idealized sample is denoted $\NDXI$, and is an $n\times m$ matrix, or, equivalently, a $n$-dimensional vector  of $m$-dimensional vectors $\XI$.
+where $N(0,\sigma^{2}\IMm)$ denotes a Gaussian distribution with zero mean and variance $\sigma^{2}=\tfrac{1}{m}$,
+\and $\XImu$ is normalized such that $\Vert\XImu\Vert^{2}:=\sum_{i=1}^{m}(\XImu)^{2}_{i}=1$ for all $\ND$ data vectors.  The full idealized sample is denoted $\NDXI$, and is an $n\times m$ matrix, or, equivalently, a $n$-dimensional vector  of $m$-dimensional vectors $\XImu$.
 
 We make this distinction between Actual and \ModelData to emphasize that,
 later, we will use our so-called \SemiEmpirical procedure to
@@ -88,13 +88,13 @@ second, then as a Thermal average over all Students $S$, in the AA, and at high-
 \label{eqn:MGE}
 \AVGSTGE:=\THRMAVG{\EPSLSTx} .
 \end{align}
-(Recall that in this regime $\AVGSTGE=\AVGGE^{an,hT}$.)
+(Recall that in this regime, $\AVGSTGE=\AVGGE^{an,hT}$.)
 
 In the classic \STATMECH approach, the average $\THRMAVG{\cdots}$ is
 a \ThermalAverage in the canonical ensemble with $\beta$ fixed,
 as explained in Section~\ref{sxn:mathP}.  Here, we will do something similar, as the \Student
 average $\THRMAVG{\cdots}$ will be computed from the associated
-generating function $\IZG$ for the matrix-generalized case  (i.e., an HCIZ integral defined over all students,
+generating function $\IZG$ for the matrix-generalized case  (an HCIZ integral defined over all students,
 and in both the \LargeN \Thermodynamic limit in $\ND$, and \WideLayer \LargeN  limit in $N$).)
 
 Recall that above, the empirical estimate for $\AVGEMPGE$ depended on a

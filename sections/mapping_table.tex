@@ -23,7 +23,8 @@
     & (only for a layer)  \\ \hline
 
     \SelfOverlap 
-    & $\ETAw = 1-\EPSLw$ 
+    & $\ETAw = 1-\EPSLw$~(\ref{eqn:def_eta})
+
     & $\ETA(\SVEC,\TVEC)=\SVEC^{\top}\TVEC$ (\ref{eqn:eta_vec_avg_def})
     & $\ETA(\SMAT,\TMAT)=\tfrac{1}{N}\SMAT^{\top}\TMAT$ (\ref{eqn:eta_mat_avg_def})  \\ \hline
     \hline
@@ -39,11 +40,11 @@
    & $\Q^{NN}:=\prod_{L} \Q^{NN}_{L}$ \\ \hline
 \end{tabular}
 \caption{Summary of key quantities compared across traditional \SMOG models,  the \Student-\Teacher (ST) \LinearPerceptron--in the \AnnealedApproximation
-(AA) and at high-Temperature (high-T) and at \LargeN$(i.e., \ND)$, and the matrix-generalized forms as the starting point to frame \SETOL.
+(AA) and at high-Temperature (high-T) and at \LargeN in $\ND$, and the matrix-generalized forms as the starting point to frame \SETOL.
 The Total Data Model Error represents the difference between the model and its labels for the ST model between
 the \Student and \Teacher predictions.
 The \AnnealedHamiltonian is the Energy function for this Error after it is averaged over the model for the training data
-(an $\ND$-dimensional i.i.d. idealized Gaussian dataset, i.e.,  $\NDXIn$).
+(an $\ND$-dimensional i.i.d. idealized Gaussian dataset,  $\NDXIn$).
 In the AA, the \AnnealedHamiltonian is equal to the \EffectivePotential.  For the ST model,  this is one minus the average overlap, $(1-\AVGR)$;
 for the \SETOL, this is  the ($M$-dimensional) identity minus the overlap operator/matrix, $\red{N}(\IM-\OVERLAP)$. 
 The \SelfOverlap $\eta(\cdots)$ is used to describe the Accuracy (as opposed to the Error) for both the ST model and

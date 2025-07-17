@@ -77,10 +77,10 @@ Under this assumption, \EQN \ref{eqn:overlap1} simplifies to
 \begin{align}
 \label{eqn:overlap2}
   \ETAMLPAVG &= \frac{1}{\ND}\tfrac{1}{N_3 \, N_2 \, N_1} 
-  \Trace{ \boldsymbol{\xi}^\top 
+  \Trace{ (\NDXI)^\top 
     \SMAT_1 \SMAT_2 \SMAT_3 
     \TMAT_3^{\top} \TMAT_2^{\top} \TMAT_1^{\top} 
-    \boldsymbol{\xi} }.
+    (\NDXI) }.
 \end{align}
 While this is possible, it would not lead to layer-by-layer insights (as \HTSR-based approaches do).
 %
@@ -115,6 +115,6 @@ Since we can interpret the Trace as an expected value over the model data $\NDXI
   \ETA(\SMAT,\TMAT)
   :=\tfrac{1}{N} \Trace{\SMAT^{\top}\TMAT} 
 \end{align}
-\As noted above, the $1/\ND$ will be implicit in the $\TMAT$ and $\SMAT$ matrices because they represent empirical observables. In other words, the weights are the learned parameters, effectively averaged over the entire real-world training data set $\ADD$.
+\As noted above, the $1/\ND$ will be implicit in the $\TMAT$ and $\SMAT$ matrices because they represent empirical observables. That is, the weights are the learned parameters, effectively averaged over the entire real-world training data set $\ADD$.
 This is the matrix generalized form of \EQN~\ref{eqn:QST_final} for the \LayerQuality.
 

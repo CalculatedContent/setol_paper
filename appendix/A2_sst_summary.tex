@@ -294,7 +294,7 @@ which would be like a mean-field potential, but we need something different for 
 
 %%We now evaluate the integral over $d\mu(\NDXI)$ in \EQN~\ref{eqn:Gan0}. 
 
-To evaluate the integral, notice that $\IH$ is really just an average over i.i.d. data, and so it is just a product over $\ND$ independent terms \red{(1 for each training example)}
+To evaluate the integral, notice that $\IH$ is really just an average over i.i.d. data, and so it is just a product over $\ND$ independent terms ($1$ for each training example).
 \begin{align}
 \IH := \int\mathcal{D}\NDXI  e^{-\beta \DETOPST} P(\NDXI)  \rightarrow\left[\int\mathcal{D}\XI \;[\cdots]\; \right]^{\ND} ,
 \end{align}
@@ -414,15 +414,15 @@ eventually want a symmetric operator or matrix.
 Fortunately, the high-T form, $\GANMATHT$, can be made symmetric, as
 shown below.  But first, let show that this result is consistent with the our previous Percpetron result.
   
-\paragraph{Matrix-Generalized ST Error $\GANMATHT$ when $\nred{N}=1$.}
+\paragraph{Matrix-Generalized ST Error $\GANMATHT$ for $N}=1$.}
 To start, observe that when $\red{N}=1$, \EQN~\ref{eqn:Gan_lnI_final_mwm} becomes
 \begin{align}
 \nonumber
 \beta\GANMAT\vert_{\red{N}=1}
 &= \beta\HANPP\vert_{\red{N}=1}  \\ 
-  &=  -\frac{1}{\ND}\ln  \left[1  + 2\beta\red{\tfrac{1}{M}Tr}(1-\SVEC^{\top}\TVEC)\right]^{-\ND/2} \\ 
+  &=  -\frac{1}{\ND}\ln  \left[1  + 2\beta\red{\tfrac{1}{M}\Trace{(M-\SVEC^{\top}\TVEC}\right]^{-\ND/2} \\ 
 \nonumber
-  &= \frac{1}{2}\ln  \left[1  + 2\beta\red{\tfrac{1}{M}Tr}(M-\SVEC^{\top}\TVEC)\right] \\ 
+  &= \frac{1}{2}\ln  \left[1  + 2\beta\red{\tfrac{1}{M}}\Trace{M-\SVEC^{\top}\TVEC}\right] \\ 
 \label{eqn:GANmat_m_equals_1}
   &=  \frac{1}{2}\ln \left[1 + 2\beta(1-R)\right]  ,
 \end{align}
@@ -437,7 +437,7 @@ Notice that for the final \LayerQualitySquared Hamiltonian $\HBARE$, this will c
 \charles{@michael: working on this, but IDK its  about A1 and A2; REWORKING THIS:}
 \begin{align}
   \label{eqn:I_9}
-    \IH\approx  \left[1  + \frac{2\beta}{M}\red{N}\operatorname{Tr}[(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)\right]^{-\ND/2} ,
+    \IH\approx  \left[1  + \frac{2\beta}{M}\red{N}\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT}\right]^{-\ND/2} ,
 \end{align}
 for any $M>1$.
 Given this, it follows from \EQN~\ref{eqn:Gan_lnI_final_mwm} and \EQN~\ref{eqn:Gan_lnI} that we can define 
@@ -457,10 +457,15 @@ To obtain the high-Temperature form, we use
 with $\epsilon=\tfrac{2\beta}{M}$ and $\mathbb{M}=\IM-\OVERLAP$.   
 We now obtain the following result for the matrix-generalized high-T of $\GANMATHT$ using
 \begin{align}
-\label{eqn:GANHTmatR}
+\label{eqn:GANHTmatRN1}
 \Trace{\GANMATHT}\vert_{N=1} = \Trace{\IM-\OVERLAP} = M-\Trace{\OVERLAP}
 \end{align}
 
+The final expression for $\GANMATHT$ is
+\begin{align}
+\label{eqn:GANHTmatR}
+\Trace{\GANMATHT}\vert = \Trace{\IM-\OVERLAP} = N(M-\Trace{\OVERLAP})
+\end{align}
 
 % We will use this normalization for both the \TRACELOG  condition and deriving the
 %  \Quality (Squared) \GeneratingFunction $\IZG$ in Section~\ref{sxn:matgen}.
