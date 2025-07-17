@@ -103,14 +103,14 @@ The various symbols and other important results are summarized in the Appendix~\
 \subsubsection{Setup}
 \label{sxn:mathP_setup}
 
-A basic issue in formulating \SETOL is that one typically trains one large (expensive) NN, i.e., one does not split the data into training and testing sets.
+A basic issue in formulating \SETOL is that one typically trains one large (expensive) NN, i.e., one does not necessarily  need to split the data into training and testing sets (as in more traditional hyperparameter tuning of ML models).
 Thus, we want a methodology to approximate quantities such as the generalization error or generalization accuracy that does not rely on traditional train-test splitting methods.
 \michaelB{Q: how does this lack of using training/testing split relate to that we ignore the $y$ below and/or that we are actually getting a notion of quality/accuracy, rather than error (related to $\Gamma$ versus $F$).}
 To accomplish this, we idealize the empirical data distribution as Gaussian fields, and we will use \STATMECH to construct quantities (basically, free energies or generating functions) so that we can compute training/testing errors by taking appropriate derivatives of these quantities.
 
 In more detail, we imagine training a NN on $\ND$ training data instances, $\XVEC_{\mu}$, which are $m$-dimensional vectors,
 with labels $y_{\mu}$, chosen from a large but finite-size training data set $\ADD$.
-The goal of training a perceptron (or, later, a NN) is to learn the $m$ weights of the vector $\WVEC$ (or, later, a weight matrix $\WMAT$) by minimizing a loss function $\mathcal{L}$. 
+The goal of training a perceptron (or, later, a NN) is to learn the $m$ weights of the vector $\WVEC$ (or, later, a weight matrix $\WMAT$) by running a form of stochastic gradient descent (SGD) to minimizing a loss function $\mathcal{L}$ ($\ell_2$, cross-entropy, etc.). 
 We want to approximate the actual network’s learning dynamics by an analytically tractable ensemble
 so that we can then obtain 
 analytic expressions for the \emph{\FreeEnergy} and \emph{\GeneratingFunction} we then use to compute
@@ -144,7 +144,7 @@ where
 $\XVEC_{\mu}\in\mathbb{R}^{m}$ is an $m$-dimensional real vector, 
 $\MY_{\mu}$ is a binary label taking values $\{-1,1\}$, and 
 $\ADD$ denotes the finite-size dataset.
-WLOG, we assume that $\XVEC_{\mu}$ is normalized such that the Frobenius norm squared is unity:
+WLOG, we assume that $\XVEC_{\mu}$ is normalized such that the norm squared is unity:
 \begin{equation}
   \label{eqn:XVEC_norm}
   \Vert\XVEC_{\mu}\Vert^{2}_{F} := \sum_{i=1}^{m} \XVEC_{\mu,i}^{2}=1
@@ -153,42 +153,38 @@ We call $\XVEC^{\ND}$ an $\ND$-sized sample (of the training data instances $\XV
 % See below We may or may not specify the labels for this sample, depending on the context.
 
 We define model errors
-as a difference in energy $\DEL$ between the student's and teacher's output, since their outputs are a form of energy. Smaller energy differences correspond to smaller errors and therefore better models.
+as a difference in energy $\Delta E_{\mathcal{L}}$ between the student's and teacher's output, since their outputs are a form of energy. Smaller energy differences correspond to smaller errors and therefore better models.
 For example, for the mean-squared-error (MSE) loss, one has
 \begin{align}
   \label{eqn:DEy}
   \DEL(\WVEC,\XVEC_{\mu},\MY_{\mu}):= (\MY_{\mu}-E_{NN}(\WVEC,\XVEC_{\mu}))^{2}  ,
 \end{align}
-where $E_{NN}(\WVEC,\XVEC_{\mu})$ is output prediction of the (student) NN, as in \EQN~\ref{eqn:dnn_energy}.
+where $E_{NN}(\WVEC,\XVEC_{\mu})$ is output prediction of the NN, as in \EQN~\ref{eqn:dnn_energy}.
 
-\michaeladdressed{To clarify: by modeling and ``real-worldexperiment, I think that what we are saying is that there is a training process on a particular dataset, and we are modeling the quality/generalization with the following, which includes replacing the real data with Gaussian data and the NN with a parameteric form that we will fit semi-empirically.}
-\michael{@charles: we are going back and forth between Quality and Accuracy and various Errors; probably stick with errors, and introduce the Qualty/Accuracy in the subsubsection below.}
-\charles{@michael: Eh?}
 
-%There is a training process on a particular dataset, and we are modeling the \Quality (or generalization accuracy) with the following, which includes 
-% To estimate quantities such as the generalization error or generalization accuracy, we will adopt an approach that involves
-% replacing the real data with Gaussian data and
-% the NN with a parametric model that we will fit with a \SemiEmpirical procedure (described later).
-Following the usual \StatisticalMechanics trick, we idealize the inputs as independent Gaussian fields and the NN as a parametric model, in order to estimate quantities such as the generalization error or generalization accuracy. Moreover, just as the student's output is given by $E_{NN}(\WVEC,\XVEC_{\mu},\MY_{\mu})$, a core assumption of the \SETOL is that $\MY_{\mu}$ is also the output of a (realizable) Teacher NN. Thus, as we will see below, $E_{\mathcal{L}}$ is defined with reference to the Teacher weights, rather than the labels $\MY_{\mu}$, leading $\MY_{\mu}$ to be dropped from expressions of the error. This, and the fact that we will integrate out the data terms, are among the reasons why \SETOL is able to offer data-independent model Quality metrics. The replacement scheme is,
+We assume that there is a real-world training process that generates a \Teacher model $(T)$, trained on a particular dataset $\ADD$, and we seek a theory for the \Quality (or generalization accuracy) of this model.
+ To estimate quantities such as the generalization error or generalization accuracy, we will adopt an approach that starts off by assuming idealized Gaussian data $\MDD$, 
+ but ends with  the NN with a parametric model that we will fit with a \SemiEmpirical procedure (described later).
+ To that end, in the theoretical setup,
+%In particular, a core assumption of the \SETOL is that $\MY_{\mu}$ is also the output of a (realizable) Teacher NN. Thus, as we will see below, $E_{\mathcal{L}}$ is defined with reference to the Teacher weights, rather than the labels $\MY_{\mu}$, leading $\MY_{\mu}$ to be dropped from expressions of the error. This, and the fact that we will integrate out the data terms, are among the reasons why \SETOL is able to offer data-independent model Quality metrics. 
+the replacement scheme is,
 \begin{align}
 \label{eqn:model_real_world_expt}
   \ADD \rightarrow \MDD,\;\;\XVEC_{\mu} \rightarrow \XImu,\;\;  \Ymu \rightarrow y_{\mu}  ,
 \end{align}
-%where we denote the model training and/or test data instances as $(\XI,y)$ 
+where we denote the model training and/or test data instances as $(\XI,y)$ 
 such that
 \begin{align}
     \label{eqn:xi}
   \left(\XI_{\mu}, y_{\mu} \right) \sim \MDD,\;\mu=1, \cdots, \infty  .
 \end{align}
-Here, $\XImu\in\mathbb{R}^{m}$ is a random vector %(i.e., an $m$-dimensional random variable),
-sampled from an i.i.d $m$-dimensional joint distribution $\MDD$ of both the features $\XI_{\mu}$, which are Gaussian, and the labels $y_{\mu}$, which are binary Teacher NN outputs. Since we assume that the Teacher is fixed, and the labels are deterministically generated by it, $\MDD$ is effectively just the Gaussian feature distribution.
-% and $y_{\mu}$ denotes the (binary) label and/or NN output.
-
+Here, $\XImu\in\mathbb{R}^{m}$ is a random vector (i.e., an $m$-dimensional random variable), sampled from an i.i.d $m$-dimensional joint distribution $\MDD$ of both the features $\XI_{\mu}$, which are Gaussian, and the labels $y_{\mu}$, which are binary NN outputs. Since we assume that the labels are fixed, and the labels are deterministically generated by it, $\MDD$ is effectively just the \emph{idealized} Gaussian feature distribution.
+%
 
 \subsubsection{BraKets, Expected Values, and Thermal Averages}
 \label{sxn:mathP_averages}
 Given the setup from Section~\ref{sxn:mathP_setup},
-%we will model the student's error as the average (difference in) energy, $\DETOPX$, over some $\ND$-size data set $\NDX$,
+we will treat the average (difference in) energy, $\DETOPX$, over some $\ND$-size data set $\NDX$.
 we can write the \TotalDataSampleError,
 using an overloaded operator notation, as
 \begin{align}
@@ -196,10 +192,9 @@ using an overloaded operator notation, as
   \DETOPXY :=\sum_{\mu=1}^{\ND}\DEL(\WVEC,\XVEC_{\mu}, \MY_{\mu})  ,
 \end{align}
 where the boldface $\DETOP$ indicates this is a sum over the entire set of $\ND$ pairs $[\NDX, \MY^{\ND}]$.
-% We should keep in mind that this depends on the specific set of $\ND$ data pairs $[(\XVEC_{\mu},\MY_{\mu})\in\ADD\;|\;\mu=1,\cdots,n]$, 
-% although later we will model the labels $\MY_{\mu}$ as the output of another NN when describing the Student-Teacher model.
-As mentioned above, we treat $\MY_{\mu}$ as a deterministic output of the Teacher model, meaning that
-%for now, we will assume that the 
+ We should keep in mind that this depends on the specific set of $\ND$ data pairs $[(\XVEC_{\mu},\MY_{\mu})\in\ADD\;|\;\mu=1,\cdots,n]$, 
+ although later we will model the labels $\MY_{\mu}$ as the output of another NN when describing the Student-Teacher model.
+We treat $\MY_{\mu}$ as a deterministic output of the Teacher model $T$, meaning that
 $\MY_{\mu}$ is \emph{implicit} in $\DEL$.
 We will therefore drop the $\MY_{\mu}$ and $y^{\ND}$ symbols, 
 and simply write this total error / energy difference as
@@ -217,9 +212,8 @@ We will not, however, work directly with samples and sample averages.
 Instead, we will model them.
 %%\michael{By that, I think we mean that it is hard to compute them, so we will model them with Gaussian random variables with a model with a parameter to fit semi-empirically to data; correct?}
 %%\cformike{We discussed on the phone.  The idea is we compute the average as a derivative of a generating function that we know exactly, as opposed to say doing a monte carlo sample because the partition function $Z$ is intractable}
-To that end, we need to estimate them 
-%with a theoretical approach. For example, we can write the \TotalDataSampleError 
-in terms of our random data variables $\XI$, written formally as
+To that end, we need to estimate them with a theoretical approach. For example, we can write the \TotalDataSampleError 
+in terms of our random data variables $\NDXI$, written formally as
 \begin{align}
 \label{eqn:tdse}
 \DETOPXI := \sum_{\mu=1}^{\ND}\DETmu ,
@@ -272,7 +266,9 @@ The subscript $\AVGNDXIn$ indicates this is an
 \ExpectedValue of an average of an $\ND$-size \emph{sample} of ideal data, where the \ExpectedValue is taken over datasets, and the average is over data points within each sample. The third line follows because the $\ND$ samples are i.i.d.
 (This is used in both Sections~\ref{sxn:SMOG_main} and~\ref{sxn:matgen}.)
 The normalization $\tfrac{1}{\ND}$ ensures the \BraKet is a proper \ExpectedValue of a sample average.
-%The measure $d\mu(\NDXIn)$ signifies a single $\ND$ vector $\XI$, drawn from an $m$-dimensional idealized Gaussian distribution.
+The measure $d\mu(\NDXIn)$ 
+denotes the probability measure associated with a single 
+\emph{realization} of a random data sample of size $\ND$ drawn from an $m$-dimensional idealized Gaussian distribution.
 A subscript $\XI$ on the Ket as $\langle\cdots\rangle_{\XI}$ indicates that the integral over potential data points, not an average of a data sample (i.e., there would be no $1/\ND$ prefactor).
 % \michaeladdressed{@charles: clarify; that is $\ND$ vectors in $\mathbb{R}^{M}$ that are element-wise i.i.d. Gaussian?}
 %%\michael{Where we are using $M$ and $\ND$ rather than $m$ and $\ND$; is that a typo, or what should it be.}
@@ -308,7 +304,7 @@ at the limit point $(n=\infty)$. And, again, the load is fixed, so $n\gg 1 \left
 The \TotalDataSampleError $\DETOPXI$ is \SizeExtensive, whereas the
 average $\langle\DETOPXI\rangle_{\AVGNDXIn}$ is \SizeIntensive.
 This limit will be implicit later when taking a \SaddlePointApproximation (see below).
-\footnote{As we are working within a ``physics-level of rigor, we take some liberties in evaluating these \LargeN limits; and we leave the formal proofs for future work. \michael{This comment should be in the intro, not in a footnote here.  Move later, since I don't have the token for the intro for now. } }
+\footnote{As we are working within a ``physics-level of rigor, we take some liberties in evaluating these \LargeN limits; and we leave the formal proofs for future work.  }
 \nred{This is a little weird to have the square on this and ask it to be size extensive and units of energy.  We should at least comment on this  See also SST92  eqn 2.1.  Woud like to find a good solution}
 
 The data-averaged error  $\langle \DETOPXI \rangle_{\AVGNDXIn}$ will appear frequently below.
@@ -878,8 +874,6 @@ which will describe the contributions an individual layer makes to the overall \
 To obtain the \LayerQuality, we define an accuracy--or \Quality--\GeneratingFunction, denoted $\Gamma_{\Q}$, which
 is analogous to a layer \FreeEnergy, but with the opposite sign convention.
 
-
-
 Generally speaking, the \Quality \GeneratingFunction $\Gamma_{\Q}$ is defined in the AA, and at high-T and is given as
 \begin{align}
   \label{ref:defGammaQ}
@@ -1013,7 +1007,7 @@ whereas for the matrix case, we will retain the\emph{'a reduced set} of the  $M$
     \item \LargeN limit in n: $n\gg 1$ (the number of training examples, fixed load: $m/\ND = 1$)
     \item \WideLayer limit: $N\gg 1$ (the larger matrix dimension)
 \end{itemize}
-Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking both \LargeN limts, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number of feature vectors per data point, remains constant, which is consistent with classical \STATMECH theories of learning\cite{MM17_TR} (although we do not enforce this explicitly here).  
+Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking both \LargeN limts, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number data points per feature vector, remains constant (although we do not enforce this explicitly here).  
 In doing this, we expect the matrix-generalized total Energies $(F, H^{an}, \cdots)$ to be \SizeExtensive in $\ND$ and $N$,  the average quantities to be \SizeIntensive in both, 
 and, as discussed below, \emph{\SizeConsistent} in $M$ and/or $\MECS$.
 
@@ -1021,7 +1015,7 @@ and, as discussed below, \emph{\SizeConsistent} in $M$ and/or $\MECS$.
 The notion of \emph{\SizeConsistency} is a notion commonly 
 used Quantum Chemistry to describe interacting , correlated systems. It is often introduced through the Linked Cluster Theorem~\cite{Hubbard1959,Brandow1963},
 which states that the \emph{average} energies and/or free energies $(\bar{F})$ of in particular a correlated system scale with $\MECS$,
-the number of ``independent interacting components'':
+the number of \emph{independent interacting components}:
 \begin{align}
   \label{eqn:LCT}
   -\beta \bar{F}=\langle \ln Z \rangle_{\AVGNDXIn} &= \sum_{\mu=1}^{\MECS}\text{(Connected Components)} \\ \nonumber
