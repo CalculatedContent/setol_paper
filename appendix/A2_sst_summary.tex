@@ -106,12 +106,12 @@ This now lets us write the Average Model \TrainingError $\AVGSTTE$ in the AA in 
   \AVGSTTE
    =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\dfrac{\partial \beta\HAN}{\partial \beta} e^{-\ND\beta\HAN(\beta,\SVEC,\TVEC)} \\ 
   \label{eqn:EtM2}
-   =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\langle  \mathbf{\Delta E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle_{\AVGNDXI} e^{-\ND\beta\HAN(\beta,\SVEC,\TVEC)}  ,
+   =& \dfrac{1}{Z^{an}_{\ND}}\int d\mu(\SVEC)\langle  \DELBFell(\SVEC,\TVEC,\XI) \rangle_{\AVGNDXI} e^{-\ND\beta\HAN(\beta,\SVEC,\TVEC)}  ,
   \end{align}
-  where $\langle \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle^{\beta}_{\AVGNDXI}$
+  where $\DELBFell(\SVEC,\TVEC,\XI) \rangle^{\beta}_{\AVGNDXI}$
   is a \ThermalAverage but defined over the specific ST error in the AA for the chosen set of training data $\XItrain=\NDXI$, and is denoted by 
  \begin{align}
-   \langle  \mathbf{\Delta}\mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI) \rangle^{\beta}_{\AVGNDXI}:=\dfrac{\partial \beta\HAN}{\partial \beta}.
+   \langle  \DELBFell(\SVEC,\TVEC,\XI) \rangle^{\beta}_{\AVGNDXI}:=\dfrac{\partial \beta\HAN}{\partial \beta}.
  \end{align}
  This is analogous to defining the average error $\DETOPXI$ as a \ThermalAverage, but as one over the data $\NDXIn$ instead of the weights.  This can be seen by expanding \EQN~\ref{eqn:Gan_def}, setting $\WVEC=\SVEC$, fixing $\TVEC$ (implicitly), and taking the partial derivative:
  \begin{align}

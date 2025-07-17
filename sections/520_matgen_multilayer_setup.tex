@@ -32,7 +32,7 @@ We now start to develop the matrix generalized form of the self-overlap \(\eta\)
 
 \subsubsection{Data-Dependent Multi-Layer ST Self-Overlap \texorpdfstring{$(\ETA(\SMAT,\TMAT))$}{ETA(S, T)}}
 
-Following the same approach in Section~\ref{sxn:SMOG_main-st_av}, it is convenient to rewrite $\DELBF$ in \EQN~\ref{eqn:DE} as:
+Following the same approach in Section~\ref{sxn:SMOG_main-st_av}, it is convenient to rewrite the total Energy $\DELBF$ in \EQN~\ref{eqn:DE} as:
 \begin{align}
 \label{eqn:DE2}
 \DETOPNN
@@ -115,6 +115,6 @@ Since we can interpret the Trace as an expected value over the model data $\NDXI
   \ETA(\SMAT,\TMAT)
   :=\tfrac{1}{N} \Trace{\SMAT^{\top}\TMAT} 
 \end{align}
-\As noted above, the $1/\ND$ will be implicit in the $\TMAT$ and $\SMAT$ matrices because they represent empirical observables. That is, the weights are the learned parameters, effectively averaged over the entire real-world training data set $\ADD$.
-This is the matrix generalized form of \EQN~\ref{eqn:QST_final} for the \LayerQuality.
+As noted above, the $1/\ND$ will be implicit in the $\TMAT$ and $\SMAT$ matrices because they represent empirical observables. That is, the weights are the learned parameters, effectively averaged over the entire real-world training data set $\ADD$.
+This is the matrix generalized form of \EQN~\ref{eqn:QST_final}.
 

@@ -131,23 +131,24 @@ $\Expected[\AECS]{\exp\!\bigl(\ND\beta N\,\mathrm{Tr}\bigl[\tfrac{1}{N}\,\TMAT^{
 \hline
 \textbf{Explanation} & \textbf{Examples} & \textbf{Refs} \\
 \hline
-\textbf{\EnergyLandscape or Output function} & $E$ & Sec.~\ref{sxn:htsr_setup}\\
+\textbf{\EnergyLandscape or NN Output function} & $\NNOUT$ & Sec.~\ref{sxn:htsr_setup}\\
 \hthinline
 The output of the NN given a single input data point. & &\ref{eqn:dnn_energy},\ref{eqn:T_ENN},\ref{eqn:S_ENN},\ref{eqn:nflow} \\
 \hline
-\textbf{Energy Difference or \StudentTeacher (ST) Error} & $\Delta E$, $\mathbf{\Delta {E}}$ & Sec.~\ref{sxn:SMOG_main},~\ref{sxn:summary_sst92} \\
+\textbf{Energy Difference or \StudentTeacher (ST) Error} & $\DEL$, $\DELBF$ (simplified)& Sec.~\ref{sxn:SMOG_main},~\ref{sxn:summary_sst92} \\
 \hthinline
-The difference between the output of a \Student NN and its prescribed label $y$ for a single data point &$\Delta E:=y-E_S $ & \ref{eqn:DEy} \\
-And as the total error for a sample of $N$ data points  &  $\mathbf{\Delta {E}}=\sum \Delta E$ & \ref{eqn:detopxy}  \\
-Or between the outputs of the \Student and the \Teacher NNs. & $\mathbf{\Delta {E}}:=\sum E_S - E_T$ & \ref{eqn:DE_L},\ref{eqn:DE},\ref{eqn:DETOPNN} \\
+The difference squared between the output of a \Student NN and its prescribed Teacher label $y_T$ for a single data point &$\DEL:=(y_T-\SOUT)^2 $ & \ref{eqn:DEy} \\
+And as the total error for a sample of $\ND$ data points  &  $\DELBF=\sum_{\mu=1}^{n} \DEL$ & \ref{eqn:detopxy}  \\
+Or between the outputs of the \Student and the \Teacher NNs. & $
+\DELBF:=\sum_{\mu=1}^{n} (\SOUT - \TOUT)^2$ & \ref{eqn:DE_L},\ref{eqn:DE},\ref{eqn:DETOPNN} \\
 \hline
 
 \textbf{\AnnealedHamiltonian (and Potentials)} & $\HAN$ $(\mathcal{E}(R), \EPSL(R))$ & Sec.~\ref{sxn:mathP_annealed},\ref{sxn:summary_sst92} \\
 \hthinline
 The \EffectivePotential (for the Error) is defined as:  &
-$\EPSL(R)=\tfrac{1}{\ND}\mathcal{E}(R)=\langle \mathbf{\Delta {E}}\rangle_{\AVGNDXI}$ & ~\ref{eqn:e0}\\
+$\EPSL(R)=\tfrac{1}{\ND}\mathcal{E}(R)=\langle \DELBF\rangle_{\AVGNDXI}$ & ~\ref{eqn:e0}\\
 The \AnnealedHamiltonian (for the Error):  &
-$\beta\HAN:=\tfrac{1}{\ND}\ln\langle e^{-\beta\mathbf{\Delta {E}}}\rangle_{\NDXI}$ & ~\ref{eqn:Gan_def},~\ref{eqn:Gan0} \\
+$\beta\HAN:=\tfrac{1}{\ND}\ln\langle e^{-\beta\DELBF}\rangle_{\NDXI}$ & ~\ref{eqn:Gan_def},~\ref{eqn:Gan0} \\
 At high-T, the relation between $\HANHT$ and $\EPSL(R)$ is &
 $\HANHT(R):=\EPSLR$ & ~\ref{eqn:Gan_highT} \\
 \hthinline

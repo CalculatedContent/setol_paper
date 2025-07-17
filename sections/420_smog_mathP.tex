@@ -153,8 +153,8 @@ We call $\XVEC^{\ND}$ an $\ND$-sized sample (of the training data instances $\XV
 % See below We may or may not specify the labels for this sample, depending on the context.
 
 We define model errors
-as a difference in energy $\Delta E^{\red{2}}_{\mathcal{L}}$ between the student's and teacher's output, since their outputs are a form of energy.
-Smaller energy differences correspond to smaller errors and therefore better models.
+as an energy $\Delta E^{\red{2}}_{\mathcal{L}}$, the difference squared between the student's and teacher's output, since their outputs are a form of energy.
+Smaller energies correspond to smaller errors and therefore better models.
 For example, for the mean-squared-error (MSE) loss, one has
 \begin{align}
   \label{eqn:DEy}

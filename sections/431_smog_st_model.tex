@@ -27,12 +27,12 @@ Formally, however, and to better understand the \AA, it is beneficial to discuss
 of this distinction.
 
 Following \EQN~\ref{eqn:dnn_energy}, lets say the \Teacher outputs are specified
-by an  Energy function $E^{T}_{NN}$
+the NN output function $\NNOUT$
+\footnote{Do not confuse the Energy/output function $\NNOUT$ with the energies $\mathbf{\Delta E}$  defined below to represent the ST error function(s).  We refer to outputs of $\NNOUT(\TVEC,\DATA )$, when applied to a data point $\DATA$, as energies because they are effectively un-normalized probabilities for the class outputs (for labels $\Ymu=1$ or $-1$).  }
 \begin{align}
 \label{eqn:T_ENN}
 \Yt=\NNOUT(T,\DATA) 
 \end{align}
-\footnote{Do not confuse the Energy/output function $\NNOUT$ with the energies $\mathbf{\Delta E}$  defined below to represent the ST error function(s).  We refer to outputs of $\NNOUT(\TVEC,\DATA )$, when applied to a data point $\DATA$, as energies because they are effectively un-normalized probabilities for the class outputs (for labels $\Ymu=1$ or $-1$).  }
 so that we may write the \emph{Empirical} \AverageTrainingError
 $\AVGEMPTE$
 as 
