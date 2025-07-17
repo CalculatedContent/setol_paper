@@ -105,7 +105,7 @@ The various symbols and other important results are summarized in the Appendix~\
 
 A basic issue in formulating \SETOL is that one typically trains one large (expensive) NN, i.e., one does not necessarily  need to split the data into training and testing sets (as in more traditional hyperparameter tuning of ML models).
 Thus, we want a methodology to approximate quantities such as the generalization error or generalization accuracy that does not rely on traditional train-test splitting methods.
-\michaelB{Q: how does this lack of using training/testing split relate to that we ignore the $y$ below and/or that we are actually getting a notion of quality/accuracy, rather than error (related to $\Gamma$ versus $F$).}
+\michaelB{Q: how does this lack of using training/testing split relate to that we ignore the $y$ below and/or that we are actually getting a notion of quality/accuracy, rather than error (related to $\Gamma_{\red{\ND}}$ versus $F_{\red{\ND}}$).}
 To accomplish this, we idealize the empirical data distribution as Gaussian fields, and we will use \STATMECH to construct quantities (basically, free energies or generating functions) so that we can compute training/testing errors by taking appropriate derivatives of these quantities.
 
 In more detail, we imagine training a NN on $\ND$ training data instances, $\XVEC_{\mu}$, which are $m$-dimensional vectors,
@@ -213,7 +213,7 @@ This operator notation will prove useful later in Section~\ref{sxn:SMOG_main-st_
 We will not, however, work directly with samples and sample averages.
 Instead, we will model them.
 %%\michael{By that, I think we mean that it is hard to compute them, so we will model them with Gaussian random variables with a model with a parameter to fit semi-empirically to data; correct?}
-%%\cformike{We discussed on the phone.  The idea is we compute the average as a derivative of a generating function that we know exactly, as opposed to say doing a monte carlo sample because the partition function $Z$ is intractable}
+%%\cformike{We discussed on the phone.  The idea is we compute the average as a derivative of a generating function that we know exactly, as opposed to say doing a monte carlo sample because the partition function $Z_{\red{\ND}}$ is intractable}
 To that end, we need to estimate them with a theoretical approach. For example, we can write the \TotalDataSampleError 
 in terms of our random data variables $\NDXI$, written formally as
 \begin{align}
@@ -413,7 +413,7 @@ $\DETOT$ over $\WVEC$, we could write
 \end{align}
 Importantly, we will never calculate the average errors directly like this.
 %%\michael{I assume that sentence is imprecise; we are not calculating average errors (of samples, so in the sese as used above), but instead computing expectations (of the model/Gaussian variables), which of course should approximate the average errors; correct?}
-Instead, we will calculate them from partial derivatives of the \FreeEnergy $F$ (as shown below).
+Instead, we will calculate them from partial derivatives of the \FreeEnergy $F_{\red{\ND}}$ (as shown below).
 %%\charles{We discussed on the phone can rediscuss if necessary}
 Also, we may use $\langle \cdots \rangle^{\beta}_{\NDXIn}$ to denote what looks like a \ThermalAverage over the data;
 this is not essential and only used once below and can be ignored for this section.
@@ -459,40 +459,40 @@ Generally speaking, a \FreeEnergy, $F_{\ND}$, is defined in terms of a partition
 \label{eqn:F}
 \beta F_{\ND}:=-\ln Z_{\ND}.
 \end{align}
-%%\michaeladdressed{Should there be a subscript $\ND$ on $F$, or not on $Z$?}
-%%\charles{@michael:.  Its on $Z$ to remind us of the $\ND$ dependence when we take the derivatives below}
-Keep in mind that $Z$ may actually be a function of the data $\XI$ (or some other variables),
+%%\michaeladdressed{Should there be a subscript $\ND$ on $F_{\red{\ND}}$, or not on $Z_{\red{\ND}}$?}
+%%\charles{@michael:.  Its on $Z_{\red{\ND}}$ to remind us of the $\ND$ dependence when we take the derivatives below}
+Keep in mind that $Z_{\red{\ND}}$ may actually be a function of the data $\XI$ (or some other variables),
 i.e., $Z(\XI)$, but we usually don't write this explicitly.
 Likewise, while  both $F_{\ND}$ and $Z_{\ND}$ depend explicitly on the system size $\ND$,
 we will only include these subscripts when emphasizing this.
-Also, $F$ has units of Energy or Temperature, so $\beta F=-\ln Z$ is a "unitless" \FreeEnergy.
+Also, $F_{\red{\ND}}$ has units of Energy or Temperature, so $\beta F_{\red{\ND}}=-\ln Z_{\red{\ND}}$ is a "unitless" \FreeEnergy.
 %
 Each model (in single-layer models) and/or layer (in multi-layer models) will have its own \PartitionFunction and associated \GeneratingFunctions.
-We call $F$ and $Z$ \emph{\GeneratingFunctions} because they can be used to generate the model errors. 
+We call $F_{\red{\ND}}$ and $Z_{\red{\ND}}$ \emph{\GeneratingFunctions} because they can be used to generate the model errors. 
 %%(and/or accuracies). 
-That is, given an $F$ and/or $Z$, we can ``generate'' the training and generalization errors with the appropriate partial derivatives~\cite{LTS90, Solla2023}.
+That is, given an $F_{\red{\ND}}$ and/or $Z_{\red{\ND}}$, we can ``generate'' the training and generalization errors with the appropriate partial derivatives w/r.t $\beta$ and $\ND$~\cite{LTS90, Solla2023}.
 
-From this generating function perspective, i.e., when using a generating function to compute quantities of interest, we can work with other transformations of $F$.
+From this generating function perspective, i.e., when using a generating function to compute quantities of interest, we can work with other transformations of $F_{\red{\ND}}$.
 Most notably, we will consider 
 \begin{equation}
-    \Gamma = n-F .
+    \Gamma_{\red{\ND}} = n-F_{\red{\ND}} .
 \end{equation}
 \michaelB{Q: do I want one-minus, or just minus? See question above about the error being less than $1$.}
 where $\ND$ is the number of degrees of freedom ($n$ for a vector model, but for a  matrix model it is $\ND\times N\times M$; see Appendix~\ref{app:st-gen-err-annealed-ham}).
-The quantity $\Gamma$ decreases as the error increases (as opposed to $F$, which increases), i.e., it increases as the accuracy of quality of the model increases.
+The quantity $\Gamma_{\red{\ND}}$ decreases as the error increases (as opposed to $F_{\red{\ND}}$, which increases), i.e., it increases as the accuracy of quality of the model increases.
 Thus, we will use it as a generating function for the model quality/accuracy.
 %%Without sign convention, as the error decreases, the \FreeEnergy also decreases.
-%%Therefore, when discussing accuracies or qualities, we will introduce a specific \GeneratingFunction, denoted $\Gamma$, which increases as the accuracy of quality increases.  
+%%Therefore, when discussing accuracies or qualities, we will introduce a specific \GeneratingFunction, denoted $\Gamma_{\red{\ND}}$, which increases as the accuracy of quality increases.  
 For average Qualities, one has
 \begin{equation} 
 \label{eqn:GammaBar}
- \bar{\Gamma}:=1-\bar{F}
+ \bar{\Gamma}_{\red{\ND}}:=1-\bar{F}_{\red{\ND}}
 \end{equation} %%$ 
 for the model or layer under consideration (see below).
 \michael{Do we even need that last comment, or just do it later when we take overbar averages.}
 %%\michaeladdressed{Maybe be more explicit which one or two we will do?}
-%%\michaeladdressed{Check later: use this correctly for $F$ versus $Z$, and the $1 - \cdot$ version for accuracies.}
-%%\charles{We can use both F, Z, or $\Gamma$ as needed as \GeneratingFunctions}
+%%\michaeladdressed{Check later: use this correctly for $F_{\red{\ND}}$ versus $Z_{\red{\ND}}$, and the $1 - \cdot$ version for accuracies.}
+%%\charles{We can use both F, Z, or $\Gamma_{\red{\ND}}$ as needed as \GeneratingFunctions}
 
 
 \subsubsection{The Annealed Approximation (AA) and the High-Temperature Approximation (high-T)}
@@ -503,7 +503,7 @@ by defining and computing the \ExpectedValue of the \FreeEnergy of the model.
 The full expected value  of the \FreeEnergy, $\beta F_{\ND}=-\ln Z_{\ND}$, with respect to the (idealized) data $\NDXIn$, is:
 \begin{align}
 \label{eqn:mm_f_bar}
-  \mathbb{E}_{\NDXIn}[\beta F_{\ND}]=\beta\bar{F}:=-\langle \ln Z_{\ND}\rangle_{\AVGNDXIn},
+  \mathbb{E}_{\NDXIn}[\beta F_{\ND}]=\beta\bar{F}_{\red{\ND}}:=-\langle \ln Z_{\ND}\rangle_{\AVGNDXIn},
 \end{align}
 \michaelB{Is that $\bar{F}$? }
 where $\langle \ln Z_{\ND}\rangle_{\AVGNDXIn}$ means where we average over  the $\ND$ samples of the data ($\NDXIn$, of size $\ND$).  This is also called the \Quenched \FreeEnergy.
@@ -643,13 +643,13 @@ necessary for the \TRACELOG condition.
 
 %Notice that $\GAN$ resembles a (unitless) \FreeEnergy 
 %%(i.e., $\GAN=\beta F(\XI)=-\ln Z(\XI)$),
-%(i.e., $\GAN=\beta F(\XI)=-\ln Z(\XI)$, for some other ``effective $F$ and $Z$),
+%(i.e., $\GAN=\beta F(\XI)=-\ln Z(\XI)$, for some other ``effective $F_{\red{\ND}}$ and $Z_{\red{\ND}}$),
 %\michael{@charles: primes looked like derivatives, is that clarifying remark okay.}
 %%\charles{Yeah, good point.  Or just change the notation to be clearer }
 %\cformike{Maybe use somehting other than primes}
-%We have recovered the full partition function $Z$.
-%\michael{I must be missing something.  I must be missing something.  Where was this defined; and is this $Z$ or $Z^{an}_{\ND}$?}
-%\cformike{? maybe we did not define $Z$ upfront.  Can you suggest where to add it}
+%We have recovered the full partition function $Z_{\red{\ND}}$.
+%\michael{I must be missing something.  I must be missing something.  Where was this defined; and is this $Z_{\red{\ND}}$ or $Z^{an}_{\ND}$?}
+%\cformike{? maybe we did not define $Z_{\red{\ND}}$ upfront.  Can you suggest where to add it}
 
 \paragraph{The High-Temperature (High-T) Annealed Hamiltonian $(\HANHT(\WVEC)=\EPSLw)$ and Partition Function $(\ZANHT)$. }
 %\paragraph{High-Temperature Approximation.}
@@ -663,7 +663,7 @@ the \PartitionFunction, i.e.,  $\ZANHT$, and subsequent results (below).
 %Here, we describe it in more detail.
 %%\michaeladdressed{If it is too awkward to move this high-T discussion to before we use it above, then we should have some sort of signpost that explicitly notes that we did that. I can weave that in, once I understand the logical flow.}
 %We can form a  \emph{High Temperature} (High-T) \emph{Approximation} if we expand $Z_{\ND}$ in a Taylor series in $\beta$.
-%\michael{Are we going to do high-T expansion of $Z$ or $\HAN$ or what?  aWe should probably describe it here in a way that each of those can plug into.}
+%\michael{Are we going to do high-T expansion of $Z_{\red{\ND}}$ or $\HAN$ or what?  aWe should probably describe it here in a way that each of those can plug into.}
 
 To obtain the high-T result, we can write the Taylor expansion for $e^{\beta\DETOPXI}$ and keep
 the first two terms:
@@ -672,7 +672,7 @@ the first two terms:
 \end{align}
 
 %The high-T approximation resembles the AA (or, rather, Jensens inequality as an equality), when applied to the \ThermalAverage as opposed to the data averages
-%%%%\nred{Something wrong here}
+%%%%\red{Something wrong here}
 %%%If we now evaluate $Z_{\ND}^{\red{an}}$ at high-T, we obtain
 %%%\begin{align}
 %%%  \red{\ZANHT}=\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}
@@ -751,7 +751,7 @@ This will prove very useful later when working with HCIZ integrals.
 \michael{It may also be good to have some parts of this subsection just have results stated and move others to a self-contained appendix; this is a long and comples subsubsection, and I'm not sure the logical flow.}
 
 Here, we show how to derive the Average \TrainingError $\AVGTE$ and  the \AverageGeneralizationError $\AVGGE$,
-in the \AnnealedApproximation (AA), and at high-Temperature (high-T), using the \FreeEnergy $F$ and/or the \PartitionFunction $Z$ as
+in the \AnnealedApproximation (AA), and at high-Temperature (high-T), using the \FreeEnergy $F_{\red{\ND}}$ and/or the \PartitionFunction $Z_{\red{\ND}}$ as
 a generating function.  
 In particular, we show that, in the AA and at high-T, these errors are (approximately) equal
 and equal to the \ThermalAverage of the \EffectivePotential,
@@ -836,7 +836,7 @@ integrated them out before the calculation of \ThermalAverage.
 Also, our sign convention is consistent with a model of NN training that \emph{minimizes} the total loss
 $(\mathcal{L})$ and/or ST error, and, therefore minimizes \FreeEnergies as well.
 
-More generally, we see that we can use the \PartitionFunction, $Z$,
+More generally, we see that we can use the \PartitionFunction, $Z_{\red{\ND}}$,
 and/or the \FreeEnergy, $\beta F:=-\ln Z$, as a \GeneratingFunction to obtain any
 desired Thermodymanic average by taking the appropriate partial derivative
 of the correpsonding form of $\ln Z$.
@@ -881,9 +881,9 @@ Generally speaking, the \Quality \GeneratingFunction $\Gamma_{\Q}$ is defined in
   \beta\Gamma_{\Q} := \ln\int d\mu(\WVEC) e^{\ND\beta\ETAw}
 \end{align}
 
-For example, for the single-layer ST \Perceptron, $\Gamma_{\Q^{ST}}:=n-F^{ST}$
+For example, for the single-layer ST \Perceptron, $\Gamma_{\Q^{ST}}:=n-F^{ST}_{\red{\ND}}$
 (where $\ND$ here is also the number of degrees of freedom for this model, and is in units of energy or error).
-The term $\Gamma_{\Q^{ST}}$ is directly related to the \emph{Total} Free Energy $F^{ST}$, which can be seen by substituting \EQN~\ref{eqn:def_eta}
+The term $\Gamma_{\Q^{ST}}$ is directly related to the \emph{Total} Free Energy $F^{ST}_{\red{\ND}}$, which can be seen by substituting \EQN~\ref{eqn:def_eta}
 for $\ETAw$ in \EQN~\ref{ref:defGammaQ}:
 \begin{align}
   \label{ref:defGammaQtoF}
@@ -892,11 +892,10 @@ for $\ETAw$ in \EQN~\ref{ref:defGammaQ}:
     &= \ln\int d\mu(\WVEC) e^{\ND\beta}e^{-\ND\beta\EPSLw} \\ \nonumber
     &= \ln\left(\int d\mu(\WVEC) e^{\ND\beta}\right)+\ln\left(\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}\right) \\ \nonumber
    &= \ln e^{\ND\beta}+\ln\left(\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}\right) \\ \nonumber
-  &= \ND\beta -\beta F^{ST}
+  &= \ND\beta -\beta F^{ST}_{\red{\ND}}
 \end{align}
-\michaelB{Confirm this $F$ is \EQN~\ref{eqn:F}, not \EQN~\ref{eqn_mm_f_b ar} (which I believe is $\overline{F}$). Maybe point to the correct one.)}
 Dividing by $\ND$, we can also recover the more general relation for the \emph{Average} Free Energy,
-$\bar{\Gamma}_{\Q}=1-\bar{F}$. (\EQN~\ref{eqn:GammaBar}).For the matrix case we do something similar; see Appendix~\ref{sxn:quality}.
+$\bar{\Gamma}_{\Q}=1-\bar{F}_{\red{\ND}}$. (\EQN~\ref{eqn:GammaBar}).For the matrix case we do something similar; see Appendix~\ref{sxn:quality}.
 
 Likewise, one can show that the \Quality $\Q$
 (again, always in the AA and at high-T) can be identified as the \ThermalAverage of the (data-averaged or Annealed)
@@ -917,7 +916,7 @@ we can obtain $\QT$ (see Section~\ref{sxn:matgen} Eqn.~\ref{eqn:IZG_generate_Q2}
   \underset{\text{high-}T}{\approx}
 \frac{1}{\ND}\frac{\partial }{\partial \beta}\IZGINF
 \end{align}
-%\nred{Replaced with $\IZGINF$}
+%\red{Replaced with $\IZGINF$}
 See Section~\ref{sxn:matgen} and Appendix~\ref{sxn:quality} for more details.
 \michaeladdressed{Is this $1-F$ thing new to us, or does SST do it; and is the thing you are calling a generating function to ``generate'' it new to us? It is probably worth being a bit more pedantic here. }
 
@@ -931,7 +930,7 @@ To express the average \FreeEnergy $\bar{F}$ in the \LargeN limit, we can write
 \end{align}
 When this \LargeN approximation is well behaved,
 then the total energy $\DETOT$ is extensive, i.e., when $\DETOT=n\EPSL(\WVEC)$;
-and, consequently, the total \FreeEnergy is also extensive, i.e., $F=n\bar{F}$.
+and, consequently, the total \FreeEnergy is also extensive, i.e., $F_{\red{\ND}}=\ND\bar{F}_{\red{\ND}}$.
 (This is a cornerstone of statistical mechanics, as it allows for meaningful macroscopic predictions from microscopic interactions.)
 
 \paragraph{\SelfAveraging.}
@@ -1053,7 +1052,7 @@ that is evaluated in the \WideLayer\emph{\LargeN limit in $N$} (here, meaning as
 Here,  $\AMAT_N$ and $\XMAT_N$ are $N \times N$ Hermetian matrices, (See Appendix \ref{sxn:appendix_A} for notation,) $d\mu(\AMAT)$ is a measure
 over all random (Orthogonal) matrices (see \EQN~\ref{eqn:dmuA}),
 and $\mathcal{G}_{A}()$ is a called  \GEN 
-(which are different from $\Gamma$, above, and will be made clear in Section~\ref{sxn:r_transforms} ) , defined in \EQN~\ref{eqn:generating_function_A} in Section~\ref{sxn:matgen}. 
+(which are different from $\Gamma_{\red{\ND}}$, above, and will be made clear in Section~\ref{sxn:r_transforms} ) , defined in \EQN~\ref{eqn:generating_function_A} in Section~\ref{sxn:matgen}. 
 In applying this, we will actually write $\Trace{\AMAT\XMAT}=\tfrac{1}{N}\Trace{\AMAT\WMAT\WMAT^{\top}}=\tfrac{1}{N}\Trace{\WMAT^{\top}\AMAT\WMAT}$,
 where $\mathbf{W}$ is an $N \times M$ layer weight matrix, and $\AMAT=\AMAT_N:=\tfrac{1}{\ND}\SMAT\SMAT^{\top}$ is an (outer) layer
 Correlation matrix, and, here,  $\XMAT=\XMAT_N=\tfrac{1}{N}\WMAT\WMAT^{\top}$).
@@ -1084,7 +1083,7 @@ For more details, see Section~\ref{sxn:matgen} and Appendices~\ref{sxn:TraceLogD
 \paragraph{Branch Cuts and Phase Behavior.}
 Free energies ($F,\Gamma$)  often exhibit \emph{branch cuts} when expressed as analytic functions 
 of complex parameters (i.e., temperature, coupling constants, or eigenvalue cutoffs),
-and arise from singularities in the underlying integral representations of the partition function $Z$,
+and arise from singularities in the underlying integral representations of the partition function $Z_{\red{\ND}}$,
 When a branch cut occurs, this demarcates non-analytic behavior
 and this indicates the onset of a \emph{phase transition} where
 macroscopic observables such as correlation lengths and/or variance-like quantities
