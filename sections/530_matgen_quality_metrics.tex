@@ -13,10 +13,10 @@ For our matrix generalization, we need to express the \LayerQuality $\Q$ in term
 \item
 \textbf{Student-Teacher Overlap  $\mathbf{R}$}
 For the vector-based \Perceptron ST model, the data-averaged \SelfOverlap appears in the expression for the
-\LayerQuality  in \EQN~\ref{eqn:QST_final}, and is just the average ST vector overlap $R=\frac{1}{\ND}\SVEC^{\top}\TVEC$. 
+\LayerQuality  in \EQN~\ref{eqn:QST_final}, and is just the average ST vector overlap $R=\SVEC^{\top}\TVEC$. 
 We define 
 \begin{equation}
-\mathbf{R} =  \SMAT^{T} \TMAT  .
+\mathbf{R} =  \frac{1}{N}\SMAT^{T} \TMAT  .
 \end{equation}
 The overlap matrix $\OVERLAP$ describes the average interactions between $N$ interacting $M$-dimensional layer (i.e., feature) vectors.  Also, notice that we have dropped $1/\ND$ term.
 For the vector-based ST model, the ST \Quality $\Q^{ST}$ in \EQN~\ref{eqn:QST_final} is expressed as
