@@ -70,7 +70,7 @@ we will start by describing the basic setup of the problem, including the distin
  \item
  \textbf{BraKets, Expected Values, and Thermal Averages.}
 In Section~\ref{sxn:mathP_averages}, 
-we will describe our use of physics BraKeyt notation for both Sample Averages (over the data $\XVEC$) and Thermal Averages (over the weights $\WVEC$) and ---in particular, under the \AnnealedApproximation (AA) and in the \HighTemperature (High-T) limit---showing how they relate to each other and to the notion of \Replica Averages.
+we will describe our use of physics BraKet notation for both Sample Averages (over the data $\XVEC$) and Thermal Averages (over the weights $\WVEC$) and ---in particular, under the \AnnealedApproximation (AA) and in the \HighTemperature (High-T) limit---showing how they relate to each other and to the notion of \Replica Averages.
 %
 \item
   \textbf{Free Energies and \GeneratingFunctions.} 
@@ -1003,13 +1003,13 @@ whereas for the matrix case, we will retain the\emph{'a reduced set} of the  $M$
 
 \SETOL uses two \LargeN approximations, the \Thermodynamic limit, which is a \LargeN limit in $\ND$, and the \emph{\WideLayer limit}, which is a \LargeN limit in $N$:
 \begin{itemize}
-    \item \Thermodynamic limit: $m \gg 1$ (the number of parameters or features, fixed load: $m/\ND = 1$)
-    \item \LargeN limit in n: $n\gg 1$ (the number of training examples, fixed load: $m/\ND = 1$)
+    \item \Thermodynamic limit: $m \gg 1$ (the number of parameters or features, fixed load: $\ND/m = 1$)
+    \item \LargeN limit in n: $n\gg 1$ (the number of training examples, fixed load: $\ND/m = 1$)
     \item \WideLayer limit: $N\gg 1$ (the larger matrix dimension)
 \end{itemize}
-Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking both \LargeN limts, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number data points per feature vector, remains constant (although we do not enforce this explicitly here).  
+Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking the \WideLayer \LargeN limit in $N$, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number data points per feature vector, remains constant (although we do not enforce this explicitly here).  
 In doing this, we expect the matrix-generalized total Energies $(F, H^{an}, \cdots)$ to be \SizeExtensive in $\ND$ and $N$,  the average quantities to be \SizeIntensive in both, 
-and, as discussed below, \emph{\SizeConsistent} in $M$ and/or $\MECS$.
+and, as discussed below, \emph{\SizeConsistent} in $\MECS$.
 
 \paragraph{\SizeConsistency,}  
 The notion of \emph{\SizeConsistency} is a notion commonly 
