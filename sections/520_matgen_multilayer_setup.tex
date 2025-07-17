@@ -22,7 +22,7 @@ Ignoring the bias terms, \emph{Without Loss of Generality}, (WLOG), the NN outpu
 where $\EVEC_{\#\mu}$ denotes a vector of energies or NN outputs for that layer, and $h$ is a general function or functional, denoting either a non-linear activation or a more complex layer structure, such as a CNN or an RNN. Note that for binary classification, $\EVEC_3{\mu}=1|-1$ is just a binary number.
 We can consider $h(\cdot)$ to be an (unspecified) activation function.
 
-As in \EQN~\ref{eqn:deriveSTerror}, let us specify the ST error, or Energy difference, specifically in terms of the L2 or RMSE loss:
+As in \EQN~\ref{eqn:deriveSTerror}, let us specify the ST error, or total Energy, specifically in terms of the L2 or RMSE loss:
 \begin{equation}
 \label{eqn:DE}
 \DETOPNN = \frac{1}{2}\sum_{\mu=1}^{\ND} (\Ys - \Yt)^2.
@@ -32,7 +32,7 @@ We now start to develop the matrix generalized form of the self-overlap \(\eta\)
 
 \subsubsection{Data-Dependent Multi-Layer ST Self-Overlap \texorpdfstring{$(\ETA(\SMAT,\TMAT))$}{ETA(S, T)}}
 
-Following the same approach in Section~\ref{sxn:SMOG_main-st_av}, it is convenient to rewrite $\Delta \mathbf{\hat{E}}$ in \EQN~\ref{eqn:DE} as:
+Following the same approach in Section~\ref{sxn:SMOG_main-st_av}, it is convenient to rewrite $\DELBF$ in \EQN~\ref{eqn:DE} as:
 \begin{align}
 \label{eqn:DE2}
 \DETOPNN
@@ -42,7 +42,7 @@ Following the same approach in Section~\ref{sxn:SMOG_main-st_av}, it is convenie
 \end{align}
 where the \SelfOverlap $\ETAMLPXI$
 is of the same form as the (vector) \LinearPerceptron (in \EQN~\ref{eqn:deriveSTerror}).
-Note that $\ETAMLPXI$ depends on the (model) data $\NDXI$
+Note that $\ETAMLPXI$ depends on the (idealized) data $\NDXI$
 because we have not evaluated the expected value $\langle \cdots \rangle_{\NDXI}$ yet.
 
 Using the general expression from \EQN~\ref{eqn:nflow} for the action of the NN on the input data $\boldsymbol{\xi}$,

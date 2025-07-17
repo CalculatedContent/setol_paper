@@ -262,6 +262,13 @@
 \newcommand{\XVEC}{{\mathbf{x}}}
 \newcommand{\YVEC}{{\mathbf{y}}}
 
+\newcommand{\NNOUT}{E^{out}_{NN}}
+\newcommand{\TOUT}{E^{out}_{T}}
+\newcommand{\SOUT}{E^{out}_{S}}
+
+
+
+
 % Data Averaged ST Error: uses \SVEC, \TVEC, etc
 \newcommand{\EPSL}{\epsilon}
 \newcommand{\EPSLR}{\epsilon(R)}
@@ -282,27 +289,33 @@
 \newcommand{\DEEPS}{\epsilon(\mathbf{w})}
 %\newcommand{\DEEPSX}{\epsilon(\mathbf{w}|\mathbf{x})}
 
-\newcommand{\DEL}{\Delta E^{\red{2}}_{\mathcal{L}}}
-\newcommand{\DELBF}{\mathbf{\Delta E}^{\red{2}}_{\mathcal{L}}}
+%\newcommand{\DEL}{\mathrm{E}}_{\mathcal{L}}}
 
-\newcommand{\DET}{\Delta E^{\red{2}}_{\mathcal{L}}(\mathbf{w},\XI)}
-\newcommand{\DETmu}{\Delta E^{\red{2}}_{\mathcal{L}}(\mathbf{w},\XI_{\mu})}
+\newcommand{\DELBF}{\mathbf{\mathrmE}^{n}_{\mathcal{L}}}
 
-\newcommand{\DETeff}{\Delta E^{\red{2}}^{eff}_{\mathcal{L}}(\mathbf{w},\XI)}
-\newcommand{\DETST}{\Delta E^{\red{2}}^_{\mathcal{L}}(\SVEC,\TVEC,\XI)}
-\newcommand{\DETSTL}{\Delta E^{\red{2}}_{\mathcal{L}}(\SVEC,\TVEC,\XI)}
-\newcommand{\DETOPSTL}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(\SVEC,\TVEC,\NDXI)}
-\newcommand{\DETOPSTx}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(S,T,\DX)}
-\newcommand{\DETSTLL}{\Delta E^{\red{2}}_{\ell_2}(\SVEC,\TVEC,\XI)}
-\newcommand{\DETOP}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(\mathbf{w})}
-\newcommand{\DETOPX}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(\mathbf{w}, \NDX)}
-\newcommand{\DETOPXY}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(\mathbf{w}, \NDX, \MY^{n})}
-\newcommand{\DETOPXI}{\mathbf{\Delta {E}}^{\red{2}}_{\mathcal{L}}(\mathbf{w}, \XI^{n})}
-\newcommand{\DETOPXILL}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\mathbf{w}, \XI^{n})}
-\newcommand{\DETOPSTLL}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SVEC,\TVEC, \XI^{n})}
-\newcommand{\DETOPST}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SMAT,\TMAT)}
-\newcommand{\DETOPNN}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SMAT,\TMAT, \NDXI)}
-\newcommand{\DETOPNNXI}{\mathbf{\Delta {E}}^{\red{2}}_{\ell_2}(\SMAT,\TMAT|\XI^{n})}
+\newcommand{\DET}{\mathrm{E}_{\mathcal{L}}(\mathbf{w},\XI)}
+\newcommand{\DETmu}{\mathrm{E}_{\mathcal{L}}(\mathbf{w},\XI_{\mu})}
+
+\newcommand{\DETeff}{\mathrm{E}^{eff}_{\mathcal{L}}(\mathbf{w},\XI)}
+\newcommand{\DETST}{\mathrm{E}^_{\mathcal{L}}(\SVEC,\TVEC,\XI)}
+\newcommand{\DETSTL}{\mathrm{E}_{\mathcal{L}}(\SVEC,\TVEC,\XI)}
+\newcommand{\DETOPSTL}{\mathbf{\mathrm{E}}^{n}_{\mathcal{L}}(\SVEC,\TVEC,\NDXI)}
+\newcommand{\DETOPSTx}{\mathbf{\mathrm{E}}^{n}_{\mathcal{L}}(S,T,\DX)}
+\newcommand{\DETSTLL}{\mathrm{E}_{\ell_2}(\SVEC,\TVEC,\XI)}
+\newcommand{\DETOP}{\mathbf{\mathrm{E}}^{n}_{\mathcal{L}}(\mathbf{w})}
+\newcommand{\DETOPX}{\mathbf{\mathrm{E}}^{n}_{\mathcal{L}}(\mathbf{w}, \NDX)}
+%\newcommand{\DETOPXY}{\mathbf{\mathrm{E}}^{n}_{\mathcal{L}}(\mathbf{w}, \NDX, \MY^{n})}
+
+\newcommand{\DETOPXY}{\mathbf{{E}}^{n}_{\mathcal{L}}(\mathbf{w}, \NDX, \MY^{n})}
+\newcommand{\DEL}{\mathrm{E}_{\mathcal{L}}}
+
+
+\newcommand{\DETOPXI}{\mathbf{\mathrm{E}}^{n}_{\mathcal{L}}(\mathbf{w}, \XI^{n})}
+\newcommand{\DETOPXILL}{\mathbf{\mathrm{E}}^{n}_{\ell_2}(\mathbf{w}, \XI^{n})}
+\newcommand{\DETOPSTLL}{\mathbf{\mathrm{E}}^{n}_{\ell_2}(\SVEC,\TVEC, \XI^{n})}
+\newcommand{\DETOPST}{\mathbf{\mathrm{E}}^{n}_{\ell_2}(\SMAT,\TMAT)}
+\newcommand{\DETOPNN}{\mathbf{\mathrm{E}}^{n}_{\ell_2}(\SMAT,\TMAT, \NDXI)}
+\newcommand{\DETOPNNXI}{\mathbf{\mathrm{E}}^{n}_{\ell_2}(\SMAT,\TMAT|\XI^{n})}
 \newcommand{\DETOT}{\mathcal{E}(\mathbf{w})}
 \newcommand{\DETOTXI}{\mathcal{E}(\mathbf{w}|\NDX)}
 %deprecated
@@ -328,7 +341,7 @@
 \newcommand{\LambdaECS}{\tilde{\lambda}}
 \newcommand{\LambdaMax}{\lambda_{max}}
 \newcommand{\LambdaMin}{\lambda_{0}}
-\newcommand{\EVEC}{{\red{\mathbf{E}}}}
+\newcommand{\EVEC}{\mathbf{E}^{out}}
 
 
 \newcommand{\LambdaECSmin}{\lambda^{ECS}_{min}}

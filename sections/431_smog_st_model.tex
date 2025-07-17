@@ -30,15 +30,15 @@ Following \EQN~\ref{eqn:dnn_energy}, lets say the \Teacher outputs are specified
 by an  Energy function $E^{T}_{NN}$
 \begin{align}
 \label{eqn:T_ENN}
-\Yt=E_{NN}(T,\DATA) 
+\Yt=\NNOUT(T,\DATA) 
 \end{align}
-\footnote{Do not confuse the Energy/output function $E_{NN}$ with the energies $\mathbf{\Delta E}$  defined below to represent the ST error function(s).  We refer to outputs of $E_{NN}(\TVEC,\DATA )$, when applied to a data point $\DATA$, as energies because they are effectively un-normalized probabilities for the class outputs (for labels $\Ymu=1$ or $-1$).  }
+\footnote{Do not confuse the Energy/output function $\NNOUT$ with the energies $\mathbf{\Delta E}$  defined below to represent the ST error function(s).  We refer to outputs of $\NNOUT(\TVEC,\DATA )$, when applied to a data point $\DATA$, as energies because they are effectively un-normalized probabilities for the class outputs (for labels $\Ymu=1$ or $-1$).  }
 so that we may write the \emph{Empirical} \AverageTrainingError
 $\AVGEMPTE$
 as 
 \begin{align}
 \label{eqn:Eg_train}
-\AVGEMPTE:= \frac{1}{N^{train}}\sum_{\mu=1}^{N^{train}}\mathcal{L}[\Ytrain,E_{NN}(T,\DATAtrain)]  .
+\AVGEMPTE:= \frac{1}{N^{train}}\sum_{\mu=1}^{N^{train}}\mathcal{L}[\Ytrain,\NNOUT(T,\DATAtrain)]  .
 \end{align}
 Ideally, we seek the \emph{True} \AverageGeneralizationError of the \Teacher, denoted  $\AVGGE^{T}$. 
 Of course, this is unknowable, but in practice, we estimate $\AVGGE^{T}$ 
@@ -46,7 +46,7 @@ by measuring the error of the \Teacher predictions on some test (or hold-out) se
 We call this the \emph{Empirical \AverageGeneralizationError}, $\AVGEMPGE$, and write
 \begin{align}
 \label{eqn:Eg_test}
- \AVGGE^{T}\approx \AVGEMPGE:= \frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}\mathcal{L}[\Ytest,E_{NN}(T,\DATAtest)] .
+ \AVGGE^{T}\approx \AVGEMPGE:= \frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}\mathcal{L}[\Ytest,\NNOUT(T,\DATAtest)] .
 \end{align}
 To measure the error, the loss function $\mathcal{L}$ may be a L1 $(\ell_1)$ or L2 $(\ell_2)$ loss;
 whereas for training a model, it is usually something like a cross-entropy loss, but this detail does matter later.
@@ -59,7 +59,7 @@ Imagine we train a Student model $S$ (with the same architecture as the Teacher 
 S: \ADD \to y^{S}_\mu \approx y^{T}_\mu,
 \label{eqn:S_ENN}
 \end{equation*}
-where $y^T_\mu = E_{NN}(T, x_\mu)$ are the Teacher’s predicted labels or energies.
+where $y^T_\mu = \NNOUT(T, x_\mu)$ are the Teacher’s predicted labels or energies.
 
 \input{sections/precision_fig}
 
@@ -87,7 +87,7 @@ By analyzing the Student–Teacher overlap $R = \sum_\mu s^{\top} t$, one can sh
 %and assume the \Student outputs $\Ys$ are given by the Energy output function $E^{S}_{NN}$
 %\begin{align}
 %\label{eqn:S_ENN}
-%\Ys=E_{NN}(S,\DATA) ,
+%\Ys=\NNOUT(S,\DATA) ,
 %\end{align}
 
 %If the \Teacher is trained to \Interpolation, then the difference between
@@ -115,7 +115,7 @@ and evaluate the $S$ and $T$ models on the test data.
 The \Student learning task can be written as in \EQN~(\ref{eqn:dnn_opt})
 as the following optimization problem over the training data:
 \begin{align}
-\underset{\{S'\}}{\argmin}\sum_{\mu=1}^{N^{train}}\mathcal{L}[E_{NN}(S',\DATAtrain),E_{NN}(T,\DATAtrain)]   ,
+\underset{\{S'\}}{\argmin}\sum_{\mu=1}^{N^{train}}\mathcal{L}[\NNOUT(S',\DATAtrain),\NNOUT(T,\DATAtrain)]   ,
 \label{eqn:ST-learning-task}
 \end{align}
 %Notice that, at this step, the \Student $S$ and the \Teacher $T$ both depend explicitly on the specific choice of the training data $\DX_{train}$.  
@@ -125,7 +125,7 @@ If the \Teacher is trained to \Interpolation, then the NN optimization problem
 training a \Student to reproduce the \GroundTruth labels, so that $\Ys\sim y_{\mu}^{true}$
 for both the training and test sets.
 \begin{align}
-\underset{\{S'\}}{\argmin}\sum_{\mu=1}^{N^{train}}\mathcal{L}[E_{NN}(S',\DATAtrain),\Ytrue]   ,
+\underset{\{S'\}}{\argmin}\sum_{\mu=1}^{N^{train}}\mathcal{L}[\NNOUT(S',\DATAtrain),\Ytrue]   ,
 \label{eqn:ST-learning-intepolation}
 \end{align}
 
@@ -151,11 +151,11 @@ over all possible Students $N_S$,  and then  over all  $\Ntest$ test data points
   &=
   \frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}
   \frac{1}{N_S}\sum_{S}
-  \mathcal{L}[E_{NN}(S,\DATAtest),E_{NN}(T,\DATAtest)]  \\ \nonumber
+  \mathcal{L}[\NNOUT(S,\DATAtest),\NNOUT(T,\DATAtest)]  \\ \nonumber
     &=
   \frac{1}{N_S}\sum_{S}
     \frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}
-    \mathcal{L}[E_{NN}(S,\DATAtest),E_{NN}(T,\DATAtest)] ,
+    \mathcal{L}[\NNOUT(S,\DATAtest),\NNOUT(T,\DATAtest)] ,
 \label{eqn:emp_gen_error}
 \end{align}
 where (ideally) $\Ntest$ is extremely large.
@@ -166,7 +166,7 @@ In Bra-Ket notation, we may also write
   &= \langle \langle \DETOPSTx \rangle_{S} \rangle_{\DXtest}\\ \nonumber
   &= \langle \langle \DETOPSTx \rangle_{\DXtest} \rangle_{S}
 \end{align}
-where $\DETOPSTx:=\mathcal{L}[E_{NN}(S,\DATAtest),E_{NN}(T,\DATAtest)]$.
+where $\DETOPSTx:=\mathcal{L}[\NNOUT(S,\DATAtest),\NNOUT(T,\DATAtest)]$.
 For the empirical estimate, it does not matter what order we take the sums in,
 but we are not estimating the
 the True \AverageGeneralizationError  of the \Teacher, $\AVGGE^{T}$,

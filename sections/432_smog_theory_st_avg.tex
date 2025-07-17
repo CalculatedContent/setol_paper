@@ -41,10 +41,10 @@ We now model \Teacher error $\AVGGE^{T}$ with the
  by \emph{first} computing the ST error function
  %$\Delta\mathbf{E}_{\mathcal{L}}(\SVEC,\TVEC, \XI)$
 $\DETOPSTL$
-over the set of \emph{all} possible $\ND$ input examples $\XI$.  Define the data-dependent ST test error function--or Energy difference--as 
+over the set of \emph{all} possible $\ND$ input examples $\XI$.  Define the data-dependent ST test error function--or Energy--as 
 \begin{align}
 \label{eqn:DE_L}
-\DETOPSTL:=\sum_{\mu=1}^{\ND}\mathcal{L}[E_{NN}(\SVEC,\XI_{\mu}),E_{NN}(\TVEC,\XI_{\mu})]  .
+\DETOPSTL:=\sum_{\mu=1}^{\ND}\mathcal{L}[\NNOUT(\SVEC,\XI_{\mu}),\NNOUT(\TVEC,\XI_{\mu})]  .
 \end{align}
 where $\mathcal{L}(\SVEC,\TVEC, \XI)$ is simply the $\ell_2$ loss.  This measures the error
 between the \Student and the \Teacher; it is zero when their predictions are identical,
@@ -167,7 +167,7 @@ Write the data-averaged ST error as
 \begin{align}
 \nonumber
 \DETOPSTLL= & \frac{1}{2} \sum_{\mu=1}^{\ND}(\Ys - \Yt)^{\top} (\Ys - \Yt)
-\end{align}
+\end{align}/
 Define the $\ND$ label vectors  
 $\YsVEC:=[\YsIS{1}, \YsIS{2}, \cdots, \YsIS{\ND}]$ and 
 $\YtVEC:=[\YtIS{1}, \YtIS{2}, \cdots, \YtIS{\ND}]$.
@@ -193,8 +193,8 @@ It is convenient to work directly with
 the \SelfOverlap $\ETA(\SVEC,\TVEC,\NDXI)$ because it will appear later in \EQN~\ref{eqn:eta_mat_avg_def} (in Section~\ref{sxn:matgen}), 
 when formulating the matrix-generalized overlap operator~$\OVERLAP$.
 
-In defining $\ETA(\SVEC,\TVEC,\NDXI)$, we replace the individual labels $(\Ys,\Yt)$ with the Energy functions $E_{NN}$ that generate them, giving an expression in terms of the weights $(\SVEC,\TVEC)$ and the Gaussian data variables $(\XI)$. We will then integrate out the data variables, leaving an expression just in terms of the weights.  
-Using the $E_{NN}$ Energy generating or output function (\EQN~\ref{eqn:dnn_energy}, \ref{eqn:S_ENN}, \ref{eqn:T_ENN}), we can write the labels as
+In defining $\ETA(\SVEC,\TVEC,\NDXI)$, we replace the individual labels $(\Ys,\Yt)$ with the Energy functions $\NNOUT$ that generate them, giving an expression in terms of the weights $(\SVEC,\TVEC)$ and the Gaussian data variables $(\XI)$. We will then integrate out the data variables, leaving an expression just in terms of the weights.  
+Using the $\NNOUT$ Energy generating or output function (\EQN~\ref{eqn:dnn_energy}, \ref{eqn:S_ENN}, \ref{eqn:T_ENN}), we can write the labels as
 \begin{align}
 \Ys=\SVEC^{\top}\XI_{\mu},\;\;
 \Yt=\TVEC^{\top}\XI_{\mu}  .

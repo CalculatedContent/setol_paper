@@ -7,10 +7,10 @@ We can write the \EnergyLandscape function
 NN with $L$ layers as
 \begin{equation}
 \label{eqn:dnn_energy}
-E_{NN}:=h_{L}(\mathbf{W}_{L}\times h_{L-1}(\mathbf{W}_{L-1}\times(\cdots)+\mathbf{b}_{L-1})+\mathbf{b}_{L}) 
+\NNOUT:=h_{L}(\mathbf{W}_{L}\times h_{L-1}(\mathbf{W}_{L-1}\times(\cdots)+\mathbf{b}_{L-1})+\mathbf{b}_{L}) 
 \end{equation}
 with activation functions $h_{l}(\cdot)$, and with weight matrices and biases $\mathbf{W}_{l}$ and $\mathbf{b}_{l}$.%
-\footnote{The Energy Landscape function $E_{NN}$ acts on a data instance and generates a list of energies, or un-normalized probabilities;
+\footnote{The Energy Landscape function $\NNOUT$ acts on a data instance and generates a list of energies, or un-normalized probabilities;
 ~\cite{MM18_TR_JMLRversion}.
 This notation was chosen to make an analogy with Random Energy Models (REM)
 from spin-glass and protein folding theories~\cite{DerridaREM1981, BryngelsonWolynesPNAS1987}.
@@ -21,7 +21,7 @@ and we treat each layer as though it contains a single weight matrix $\mathbf{W}
 We imagine training (or fine-tuning) this model on labeled data $\{\mathbf{x}_{\mu},y_{\mu}\}\in\mathcal{D}$, where $ \mathbf{x}_\mu $ is the $\mu$-th input vector and $y_\mu$ is its corresponding label (e.g., for binary classification, $y_{\mu}\in\{-1,1\}$).
 We expect to use backprop via some variant of stochastic gradient descent (SGD) to minimize some loss functional, $\mathcal{L}$ (such as $\ell_2$, cross-entropy, etc.):  
 \begin{equation}
-\underset{\mathbf{W}_{l},\mathbf{b}_{l}}{\argmin}\;\sum_{\mu}\mathcal{L}[E_{NN}(\mathbf{x}_{\mu}),y_{\mu}]+\Omega ,
+\underset{\mathbf{W}_{l},\mathbf{b}_{l}}{\argmin}\;\sum_{\mu}\mathcal{L}[\NNOUT(\mathbf{x}_{\mu}),y_{\mu}]+\Omega ,
 \label{eqn:dnn_opt}
 \end{equation}
 where, $\Omega$ denotes some explicit regularizer (such as an $\ell_1$ or $\ell_2$ constraint on layer weight matrices) or some implicit regularization procedure (such as clipping the weight matrices or applying dropout).

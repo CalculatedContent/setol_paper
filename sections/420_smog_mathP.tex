@@ -154,14 +154,14 @@ We call $\XVEC^{\ND}$ an $\ND$-sized sample (of the training data instances $\XV
 
 We define model errors
 as a difference in energy $\Delta E^{\red{2}}_{\mathcal{L}}$ between the student's and teacher's output, since their outputs are a form of energy.
-\footnote{although technically $\Delta E^{\red{2}}_{\mathcal{L}}$ is a difference squared,  the NN output function $E_{NN}$ is not an energy in the sense here, whereas $\Delta E^{\red{2}}_{\mathcal{L}}$ will have units of Energy for purposes of the discussion on this section.} 
 Smaller energy differences correspond to smaller errors and therefore better models.
 For example, for the mean-squared-error (MSE) loss, one has
 \begin{align}
   \label{eqn:DEy}
-  \DEL(\WVEC,\XVEC_{\mu},\MY_{\mu}):= (\MY_{\mu}-E_{NN}(\WVEC,\XVEC_{\mu}))^{2}  ,
+  \DEL(\WVEC,\XVEC_{\mu},\MY_{\mu}):= (\MY_{\mu}-\NNOUT(\WVEC,\XVEC_{\mu}))^{2}  ,
 \end{align}
-where $E_{NN}(\WVEC,\XVEC_{\mu})$ is output prediction of the NN, as in \EQN~\ref{eqn:dnn_energy}.
+where $\NNOUT(\WVEC,\XVEC_{\mu})$ is output prediction of the NN, as in \EQN~\ref{eqn:dnn_energy}.
+\footnote{The function $\NNOUT$ is not an energy  in the sense for this work.}
 
 
 We assume that there is a real-world training process that generates a \Teacher model $(T)$, trained on a particular dataset $\ADD$, and we seek a theory for the \Quality (or generalization accuracy) of this model.
@@ -186,7 +186,7 @@ Here, $\XImu\in\mathbb{R}^{m}$ is a random vector (i.e., an $m$-dimensional rand
 \subsubsection{BraKets, Expected Values, and Thermal Averages}
 \label{sxn:mathP_averages}
 Given the setup from Section~\ref{sxn:mathP_setup},
-we will treat the average (difference in) energy, $\DETOPX$, over some $\ND$-size data set $\NDX$.
+we will treat the total energy, $\DETOPX$, over some $\ND$-size data set $\NDX$.
 we can write the \TotalDataSampleError,
 using an overloaded operator notation, as
 \begin{align}
