@@ -76,16 +76,11 @@ For our matrix generalization, we compute $\Q$ from a \emph{\LayerQualitySquared
   \label{eqn:betaIZG_S}
   \IZG:=  \red{\tfrac{1}{N}}\ln \int d\mu(\SMAT) \exp\left[\ND\beta N\OLAPSQD\right] .
 \end{align}
-We normalize the $\IZG$ because we are going to take the \LargeN limit in $N$, and we need to keep the \LayerQuality finite.  This allows us to implicitly fix the effective load of the layer, $\ND/N$, as $\IZG$ is also in the \ThermodynamicLimit and therefore at \LargeN in $\ND$ (with fixed load=$n/m=1, although we do not explicitly set $\ND/N$.
+We normalize the $\IZG$ because we are going to take the \LargeN limit in $N$, and we need to keep the \LayerQuality finite.  This allows us to implicitly fix the effective load of the layer, $\ND/N$, as $\IZG$ is also in the \ThermodynamicLimit and therefore at \LargeN in $\ND$, although we do not explicitly set $\ND/N$.
 See Appendix~\ref{sxn:quality} for the derivation of \EQN~\ref{eqn:betaIZG_S} (and recall the discussion in Section~\ref{sxn:mathP}). 
-
-
 \end{itemize}
-%
 
 We cannot evaluate \EQN~\ref{eqn:betaIZG_S} directly; but we will be able to evaluate it if we transform it into an HCIZ integral (as in \EQN~\ref{eqn:hciz_prelim}). To do this, however, requires a trick which will allow us to work with different forms of the Student $\AMAT$ (and Teacher $\XMAT$) Correlation matrices.
-
-
 
 \paragraph{From weight matrices to Correlation matrices.}
 To evaluate $\QT$ in terms of derivatives of \EQN~\ref{eqn:betaIZG_S}, we need to introduce the change of measure:
@@ -125,7 +120,7 @@ For either form of $\AMAT$, the measure $d\mu(\AMAT)$ is the same because we wil
 space of non-zero eigenvalues $(\lambda_{i}\gg 0)$.
 We note that $\AMATM$ and $\AMATN$ have the same eigenvalues $\lambda_{i}$, or ESD,
 up to the additional zero eigenvalues $(\lambda_{i}=0)$ in the null space of $\AMATN$.  
-Consequently, both forms of $\AMAT$ have %the same $N-M$ zero eigenvalues, No they don't.
+Consequently, both forms of $\AMAT$ have 
 the same non-zero part
 of the ESD $(\rho(\lambda)\gg 0)$, and the same Trace $(\Trace{\AMATM}=\Trace{\AMATN})$.
 In the large-N approximation, the ESD of (either form of)
@@ -181,12 +176,6 @@ in terms of $\AMATN$, giving, as in Eqn.~\ref{eqn:QT_dS},
 To recast \EQN~\ref{eqn:IZG_dmuS} as an HCIZ integral, as in \EQN~\ref{eqn:hciz_prelim},
 we must perform a change of measure,
  from $N\times M$ \Student weight matrices $\SMAT$ to $N\times N$ Outer \Student Correlation matrices $\AMATN$, as in \EQN~\ref{eqn:changeOfMeasure}.
-
-%\begin{align} 
-%  \label{eqn:dmuStoA}
-%  d\mu(\SMAT)\rightarrow d\mu(\AMAT)
-%\end{align}
-%\michael{Is there a reason not to just point to \EQN~\ref{eqn:changeOfMeasure}, and instead introduce a new equation, \EQN~\ref{eqn:dmuStoA}.}
 
 When we perform the change of measure on
 \EQN~\ref{eqn:IZG_dmuS},

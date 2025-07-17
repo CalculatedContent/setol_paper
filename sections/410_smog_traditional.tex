@@ -65,7 +65,6 @@ We wish to understand how to compute the associated thermodynamic quantities suc
 various forms of the \AverageGeneralizationError $(\AVGGE)$, \PartitionFunction $(Z)$, and the
 \FreeEnergy $(F)$ and other \GeneratingFunctions~$(\Gamma)$.
 
-
 \paragraph{The \StudentTeacher model.}
 We seek to compute and/or estimate the \AverageGeneralizationAccuracy for a \emph{fixed} \Teacher Perceptron $T$
 by averaging over an ensemble of \Student $S$ \Perceptrons, in the \AnnealedApproximation (AA), and at
@@ -87,16 +86,13 @@ the AA and high-T at all times.
 In the \SETOL approach to \STATMECH, we want a matrix generalization of the ST \ModelQuality, $\Q^{ST}$, for a single \LayerQuality
 $\Q\sim\Q^{NN}_{L}$ in an arbitrary \MultiLayerPerceptron (MLP).
 This matrix generalization is a relatively straightforward extension of the classical (i.e., for a vector \Teacher) \SMOG ST \ModelQuality (but our \SETOL approach will use it in a conceptually new way).
-%
-In our matrix generalization, the \Teacher vector $\TVEC$ is replaced by a \Teacher matrix $\TMAT$ (i.e., $\TVEC\rightarrow\TMAT$); 
-and, in our \SETOL approach, $\TMAT$ will be similar to an actual (pre-)trained NN weight matrix (i.e., $\TMAT\simeq\WMAT$), in that we assume $\TMAT$ has the same limiting spectral density as $\WMAT$. 
-Importantly, this means that the matrix $\WMAT$ is neither a Gaussian Random Matrix, 
-nor is it obtained from Gaussian i.i.d. training data. \red{We should not say this about the training data because we assume $\NDXI$ is Gaussian i.i.d., and good pre-processing will do that. ???????} 
 
-As such, for our \SETOL theory, we seek an expression that can be parameterized by the %\Teacher, and in particular by the 
-ESD of the \Teacher.
-This is what makes the basic method \SemiEmpirical: even though we do not know the form of the \Teacher \emph{ab initio},
-we make a modeling assumption that $\TMAT$ has the same limiting spectral distribution as $\WMAT$, and hence the same PL fit parameter $\alpha$, and that the generalizing components of both are found in the PL tail. 
+In our matrix generalization, the \Teacher vector $\TVEC$ is replaced by a \Teacher matrix $\TMAT$ (i.e., $\TVEC\rightarrow\TMAT$); 
+and, in our \SETOL approach, $\TMAT$ represents actual (pre-)trained NN weight matrix (i.e., $\TMAT\simeq\WMAT$) that has been trained on real-world, strongly correlated data $\ADD$.
+As such, for our \SETOL theory, we seek an expression that can be parameterized by the \Teacher, and in particular by the ESD of the \Teacher.
+This is what makes the basic method \SemiEmpirical: 
+we make a modeling assumption that the \Teacher has the same limiting spectral distribution as the \Student, 
+and hence the same PL fit parameter $\alpha$. 
 This is all done with the understanding that later we will augment
 (and hopefully ``correct'') our mathematical formulations with 
 phenomenological parameters fit from experimental data.
@@ -106,4 +102,9 @@ how to derive \HTSR empirical metrics, such as $\ALPHA$ and $\ALPHAHAT$,
 how they arise from this formalism, 
 how they are related to the correlations in the data, and 
 why they are transferable and exhibit \Universality.
+Importantly, we do not just seek a method with adjustable parameters, but rather formulate the theory using
+techniques similar to those to explain the origins of Quantum Chemisty \SemiEmpirical methods, resulting in formal
+expressions that resemble a renormalized Self-Energy
+and/or \EffectiveHamiltonian from such approaches
+~\cite{Martin1994,Martin1996_CPL,MartinFreed1996, Brandow1965, freed1977, Freed1983, PhysRevLett.69.800},
 This gives what we call a \SemiEmpirical \emph{Theory}.

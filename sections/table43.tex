@@ -8,9 +8,9 @@ $T$                      & Teacher model (fixed network) \\
 $S$                      & Student model (trained to mimic $T$) \\
 $\ADD$             & True dataset of $(x,y)$ pairs \\
 ${\mathcal D}$ & Gaussian‐field idealization of $\mathcal D$ \\
-$\varepsilon_T$          & True generalization error of $T$ (unknown) \\
-$\widehat\varepsilon$    & Empirical test‐set error estimate \\
-$\varepsilon_{ST}$       & Student–Teacher average generalization error \\
+$ \AVGGE^{emp}$    & Average rmpirical test‐set error estimate \\
+ $\AVGGE^{T}$          & Average, true generalization error of $T$ (unknown) \\
+$\AVGGE^{ST}$       & Student–Teacher average generalization error \\
 $\SVEC,\;\TVEC$                      & Student and Teacher weight vectors \\
 $\Ys,\;\Yt$                      & Student and Teacher labels $(+1|-1)$  for example $\mu$\\
 $\AVGR$                      & Student-Teacher  Overlap $\displaystyle \AVGR=\SVEC^\top \TVEC$ \\
@@ -20,6 +20,7 @@ $\Q^{ST}$            & Student-Teacher Perceptron \Quality \\
 
 \bottomrule
 \end{tabular}
-\caption{Key notation for the Student–Teacher operational setup.}
+\caption{Key notation for the Student–Teacher operational setup.
+\red{THIS TABLE NEEDS CHECKED< UPDATED}}
 \label{tab:st_notation}
 \end{table}
