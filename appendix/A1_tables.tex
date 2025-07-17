@@ -16,10 +16,10 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
   \begin{tabular}{| l | c | r |}
     \hline
     Number of NN Layers & index $L$ & $N_{L}$ \\ \hline
-    Number of Data Examples & index $\mu$ & $\ND=N_{D}$ \\ \hline
-    Number of (input) Features & index $i,j$ & $m=N_{f}$ \\ \hline
-    Actual Data (Matrix) & $D$ & $N_{f}\times N_{D}$ \\ \hline
-    Model Data (Matrix) & $\mathcal{D}$ & $N_{f}\times N$ \\ \hline    
+    Number of Data Examples & index $\mu$ & $\ND$ \\ \hline
+    Number of (input) Features & index $i,j$ & $m$ \\ \hline
+    Actual Data (Matrix) & $D$ & $n \times m$ \\ \hline
+    Model Data (Matrix) & $\mathcal{D}$ & $n \times m$ \\ \hline    
     \Teacher \Perceptron Weight Vector & $\TVEC$ & $m$ \\ \hline    
     \Student \Perceptron Weight Vector & $\SVEC$ & $m$ \\ \hline        
     Actual Input Data Vector & $\DATA$ & $N_{f}\times 1$ \\ \hline
@@ -66,7 +66,7 @@ see Table~\ref{tab:energies} for a summary of types of ``Energies'' used through
     \StudentTeacher \SelfOverlap & $\eta(\NDXI)=\mathbf{y}^{\top}_{T}\mathbf{y}_{S}$  \\ \hline
     $\ell_2$-Energy Difference or $\ell_2$-Error & $\DETSTLL$ \\ \hline
     $\ell_2$-Energy Difference Operator Form & $\DETOPSTLL:=\sum_{\XI}\DETSTLL$ \\ \hline
-    $\ell_2$-Energy Difference Matrix Operator Form & $\DETOPST:=\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)$\\ \hline
+    $\ell_2$-Energy Difference Matrix Operator Form & $\DETOPST:=N(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)$\\ \hline
     \EffectivePotential  & $\epsilon(R)=\epsilon(S,T)=\langle\DETOPSTLL\rangle_{\AVGNDXI}$ \\ \hline
     \LinearPerceptron  $\epsilon(R)$ at high-T, large-$N$ & $\epsilon(R)=1-R$ \\ \hline
     \AnnealedApproximation (AA)& $\langle\ln Z\rangle_{\AVGNDXI}\approx\ln\langle Z\rangle_{\AVGNDXI}$ \\ \hline
@@ -156,10 +156,10 @@ $\beta\HAN(\beta,R):= \tfrac{1}{2}\ln[{1+2\beta(1-R)}]$ & ~\ref{eqn:Gan2} \\
 At high-T, the ST model Hamiltonian is: &
 $\beta\HANHT(R):=\beta(1-R)$ & ~\ref{eqn:e0},~\ref{eqn:Gan3} \\
 \hthinline
-The matrix-generalized ST model Hamiltonian: &
-$\beta\GANMAT:=\tfrac{1}{2}\ln[1 + 2\beta\red{N}\Trace{\IM-\mathbf{R}}]$  & ~\ref{eqn:GANmat} \\
+The per-parameter ST model Hamiltonian: &
+$\beta\HANPP:=\tfrac{1}{2}\ln[1 + \tfrac{2\beta N}{M}\Trace{\IM-\mathbf{R}}]$  & ~\ref{eqn:Gan_lnI_final_mwm} \\
 At high-T, the matrix-generalized ST model Hamiltonian is: &
-$\GANMATHT:=\red{N}(\IM-\OVERLAP)$&
+$\GANMATHT:=N(\IM-\OVERLAP)$&
 ~\ref{eqn:GANHTmatR} \\
 The \LayerQualitySquared Hamiltonian (for the Accuracy): &
 $\HBARE:=\OLAPTOLAP$ & ~\ref{eqn:RG},~\ref{eqn:HBARE} \\

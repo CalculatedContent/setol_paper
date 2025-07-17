@@ -15,7 +15,7 @@
    Annealed Hamiltonian
     & $\HANHT=\EPSLw$ (\ref{eqn:epsl}) 
     & $\GANHTR=\EPSLSTx=1-\AVGR$ (\ref{eqn:e0}) 
-  & $\GANMATHT = \red{N}(\IM-\OVERLAP)$ (\ref{eqn:GANHTmatR}) \\
+  & $\GANMATHT = N(\IM-\OVERLAP)$ (\ref{eqn:GANHTmatR}) \\
 
   (Data-Averaged Error) 
     & (AA, at high-T) 
@@ -41,17 +41,17 @@
 \end{tabular}
 \caption{Summary of key quantities compared across traditional \SMOG models,  the \Student-\Teacher (ST) \LinearPerceptron--in the \AnnealedApproximation
 (AA) and at high-Temperature (high-T) and at \LargeN in $\ND$, and the matrix-generalized forms as the starting point to frame \SETOL.
-The Total Data Model Error represents the difference between the model and its labels for the ST model between
+The Total Model Error of Energy Difference, $\DELBF$, represents the difference (squared) between the model and its labels for the ST model between
 the \Student and \Teacher predictions.
 The \AnnealedHamiltonian is the Energy function for this Error after it is averaged over the model for the training data
 (an $\ND$-dimensional i.i.d. idealized Gaussian dataset,  $\NDXIn$).
 In the AA, the \AnnealedHamiltonian is equal to the \EffectivePotential.  For the ST model,  this is one minus the average overlap, $(1-\AVGR)$;
-for the \SETOL, this is  the ($M$-dimensional) identity minus the overlap operator/matrix, $\red{N}(\IM-\OVERLAP)$. 
+for the \SETOL, this is  the ($M$-dimensional) identity minus the overlap operator/matrix, $N(\IM-\OVERLAP)$. 
 The \SelfOverlap $\eta(\cdots)$ is used to describe the Accuracy (as opposed to the Error) for both the ST model and
 its matrix-generalized form.
 %Notice that $\eta(\XI)$, as defined,  has not yet been averaged over the model data $\XI^{N}$.
 Finally, the different forms of the \Quality are defined.  Generally speaking, the \Quality $\Q$ is an approximation to some measure
-of $1$ minus the \AverageGeneralizationError, $(\Q:=1-\AVGGE)$ (in the AA, at high-T, at large-N, and with whatever else
+of $1$ minus the \AverageGeneralizationError, $(\Q:=1-\AVGGE)$ (in the AA, at high-T, at \LargeN, and with whatever else
 approximations are applied).
 For the ST model, having just 1 layer, the \ModelQuality and the \LayerQuality are the same, and denoted $\Q^{ST}$.
 For \SETOL, the \ModelQuality $\Q^{NN}$ is a product of individual \LayerQualities $\Q^{NN}_{L}$.
@@ -60,52 +60,3 @@ and the starting point for this is expressed with the \LayerQualitySquared Hamil
 }
 \label{table:quantities_general_vect_matrix}
 \end{table}
-
-\charles{@MIKE:
-\paragraph{Other notation suggetions and issues}  Why do we use $\epsilon(R)$ for the Annealed Error Potential
-and not the Hamiltonian directly ?
-We can define a Hamiltonian for the \LayerQualitySquared $\QT$ a
-\begin{align}
-  \mathbf{H}_{\QT}=\OVERLAP^{T}\OVERLAP \nonumber
-\end{align}
-which gives
-\begin{align}
-  Z_{\QT}:=\int d\mu(\SMAT) e^{N\beta\operatorname{Tr}[\mathbf{H}_{\QT}(\SMAT)]}
-\end{align}
-And this will become the \ERG \EffectiveHamiltonian.
-
-But we can not define an $\mathbf{H}$ for the Unsquared $\Q$ using  $\sqrt{\OLAPTOLAP}$ because when write the \PartitionFunction
-we always use $\beta\operatorname{Tr}[\mathbf{H}(\SMAT)]$ in the exponential
-\begin{align}
-  Z:=\int d\mu(\SMAT) e^{N\beta\operatorname{Tr}[\mathbf{H}(\SMAT)]}
-\end{align}
-and for $\Q$ the $\sqrt{\cdots}$ needs to appear outside the Trace
-
-\paragraph{Quality Approximation}
-Why do we work with the \LayerQualitySquared and not the \LayerQuality directly?
-For our matrix-generalized model, we need to map
-the \AnnealedHamiltonian for the \LinearPerceptron to a matrix,
-$\HANHT(\WVEC)\rightarrow\mathbf{H}(\WMAT)$ in such a way that the new
-Hamiltonian operator (i.e., matrix) is symmetric.  At high-T, we have $\HANHT(\WVEC)=\EPSLR=1-R$.
-But since we want to compute the \LayerQuality, not the error, we could
-define a Hamiltonian operator for the \LayerQuality, $\mathbf{H}_{\Q}(\WVEC)=R$.
-This is very convenient.
-To make this symmetric, we can define the
-\LayerQualitySquared Hamiltonian $\mathbf{H}_{\QT}(\WMAT)=\mathbf{R}^{\top}\mathbf{R}$,
-use this to compute the \LayerQualitySquared, $\QT$, 
-and take the square root and end of the calculation to give
-$\Q\approx\sqrt{\QT}$.
-
-
-Moving forward, to compute the \LayerQuality $\Q$, we approximate the \ThermalAverage of the square root if the
-Overlap squared with
-the square root of the \ThermalAverage of the Overlap squared
-\begin{align}
-  \Q := \THRMAVGIZ{\sqrt{\OLAPTOLAP}} \approx \sqrt{ \THRMAVGIZ{\OLAPTOLAP}} 
-\end{align}
-We will define the \LayerQualitySquared $\QT$,
-\begin{align}
-  \Q :=  \THRMAVGIZ{\OLAPTOLAP}
-  \end{align}
-and, moving forward, work with this directly
-}

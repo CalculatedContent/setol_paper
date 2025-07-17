@@ -129,7 +129,7 @@ We let the number of training samples be $\ND$ and the dimension
 % to avoid extra notation. 
 When we move to matrix-based analyses, 
 %we will revisit (and possibly distinguish) $\ND$ (layer input dimension) and $\ND$ (training-set size).
-the input dimension $m$ will become $M$ and we will induce a new output dimension $\ND$, (the output dimension of a perceptron is $1$). Thus, the layer weight matrix $\WMAT$ has dimension $M\times N$.\footnote{To be more precise, $M$ is defined to be the lesser dimension of $\WMAT$ and $\ND$ the greater. For simplicity we assume that $M$ is always the input dimension and $\ND$ the output dimension. Under the assumptions of \SETOL, there is no loss of generality from doing this.} The number of data samples will remain $\ND$ throughout.
+the input dimension $m$ will become $M$ and we will induce a new output dimension $\ND$, (the output dimension of a perceptron is $1$). Thus, the layer weight matrix $\WMAT$ has dimension $M\times N$.\footnote{To be more precise, $M$ is defined to be the lesser dimension of $\WMAT$ and $N$ the greater. For simplicity we assume that $M$ is always the input dimension and $N$ the output dimension. Under the assumptions of \SETOL, there is no loss of generality from doing this.} The number of data samples will remain $\ND$ throughout.
 \input{sections/dim_notation_table}
 
 
@@ -147,13 +147,15 @@ $\ADD$ denotes the finite-size dataset.
 WLOG, we assume that $\XVEC_{\mu}$ is normalized such that the norm squared is unity:
 \begin{equation}
   \label{eqn:XVEC_norm}
-  \Vert\XVEC_{\mu}\Vert^{2}_{F} := \sum_{i=1}^{m} \XVEC_{\mu,i}^{2}=1
+  \Vert\XVEC_{\mu}\Vert^{2} := \sum_{i=1}^{m} \XVEC_{\mu,i}^{2}=1
 \end{equation}
 We call $\XVEC^{\ND}$ an $\ND$-sized sample (of the training data instances $\XVEC$) from $\ADD$. 
 % See below We may or may not specify the labels for this sample, depending on the context.
 
 We define model errors
-as a difference in energy $\Delta E_{\mathcal{L}}$ between the student's and teacher's output, since their outputs are a form of energy. Smaller energy differences correspond to smaller errors and therefore better models.
+as a difference in energy $\Delta E^{\red{2}}_{\mathcal{L}}$ between the student's and teacher's output, since their outputs are a form of energy.
+\footnote{although technically $\Delta E^{\red{2}}_{\mathcal{L}}$ is a difference squared,  the NN output function $E_{NN}$ is not an energy in the sense here, whereas $\Delta E^{\red{2}}_{\mathcal{L}}$ will have units of Energy for purposes of the discussion on this section.} 
+Smaller energy differences correspond to smaller errors and therefore better models.
 For example, for the mean-squared-error (MSE) loss, one has
 \begin{align}
   \label{eqn:DEy}
@@ -194,7 +196,7 @@ using an overloaded operator notation, as
 where the boldface $\DETOP$ indicates this is a sum over the entire set of $\ND$ pairs $[\NDX, \MY^{\ND}]$.
  We should keep in mind that this depends on the specific set of $\ND$ data pairs $[(\XVEC_{\mu},\MY_{\mu})\in\ADD\;|\;\mu=1,\cdots,n]$, 
  although later we will model the labels $\MY_{\mu}$ as the output of another NN when describing the Student-Teacher model.
-We treat $\MY_{\mu}$ as a deterministic output of the Teacher model $T$, meaning that
+Doing so later, here, we treat $\MY_{\mu}$ as a deterministic output of the Teacher model $T$, meaning that
 $\MY_{\mu}$ is \emph{implicit} in $\DEL$.
 We will therefore drop the $\MY_{\mu}$ and $y^{\ND}$ symbols, 
 and simply write this total error / energy difference as
@@ -282,11 +284,11 @@ scale linearly with the system size or number of parameters, i.e. $m$ (or $N\tim
 Extensive quantities scale with system size, intensive ones do not.
 Along with this, Thermodynamic average quantities should be \emph{\SizeIntensive},
 meaning that they remain independent of $\ND$ (or $N\times M$, below) as the system size increases.
-In our setting, \SizeExtensivity and \SizeIntensivity underpin the so-called \LargeN limit,
+In our setting, \SizeExtensivity and \SizeIntensivity underpin the so-called \LargeN limits we employ,
 ensuring that macroscopic observables become independent of
 microscopic fluctuations so that the system approaches equilibrium as expected.
 
-In the theory of the \StatisticalMechanics of Generalization (\SMOG), however, one also holds the load $=n/m$ fixed when taking the \ThermodynamicLimit, and we will do the same\cite{Gardner_1985, SST92, engel2001statistical,MM17_TR}. In fact, we will take load to be unity, and not treat it explicitly. 
+In the theory of the \StatisticalMechanics of Generalization (\SMOG), however, one also holds the (feature) load $=\ND/m$ fixed when taking the \ThermodynamicLimit, and we will do the same\cite{Gardner_1985, SST92, engel2001statistical,MM17_TR}. In fact, we will take load to be unity, and not treat it explicitly. 
 Moreover,  we will use $\ND$  as the primary variable below as we are interested in how the Free Energy and other quantities change with $\ND$. That is, we use the notational convention in ~\cite{Solla2023} (as opposed to \cite{SST92}). \textbf{Consequently, for our purposes here, this means that the \ThermodynamicLimit and the '\LargeN limit in $\ND$' are effectively the same.}
 
 As an example of \SizeExtensivity and \SizeIntensivity, 
@@ -305,7 +307,6 @@ The \TotalDataSampleError $\DETOPXI$ is \SizeExtensive, whereas the
 average $\langle\DETOPXI\rangle_{\AVGNDXIn}$ is \SizeIntensive.
 This limit will be implicit later when taking a \SaddlePointApproximation (see below).
 \footnote{As we are working within a ``physics-level of rigor, we take some liberties in evaluating these \LargeN limits; and we leave the formal proofs for future work.  }
-\nred{This is a little weird to have the square on this and ask it to be size extensive and units of energy.  We should at least comment on this  See also SST92  eqn 2.1.  Woud like to find a good solution}
 
 The data-averaged error  $\langle \DETOPXI \rangle_{\AVGNDXIn}$ will appear frequently below.
 For convenience and for compatibility with \cite{SST92}, we denote it using the symbol $\EPSLw$:
@@ -1042,13 +1043,13 @@ to an integral over NN \Student $N \times M$ weight matrices ($\WMAT=\mathbf{S}$
 The resulting \PartitionFunction and \FreeEnergy will be expressed with what is called an HCIZ integral.
 (See Tanaka~\cite{Tanaka2007, Tanaka2008}, Gallucio et al.~\cite{Bouchaud1998} and/or Parisi~\cite{PP95}, and also \EQN~\ref{eqn:tanaka_result} in Section~\ref{sxn:matgen}.)
 As in \EQN~\ref{eqn:IZGINF_HCIZ}, we will define a \emph{\LayerQuality \GeneratingFunction}, $\IZG$, for the \LayerQuality (squared).
-This will take the form of an HCIZ integral,
+This will take the form of an HCIZ integral
 \begin{align}
 \label{eqn:hciz_prelim},
 \IZGINF := \lim_{N\gg 1}\frac{1}{N}\ln \underbrace{\int d\mu(\AMAT) \exp[\ND\beta N\Trace{\AMAT_N\XMAT_N}] }_{\mbox{HCIZ Integral}} 
   \approx \ND\beta\Trace{\mathcal{G}_{A}(\lambda)}  ,
 \end{align}
-that is evaluated in the \emph{\LargeN limit in $N$} (here, meaning as $N \gg 1$, but not at the limit $N=\infty$).
+that is evaluated in the \WideLayer\emph{\LargeN limit in $N$} (here, meaning as $N \gg 1$, but not at the limit $N=\infty$).
 Here,  $\AMAT_N$ and $\XMAT_N$ are $N \times N$ Hermetian matrices, (See Appendix \ref{sxn:appendix_A} for notation,) $d\mu(\AMAT)$ is a measure
 over all random (Orthogonal) matrices (see \EQN~\ref{eqn:dmuA}),
 and $\mathcal{G}_{A}()$ is a called  \GEN 
@@ -1065,8 +1066,8 @@ Also, $\GNORM()$ here depends on only the limiting form of the ESD of $\AMAT$, $
 and depends on the $M$ normalized eigenvalues $\lambda_{i}$ of $\XMAT$.
 
 
-To evaluate this, we will form the \LargeN limit, using a result from Tanaka~\cite{Tanaka2007,Tanaka2008},
-but extended slightly (in Appendix~\ref{sxn:tanaka}) to include the inverse-Temperature $\beta$ explicitly.
+To evaluate this, we will form the \LargeN limit in $N$, using a result from Tanaka~\cite{Tanaka2007,Tanaka2008},
+but extended slightly (in Appendix~\ref{sxn:tanaka}) to include the  $\ND\beta$ term explicitly.
 We can write
 \begin{align}
   \label{eqn:izgin_def}

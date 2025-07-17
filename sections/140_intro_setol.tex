@@ -18,7 +18,7 @@ Here, we derive this from first principles, requiring no previous knowledge of s
 The \SETOL approach unifies the \HTSR principles with
 a broader theoretical framework for layer analysis.
 The \HTSR theory identifies \Universality (e.g., $\alpha=2$) as a hallmark of the best-trained DNN layers,
-and, here, our \SETOL introduces the closely related \emph{Trace Log Condition}, a \ScaleInvariant or
+and, here, our \SETOL introduces the closely related \emph{Exact Renormalization Group Condition}, a \ScaleInvariant or
 \VolumePreserving transformation that reflects an underlying \emph{Conservation Principle}.
 Together, these principles form the theoretical foundation for deriving \HTSR \LayerQuality metrics from first principles.
 By leveraging techniques from \STATMECH and modern \RMT, \SETOL offers a rigorous framework
@@ -66,8 +66,7 @@ in neural networks.
         The \SETOL condition for \IdealLearning states that the 
         dominant eigencomponents associated with the ESD 
         of layer form a reduced-rank \emph{Effective Correlation Space} (\ECS) that satisfies
-        a new kind of Conservation Principle
-        or \emph{\VolumePreservingTransformation} such that the largest eigenvalues $\LambdaECS_{i}$ of the~\ECS satisfy
+        a new kind of Conservation Principle,  \emph{\ScaleInvariant} \emph{\VolumePreservingTransformation} where the largest eigenvalues $\LambdaECS_{i}$ of the~\ECS satisfy
         the condition  $\ln \prod \LambdaECS_{i} = \sum \ln \LambdaECS_{i} = 0$.  
         This is called the \emph{\TRACELOG Condition}.  The \TRACELOG Condition is equivalent to the taking a single step of the Wilson Exact Renormalization (ERG).
    \end{itemize}

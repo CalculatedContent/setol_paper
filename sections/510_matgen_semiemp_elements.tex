@@ -15,7 +15,7 @@ and obtain and expression for the NN \SelfOverlap $\ETA(\SMAT,\TMAT,\NDXI)$,whic
 $\OVERLAP:=\langle\ETA(\SMAT,\TMAT,\NDXI)\rangle_{\AVGNDXI}=\tfrac{1}{N}\SMAT^{\top}\TMAT$.
 This can be related to a single-layer matrix-generalization of the ST \AnnealedHamiltonian, 
 presented in Appendix~\ref{sxn:summary_sst92},
-$\HANHT:=\red{N}(M-\OVERLAP$),
+$\HANHT:=N(M-\OVERLAP$),
 where, importantly, the scalar overlap $R$ is now a matrix $\OVERLAP$ of $M\times M$ adjustable parameters.
 Importantly, being empirical quantities, the weight matrices are implicitly normalized by $1/\ND$, and, like the ST vectors, also implicitly normalized by $1/M$. (See Appendix~\ref{sxn:appendix_Gan}).
 
@@ -36,7 +36,7 @@ $\AMATM = \tfrac{1}{N}\SMAT^{\top}\SMAT$.
 Importantly, we argue that the measures $d\mu(\AMATM)\leftrightarrow d\mu(\AMATN)$,
 can be interchanged for our purposes, making them effectively equivalent.
 This reparameterization leads us to an integral of the HCIZ type (as in \EQN~\ref{eqn:hciz_prelim})
-which, as shown by Tanaka \cite{Tanaka2007, Tanaka2008}, is expressed in terms of the R-transform $R_{\AMATM}(z)$, defined for the limiting form of the ESD of $\AMATM$,  $\rho^{\infty}_{\AMATM}(\lambda$).
+which, as shown by Tanaka \cite{Tanaka2007, Tanaka2008}, is expressed in terms of the R-transform $R_{\AMATM}(z)$, defined for the tail of the limiting form of the ESD of $\AMATM$,  $\rho^{\infty}_{\AMATM}(\lambda$).
 
 Then, we introduce the \EffectiveCorrelationSpace (\ECS), and two key approximations,
 the \IndependentFluctuationApproximation (\IFA) and
@@ -48,7 +48,7 @@ also follows the testable \TRACELOG condition, $\Det{\XECS}=1$. \textbf{The empi
 
 
 \item
-\textbf{The \WideLyaer \LargeN limit in $N$.}
+\textbf{The \WideLayer \LargeN limit in $N$.}
 Section~\ref{sxn:matgen_evaluation_hciz} presents the core result,
 (as in \EQN~\ref{eqn:QT_result}),
 closed-form or semi-analytic expression(s) for the \LayerQualitySquared $\QT$
@@ -58,7 +58,7 @@ HCIZ integral for $\QT$ becomes tractable at large-$N$, giving an expression tha
 in terms of $\MECS$ eigenvalues $\LambdaECS$ of the \Teacher correlation matrix 
 restricted to the \ECS $\XECS$.
 In doing this, the $\MECS$ \Teacher eigenvalues are treated as experimental observables, and 
-become the effective \SemiEmpirical parameters (i.e., $\alpha$, $\LambdaMax$) of our \SETOL.
+become the effective \SemiEmpirical parameters (i.e., $\alpha$, $\LambdaMax$) of the \SETOL approach.
 
 \item
 \textbf{Selecting the \HeavyTailed \RTransform.}

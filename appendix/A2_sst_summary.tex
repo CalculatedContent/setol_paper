@@ -118,7 +118,7 @@ This now lets us write the Average Model \TrainingError $\AVGSTTE$ in the AA in 
   \label{eqn:partial_Gan}
   \dfrac{\partial \beta\HAN}{\partial \beta}
   &=  \dfrac{\partial }{\partial \beta} \left(-\frac{1}{\ND}\ln \int d\mu(\NDXIn)e^{-\beta\DETOPXILL}\right) \\ \nonumber
-  &=  -\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \frac{1}{\ND}\ln \int d\mu(\NDXIn)e^{-\beta\DETOPXILL} \\ \nonumber
+  &=  -\frac{1}{\ND}\dfrac{\partial }{\partial \beta} \ln \int d\mu(\NDXIn)e^{-\beta\DETOPXILL} \\ \nonumber
   &=  -\frac{1}{\ND} \left( \int d\mu(\NDXIn)e^{-\beta\DETOPXILL}\right)^{-1}\dfrac{\partial }{\partial \beta} \int d\mu(\NDXIn)e^{-\beta\DETOPXILL} \\ \nonumber
     &=  -\frac{1}{\ND} \left(\int d\mu(\NDXIn)e^{-\beta\DETOPXILL}\right)^{-1} \int d\mu(\NDXIn)(-\DETOPXI)e^{-\beta\DETOPXILL}
 % &=  \frac{1}{\ND} \langle\DETOPXI\rangle_{\AVGNDXIn}
@@ -249,9 +249,9 @@ We can define the data-dependent form (i.e., in the basis of the data $\XI$) as
 \begin{align}
 \nonumber
 \DETOPNN
-   :=& \red{N}\sum_{\mu=1}^{\ND} (\XI^{\mu})^{\top} \left( \IM - \frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \\
+   :=& N\sum_{\mu=1}^{\ND} (\XI^{\mu})^{\top} \left( \IM - \frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \\
 \label{eqn:DETOPNN}
-    =&  \red{N}\sum_{\mu=1}^{\ND} \sum_{i,j=1}^{M} \XI_i^{\mu} \left( \delta_{ij} - \frac{1}{N} [\SMAT^{\top}\TMAT]_{ij} \right) \XI_j^{\mu}  .
+    =&  N\sum_{\mu=1}^{\ND} \sum_{i,j=1}^{M} \XI_i^{\mu} \left( \delta_{ij} - \frac{1}{N} [\SMAT^{\top}\TMAT]_{ij} \right) \XI_j^{\mu}  .
 \end{align}
 
 \paragraph{The \AnnealedHamiltonian (per-parameter, $\HANPP)$}
@@ -260,7 +260,7 @@ The definition of the \AnnealedHamiltonian, $\GANMAT$, for the idealized case mu
 \SizeConsistency in $M$:
 \begin{align}
  \label{eqn:hanpp}
- \Trace{\GANMAT}=M\left(\red{N}\Trace{\HANPP}\right)
+ \Trace{\GANMAT}=M\left(N\Trace{\HANPP}\right)
 \end{align}
 where the \AnnealedHamiltonian per-parameter, $\HANPP$, is obtained from \EQN~\ref{eqn:Gan0} as
 \begin{align}
@@ -281,7 +281,7 @@ That is, $\HANPP$ represents the Energy or Error each of the $M$ parameters cont
 The goal will be to derive the high-Temperature \AnnealedHamiltonian, $\GANMATHT$, which is now  defined such that:
 \begin{align}
  \label{eqn:hanpp2}
-  \Trace{\GANMATHT}:=M\red{N}\left(\Trace{\HANPPHT  }\right)
+  \Trace{\GANMATHT}:=MN\left(\Trace{\HANPPHT  }\right)
 \end{align}
 
 If we were to evaluate the trace of $\HANPPHT$, then we could also define
@@ -312,25 +312,25 @@ If we substitute $\DETOPNN$, \EQN~\ref{eqn:DETOPNN}, into the integral $\IH$, \E
 \begin{align}
 \label{eqn:I_1} 
 \IH 
-  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{\ND} \red{N}(\XI^{\mu})^{\top} \left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) P(\NDXI)  \\
+  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{\ND} N(\XI^{\mu})^{\top} \left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) P(\NDXI)  \\
 \nonumber
 %%  \IH
-  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{\ND} \red{N}(\XI^{\mu})^{\top} \left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) \NORM \exp\left( - \sum_{\mu=1}^{N} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right)  \\
+  & =  \int \mathcal{D}\NDXI \, \exp \left( -\beta\sum_{\mu=1}^{\ND} N(\XI^{\mu})^{\top} \left(\IM-\frac{1}{N} \SMAT^{\top}\TMAT \right) \XI^{\mu} \right) \NORM \exp\left( - \sum_{\mu=1}^{N} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right)  \\
     \nonumber
     %%  \IH
   &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
-    -\beta\sum_{\mu=1}^{\ND} \red{N}(\XI^{\mu})^{\top} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
+    -\beta\sum_{\mu=1}^{\ND} N(\XI^{\mu})^{\top} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
     - \sum_{\mu=1}^{\ND} \frac{\|\XI^{\mu}\|^2}{2 \sigma^2} \right) \\ 
 \nonumber
   &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
-    -\frac{1}{2\sigma^2}\sum_{\mu=1}^{\ND}2\beta\sigma^{2} \red{N}(\XI^{\mu})^{\top} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
+    -\frac{1}{2\sigma^2}\sum_{\mu=1}^{\ND}2\beta\sigma^{2} N(\XI^{\mu})^{\top} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT) (\XI^{\mu}) 
     +  \Vert\XI^{\mu}\Vert^{2} \right) \\ 
 \label{eqn:I_3} 
   &= \NORM \int \mathcal{D}\NDXI \, \exp \left(
     -\frac{1}{2\sigma^2}      
       \sum_{\mu=1}^{\ND}
           (\XI^{\mu})^{\top}[
-      2\beta\sigma^{2}\red{N} (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)+\IM] (\XI^{\mu})\right)  .
+      2\beta\sigma^{2}N (\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)+\IM] (\XI^{\mu})\right)  .
 \end{align}
 %
 By combining the exponents, we obtain
@@ -353,7 +353,7 @@ By combining the exponents, we obtain
     \XI
     \right]^{\ND}   ,
 \end{align}
-where $\mathbf{M}=2\beta\sigma^{2}\red{N}(\IM - \tfrac{1}{N}\SMAT^{\top}\TMAT)+\IM$ is an $M \times M$ matrix.
+where $\mathbf{M}=2\beta\sigma^{2}N(\IM - \tfrac{1}{N}\SMAT^{\top}\TMAT)+\IM$ is an $M \times M$ matrix.
 We now use the familiar property of multi-variant Gaussian integrals,
 \begin{align}
 \label{eqn:det_M}
@@ -367,7 +367,7 @@ Using \EQN~\ref{eqn:det_M}, we can rewrite $\IH$ in \EQN~\ref{eqn:I_4} as
 \label{eqn:I_5}
 \IH &=   \NORM\left[\frac{(2\pi\sigma^{2})^{M/2}}{\sqrt{\Det{ \mathbf{M}}}}\right]^{\ND} \\ \nonumber
     &=   \NORM(2\pi\sigma^2)^{NM/2}\left[
-         \sqrt{\Det{ 2\beta\sigma^2\red{N}(\IM-\tfrac{1}{}\SMAT^{\top}\TMAT)+\IM}}\right]^{-\ND}  \\
+         \sqrt{\Det{ 2\beta\sigma^2N(\IM-\tfrac{1}{}\SMAT^{\top}\TMAT)+\IM}}\right]^{-\ND}  \\
 %%\end{align}
 %%%
 %%\begin{align}
@@ -375,17 +375,17 @@ Using \EQN~\ref{eqn:det_M}, we can rewrite $\IH$ in \EQN~\ref{eqn:I_4} as
 %%\IH 
    &=  \left( \frac{1}{2\pi\sigma^{2}} \right)^{N M/2}
        (2\pi \sigma^{2})^{M/2}
-         \left[\sqrt{\Det{ \IM + 2\beta\sigma^{2}\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)}}\right]^{-\ND}  ,
+         \left[\sqrt{\Det{ \IM + 2\beta\sigma^{2}N(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)}}\right]^{-\ND}  ,
 \end{align}
 where \EQN~\ref{eqn:I_6} follows by inserting $\XINORM$ from \EQN~\ref{eqn:xinorm}.
 We can now identify $\sigma^{2}=\tfrac{1}{M}$ to obtain
 \begin{align}
 \nonumber
-\IH &= \left[\sqrt{\Det{ \IM + 2\beta\sigma^{2}\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)}}\right]^{-\ND}   \\ 
+\IH &= \left[\sqrt{\Det{ \IM + 2\beta\sigma^{2}N(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT)}}\right]^{-\ND}   \\ 
 \nonumber
-    &= \left[\sqrt{\Det{ \IM  + \tfrac{2\beta}{M}\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})}\right]^{-\ND} \\ 
+    &= \left[\sqrt{\Det{ \IM  + \tfrac{2\beta}{M}N(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})}\right]^{-\ND} \\ 
 \label{eqn:I_7}
-    &= \left[\Det{ \IM  + \tfrac{2\beta}{M}\red{N}(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}  .
+    &= \left[\Det{ \IM  + \tfrac{2\beta}{M}N(\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}  .
 \end{align}
 
 \paragraph{The High-Temperature Limit.}
@@ -400,13 +400,14 @@ Using this, we can evaluate the determinant in \EQN~\ref{eqn:I_7} in the large-$
 which gives
 \begin{align}
   \label{eqn:I_8}
-  \IH &\approx  \left[1  + \tfrac{2\beta}{M}\red{N}(\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}   .
+  \IH &\approx  \left[1  + \tfrac{2\beta}{M}N(\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}   .
 \end{align}
 Inserting this into \EQN~\ref{eqn:Gan_lnI}, we obtain
 \begin{align}
-\label{eqn:Gan_lnI_final_mwm}
 \beta\HANPP
-   &=-\frac{1}{\ND}\ln \left[1  + \tfrac{2\beta}{M}\red{N}(\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}   .
+   &=-\frac{1}{\ND}\ln \left[1  + \tfrac{2\beta}{M}N(\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]^{-\ND/2}  \\ \nonumber
+      &=\frac{1}{2}\ln \left[1  + \tfrac{2\beta}{M}N(\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT})\right]
+      \label{eqn:Gan_lnI_final_mwm}
 \end{align}
 
 This form of the Hamiltonian, $\GANMAT$, however, is not symmetric, and we will
@@ -414,15 +415,15 @@ eventually want a symmetric operator or matrix.
 Fortunately, the high-T form, $\GANMATHT$, can be made symmetric, as
 shown below.  But first, let show that this result is consistent with the our previous Percpetron result.
   
-\paragraph{Matrix-Generalized ST Error $\GANMATHT$ for $N}=1$.}
-To start, observe that when $\red{N}=1$, \EQN~\ref{eqn:Gan_lnI_final_mwm} becomes
+\paragraph{Matrix-Generalized ST Error $\GANMATHT$ for $N=1$.}
+To start, observe that when $N=1$, \EQN~\ref{eqn:Gan_lnI_final_mwm} becomes
 \begin{align}
 \nonumber
-\beta\GANMAT\vert_{\red{N}=1}
-&= \beta\HANPP\vert_{\red{N}=1}  \\ 
-  &=  -\frac{1}{\ND}\ln  \left[1  + 2\beta\red{\tfrac{1}{M}\Trace{(M-\SVEC^{\top}\TVEC}\right]^{-\ND/2} \\ 
+\beta\GANMAT\vert_{N=1}
+&= \beta\HANPP\vert_{N=1}  \\ 
+  &=  -\frac{1}{\ND}\ln  \left[1  + 2\beta\tfrac{1}{M}\Trace{(M-\SVEC^{\top}\TVEC}\right]^{-\ND/2} \\ 
 \nonumber
-  &= \frac{1}{2}\ln  \left[1  + 2\beta\red{\tfrac{1}{M}}\Trace{M-\SVEC^{\top}\TVEC}\right] \\ 
+  &= \frac{1}{2}\ln  \left[1  + 2\beta\tfrac{1}{M}\Trace{M-\SVEC^{\top}\TVEC}\right] \\ 
 \label{eqn:GANmat_m_equals_1}
   &=  \frac{1}{2}\ln \left[1 + 2\beta(1-R)\right]  ,
 \end{align}
@@ -437,7 +438,7 @@ Notice that for the final \LayerQualitySquared Hamiltonian $\HBARE$, this will c
 \charles{@michael: working on this, but IDK its  about A1 and A2; REWORKING THIS:}
 \begin{align}
   \label{eqn:I_9}
-    \IH\approx  \left[1  + \frac{2\beta}{M}\red{N}\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT}\right]^{-\ND/2} ,
+    \IH\approx  \left[1  + \frac{2\beta}{M}N\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT}\right]^{-\ND/2} ,
 \end{align}
 for any $M>1$.
 Given this, it follows from \EQN~\ref{eqn:Gan_lnI_final_mwm} and \EQN~\ref{eqn:Gan_lnI} that we can define 

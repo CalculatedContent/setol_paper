@@ -75,22 +75,22 @@ the derivative of the \LayerQualitySquared \GeneratingFunction, $\IZG$, defined 
 \end{align}
 where $\ND$ is the number of training examples used to train the model.
 
-$\IZG$ is essentially ($\beta$ times) a \emph{negative \FreeEnergy} for the (approximate) \LayerQualitySquared.
+$\IZG$ is essentially ($\beta$ times) a \emph{negative \FreeEnergy} for the (approximate) \LayerQualitySquared
 (see Section~\ref{sxn:SMOG_main}, and the Appendix, Section~\ref{sxn:quality}).
 For more details, see Section~\ref{sxn:matgen}, and the Appendix, Section~\ref{sxn:summary_sst92}).
 
 We can write $\IZG$ as an HCIZ Integral, 
 \begin{align}
   \label{eqn:QT_dS}
-  \IZG  &= \red{\tfrac{1}{N}} \ln\int d\mu(\SMAT)\exp\left(\ND \beta N\Trace{\TMAT^{\TR}\AMATN\TMAT}\right),
+  \IZG  &= \tfrac{1}{N} \ln\int d\mu(\SMAT)\exp\left(\ND \beta N\Trace{\TMAT^{\TR}\AMATN\TMAT}\right),
 \end{align}
 
-The \SETOL approach then seeks to express $\IZG$ in~\EQN~\ref{eqn:QT_dS} as an HCIZ integral (and in the large-N limit)~\cite{potters_bouchaud_2020,Tanaka2007,Tanaka2008}.
+The \SETOL approach then seeks to express $\IZG$ in~\EQN~\ref{eqn:QT_dS} as an HCIZ integral (and in the \WideLayer \LargeN limit in $N$$)~$\cite{potters_bouchaud_2020,Tanaka2007,Tanaka2008}.
 We evaluate this at large-$N$, and write
 \begin{equation}
   \IZGINF:=\lim_{N\gg 1}\IZG
 \end{equation}
-The result is effectively expressed in the limit of fixed load $N/\ND$, analogous to a renormalized mean-field  (i.e., \SemiEmpirical) theory over $N$ interacting (feature) vectors of length $M$.
+The result is effectively expressed in the limit of fixed \emph{layer load} $\ND/N$, analogous to a renormalized mean-field  (i.e., \SemiEmpirical) theory over $N$ interacting (feature) vectors of length $M$.
 %%%must restrict the matrices to a lower rank subspace, called the~\ECS,
 %%%i.e.,  $\mathbf{\tilde{A}}$. 
 %%%We also must change the measure from an integral over \Student weight matrices
@@ -123,7 +123,7 @@ With these definitions in place, moving forward, the following key assumptions, 
   \item
   \textbf{The \TRACELOG Condition.}
   The Effective Student correlation matrix $\AECS$ 
-  satisfies the condition that $\Trace{\ln\AECS}=\ln\Det{\AECS}=0$,
+  satisfies the \ERG condition that $\Trace{\ln\AECS}=\ln\Det{\AECS}=0$,
   so that the change of measure $d\mu(\SMAT) \rightarrow d\mu(\AECS) $ is Volume Preserving.
   This condition is derived explicitly in terms of Inner form,  $\AECSM$, and will also  hold for the Outer form, $\AECSN$
   Practically, this implies that the $\MECS$ eigenvalues $\LambdaECS$
@@ -137,13 +137,13 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
   We have
   \begin{align}
   \label{eqn:IZGINF_HCIZ}
-  \IZGINF = \lim_{N\gg 1}\red{\tfrac{1}{N}}\ln\int d\mu(\AECS)\exp\left(\ND\beta\Trace{\TMAT^{\TR}\AECSN\TMAT}\right) %= \beta\sum_{i=1}^{\MECS}\GNECS
+  \IZGINF = \lim_{N\gg 1}\tfrac{1}{N}\ln\int d\mu(\AECS)\exp\left(\ND\beta\Trace{\TMAT^{\TR}\AECSN\TMAT}\right) %= \beta\sum_{i=1}^{\MECS}\GNECS
   \end{align}
   where  measure $d\mu(\AECS)$ lets us average over all (Outer) \Student Correlation matrices $\AECSN$ explicitly, which
-  lie in the~\ECS space and which ``resemble'' the \Teacher, 
-  where by ``resemble'' we mean that they share the same form of the tail of
+  lie in the~\ECS space and which ``resemble'' the \Teacher.
+By ``resemble'' we mean that they share the same form of the tail in
   their limiting ESDs,
-  i.e., $\rho^{\infty}_{\AECS}(\lambda)\sim\rho^{\infty}_{\XECS}(\lambda)$.
+   $\rho^{\infty}_{\AECS}(\lambda)\sim\rho^{\infty}_{\XECS}(\lambda)$.
   \item
   \textbf{The Layer Quality (Squared) $\QT$ is a~\GEN.}
   The final expression for $\QT$ can be written as the derivative of $\IZGINF$  as
@@ -183,16 +183,16 @@ models of $R(z)$ and the resulting \LayerQuality $\Q$.
 The formulation of SETOL closely parallels the construction of an \EffectiveHamiltonian~$\HEFF$
 via the \WilsonExactRenormalizationGroup~(\ERG) approach. Consider a \emph{\Bare} Hamiltonian $\HBARE$ for the \LayerQualitySquared,
 defined as $\HBARE:= \mathbf{R}^{\TR}\mathbf{R}$.
-We can express Eqn.\ref{eqn:QT_dS} in terms of this \Bare Hamiltonian $\HBARE$,
-and rewrite Eqn.\ref{eqn:IZGINF_HCIZ} in terms of an \emph{Renormalized} \EffectiveHamiltonian~$\HEFF$
+We can express \EQN~\ref{eqn:QT_dS} in terms of this \Bare Hamiltonian $\HBARE$,
+and rewrite \EQN~\ref{eqn:IZGINF_HCIZ} in terms of an \emph{Renormalized} \EffectiveHamiltonian~$\HEFF$
 that spans the \EffectiveCorrelationSpace~(\ECS). Formally, we have:
 \begin{align}
 \label{eqn:RG}
-\red{\tfrac{1}{N}}\ln \int d\mu(\SMAT)e^{\ND \beta N \operatorname{Tr}[\HBARE]} \;\xrightarrow{ERG}\; \lim_{N\gg 1}\red{\tfrac{1}{N}}\ln \int d\mu(\AECS)e^{\ND \beta N \operatorname{Tr}[\HEFF]} 
+\tfrac{1}{N}\ln \int d\mu(\SMAT)e^{\ND \beta N \operatorname{Tr}[\HBARE]} \;\xrightarrow{ERG}\; \lim_{N\gg 1}\tfrac{1}{N}\ln \int d\mu(\AECS)e^{\ND \beta N \operatorname{Tr}[\HEFF]} 
 \end{align}
 where the \ERG transformation is defined by the \ScaleInvariant change of measure,
 applied in the \WideLayer \LargeN limit in $N$,
-and where $\HEFF$ is defined implicitly through result for $\QT$ (Eqn.~\ref{eqn:QT_result}).
+and where $\HEFF$ is defined implicitly through result for $\QT$ (\EQN~\ref{eqn:QT_result}).
 The result is, formally, a sum of the integrated \RTransforms $\GNI$.
 In a sense, this result resembles (a non-perturbative form of) the Linked Cluster Theorem
 in that the log \PartitionFunction is expressed as a sum of integrated matrix-generalized cumulants.  And in analogy with \SemiEmpirical theories of Quantum Chemistry, the \HTSR \ALPHA $(\alpha)$ and \ALPHAHAT $\ALPHAHATEQN)$ enter as renormalized empirical parameters.
