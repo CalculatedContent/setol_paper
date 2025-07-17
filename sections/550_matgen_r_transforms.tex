@@ -14,7 +14,7 @@ given in terms of what we somewhat imprecisely refer to as a \GEN.
 In many cases, however, the resulting approximate expressions for $\Q$ do take the
 form well-known norms, including the Frobenius norm, the Spectral norm, and the Shatten norm.
 The models for $R(z)$  we use are presented in Table~\ref{tab:known_r_transforms}.
-The inal expression for the \LayerQuality $\Q$ extended \emph{semi-empirically} to the non-ideal layers that can then be used to obtain the \HTSR \ALPHA and \ALPHAHAT metrics; these  are given in Table~~\ref{tab:htsr_layer_quality}.
+The inal expression for the \LayerQuality $\Q$ extended \emph{Semi-Empirically} to the non-ideal layers that can then be used to obtain the \HTSR \ALPHA and \ALPHAHAT metrics; these  are given in Table~~\ref{tab:htsr_layer_quality}.
 
 \subsubsection{Elementary Random Matrix Theory}
 \label{sxn:r_transforms:elementary_rmt}
@@ -28,7 +28,7 @@ Using the ESD $\rho(\lambda)$, defined as
 \end{equation}
 %
 we can express the \emph{\GreensFunction} (or \emph{\CauchyStieltjes} transform $C(z)$) by%
-\footnote{Please notice our naming and sign convention in \EQN~\ref{eqn:Cz}.
+\footnote{Notice our naming and sign convention in \EQN~\ref{eqn:Cz}.
 We equate the \GreensFunction $G(z)$ with
 the (positive) \CauchyStieltjes transform, $G(z)=C(z)$.   Other works may use the opposite sign convention, $G(z)=-C(z)$.}
 \begin{equation}
@@ -54,9 +54,9 @@ Briefly, given a deterministic Hamiltonian matrix $\mathbf{H}_{0}$, with eigenva
 one can model the spectral broadening of $\lambda^{0}_{i}$ by adding a random matrix $\mathbf{H}_{1}$ to $\mathbf{H}_{0}$:
 $\mathbf{H}=\mathbf{H}_{0}+\mathbf{H}_{1}$.  
 The resulting eigenvalues of $\mathbf{H}$ now contain some level of randomness, $\sigma$, i.e., $\lambda=\lambda^{0}+\sigma$.  
-To model the ESD of $\mathbf{H}$, one then specifies the invididual \RTransforms for $\mathbf{H}_{0}$ and $\mathbf{H}_{1}$; the full ESD of $\mathbf{H}$
+To model the ESD of $\mathbf{H}$, one then specifies the \RTransforms for $\mathbf{H}_{0}$ and $\mathbf{H}_{1}$; the full ESD of $\mathbf{H}$
 can then be reconstructed by adding the two \RTransforms together $R(z)=R_{0}(z)+R_{1}(z)$.
-Zee also notes that $R(z)$  is the same as the self-energy $\Sigma(z)$ from quantum many body theory~\cite{Zee1996}.}
+Zee notes that $R(z)$  is  the self-energy $\Sigma(z)$ from quantum many body theory~\cite{Zee1996}.}
 satisfying 
 \begin{equation}
 \label{eqn:GzRelation}
@@ -71,7 +71,7 @@ That is, we can given $R(z)=R(z)_{tail}+R(z)_{bulk}$, we only need $R(z)\approx 
 
 \charles{Describe $R(z)$ is a power series, and how we take $\int dz R(z)$ and why we restirct the integral, contours, etc}
 
-Before moving forward, it is first necessary to demonstrate the \RTransform $R(z)$ exists for the power-law ESDs that arise in \SETOL; this is shown in Appendix~\ref{sxn:RTransformExists}.  Specifically, it is shown that while the $R(z)$ does not formally exist for a pure power-law (PL) tail with $\alpha=2$, it does generally exist for \emph{Truncated} power-law (TPL) tails, defined such that the domain is compact, i.e., $\lambda\in[\LambdaECSmin, \LambdaECS]^{max}$.  This is sufficient for our purposes here.
+Before moving forward, it is first necessary to demonstrate the \RTransform $R(z)$ exists for the power-law ESDs that arise in \SETOL; this is shown in Appendix~\ref{sxn:RTransformExists}.  Specifically, it is shown that while the $R(z)$ does not formally exist for a pure power-law (PL) tail with $\alpha=2$, it does generally exist for \emph{Truncated} power-law (TPL) tails, defined such that the domain is compact, i.e., $\lambda\in[\LambdaECSmin, \LambdaECS]^{max}$. 
 
 \subsubsection{Known \RTransforms and Analytic (Formal) Models}
 \label{sxn:r_transforms:known_r_transforms}
@@ -94,7 +94,7 @@ We can create plots to show how these models can treat heavy tails, and explain 
 Here, we consider modeling the tail ESD, $\rho_{tail}(\lambda)$, as a collection
 of discrete spikes $\lambda_{spike}$, 
 where $\lambda_{spike}\ge \LambdaECSmin$.
-This could be for modeling an ESD in the Bulk$+$Spikes \HTSR Universality class,
+This could be for modeling an ESD in the Bulk$+$Spikes (BS) \HTSR Universality class,
 or it could be applied to an MHT or HT ESD as a discrete distribution with
 no inherent structure; its a modeling choice.
 Here, \RTransform for the \ECS is sum of Dirac delta functions.

@@ -78,7 +78,7 @@ we define the  \EffectivePotential for the data-averaged ST \GeneralizationError
 \end{align}
 The measure $d\mu(\NDXI)$ will end up being a Gaussian measure over $\ND$ samples
 (see Appendix~\ref{sxn:summary_sst92}), and the intent is to evaluate it
-in the \LargeN limit in $\ND$, thereby sampling all possible inputs in the model space, $\XI\in\MDD$.
+in the \LargeN limit in $\ND$, thereby sampling all possible inputs in the idealized data space, $\XI\in\MDD$.
 
 As in Section~\ref{sxn:mathP}, by applying the AA, we can rewrite the \AverageSTGeneralizationError, $\AVGSTGE$:
 first, a simple average over all the possible inputs $\XI$; and, 
@@ -94,7 +94,7 @@ a \ThermalAverage in the canonical ensemble with $\beta$ fixed,
 as explained in Section~\ref{sxn:mathP}.  Here, we will do something similar, as the \Student
 average $\THRMAVG{\cdots}$ will be computed from the associated
 generating function $\IZG$ for the matrix-generalized case  (an HCIZ integral defined over all students,
-and in both the \LargeN \Thermodynamic limit in $\ND$, and \WideLayer \LargeN  limit in $N$).)
+and in both the \LargeN \Thermodynamic limit in $\ND$, and \WideLayer \LargeN  limit in $N$).
 
 Recall that above, the empirical estimate for $\AVGEMPGE$ depended on a
 specific instantiation of the model for the training data $\DATAtrain$,
@@ -131,8 +131,8 @@ This gives $\EPSLSTx\rightarrow\EPSL(\AVGR)$, where
 \AVGR=\SVEC^{\top}\TVEC=\sum_{i=1}^{m}s_{i}t_{i}, \;\;\AVGR\in[0,1].
 \end{align}
 which is simply the dot product between the $m$-dimensional \Student $\SVEC$ and \Teacher $\TVEC$ weight vectors.
- Notice that the data vectors are normalized such that $\Vert\SVEC\Vert_{F}=\Vert
-\TVEC\Vert_{F}=1$ and 
+ Notice that the data vectors are normalized such that $\Vert\SVEC\Vert_^{2}=\Vert
+\TVEC\Vert^{2}=1$ and 
 we assume there are \emph{no inversely-correlated} Students that predict more than half the Teacher labels incorrectly. And, importantly, the number of free parameters becomes $1$.
 
 For a \LinearPerceptron~\cite{SST92},% 
@@ -146,7 +146,7 @@ In both cases, perfect learning occurs when $R=1$~\cite{SST92}.
 }
 with activation function $h(x)=x$,  we can obtain the error function as
 \begin{align}
-\EPSL(\AVGR)=1-\AVGR.
+\EPSL(\AVGR)=1-\AVGR,\;\;\AVGR\in[0,1].
 \label{eqn:LinearPerceptronError}
 \end{align}
 
@@ -179,12 +179,12 @@ This lets us write
 =& \frac{1}{2} \Trace{(\YsVEC)^{\top} \YsVEC - 2 (\YsVEC)^{\top} \YtVEC + (\YtVEC)^{\top} \YtVEC } \\
 \nonumber
 =& \ND - \Trace{(\YsVEC)^{\top} (\YtVEC)}\\
-=& \ND- \Trace{\ETA(\SVEC,\TVEC,\red{\NDXI})},
+=& \ND- \Trace{\ETA(\SVEC,\TVEC,\NDXI)},
 \label{eqn:deriveSTerror}
 \end{align}
 where we define the \emph{data-dependent \SelfOverlap}:
 \begin{equation}
-\ETA(\SVEC,\TVEC,\red{\NDXI}):=(\YsVEC)^{\top}(\YtVEC)
+\ETA(\SVEC,\TVEC,\NDXI):=(\YsVEC)^{\top}(\YtVEC)
 \end{equation}
 
 The expression $\ETA(\SVEC,\TVEC,\NDXI)$ is analogous to the ST overlap $R$, but before the data has been integrated out.
@@ -201,7 +201,7 @@ Using the $\NNOUT$ Energy generating or output function (\EQN~\ref{eqn:dnn_energ
 This now gives the data-dependent \SelfOverlap explicitly as
 \begin{align}
   \label{eqn:eta_vec_xi_def}
-\ETA(\SVEC,\TVEC,\NDXI) =\sum_{\mu=1}^{\ND} (\SVEC^{\top}\XI_{\mu})^{\top} (\TVEC^{\top}\XI_{\mu}) = \sum_{\mu=1}^{\ND}\XI^{\top}_{\red{\mu}}  (\SVEC^{\top} \TVEC )\XI_{\red{\mu}} 
+\ETA(\SVEC,\TVEC,\NDXI) =\sum_{\mu=1}^{\ND} (\SVEC^{\top}\XI_{\mu})^{\top} (\TVEC^{\top}\XI_{\mu}) = \sum_{\mu=1}^{\ND}\XI^{\top}_{\mu}  (\SVEC^{\top} \TVEC )\XI_{\mu} 
 \end{align}
 After integrating over the data, we have the \emph{data-independent \SelfOverlap}, $ETA(\SVEC,\TVEC)$:
 \begin{align}

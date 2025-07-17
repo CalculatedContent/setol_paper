@@ -41,22 +41,22 @@
 \end{tabular}
 \caption{Summary of key quantities compared across traditional \SMOG models,  the \Student-\Teacher (ST) \LinearPerceptron--in the \AnnealedApproximation
 (AA) and at high-Temperature (high-T) and at \LargeN in $\ND$, and the matrix-generalized forms as the starting point to frame \SETOL.
-The Total Model Error of Energy Difference, $\DELBF$, represents the difference (squared) between the model and its labels for the ST model between
+The total ST Error of Energy, $\DELBF$, represents the difference (squared) between the model and its labels for the ST model between
 the \Student and \Teacher predictions.
 The \AnnealedHamiltonian is the Energy function for this Error after it is averaged over the model for the training data
 (an $\ND$-dimensional i.i.d. idealized Gaussian dataset,  $\NDXIn$).
-In the AA, the \AnnealedHamiltonian is equal to the \EffectivePotential.  For the ST model,  this is one minus the average overlap, $(1-\AVGR)$;
-for the \SETOL, this is  the ($M$-dimensional) identity minus the overlap operator/matrix, $N(\IM-\OVERLAP)$. 
+In the AA, the \AnnealedHamiltonian is equal to the \EffectivePotential.  For the ST model,  this is one minus the average overlap, $\HANHT(R)=(1-\AVGR)$;
+for the \SETOL, this is  the ($M$-dimensional) identity minus the overlap operator/matrix, $\HANHT(\OVERLAP)=N(\IM-\OVERLAP)$. 
 The \SelfOverlap $\eta(\cdots)$ is used to describe the Accuracy (as opposed to the Error) for both the ST model and
 its matrix-generalized form.
 %Notice that $\eta(\XI)$, as defined,  has not yet been averaged over the model data $\XI^{N}$.
 Finally, the different forms of the \Quality are defined.  Generally speaking, the \Quality $\Q$ is an approximation to some measure
-of $1$ minus the \AverageGeneralizationError, $(\Q:=1-\AVGGE)$ (in the AA, at high-T, at \LargeN, and with whatever else
+of $1$ minus the \AverageGeneralizationError, $\Q:=1-\AVGGE$ (in the AA, at high-T, at \LargeN, and with whatever else
 approximations are applied).
 For the ST model, having just 1 layer, the \ModelQuality and the \LayerQuality are the same, and denoted $\Q^{ST}$.
 For \SETOL, the \ModelQuality $\Q^{NN}$ is a product of individual \LayerQualities $\Q^{NN}_{L}$.
 (Note that the  final \SETOL \LayerQuality $\Q$ is defined in terms of the \LayerQualitySquared $\QT$,
-and the starting point for this is expressed with the \LayerQualitySquared Hamiltonian $\HBARE=\OLAPTOLAP$).
+and the starting point for this is expressed with the \LayerQualitySquared Hamiltonian $\HBARE=\OLAPTOLAP$.
 }
 \label{table:quantities_general_vect_matrix}
 \end{table}

@@ -36,7 +36,7 @@ To generate the Average \Quality, $\QT$, we first take the \LargeN limit of $\IZ
   \label{eqn:IZG_limit}
   %  \IZGINF := \lim_{N\gg 1}\IZG = \lim_{N\gg 1}\ln\; \mathbb{E}_{\AECS}\left[\exp N\beta\left( \tfrac{1}{N}\Trace{ \TMAT^{\top}\AECSN\TMAT } \right)\right] ,
 \IZGINF := \lim_{N \gg 1} \IZG 
-= \lim_{N \gg 1}   \red{\tfrac{1}{N}}
+= \lim_{N \gg 1}  \tfrac{1}{N}
 \ln \; 
   \Expected[\AECS]{ 
     \exp\,
@@ -74,7 +74,7 @@ is the Inverse-Temperature, $\ND$ is the size of the training dataset, and $\Lam
 Correlation matrix projected into the \ECS space.
 $\AECSN$ is the $N \times N$ form of the \Student Correlation matrix,
 with $N-M$ non-zero eigenvalues, and $\TMAT$ is the $N\times M$ \Teacher  weight matrix
-(also effectively projected into the \ECS, i.e. $\TMAT=\TECS$ here).
+(also effectively projected into the \ECS, i.e. $\TMAT\rightarrow\TECS$ here).
 $\GNI$ is the \GEN, defined below.
 \footnote{We use the notation $\Expected[\AECS]{\cdots}$ for expected value and placed $\tfrac{1}{N}$ on the L.H.S.
 to help the reader compare this to the original expressions in~\cite{Tanaka2007, Tanaka2008}.

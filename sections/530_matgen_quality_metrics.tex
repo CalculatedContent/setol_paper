@@ -20,7 +20,7 @@ We define
 \end{equation}
 The overlap matrix $\OVERLAP$ describes the average interactions between $N$ interacting $M$-dimensional layer (i.e., feature) vectors.  Also, notice that we have dropped $1/\ND$ term.
 For the vector-based ST model, the ST \Quality $\Q^{ST}$ in \EQN~\ref{eqn:QST_final} is expressed as
-the \ThermalAverage $\Q^{ST}(\AVGR)=\THRMAVG{\AVGR}$. We seek a similar formal expression for the individual matrx-generalized \LayerQuality $\Q^{NN}_{L}$.
+the \ThermalAverage $\Q^{ST}(\AVGR)=\THRMAVG{\AVGR}$. We seek a similar formal expression for the individual matrx-generalized \LayerQuality $\Q^{NN}_{L}$, this time in terms of $\OVERLAP$ and a matrix-generalied \ThermalAverage.
 \item
 \textbf{Model and Layer Qualities $\Q^{NN}$, $\Q^{NN}_{L}$}
 We define the \ModelQuality $\Q^{NN}$ ,
@@ -63,8 +63,8 @@ matrix-generalized NN \LayerQuality $\Q^{NN}_{L}$ (above) as
 \begin{align}
   \label{eqn:TraceR2withA2}
   \QT :=\OLAPSQD
-  =\frac{1}{N^{2}}\Trace{\TMAT^{\top}\SMAT\SMAT^{\top}\TMAT}
-  =\frac{1}{N}\Trace{\TMAT^{\top}\AMATN\TMAT}  .
+  =\tfrac{1}{N^{2}}\Trace{\TMAT^{\top}\SMAT\SMAT^{\top}\TMAT}
+  =\tfrac{1}{N}\Trace{\TMAT^{\top}\AMATN\TMAT}  .
 \end{align}
 This choice, (as opposed to $\Trace{\OVERLAP\OVERLAP^{\top}}$, which would correspond with \EQN~\ref{eqn:A1},) places $\QT$ in the form of the HCIZ integral, as in \EQN~\ref{eqn:hciz_prelim}.
 See Appendix~\ref{sxn:tanaka} for a detailed discussion of why we define $\QT$ using the \emph{Outer} Student Correlation matrix $\AMATN$ (defined in Section~\ref{sxn:setol}, and  \EQN~\ref{eqn:A2} below).
@@ -338,8 +338,7 @@ This condition states that the determinant of the \Student (and \Teacher) Correl
 \end{align}
 (and with $\AMAT$ additionally normalized to $M$, as explained in the Appendix, Section~\ref{app:st-gen-err-annealed-ham})
 so that when we replace the measure over \Student layer weight matrices $d\mu(\SMAT)$ with a measure over all \Student Correlation matrices $d\mu(\AMAT)$,
-\emph{restricted to the~\ECS}, the second term in \EQN~\ref{eqn:IFA2} becomes unity
-$\langle \exp\left[\tfrac{N}{2} \Trace{ \ln[det\;\AMATM] } \right]\rangle_{\AECS}=1$,
+\emph{restricted to the~\ECS}, the second term in \EQN~\ref{eqn:IFA2} becomes unity, $\langle \exp\left[\tfrac{N}{2} \Trace{ \ln[det\;\AMATM] } \right]\rangle_{\AECS}=1$,
 and vanishes in the final expression for $\IZG$.
 \end{itemize}
 
@@ -426,8 +425,7 @@ This expression can now be used in a practical calculation to define a low-rank 
 and to identify, in principle, generalizing components of the layer.
 We also refer to \EQN~\ref{eqn:detX} as the \TRACELOG condition, which is technically its empirical form.
 \michaeladdressed{Note by abuse of terminology.}
-For example, Figure~\ref{fig:ECS_space} depicts the eigenvalues in the~\ECS for a \Typical ESD with PL $\alpha=2.0$,
-(normalized such that $\Trace{\XMAT}=\Vert\WMAT\Vert_{F}=N$).
+For example, Figure~\ref{fig:ECS_space} depicts the eigenvalues in the~\ECS for a \Typical ESD with PL $\alpha=2.0$..
 Notice that the start of the PL tail, $(\lambda_{min}^{PL})$, is very close to the start of the~\ECS tail. $(\LambdaECSmin)$,
 i.e. $\Delta \lambda_{min}:=\LambdaECSmin-\LambdaPLmin\approx 0$.
 Also, notice that while there are many large eigenvalues, $\ln\lambda>1.0$, there are numerous small eigenvalues as well,
