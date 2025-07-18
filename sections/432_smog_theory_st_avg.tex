@@ -131,7 +131,7 @@ This gives $\EPSLSTx\rightarrow\EPSL(\AVGR)$, where
 \AVGR=\SVEC^{\top}\TVEC=\sum_{i=1}^{m}s_{i}t_{i}, \;\;\AVGR\in[0,1].
 \end{align}
 which is simply the dot product between the $m$-dimensional \Student $\SVEC$ and \Teacher $\TVEC$ weight vectors.
- Notice that the data vectors are normalized such that $\Vert\SVEC\Vert_^{2}=\Vert
+ Notice that the data vectors are normalized such that $\Vert\SVEC\Vert^{2}=\Vert
 \TVEC\Vert^{2}=1$ and 
 we assume there are \emph{no inversely-correlated} Students that predict more than half the Teacher labels incorrectly. And, importantly, the number of free parameters becomes $1$.
 
@@ -164,7 +164,6 @@ define the data-dependent ST error (\EQN~\ref{eqn:DE_L}) in terms of an $\ell_2$
 
 Write the data-averaged ST error as
 \begin{align}
-\nonumber
 \DETOPSTLL= & \frac{1}{2} \sum_{\mu=1}^{\ND}(\Ys - \Yt)^{\top} (\Ys - \Yt)
 \label{eqn:deriveSTerror}
 \end{align}

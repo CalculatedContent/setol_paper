@@ -6,14 +6,12 @@ given in \EQN~\ref{eqn:betaIZG_S} in Section~\ref{sxn:matgen_quality_hciz_A}.
 
 For the required \FreeEnergy $\IZFE$, we will use the matrix-generalized Hamiltonian
 from \EQN~\ref{eqn:GANHTmatR} for the
-\LayerQuality, $\GANMATHT=\mathbb{I}_{M}-\OVERLAP$,
+\LayerQuality, $\GANMATHT=N(\IM-\OVERLAP)$.
 giving a Boltzmann distribution and the corresponding \ThermalAverage.  
-\michaeladdressed{@charles: I couldntt find where we actually had the equation $\EPSL(\mathbf{R}) = 1 - \sqrt{\OLAPSQD}$ in the main text; where is it?}
-\charles{@michael: \EQN~\ref{eqn:EPSL_mat}}
 Expanding this out, we have
 \begin{align}
   \label{eqn:IZFE0}
-  -\IZFE =& -  \ln \int d\mu(\mathbf{S}) \exp\left[-\ND\beta N \operatorname{Tr}[\HANHT(\OVERLAP)]  \right] \\
+  -\IZFE =& -  \ln \int d\mu(\mathbf{S}) \exp\left[-\ND\beta  \Trace{\HANHT(\OVERLAP)}  \right] \\
 \end{align}
 We could also express $\IZFE$ In terms of the matrix-generalized \EffectivePotential $\EPSL(\OVERLAP)$
 (\EQN~\ref{eqn:EPSL_mat}), giving

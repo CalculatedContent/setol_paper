@@ -36,7 +36,7 @@ $\XMAT=\frac1N\WMAT^{\TR}\WMAT$, by
   &=
   \exp\Bigl[\tfrac{\ND\beta N}{2}\Trace{\GFANCY}\Bigr].
 \end{align}
-which will be valid in the large-$N$ approximation below.
+which will be valid in the large-$N$ in $N$ approximation below.
 
 We now note that given the duality of measures, we can assert 
 \begin{equation}
@@ -58,7 +58,7 @@ The now need to determine an explicit form for
 $\GFANCY$. We introduce a new change of measure, 
  $d\mu(\mathbf{W})\rightarrow d\mu(\mathbf{X})$.
 Then, we show this lets us express $\EZDA$ as $\EZDX$ and to express it using the LDP.
-Next, we apply a SPA to solve for $\GMAX=max\;\GNORM$.
+Next, we apply a SPA to solve for $\GMAX=\max\;\GNORM$.
 Importantly, we also show how to incorporate the inverse-Temperature $\ND\beta$,
 which is new.
 
@@ -81,7 +81,9 @@ This lets us express the transformation of measure $d\mu(\mathbf{W})\rightarrow 
   d\mu(\mathbf{X})d\mu(\hat{X} ),
 \end{align}
 where $\hat{X}$ is a scalar (or really a matrix of scalars),
-and we have a $1/2$ term for mathematical consistency below.
+and we have 
+$\frac{1}{2}$
+term for mathematical consistency below.
 \footnote{The full change of measure would require a delta function constraint
 for each matrix element $X_{i,j}$, i.e., 
 $\delta\left(\frac{1}{2}N\left(X_{i,j}-[\mathbf{W}^{\top}\mathbf{W}]_{i,j}\right)\right)$.
@@ -96,9 +98,13 @@ Next, we take a Wick Rotation%
 $i\XHAT\rightarrow -\XHAT$, so that the terms under the integral are all real (not complex), giving:
 \begin{align}
   \label{eqn:dmuX}
-  d\mu(\mathbf{W}) &= \mathcal{N}_{Wick}\int_{-i\infty}^{i\infty} e^{\frac{1}{2}\Trace{\hat{X}(N\mathbf{X}-\mathbf{W}^{\top}\mathbf{W})}} d\mu(\mathbf{X})d\mu(\hat{X} ).
+  d\mu(\mathbf{W}) &= \NWICK\int_{-i\infty}^{i\infty} e^{\frac{1}{2}\Trace{\hat{X}(N\mathbf{X}-\mathbf{W}^{\top}\mathbf{W})}} d\mu(\mathbf{X})d\mu(\hat{X} ).
 \end{align}
-where $d\mu(\hat{X})$ is a measure over $\tfrac{M(M-1)}{2}$ Lagrange multipliers, and the normalization is $\mathcal{N}_{Wick}=(\frac{1}{2\pi i})^{\tfrac{M(M-1)}{2}}$.
+where $d\mu(\hat{X})$ is a measure over {\scalebox{0.7}{$\frac{M(M-1)}{2}$}} Lagrange multipliers, and the normalization is
+\begin{equation}
+\NWICK = \left(\tfrac{1}{2\pi i}\right)^{\scalebox{0.7}{$\scriptstyle \frac{M(M-1)}{2}$}}
+\end{equation}
+
 
 \paragraph{Step 2.3}
 We now insert \ref{eqn:dmuX} into~\ref{eqn:ZD_after_Aavg}, which lets us
@@ -107,7 +113,7 @@ express $\EZDA$ as an integral over the \Teacher Correlation matrices.
 \begin{align}
   \nonumber
   \EZDA&=
-  \mathcal{N}_{Wick} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
+  \NWICK\int_{\XMAT}  \int_{-i\infty}^{i\infty}
   e^{N\frac{\ND\beta}{2} \Trace{\GFANCY}+\frac{N}{2}\Trace{\hat{X}\mathbf{X}} }
   e^{-\frac{1}{2}\Trace{\hat{X}\mathbf{W}^{\top}\mathbf{W}}}
   e^{\frac{\ND\beta}{2}\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}}
@@ -115,7 +121,7 @@ express $\EZDA$ as an integral over the \Teacher Correlation matrices.
   d\mu(\mathbf{\XMAT}) \\ 
   \nonumber
   &=
-  \mathcal{N}_{Wick} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
+  \NWICK\int_{\XMAT}  \int_{-i\infty}^{i\infty}
   e^{N\frac{\ND\beta}{2}\Trace{\GFANCY}+ \frac{N}{2}\Trace{\hat{X}\mathbf{X}}}
   e^{-\frac{1}{2}\Trace{\mathbf{W}\hat{X}\mathbf{W}^{\top}}+
   \frac{\ND\beta}{2}\Trace{\mathbf{W}\mathbf{D}\mathbf{W}^{\top}}}
@@ -123,7 +129,7 @@ express $\EZDA$ as an integral over the \Teacher Correlation matrices.
   d\mu(\mathbf{\XMAT}) \\ 
   \label{eqn:ZD3}
     &=
-  \mathcal{N}_{Wick} \int_{\XMAT}  \int_{-i\infty}^{i\infty}
+  \NWICK\int_{\XMAT}  \int_{-i\infty}^{i\infty}
   e^{N\frac{\ND\beta}{2}\Trace{\GFANCY}+
   \frac{N}{2}\Trace{\hat{X}\mathbf{X}}}
   e^{\frac{1}{2}\Trace{\mathbf{W}(\ND\beta\mathbf{D}-\hat{X})\mathbf{W}^{\top}}}
