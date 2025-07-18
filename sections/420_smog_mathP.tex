@@ -1005,7 +1005,7 @@ whereas for the matrix case, we will retain the\emph{'a reduced set} of the  $M$
 \begin{itemize}
     \item \Thermodynamic limit: $m \gg 1$ (the number of parameters or features, fixed load: $\ND/m = 1$)
     \item \LargeN limit in n: $n\gg 1$ (the number of training examples, fixed load: $\ND/m = 1$)
-    \item \WideLayer limit: $N\gg 1$ (the larger matrix dimension)
+    \item \WideLayer limit: $N\gg 1$ (the number of feature vectors,  $n/N$ fixed)
 \end{itemize}
 Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking the \WideLayer \LargeN limit in $N$, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number data points per feature vector, remains constant (although we do not enforce this explicitly here).  
 In doing this, we expect the matrix-generalized total Energies $(F, H^{an}, \cdots)$ to be \SizeExtensive in $\ND$ and $N$,  the average quantities to be \SizeIntensive in both, 

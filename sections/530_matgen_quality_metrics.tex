@@ -198,21 +198,10 @@ we obtain the following expression: %for $\IZG$:
     \right\rangle_{\AMAT}
 \end{align}
 where the latter expresses the former in \BraKet notation. Since the measures of $\AMATM$ and $\AMATN$ are equivalent, this evaluates to the same quantity regardless of which is used.
-\michael{I think this is the first place where we use multiple notations for an integral.  We should use only one in the main text, probably the integral form. Let's sync before I do this.}
-\charles{@michael: Eh. Maybe. Lots to edit}
 This expression is derived in Appendix~\ref{sxn:TraceLogDerivation} (see \EQN~\ref{eqn:IZG_integral}):
 it contains the original overlap term that depends $\AMATN$ as well as a new term from
 the transformation that depends on $\Det{\AMATM}$ that is not yet defined.
 
-%We should emphasize that \EQN~\ref{eqn:IFA2_braket}
-%is a formal expression, since we have an integral with respect to the measure $d\mu(\AMAT_{1})$
-%of an expression that contains both $\AMAT_{1}$ and $\AMAT_{2}$,
-%and we have not yet made precise the domain over which $\Det{ \AMAT_{1} }$ is well-defined.
-%In order to evaluate this integral, we must deal with this.
-%To do so, we will introduce a scale regularization to restrict both $\AMAT_{1}$ and $\AMAT_{2}$ to a low-rank subspace 
-%(of dimension $\MECS < M \ll N$) where $\Det{\AMAT_{1}}$ is well defined.
-%\michaeladdressed{@charles: what is the standard notation for the dimension of the~\ECS, before we necessarily set it. I just used $M^{\prime}$ here as a placeholder.}\charles{@michael $\MECS$}.
-%\michaeladdressed{@charles: check that text.}
 
 \subsubsection{The Effective Correlation Space (\ECS)}
 
@@ -367,7 +356,7 @@ restricted to the~\ECS.
 
 Since we require that the students resemble the fixed \Teacher, a reasonable estimate for the average of the Student
 Correlation matrix $\AECS$
-(either $\AECSM$ or $\AECSN$)  (in the~\ECS)  is the point estimate provided by the actual (known) fixed \Teacher correlation matrix $\XECS$, which is assumed to be known. %\red{Is $\XECS$ known, or is it just known to be in a Universality class? I thought we need Universality classes because $\XECS$ can't be known. (Besides, if it were known, we would train models in a whole different way, and WeightWatcher would use both $\XECS$ and $\AECS$...)} so that
+(either $\AECSM$ or $\AECSN$)  (in the~\ECS)  is the point estimate provided by the actual (known) fixed \Teacher correlation matrix $\XECS$, %which is assumed to be known. %\red{Is $\XECS$ known, or is it just known to be in a Universality class? I thought we need Universality classes because $\XECS$ can't be known. (Besides, if it were known, we would train models in a whole different way, and WeightWatcher would use both $\XECS$ and $\AECS$...)} so that
 \begin{align} 
 \label{eqn:IFA-ppint}
 \Big\langle \det\AECSM\Big\rangle_{\AECS}=

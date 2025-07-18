@@ -49,7 +49,7 @@ We will see, below in Section~\ref{sxn:empirical}, that we can induce a \Correla
 size, or, equivalently, increasing the learning rate, and that this is associated with degraded model performance
 and small $\alpha$.
 We seek to identify specific ways of identifying such traps because we 
-reason that the self-organization of correlations may be disrupted by the presence of foreign large eigenvalues – or that failed learning may produce them as a by-product.
+reason that the presence of foreign large eigenvalues may disrupt the self-organization of correlations – or that failed learning may produce them as a by-product.
 
 \paragraph{Detecting Correlation Traps with \RMT.}
 
@@ -83,8 +83,8 @@ It is implemented in \WW (using the randomize option), which was used to generat
 
 See Figure~\ref{fig:scale-shape-a}, which displays the (log)-ESD of a \Typical SOTA NN layer $\mathbf{X}$ (green), i.e., on a log-linear scale, along with the (log)-ESD of that layer after randomizing it element-wise (red).
 The two ESDs differ substantially:
-the ESD of the original weight matrix $\mathbf{W}$ (green) is very HT, whereas 
-the ESD of the randomized weight matrix $\mathbf{W}^{rand}$ (red) is an MP (and as predicted by the MP \RMT).
+the ESD of the original weight matrix  $\mathbf{W}$ (green) is very HT, whereas 
+the ESD of the randomized weight matrix  $\mathbf{W}^{rand}$ (red) is an MP (and as predicted by the MP \RMT).
 The orange line corresponds to the maximum eigenvalue of the randomized ESD.
 Note that it is at the MP bulk edge of the red plot, indicating that this ESD is not affected by unusually large elements or other weight anomalies.
 Here, we say that the ESD of $\mathbf{X}$ is HT, and that $\mathbf{W}$ is not HT element-wise.
