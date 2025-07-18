@@ -20,7 +20,7 @@ Ignoring the bias terms, \emph{Without Loss of Generality}, (WLOG), the NN outpu
              y_{\mu} := \EVEC_{3\mu} &= \frac{1}{\sqrt{N_3}} h (\WMAT_{3}^\top \EVEC_{2\mu})     ,
 \end{align}
 where $\EVEC_{\#\mu}$ denotes a vector of energies or NN outputs for that layer, and $h$ is a general function or functional, denoting either a non-linear activation or a more complex layer structure, such as a CNN or an RNN. Note that for binary classification, $\EVEC_3{\mu}=1|-1$ is just a binary number.
-We can consider $h(\cdot)$ to be an (unspecified) activation function.
+We can consider $h(\cdot)$ to be an (unspecified) activation function, but here we simply take $h(x)=x$.
 
 As in \EQN~\ref{eqn:deriveSTerror}, let us specify the ST error, or total Energy, specifically in terms of the L2 or RMSE loss:
 \begin{equation}
@@ -115,6 +115,6 @@ Since we can interpret the Trace as an expected value over the model data $\NDXI
   \ETA(\SMAT,\TMAT)
   :=\tfrac{1}{N} \Trace{\SMAT^{\top}\TMAT} 
 \end{align}
-As noted above, the $1/\ND$ will be implicit in the $\TMAT$ and $\SMAT$ matrices because they represent empirical observables. That is, the weights are the learned parameters, effectively averaged over the entire real-world training data set $\ADD$.
-This is the matrix generalized form of \EQN~\ref{eqn:QST_final}.
+We have dropped the $1/n$ because (as noted above), the $1/\ND$ will be implicit in the $\TMAT$ and $\SMAT$ matrices because they represent empirical observables. That is, the weights are the learned parameters, effectively averaged over the entire real-world training data set $\ADD$.
+This is the matrix generalized form of \EQN~\ref{eqn:eta_vec_avg_def}.
 

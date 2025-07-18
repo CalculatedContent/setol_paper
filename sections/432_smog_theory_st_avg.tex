@@ -166,6 +166,7 @@ Write the data-averaged ST error as
 \begin{align}
 \nonumber
 \DETOPSTLL= & \frac{1}{2} \sum_{\mu=1}^{\ND}(\Ys - \Yt)^{\top} (\Ys - \Yt)
+\label{eqn:deriveSTerror}
 \end{align}
 Define the $\ND$ label vectors  
 $\YsVEC:=[\YsIS{1}, \YsIS{2}, \cdots, \YsIS{\ND}]$ and 
@@ -180,7 +181,7 @@ This lets us write
 \nonumber
 =& \ND - \Trace{(\YsVEC)^{\top} (\YtVEC)}\\
 =& \ND- \Trace{\ETA(\SVEC,\TVEC,\NDXI)},
-\label{eqn:deriveSTerror}
+\label{eqn:deriveSTerror2}
 \end{align}
 where we define the \emph{data-dependent \SelfOverlap}:
 \begin{equation}
@@ -203,15 +204,15 @@ This now gives the data-dependent \SelfOverlap explicitly as
   \label{eqn:eta_vec_xi_def}
 \ETA(\SVEC,\TVEC,\NDXI) =\sum_{\mu=1}^{\ND} (\SVEC^{\top}\XI_{\mu})^{\top} (\TVEC^{\top}\XI_{\mu}) = \sum_{\mu=1}^{\ND}\XI^{\top}_{\mu}  (\SVEC^{\top} \TVEC )\XI_{\mu} 
 \end{align}
-After integrating over the data, we have the \emph{data-independent \SelfOverlap}, $ETA(\SVEC,\TVEC)$:
+After integrating over the data, we have the \emph{data-independent \SelfOverlap}, $\ETA(\SVEC,\TVEC)$:
 \begin{align}
-\label{eqn:eta_vec_avg_def}
+   \label{eqn:eta_vec_avg_def}
 \ETA(\SVEC,\TVEC) := \langle\ETA(\SVEC,\TVEC,\NDXI)\rangle_{\AVGNDXI}
    = & \frac{1}{\ND}\int d\mu(\NDXI)\ETA(\SVEC,\TVEC,\NDXI) \\ \nonumber
 = & \frac{1}{\ND}\int d\mu(\NDXI)\sum_{\mu=1}^{\ND}\XI_{\mu}^{\top}\SVEC^{\top}\TVEC\XI_{\mu} \\ \nonumber
 = & \frac{1}{\ND}\int d\mu(\NDXI)\sum_{\mu=1}^{\ND}\XI_{\mu}^{\top}\AVGR\XI_{\mu} \\ \nonumber
 = & \AVGR\;\frac{1}{\ND}\sum_{\mu=1}^{\ND}\int d\mu(\XI_{\mu})\XI_{\mu}^{\top}\XI_{\mu} \\ \nonumber
-   = &\AVGR.
+   = &\AVGR. 
 \end{align}
 
 where the third equality holds because $\AVGR$ is a scalar constant, and the fourth holds because the elements of $\XI$ are i.i.d. and normalized to unit variance.
@@ -220,8 +221,8 @@ where the third equality holds because $\AVGR$ is a scalar constant, and the fou
 
 We can now obtain the \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged ST test error (see \EQN~\ref{eqn:epsl}),  as in \EQN~\ref{eqn:LinearPerceptronError},
 \begin{align}
-\label{eqn:e0}
 \EPSL(\AVGR)=\langle\DETOPSTLL\rangle_{\AVGNDXI} =  1 - \AVGR .
+\label{eqn:epslR}
 \end{align}
 
 In traditional \STATMECH (e.g., \cite{SST92}), one is interested in how the \emph{\TotalModelGeneralizationError} $\TGE(\AVGR)$ depends on $\AVGR$.
