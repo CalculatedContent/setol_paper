@@ -19,9 +19,9 @@ a Boltzmann-weighted average.
 In this case, the model \Quality, $\Q^{ST}$ is exactly the AA, high-T \AverageGeneralizationAccuracy 
 \michaeladdressed{still not sure we are using that term correctly, here and elsewhere}
 $\Q^{ST}:=1-\AVGE^{ST}_{gen}=\THRMAVG{R}$.
-For an MLP or general NN, each layer Energy is associated with a
+For an MLP or general NN, each layer's Energy is associated with a
 \LayerQuality $\Q$, which we identify as the average contribution an
-individual layer makes to the overall generalized accuracy,
+individual layer contributes to the overall generalized accuracy,
 (i.e $1-\AVGE^{NN}_{gen}$) for a multilayer perceptron (MLP).
 
 For technical reasons (below), we will seek the
@@ -57,7 +57,7 @@ Let us now express the average matrix-matrix overlap $\mathbf{R}$ in squared for
 where $\AMATN$ is called the \emph{Outer} \Student correlation matrix, and is  the $N\times N$ form of the \Student correlation matrix,
 $\AMATN:=\frac{1}{N}\mathbf{SS}^{\TR}$.
 We will also define the $M\times M$ \emph{Inner} \Student correlation matrix $\AMATM=\frac{1}{N}\SMAT^{\TR}\SMAT$, which is 
-used later. Note that $\AMATM$ also has a $\frac 1 N$ factor, so that its non-zero eigenvalues will be the same as $\AMATN$, but has dimensions $M \times M$. We will denote the Outer $\AMATN$ and Inner $\AMATM$ forms when the context demands it, and will simply use the general form $\AMAT$ when they can be interchanged.
+used later. Note that $\AMATM$ also has a $\frac 1 N$ factor, so that its non-zero eigenvalues will be the same as $\AMATN$, but it has dimensions $M \times M$. We will denote the Outer $\AMATN$ and Inner $\AMATM$ forms when the context demands it, and will simply use the general form $\AMAT$ when they can be interchanged.
 
 %It is argued that the \Student and \Teacher weight matrices (i.e., $\TMAT, \SMAT$) have
 %specific generalizing eigencomponents that, after training,
@@ -197,12 +197,12 @@ The result is, formally, a sum of the integrated \RTransforms $\GNI$.
 In a sense, this result resembles (a non-perturbative form of) the Linked Cluster Theorem
 in that the log \PartitionFunction is expressed as a sum of integrated matrix-generalized cumulants.  And in analogy with \SemiEmpirical theories of Quantum Chemistry, the \HTSR \ALPHA $(\alpha)$ and \ALPHAHAT $\ALPHAHATEQN)$ enter as renormalized empirical parameters.
 Most importantly, the \ScaleInvariant \TRACELOG condition can be verified empirically (See Section~\ref{sxn:empirical}.)
-Importantly, in analogy with the Wilson Exact Renormalizaton Group theory, 
+Importantly, in analogy with the Wilson \ExactRenormalizatonGroup theory, 
 the \HTSR $\alpha=2$ resembles in spirit
 an \ERG \emph{Universal Critical Exponent} at a phase boundary being between the \HeavyTailed 
 (HT) and the \VeryHeavyTailed (VHT) phase of learning of the \HTSR theory.
 This observation strengthens our argument that the \HTSR HT and VHT phases
-are analogous to the generalizing and overfit phases, respectively,
+are analogous to the generalizing and overfitting phases, respectively,
 of the classical \SMOG theories of NN learning.
 
 

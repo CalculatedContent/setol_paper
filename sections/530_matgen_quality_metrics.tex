@@ -16,7 +16,7 @@ For the vector-based \Perceptron ST model, the data-averaged \SelfOverlap appear
 \LayerQuality  in \EQN~\ref{eqn:QST_final}, and is just the average ST vector overlap $R=\SVEC^{\top}\TVEC$. 
 We define 
 \begin{equation}
-\mathbf{R} =  \frac{1}{N}\SMAT^{T} \TMAT  .
+\mathbf{R} =  \tfrac{1}{N}\SMAT^{T} \TMAT  .
 \end{equation}
 The overlap matrix $\OVERLAP$ describes the average interactions between $N$ interacting $M$-dimensional layer (i.e., feature) vectors.  Also, notice that we have dropped $1/\ND$ term.
 For the vector-based ST model, the ST \Quality $\Q^{ST}$ in \EQN~\ref{eqn:QST_final} is expressed as
@@ -411,7 +411,7 @@ $\langle\Det{\AMATM}\rangle$  with an empirical point estimate over the \Teacher
 \end{equation} 
 
 This expression can now be used in a practical calculation to define a low-rank subspace that both allows us to evaluate the HCIZ integral,
-and to identify, in principle, generalizing components of the layer.
+and to identify, in principle, the generalizing components of the layer.
 We also refer to \EQN~\ref{eqn:detX} as the \TRACELOG condition, which is technically its empirical form.
 \michaeladdressed{Note by abuse of terminology.}
 For example, Figure~\ref{fig:ECS_space} depicts the eigenvalues in the~\ECS for a \Typical ESD with PL $\alpha=2.0$..

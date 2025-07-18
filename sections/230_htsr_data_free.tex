@@ -64,9 +64,9 @@ The layer-averaged model quality metric \ALPHA, $\log\Q^{NN}=\langle\alpha\rangl
 One can use the averaged \ALPHA when studying a single model, and only varying the regularization hyperparameters, although \ALPHA also works very well as a model quality metric when comparing different transformer models~\cite{YHTx21_TR}.
 \item
 The layer-averaged model quality metric \LOGSPECTRALNORM, $\log\Q^{NN}=\langle\log\lambda_{max}\rangle_{\bar{L}}$, describes the \SCALE of the ESDs.
-The averaged \LOGSPECTRALNORM does work as a model quality metric but not as well as \ALPHA~(or \ALPHAHAT).
+The averaged \LOGSPECTRALNORM does work as a model quality metric, but not as well as \ALPHA~(or \ALPHAHAT).
 Notably, \SLT predicts that smaller, not larger, \LOGSPECTRALNORM should be correlated with model quality; the opposite is observed in practice!
-This is because smaller layer $\alpha$ generally, but not always, corresponds to larger $\lambda_{max}$.%
+This is because a smaller layer $\alpha$ generally, but not always, corresponds to a larger $\lambda_{max}$.%
 \footnote{The \LOGSPECTRALNORM can exhibit a Simpson's paradox when segmenting models by quality)~\cite{MM21a_simpsons_TR}.  Nevertheless, this metric may be useful when a PL fit can not be obtained, say, when $N\gg M$ and $M$ is very small, as with LSTMs,  U-Net architectures, etc.}
 \item
 The layer-averaged model quality metric \ALPHAHAT, $\log\Q^{NN}=\langle\alpha\log\lambda_{max}\rangle_{\bar{L}}=\langle\hat{\alpha}\rangle_{\bar{L}}$, incorporates both \SHAPE and \SCALE information.
@@ -78,7 +78,7 @@ The layer-averaged \ALPHAHAT model quality metric has been applied in a large me
 pre-trained publicly-available NN models in CV and NLP~\cite{MM20a_trends_NatComm,YTHx22_TR,YTHx23_KDD,MM19a_TR}. 
 %
 Generally speaking, \HTSR shape-based metrics, when used appropriately, outperform all other metrics studied (including 
-those from \SLT, and with access to the training/testing data,) for predicting the quality of SOTA pre-trained publicly-available NN models.  
+those from \SLT, and with access to the training/testing data,) for predicting the quality of SOTA pre-trained publicly available NN models.  
 %
 The \HTSR theory predicts that the best-performing NN models have layers with $\ALPHA\in[2,6]$, and with $\alpha=2$
 indicating optimal performance.

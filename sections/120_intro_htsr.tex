@@ -10,7 +10,7 @@ It can, however, also be used to define \emph{Layer-level Quality metrics} and \
 Not needing any training data, \HTSR~theory has many practical uses.
 It can be directly applicable to large, open-source models where the training and test data may not be available.
 Model quality metrics can be used, e.g., to predict trends in the quality of SOTA models in computer vision (CV)~\cite{MM20a_trends_NatComm} and natural language processing (NLP)~\cite{YTHx22_TR,YTHx23_KDD}, both during and after training, and without needing access to the model test or training data.
-Layer quality metrics can be used to diagnose potential internal problems in a given model, or (say) to accelerate training by providing optimal layer-wise learning rates \cite{NEURIPS2023_CHM} or pruning rations \cite{alphapruning_NEURIPS2024}.
+Layer quality metrics can be used to diagnose potential internal problems in a given model, or (say) to accelerate training by providing optimal layer-wise learning rates \cite{NEURIPS2023_CHM} or pruning ratios \cite{alphapruning_NEURIPS2024}.
 %
 Most notably, the \HTSR theory provides \emph{Universal} \LayerQuality metrics encapsulated in what appears to be a critical exponent, $\alpha=2$, that is empirically associated with optimal or \IdealLearning. Moreover, as argued below, the
 value $\alpha=2$ appears to define a phase boundary between a generalization and overfitting, analogous

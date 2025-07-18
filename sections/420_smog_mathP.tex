@@ -40,27 +40,15 @@ $[\AVGSTTE]^{an,hT}=[\AVGSTGE]^{an,hT}$,
 and can both be expressed as a \ThermalAverage over all Students, as a function 
 of the \Teacher, as $[\AVGSTGE]^{an,hT}=\THRMAVG{\GANHTR}=\THRMAVG{\EPSL(R)}$.
 Note that these averages are obtained by using the \FreeEnergy as a \GeneratingFunction.
-We then explain how to obtain the \ModelQuality  as  partial derivatives of a
+We then explain how to obtain the \ModelQuality as partial derivatives of a
 \emph{\GeneratingFunction} $(\Gamma_{\Q})$.
 We then discuss the more advanced techniques, the
 \emph{\LargeN Approxmation} and the \emph{SaddlePointApproximation} (SPA),
 which will be used extensively later.
 Finally, we introduce  HCIZ integrals, which will be necessary to evaluate the matrix-generalized
 form of $\Gamma_{\Q}$ to obtain the final result.
-%\footnote{This assumes that agreement of \Student and \Teacher predictions will follow from overlap of weight vectors --- as it 
-%surely does in the \emph{\LinearPerceptron} case, and does with high probability under Lipschitz 
-%smoothness~\cite{neyshabur18_TR}. 
-%\michaeladdressed{@charles: Im not sure what this is saying.}\charles{YOU WROTE THIS!}
-%}
-\michael{@charles: What precisely is Accuracy versus Quality?}
-\charles{@michael: We have discusses this multiple times. }
-%We also degfine  write an expression for the Average \GeneralizationAccuracy,
-%$1-\AVGSTGE$, which we call the \ModelQuality.
-\michaeladdressed{This last sentence is an exaple of one where the phrasing is a little unclear.  I think we can mention \ModelQuality, but it's not clear if this is from SST or something we introduce, etc.  So, it's unclear later when we use it without a clear definition, etc., in the vector or matrix case.  Probably it's best just to either remove a sentence like that here (if SST did not have it, since here we are describing the past), or have a footnote saying that we will use the \GeneralizationAccuracy they used, but in a different way by considering one-minus it, and then have an explicit pointer to where we define it.}
 
 In this subsection, we will compare and contrast several types of averages and energies we will encounter. 
-
-
 \begin{enumerate}[label=4.2.\arabic*]
 \item
   \textbf{Setup.}
@@ -923,7 +911,7 @@ See Section~\ref{sxn:matgen} and Appendix~\ref{sxn:quality} for more details.
 
 \subsubsection{The Thermodynamic limit}
 \label{sxn:largeN_and_SPA}
-In  the \SMOG, the \ThermodynamicLimit is expressed as the limit of the number of free parameters $m$ grows arbitrarily large, $m \gg 1$, but also holding the feature load $n/m$ fixed (i.e., see \cite{SST92}).  In these older approaches, one is interested in how the thermodynamic properties depends on the feature load. Here, however, we are interested in estimating the generalization accuracy, so we are interested how the thermodynamic properties vary with $n$, the number of training examples.  For that reason, we will express the \ThermodynamicLimit as the \LargeN limit in $\ND$. i.e., while $\ND$ grows arbitrarily large,  $n \gg 1$, while implicitly fixing the corresponding feature load ($n/m$ for the ST Percepton,  and $n/N$ for our ST matrix model, below).
+In the \SMOG, the \ThermodynamicLimit is expressed as the limit of the number of free parameters $m$ grows arbitrarily large, $m \gg 1$, but also holding the feature load $n/m$ fixed (i.e., see \cite{SST92}).  In these older approaches, one is interested in how the thermodynamic properties depend on the feature load. Here, however, we are interested in estimating the generalization accuracy, so we are interested how the thermodynamic properties vary with $n$, the number of training examples.  For that reason, we will express the \ThermodynamicLimit as the \LargeN limit in $\ND$. i.e., while $\ND$ grows arbitrarily large,  $n \gg 1$, while implicitly fixing the corresponding feature load ($n/m$ for the ST Percepton,  and $n/N$ for our ST matrix model, below).
 
 To express the average \FreeEnergy $\bar{F}_{\ND}$ in the \LargeN limit in $\ND$, we can write
 \begin{align}
@@ -935,8 +923,7 @@ and, consequently, the total \FreeEnergy is also extensive, i.e., $F_{\ND}=\ND\b
 (This is a cornerstone of statistical mechanics, as it allows for meaningful macroscopic predictions from microscopic interactions.)
 
 \paragraph{\SelfAveraging.}
-The existence of the limit signifies that the system is \emph{\SelfAveraging}, meaning that
-the macroscopic properties are independent of fluctuations, etc.
+The existence of the limit signifies that the system is \emph{\SelfAveraging}, meaning that the macroscopic properties are independent of fluctuations, etc.
 This also implies that the relevant averages
 (i.e., training and generalization errors) are the same for almost all samples, or \emph{realizations of the disorder}.
 Additionally, the Annealed and the Quenched averages,
@@ -972,9 +959,9 @@ The \WickRotation is an analytic continuation that rotates the integration varia
 \begin{equation}
 x\rightarrow ix,\;\;e^{iNf(x)}\rightarrow e^{-Nf(ix)},
 \end{equation}
-This is typically used in formal sense; that is, one assumes the resulting complex integrand is both analytic and well-behaved.
+This is typically used in a formal sense; that is, one assumes the resulting complex integrand is both analytic and well-behaved.
 One would then apply the SPA in the \LargeN in $N$ case.
-Below, we will do just this, and  use the SPA with a Wick Rotation in the both Appendices \ref{sxn:TraceLogDerivation} and \ref{sxn:tanaka}.
+Below, we will do just this, and  use the SPA with a Wick Rotation in both Appendices \ref{sxn:TraceLogDerivation} and \ref{sxn:tanaka}.
 
 \paragraph{When the \Thermodynamic limit fails: \ATypical behavior.}
 When the \ThermodynamicLimit fails to exist, the \FreeEnergy will contain additional, non-extensive terms, i.e.,
@@ -1066,8 +1053,8 @@ Also, $\GNORM()$ here depends on only the limiting form of the ESD of $\AMAT$, $
 and depends on the $M$ normalized eigenvalues $\lambda_{i}$ of $\XMAT$.
 
 
-To evaluate this, we will form the \LargeN limit in $N$, using a result from Tanaka~\cite{Tanaka2007,Tanaka2008},
-but extended slightly (in Appendix~\ref{sxn:tanaka}) to include the  $\ND\beta$ term explicitly.
+To evaluate this, we will form the limit \LargeN in $N$, using a result from Tanaka~\cite{Tanaka2007,Tanaka2008},
+but slightly extended (in Appendix~\ref{sxn:tanaka}) to include the term $\ND\beta$ explicitly.
 We can write
 \begin{align}
   \label{eqn:izgin_def}

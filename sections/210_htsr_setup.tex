@@ -24,7 +24,7 @@ We expect to use backprop via some variant of stochastic gradient descent (SGD) 
 \underset{\mathbf{W}_{l},\mathbf{b}_{l}}{\argmin}\;\sum_{\mu}\mathcal{L}[\NNOUT(\mathbf{x}_{\mu}),y_{\mu}]+\Omega ,
 \label{eqn:dnn_opt}
 \end{equation}
-where, $\Omega$ denotes some explicit regularizer (such as an $\ell_1$ or $\ell_2$ constraint on layer weight matrices) or some implicit regularization procedure (such as clipping the weight matrices or applying dropout).
+where $\Omega$ denotes some explicit regularizer (such as an $\ell_1$ or $\ell_2$ constraint on layer weight matrices) or some implicit regularization procedure (such as clipping the weight matrices or applying dropout).
 
 Given a real-valued $N\times M$ layer weight matrix $\mathbf{W}$ (dropping the subscript), let $\mathbf{X}$ be the $M \times M$ layer \emph{\CorrelationMatrix}:
 \begin{equation}
@@ -47,7 +47,7 @@ Based on empirical results based on thousands of pretrained models and tens of t
 it is generally observed that the 
 best performing NNs have ESDs that are HT, and the \emph{tails} of these ESDs, $\rho_{tail}(\lambda)$, can be well fit to a PL, beyond some cutoff $\lambda\ge\LambdaMin$.%
 \footnote{Doing a large meta-analysis like this is tricky; but see~\cite{MM18_TR_JMLRversion,MM20a_trends_NatComm,MM21a_simpsons_TR,YTHx23_KDD}.  The \WW~tool provides a systematic, reproducible way to compute a PL fit (using an MLE method of Clauset et al.~\cite{CSN09_powerlaw}), as well other model metrics, including the \SPECTRALNORM, \RANDDIST, and \ALPHAHAT metrics~\cite{MM20a_trends_NatComm}.  Also, the ESD $\rho(\lambda)_{tail}$ is sometimes better fit by a Truncated \PowerLaw (TPL), due to finite-size effects.
-(again, this is important in practice, but we ignore this complexity in this initial discussion of \SETOL. ) }
+(Again, this is important in practice, but we ignore this complexity in this initial discussion of \SETOL. ) }
 For a PL fit,
 \begin{equation}
 \rho_{tail}(\lambda):=\rho^{emp}(\lambda\ge\LambdaMin)\sim\lambda^{-\alpha} ,
@@ -112,11 +112,8 @@ Figure~\ref{fig:xmin-DKS-esd} depicts how the best fit is determined; it plots $
 value, which is the Kolmogorov-Smirnov (KS) distance between the PL fit and the empirical data~\cite{CSN09_powerlaw}.
 Notice that there are two nearly degenerate minima on Figure~\ref{fig:xmin-DKS-esd}, corresponding to the good fit and the bad fit. 
 It is not uncommon to face such practical challenges, as real-world ESDs are often slightly deformed from a perfect PL density, e.g.,
-they may have two or more near degenerate solutions on the KS plots (d).
+they may have two or more near-degenerate solutions on the KS plots (d).
 (They may also have anomalously large eigenvalues; this is discussed in more detail in Section~\ref{sxn:HT_ESDs}.)
-
-%%Additionally, some PL fits may require ignoring anamalously large eigenvalues, called ``\DragonKings'' in certain communities~\cite{sornette2009dragonkings}.
-%%the \WW~tool can do this automatically.
 
 When one finds a good PL fit for the ESD of a layer $\mathbf{W}$,
 it provides information about the \SHAPE~and \SCALE~of the ESD of that layer.

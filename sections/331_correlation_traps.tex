@@ -11,7 +11,6 @@ tail eigenvalues arise from correlations in the weight matrices.
 So one way is to identify \emph{atypicality} is to look for  large eigenvalues that
 do not arise from correlations in $\mathbf{X}$,
 but, rather, from one or a few spuriously large matrix elements $W_{i,j}$ and/or rank-1 perturbations in $\mathbf{W}$.
-\michaeladdressed{Do we have an example of this.}
 We call these eigenvalues  \CorrelationTraps, denoted by $\lambda_{trap}$
 (i.e., see Section~\ref{sxn:empirical-correlation_trap}).
 
@@ -36,7 +35,7 @@ Whether they are a signature of training gone wrong, or whether they distort the
 simply by being there, \CorrelationTraps can be expected to alter the shape of the ESD,
 reducing the quality of the PL fits, and sometimes producing spurious $\alpha$ values.
 
-Why would such anomalies  occur in a NN?
+Why would such anomalies occur in a NN?
 It is conceivable that SGD will, when it fails to find usable correlations, instead
 produce spurious
 correlations in the form of large elements and/or rank-1 perturbations.
