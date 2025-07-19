@@ -7,7 +7,7 @@
 %MM% and \FreeEnergies and \GeneratingFunctions.
 %MM% We will define the different averages, 
 %MM% show how they are related to each other under the  \AnnealedApproximation (AA) and in the \HighTemperature (High-T) limit,
-%MM% and explain how and when may use the (overloaded) \BraKet notation $\langle \cdots \rangle$ for the different averages.
+%MM% and explain how and when we may use the (overloaded) \BraKet notation $\langle \cdots \rangle$ for the different averages.
 %MM% We will then show how to compute the average training and test/generalization errors $\AVGTE, \AVGGE$
 %MM% using the \FreeEnergy as a \GeneratingFunction, and how they are related to each other
 %MM% in the AA and the High-T limit.  We  briefly define \Replicaa Averages and
@@ -23,7 +23,7 @@ This lets us define an energy error function, $\DETOP$,
 the error the NN makes on the data.
 We then explain how to take different kinds of \emph{\Thermodynamic} averages of the data,
 including \emph{Sample} and \emph{\ThermalAverages} and the implications,
-and the difference between computing errors and accuracies.
+and the difference between computing errors and accuracy.
 Next, we define the \emph{FreeEnergy} $(F)$ for the error(s), and the \emph{GeneratingFunction}  $(\Gamma)$
 for the accuracy and/or quality.
 From here, we explain the \emph{AnnealedApproximation} (AA) and
@@ -249,7 +249,7 @@ In this case, we obtain:
   \frac{1}{\ND}\int \left[ \prod_{\mu=1}^{\ND}d\XI_{\mu}P(\XI_{\mu})\right] \left[ \sum_{\mu=1}^{\ND}\DETmu \right] , \\ \nonumber
   = &
   \frac{1}{\ND}\sum_{\mu=1}^{\ND}\int d\XI_{\mu}P(\XI_{\mu})\DETmu  , 
-    \label{eqn:average_data_sample_error}
+    \label{eqn:avg_data_sample_error}
 \end{align}
 where $P(\NDXIn)$ is a product of $\ND$ i.i.d. $m$-dimensional Gaussian distributions.
 The subscript $\AVGNDXIn$ indicates this is an
@@ -280,15 +280,15 @@ In the theory of the \StatisticalMechanics of Generalization (\SMOG), however, o
 Moreover,  we will use $\ND$  as the primary variable below as we are interested in how the Free Energy and other quantities change with $\ND$. That is, we use the notational convention in ~\cite{Solla2023} (as opposed to \cite{SST92}). \textbf{Consequently, for our purposes here, this means that the \ThermodynamicLimit and the '\LargeN limit in $\ND$' are effectively the same.}
 
 As an example of \SizeExtensivity and \SizeIntensivity, 
-we write the \ExpectedValue (i.e., the data-average) of \DataSampleError $\DETOPXI$ (\EQN~\ref{eqn:average_data_sample_error})
-in the \LargeN limit as
+we write the \ExpectedValue (i.e., the data-average) of \DataSampleError $\DETOPXI$ (\EQN~\ref{eqn:avg_data_sample_error})
+in the \LargeN limit in $n$ as
 \begin{align}
+\label{eqn:longEn}
   \lim_{n\gg 1} 
   \langle \DETOPXI\rangle_{\AVGNDXIn}=
   \lim_{n\gg 1}\frac{1}{\ND}
 \int \prod_{\mu=1}^{\ND}d\XI_{\mu}P(\NDXIn)
 \sum_{\mu=1}^{\ND}\DEL(\WVEC,\XI_{\mu}) .
-\label{eqn:longEn}
 \end{align}
 Here, the notation $(n \gg 1)$ means $\ND$ grows arbitrarily large, but is not necessarily
 at the limit point $(n=\infty)$. And, again, the load is fixed, so $n\gg 1 \leftrightarrow m \gg 1$.
@@ -599,7 +599,6 @@ In BraKet notation, \EQN~\ref{eqn:Gan_simplified} can be expressed as
     -\ln \left\langle e^{-\beta\DEL(\WVEC,\XI)}\right\rangle_{\XI}.
 \end{eqnarray*}
 
-
 Using $\GAN$, we can define the \emph{Annealed Partition Function}, $Z^{an}_{\ND}$, as
 %%\begin{align}
 %%  \label{eqn:Zan_def}
@@ -619,15 +618,10 @@ where the lines after the first line follow by substituting \EQN~\ref{eqn:Gan_de
 Note also that the order of the integrals in \EQN~\ref{eqn:Zan_simple} is exactly what we expect using the AA, as in \EQN~\ref{eqn:switch}.
 Also, analogously to \EQN~\ref{eqn:Gan_simplified}, we can write $\ZAN$ as the product of the $n=1$ case, $\ZAN=[Z^{an}_{1}]^{\ND}$.
 Finally, we will only need the high-T version, $\HANHT$, of $\GAN$, and this will take a very simple form.
-\footnote{We will derive expressions for $\EPSL(R)$ and $\AVGSTGE(R)$ in \EQN~\ref{eqn:e0} and \EQN~\ref{eqn:AVGSTGE_R}, respectively, using relatively simple arguments.
+\footnote{We will derive expressions for $\EPSL(R)$ and $\AVGSTGE(R)$ in \EQN~\ref{eqn:epslR} and \EQN~\ref{eqn:AVGSTGE_R}, respectively, using relatively simple arguments.
 In Appendix~\ref{app:st-gen-err-annealed-ham} we present
 a more detailed derivation of $\GANR$ and $\GANHTR=\EPSL(R)$
-in Appendix~\ref{sxn:appendix_Gan} we show that this derivations generalizes to the matrix-generalized case, $\GANMAT$.
-\michael{Reword for clarity.}
-This more detailed derivation is important for our \SETOL setup because it lets us define the normalization
-necessary for the \TRACELOG condition.
-}
-
+in Appendix~\ref{sxn:appendix_Gan} we show that these derivations generalize to the matrix-generalized case, $\GANMAT$.}
 
 %Notice that $\GAN$ resembles a (unitless) \FreeEnergy 
 %%(i.e., $\GAN=\beta F(\XI)=-\ln Z(\XI)$),
@@ -703,7 +697,7 @@ To do so, let's take a high-T expansion of \EQN~\ref{eqn:Gan_def}
 %%(see below for a discussion of the high-T approximation) 
 by expanding the exponential to first order in $\beta$, to obtain
 \begin{align}
-\label{eqn:Gan_highT}
+\label{eqn:Gan_highT_def}
 \beta\GANHT
 =&  - \tfrac{1}{\ND}\ln \int d\mu(\NDXIn) [1-\beta \DETOPXI] \\ \nonumber
 \approx&\;   - \frac{1}{\ND} \int d\mu(\NDXIn)\beta \DETOPXI \\ \nonumber
@@ -711,14 +705,14 @@ by expanding the exponential to first order in $\beta$, to obtain
 %=&  - \frac{1}{\ND}\left(\ln\langle 1\rangle_{\AVGNDXIn}-\langle\beta\DETOPXI \rangle_{\AVGNDXIn}\right) \\ \nonumber
 =&\;\langle \beta\DETOPXI \rangle_{\AVGNDXIn} \\ \nonumber
 =&\;\frac{1}{\ND}\beta(\DETOT)\\ 
-\label{eqn:Gan_highT_final}
+\label{eqn:Gan_highT}
 =&\;\beta \EPSLw  .
 \end{align}
 Here, we have used the AA, the property that $\ln(1 + y) \approx y$, for $|y| \ll 1$, and the fact that $\EPSLw$ takes the form given in \EQN~\ref{eqn:epsl}.
 This gives $\GANHT:=\EPSLw$, which is no longer a non-linear function of $\beta$.
 Moving forward, we will assume we are taking the high-T limit like this.
 
-Given \EQN~\ref{eqn:Gan_highT_final}, we can now express the \Annealed \PartitionFunction at high-T directly in terms of
+Given \EQN~\ref{eqn:Gan_highT}, we can now express the \Annealed \PartitionFunction at high-T directly in terms of
 the Annelaed (i.e., data-averaged) error $\EPSLw$:
 \begin{align}
   \nonumber

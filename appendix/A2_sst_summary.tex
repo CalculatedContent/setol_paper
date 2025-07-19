@@ -17,7 +17,7 @@ in the AA and the high-T approximation,
 when student and teachers are are modeled as $N$-vectors.
 %
 From this, we obtain an expression for the data-averaged ST error $\EPSL(R)$, 
-which is the same as the expression given in \EQN~\ref{eqn:e0}.
+which is the same as the expression given in \EQN~\ref{eqn:epslR}.
 
 The procedure starts by computing the associated quenched average of
 the \FreeEnergy, defined for the model error as
@@ -150,14 +150,14 @@ then we can use the approximation $(\ln[1+x]\simeq x+\cdots)$ to obtain the High
 \end{align}
 where we now see that $\GANHTR$ no longer explicitly depends on $\beta$.
 %
-By \EQN~\ref{eqn:Gan_highT_final}, this gives 
+By \EQN~\ref{eqn:Gan_highT}, this gives 
 \begin{align}
 \label{eqn:Gan4}
 \EPSL(R) =
 \langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI \rangle_{\AVGNDXI} \simeq 1-R\;\;\text{as}\;\ND\rightarrow\infty  ,
 \end{align}
-which we recognize as the same as the data-averaged ST error $\epsilon(R)$ in \EQN~\ref{eqn:e0}.
-\michael{@charles: also, there is a $1/N$ in \EQN~\ref{eqn:e0}; does that belong here.}
+which we recognize as the same as the data-averaged ST error $\epsilon(R)$ in \EQN~\ref{eqn:epslR}.
+\michael{@charles: also, there is a $1/N$ in \EQN~\ref{eqn:epslR}; does that belong here.}
 
 
 \subsubsection{Annealed Hamiltonian \texorpdfstring{$\GANMAT$}{H(R)} for the Matrix-Generalized ST Error}
@@ -170,7 +170,7 @@ i.e., $\GANR\rightarrow\GANMAT$, which has the same form as \EQN~\ref{eqn:Gan0} 
 From this, we obtain an expression for the data-averaged ST error $\EPSL(R)$, again when the student and teachers are are modeled as matrices.
 There is a subtle normalization issue here, about which we need to be careful.
 However, when we normalize appropriately, we will obtain an expression
-for ``data-averaged ST error'' (i.e., \EffectivePotential) $\EPSL(R)$ that is of the same form as we obtained in the vector case (as given in \EQN~\ref{eqn:Gan4} and \EQN~\ref{eqn:e0}).
+for ``data-averaged ST error'' (i.e., \EffectivePotential) $\EPSL(R)$ that is of the same form as we obtained in the vector case (as given in \EQN~\ref{eqn:Gan4} and \EQN~\ref{eqn:epslR}).
 %
 The difference will be that in the vector case we take $R=\tfrac{1}{N}\SVEC^{\top}\TVEC$, while in the matrix case we take $R=\tfrac{1}{N}\SMAT^{\top}\TMAT$.
 
