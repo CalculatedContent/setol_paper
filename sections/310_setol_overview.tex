@@ -82,30 +82,18 @@ For more details, see Section~\ref{sxn:matgen}, and the Appendix, Section~\ref{s
 We can write $\IZG$ as an HCIZ Integral, 
 \begin{align}
   \label{eqn:QT_dS}
-  \IZG  &= \tfrac{1}{N} \ln\int d\mu(\SMAT)\exp\left(\ND \beta N\Trace{\TMAT^{\TR}\AMATN\TMAT}\right),
+  \IZG  &= \tfrac{1}{N} \ln\int d\mu(\SMAT)\exp\left(\ND \beta N\Trace{\tfrac{1}{N}\TMAT^{\TR}\AMATN\TMAT}\right),
 \end{align}
+where $n$ is the number of training examples used to train the models.
 
 The \SETOL approach then seeks to express $\IZG$ in~\EQN~\ref{eqn:QT_dS} as an HCIZ integral (and in the \WideLayer \LargeN limit in $N$$)~$\cite{potters_bouchaud_2020,Tanaka2007,Tanaka2008}.
-We evaluate this at large-$N$, and write
+We evaluate this at large-$N$ in $N$, and write
 \begin{equation}
   \IZGINF:=\lim_{N\gg 1}\IZG
 \end{equation}
 The result is effectively expressed in the limit of fixed \emph{layer load} $\ND/N$, analogous to a renormalized mean-field  (i.e., \SemiEmpirical) theory over $N$ interacting (feature) vectors of length $M$.
-%%%must restrict the matrices to a lower rank subspace, called the~\ECS,
-%%%i.e.,  $\mathbf{\tilde{A}}$. 
-%%%We also must change the measure from an integral over \Student weight matrices
-%%%to an integral over \Student Correlation matrices, i.e., 
-%%%\begin{align}
-%%%  \label{eqn:change_measure}
-%%%  d\mu(\SMAT)\rightarrow d\mu(\mathbf{\tilde{A}}) ,
-%%%\end{align}
-%%%We can define a single measure for either form of \Student correlation matrix, restricted to the~\ECS,
-%%%such that 
-%%%$d\mu(\mathbf{\tilde{A}})=d\mu(\mathbf{\tilde{A}}_1)=d\mu(\mathbf{\tilde{A}}_2)$.
-%%%This will be important as we need the form $\AMAT_1$ to derive the \TRACELOG condition, below, but
-%%%we  formulate the  $\IZG$ using the form $\AMAT_2$.
-%%%%Also, and importantly, the change in measure from $d\mu(\SMAT)$ to $d\mu(\mathbf{\tilder{A}})$
-%is needed in order to apply the HCIZ  integral.
+In other words, in taking the \largeN in $N$ limit, we assume implicitly that $\IZG$ is in the \ThermodynamicLimit (and at high-T).
+
 With these definitions in place, moving forward, the following key assumptions, which can be tested empirically, must hold:
 \begin{itemize}
   \item
@@ -117,7 +105,7 @@ With these definitions in place, moving forward, the following key assumptions, 
   We write $\AECS$ to denote the projection of the correlation
   matrix $\AECS:=\mathbf{P}_{ecs}\AMAT$, onto this subspace, now with rank $\MECS\ll M$.
   This restricts the measure $d\mu(\AMAT)$ to the~\ECS, $(d\mu(\AMAT)\rightarrow d\mu(\AECS))$.
-  This assumption will empirically examined using real-world \Teacher weight matrices $\TMAT=\WMAT$
+  This assumption will be empirically examined using real-world \Teacher weight matrices $\TMAT=\WMAT$
   in Section~\ref{sxn:empirical-effective_corr_space}. 
 %  Importantly, this lets interpret the \EQN~\ref{eqn:QT_HCIZ}  as acting only in this subspace.
   \item
@@ -141,7 +129,7 @@ Remarkably, both conditions hold best empirically when the \HTSR PL quality metr
   \end{align}
   where  measure $d\mu(\AECS)$ lets us average over all (Outer) \Student Correlation matrices $\AECSN$ explicitly, which
   lie in the~\ECS space and which ``resemble'' the \Teacher.
-By ``resemble'' we mean that they share the same form of the tail in
+By ``resemble'' we mean that they share the same functional form in
   their limiting ESDs,
    $\rho^{\infty}_{\AECS}(\lambda)\sim\rho^{\infty}_{\XECS}(\lambda)$.
   \item
@@ -162,15 +150,16 @@ the tail of the ESD $\rho^{emp}_{T}(\lambda)$, and that can be
 parameterized by some measurable property.
 This may include the number of Spikes $\lambda^{spike}$, the fitted PL exponent $\alpha$,
 the maximum eigenvalue $\lambda_{max}$, or even the entire tail $\rho^{tail}_{T}(\lambda)$.
-This may be a formal expression, a computational procedure, or some combination.
+This may be a formal expression, a computational procedure, or some combination. 
 
 To integrate $R(z)$, however, to have a physically meaningful result,
 one must ensure that $R(z)$ is both
 analytic and single-valued on the domain of interest, namely, the \ECS (and therefore
-the (PL) tail of the ESD),  $z \ge \LambdaECSmin$.
+the (PL) tail of the ESD),  $\Re[z] \ge \LambdaECSmin$.
+\footnote{$\Re[z]$$ is the Real part of $z$.}
 Because the ESD is frequently \HeavyTailed (HT), this
 \RTransform $R(z)$ may have a branch-cut, and it is expected that this will occur
-at $z\approx\LambdaECSmin$, corresponding roughly at or before the start of the \ECS (i.e., at the peak of the ESD on a log scale).
+at $\Re[z]\approx\LambdaECSmin$, corresponding roughly at or before the start of the \ECS (i.e., at the peak of the ESD on a log scale).
 Selecting the branch-cut $R(z)$ provides an additional physical meaning to the \ECS.
 
 To complete the theory, we

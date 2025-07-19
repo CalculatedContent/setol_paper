@@ -287,7 +287,8 @@ in the \LargeN limit as
   \langle \DETOPXI\rangle_{\AVGNDXIn}=
   \lim_{n\gg 1}\frac{1}{\ND}
 \int \prod_{\mu=1}^{\ND}d\XI_{\mu}P(\NDXIn)
-  \sum_{\mu=1}^{\ND}\DEL(\WVEC,\XI_{\mu}) .
+\sum_{\mu=1}^{\ND}\DEL(\WVEC,\XI_{\mu}) .
+\label{eqn:longEn}
 \end{align}
 Here, the notation $(n \gg 1)$ means $\ND$ grows arbitrarily large, but is not necessarily
 at the limit point $(n=\infty)$. And, again, the load is fixed, so $n\gg 1 \leftrightarrow m \gg 1$.
@@ -304,7 +305,7 @@ For convenience and for compatibility with \cite{SST92}, we denote it using the 
 \end{align}
 \michaelB{Q: Why do we not have the $\lim_{n\gg 1}$ notation there?}
 where, by our normalization here, $\EPSLw \in [0,1]$.
-The symbol $\EPSLw$ is our theoretical estimate of the sample average $\DETOPXI$ (\EQN~\ref{eqn:detox}),
+The symbol $\EPSLw$ is our theoretical estimate of the sample average $\DETOPXI$ (\EQN~\ref{eqn:longEn}),
 well-defined for any $\ND$.
 We also call $\EPSLw$ the \emph{\EffectivePotential}, which will be made clear below.
 
@@ -322,8 +323,7 @@ which is the regime in which \SETOL will be developed.%
 \paragraph{From Errors to Accuracies: The \AverageGeneralizationAccuracy, the \Quality, and the \SelfOverlap.}
 We have been discussing various forms of errors.
 In \SETOL, we will, however, primarily be concerned with approximating the \emph{\AverageGeneralizationAccuracy},
-or, more generally, the \Quality of a NN model and/or its layers.
-\footnote{Technically, the \Quality will estimate the average \emph{Precision} rather than the Accuracy.
+or, more generally, the \Quality of a NN model and/or its layers.\footnote{Technically, the \Quality will estimate the average \emph{Precision} rather than the Accuracy.
 This will distinction will be clarified in the Section~\ref{sxn:SMOG_main-student_teacher}.}
 \michael{Q: why is this le 1 (see above)?  If not, then, we can still define the generating function for the accuracy to be negative of the generating function for the error.}
 The average accuracy is simply one minus the error.

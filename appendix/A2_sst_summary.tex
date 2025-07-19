@@ -253,8 +253,8 @@ where
 \label{eqn:InsideGan}
 \IH := \int\mathcal{D}\NDXI \, e^{-\beta \DETOPST} P(\NDXI) .
 \end{align}
-That is, $\HANPP$ represents the Energy or Error each of the $M$ parameters contributes
-(integrated over the $N$ training examples $\NDXI$).
+That is, $\HANPP$ represents the Energy or Error that each of the $N\times M$ parameters contributes
+(averaged over the $N$ training examples $\NDXI$).
 
 The goal will be to derive the high-Temperature \AnnealedHamiltonian, $\GANMATHT$, which is now  defined such that:
 \begin{align}
@@ -262,8 +262,8 @@ The goal will be to derive the high-Temperature \AnnealedHamiltonian, $\GANMATHT
   \Trace{\GANMATHT}:=MN\left(\Trace{\HANPPHT  }\right)
 \end{align}
 
-If we were to evaluate the trace of $\HANPPHT$, then we could also define
-a matrix-generalized \EffectivePotential for each parameter:
+If examining the the trace of $\HANPPHT$, then we can infer the functional form necessary to define
+the matrix-generalized \EffectivePotential for each parameter:
 \begin{align}
   \label{eqn:EPSL_mat}
   \EPSL(\OVERLAP):=\Trace{\HANPPHT},

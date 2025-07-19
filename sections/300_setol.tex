@@ -21,13 +21,14 @@ The \LayerQuality $\Q$ will estimate the contribution that an individual NN laye
 In deriving $\Q$, we have discovered a new \LayerQuality metric, called the \TRACELOG condition,
 which indicates the generalizing components of the layer concentrate into a low-rank subspace
 (the \emph{\EffectiveCorrelationSpace}, or~\ECS).
-\michaeladdressed{Something about~\ECS here, since we describe it suboptimally above.}
-%
-(Importantly, we have conducted detailed experiments to show that the key assumptions of our \SETOL theory are valid
-(see Sections~\ref{sxn:empirical-effective_corr_space} and \ref{sxn:empirical-trace_log}),
-and that the empirical estimates of the \SETOL \TRACELOG condition align remarkably well with predictions from the \HTSR
-theory under \Ideal conditions (see Sections~\ref{sxn:empirical-test_acc}).
-We also examine how the \HTSR predictions (i.e., the HT PL exponent $\alpha$) behave under non-\Ideal conditions (see Sections~\ref{sxn:empirical-correlation_trap} and \ref{sxn:hysteresis_effect}).
+Importantly, we have conducted detailed experiments to show 
+that the empirical estimates of the \SETOL \TRACELOG condition align remarkably well with predictions from the \HTSR
+theory under \Ideal conditions (see Sections~\ref{sxn:empirical-test_acc})
+and, then, 
+that the key assumptions of our \SETOL theory are valid
+(see Sections~\ref{sxn:empirical-effective_corr_space} and \ref{sxn:empirical-trace_log}).
+In Section~\ref{esxn:empirical_comp_r_transforms}, we demonstrate how to apply theory directly using explicit calculations of the \RMT layer cumulants.
+We next examine how the \HTSR predictions (i.e., the HT PL exponent $\alpha$) behave under non-\Ideal conditions (see Sections~\ref{sxn:empirical-correlation_trap} and \ref{sxn:hysteresis_effect}).
 \michael{Does that outline belong here.}
 %
 In the following, we will outline key conceptual aspects of \SETOL.
