@@ -93,7 +93,6 @@ The various symbols and other important results are summarized in the Appendix~\
 
 A basic issue in formulating \SETOL is that one typically trains one large (expensive) NN, i.e., one does not necessarily  need to split the data into training and testing sets (as in more traditional hyperparameter tuning of ML models).
 Thus, we want a methodology to approximate quantities such as the generalization error or generalization accuracy that does not rely on traditional train-test splitting methods.
-\michaelB{Q: how does this lack of using training/testing split relate to that we ignore the $y$ below and/or that we are actually getting a notion of quality/accuracy, rather than error (related to $\Gamma_{\ND}$ versus $F_{\ND}$).}
 To accomplish this, we idealize the empirical data distribution as Gaussian fields, and we will use \STATMECH to construct quantities (basically, free energies or generating functions) so that we can compute training/testing errors by taking appropriate derivatives of these quantities.
 
 In more detail, we imagine training a NN on $\ND$ training data instances, $\XVEC_{\mu}$, which are $m$-dimensional vectors,
@@ -200,8 +199,6 @@ This operator notation will prove useful later in Section~\ref{sxn:SMOG_main-st_
 
 We will not, however, work directly with samples and sample averages.
 Instead, we will model them.
-%%\michael{By that, I think we mean that it is hard to compute them, so we will model them with Gaussian random variables with a model with a parameter to fit semi-empirically to data; correct?}
-%%\cformike{We discussed on the phone.  The idea is we compute the average as a derivative of a generating function that we know exactly, as opposed to say doing a monte carlo sample because the partition function $Z_{\ND}$ is intractable}
 To that end, we need to estimate them with a theoretical approach. For example, we can write the \TotalDataSampleError 
 in terms of our random data variables $\NDXI$, written formally as
 \begin{align}
@@ -259,10 +256,7 @@ The measure $d\mu(\NDXIn)$
 denotes the probability measure associated with a single 
 \emph{realization} of a random data sample of size $\ND$ drawn from an $m$-dimensional idealized Gaussian distribution.
 A subscript $\XI$ on the Ket as $\langle\cdots\rangle_{\XI}$ indicates that the integral over potential data points, not an average of a data sample (i.e., there would be no $1/\ND$ prefactor).
-% \michaeladdressed{@charles: clarify; that is $\ND$ vectors in $\mathbb{R}^{M}$ that are element-wise i.i.d. Gaussian?}
-%%\michael{Where we are using $M$ and $\ND$ rather than $m$ and $\ND$; is that a typo, or what should it be.}
-%%\cformike{I use $n,m$ in this section, $\ND$, $M$ elsewhere since they can mean different things when we generalize to a layer.  We can fix if its too confusion, or maybe just explain above.}
-%
+
 
 \paragraph{\SizeExtensivity and \SizeIntensivity}
 A key requirement for the \ThermodynamicLimit in \STATMECH is \emph{\SizeExtensivity}:
@@ -302,7 +296,6 @@ For convenience and for compatibility with \cite{SST92}, we denote it using the 
  \label{eqn:epsl}
  \EPSLw:=\lim_{n\gg 1}  \langle \DETOPXI \rangle_{\AVGNDXIn} \quad \text{(\SizeIntensive)}.
 \end{align}
-\michaelB{Q: Why do we not have the $\lim_{n\gg 1}$ notation there?}
 where, by our normalization here, $\EPSLw \in [0,1]$.
 The symbol $\EPSLw$ is our theoretical estimate of the sample average $\DETOPXI$ (\EQN~\ref{eqn:longEn}),
 well-defined for any $\ND$.
@@ -324,7 +317,6 @@ We have been discussing various forms of errors.
 In \SETOL, we will, however, primarily be concerned with approximating the \emph{\AverageGeneralizationAccuracy},
 or, more generally, the \Quality of a NN model and/or its layers.\footnote{Technically, the \Quality will estimate the average \emph{Precision} rather than the Accuracy.
 This will distinction will be clarified in the Section~\ref{sxn:SMOG_main-student_teacher}.}
-\michael{Q: why is this le 1 (see above)?  If not, then, we can still define the generating function for the accuracy to be negative of the generating function for the error.}
 The average accuracy is simply one minus the error.
 To represent this,
 we introduce the \emph{\SelfOverlap} $\ETA(\WVEC)$, which is defined generally as
@@ -338,9 +330,6 @@ Unlike here, however, in later sections
 (\ref{sxn:SMOG_main-st_av}, \ref{sxn:matgen_mlp3}, and Appendix~\ref{sxn:quality})
 we will first define a data-dependent \SelfOverlap, so that we may obtain
  $\ETA(\WVEC):=\langle\ETA(\WVEC,\XI)\rangle_{\AVGNDXIn}$ directly.
-
-\michael{This par should probably be moved.  Probably combine with ``Other notation'' below.  To where?  The one after this may go here; but errors to accuracies is more than just a sign convention.}
-\charles{I added paragraph markers; can move later}
 
 \paragraph{Braket Notation.}
 We will use physics \BraKet notation, $\langle\cdots\rangle$,
@@ -399,16 +388,11 @@ $\DETOT$ over $\WVEC$, we could write
 \langle \DETOT \rangle^{\beta}_{\WVEC}:=\dfrac{1}{Z_{\ND}}\int d\mu(\WVEC) \DETOT e^{-\beta \DETOT} .
 \end{align}
 Importantly, we will never calculate the average errors directly like this.
-%%\michael{I assume that sentence is imprecise; we are not calculating average errors (of samples, so in the sese as used above), but instead computing expectations (of the model/Gaussian variables), which of course should approximate the average errors; correct?}
 Instead, we will calculate them from partial derivatives of the \FreeEnergy $F_{\ND}$ (as shown below).
-%%\charles{We discussed on the phone can rediscuss if necessary}
 Also, we may use $\langle \cdots \rangle^{\beta}_{\NDXIn}$ to denote what looks like a \ThermalAverage over the data;
 this is not essential and only used once below and can be ignored for this section.
 
 \paragraph{Other Notation: Overbars, Superscripts and Subscripts.}
-\michael{The info in this paragraph should be elsewhere, maybe at the top of this or another section,
-  right now we are knee-deep in a subsubsection.}
-\charles{Where ? Maybe make this a subsection or move up ???}
 As above, we may also occasionally denoted averages using the common notation for expected values, $\mathbb{E}[\cdots]$.
 See Table~\ref{tab:dimensions} and~\ref{tab:symbols} in Appendix~\ref{sxn:appendix} for a list of these and other notational conventions and symbols we use.
 
@@ -420,9 +404,7 @@ an average over the data $\ND$.
 Otherwise, we will refer to these quantities as the total (averaged) energy, error, quality, etc.
 
 \charles{Finally, in this preliminary Section, we represent the dimensions with lower case $n,m$, but elsewhere
-  (and somtimes below), we will use capital $N,M$.}
-%%\michael{Are we consistent about Total versus Average, and how does that comment relate to that.}
-%%\charles{I hope so}
+  (and sometimes below), we will use capital $N,M$.}
 
 Finally, when referring to the model (i.e., theoretical)
 training and generalization errors, we will use the superscript $ST$ for
@@ -435,8 +417,6 @@ When referring to empirical errors, we denoted these as $\AVGEMPTE$ and $\AVGEMP
 \subsubsection{Free Energies and \GeneratingFunctions} 
 \label{sxn:mathP_free_energies}
 
-%%\michael{I feel like this section should be expanded slighlty.  We have lots of different partition functions and free energies floating around, and we are also using the terms for $n-F$. }
-
 If one needs an average energy (or error), 
 %or accuracy (or quality),
 it is often easier to calculate the associated \FreeEnergy and take corresponding partial derivatives
@@ -446,8 +426,6 @@ Generally speaking, a \FreeEnergy, $F_{\ND}$, is defined in terms of a partition
 \label{eqn:F}
 \beta F_{\ND}:=-\ln Z_{\ND}.
 \end{align}
-%%\michaeladdressed{Should there be a subscript $\ND$ on $F_{\ND}$, or not on $Z_{\ND}$?}
-%%\charles{@michael:.  Its on $Z_{\ND}$ to remind us of the $\ND$ dependence when we take the derivatives below}
 Keep in mind that $Z_{\ND}$ may actually be a function of the data $\XI$ (or some other variables),
 i.e., $Z(\XI)$, but we usually don't write this explicitly.
 Likewise, while  both $F_{\ND}$ and $Z_{\ND}$ depend explicitly on the system size $\ND$,
@@ -464,23 +442,15 @@ Most notably, we will consider
 \begin{equation}
     \Gamma_{\ND} = n-F_{\ND} .
 \end{equation}
-\michaelB{Q: do I want one-minus, or just minus? See question above about the error being less than $1$.}
 where $\ND$ is the number of degrees of freedom ($n$ for a vector model, but for a  matrix model it is $\ND\times N\times M$; see Appendix~\ref{app:st-gen-err-annealed-ham}).
 The quantity $\Gamma_{\ND}$ decreases as the error increases (as opposed to $F_{\ND}$, which increases), i.e., it increases as the accuracy of quality of the model increases.
-Thus, we will use it as a generating function for the model quality/accuracy.
-%%Without sign convention, as the error decreases, the \FreeEnergy also decreases.
-%%Therefore, when discussing accuracies or qualities, we will introduce a specific \GeneratingFunction, denoted $\Gamma_{\ND}$, which increases as the accuracy of quality increases.  
+Thus, we will use it as a generating function for the model quality/accuracy.  
 For average Qualities, one has
 \begin{equation} 
 \label{eqn:GammaBar}
  \bar{\Gamma}_{\ND}:=1-\bar{F}_{\ND}
 \end{equation} %%$ 
 for the model or layer under consideration (see below).
-\michael{Do we even need that last comment, or just do it later when we take overbar averages.}
-%%\michaeladdressed{Maybe be more explicit which one or two we will do?}
-%%\michaeladdressed{Check later: use this correctly for $F_{\ND}$ versus $Z_{\ND}$, and the $1 - \cdot$ version for accuracies.}
-%%\charles{We can use both F, Z, or $\Gamma_{\ND}$ as needed as \GeneratingFunctions}
-
 
 \subsubsection{The Annealed Approximation (AA) and the High-Temperature Approximation (high-T)}
 \label{sxn:mathP_annealed}
@@ -492,7 +462,6 @@ The full expected value  of the \FreeEnergy, $\beta F_{\ND}=-\ln Z_{\ND}$, with 
 \label{eqn:mm_f_bar}
   \mathbb{E}_{\NDXIn}[\beta F_{\ND}]=\beta\bar{F}_{\ND}:=-\langle \ln Z_{\ND}\rangle_{\AVGNDXIn},
 \end{align}
-\michaelB{Is that $\bar{F}$? }
 where $\langle \ln Z_{\ND}\rangle_{\AVGNDXIn}$ means where we average over  the $\ND$ samples of the data ($\NDXIn$, of size $\ND$).  This is also called the \Quenched \FreeEnergy.
 This is, however,  frequently too difficult to analyze, and doing so typically
 requires a so-called Replica calculation. 
@@ -508,8 +477,6 @@ The mapping is:
   &\mbox{Learning the Weights }      &\leftrightarrow& \quad\mbox{NN Optimization Algorithm} &\leftrightarrow& \quad\mbox{\ThermalAverage}  .
 \end{align*}
 %\end{center}
-\michaeladdressed{I get the left and right column, but not the middle; an approximation, which is computing something in some regime, seems to be a different ``type than an optimization algorithm.}
-\charles{In training an NN, one first learns the weights $\WVEC$
   through the NN optimization algorithm,
   and then evaluates the training or test accuracy
   by averaging over the (actual) data $\NDX$.
@@ -525,7 +492,6 @@ The mapping is:
 %In this case, we say that the system is quenched to the disorder, and we are performing a \emph{\Quenched} Average over $\mathcal{D}$.
 
 \michaeladdressed{I think that we are using $\NDX$ and $\NDXIn$ somewhat inconsistently. And I think that is since we are going to a lot of effort to talk about replicas, etc.  We may be able to modularize some of this replica stuff to the appendix since it's distracting to reader---it's taking a lot of time to get to the annealed hamiltonian, which is what we want to get to.  This feels a bit more like the advanced stuff that we have in Appendix~\ref{sxn:summary_sst92}, but where we do the less precise derivation in the main text; we may want to do that here, saying that there is an approach that sawps integrals to make life easier (see the appendix for a more detailed analysis, where wer derive it more precisely), and that gives the AA that gives us the annealed hamiltonian that is our staritng point.  That would also make this section shorter, which would be good.}
-\charles{Cleaning this up}
 
 \paragraph{The Annealed Approximation (AA).} 
 Formally, the AA makes the substitution
@@ -549,7 +515,6 @@ and it allows will let us interchange integrals and logarithms when computing th
 \xrightarrow {\text{AA}}
 \ln\tfrac{1}{\ND}\int d\mu(\NDXIn)(\cdots)
 \end{align}
-\michaelB{Is this the AA backwards? I.e., not the AA but a swap that we can do due to it?}
 This will allow us to switch the order of the data and the thermal averages, i.e.,
 \begin{align}
 \label{eqn:switch}
@@ -591,7 +556,6 @@ This can be seen by noting that we can express \EQN~\ref{eqn:Gan_def} as an inte
    &=  - \ln  \int d\mu(\XI)e^{-\beta \DEL(\WVEC,\XI)}
  \end{align}
 This will be a critical piece needed to generalize the vector-based ST \Perceptron model to the matrix-generalized ST MLP model.
-\michaelB{Probably don't mention here, but backpoint to here from where we do that.}
 In BraKet notation, \EQN~\ref{eqn:Gan_simplified} can be expressed as
 \begin{eqnarray*}
     \beta\GAN:=  -\tfrac{1}{\ND}\ln\left\langle e^{-\beta\DETOPXI}\right\rangle_{\NDXIn}= 
@@ -625,12 +589,7 @@ in Appendix~\ref{sxn:appendix_Gan} we show that these derivations generalize to 
 %Notice that $\GAN$ resembles a (unitless) \FreeEnergy 
 %%(i.e., $\GAN=\beta F(\XI)=-\ln Z(\XI)$),
 %(i.e., $\GAN=\beta F(\XI)=-\ln Z(\XI)$, for some other ``effective $F_{\ND}$ and $Z_{\ND}$),
-%\michael{@charles: primes looked like derivatives, is that clarifying remark okay.}
-%%\charles{Yeah, good point.  Or just change the notation to be clearer }
-%\cformike{Maybe use somehting other than primes}
 %We have recovered the full partition function $Z_{\ND}$.
-%\michael{I must be missing something.  I must be missing something.  Where was this defined; and is this $Z_{\ND}$ or $Z^{an}_{\ND}$?}
-%\cformike{? maybe we did not define $Z_{\ND}$ upfront.  Can you suggest where to add it}
 
 \paragraph{The High-Temperature (High-T) Annealed Hamiltonian $(\HANHT(\WVEC)=\EPSLw)$ and Partition Function $(\ZANHT)$. }
 %\paragraph{High-Temperature Approximation.}
@@ -651,45 +610,6 @@ the first two terms:
 \begin{align}
   e^{-\ND\beta\DETOPXI} \simeq \underbrace{1 - \beta\DETOPXI}_{high-T}+ (\beta\DETOPXI)^{2} + \cdots  .
 \end{align}
-
-%The high-T approximation resembles the AA (or, rather, Jensens inequality as an equality), when applied to the \ThermalAverage as opposed to the data averages
-%%%%\red{Something wrong here}
-%%%If we now evaluate $Z_{\ND}^{\red{an}}$ at high-T, we obtain
-%%%\begin{align}
-%%%  \red{\ZANHT}=\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}
-%%%  &\approx \int d\mu(\WVEC) (1-\ND\beta\EPSLw) \nonumber \\
-%%%  & = \int d\mu(\WVEC) - \int d\mu(\WVEC) \ND\beta\EPSLw \nonumber \\
-%%%  & =-  \red{1-??}\int d\mu(\WVEC) \ND\beta\EPSLw 
-%%%\end{align}
-%%%%If, in analogy with \EQN~\ref{eqn:Jensens}, 
-%%%%we switch the order of the integral and the logarithm, we obtain the same result as the high-T approximation:
-%%%%  \begin{align}
-%%%%    \int d\mu(\WVEC) \ln e^{-\ND\beta\EPSLw}
-%%%%    &= -\int d\mu(\WVEC)\ND\beta\EPSLw
-%%%%  \end{align}
-%%%%  
-%%%%And while one might think of a high-T approximation as an ``aggressive'' application of the AA, 
-%%%%the intent of the two approximations are different.
-%%%%The AA suppresses the effects of disorder in the data; 
-%%%%consequently, it misses the spin-glass phase transition that arises when severely overfitting the data.
-%%%This simple expression shows that  high-T approximation suppresses complex interactions between the weights,
-%%%and results in a simple or naive average
-%%%%consequently, when combined with the AA, at high-T, the training and generalization errors become equivalent.
-%%%At high-T we will define our \Annealed \PartitionFunction,
-%%%$\ZANHT$, as a \ThermalAverage over the data-averaged error, $n\EPSLw$ directly:
-%%%\begin{align}
-%%%  \label{eqn:ZanhT}
-%%%  \ZANHT :=  \int d\mu(\WVEC) e^{-\ND\beta \EPSLw}   .       %=  n\THRMAVGw{\EPSLw}  
-%%%\end{align}
-%%%%%\michael{Is this eqn different than \EQN~\ref{eqn:Zan}? They look identical.}
-%%%%%\michael{@charles: there is some problem with labels. When I wrote that last comment, I was trying to refer to the equation above, not the one in the appendix.  So, two things: first, make unique labels; and second, what about the question. If they are the same, then probably best to point back rather than writing out a new equation, since it took me a while to figure out that we are almost rederiving the same thing.}
-%%%%%\charles{The appendix rederives some of this.  its a bit repetitive but it seemed ok for an appendix to show an example of what we mean by working out the details.  }
-%%%
-%%If we have a simple expression for $\EPSLw$, and if we can evaluate $\red{\ZANHT}$ or $\ln \red{\ZANHT}$, 
-%%then we can obtain the desired training and/or test errors using the generating function properties of the partition function.
-%%%%\michael{@charels: In most places, you have a short par like this as a preamble to motivate the subsequent par.  But here it points to something three pars below.  And the next two pars (I think) will show that \TrainingError and \GeneralizationError become equivalent in the AA/high-T limit.  If Im correct, we just need slightly better sign-posting.}
-%%\charles{Yeah that could be.  Maybe add some references to the sections and be clearer}
-
 
 Let us now express $\GAN$ directly in terms of $\EPSLw=\langle\DETOPXI \rangle_{\AVGNDXIn}$ (see \EQN~\ref{eqn:epsl}) as a \ThermalAverage at high-T.
 To do so, let's take a high-T expansion of \EQN~\ref{eqn:Gan_def} 
@@ -723,20 +643,12 @@ This will prove very useful later when working with HCIZ integrals.
 
 \subsubsection{Average Training and Generalization Errors and their \GeneratingFunctions}
 \label{sxn:mathP_errors}
-
-\michaeladdressed{This is a long subsubsection, and I think it's hard to follow. Let's have an outline of the subsubsection here, and let's stick to it. What is the point of this subsubsection, i.e., what (say) three equatinos are being derived.}
-\michael{It may also be good to have some parts of this subsection just have results stated and move others to a self-contained appendix; this is a long and comples subsubsection, and I'm not sure the logical flow.}
-
 Here, we show how to derive the Average \TrainingError $\AVGTE$ and  the \AverageGeneralizationError $\AVGGE$,
 in the \AnnealedApproximation (AA), and at high-Temperature (high-T), using the \FreeEnergy $F_{\ND}$ and/or the \PartitionFunction $Z_{\ND}$ as
 a generating function.  
 In particular, we show that, in the AA and at high-T, these errors are (approximately) equal
 and equal to the \ThermalAverage of the \EffectivePotential,
 $\AVGTE^{an, hT} \approx \AVGGE^{an, hT} \approx \THRMAVGw{\EPSLw}$.
-
-%%\\
-%%\\
-%%For a summary of these different symbols and terms, see Table~\ref{tab:energies} (in Appendix~\ref{sxn:appendix_A}).
 
 \paragraph{\GeneratingFunctions for the Errors: the \STATMECH way.}
 In our theory, after applying the AA, we obtain expressions where the random model data $\NDXIn$ has been integrated out. This leaves formal quantities that depend only on the weights $\WVEC$, which are the variables being learned during training.
@@ -805,7 +717,6 @@ This equivalence reflects the fact that when the system is large enough, adding 
 training distribution is formally equivalent to adding noise, making the two errors indistinguishable.
 This approach allows us to define both training and generalization errors in terms of fundamental thermodynamic quantities,
 providing a simplified formal framework suitable for empirical adjustment later.
-\michaelB{Figure out where to put that sentence; it's vimp.}
 
 Also, note that the model data variables $\XI$ do not enter the calculation because we 
 integrated them out before the calculation of \ThermalAverage.
@@ -838,17 +749,14 @@ and for a general NN, $\Q^{ST}$, such that
 \Q^{ST}:=1-\AVGGE^{ST}  \\ 
 \Q^{NN}:=1-\AVGGE^{NN}  
 \end{align}
-\michaelB{Make subeqns.}
 In this work, however, the \Quality will always be defined at high-T, and so we may write
 \begin{align}
   \label{eqn:model_qualities}
   \Q^{ST}=1-[\AVGTE^{ST}]^{an,hT}=1-[\AVGGE^{ST}]^{an,hT} \\
   \Q^{NN}=1-[\AVGTE^{NN}]^{an,hT}=1-[\AVGGE^{NN}]^{an,hT} 
 \end{align}
-\michaelB{Make subeqns.}
 We also define a \LayerQuality, simply denoted $\Q$,
 which will describe the contributions an individual layer makes to the overall \ModelQuality $\Q^{NN}$.
-\michaelB{How do we know that it is decoupable, at this point in the exposition.  Maybe combine the following two sentences with below.}
 To obtain the \LayerQuality, we define an accuracy--or \Quality--\GeneratingFunction, denoted $\Gamma_{\Q}$, which
 is analogous to a layer \FreeEnergy, but with the opposite sign convention.
 

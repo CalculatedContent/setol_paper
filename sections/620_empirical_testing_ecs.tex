@@ -223,28 +223,6 @@ Second,
 in both Figure~\ref{fig:mlp3-msr-results-xmin} and~\ref{fig:mlp3-msr-results-detX}, we can see that $\Delta E_{test}$ is consistently lower than $\Delta E_{train}$. 
 Clearly, truncating has a larger effect on train predictions, meaning that no matter how long the model is trained, some 
 of the train predictions are still derived from the bulk. The fact that they remain is evidence that the gradient does not degrade them, meaning that they were most likely contributing spuriously correct answers. Yet, the test predictions are far less affected, meaning that only the \EffectiveCorrelationSpace contributes to the models ability to generalize.
-% \michael{I as assuming that fig refers to Fig \ref{fig:mlp3-msr-results-detX} and not to Fig \ref{fig:mlp3-msr-results-xmin}? If, flesh out and put in the previous par.
-% }
-% \chris{Lets discuss. Im not sure what youre referring to here.}
-
-
-
-%%We have shown that both MSRs can preserve and explain the test predictions on a simple model like MLP3
-%%when the weight matrix is HT, but not necessarily when it is HT element-wise, (i.e has a \CorrelationTrap).
-%%Moreover, they work best when they coincide, which occurs when $\alpha\simeq 2$.
-
-
-%We apply the \POWERLAW~and \TRACELOG~\ModelSelectionRule (MSR) to layer 1 (FC1) of the MLP3 model
-%and attempt to predict the test accuracy (again, without peeking at the test data).
-%Figures~\ref{fig:mlp3-esd-tail} and~\ref{fig:mlp3-detX}  plot the train 
-%vs. the test accuracies for the \POWERLAW~and \TRACELOG~MSRs, resp.,
-%and for all batch sizes $bs$.
-%Figures~\ref{fig:mlp3-esd-tail-2} and~\ref{fig:mlp3-detX-2} plots the same,
-%but restricted to $bs>1$.
-%Notice that both MSRs predict the $E_{test}$ trends well when batch size greater than 1 $(bs>1)$,
-%whereas only the \POWERLAW~treats the $bs=1$ case reasonable well (albeit imperfectly).
-
-
 
 \subsubsection{Truncation and Generalization}
 
@@ -256,7 +234,6 @@ of the train predictions are still derived from the bulk. The fact that they rem
 %Generally speaking, this may not be as good of an approximation as above, but we
 %can use this to study trends in the test accuracies for the \ALPHA and \ALPHAHAT metrics
 %to see how \ALPHAHAT can correct for anamolously small alphas due to \CorrelationTraps.
-\charles{This section is very messy, needs reworking}
 Given that $\Delta E_{test}$ is always lower than $\Delta E_{train}$ for the \POWERLAW~MSR, and similarly for \TRACELOG~after a certain point in training, it is clear that the \EffectiveCorrelationSpace has something to do with generalization.
 However, this leaves open the question of what role precisely \ALPHA plays. 
 In Figure~\ref{fig:mlp3-alpha-generalization-gap}, we plot $\Delta E_{train}$ and $\Delta E_{test}$ with the \POWERLAW~MSR as a function of \ALPHA (rather than epochs) for layers FC1 and FC2, as well as the \GeneralizationGap -- that is, $E_{test} - E_{train}$. 

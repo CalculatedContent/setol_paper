@@ -125,7 +125,6 @@ where we define $\Gamma_2$ as
 
 To evaluate $\Gamma_2$, we will make several mathematically convenient approximations.
 (These will yield an approximate expression which can be verified empirically.)
-\michaeladdressed{MM TO DO: point explicitly to the main text where we made these explicit, if/when that is the case.}
 %
 We first assume for the purpose of changing measure that the (data) columns of $\SMAT$ are
 statistically independent, so that the measure $d\mu(\SMAT)$ factors into $N$ Gaussian distributions
@@ -246,8 +245,6 @@ In this section, we express the \GeneratingFunction $\IZG$,
 given in \EQN~\ref{eqn:IZG_dmuS} (equivalently, in \EQN~\ref{eqn:betaIZG_S},) 
 as an HCIZ Integral, 
 as given in \EQN~\ref{eqn:IFA2_braket}.
-\michael{@charles: make sure I got those numbers correct.  BTW, I think it makes sense to explicitly call out the HCIZ equation by itself in a self-contained statement, so then we can point to it rather than \EQN~\ref{eqn:IFA2_braket}, which uses HCIZ in our context; if so, would you do that.}
-\charles{You mean like what you did in Appendix A6, \EQN~\ref{eqn:hciz2} ?  Thats good, and that can go early on, in section 3 or 4}
 
 Inserting $I^{*}(\AHAT,\AMAT)$ from \EQN~\ref{eqn:IAA_2} into $\IZG$, we obtain
 \begin{align}
@@ -324,8 +321,6 @@ or, in \BraKet notation, as
 %  e^{\tfrac{N}{2}\ln(\Det{\AECS})}  ,
 %\end{align}
 %where have now written $\AECS_{2}$ explicitly for clarity.
-%\michael{We are talking about cutting off small eigenvalues, but then we seem to swap $\AECS_{1}$ and $\AECS_{2}$; need to clarify something.}
-%\michael{I think it is okay; MM to confirm.}
 %We may also write this using \BraKet notation as
 %\begin{align}
 %  \label{eqn:IZG_braket2}
@@ -367,11 +362,9 @@ or, in \BraKet notation, as
 %select $\XECS$ such that $\Det{\XECS}=1$ by simply defining the ECS as the eigen-components spanned by the PL tail.
 %Therefore, in this analysis, we will replace $\AMAT$ with $\AECS$, i.e., $\AMAT\rightarrow\AECS$ 
 %and set $\Det{\AECS}=1$.
-%\michael{MM: Iths par should maybe be moved to the main text.}
 %
 %\paragraph{The Final Generating Function $\IZG$ for the Quality (Squared) as an HCIZ Integral.}
 %With this, we can write $\IZG$ as an HCIZ integral as in \EQN~\ref{eqn:hciz}
-%\michael{@charles: what equation should that HCIZ reference be.}
 %in \BraKet notation as
 %\begin{align}
 %  \label{eqn:IZG_final_hciz}
@@ -399,6 +392,5 @@ or, in \BraKet notation, as
 %That is, $\TMAT$ the actual layer weight matrix $\TMAT=\tilde{\mathbf{W}}$ of the model we wish to study
 %(but also only in the span of the ECS).
 %Notice also that, here,  $\beta$ is the inverse-Temperature and not the simple constant $1$ or $2$ as in \cite{Tanaka}.
-%\michael{It seems like this par should be somewhere else. Maybe the math section.}
 %
 

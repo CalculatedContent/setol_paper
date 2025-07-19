@@ -2,39 +2,10 @@
 \subsection{Evaluating the Layer Quality \texorpdfstring{$(\Q)$}{Q} in the Large-\texorpdfstring{$N$}{N} Limit}
 \label{sxn:matgen_evaluation_hciz}
 
-%%%Here, we model the matrix-generalized Average ST \Quality (Squared)
-%%%$\QT$ of an HCIZ integral, and in the large-$N$ limit. 
-%%%\michael{Why change notation below?  I sort of like it but sort of dont.}
-%%%We can write the generating function $\IZG$ (for the Total Average \Quality Squared $\mathcal{Q}^{2}$)
-%%%in \BraKet notation as
-%%%\begin{align}
-%%%  \label{eqn:IZG_hciz}
-%%%  \IZG := & \frac{1}{N}\left\langle     \exp ( N\beta \Trace{\tfrac{1}{N} \TMAT^{T}\AECS_{2}\TMAT })\right\rangle_{\AECS} 
-%%%\end{align}
-%%%or explicitly as an integral as
-%%%\begin{align}
-%%%  \label{eqn:IZG_integral}
-%%% \IZG  := & \frac{1}{N}\int d\mu(\AECS) \exp ( N\beta \Trace{\tfrac{1}{N} \TMAT^{T}\AECS_{2}\TMAT })
-%%%  \end{align}
-%%%or, in Tanakas notation,
-%%%\begin{align}
-%%%  \label{eqn:IZG_tanaka}
-%%% \IZG  := & \frac{1}{N}\mathbb{E}_{\AECS}\left[ \exp ( N\beta \Trace{\tfrac{1}{N} \TMAT^{T}\AECS_{2}\TMAT })\right]
-%%%\end{align}
-%%%where 
-%%%$\langle\cdots\rangle_{A}=\int\cdots d\mu(A)=\mathbb{E}_{A}[\cdots]$
-%%%are equivalent notation denoting the expected value (or average) over all \Student Correlation Matrices $\AECS$ spaning the~\ECS,
-%%%$\AECS_{2}$ is a (random) $N\times N$ square (correlation) matrix, and
-%%%$\TMAT$ is a (non-random) \Teacher $N\times M$ rectangular (weight) matrix.
-%%%That is, $\TMAT$ the actual layer weight matrix $\TMAT=\tilde{\WMAT}$ of the model we wish to study
-%%%(but also only in the span of the~\ECS).
-%%%Notice also that, here,  $\beta$ is the inverse-Temperature and not the simple constant $1$ or $2$ as in \cite{Tanaka}.
-%%%
-%%%\nred{REPEATED AGAIN}
+%
 To generate the Average \Quality, $\QT$, we first take the \LargeN limit of $\IZG$ in $N$,
 \begin{equation}
   \label{eqn:IZG_limit}
-  %  \IZGINF := \lim_{N\gg 1}\IZG = \lim_{N\gg 1}\ln\; \mathbb{E}_{\AECS}\left[\exp N\beta\left( \tfrac{1}{N}\Trace{ \TMAT^{\top}\AECSN\TMAT } \right)\right] ,
 \IZGINF := \lim_{N \gg 1} \IZG 
 = \lim_{N \gg 1}  \tfrac{1}{N}
 \ln \; 
@@ -84,8 +55,6 @@ This gives
 \label{eqn:tanaka_result2}
 \IZGINF = \ND\beta\sum\limits_{i=1}^{\MECS}\;\GNECSI,
 \end{equation}
-\michaeladdressed{State this in a self contained way, with rank assumptions, etc.}
-
 
 This gives a final expression for the Average \LayerQuality (Squared) $\QT$ as
 \begin{equation}
@@ -111,17 +80,12 @@ to start at $\LambdaECSmin$ is critical.
 
 \charles{removed section below for space reasons; see tex file}
 %The \RTransform is like an inverse Greens function and is also a Cumulant generating function.
-%\michael{Still to fix this par.}
 %Specifically, the $R$-transform arises in RMT in the following way. 
 %gWe can define the Greens function $\mathcal{G}_{A}(z)$ for any square, positive-definite matrix $\AECS$ as the Steiljes Transform of the ESD $\rho_{A}(\lambda)$.
-%\michael{Clarify.}
 %Following Zee~\cite{Zee:Blue}, we call $\mathcal{B}(z)$ the \BlueFunction, which is the functional inverse of $g(\AECS)$
 %For example, if $\mathcal{G}_{A}(z)=XXX$ then  $\mathcal{B}(z)=YYY $.
 %We can then define the $R$-Transform $R(z)$ in terms of $\mathcal{B}(z)$ as XXX.  
-%\michael{What does that mean?}
-%\charles{RMT has its own Cumulant generating function}
 
-%\michael{Either modularize thias a remark, or lets give an explicit equation that we need to call for our subsequent derivation, or for others to follow up on our derivation.}
 %The $R$-tramsform is commonly referred to as the Cumulant Generating Fucntion for RMT.
 %However, it also has another interpretation, which is relevant here. 
 %Obviously, the R-tramsform of a matrix $\AECS$ can be thought of as a modified functional inverse of the Greens function for $\AECS$,
@@ -129,9 +93,6 @@ to start at $\LambdaECSmin$ is critical.
 %More importantly, however, if one considers the $R$-transform of the sum of two matrics $\AECS_{2}+\AECS_{2}$, then the resulting expression represents a kind of single-particle Greens function for the interacting matrices~\cite{Zee:Blue}.
 %
 %Most importantly, we know the $R$-transform for an HT random matrix with a PL ESD (see \EQN~\ref{eqn:R_PL}, below).
-
-\michael{@charles: if I understand things, the following (until the end of the section) is a big shift; we are going from doing Tanaka, to justifying why we use the empirical data; we should highlight it more clearly.}
-\charles{@michael: thats true}
 
 Since we expect the best Student matrices to resemble the actual \Teacher matrices, we expect the \Student correlation matrix $\AECS$ to have similar spectral properties to our actual empirical correlation matrices $\XECS$.
 That is, from the perspective of \HTSR theory and the classification into \PhasesOfTraining~\cite{MM18_TR_JMLRversion}, we expect all the $\AECS$ to be in the same phase as $\XECS$ (and, in addition, to have the same PL exponent value).   That is, 

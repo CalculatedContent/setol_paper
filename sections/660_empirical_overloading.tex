@@ -1,12 +1,6 @@
 
 \subsection{Overloading and the Hysteresis Effect}
 \label{sxn:hysteresis_effect}
-
-%Here, we do such-and-such. 
-%XXX.  HOW PRECISELY TO FRAME.
-
-\michaeladdressed{This par should go somewhere.  Where?}
-\charles{@michael: again, no changes to section 6}
 Obtaining a value of $\alpha$ outside the $\alpha \gtrsim 2$ range is indicative of ``overloading~\cite{SST92} that layer. 
 This can be accomplished, e.g., by training only one layer in the MLP3 model.
 As the two layers have very different sizes, we see markedly different behaviors, that are nevertheless consistent with theory.
@@ -19,9 +13,6 @@ or meta-stable state.
 One way we can do this is to train only one layer, and freeze the rest. 
 Doing so overloads the single trainable weight matrix, as a function of the ratio of examples to trainable
 parameters~\cite{SST92,Gardner_1988,MM17_TR}, and we expect this to cause $\alpha_{FC1}$ or $\alpha_{FC2}$ to drop well below $2$. As in \ref{sxn:empirical-effective_corr_space}, we will be examining this effect over the entire course of training.
-
-\michaeladdressed{@chris: reorganize the figures in this section, like we discussed.  Also, organie the text properly into each subsubsection.}
-\chris{Ive split the figures and re-organized. Lets discuss.}
 
 \subsubsection{Baseline: Loading onto both FC1 and FC2}
 \label{sxn:hysteresis_baseline}
@@ -56,8 +47,6 @@ parameters~\cite{SST92,Gardner_1988,MM17_TR}, and we expect this to cause $\alph
     \label{fig:mlp3-baseline-load}
 \end{figure}
 
-
-%\michaeladdressed{Backpoint explicitly to what figs/section is being referred to here.} Done
 
 To start, Figure~\ref{fig:mlp3-baseline-load} shows $\alpha_{FC1}$ and $\alpha_{FC2}$, binned in units of $0.05$, versus 
 train and test error over all epochs of training
@@ -134,9 +123,7 @@ We can also see that in some sense, the model is ``doomed'' to always have train
 $\alpha_{FC1} \simeq 1.7$, i.e., after $\alpha = 2$, because of the number of trainable parameters, and perhaps because 
 of the lack of a modulating influence of FC2 seen in Figure~\ref{fig:mlp3-baseline-load}.
 
-\chris{This might be a good place to cite Temperature Balancing, Layer-wise Weight Analysis, and Neural Network Training because this corroborates the idea that learning rates work differently on different layers.}\michael{Yes.}
-\charles{@michael: do it then!}
-
+\chris{This might be a good place to cite Temperature Balancing, Layer-wise Weight Analysis, and Neural Network Training because this corroborates the idea that learning rates work differently on different layers.}
 
 %In the FC1 layer we see that as $\alpha$ decreases below $2$, the rate of 
 %decrease of test error begins to slow down at exactly that point. In FC2, which has much less capacity for storing 
@@ -187,15 +174,11 @@ trained. There we see a different relationship between $\alpha_{FC2}$ and train 
 None of the training runs reached an $\alpha_{FC2}$ of $2$, as the load was split between both layers FC1 and FC2.
 
 Figure~\ref{fig:mlp3-FC2-alpha-hysteresis}, however, shows a starkly different relationship. 
-\michaeladdressed{We need to show more, especially earlier in training, so its clear that the curves are similar and then split.}
-\charles{@michael: Chris has moved on and we need to work with what we have}
 When only FC2 is trained, 
 each random seed produces a different trajectory, meaning that they cannot be interpretably plotted as a single curve, even with error 
 bars. Train (a, c) and test (b, d) error rates are shown as a function of $\alpha_{FC2}$ for the two highest learning 
 rate factors, $16\times$ (a, b) and $32\times$ (c, d). Lower learning rate factors, (not shown,) showed the same trend, except 
 that they did not progress as far as those shown in Figure~\ref{fig:mlp3-FC2-alpha-hysteresis}.
-\michaeladdressed{Not clear.}
-\charles{@michael: this should have been addressed a year ago}
 
 First we see, for all seeds, $\alpha_{FC2}$ decreases all the way down to $1.5$, after which it begins to rebound to the 
 right. As it 
@@ -208,7 +191,6 @@ them terminates at a different point, some of which are closer to $2$ than other
 Such a reversion to a more \Typical value of $\alpha_{FC2}$, prior to the fracturing of the PL tail, is 
 reminiscent of a spin glass system relaxing towards its minimum energy configuration, in a way that retains some memory 
 of the path taken on the way to its current state. 
-\michaeladdressed{We show fracturing, then claim it is \ATypical, but we dont show hysterisis, which is the title of the subsection.  We should show that explicitly to be more clear.}
 \chris{The claim of hysteresis is based on the bending seen in the curve (left, top to bottom,) just before fracturing 
         happens. We can also see that though the curves fracture, they all continue bending strongly to the right.
         The theory predicts that alpha will decrease, but it doesnt predict that it will rebound as we see there. The 

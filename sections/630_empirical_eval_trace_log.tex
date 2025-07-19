@@ -17,7 +17,6 @@ Then, to measure how well this condition holds, we can compute
         \Delta \lambda_{min} = \LAMBDAPL - \LAMBDADETX  .
 \end{align}
 In Sections~\ref{sxn:detx-mlp3} and~\ref{sxn:detx-sota}, we will see the trend that as $\alpha$ approaches $2$, $\LAMBDAPL$ and $\LAMBDADETX$ also approach one another, and hence $\Delta \lambda_{min}$ goes to $0$, from above, both for our toy MLP3 model as for SOTA models.
-\michaeladdressed{MM TO DO: make sure we define SOTA in the intro.}
 In our MLP3 model, we will see that a crossing of the equality condition coincides with over-regularization and a degradation in model accuracy. 
 In pre-trained ResNet\cite{ResNet15_TR}, VGG\cite{VGG14_TR} and ViT\cite{VIT20_TR} models, we will also see, empirically, that in general $\Delta \lambda_{min}$ remains positive, just as $\alpha$ remains above $2$.
 
@@ -35,9 +34,6 @@ This is analogous to the case where $\alpha$ crosses below $2$.
 This suggests that the absolute \TRACELOG  is minimized when $\alpha\simeq2$, which (remarkably) is exactly when the \HTSR \Phenomenology predicts the layer is \Ideal.
 
 (Observe that \Ideal does not necessarily mean optimal under a finite sized training set, but rather that the finite-sized system behaves the most similarly to its infinite limit.)
-\michaeladdressed{MM TO DO: Make sure that we define \Ideal somewhere, probably in the intro; and that parenthetical comment should probably go there.}
-\charles{This should be defined earlier in section 140}
-
 
 \begin{figure}[t] %[h]
     \centering
@@ -60,8 +56,6 @@ This suggests that the absolute \TRACELOG  is minimized when $\alpha\simeq2$, wh
         train and test accuracy suffered (c), the red line is to the left of the purple line. This is often a signature 
         of an \OverRegularized layer, and indeed the FC1 layer in this model had $\alpha < 2$. (See Figure~\ref{fig:mlp3-alpha-fc1-by-lr} in 
         Section~\ref{sxn:empirical-test_acc}.)
-        % \michael{Make the text in the fig labels large enough to read on a printed page. Also, can we make the vertical lines slightly more different colors and/or bolder.}
-        %\chris{CH TODO: Hack WW to make the fig labels / ticks large enough to read here.}
     }
     \label{fig:mlp3-tracelognorm}
 \end{figure}

@@ -68,7 +68,6 @@ where we have denoted the Hamiltonian as $\HAN(\beta,\SVEC,\TVEC)$ to indicate t
 and we have added $\beta$ to the R.H.S. to because the L.H.S. is unitless.
 %
 Using this definition, we can express the \Annealed \PartitionFunction, $Z^{an}_{\ND}$, in the AA in terms of the \Annealed Hamiltonian $\GANR$
-\michael{@charles: There the macro is \Annealed and elsewhere it is \AnnealedHamiltonian; does it matter here or elsewhere.}
 (as in \EQN~\ref{eqn:Zan_def} in Section~\ref{sxn:mathP}, and as in \EQN~(2.31) of \cite{SST92}:
 \begin{align}
  \label{eqn:Zan}
@@ -120,9 +119,6 @@ averaged over \emph{all} possible data inputs, i.e., not just over the specific 
 
 %Notice that $\GANR$ is like a \emph{data-averaged ST error}, $\epsilon(\SVEC,\TVEC)$, (\EQN (\ref{eqn:STerror}),)
 %but now expressed as the logarithm of the (un-normalized) Boltzmann-weighted the data $\XImu$.
-%\michael{Charles, I rewrote that sentence, since it was confusing, would you make sure I didnt mess it up.}
-%\michael{Is \cite{SST92} the ref for that?}
-%%\michael{Is this integral over $d\mu(\NDXI)$ the same as $\sum_{\mu=1}^{N_aD}$ above, or the latter is the empirical version of the former, or are they different?
 
 
 %  Notice that for the model \GeneralizationError $\MGE$, we evaluate the data-averaged ST error $\epsilon(R)$ directly,
@@ -157,7 +153,6 @@ By \EQN~\ref{eqn:Gan_highT}, this gives
 \langle  \mathbf{E}_{\ell_2}(\SVEC,\TVEC,\XI \rangle_{\AVGNDXI} \simeq 1-R\;\;\text{as}\;\ND\rightarrow\infty  ,
 \end{align}
 which we recognize as the same as the data-averaged ST error $\epsilon(R)$ in \EQN~\ref{eqn:epslR}.
-\michael{@charles: also, there is a $1/N$ in \EQN~\ref{eqn:epslR}; does that belong here.}
 
 
 \subsubsection{Annealed Hamiltonian \texorpdfstring{$\GANMAT$}{H(R)} for the Matrix-Generalized ST Error}
@@ -412,8 +407,6 @@ FIX THIS}
 This ensures the Hamiltonian scales as $M$ so the Free Energy scales as $N \times M$, the
 number of free paramaters in the system.
 Notice that for the final \LayerQualitySquared Hamiltonian $\HBARE$, this will change.
-\michael{MM TO DO: adjust phrasing to say what the dimensions of those matrices are, once I figure out how to describe $\mathbf{A}_{1}$ versus $\mathbf{A}_{2}$ above, maybe explicit there that there are two different $\mathbf{A}$ matrices.}
-\charles{@michael: working on this, but IDK its  about A1 and A2; REWORKING THIS:}
 \begin{align}
   \label{eqn:I_9}
     \IH\approx  \left[1  + \frac{2\beta}{M}N\Trace{\IM-\tfrac{1}{N}\SMAT^{\top}\TMAT}\right]^{-\ND/2} ,

@@ -64,8 +64,6 @@ possible (\Teacher) weight matrices $\mathbf{W}$
     \right)\right]  ,
 \end{equation}
 %where the matrix $\mathbf{D}$ is the called the \SourceMatrix.
-\michaeladdressed{@charles: What is this a ``modification of? I get it if it is just a regularized objective, with LaGrange parameters to be determined; but are we going to use it as a generating function or partition function of some effective physical system? Maybe a sentence or two saying why doing this modification makes sense. This is probably just going to be a vector of prices or lagrange parameters that control the constraint satisfaction?}
-\michaeladdressed{Also, $Z(D)$ versus $\ZD$?}
 Observe that this integral only converges when all the eigenvalues of $\DMAT$, 
 $\left\{ \DeltaMu \right\}_{\mu=1}^{M}$, 
 are larger than the maximum eigenvalue of $\mathbf{\AMAT}$, i.e., when $\DeltaMu >\lambda_{max}$, for $\mu\in[1,M]$
@@ -82,15 +80,7 @@ $\mu(\mathbf{X})$, satisfies a \emph{Large Deviation Principle (LDP)}.
 An LDP applies to probability distributions that take an exponential form,
 such that $\mu(\mathbf{X})=e^{-N I(\mathbf{X})}d\mu(\mathbf{X})$,
 where  $I(\mathbf{X})$ is Entropy or Rate function $I(\mathbf{X})$.
-\michael{REF.}
-\michael{Maybe write out the general expression, citing that ref, so that it is clear how \ref{eqn:EZD} follows from it, given our setup.}
-%\charles{(((
-%Is this a resonable assumption ?
-%While we model the ESD of $\mathbf{X}$ as a \PowerLaw (PL), it is really
-%finite-size distrubtion, best modeled by a Truncated \PowerLaw (TPL),
-%either cut off at the largest eigenvalue $\lambda^{max}$
-%and/or with an exponential decay~\cite{YTHx22_TR}.
-%)))}
+
 In applying an LDP, we effectively restrict measure of student correlation matrices $\mathbf{\AMAT}$
 to those most similar to the empirically observed \Teacher correlation matrix $\mathbf{X}$.
 %
@@ -112,8 +102,6 @@ Truncated \PowerLaw (TPL).
 %\end{equation}
 %where $I(\mathbf{X})$ is the \RateFunction, defined below.
 %}
-%\michael{@charles: Which previous equation from this section does this follow from?}
-%\charles{None.  We defined it beliow}
 
 \paragraph{Three $3$ steps to evaluate $\Expected[\AMAT]{\ZD}$ in the \WideLayer large-$N$ approximation.}
 The goal is to start with \EQN~\ref{eqn:ZD0} and obtain two separate, equivalent
@@ -133,7 +121,6 @@ relations, Eqns.~\ref{eqn:ZD_step1} and ~\ref{eqn:ZD_step2}:
       \ln\EZDATWO =M\ln(\dfrac{2\pi}{\ND\beta})-\sum_{\mu=1}^{M}\int \ln(\delta_{\mu}-\lambda)\rho^{\infty}_{\AMAT}(\lambda)d\lambda  .
    \end{equation}
    This gives us an $\EZDATWO$ in terms of an integral transform $\rho^{\infty}_{\AMAT}(\lambda)$, which we can model.\footnote{This integral of $\rho^{\infty}_{\AMAT}(\lambda)$  is related to the \emph{Shannon Transform}, an integral transform from information theory that is useful when analyzing the mutual information or the capacity of a communication channel~\cite{Tanaka2007}. }
-   \michaeladdressed{I dont think thats obvious, is it? I thought the point was that is is convex/concave when $\delta_{\mu} >\lambda_{max}$, in which case it is a Laplace(?) transformation (which we can then invert)? Or is this something else?}
    \item
    \textbf{Forming the \SaddlePointApproximation (SPA).}
    We evaluate \EQN~\ref{eqn:ZD0} as the expected value of $\EZDA=\EZDAONE$

@@ -175,9 +175,6 @@ For the theoretical estimate, however, the order can be important, and this also
 if $T$ is trained to \Interpolation or not.
 \footnote{This approach can be likened to the Bootstrap method~\cite{efron1993bootstrap} used for error estimation.  However, the Bootstrap method predominantly emphasizes variations in the input data $\NDX\in\mathbf{D}$, while in this context, we are essentially bootstrapping over the students $S$.}
 
-%\michael{Is this for the optimal values of the parameters in the learning task \EQN~(\ref{eqn:student-learning-task})%?  Presumably not, since we are averaging? }
-%\charles{Good question. We do not specify how the hyperparameters are selected.}
-
 \paragraph{Annealed vs. Quenched Averages}
 Recall that in the \STATMECH approach to computing errors, we do not break the data into
 training and test, but, instead, to obtain the \AverageGeneralizationError, $\AVGGE$, use
@@ -212,8 +209,6 @@ a highly complex error landscape with many local minima separated by extremely h
 and a slowing down of the dynamics.%
 \footnote{In modern ML parlance, one might say the model can not be evaluated at interpolation, although 
 in practice such a model might have a zero empirical \TrainingError since it may overfit the specific training data.}
-\michael{This seems like important discussion, but it is related to what is going on in Section~\ref{sxn:SMOG_main-spin_glass}; I feel like we should have a minimalistic discussion of things like spin glasses in the main text, and then have a self-contained appendix that goes into it in more detail, since it gets in the way of getting to Section~\ref{sxn:SMOG_main-st_av} and Section~\ref{sxn:matgen}.  }
-\charles{This is a minimal discussion.  }
 
 While it is commonplace to train ensembles and/or use cross-validation when training small models (as the above discussion assumes),
 this could be extremely expensive and impractical in modern ML, e.g., for very large models like Large Language Models (LLMs).

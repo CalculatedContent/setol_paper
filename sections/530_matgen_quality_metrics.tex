@@ -214,7 +214,6 @@ to the tail of the Empirical Spectral Density (ESD). Since the ESD is an empiric
 Prior work on HTSR theory indicates that during training the generalizing parts of a layer weight matrix concentrate
 into $\rho_{tail}^{emp}(\lambda)$, the tail of the ESD, as the ESD becomes more \PowerLaw (PL),
 and layer PL exponent  $\alpha\rightarrow\ 2+$ (from above)~\cite{MM19_HTSR_ICML,MM20_SDM,MM18_TR_JMLRversion,MM20a_trends_NatComm,YTHx23_KDD}. 
-\michael{Mention of HTSR}
 This suggests the integral in \EQN~\ref{eqn:QT}
 should instead average over a low rank subspace spanned \emph{only by} the generalizing eigen-components of the
 student Inner Correlation matrix, $\AMATM=\tfrac{1}{N}\SMAT^{\top}\SMAT$
@@ -238,8 +237,6 @@ where now the matrices $\AECSM$ and $\AECSN$ are restricted to the \ECS, and the
  See Appendix~\ref{sxn:TraceLogDerivation} for more..
    
 When an ESD is \emph{\FatTailed} the~\ECS is at least as large if not larger than the PL tail of the ESD.
-\michael{Mention of Fat.}
-\charles{@michael: so what ?}
 For an ESD with $\alpha\ge 2$, the generalizing eigen-components, i.e.$|\lambda_{i}\rangle$, will mostly
 concentrate into the tail of the ESD, but some will remain in the bulk, so
 the~\ECS will be larger than the tail.
@@ -249,7 +246,6 @@ $\rho_{ECS}(\lambda)\supseteq\rho_{tail}(\lambda)$, as depicted in Figure~\ref{f
 When $\alpha=2$,  the layer is \Ideal (as in Section~\ref{sxn:setol_overview}),
 in that all of the generalizing eigen-components to have now concentrated completely into the tail, so that
  $\MECS=M^{tail}$,
- \michaelB{MM TO DO: Here and in 550 is the only place where we use $M^{tail}$. It was confusing there, so maybe clarify and remove here too. Basically, we don't want two notations for the same thing.}
 and
 $\rho_{ECS}(\lambda)=\rho_{tail}(\lambda)$.
 (When $\alpha< 2$, this suggests that the layer is overfit, and the layer may have a \CorrelationTrap and/or
@@ -270,7 +266,6 @@ starting with $\LambdaECSmin$.
 To our knowledge, this proposed MSR is completely novel.%
 
 Restricted to the~\ECS, we now replace \EQN~\ref{eqn:IFA2_integral} with:
-\michaeladdressed{@charles: I added that eqn.}
 \begin{align}
   \nonumber 
   \IZG 
@@ -410,7 +405,6 @@ $\langle\Det{\AMATM}\rangle$  with an empirical point estimate over the \Teacher
 This expression can now be used in a practical calculation to define a low-rank subspace that both allows us to evaluate the HCIZ integral,
 and to identify, in principle, the generalizing components of the layer.
 We also refer to \EQN~\ref{eqn:detX} as the \TRACELOG condition, which is technically its empirical form.
-\michaeladdressed{Note by abuse of terminology.}
 For example, Figure~\ref{fig:ECS_space} depicts the eigenvalues in the~\ECS for a \Typical ESD with PL $\alpha=2.0$..
 Notice that the start of the PL tail, $(\lambda_{min}^{PL})$, is very close to the start of the~\ECS tail. $(\LambdaECSmin)$,
 i.e. $\Delta \lambda_{min}:=\LambdaECSmin-\LambdaPLmin\approx 0$.

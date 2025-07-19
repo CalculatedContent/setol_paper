@@ -1,7 +1,6 @@
 \subsection{The Inverse-MP (IMP) Model}
 \label{sxn:IMP}
 In this section, we rederive the integral $G(\lambda)[IMP]$ for the \InverseMP (IMP) model, focusing on the branch cut starting at $z = \kappa/2$ and extending to infinity. 
-\michael{We derive, not rederive, right?  Section \ref{sxn:r_transforms} just points here.  }
 This branch cut corresponds to the support of the ESD in this region. 
 We will:
 \begin{enumerate}
@@ -22,7 +21,6 @@ The R-transform for the IMP model is given by:
 R(z)[IMP] = \frac{\kappa - \sqrt{\kappa(\kappa - 2z)}}{z},
 \end{align}
 where $\kappa > 0$ is a parameter related to the dimensions of the random matrices under consideration.
-\michael{Ref.}
 The function $\sqrt{\kappa(\kappa - 2z)}$ introduces a branch point at $z = \kappa/2$ because the argument of the square root becomes zero at this point:
 \begin{align}
 \kappa - 2z = 0 \quad \Rightarrow \quad z = \frac{\kappa}{2}.
@@ -223,6 +221,5 @@ By integrating $R(z)[IMP]$ directly, including its complex components, we have o
 Computing the modulus $| G(\lambda)[IMP] |$ gives us a real-valued function that accurately captures the contribution of the tail of the ESD in the IMP model.
 %
 This approach accounts for the complex nature of $R(z)[IMP]$ along the branch cut $z > \kappa/2$, and it provides a meaningful point estimate for further analysis.
-\michaeladdressed{By that, I assume we mean that we will use it in our derivation.}
 
 

@@ -17,7 +17,6 @@ For the \Perceptron, the \GeneralizationError is an Energy, given as $\AVGE^{ST}
 and $\THRMAVG{\cdots}$ is a \emph{\ThermalAverage} (defined in Section~\ref{sxn:mathP}),
 a Boltzmann-weighted average.
 In this case, the model \Quality, $\Q^{ST}$ is exactly the AA, high-T \AverageGeneralizationAccuracy 
-\michaeladdressed{still not sure we are using that term correctly, here and elsewhere}
 $\Q^{ST}:=1-\AVGE^{ST}_{gen}=\THRMAVG{R}$.
 For an MLP or general NN, each layer's Energy is associated with a
 \LayerQuality $\Q$, which we identify as the average contribution an
@@ -101,7 +100,6 @@ With these definitions in place, moving forward, the following key assumptions, 
   The generalizing components of the \Student (and \Teacher) layer weight matrices concentrate into a lower rank subspace---the~\ECS---spanned by the
   eigenvectors associated with the (heavy) tail of the layer ESD $\rho_{tail}(\lambda)$, such that the test error can 
   be reproduced with only these components. 
-  \michael{MM TO DO: we need to define tail better somewhere, but see also my comment above about presenting the two generalizing subspaces better.}
   We write $\AECS$ to denote the projection of the correlation
   matrix $\AECS:=\mathbf{P}_{ecs}\AMAT$, onto this subspace, now with rank $\MECS\ll M$.
   This restricts the measure $d\mu(\AMAT)$ to the~\ECS, $(d\mu(\AMAT)\rightarrow d\mu(\AECS))$.

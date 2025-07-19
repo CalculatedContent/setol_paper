@@ -8,7 +8,6 @@ and then taking the continuum limit of the ESD
 $\tilde{\rho}_{\AMAT}(\lambda)\rightarrow\rho^{\infty}_{\AMAT}(\lambda)$.
 
 \paragraph{Step 1.1}
-%\nred{We need to check all the equations, I might have flipped the transpose in the second term with the source matrix from right to left.}\michael{I think I fixed this, check.}
 To do so, let us first assume that \Teacher correlation matrix $\mathbf{X}$ and the source matrix $\mathbf{D}$
 are simultaneously diagonalizable
 (i.e., their commutator is zero: $[\mathbf{X}, \mathbf{D}]=0$).
@@ -22,7 +21,6 @@ In this case, we may write the generating function $\ZD$ in \EQN~\ref{eqn:ZD0} a
 - \Trace{\mathbf{W}\mathbf{V}^{\top}\mathbf{\Delta}\mathbf{V}\mathbf{W}^{\top}} 
 \bigg)  ,
 \end{align}
-\michaeladdressed{How do we get this?  Is this just \ref{eqn:dmuA}, rewritten?  But we have changed $d\mathbf{W}$ to $d\mathbf{X}$ and changed $\ND\beta$ to $1/2$?  Or does this use the assumption $[\mathbf{X}, \mathbf{D}]=0$?}
 where we have defined
 %
 \begin{equation}
@@ -87,9 +85,6 @@ the Jacobian $J(\mathbf{\check{W}})$ transformation for $d\mu(\mathbf{W})\righta
 
 
 \paragraph{Step 1.2}
-
-\michael{@charles: we are switching gears here, Im missing something in the flow. Where do we get the next equation from?}
-\charles{@michael: standard stuff.  Should we provide a reference ?  Can you find it ?}
 We can now evaluate the
 integral using the standard relation for the functional determinant for infinite-dimensional Gaussian integrals~\cite{EngelAndVanDenBroeck}
 
@@ -98,9 +93,6 @@ integral using the standard relation for the functional determinant for infinite
     \ZD=\left(\dfrac{2\pi}{\ND\beta}\right)^{NM/2}\det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)^{-1/2}
 \end{equation}
 where the Jacobian is unity for the Unitary transformation.
-\michaeladdressed{Is this $\mathbf{W}$ or $d\mathbf{\check{W}}$?  Also, this is a weight matrix, not an orthogonal matrix correct?  Meaning that the Jacobian being one is due to the Trace-Log condition?}
-\charles{@michael:
-The transformation $\mathbf{W} \mapsto \check{\mathbf{W}} = \mathbf{U}\,\mathbf{W}\,\mathbf{V}^{\top}$ is orthogonal, so $J(\check{\mathbf{W}})=1$.}
 
 \begin{equation}\label{eqn:Jacobian}
     J(\mathbf{\check{W}})=1  .
@@ -132,8 +124,6 @@ in terms of an integral over the continuous limiting spectral density
 $\rho_{\AMAT}(\lambda)$ of the correlation matrix $\AMATN$.  
 
 First, we express the Determinant of the matrix $\mathbf{\Delta}-\mathbf{\Lambda}$ in terms of discrete eigenvalues:
-\michaeladdressed{I think so; are you asking if we got the $M$ and $N$s correct?}
-\charles{check minus sign}
 \begin{equation}
 \label{eqn:det-discrete}
     \det\left(\mathbf{\Delta}-\mathbf{\Lambda}\right)^{-1/2}=\prod_{\mu=1}^{M}\prod_{i=1}^{N}\left(\DeltaMu-\lambda_{i}\right)^{-1/2}  .
@@ -183,8 +173,6 @@ $\EZDATWO$ in terms of the ESD $\tilde{\rho}_{\AMAT}$ as
     \EZDATWO=\exp\bigg\{\dfrac{N}{2}\big[M\ln\dfrac{2\pi}{\ND\beta}-\sum_{\mu=1}^{M}\int
         d\lambda\ln(\DeltaMu-\lambda)\tilde{\rho}_{\AMAT}(\lambda)\big]\bigg\}  .
 \end{equation}
-\michael{BTW, I get a $1/\ND\beta$ on the second term, when I derive it, so I think we missed a $\ND\beta$ in the numerator somewhere.}
-\charles{Yeah we gotta check all this very carefully}
 
 We can now replace
 the sum over the $N$ eigenvalues $\lambda_{i}$ with an integral over the limiting
@@ -204,11 +192,8 @@ as
     \sum_{\mu=1}^{M}\int
         d\lambda\ln(\DeltaMu-\lambda)\rho^{\infty}_{\AMAT}(\lambda)\big]\bigg\}
 \end{equation}
-\michael{We just added an expectation. Is that correct? I think we missed something.}
-\charles{No, this is correct.  But I obviously did not explain it well.  Will review}
 
 \paragraph{Step 1.4}
-
 Using the Self-Averaging Property,
 \begin{equation}
    \ln \EZDATWO \simeq \Expected[\mathbf{A}_M]{\ln \ZD} ,
