@@ -45,7 +45,7 @@ defined as
 where  $\THRMAVGIZ{\cdots}$ is now a \ThermalAverage over Student weight matrices $\SMAT$--
 an HCIZ integral.
 
-This choice means that final \LayerQuality $\Q$ we use approximates what would be the
+This choice means that the final \LayerQuality $\Q$ we use approximates what would be the
 matrix-generalized NN \LayerQuality $\Q^{NN}_{L}$ (above) as
 \begin{align}
   \label{eqn:QT_2}
@@ -135,11 +135,9 @@ $\AMATM$  with $\AMATN$, such that
 \end{align}
 This equivalence will be essential both to derive the \TRACELOG condition (Section ~\ref{sxn:TraceLogDerivation}),
 and to (re)derive the core result by Tanaka (Section ~\ref{sxn:tanaka}).
-Additionally and WLOG, we may occasionally denote the Student Correlation matrix as
+Additionally, and WLOG, we may occasionally denote the Student Correlation matrix as
 $\AECS$ instead of explicitly using  $\AMATM$ and $\AMATN$.
 
-\michaeladdressed{Give Tanaka ref, and tweak exposition.}
-\michaeladdressed{Tweak, since that is true, but the way RMT touches it is different in subtle ways we dont want to get into.}
 %\footnote{If we define $d\mu(\AMAT)$ as a Haar measure, it is still is restricted to \emph{at least} only
 %the strictly non-zero eigenvalues, $\lambda\gg 0$. (That is, not even approximately zero.)
 %The measure $d\mu(\AMAT)$ can be expressed as
@@ -158,7 +156,6 @@ $\AECS$ instead of explicitly using  $\AMATM$ and $\AMATN$.
 %Importantly, both forms of $\AMAT$ have the same eigenvalues $\lambda$,
 %up to the $N-M$ zero eigenvalues of $\AMATN$; and, because of this, 
 %we will see they are somewhat interchangeable--if we restrict them to effectively the same subspace defined by the same eigenvalues.
-
 
 
 \subsubsection{Evaluating the Average Quality (Squared) Generating Function }
@@ -292,7 +289,7 @@ Restricted to the~\ECS, we now replace \EQN~\ref{eqn:IFA2_integral} with:
     \right\rangle_{\AECS}
 \end{align}
 where we have used the formal Duality of Measures, $d\mu(\AECS)=d\mu(\AECSM)=d\mu(\AECSN)$.
-\footnote{Also, we could replace $\TMAT\rightarrow\TECS$, but to simplify the notation we do not do this.}
+\footnote{Also, we could replace $\TMAT\rightarrow\TECS$, but to simplify the notation, we do not do this.}
 
 \subsubsection{Two Simplifying Assumptions: the \IFA and \TRACELOG Condition}
 \label{sxn:matgen_quality_hciz_C}

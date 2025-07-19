@@ -1,8 +1,3 @@
-\nred{REWORKED THIS SECTION; stil in progress}
-\charles{If we include this section, we should cite the specific results from the old SST paper, including a plot
-and we should cite our older paper.   but, importantly, we should prep the read for the empirical results in
-section 6 on correlation traps and glassy dynamics, and we should discuss $F$ become non-extensive and/or non-analytic}
-\subsection{Bad Training Data and the Spin Glass Phase}
 \label{sxn:SMOG_main-spin_glass}
 
 When training data is of low quality---whether due to mislabeling, inherent noise, or a generally unrealizable task---neural networks exhibit behavior that diverges sharply from what \SLT\ would predict under cleaner data assumptions. In \SLT, one typically studies the \GeneralizationError as a function of model complexity and data distribution, often assuming that data is realizable. By contrast, a \STATMECH-based analysis highlights that, when data itself is contradictory or highly random, the network can enter a \emph{spin glass--like phase}, marked by frustration and disorder.
@@ -12,16 +7,16 @@ In the \StudentTeacher\ model, the \AnnealedApproximation (AA) supposes that one
 
 Frustration can arise when facing mislabeled or contradictory training examples, leading to:
 \begin{itemize}
-\item Multiple ``almost-satisfactory'' weight matrics coexist, each misclassifying a different subset of examples.
+\item Multiple ``almost-satisfactory'' weight matrices coexist, each misclassifying a different subset of examples.
 \item The abundance of local minima is characteristic of a \emph{spin glass} phase: no single global minimum stands out; the model can get ``stuck'' in a metastable configuration.
 \end{itemize}
 
 In such disordered regimes, the AA often underestimates the difficulty of learning.
 In contrast, a fully \emph{quenched} theoretical analysis captures
-how small random variations in data can drastically alter the learned weights $\WVEC$':
+how small random variations in data can drastically alter the learned weights $\WVEC$:
 \begin{itemize}
 \item \emph{Annealed}: Increasing the number of training examples always decreases training error, i.e. $(N \gg 1) \rightarrow (\DETOT\approx 0)$, and, also the generalization or test error.  \nred{comment on DD?}
-\item \emph{Quenched}: In a spin glass regime, contradictory data can trap the model; adding more data may not improve (or can even worsen) generalization.
+\item \emph{Quenched}: In a spin -lass regime, contradictory data can trap the model; adding more data may not improve (or can even worsen) generalization.
 \end{itemize}
 
 \paragraph{Practical Considerations}
