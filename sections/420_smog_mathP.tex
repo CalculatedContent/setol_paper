@@ -364,8 +364,6 @@ An exception will be Hamiltonians $(H,\mathbf{H})$, where the sign convention wi
 \paragraph{Thermal Averages (over weights).}
 
 To evaluate the expectation value of some equilibrium quantity that depends on the weights $\WVEC$ (say $\mathbb{E}^{\beta}_{\WVEC}[f(\WVEC)]$), one uses a \ThermalAverage.
-%%\michael{@charles: I that sentence, when you say ``expectation value you mean it in the same sense as ``expected value of model/Gaussian data rather than ``sample average of real data; is that correct?}
-%%\cformike{Yes good catch.  I forget and fall back to quantum chemistry lingo sometimes}
 By this, we mean a \emph{\BoltzmannWeightedAverage}: given a function $f(\WVEC)$,
 we define the \ThermalAverage over $\WVEC$ as
 \begin{align}
@@ -484,14 +482,6 @@ The mapping is:
   One first averages over the (model) data $\NDXIn$ (i.e., a multi-variate Gaussian distribution)
   so that the disorder (variability in the data) is averaged out.
   Then, a \ThermalAverage is used to model the final state of NN learning process, the learned weights.
-}
-
-
-%, or \Replicas, $[\NDXIn]$ of size $\ND$, %
-%chosen from the same data distribution $\mathcal{D}$, and indexed by $r$.
-%In this case, we say that the system is quenched to the disorder, and we are performing a \emph{\Quenched} Average over $\mathcal{D}$.
-
-\michaeladdressed{I think that we are using $\NDX$ and $\NDXIn$ somewhat inconsistently. And I think that is since we are going to a lot of effort to talk about replicas, etc.  We may be able to modularize some of this replica stuff to the appendix since it's distracting to reader---it's taking a lot of time to get to the annealed hamiltonian, which is what we want to get to.  This feels a bit more like the advanced stuff that we have in Appendix~\ref{sxn:summary_sst92}, but where we do the less precise derivation in the main text; we may want to do that here, saying that there is an approach that sawps integrals to make life easier (see the appendix for a more detailed analysis, where wer derive it more precisely), and that gives the AA that gives us the annealed hamiltonian that is our staritng point.  That would also make this section shorter, which would be good.}
 
 \paragraph{The Annealed Approximation (AA).} 
 Formally, the AA makes the substitution
@@ -524,7 +514,6 @@ This will allow us to switch the order of the data and the thermal averages, i.e
 \end{align}
 greatly simplifying the analysis.
 
-\michaelB{Move this par below.}
 The use of the AA is common in \STATMECH, as it simplifies computations considerably; and 
 it is chosen when it holds exactly (if, say, $x$ is a \Typical sample from $\mathcal{D}$ and $Z_w(\XI)$ has a well-defined mean).
 In contrast, there are situations in \STATMECH when the average is \ATypical, and then it one can get different results for the \Quenched versus \Annealed cases.  In a practical sense, one imagines this may occur when the data is very
@@ -537,7 +526,6 @@ we average over the data $\NDXIn$ first.
 Doing this will allow us to develop a theory in terms a (Temperature dependent) \EffectivePotential. 
 
 Following~\cite{SST92} (see their \EQN(2.30)), we will call this average the \emph{\Annealed Hamiltonian}, $\GAN$, 
-\michaeladdressed{If the rule is to put things in italics the first time they are used and defined, we should probably do it here for that.}
 which we define as  %%We define the \Annealed Hamiltonian $\GAN$ as
   \begin{align}
    \label{eqn:Gan_def}
@@ -598,12 +586,6 @@ Notably, the \AnnealedHamiltonian $\HAN(\WVEC)$ in \EQN~\ref{eqn:Gan_def} is a n
 taking the high-T approximation, we can remove this dependence and obtain
 the simpler expression that $\HAN(\WVEC)=\EPSLw$.  This greatly simplifes both
 the \PartitionFunction, i.e.,  $\ZANHT$, and subsequent results (below).
-
-%In particular, deriving \EQN~\ref{eqn:Gan_highT_final} used the high-T approximation. 
-%Here, we describe it in more detail.
-%%\michaeladdressed{If it is too awkward to move this high-T discussion to before we use it above, then we should have some sort of signpost that explicitly notes that we did that. I can weave that in, once I understand the logical flow.}
-%We can form a  \emph{High Temperature} (High-T) \emph{Approximation} if we expand $Z_{\ND}$ in a Taylor series in $\beta$.
-%\michael{Are we going to do high-T expansion of $Z_{\ND}$ or $\HAN$ or what?  aWe should probably describe it here in a way that each of those can plug into.}
 
 To obtain the high-T result, we can write the Taylor expansion for $e^{\beta\DETOPXI}$ and keep
 the first two terms:
@@ -803,8 +785,6 @@ we can obtain $\QT$ (see Section~\ref{sxn:matgen} Eqn.~\ref{eqn:IZG_generate_Q2}
 \end{align}
 %\red{Replaced with $\IZGINF$}
 See Section~\ref{sxn:matgen} and Appendix~\ref{sxn:quality} for more details.
-\michaeladdressed{Is this $1-F$ thing new to us, or does SST do it; and is the thing you are calling a generating function to ``generate'' it new to us? It is probably worth being a bit more pedantic here. }
-
 
 \subsubsection{The Thermodynamic limit}
 \label{sxn:largeN_and_SPA}

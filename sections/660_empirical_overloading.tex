@@ -65,8 +65,6 @@ Observe that the range of the y-axis is narrower for test error to make detail m
 \chris{CH TODO: Double check these plots. The y-axis should be the same vertically.}
 
 We see in Figure~\ref{fig:mlp3-baseline-load} (a,b) 
-\michaeladdressed{soft-code, dont hard-code subfigure references}
-\chris{Splitting these figures is manual, so the soft-coding is a stand-in until they are finalized and frozen.}
 that the $32\times$ learning rate causes $\alpha_{FC1}$ to decrease faster than any other, putting it on course to 
 fall below $2$ before train error reaches $\simeq 0$. 
 (See Figure~\ref{fig:mlp3-accuracies}, at the beginning of this Section.) 
@@ -164,8 +162,6 @@ of the lack of a modulating influence of FC2 seen in Figure~\ref{fig:mlp3-baseli
     \label{fig:mlp3-FC2-alpha-hysteresis}
 \end{figure}
 
-\michaeladdressed{This par maybe should go into the baseline subsection above.}
-\chris{See my changes.}
 The MNIST dataset has $60,000$ training examples, which means that an FC1-only model is over-parameterized, but FC2 is 
 substantially \emph{under}-parameterized~\cite{DLM19_Exact_TR}. (Table~\ref{tab:mlp3}) This drastically changes the 
 meaning of an experiment where only FC2 is trained. Figure~\ref{fig:mlp3-baseline-load} (Section 
