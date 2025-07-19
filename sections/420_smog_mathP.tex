@@ -242,11 +242,10 @@ where the BraKet $\langle\cdots\rangle_{\AVGNDXIn}$ deotes the integral over the
 appears inside the \BraKet implicitly.
 In this case, we obtain:
 \begin{align}
-\nonumber
   \langle \DETOPXI\rangle_{\AVGNDXIn}
-  :=  &\frac{1}{\ND}\int d\mu(\NDXIn) \DETOPXI \\ 
+  :=  &\frac{1}{\ND}\int d\mu(\NDXIn) \DETOPXI \nonumber \\
   = &
-  \frac{1}{\ND}\int \left[ \prod_{\mu=1}^{\ND}d\XI_{\mu}P(\XI_{\mu})\right] \left[ \sum_{\mu=1}^{\ND}\DETmu \right] , \\ \nonumber
+  \frac{1}{\ND}\int \left[ \prod_{\mu=1}^{\ND}d\XI_{\mu}P(\XI_{\mu})\right] \left[ \sum_{\mu=1}^{\ND}\DETmu \right] , \nonumber \\
   = &
   \frac{1}{\ND}\sum_{\mu=1}^{\ND}\int d\XI_{\mu}P(\XI_{\mu})\DETmu  , 
     \label{eqn:avg_data_sample_error}
@@ -356,7 +355,7 @@ HCIZ $\langle\cdots\rangle^{IZ}$, etc.
 \end{center}
 We use subscripts to emphasize the dependent variables:
 \begin{center}
-  weights $\langle\cdots\rangle_{\WVEC}$, $\langle\cdots\rangle_{\SVEC}$, $\langle\cdots\rangle_{\SMAT}$ \\ \nonumber
+  weights $\langle\cdots\rangle_{\WVEC}$, $\langle\cdots\rangle_{\SVEC}$, $\langle\cdots\rangle_{\SMAT}$ \nonumber \\
     \vspace{0.33cm}  % <-- extra vertical space here
 data $\langle\cdots\rangle_{\XI},
 \langle\cdots\rangle_{\NDXI},
@@ -585,8 +584,8 @@ The \AnnealedHamiltonian is a simple ``mean-field-like'' Hamiltonian for the pro
 This can be seen by noting that we can express \EQN~\ref{eqn:Gan_def} as an integral over a single data example $\XI$:
  \begin{align}
    \nonumber
-   \beta\GAN &=  - \frac{1}{\ND}\ln  \int d\mu(\NDXIn)e^{-\beta\sum_{\mu=1}^{\ND}\DEL(\WVEC,\XI_{\mu})} \\ \nonumber
-   &=  - \ln \left[\int d\mu(\NDXIn)e^{-\beta\sum_{\mu=1}^{\ND}\DEL(\WVEC,\XI_{\mu})}\right]^{\tfrac{1}{\ND}} \\ \nonumber
+   \beta\GAN &=  - \frac{1}{\ND}\ln  \int d\mu(\NDXIn)e^{-\beta\sum_{\mu=1}^{\ND}\DEL(\WVEC,\XI_{\mu})} \nonumber \\
+   &=  - \ln \left[\int d\mu(\NDXIn)e^{-\beta\sum_{\mu=1}^{\ND}\DEL(\WVEC,\XI_{\mu})}\right]^{\tfrac{1}{\ND}} \nonumber \\
    &=  - \ln \left[\prod_{\mu=1}^{\ND}\int d\mu(\XI_{\mu})e^{-\beta\DEL(\WVEC,\XI_{\mu})}\right]^{\tfrac{1}{\ND}} \\ 
    \label{eqn:Gan_simplified}
    &=  - \ln  \int d\mu(\XI)e^{-\beta \DEL(\WVEC,\XI)}
@@ -608,8 +607,8 @@ Using $\GAN$, we can define the \emph{Annealed Partition Function}, $Z^{an}_{\ND
 \begin{align}
   \label{eqn:Zan_def}
   \ZAN 
-  &:=  \int d\mu(\WVEC) e^{-\ND\beta \GAN} \\ \nonumber
-  &=\int d\mu(\WVEC) \exp\left[-\ND \left(- \frac{1}{\ND}\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)\right] \\ \nonumber
+  &:=  \int d\mu(\WVEC) e^{-\ND\beta \GAN} \nonumber \\
+  &=\int d\mu(\WVEC) \exp\left[-\ND \left(- \frac{1}{\ND}\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right)\right] \nonumber \\
   &=  \int d\mu(\WVEC) \exp\left[\ln  \int d\mu(\NDXIn)e^{-\beta\DETOPXI}\right] \\ 
   \label{eqn:Zan_simple}
   &=  \int d\mu(\WVEC)  \int d\mu(\NDXIn)e^{-\beta\DETOPXI} .
@@ -658,8 +657,8 @@ the first two terms:
 %%%If we now evaluate $Z_{\ND}^{\red{an}}$ at high-T, we obtain
 %%%\begin{align}
 %%%  \red{\ZANHT}=\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}
-%%%  &\approx \int d\mu(\WVEC) (1-\ND\beta\EPSLw) \\ \nonumber
-%%%  & = \int d\mu(\WVEC) - \int d\mu(\WVEC) \ND\beta\EPSLw \\ \nonumber
+%%%  &\approx \int d\mu(\WVEC) (1-\ND\beta\EPSLw) \nonumber \\
+%%%  & = \int d\mu(\WVEC) - \int d\mu(\WVEC) \ND\beta\EPSLw \nonumber \\
 %%%  & =-  \red{1-??}\int d\mu(\WVEC) \ND\beta\EPSLw 
 %%%\end{align}
 %%%%If, in analogy with \EQN~\ref{eqn:Jensens}, 
@@ -697,16 +696,12 @@ To do so, let's take a high-T expansion of \EQN~\ref{eqn:Gan_def}
 %%(see below for a discussion of the high-T approximation) 
 by expanding the exponential to first order in $\beta$, to obtain
 \begin{align}
-\label{eqn:Gan_highT_def}
-\beta\GANHT
-=&  - \tfrac{1}{\ND}\ln \int d\mu(\NDXIn) [1-\beta \DETOPXI] \\ \nonumber
-\approx&\;   - \frac{1}{\ND} \int d\mu(\NDXIn)\beta \DETOPXI \\ \nonumber
-%=&  - \ln\langle 1-\beta\DETOPXI \rangle_{\AVGNDXIn} \\ \nonumber
-%=&  - \frac{1}{\ND}\left(\ln\langle 1\rangle_{\AVGNDXIn}-\langle\beta\DETOPXI \rangle_{\AVGNDXIn}\right) \\ \nonumber
-=&\;\langle \beta\DETOPXI \rangle_{\AVGNDXIn} \\ \nonumber
-=&\;\frac{1}{\ND}\beta(\DETOT)\\ 
-\label{eqn:Gan_highT}
+\beta\GANHT =&  - \tfrac{1}{\ND}\ln \int d\mu(\NDXIn) [1-\beta \DETOPXI] \nonumber \\
+\approx&\;   - \frac{1}{\ND} \int d\mu(\NDXIn)\beta \DETOPXI \nonumber \\
+=&\;\langle \beta\DETOPXI \rangle_{\AVGNDXIn} \nonumber \\
+=&\;\frac{1}{\ND}\beta(\DETOT)  \nonumber \\
 =&\;\beta \EPSLw  .
+\label{eqn:Gan_highT}
 \end{align}
 Here, we have used the AA, the property that $\ln(1 + y) \approx y$, for $|y| \ll 1$, and the fact that $\EPSLw$ takes the form given in \EQN~\ref{eqn:epsl}.
 This gives $\GANHT:=\EPSLw$, which is no longer a non-linear function of $\beta$.
@@ -782,25 +777,25 @@ and they equal to the \ThermalAverage of the \EffectivePotential:
 To see this, substitute \EQN~\ref{eqn:Zanht_def} into \EQN~\ref{eqn:avgte_def}, and take the partial derivative w.r.t $\beta$, to obtain
 \begin{align}
   \label{eqn:avgge_anhT}
-  \AVGGE^{an, hT} :=&\frac{1}{\ND}\dfrac{\partial (-\ln \ZANHT)}{\partial \beta}  \\ \nonumber
+  \AVGGE^{an, hT} :=&\frac{1}{\ND}\dfrac{\partial (-\ln \ZANHT)}{\partial \beta}  \nonumber \\
    =& - \dfrac{1}{\ND}\dfrac{\partial}{\partial \beta}\ln\int d\mu(\WVEC)e^{-\ND\beta\EPSLw} \\  \nonumber
    =&  \dfrac{
               \tfrac{1}{\ND}  \int  d\mu(\WVEC) n\EPSLw e^{-\ND\beta\EPSLw} 
              }{
               \int  d\mu(\WVEC) e^{-\ND\beta\EPSLw} 
-   } \\ \nonumber
+   } \nonumber \\
    =&\langle\EPSLw \rangle_{\WVEC}^{\beta} .
   \end{align}
 Likeswise, if we substitute \EQN~\ref{eqn:Zanht_def} into \EQN~\ref{eqn:avgge_def}, and take the partial derivative w.r.t. $\ND$, we obtain
 \begin{align}
   \label{eqn:avgte_anhT}
-    \AVGGE^{an, hT}  :=& \frac{1}{\beta}\dfrac{\partial (-\ln \ZANHT)}{\partial n} \\ \nonumber
+    \AVGGE^{an, hT}  :=& \frac{1}{\beta}\dfrac{\partial (-\ln \ZANHT)}{\partial n} \nonumber \\
     =& - \dfrac{1}{\ND}\dfrac{\partial}{\partial \beta}\ln\int d\mu(\WVEC)e^{-\ND\beta\EPSLw} \\  \nonumber
    =&  \dfrac{
               \tfrac{1}{\beta}  \int  d\mu(\WVEC) n\EPSLw e^{-\ND\beta\EPSLw} 
              }{
      \int  d\mu(\WVEC) e^{-\ND\beta\EPSLw} 
-   } \\ \nonumber
+   } \nonumber \\
    =&\langle\EPSLw \rangle_{\WVEC}^{\beta} .
 \end{align}
 Notice that both of these results arise because of the simple expression that appears in the exponent of $\ZANHT$, namely because $-\ND\beta\HANHT(\WVEC)=\ND\beta\EPSLw$.
@@ -870,10 +865,10 @@ for $\ETAw$ in \EQN~\ref{ref:defGammaQ}:
 \begin{align}
   \label{ref:defGammaQtoF}
   \beta\Gamma_{\Q^{ST}}
-  &= \ln\int d\mu(\WVEC) e^{\ND\beta(1-\EPSLw)} \\ \nonumber
-    &= \ln\int d\mu(\WVEC) e^{\ND\beta}e^{-\ND\beta\EPSLw} \\ \nonumber
-    &= \ln\left(\int d\mu(\WVEC) e^{\ND\beta}\right)+\ln\left(\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}\right) \\ \nonumber
-   &= \ln e^{\ND\beta}+\ln\left(\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}\right) \\ \nonumber
+  &= \ln\int d\mu(\WVEC) e^{\ND\beta(1-\EPSLw)} \nonumber \\
+    &= \ln\int d\mu(\WVEC) e^{\ND\beta}e^{-\ND\beta\EPSLw} \nonumber \\
+    &= \ln\left(\int d\mu(\WVEC) e^{\ND\beta}\right)+\ln\left(\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}\right) \nonumber \\
+   &= \ln e^{\ND\beta}+\ln\left(\int d\mu(\WVEC)e^{-\ND\beta\EPSLw}\right) \nonumber \\
   &= \ND\beta -\beta F^{ST}_{\ND}
 \end{align}
 Dividing by $\ND$, we can also recover the more general relation for the \emph{Average} Free Energy,
@@ -1000,7 +995,7 @@ which states that the \emph{average} energies and/or free energies $(\bar{F})$ o
 the number of \emph{independent interacting components}:
 \begin{align}
   \label{eqn:LCT}
-  -\beta \bar{F}=\langle \ln Z \rangle_{\AVGNDXIn} &= \sum_{\mu=1}^{\MECS}\text{(Connected Components)} \\ \nonumber
+  -\beta \bar{F}=\langle \ln Z \rangle_{\AVGNDXIn} &= \sum_{\mu=1}^{\MECS}\text{(Connected Components)} \nonumber \\
   &= \sum_{\mu=1}^{\MECS}\text{Cumulants($\mu$)+higher order terms} 
 \end{align}
 For \SETOL, below, these connected components will be the matrix-generalized cumulants from RMT.
@@ -1082,7 +1077,6 @@ in the system’s correlation structure and corresponds to an emerging singulari
 Even though we perform only a single exact RG step , 
 (rather than fully iterating a renormalization flow), the appearance of a branch cut in $\IZGINF$ will encode
 nontrivial \emph{phase-like} behavior in the \SETOL \HeavyTailed matrix model.
-
 
 
 \paragraph{Final Remarks}
