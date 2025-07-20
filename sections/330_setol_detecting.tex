@@ -16,9 +16,9 @@ competing factors that give rise to large eigenvalues
 that do not contribute to the generalization capacity of the model, and, consequently, 
 can affect the \Scale (i.e., the largest eigenvalue(s) $\lambda_{max}$) 
 and \Shape (i.e., the PL exponent $\alpha$, or goodness of fit $D_{KS}$) of the layer ESDs.
-These large $\lambda$ could be \DragonKings, \emph{\CorrelationTraps}, or some other anomaly.
+These large $\lambda$ could be \DragonKings~\cite{sornette2009dragonkings}, \emph{\CorrelationTraps}, or some other anomaly.
 
-To apply the HTSR \Phenomenology most effectively, one must be able to identify various spurious factors and
+To apply the \HTSR \Phenomenology most effectively, one must be able to identify various spurious factors and
 distinguish real correlations from any other large eigenvalues, including the effects of both
 extreme eigenvalues $\lambda$, individual matrix elements $W_{i,j}$, and rank-$1$ perturbations in $\WMAT$.
 In one case the ESD is HT primarily due to correlations that help the model generalize, whereas
@@ -50,7 +50,7 @@ We conjecture such sub-optimal results, and particularly those occurring from ov
 arise when the underlying layer weight matrix $\mathbf{W}$ is \ATypical in some way,
 in analogy to the results from the classic \SMOG theory (see Section~\ref{sxn:trad_smog}),
 and, importantly, that we can use the \SETOL approach to detect when $\mathbf{W}$ is~\ATypical
-and therefore a layer is overfit in some way.
+and therefore a layer is overfit in some way. \red{\SETOL can do this where standard \SMOG cannot because \SETOL only assumes supervision in the form of ESDs, and not labels, allowing a finer characterization of defects in the supervision, rather than just ``label noise''.}
 
 %That is, if $\mathbf{W}$ is \ATypical will arise as \Shape and/or \Scale anomalies.
 %Very Heavy Tailed ESDs may arise from a variety of phenomena, such as using too-small batch sizes, too-large learning rates, using ``bad data, etc.---all of which result in sub-optimal %t5raining.

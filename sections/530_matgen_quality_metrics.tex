@@ -390,11 +390,11 @@ and \PowerLaw (PL), this poses some difficulty, we need to first define the \Eff
 \end{figure}
 
 Because the \Teacher ESD is most likely MHT and PL, 
-if we choose $\lambda_{min}^{ECS}$ too small, and the tail extends too far into the bulk region of the ESD,
+if we choose $\LambdaECSmin:=\lambda_{min}^{ECS}$ too small, and the tail extends too far into the bulk region of the ESD,
 then for all practical purposes $\Det{\XECS}\ll 1$.
-On the other hand, if we choose $\lambda_{min}^{ECS}$ too large,
+On the other hand, if we choose $\LambdaECSmin$ too large,
 then we only capture very large eigenvalues, and for all practical purposes $\Det{\XECS} \gg 1$.
-Therefore, if we set the scale of $\XECS$ appropriately, we can choose a $\lambda_{min}^{ECS}$ such that $\Det{\XECS}=1$.
+Therefore, if we set the scale of $\XECS$ appropriately, we can choose a $\LambdaECSmin$ such that $\Det{\XECS}=1$.
 In this case, by choosing $\LambdaECSmin$ appropriately, we can estimate the expected value of
 $\langle\Det{\AMATM}\rangle$  with an empirical point estimate over the \Teacher Correlation matrix, which is unity.
 \begin{equation}
@@ -409,7 +409,7 @@ For example, Figure~\ref{fig:ECS_space} depicts the eigenvalues in the~\ECS for 
 Notice that the start of the PL tail, $(\lambda_{min}^{PL})$, is very close to the start of the~\ECS tail. $(\LambdaECSmin)$,
 i.e. $\Delta \lambda_{min}:=\LambdaECSmin-\LambdaPLmin\approx 0$.
 Also, notice that while there are many large eigenvalues, $\ln\lambda>1.0$, there are numerous small eigenvalues as well,
-$\ln\lambda<1.0$, such that the $\sum\ln\lambda\approx 0$ for $\lambda\ge\lambda_{min}^{ECS}$. In other words, the red and green shaded areas have the same measure.
+$\ln\lambda<1.0$, such that the $\sum\ln\lambda\approx 0$ for $\lambda\ge\LambdaECSmin$. In other words, the red and green shaded areas have the same measure.
 Additional plots like Figure~\ref{fig:ECS_space}, generated with \WW,  can be found in Section~\ref{sxn:empirical},
 in Figure~\ref{fig:mlp3-detx-gap}
 as well as plots of $\Delta \lambda_{min}$ vs. the \WW PL $\alpha$ for several real-world examples,

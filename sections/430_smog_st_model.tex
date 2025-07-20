@@ -5,28 +5,28 @@
 In this subsection, we present a unified view of the \emph{\StudentTeacher} (ST) \Perceptron 
 model from both a practical and a theoretical perspective.  
 From the practical (\emph{operational}) side, imagine a real-world practitioner training a large-scale neural network (NN); call this NN the \Teacher.  
-We wish to assess the Teacher’s \emph{true} accuracy on ground-truth labels in consistently reproducing its own (possibly imperfect) outputs, one can train another network --the \Student--to mimic the Teacher’s predictions.  
+We wish to assess the Teacher’s \emph{true} accuracy on ground-truth labels in consistently reproducing its own (possibly imperfect) outputs. One can then train another network -- the \Student -- to mimic the Teacher’s predictions.  
 By comparing Student and Teacher outputs, one can approximate the Teacher’s generalization performance even without an explicit hold-out set.  
 Notably, if the Teacher perfectly interpolates its training data, the Student’s error directly estimates the Teacher’s \emph{true} \GeneralizationAccuracy.
 Otherwise, it captures the Teacher’s \emph{Precision} in reproducing its own noisy or biased labels.
 
 From the theoretical side, we seek a succinct, analytic formulation of the ST \AverageGeneralizationError, denoted $\AVGSTGE$.  
-We work in the \AnnealedApproximation (\AA)--a simplification often valid when networks are sufficiently large and can nearly interpolate their training data. 
+We work in the \AnnealedApproximation (AA) -- a simplification often valid when networks are sufficiently large and can nearly interpolate their training data. 
 Under this approximation, one obtains closed-form expressions for the \StudentTeacher \emph{Overlap} $(R)$
 and thus for the Teacher’s overall error or accuracy.  
 These results lay the foundation for our \emph{\SemiEmpirical} approach, in which we supplement this theoretical form with empirical measurements (e.g., from the trained weight matrices) to account for real-world correlations in the data and the model’s internal structure.  
 
 \begin{enumerate}[label=4.3.\arabic*]
 \item
-  \textbf{Operational Setup}
+  \textbf{Operational Setup.}
   In subsection~\ref{sxn:ST_OP_setup} we explain how to set up the classic \StudentTeacher
   model in an \emph{operational} manner. 
-  In particular  emphasize the difference between \emph{true accuracy} (vs.\ ground-truth labels)
-  and \Precision   (vs. the Teacher’s own labels). We also the discuss the difference between
-  our \Quality metrics and the \emph{GeneralizationGap}.
+  In particular, we emphasize the difference between \emph{true accuracy} (vs.\ ground-truth labels)
+  and \Precision (vs. the Teacher’s own labels). We also the discuss the difference between
+  our \Quality metrics and the \emph{Generalization Gap}.
 
   \item
-    \textbf{Theoretical Student-Teacher Average Generalization Error $(\AVGSTGE)$}
+    \textbf{Theoretical Student-Teacher Average Generalization Error $(\AVGSTGE)$.}
     In subsection~\ref{sxn:SMOG_main-st_av}  we outline how to derive $\AVGSTGE$ using the AA.  
     We introduce the key expressions that will serve as the starting point for our extended \SemiEmpirical theory in subsequent subsubsection.
 \end{enumerate}

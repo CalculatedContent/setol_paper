@@ -1,0 +1,97 @@
+% ---------- flowchart.tex ----------
+\usetikzlibrary{arrows.meta, positioning, calc}
+
+\tikzset{
+  box/.style={
+    draw, rectangle, rounded corners=3pt,
+    minimum width=4.3cm, minimum height=1.3cm,
+    align=center, font=\small
+  },
+  arrow/.style={-Stealth, very thick},
+}
+
+\begin{tikzpicture}[
+  node distance = 2.5cm and 2.3cm,
+  >=Stealth
+]
+
+% ========== ROW 1 ==========
+\node[box] (smog)    {\underline{Classic SMOG}\\Student-Teacher Perceptron\\
+Fixed Teacher (input)};
+\node[box, right=of smog] (overlap)
+      { \underline{ST Accuracy (Quality) $\Q^{ST}$} \\
+    Thermal Average (AA, high-T) \\
+        Overlap $R=\SVEC^{\top}\TVEC$ \\
+      $\Q^{ST}=\THRMAVG{R}$ 
+      };
+\node[box, right=of overlap] (hciz)
+      {\underline{Matrix Generalized Quality $\QT$}\\
+      HCIZ Integral \\
+$\OVERLAP:=\tfrac{1}{N}\SMAT^{\top}\TMAT$ \\
+$\QT :=   \THRMAVGIZ{\Trace{\OVERLAP^{\top}\OVERLAP}}$  \
+      };
+
+% ========== ROW 2 ==========
+\node[box, below=of smog] (rg)
+      {
+        \underline{Wilson Exact RG Condition (\ERG)}\\
+      {Effective Correlation Space (\ECS)}\\[4pt]
+      $\AMATN=\tfrac{1}{N}\SMAT\SMAT^{T}$, $\AECS=\mathbf{\hat{P}}^{ECS}\AMATN$ \\[4pt]
+    $d\mu(\SMAT)\rightarrow  d\mu(\AMAT) \rightarrow d\mu(\AECS)$ \\[4pt]
+      $\sum \ln \LambdaECS = 0 $  , $\LambdaECS \ge \LambdaECSmin $
+      };
+
+\node[box, below=of overlap] (tanaka)
+      {\underline{Tanaka Result for HCIZ}\\
+      \LargeN in $N$ limit \\[6pt]
+      $\IZG = \tfrac{1}{N}\ln \int d\mu(\AECS) exp[n\beta N \Trace{\tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT}]$\\[4pt] 
+      $\QT := \tfrac{\partial }{\partial n}\tfrac{1}{\beta}\IZGINF$
+      };
+\node[box, below=of hciz] (cumul)
+  {\underline{Integrated \RTransforms} \\[4pt]    
+     $\QT = \sum_{\LambdaECS}\int_{\LambdaECS_{min}}^{\LambdaECS}R_{\AECS}(z)$ \\[4pt]  
+     Student ESD $\AMAT$ $\sim$ Teacher ESD $\XMAT$ \\
+   $R_{\AECS}(z) = R_{\XECS}(z)$
+   };
+
+% ========== ROW 3 ==========
+\node[box, below=of rg] (rforms)
+      {\underline{\RTransform choices}\\
+      Bulk+Spikes (BS) \\
+      Free Cauchy (FC)  \\ 
+      Inverse MP (IMP) \\
+      L\'evy Wigner (LW) \\
+      $\cdots$
+};
+\node[box, below=of tanaka] (alpha)
+      {\underline{Derive \HTSR metrics}\\
+      Extend \SETOL to non-Ideal cases \\\
+      $\alpha$ and $\hat{\alpha}$};
+\node[box, below=of cumul] (expv)
+      {Experimental\\verification};
+
+% ---------- horizontal arrows ----------
+\draw[arrow] (smog)   -- (overlap);
+\draw[arrow] (overlap) -- (hciz);
+
+\draw[arrow] (rg)     -- (tanaka);
+\draw[arrow] (tanaka) -- (cumul);
+
+\draw[arrow] (rforms) -- (alpha);
+\draw[arrow] (alpha)  -- (expv);
+
+% ========== bridge 1 : HCIZ → RG  (↓ → ← → ↓) ==========
+\coordinate (hcizDrop) at ($(hciz.south)+(0,-0.9)$);          % fall below Row-1
+\coordinate (hcizLeft) at ($(hcizDrop -| rg.north)$);         % horizontal to col-1 x
+\draw[arrow] (hciz.south) -- (hcizDrop)                       % vertical
+             -- (hcizLeft)                                    % horizontal
+             -- (rg.north);                                   % vertical down into RG
+
+% ========== bridge 2 : Cumulants → R-forms (↓ → ← → ↓) ===
+\coordinate (cumulDrop) at ($(cumul.south)+(0,-0.9)$);
+\coordinate (cumulLeft) at ($(cumulDrop -| rforms.north)$);
+\draw[arrow] (cumul.south) -- (cumulDrop)
+             -- (cumulLeft)
+             -- (rforms.north);
+
+\end{tikzpicture}

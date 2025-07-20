@@ -70,20 +70,29 @@ We seek to compute and/or estimate the \AverageGeneralizationAccuracy for a \emp
 by averaging over an ensemble of \Student $S$ \Perceptrons, in the \AnnealedApproximation (AA), and at
 \HighTemperature (high-T); we call this ST \ModelQuality, and denote it $\Q^{ST}$.
 In Section~\ref{sxn:matgen}, we generalize $\Q^{ST}$ to an
-arbitrary layer in \MultiLayerPerceptron, giving a \LayerQuality, i.e., $\Q^{ST}\rightarrow\Q$.
-This formulation of the ST problem is different than the classic approach because one
-usually does not fix the \Teacher but, instead,
-averages over all \Teacher vectors $\TVEC$~\cite{SST92,engel2001statistical}.
+arbitrary layer in a \MultiLayerPerceptron, giving a \LayerQuality, i.e., $\Q^{ST}\rightarrow\Q$.
+\red{START} This formulation of the ST problem differs from the classic approach~\cite{SST92,engel2001statistical} in that
+we treat the \Teacher as input to the theory rather than a random vector $\TVEC$
+and that \Teacher provides the trained weights $\WVEC$ explicitly as opposed
+to the labels $\Yt$.
+%because one
+%usually does not fix the \Teacher but, instead,
+%averages over all \Teacher vectors $\TVEC$~\cite{SST92,engel2001statistical}.
+In the simpler \Perceptron formulation, there are only a few degrees of freedom (i.e., the ST overlap $R$, the feature load, the inverse Temperature $\beta$, and the number of training examples $\ND$), whereas in the matrix generalization,
+the structure of the empirical \Teacher weight matrix  $\TMAT=\WMAT$ provides $N\times M$ additional \red{degrees of freedom?},
+allowing for a much richer theoretical analysis.
+%\red{[This is wrong -- \cite{SST92} and ~\cite{EngelAndVanDenBroeck} both treat the Teacher and a single fixed vector, and the average is either a Boltzmann average over students or a quenched average over datasets or both. See \EQN 2.4 in~\cite{EngelAndVanDenBroeck} or \EQN 4.5 in~\cite{SST92}.]}
+%\red{This formulation of the \StudentTeacher problem is different from the classic approach because while we assume that there is a fixed \Teacher, we only assume that the \Teacher provides the ESD of the trained weight matrix $\WMAT$, and not the labels.}
 This is one of many ways that distinguishes the current approach from previous work.
 Because of this, we present both a pedagogic derivation of $\Q^{ST}$
 (for a general NN in Section~\ref{sxn:mathP}, and for the ST model specifically
-in the Appendix, Section~\ref{sxn:summary_sst92}),
-and we provide a more heuristic approach in Section~\ref{sxn:SMOG_main-st_av}, assuming
-the AA and high-T at all times.
-
+in the Appendix, Section~\ref{sxn:summary_sst92}), whereas in
+Section~\ref{sxn:SMOG_main-st_av} we provide a simple derivation, assuming
+the \AnnealedApproximation and \HighTemperature at all times.
+\red{STOP}
 
 \paragraph{Towards a \SemiEmpirical Theory.}
-In the \SETOL approach to \STATMECH, we want a matrix generalization of the ST \ModelQuality, $\Q^{ST}$, for a single \LayerQuality
+In the \SETOL approach to \STATMECH, we want a matrix generalization of the \StudentTeacher \ModelQuality, $\Q^{ST}$, for a single \LayerQuality
 $\Q\sim\Q^{NN}_{L}$ in an arbitrary \MultiLayerPerceptron (MLP).
 This matrix generalization is a relatively straightforward extension of the classical (i.e., for a vector \Teacher) \SMOG ST \ModelQuality (but our \SETOL approach will use it in a conceptually new way).
 
@@ -106,5 +115,5 @@ Importantly, we do not just seek a method with adjustable parameters, but rather
 techniques similar to those to explain the origins of Quantum Chemisty \SemiEmpirical methods, resulting in formal
 expressions that resemble a renormalized Self-Energy
 and/or \EffectiveHamiltonian from such approaches
-~\cite{Martin1994,Martin1996_CPL,MartinFreed1996, Brandow1965, freed1977, Freed1983, PhysRevLett.69.800},
+~\cite{Martin1994,Martin1996_CPL,MartinFreed1996, Brandow1965, freed1977, Freed1983, PhysRevLett.69.800}.
 This gives what we call a \SemiEmpirical \emph{Theory}.

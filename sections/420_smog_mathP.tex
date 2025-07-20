@@ -24,9 +24,9 @@ the error the NN makes on the data.
 We then explain how to take different kinds of \emph{\Thermodynamic} averages of the data,
 including \emph{Sample} and \emph{\ThermalAverages} and the implications,
 and the difference between computing errors and accuracy.
-Next, we define the \emph{FreeEnergy} $(F)$ for the error(s), and the \emph{GeneratingFunction}  $(\Gamma)$
+Next, we define the \emph{\FreeEnergy} $(F)$ for the error(s), and the \emph{\GeneratingFunction}  $(\Gamma)$
 for the accuracy and/or quality.
-From here, we explain the \emph{AnnealedApproximation} (AA) and
+From here, we explain the \emph{\AnnealedApproximation} (AA) and
 how to define the  \emph{\AnnealedHamiltonian}, $\GAN$, a crucial expression
 that will be the starting point later for our matrix model.
 In the AA, $\GAN$ simplies to  $\HANHT=\EPSLw$, where $\EPSLw$ is an \EffectivePotential
@@ -43,12 +43,12 @@ Note that these averages are obtained by using the \FreeEnergy as a \GeneratingF
 We then explain how to obtain the \ModelQuality as partial derivatives of a
 \emph{\GeneratingFunction} $(\Gamma_{\Q})$.
 We then discuss the more advanced techniques, the
-\emph{\LargeN Approxmation} and the \emph{SaddlePointApproximation} (SPA),
+\emph{\LargeN Approximation} and the \emph{\SaddlePointApproximation} (SPA),
 which will be used extensively later.
 Finally, we introduce  HCIZ integrals, which will be necessary to evaluate the matrix-generalized
 form of $\Gamma_{\Q}$ to obtain the final result.
 
-In this subsection, we will compare and contrast several types of averages and energies we will encounter. 
+In this subsection, we will compare and contrast several types of averages, energies and other \Thermodynamic concepts we will encounter. 
 \begin{enumerate}[label=4.2.\arabic*]
 \item
   \textbf{Setup.}
@@ -83,7 +83,7 @@ using the \FreeEnergy as a \GeneratingFunction, and how these errors are related
 %
 \item 
   \textbf{From the ST Perceptron to a Matrix Model.} 
-  Finally, in Section~\ref{sxn:from_vectors}, we introduce the physical concepts necessary to understand the \SETOL matrix model, including the \WideLayer \LargeN limit and the notion of \SizeConsistency.  We  then describe how to obtain the \LayerQuality $\Q$ from a matrix-generalized \ThermalAverage over random matrices, called an HCIZ integral.
+  Finally, in Section~\ref{sxn:from_vectors}, we introduce the physical concepts necessary to understand the \SETOL matrix model, including the \WideLayer \LargeN limit and the notion of \SizeConsistency.  We then describe how to obtain the \LayerQuality $\Q$ from a matrix-generalized \ThermalAverage over random matrices, called an HCIZ integral.
 \end{enumerate}
 The various symbols and other important results are summarized in the Appendix~\ref{sxn:appendix_A}
 
@@ -91,8 +91,10 @@ The various symbols and other important results are summarized in the Appendix~\
 \subsubsection{Setup}
 \label{sxn:mathP_setup}
 
-A basic issue in formulating \SETOL is that one typically trains one large (expensive) NN, i.e., one does not necessarily  need to split the data into training and testing sets (as in more traditional hyperparameter tuning of ML models).
-Thus, we want a methodology to approximate quantities such as the generalization error or generalization accuracy that does not rely on traditional train-test splitting methods.
+In formulating \SETOL, 
+%the goal is to explain is that one typically trains\red{only(?)} one large (expensive) NN, i.e., one does not necessarily need to split the data into training and testing sets (as in more traditional hyperparameter tuning of ML models\red{, because \SETOL makes \emph{data independent} predictions}.
+%Thus,) 
+we want a methodology to estimate quantities such as the generalization error and/or accuracy that does not rely on traditional methods that split the data into training and test sets because \SETOL makes \emph{data independent} predictions.
 To accomplish this, we idealize the empirical data distribution as Gaussian fields, and we will use \STATMECH to construct quantities (basically, free energies or generating functions) so that we can compute training/testing errors by taking appropriate derivatives of these quantities.
 
 In more detail, we imagine training a NN on $\ND$ training data instances, $\XVEC_{\mu}$, which are $m$-dimensional vectors,
@@ -103,20 +105,17 @@ so that we can then obtain
 analytic expressions for the \emph{\FreeEnergy} and \emph{\GeneratingFunction} we then use to compute
 Thermodynamic averages such as the \emph{\AverageGeneralizationError} $(\AVGGE)$ and
 \emph{\ModelQuality} $(\Q)$ (which is our approximation to the \emph{\AverageGeneralizationAccuracy}).
+%\red{In this training process, labels are provided, and are used in producing gradients and so on, but in our theory we do non consider them as a form of supervision. Instead, we}
 
 \input{sections/data_mapping}
 
 \paragraph{Counting Samples and Features.}
 We let the number of training samples be $\ND$ and the dimension 
 (i.e., number of features) for each sample be $m$.
-% For simplicity, we also use $\ND$ (instead of $\ND$) and $M$ (instead of $m$), recognizing that 
-% \emph{in later sections} $\ND$ and $M$ will refer to the dimensions 
-% of a layer’s weight matrix (i.e., an $N \times M$ matrix). 
-% We stress that here, in this subsection,  $n = N$ and $m = M$ only hold for our immediate analysis, 
-% to avoid extra notation. 
-When we move to matrix-based analyses, 
-%we will revisit (and possibly distinguish) $\ND$ (layer input dimension) and $\ND$ (training-set size).
-the input dimension $m$ will become $M$ and we will induce a new output dimension $\ND$, (the output dimension of a perceptron is $1$). Thus, the layer weight matrix $\WMAT$ has dimension $M\times N$.\footnote{To be more precise, $M$ is defined to be the lesser dimension of $\WMAT$ and $N$ the greater. For simplicity we assume that $M$ is always the input dimension and $N$ the output dimension. Under the assumptions of \SETOL, there is no loss of generality from doing this.} The number of data samples will remain $\ND$ throughout.
+When we move to \SETOL matrix-model, there will still be $\ND$ training examples, but treated implicitly.
+The $m$-dimensional weight vector $\WVEC$ will become an $N \times M$ weight matrix, $\WMAT$, $(N\ge M)$
+described as having $N$ number of $M$-dimensional (input) feature vectors.   Table~\ref{tab:dim_notation} summarizes these conventions.
+%\footnote{To be more precise, $M$ is defined to be the lesser dimension of $\WMAT$ and $N$ the greater. For simplicity we assume that $M$ is always the input dimension and $N$ the output dimension. Under the assumptions of \SETOL, there is no loss of generality from doing this.} The number of data samples will remain $\ND$ throughout.
 \input{sections/dim_notation_table}
 
 
@@ -140,7 +139,7 @@ We call $\XVEC^{\ND}$ an $\ND$-sized sample (of the training data instances $\XV
 % See below We may or may not specify the labels for this sample, depending on the context.
 
 We define model errors
-as an energy $\DEL$, the difference squared between the student's and teacher's output, since their outputs are a form of energy.
+as an energy $\DEL$, the difference squared between the \Student's and \Teacher's output.
 Smaller energies correspond to smaller errors and therefore better models.
 For example, for the mean-squared-error (MSE) loss, one has
 \begin{align}
@@ -148,7 +147,7 @@ For example, for the mean-squared-error (MSE) loss, one has
   \DEL(\WVEC,\XVEC_{\mu},\MY_{\mu}):= (\MY_{\mu}-\NNOUT(\WVEC,\XVEC_{\mu}))^{2}  ,
 \end{align}
 where $\NNOUT(\WVEC,\XVEC_{\mu})$ is output prediction of the NN, as in \EQN~\ref{eqn:dnn_energy}.
-\footnote{The so-called Energy Landscape function $\NNOUT$ is not an energy  in the sense for this work.}
+\footnote{Note that the Energy Landscape function $\NNOUT$ is nonlinearly related to $\DEL$. We treat $\NNOUT$ and $\DEL$ as being the energy states of two separate, but interacting, thermodynamic systems, and the loss function $\mathcal{L}$ is a transfer function that relates them.}
 
 
 We assume that there is a real-world training process that generates a \Teacher model $(T)$, trained on a particular dataset $\ADD$, and we seek a theory for the \Quality (or generalization accuracy) of this model.
@@ -167,24 +166,24 @@ such that
     \label{eqn:xi}
   \left(\XI_{\mu}, y_{\mu} \right) \sim \MDD,\;\mu=1, \cdots, \infty  .
 \end{align}
-Here, $\XImu\in\mathbb{R}^{m}$ is a random vector (i.e., an $m$-dimensional random variable), sampled from an i.i.d $m$-dimensional joint distribution $\MDD$ of both the features $\XI_{\mu}$, which are Gaussian, and the labels $y_{\mu}$, which are binary NN outputs. Since we assume that the labels are fixed, and the labels are deterministically generated by it, $\MDD$ is effectively just the \emph{idealized} Gaussian feature distribution.
-%
+Here, $\XImu\in\mathbb{R}^{m}$ is a random vector (i.e., an $m$-dimensional random variable), sampled from an i.i.d $m$-dimensional joint distribution $\MDD$ of both the features $\XI_{\mu}$, which are Gaussian, and the labels $y_{\mu}$, which are binary NN outputs.
 
 \subsubsection{BraKets, Expected Values, and Thermal Averages}
 \label{sxn:mathP_averages}
 Given the setup from Section~\ref{sxn:mathP_setup},
-we will treat the total energy, $\DETOPX$, over some $\ND$-size data set $\NDX$.
-we can write the \TotalDataSampleError,
-using an overloaded operator notation, as
+we will treat the total energy $\DETOPX$ as a sum over some $\ND$-size data set $\NDX$.
+We can write the \TotalDataSampleError, using an overloaded operator notation, as
 \begin{align}
   \label{eqn:detopxy}
   \DETOPXY :=\sum_{\mu=1}^{\ND}\DEL(\WVEC,\XVEC_{\mu}, \MY_{\mu})  ,
 \end{align}
-where the boldface $\DETOP$ indicates this is a sum over the entire set of $\ND$ pairs $[\NDX, \MY^{\ND}]$.
- We should keep in mind that this depends on the specific set of $\ND$ data pairs $[(\XVEC_{\mu},\MY_{\mu})\in\ADD\;|\;\mu=1,\cdots,n]$, 
- although later we will model the labels $\MY_{\mu}$ as the output of another NN when describing the Student-Teacher model.
-Doing so later, here, we treat $\MY_{\mu}$ as a deterministic output of the Teacher model $T$, meaning that
-$\MY_{\mu}$ is \emph{implicit} in $\DEL$.
+where the superscript $\ND$ in $\DETOPXY$ indicates this is a sum over the entire set of $\ND$ pairs $[\NDX, \MY^{\ND}]$.
+ We should keep in mind that this depends on the specific set of $\ND$ data pairs $[(\XVEC_{\mu},\MY_{\mu})\in\ADD\;|\;\mu=1,\cdots,n]$.
+ %,  although later we will model the labels $\MY_{\mu}$ as the output of another NN when describing the Student-Teacher model.
+Here, we treat %$\MY_{\mu}$ as a deterministic output of the Teacher model $T$, 
+the labels $\MY$ as
+% meaning that $\MY_{\mu}$ is 
+\emph{implicit} in $\DETOPX$.
 We will therefore drop the $\MY_{\mu}$ and $y^{\ND}$ symbols, 
 and simply write this total error / energy difference as
 \begin{align}
@@ -193,7 +192,7 @@ and simply write this total error / energy difference as
 \end{align}
 which is now a function of the entire set of $\ND$ vectors $[\NDX]$.%
 % (where the labels $\MY$ have been set implicitly).
-\footnote{In the classic Student Teacher model, the labels  $\MY^{\ND}$ represent the Teacher outputs and are effectively treated as either uniform random variables to be averaged over later, or as the outputs of an optimal Teacher. In this work, the Teacher is fixed so we can drop the labels.}
+\footnote{In the classic Student Teacher model, the labels  $\MY^{\ND}$ represent the Teacher outputs and are effectively treated as either uniform random variables to be averaged over later, or as the outputs of an optimal Teacher. In this work, the Teacher weights $\WVEC$, not labels, are input (i.e., a fixed ESD, later) so we can drop the labels.}
 This operator notation will prove useful later in Section~\ref{sxn:SMOG_main-st_av}
 (see \EQN~\ref{eqn:DE_L}) and in Appendix~\ref{sxn:summary_sst92}.
 
@@ -235,8 +234,7 @@ For example, we treat an \ExpectedValue of the \DataSampleError , which is corre
   \label{eqn:Emap}
   \frac{1}{\ND}\DETOPX \xrightarrow{\text{Expected Value}} \langle \DETOPXI \rangle_{\AVGNDXIn}  , %= \DETOT = n \EPSLw.
 \end{align}
-where the BraKet $\langle\cdots\rangle_{\AVGNDXIn}$ deotes the integral over the idealized dataset $\NDXIn$, but with the convention that the normalization $\tfrac{1}{n}$
-appears inside the \BraKet implicitly.
+where the BraKet $\langle\cdots\rangle_{\AVGNDXIn}$ denotes the integral over the idealized dataset $\NDXIn$ of a normalized average over the sample.
 In this case, we obtain:
 \begin{align}
   \langle \DETOPXI\rangle_{\AVGNDXIn}
@@ -251,14 +249,14 @@ where $P(\NDXIn)$ is a product of $\ND$ i.i.d. $m$-dimensional Gaussian distribu
 The subscript $\AVGNDXIn$ indicates this is an
 \ExpectedValue of an average of an $\ND$-size \emph{sample} of ideal data, where the \ExpectedValue is taken over datasets, and the average is over data points within each sample. The third line follows because the $\ND$ samples are i.i.d.
 (This is used in both Sections~\ref{sxn:SMOG_main} and~\ref{sxn:matgen}.)
-The normalization $\tfrac{1}{\ND}$ ensures the \BraKet is a proper \ExpectedValue of a sample average.
+(The normalization $\tfrac{1}{\ND}$ ensures the \BraKet is a proper \ExpectedValue of a sample average.)
 The measure $d\mu(\NDXIn)$ 
 denotes the probability measure associated with a single 
 \emph{realization} of a random data sample of size $\ND$ drawn from an $m$-dimensional idealized Gaussian distribution.
-A subscript $\XI$ on the Ket as $\langle\cdots\rangle_{\XI}$ indicates that the integral over potential data points, not an average of a data sample (i.e., there would be no $1/\ND$ prefactor).
+A subscript $\XI$ on the Ket as $\langle\cdots\rangle_{\XI}$ indicates that the integral is over potential data points, not an average of a data sample (i.e., there would be no $1/\ND$ prefactor).
 
 
-\paragraph{\SizeExtensivity and \SizeIntensivity}
+\paragraph{\SizeExtensivity and \SizeIntensivity.}
 A key requirement for the \ThermodynamicLimit in \STATMECH is \emph{\SizeExtensivity}:
 that physically meaningful quantities (i.e, total energies and free energies)
 scale linearly with the system size or number of parameters, i.e. $m$ (or $N\times M$, below).
@@ -269,8 +267,8 @@ In our setting, \SizeExtensivity and \SizeIntensivity underpin the so-called \La
 ensuring that macroscopic observables become independent of
 microscopic fluctuations so that the system approaches equilibrium as expected.
 
-In the theory of the \StatisticalMechanics of Generalization (\SMOG), however, one also holds the (feature) load $=\ND/m$ fixed when taking the \ThermodynamicLimit, and we will do the same\cite{Gardner_1985, SST92, engel2001statistical,MM17_TR}. In fact, we will take load to be unity, and not treat it explicitly. 
-Moreover,  we will use $\ND$  as the primary variable below as we are interested in how the Free Energy and other quantities change with $\ND$. That is, we use the notational convention in ~\cite{Solla2023} (as opposed to \cite{SST92}). \textbf{Consequently, for our purposes here, this means that the \ThermodynamicLimit and the '\LargeN limit in $\ND$' are effectively the same.}
+In the theory of the \StatisticalMechanics of Generalization (\SMOG), however, one also holds the (feature) load $=\ND/m$ fixed when taking the \ThermodynamicLimit, and we will do the same~\cite{Gardner_1985, SST92, engel2001statistical,MM17_TR}. In fact, we will take load to be unity, and not treat it explicitly. \footnote{For our purposes, we only require that $n/m$ is \emph{some fixed quantity} as we take this limit. We note that $n/m = 1$ is the Double Descent Worst Case, however assuming that $n / m$ is some other constant addresses this without changing any of the results.}
+Moreover,  we will use $\ND$ as the primary variable below as we are interested in how the Free Energy and other quantities change with $\ND$. That is, we use the notational convention in ~\cite{Solla2023} (as opposed to \cite{SST92}). \textbf{Consequently, for our purposes here, this means that the \ThermodynamicLimit and the `\LargeN limit in $\ND$' are effectively the same.}
 
 As an example of \SizeExtensivity and \SizeIntensivity, 
 we write the \ExpectedValue (i.e., the data-average) of \DataSampleError $\DETOPXI$ (\EQN~\ref{eqn:avg_data_sample_error})
@@ -280,15 +278,15 @@ in the \LargeN limit in $n$ as
   \lim_{n\gg 1} 
   \langle \DETOPXI\rangle_{\AVGNDXIn}=
   \lim_{n\gg 1}\frac{1}{\ND}
-\int \prod_{\mu=1}^{\ND}d\XI_{\mu}P(\NDXIn)
-\sum_{\mu=1}^{\ND}\DEL(\WVEC,\XI_{\mu}) .
+\int \left[ \prod_{\mu=1}^{\ND}d\XI_{\mu}P(\NDXIn) \right]
+\left[ \sum_{\mu=1}^{\ND}\DEL(\WVEC,\XI_{\mu}) \right].
 \end{align}
 Here, the notation $(n \gg 1)$ means $\ND$ grows arbitrarily large, but is not necessarily
 at the limit point $(n=\infty)$. And, again, the load is fixed, so $n\gg 1 \leftrightarrow m \gg 1$.
 The \TotalDataSampleError $\DETOPXI$ is \SizeExtensive, whereas the
 average $\langle\DETOPXI\rangle_{\AVGNDXIn}$ is \SizeIntensive.
 This limit will be implicit later when taking a \SaddlePointApproximation (see below).
-\footnote{As we are working within a ``physics-level of rigor, we take some liberties in evaluating these \LargeN limits; and we leave the formal proofs for future work.  }
+\footnote{As we are working within a ``physics-level of rigor'', we take some liberties in evaluating these \LargeN limits; and we leave the formal proofs for future work.  }
 
 The data-averaged error  $\langle \DETOPXI \rangle_{\AVGNDXIn}$ will appear frequently below.
 For convenience and for compatibility with \cite{SST92}, we denote it using the symbol $\EPSLw$:
@@ -309,7 +307,7 @@ It is also convenient to write \emph{\TotalEffectivePotential} as an Energy,
 This will only be useful when the \ThermodynamicLimit exists, and this
 can be reasonably expected for the \AnnealedApproximation (AA),
 which is the regime in which \SETOL will be developed.% 
-\footnote{We should note that, while our model training and generalization errors are always expressed energies, anenergy is not necessarily a model error. }
+\footnote{We should note that, while our model training and generalization errors are always expressed as energies, an energy is not necessarily a model error. }
 
 
 \paragraph{From Errors to Accuracies: The \AverageGeneralizationAccuracy, the \Quality, and the \SelfOverlap.}
@@ -350,7 +348,7 @@ data $\langle\cdots\rangle_{\XI},
 \langle\cdots\rangle_{\NDXI},
 \langle\cdots\rangle_{\AVGNDXI}$
 \end{center}
-When averaging over the data $\NDXI$,  the subscript will appear with a bar (i.e. $\AVGNDXIn$), but when just integrating over the data, no bar will appear (i.e., $\NDXIn$). 
+When averaging over whole datasets $\NDXI$, the subscript will appear with a bar (i.e. $\AVGNDXIn$), but when just integrating over a particular dataset, no bar will appear (i.e., $\NDXIn$). 
 We also reuse these symbols for other quantities, such as the $\ZANHT$, $\AVGGE^{an,hT}$, $\GAN$, etc,
 but may mix-and-match subscripts and superscripts for visual clarity.
 
@@ -391,7 +389,7 @@ Also, we may use $\langle \cdots \rangle^{\beta}_{\NDXIn}$ to denote what looks 
 this is not essential and only used once below and can be ignored for this section.
 
 \paragraph{Other Notation: Overbars, Superscripts and Subscripts.}
-As above, we may also occasionally denoted averages using the common notation for expected values, $\mathbb{E}[\cdots]$.
+As above, we may also occasionally denote averages using the common notation for expected values, $\mathbb{E}[\cdots]$.
 See Table~\ref{tab:dimensions} and~\ref{tab:symbols} in Appendix~\ref{sxn:appendix} for a list of these and other notational conventions and symbols we use.
 
 When discussing quantities such as the \FreeEnergy $(F)$, 
@@ -424,11 +422,11 @@ Generally speaking, a \FreeEnergy, $F_{\ND}$, is defined in terms of a partition
 \label{eqn:F}
 \beta F_{\ND}:=-\ln Z_{\ND}.
 \end{align}
-Keep in mind that $Z_{\ND}$ may actually be a function of the data $\XI$ (or some other variables),
+Keep in mind that $Z_{\ND}$ may actually be a function of the \red{idealized} data $\XI$ (or some other variables),
 i.e., $Z(\XI)$, but we usually don't write this explicitly.
 Likewise, while  both $F_{\ND}$ and $Z_{\ND}$ depend explicitly on the system size $\ND$,
 we will only include these subscripts when emphasizing this.
-Also, $F_{\ND}$ has units of Energy or Temperature, so $\beta F_{\ND}=-\ln Z_{\ND}$ is a "unitless" \FreeEnergy.
+Also, $F_{\ND}$ has units of Energy or Temperature, so $\beta F_{\ND}=-\ln Z_{\ND}$ is a ``unitless'' \FreeEnergy.
 %
 Each model (in single-layer models) and/or layer (in multi-layer models) will have its own \PartitionFunction and associated \GeneratingFunctions.
 We call $F_{\ND}$ and $Z_{\ND}$ \emph{\GeneratingFunctions} because they can be used to generate the model errors. 
@@ -605,7 +603,7 @@ by expanding the exponential to first order in $\beta$, to obtain
 =&\;\beta \EPSLw  .
 \label{eqn:Gan_highT}
 \end{align}
-Here, we have used the AA, the property that $\ln(1 + y) \approx y$, for $|y| \ll 1$, and the fact that $\EPSLw$ takes the form given in \EQN~\ref{eqn:epsl}.
+Here, we have used the AA, and the property that $\ln(1 + y) \approx y$, for $|y| \ll 1$, and the fact that $\EPSLw$ takes the form given in \EQN~\ref{eqn:epsl}.
 This gives $\GANHT:=\EPSLw$, which is no longer a non-linear function of $\beta$.
 Moving forward, we will assume we are taking the high-T limit like this.
 
@@ -664,7 +662,7 @@ where $z(\beta)$ is a constant normalization term that depends only on $\beta$ (
 This error captures how the model’s predictions will change as more data points are introduced.
 
 In the \ThermodynamicLimit $(n \gg 1)$, these two definitions of the error become equivalent at High-T,
-and they equal to the \ThermalAverage of the \EffectivePotential:
+and they are equal to the \ThermalAverage of the \EffectivePotential:
 \begin{align}
   \AVGTE^{an, hT} = \AVGGE^{an, hT} = \THRMAVGw{\EPSLw}\;,n\gg 1 .
 \end{align}
@@ -708,13 +706,10 @@ $(\mathcal{L})$ and/or ST error, and, therefore minimizes \FreeEnergies as well.
 
 More generally, we see that we can use the \PartitionFunction, $Z_{\ND}$,
 and/or the \FreeEnergy, $\beta F_{\ND}:=-\ln Z_{\ND}$, as a \GeneratingFunction to obtain any
-desired Thermodymanic average by taking the appropriate partial derivative
-of the correpsonding form of $\ln Z$.
+desired Thermodynamic average by taking the appropriate partial derivative
+of the corresponding form of $\ln Z$.
 In Appendix~\ref{sxn:mathP} we show how to obtain 
 $\AVGTE^{an}$ and $\AVGGE^{an}$ obtain explicitly in this way using $Z^{an}$.
-
-
-
 \subsubsection{The Quality \texorpdfstring{$(\Q)$}{Q} and its Generating Function \texorpdfstring{$(\Gamma_{\Q})$}{(Gamma Q)}}
 Here, we explain how to define what we call the \Quality $\Q$, which is
 defined as the \ThermalAverage of the \SelfOverlap,  $\Q:=\THRMAVGw{\ETAw}$,
@@ -762,7 +757,7 @@ for $\ETAw$ in \EQN~\ref{ref:defGammaQ}:
   &= \ND\beta -\beta F^{ST}_{\ND}
 \end{align}
 Dividing by $\ND$, we can also recover the more general relation for the \emph{Average} Free Energy,
-$\bar{\Gamma}_{\Q}=1-\bar{F}_{\ND}$. (\EQN~\ref{eqn:GammaBar}).For the matrix case we do something similar; see Appendix~\ref{sxn:quality}.
+$\bar{\Gamma}_{\Q}=1-\bar{F}_{\ND}$. (\EQN~\ref{eqn:GammaBar}). For the matrix case we do something similar; see Appendix~\ref{sxn:quality}.
 
 Likewise, one can show that the \Quality $\Q$
 (again, always in the AA and at high-T) can be identified as the \ThermalAverage of the (data-averaged or Annealed)
@@ -788,6 +783,7 @@ See Section~\ref{sxn:matgen} and Appendix~\ref{sxn:quality} for more details.
 
 \subsubsection{The Thermodynamic limit}
 \label{sxn:largeN_and_SPA}
+\red{CHECK THIS}
 In the \SMOG, the \ThermodynamicLimit is expressed as the limit of the number of free parameters $m$ grows arbitrarily large, $m \gg 1$, but also holding the feature load $n/m$ fixed (i.e., see \cite{SST92}).  In these older approaches, one is interested in how the thermodynamic properties depend on the feature load. Here, however, we are interested in estimating the generalization accuracy, so we are interested how the thermodynamic properties vary with $n$, the number of training examples.  For that reason, we will express the \ThermodynamicLimit as the \LargeN limit in $\ND$. i.e., while $\ND$ grows arbitrarily large,  $n \gg 1$, while implicitly fixing the corresponding feature load ($n/m$ for the ST Percepton,  and $n/N$ for our ST matrix model, below).
 
 To express the average \FreeEnergy $\bar{F}_{\ND}$ in the \LargeN limit in $\ND$, we can write
@@ -797,7 +793,7 @@ To express the average \FreeEnergy $\bar{F}_{\ND}$ in the \LargeN limit in $\ND$
 When this \LargeN approximation is well behaved,
 then the total energy $\DETOT$ is extensive, i.e., when $\DETOT=n\EPSL(\WVEC)$;
 and, consequently, the total \FreeEnergy is also extensive, i.e., $F_{\ND}=\ND\bar{F}_{\ND}$.
-(This is a cornerstone of statistical mechanics, as it allows for meaningful macroscopic predictions from microscopic interactions.)
+This property is a cornerstone of statistical mechanics, as it allows for meaningful macroscopic predictions from microscopic interactions.
 
 \paragraph{\SelfAveraging.}
 The existence of the limit signifies that the system is \emph{\SelfAveraging}, meaning that the macroscopic properties are independent of fluctuations, etc.
@@ -813,7 +809,7 @@ become sharply peaked, and
 For a NN, \SelfAveraging implies that the weights $\WVEC$ are \emph{\Typical} of the distribution,
 and therefore the NN can generalize to similar but unseen test examples.
 
-\paragraph{The Saddle Point Approximation (SPA) }In \STATMECH, one is frequently faced with intractable integrals, and one common solution is to apply \SaddlePointApproximation (SPA). The SPA is a \LargeN approximation and is used to describe the system interactions at \LargeN, forming the average or mean interaction over the data.
+\paragraph{The Saddle Point Approximation (SPA).}In \STATMECH, one is frequently faced with intractable integrals, and one common solution is to apply \SaddlePointApproximation (SPA). The SPA is a \LargeN approximation and is used to describe the system interactions at \LargeN, forming the average or mean interaction over the data.
 For example, when considering the \LargeN in $\ND$ case, we could write
 
 \begin{align}
@@ -826,12 +822,12 @@ where $\WVEC^{*}$ satisfies the saddle point equations:
   \EPSL(\WVEC^{*}):=\tfrac{\partial}{\partial \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}=0 \\
   \EPSL(\WVEC^{*}):=\tfrac{\partial^{2}}{\partial^{2} \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}>0  .
 \end{align}
-These equations guarantee that the solution $\EPSL(\WVEC^{*})$ is at the minimum.
+These equations guarantee that the solution $\EPSL(\WVEC^{*})$ is at \red{a local} minimum in $\WVEC$.
 The SPA can be applied to many \LargeN integrals, as long as the integrand decays exponentially,  
 
-\paragraph{Wick Rotation} When working with complex oscillatory integrands, $i.e., e^{iNf(x)}$,   
+\paragraph{Wick Rotation.} When working with complex oscillatory integrands, $i.e., e^{iNf(x)}$,   
 the SPA is frequently combined with a \emph{\WickRotation}, 
-which is used to convert an oscillatory integral to an exponentially decaying one:
+which is used to convert an oscillatory integral to an exponentially decaying one.
 The \WickRotation is an analytic continuation that rotates the integration variable by 90 degrees, i.e., $x \to \pm i x$, deforming the integration contour to pass through a saddle point of the integrand:
 \begin{equation}
 x\rightarrow ix,\;\;e^{iNf(x)}\rightarrow e^{-Nf(ix)},
@@ -864,7 +860,7 @@ to a matrix model of $N \times M$ weights, which can be thought of
 as $N$ interacting (feature) vectors of dimension $M$.
 Moreover, in the Student-Teacher (ST) model used below,
 in the vector case, the $m$ degrees of freedom if the feature vectors are integrated out,
-whereas for the matrix case, we will retain the\emph{'a reduced set} of the  $M$ degrees of freedom, $\MECS$.  To do this, we need to ensure the \FreeEnergies and related quantities like the \LayerQualitySquared to scale properly.
+whereas for the matrix case, we will retain \emph{a reduced set} of the $M$ degrees of freedom, $\MECS$. To do this, we need to ensure the \FreeEnergies and related quantities like the \LayerQualitySquared scale properly.
 
 \SETOL uses two \LargeN approximations, the \Thermodynamic limit, which is a \LargeN limit in $\ND$, and the \emph{\WideLayer limit}, which is a \LargeN limit in $N$:
 \begin{itemize}
@@ -872,14 +868,14 @@ whereas for the matrix case, we will retain the\emph{'a reduced set} of the  $M$
     \item \LargeN limit in n: $n\gg 1$ (the number of training examples, fixed load: $\ND/m = 1$)
     \item \WideLayer limit: $N\gg 1$ (the number of feature vectors,  $n/N$ fixed)
 \end{itemize}
-Note that by 'limit" we mean $\ND$ or $N$ simply grows arbitrarily large,  In taking the \WideLayer \LargeN limit in $N$, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number data points per feature vector, remains constant (although we do not enforce this explicitly here).  
-In doing this, we expect the matrix-generalized total Energies $(F, H^{an}, \cdots)$ to be \SizeExtensive in $\ND$ and $N$,  the average quantities to be \SizeIntensive in both, 
+Note that by ``limit'' we mean $\ND$ or $N$ simply grows arbitrarily large. In taking the \WideLayer \LargeN limit in $N$, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number data points per \red{feature vector or output dimension $N$}, remains constant. \footnote{Although we do not enforce this explicitly here, we note that the so-called ``Chinchilla Scaling Law'' demonstrates an explicit compute-optimal frontier~\cite{hoffmann2022}, which we can expect practitioners will likely adhere to.}  
+In doing this, we expect the matrix-generalized total Energies $(F, H^{an}, \cdots)$ to be \SizeExtensive in $\ND$ and $N$, the average quantities to be \SizeIntensive in both, 
 and, as discussed below, \emph{\SizeConsistent} in $\MECS$.
 
-\paragraph{\SizeConsistency,}  
+\paragraph{\SizeConsistency.}
 The notion of \emph{\SizeConsistency} is a notion commonly 
-used Quantum Chemistry to describe interacting , correlated systems. It is often introduced through the Linked Cluster Theorem~\cite{Hubbard1959,Brandow1963},
-which states that the \emph{average} energies and/or free energies $(\bar{F})$ of in particular a correlated system scale with $\MECS$,
+used Quantum Chemistry to describe interacting, correlated systems. It is often introduced through the Linked Cluster Theorem~\cite{Hubbard1959,Brandow1963},
+which states that the \emph{average} energies and/or free energies $(\bar{F})$ of, in particular, a correlated system scale with $\MECS$,
 the number of \emph{independent interacting components}:
 \begin{align}
   \label{eqn:LCT}
@@ -888,14 +884,14 @@ the number of \emph{independent interacting components}:
 \end{align}
 For \SETOL, below, these connected components will be the matrix-generalized cumulants from RMT.
 In Quantum Chemistry, this is analogous to ensuring the renormalized Self-Energy and/or Effective Hamiltonian is \SizeConsistent.
-For NNs, \SizeConsistency appears when scaling the number of features in our matrix model,
-and it ensure that our layer Free Energy, etc.,  remain well-behaved as we increase $\MECS$.
+For NNs, \SizeConsistency appears when scaling the number of \red{feature vectors} $N$ in our matrix model,
+and it ensures that our layer Free Energy, etc.,  remain well-behaved as we increase $\MECS$.
 For a simple example, see Appendix~\ref{sxn:summary_sst92}
  where we derive the expression for the matrix-generalized
 \AnnealedHamiltonian $\HAN$.  
 Both \SizeExtensivity (in $\ND$ and $N$) and \SizeConsistency (in $\MECS$ )
 are crucial in our \SETOL analysis:  they justify taking the \LargeN approximation for matrix integrals, and they ensure
-our resulting the HCIZ integral--a sum of integrated RMT cumulants (below)--
+our resulting HCIZ integral--a sum of integrated RMT cumulants (below)--
 scales with the dimension of the \EffectiveCorrelationSpace (\ECS), $\MECS$.  
 
 
@@ -907,30 +903,30 @@ to an integral over NN \Student $N \times M$ weight matrices ($\WMAT=\mathbf{S}$
 The resulting \PartitionFunction and \FreeEnergy will be expressed with what is called an HCIZ integral.
 (See Tanaka~\cite{Tanaka2007, Tanaka2008}, Gallucio et al.~\cite{Bouchaud1998} and/or Parisi~\cite{PP95}, and also \EQN~\ref{eqn:tanaka_result} in Section~\ref{sxn:matgen}.)
 As in \EQN~\ref{eqn:IZGINF_HCIZ}, we will define a \emph{\LayerQuality \GeneratingFunction}, $\IZG$, for the \LayerQuality (squared).
-This will take the form of an HCIZ integral
+This will take the form of an HCIZ integral,
 \begin{align}
-\label{eqn:hciz_prelim},
+\label{eqn:hciz_prelim}
 \IZGINF := \lim_{N\gg 1}\frac{1}{N}\ln \underbrace{\int d\mu(\AMAT) \exp[\ND\beta N\Trace{\AMAT_N\XMAT_N}] }_{\mbox{HCIZ Integral}} 
   \approx \ND\beta\Trace{\mathcal{G}_{A}(\lambda)}  ,
 \end{align}
 that is evaluated in the \WideLayer\emph{\LargeN limit in $N$} (here, meaning as $N \gg 1$, but not at the limit $N=\infty$).
 Here,  $\AMAT_N$ and $\XMAT_N$ are $N \times N$ Hermetian matrices, (See Appendix \ref{sxn:appendix_A} for notation,) $d\mu(\AMAT)$ is a measure
 over all random (Orthogonal) matrices (see \EQN~\ref{eqn:dmuA}),
-and $\mathcal{G}_{A}()$ is a called  \GEN 
-(which are different from $\Gamma_{\ND}$, above, and will be made clear in Section~\ref{sxn:r_transforms} ) , defined in \EQN~\ref{eqn:generating_function_A} in Section~\ref{sxn:matgen}. 
+and $\mathcal{G}_{A}()$ is called a \GEN~
+(which are different from $\Gamma_{\ND}$, above, and will be made clear in Section~\ref{sxn:r_transforms} ), defined in \EQN~\ref{eqn:generating_function_A} in Section~\ref{sxn:matgen}. 
 In applying this, we will actually write $\Trace{\AMAT\XMAT}=\tfrac{1}{N}\Trace{\AMAT\WMAT\WMAT^{\top}}=\tfrac{1}{N}\Trace{\WMAT^{\top}\AMAT\WMAT}$,
-where $\mathbf{W}$ is an $N \times M$ layer weight matrix, and $\AMAT=\AMAT_N:=\tfrac{1}{\ND}\SMAT\SMAT^{\top}$ is an (outer) layer
+where $\mathbf{W}$ is an $N \times M$ layer weight matrix, and $\AMAT=\AMAT_N:=\tfrac{1}{\ND}\SMAT\SMAT^{\top}$ is an (Outer) layer
 Correlation matrix, and, here,  $\XMAT=\XMAT_N=\tfrac{1}{N}\WMAT\WMAT^{\top}$).
 Moreover, to evaluate this, we will need to restrict $\AMAT$ (and $\XMAT$)
 to the lower-rank \EffectiveCorrelationSpace (\ECS),  i.e., $\AMAT\rightarrow\AECS$. ($\XMAT$ is already restricted to the span of $\XECS$ by \ECS assumption.)
 
-Notice this looks similar to \SaddlePointApproximation (SPA), but where the more complicated function
+Notice that this looks similar to a \SaddlePointApproximation (SPA), but where the more complicated function
 $\GNORM()$ now appears.
 Also, $\GNORM()$ here depends on only the limiting form of the ESD of $\AMAT$, $\rho^{\infty}_{A}(\lambda)$,
 and depends on the $M$ normalized eigenvalues $\lambda_{i}$ of $\XMAT$.
 
 
-To evaluate this, we will form the limit \LargeN in $N$, using a result from Tanaka~\cite{Tanaka2007,Tanaka2008},
+To evaluate this, we will form the \LargeN limit in $N$, using a result from Tanaka~\cite{Tanaka2007,Tanaka2008},
 but slightly extended (in Appendix~\ref{sxn:tanaka}) to include the term $\ND\beta$ explicitly.
 We can write
 \begin{align}
@@ -958,8 +954,8 @@ In the context of our HCIZ-based construction, integrating a complex function li
 a \HeavyTailed ESD can produce precisely this phenomenon.
 For example, if $R(z)$ has a square-root term, i.e., $(\sqrt{z-c})$, then it will have a branch cut at $z=c$,
 and the \GeneratingFunction (i.e.,  negative Effective Free Energy) $\IZGINF$
-will be non-analytic and we must choose the appropriate, physically meaningful branch, i.e., $(z>c)$,
-corresponding to the \ECS.
+will be non-analytic and we must choose the appropriate, physically meaningful branch, i.e., $(\Re[z]>\LambdaECSmin)$,
+corresponding to the \ECS (where $\Re[z]$ is the Real-part of $z$)
 We argue that this cut signifies a \emph{phase boundary}—an abrupt change
 in the system’s correlation structure and corresponds to an emerging singularity in the \LayerQuality.
 Even though we perform only a single exact RG step , 

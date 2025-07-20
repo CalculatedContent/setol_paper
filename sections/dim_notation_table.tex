@@ -7,12 +7,15 @@
  Total number of data samples used in training. & $\ND$ & $\ND$ \\
  Number of features per training sample (Input dimension). & $m$ & $M$ \\
  Dimension of layer output (Output dimension)  & $1$ & $N$ \\
- Number of free parameters & $1$ & $N\times M$ \\
- Total number of degrees of freedom & $\ND\times 1$ & $\ND\times N\times M$ \\
+ Number of free parameters (in $R$) & $1$ & $M(M-1)/2$ \\
+ Energy scaling & $\ND$ & $\ND\times N\times M$ \\
 \bottomrule
 \end{tabular}
-\caption{In the \emph{vector} model, lowercase $m$ is the dimension of the weight vector (total parameters), which is also the number of features per sample. In the vector case, there is one free parameter -- the overlap $R$ (or angle $\theta$) between student and teacher. In the \emph{matrix} model, uppercase $N$ and $M$ are the input and output dimensions of the weight matrix, resp., giving $N\times M$ free parameters.
-The total number of degrees of freedom is defined as the number of training examples $\ND$ times the number of free parameters.}
+\caption{In the ST \Perceptron \emph{vector} model, lowercase $m$ is the dimension of the weight vector (total parameters), which is also the number of features per sample. In the vector case, there is one free parameter -- the overlap $R$ (or angle $\theta$) between student and teacher. In the \SETOL \emph{matrix} model,  uppercase $N$ and $M$ are the input and output dimensions of the weight matrix, and the
+matrix the overlap $\OVERLAP$, being an $M\times M$ symmetric matrix, has $M(M-1)/2$ free parameters.
+The Energy scales as $\ND$ in the ST \Perceptron model, and as $\ND\times N\times M$ in the \SETOL matrix model.
+%The total number of degrees of freedom is defined as the number of training examples $\ND$ times the number of free parameters.
+}
 \label{tab:dim_notation}
 \end{table}
 
