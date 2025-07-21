@@ -4,28 +4,35 @@
 \charles{Some old text here I need to clean up}
 
 Our \SETOL formulates a parametric expression for the \LayerQuality $\Q$ using a matrix-generalization of the classic \StudentTeacher (ST)
-model from the \SMOG theory of the 1990s~\cite{SST92,STS90}, \red{albeit with a radical departure in terms of the meaning of the \Student and \Teacher, which our theory will require. This expression can be} evaluated using
-recent advances in the evaluation of so-called HCIZ random matrix integrals~\cite{potters_bouchaud_2020,Tanaka2007, Tanaka2008},
+model from the \SMOG theory of the 1990s~\cite{SST92,STS90}, 
+\cyan{but with a \SemiEmpirical twist in that the \Teacher is  now an actual, trained NN that is input to theory.}
+%\red{albeit with a radical departure in terms of the meaning of the \Student and \Teacher, which our theory will require. This expression can be} evaluated using
+Recent advances in the evaluation of so-called HCIZ random matrix integrals~\cite{potters_bouchaud_2020,Tanaka2007, Tanaka2008},
 such that the final expression for $\Q$ can be written in terms of empirically measured statistical properties of the layer ESD.
 We summarize our basic approach here; see Section~\ref{sxn:matgen} for a detailed derivation, and see Section~\ref{sxn:empirical} for a detailed empirical analysis.
 
-\red{We deviate from the standard \SMOG theory in an important way -- we make no direct assumption that the labels are realizable by a \Teacher NN. \SETOL makes its realizability assumption in a novel way: rather than assume that there exists an unknown \Teacher that \emph{generates} the labels, \SETOL assumes that the labels are learnable only if the trained model, (which we refer to as the \Teacher in a slight abuse of terminology,) meets the \TRACELOG condition and has an \ECS, and the \ECS will have an ESD as provided by the \Teacher. The essence of \SETOL is that {\bf we assume that the \Teacher provides the ESD of the weight matrix, \emph{not} the labels.} We treat the \Student as a sample from the Boltzmann distribution of model training, much the same as in \SMOG theory. 
-
-This point is both subtle -- since the derivations will proceed almost identically to those found in~\cite{engel2001statistical,EngelAndVanDenBroeck,SST90,SST92} -- and also radical, because our derived quality metrics are now measures of concentration of the Boltzmann distribution in terms of the trained weight matrix spectral density, which can make far more specific predictions without the need for more labels. This also allows us to discuss label noise in terms of the \Teacher, since we are not bound by the labels themselves.}
+% NOVE THIS TO 5 and weave into discussion on what is a semiempirical theory
+%\red{We deviate from the standard \SMOG theory in an important way -- we make no direct assumption that the labels are realizable by a \Teacher NN. \SETOL makes its realizability assumption in a novel way: rather than assume that there exists an unknown \Teacher that \emph{generates} the labels, \SETOL assumes that the labels are learnable only if the trained model, (which we refer to as the \Teacher in a slight abuse of terminology,) meets the \TRACELOG condition and has an \ECS, and the \ECS will have an ESD as provided by the \Teacher. The essence of \SETOL is that {\bf we assume that the \Teacher provides the ESD of the weight matrix, \emph{not} the labels.} We treat the \Student as a sample from the Boltzmann distribution of model training, much the same as in \SMOG theory. }
+%
+%This point is both subtle -- since the derivations will proceed almost identically to those found in~\cite{engel2001statistical,EngelAndVanDenBroeck,SST90,SST92} -- and also radical, because our derived quality metrics are now measures of concentration of the Boltzmann distribution in terms of the trained weight matrix spectral density, which can make far more specific predictions without the need for more labels. This also allows us to discuss label noise in terms of the \Teacher, since we are not bound by the labels themselves.}
 
 \red{As is done in} the \StudentTeacher (ST) model~\cite{SST92}, 
 we first formulate the \GeneralizationError $(\AVGE^{ST}_{gen})$ of the linear \Perceptron (in the \emph{\AnnealedApproximation},
 and in the \emph{\HighTemperature} limit; see Section ~\ref{sxn:SMOG_main}), and 
 we then generalize this to the case of a NN $(\AVGE^{ST}_{gen}\rightarrow\AVGE^{NN}_{gen})$, so that we can analyze the \Quality of each layer.
+
 For the \Perceptron, the \GeneralizationError is an Energy, given as $\AVGE^{ST}_{gen}:=\THRMAVG{1-R}$, where $R$ is the ST vector overlap,
 and $\THRMAVG{\cdots}$ is a \emph{\ThermalAverage} (defined in Section~\ref{sxn:mathP}),
 a Boltzmann-weighted average.
 In this case, the model \Quality, $\Q^{ST}$ is exactly the AA, high-T \AverageGeneralizationAccuracy 
 $\Q^{ST}:=1-\AVGE^{ST}_{gen}=\THRMAVG{R}$.
-For an MLP or general NN, each layer's Energy is \red{negatively} associated with a
+For an MLP or general NN, each layer's Energy is (negatively) associated with a
 \LayerQuality $\Q$, which we identify as the average contribution an
 individual layer contributes to the overall generalized accuracy,
 (i.e $1-\AVGE^{NN}_{gen}$) for a multilayer perceptron (MLP).
+
+\cyan{\textbf{Importantly, we deviate from the traditional approach in that we take the \Teacher as a fixed, empirical input to the theory.}  The Teacher contribution is then formulated in terms of the actual the layer eigenvalues, or Empirical Spectral Density (ESD).  In this way, the theory becomes \SemiEmpirical}
+
 
 For technical reasons (below), we will seek the
 \emph{\LayerQuality (Squared)} $\QT$, which is defined as the \ThermalAverage
@@ -36,13 +43,13 @@ of the matrix-generalized overlap ($\Trace{\OVERLAP^{2}}$),
 \end{align}
 where $\OVERLAP^{2}$ can be thought of as a \Hamiltonian for the \QualitySquared  $(\HBARE=\OVERLAP^{\top}\OVERLAP)$.
 
-In \EQN~\ref{eqn:QT}, the so-called \emph{\Teacher} ($T$) is the NN \red{parameter vector} under consideration,
+In \EQN~\ref{eqn:QT}, the so-called \emph{\Teacher} ($T$) is the NN model under consideration,
 %where $\TMAT$ and $\SMAT$  are the \Teacher and \Student layer weight matrices, resp,
 and 
 %$\mathbf{R}$ 
 $\mathbf{R}:=\frac{1}{N}{\SMAT^{\TR}\TMAT}$
 denotes the ST overlap operator 
-between the \Teacher layer weight matrix $\TMAT$ and a similar \emph{\Student} ($S$) layer weight matrix $\SMAT$ \red{sampled from the Boltzmann distribution of training}.
+between the \Teacher layer weight matrix $\TMAT$ and a similar \emph{\Student} ($S$) layer weight matrix $\SMAT$.
 The notation $\THRMAVGIZ{\cdots}$ denotes a \ThermalAverage over
 all \Student weight matrices $\SMAT$ that resemble the \Teacher weight matrix $\TMAT$.
 By ``resemble'', the \SETOL approach assumes that 
@@ -148,6 +155,7 @@ By ``resemble'' we mean that they share the same functional form in
 \end{itemize}
 
 \red{[I think this one \EQN~\ref{eqn:QT_result} is the prize of the paper. The opening of Section \ref{sxn:setol} should refer to it, and this should say "See the derivation of \EQN XXX in Section \ref{sxn:comp_rmt}.]}
+\cyan{This IS section 3}
 
 To apply the theory, one must choose an \RTransform $R(z)$ for the \Teacher that models 
 the tail of the ESD $\rho^{emp}_{T}(\lambda)$, and that can be

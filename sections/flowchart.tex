@@ -17,7 +17,8 @@
 
 % ========== ROW 1 ==========
 \node[box] (smog)    {\underline{Classic SMOG}\\Student-Teacher Perceptron\\
-Fixed Teacher (input)};
+but with  \\
+\textbf{Fixed Teacher (input)}};
 \node[box, right=of smog] (overlap)
       { \underline{ST Accuracy (Quality) $\Q^{ST}$} \\
     Thermal Average (AA, high-T) \\
@@ -37,16 +38,18 @@ $\QT :=   \THRMAVGIZ{\Trace{\OVERLAP^{\top}\OVERLAP}}$  \
         \underline{Wilson Exact RG Condition (\ERG)}\\
       {Effective Correlation Space (\ECS)}\\[4pt]
       $\AMATN=\tfrac{1}{N}\SMAT\SMAT^{T}$, $\AECS=\mathbf{\hat{P}}^{ECS}\AMATN$ \\[4pt]
-    $d\mu(\SMAT)\rightarrow  d\mu(\AMAT) \rightarrow d\mu(\AECS)$ \\[4pt]
+      $d\mu(\SMAT)\rightarrow  d\mu(\AMAT) \rightarrow d\mu(\AECS)$ \\[4pt]
       $\sum \ln \LambdaECS = 0 $  , $\LambdaECS \ge \LambdaECSmin $
       };
 
 \node[box, below=of overlap] (tanaka)
       {\underline{Tanaka Result for HCIZ}\\
       \LargeN in $N$ limit \\[6pt]
-      $\IZG = \tfrac{1}{N}\ln \int d\mu(\AECS) exp[n\beta N \Trace{\tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT}]$\\[4pt] 
+      $\IZG = \tfrac{1}{N}\ln \int d\mu(\AECS)
+      exp[n\beta N \Trace{\tfrac{1}{N}\TMAT^{\top}\AMATN\TMAT}]$\\[4pt] 
       $\QT := \tfrac{\partial }{\partial n}\tfrac{1}{\beta}\IZGINF$
       };
+
 \node[box, below=of hciz] (cumul)
   {\underline{Integrated \RTransforms} \\[4pt]    
      $\QT = \sum_{\LambdaECS}\int_{\LambdaECS_{min}}^{\LambdaECS}R_{\AECS}(z)$ \\[4pt]  
@@ -63,11 +66,13 @@ $\QT :=   \THRMAVGIZ{\Trace{\OVERLAP^{\top}\OVERLAP}}$  \
       L\'evy Wigner (LW) \\
       $\cdots$
 };
-\node[box, below=of tanaka] (alpha)
+
+\node[box, right=of rforms] (alpha)
       {\underline{Derive \HTSR metrics}\\
       Extend \SETOL to non-Ideal cases \\\
       $\alpha$ and $\hat{\alpha}$};
-\node[box, below=of cumul] (expv)
+
+\node[box, right=of alpha] (expv)
       {Experimental\\verification};
 
 % ---------- horizontal arrows ----------

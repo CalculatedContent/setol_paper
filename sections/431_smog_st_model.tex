@@ -2,17 +2,22 @@
 \label{sxn:ST_OP_setup}
 \input{sections/student_teacher}
 
-Here, describe the basic setup of the classic \StudentTeacher model, taking an operational view from the perspective of a practitioner training real-world \Student and \Teacher models.  Specifically, we present the \AnnealedApproximation (AA) in a practical light,
+Here, describe the basic setup of the classic \StudentTeacher model, taking an operational view from the perspective of a practitioner training real-world \Student and \Teacher models. Specifically, we present the \AnnealedApproximation (AA) in a practical light,
 and use it to explain the difference between computing the \emph{Empirical \GeneralizationError}, $\AVGEMPGE$, for the \emph{\TrueAccuracy}
-and for the \emph{\Precision} of a \Teacher model. Table~\ref{tab:st_notation} summarizes some of the key notation we will be using in this section.
+and for the \emph{\Precision} of a \Teacher model.
+%\red{which is a measure of concentration of the Boltzmann distribution of trained models}. 
+% we don't discuss the themral average in 4.3.1 only 4.3.2
+Table~\ref{tab:st_notation} summarizes some of the key notation we will be using in this section, and also the next two sections for reference.
 \input{sections/table43}
 
-\paragraph{Test Error of the Teacher}
+\paragraph{Test Error of the Teacher.}
+%\red{[NOTE: This is describing OUR ST model, not the classical one. We will need to resolve this.]\\}
+% Kets just say that
+We start by describing how to obtain a simple formal expression for the empirical test errors of the \Teacher, first for the \TrueAccuracy. \red{[And then? Generalization accuracy?]}
 
-We start by describing how to obtain a simple formal expression for the empirical test errors of the \Teacher, first for the \TrueAccuracy.
-
-Let us say we have a model, called \Teacher $(T)$, which maps some \emph{actual} (i.e., correlated) data
-$\DATA\in\ADD$ to some known or \emph{true}  labels $(\Ytrue)$
+\cyan{EXPLAIN HERE how the Teacher is the input}
+Let us say we have a model, called \Teacher $(T)$, which maps some \emph{actual} (i.e., correlated\red{,  meaning the features are not i.i.d.,}) data
+$\DATA\in\ADD$ to some known or \emph{true} labels $(\Ytrue)$
 (where,  $\Ytrue$ is, say, an $N$-dimensional vector of binary labels).
 We might say that $\Ytrue$ represents the \emph{\GroundTruth} for the problem.
 Operationally, we train the \Teacher $T$ to reproduce or at least approximate the true labels $\Ytrue$.
@@ -23,12 +28,14 @@ If $T$ reproduces the true labels exactly, we might say that the \Teacher has be
 trained to \emph{\Interpolation}, and therefore, $\Yt = \Ytrue$.
 Indeed, most models today are trained to \emph{\Interpolation}, and we don't need to
 necessarily worry about the difference between the true and the predicted \Teacher labels.
-Formally, however, and to better understand the \AA, it is beneficial to discuss the implications
+Formally, however, and to better understand the AA, it is beneficial to discuss the implications
 of this distinction.
 
-Following \EQN~\ref{eqn:dnn_energy}, lets say the \Teacher outputs are specified
-the NN output function $\NNOUT$
-\footnote{Do not confuse the Energy/output function $\NNOUT$ with the energies $\mathbf{\Delta E}$  defined below to represent the ST error function(s).  We refer to outputs of $\NNOUT(\TVEC,\DATA )$, when applied to a data point $\DATA$, as energies because they are effectively un-normalized probabilities for the class outputs (for labels $\Ymu=1$ or $-1$).  }
+Following \EQN~\ref{eqn:dnn_energy}, let's say the \Teacher outputs are specified by
+the NN output \cyan{ or inference energy} function $\NNOUT$
+\footnote{
+%Do not confuse the Energy/output function $\NNOUT$ with the energies $\mathbf{\Delta E}$  defined below to represent the ST error function(s).
+We refer to outputs of $\NNOUT(\TVEC,\DATA )$, when applied to a data point $\DATA$, as energies because they are effectively un-normalized probabilities for the class outputs (for labels $\Ymu=1$ or $-1$).  }
 \begin{align}
 \label{eqn:T_ENN}
 \Yt=\NNOUT(T,\DATA) 
@@ -48,12 +55,14 @@ We call this the \emph{Empirical \AverageGeneralizationError}, $\AVGEMPGE$, and 
 \label{eqn:Eg_test}
  \AVGGE^{T}\approx \AVGEMPGE:= \frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}\mathcal{L}[\Ytest,\NNOUT(T,\DATAtest)] .
 \end{align}
-To measure the error, the loss function $\mathcal{L}$ may be a L1 $(\ell_1)$ or L2 $(\ell_2)$ loss;
-whereas for training a model, it is usually something like a cross-entropy loss, but this detail does matter later.
+To measure the error, the loss function $\mathcal{L}$ may be an L1 $(\ell_1)$ or L2 $(\ell_2)$ loss;
+whereas for training a \red{DNN} model, it is usually something like a cross-entropy loss.
+%, but this detail does matter later.
+\footnote{\cyan{Note that $\AVGGE^{T}$ will be treated as an energy function, as is $\NNOUT$, yet they are related nonlinearly. This is because they are energies in \emph{two different systems} -- training, and inference -- and $\mathcal{L}$ is a transfer function that bridges them.}}
 
-If we don't have a hold-out set, however, we can still estimate $\AVGGE^{T}$ using the \ Student-Teacher approach.
+If we don't have a hold-out set, however, we can still estimate $\AVGGE^{T}$ using the \StudentTeacher approach.
 
-\paragraph{Estimating the Student-Teacher Error: Accuracy vs. Precision}
+\paragraph{Estimating the Student-Teacher Error: Accuracy vs. Precision.}
 Imagine we train a Student model $S$ (with the same architecture as the Teacher $T$) on the real-world dataset $\ADD$, using $T$'s outputs as targets:
 \begin{equation*}
 S: \ADD \to y^{S}_\mu \approx y^{T}_\mu,
@@ -98,10 +107,10 @@ By analyzing the Student–Teacher overlap $R = \sum_\mu s^{\top} t$, one can sh
 %is now estimating the \Precision of the model.
 %These two situations are depicted in Figure~\ref{fig:precision}.
 %
-The \StudentTeacher model also explains why NNs can generalize even when trained to \Interpolation on noisy data (which has been a source of confusion \cite{Understanding16_TR}). In this model, the \GeneralizationError $\AVGGE^{T}$ is a simple function of the overlap $R$ between the \Teacher $T$ and the \Students $S$, i.e., $\AVGGE^{T}\sim \THRMAVG{1-\EPSLR}$. So even if the \Teacher $T$ is trained on noisy data, as long as there are \Students $S$ with significant overlap $R$ with the \Teacher, the \Teacher \GeneralizationError $\AVGGE^{T}$ can be considerably small. For more details, see \cite{MM17_TR_v1}
+The \StudentTeacher model also explains why NNs can generalize even when trained to \Interpolation on noisy data (which has been a source of confusion \cite{Understanding16_TR}). In this model, the \GeneralizationError $\AVGGE^{T}$ is a simple function of the overlap $R$ between the \Teacher $T$ and the \Students $S$, i.e., $\AVGGE^{T}\sim \THRMAVG{1-\EPSLR}$. So even if the \Teacher $T$ is trained on noisy data, as long as there are \Students $S$ with significant overlap $R$ with the \Teacher, the \Teacher \GeneralizationError $\AVGGE^{T}$ can be considerably small. For more details, see \cite{MM17_TR_v1}.
 
 
-\paragraph{Learning the Student}
+\paragraph{Learning the Student.}
 Moving forward, we will always assume the \Teacher is trained to \Interpolation because this
 actually corresponds to the \AnnealedApproximation, whereas if the \Teacher makes
 errors, we may need to consider \Quenched averages, explained below.

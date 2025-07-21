@@ -422,7 +422,7 @@ Generally speaking, a \FreeEnergy, $F_{\ND}$, is defined in terms of a partition
 \label{eqn:F}
 \beta F_{\ND}:=-\ln Z_{\ND}.
 \end{align}
-Keep in mind that $Z_{\ND}$ may actually be a function of the \red{idealized} data $\XI$ (or some other variables),
+Keep in mind that $Z_{\ND}$ may actually be a function of the idealized data $\XI$ (or some other variables),
 i.e., $Z(\XI)$, but we usually don't write this explicitly.
 Likewise, while  both $F_{\ND}$ and $Z_{\ND}$ depend explicitly on the system size $\ND$,
 we will only include these subscripts when emphasizing this.
@@ -438,7 +438,7 @@ Most notably, we will consider
 \begin{equation}
     \Gamma_{\ND} = n-F_{\ND} .
 \end{equation}
-where $\ND$ is the number of degrees of freedom ($n$ for a vector model, but for a  matrix model it is $\ND\times N\times M$; see Appendix~\ref{app:st-gen-err-annealed-ham}).
+where we note that these Energies scale as $\ND$ for the ST vector model, but for a  matrix model they scale as $\ND\times N\times M$; see Appendix~\ref{app:st-gen-err-annealed-ham}).
 The quantity $\Gamma_{\ND}$ decreases as the error increases (as opposed to $F_{\ND}$, which increases), i.e., it increases as the accuracy of quality of the model increases.
 Thus, we will use it as a generating function for the model quality/accuracy.  
 For average Qualities, one has
@@ -744,7 +744,7 @@ Generally speaking, the \Quality \GeneratingFunction $\Gamma_{\Q}$ is defined in
 \end{align}
 
 For example, for the single-layer ST \Perceptron, $\Gamma_{\Q^{ST}}:=n-F^{ST}_{\ND}$
-(where $\ND$ here is also the number of degrees of freedom for this model, and is in units of energy or error).
+(in units of energy or error).
 The term $\Gamma_{\Q^{ST}}$ is directly related to the \emph{Total} Free Energy $F^{ST}_{\ND}$, which can be seen by substituting \EQN~\ref{eqn:def_eta}
 for $\ETAw$ in \EQN~\ref{ref:defGammaQ}:
 \begin{align}
@@ -783,7 +783,6 @@ See Section~\ref{sxn:matgen} and Appendix~\ref{sxn:quality} for more details.
 
 \subsubsection{The Thermodynamic limit}
 \label{sxn:largeN_and_SPA}
-\red{CHECK THIS}
 In the \SMOG, the \ThermodynamicLimit is expressed as the limit of the number of free parameters $m$ grows arbitrarily large, $m \gg 1$, but also holding the feature load $n/m$ fixed (i.e., see \cite{SST92}).  In these older approaches, one is interested in how the thermodynamic properties depend on the feature load. Here, however, we are interested in estimating the generalization accuracy, so we are interested how the thermodynamic properties vary with $n$, the number of training examples.  For that reason, we will express the \ThermodynamicLimit as the \LargeN limit in $\ND$. i.e., while $\ND$ grows arbitrarily large,  $n \gg 1$, while implicitly fixing the corresponding feature load ($n/m$ for the ST Percepton,  and $n/N$ for our ST matrix model, below).
 
 To express the average \FreeEnergy $\bar{F}_{\ND}$ in the \LargeN limit in $\ND$, we can write
@@ -859,7 +858,7 @@ In Section~\ref{sxn:matgen}, we will move from a single $m$-dimensional \Percept
 to a matrix model of $N \times M$ weights, which can be thought of
 as $N$ interacting (feature) vectors of dimension $M$.
 Moreover, in the Student-Teacher (ST) model used below,
-in the vector case, the $m$ degrees of freedom if the feature vectors are integrated out,
+in the vector case, the $m$ free parameters (o.e., degrees of freedom) of the feature vectors are integrated out,
 whereas for the matrix case, we will retain \emph{a reduced set} of the $M$ degrees of freedom, $\MECS$. To do this, we need to ensure the \FreeEnergies and related quantities like the \LayerQualitySquared scale properly.
 
 \SETOL uses two \LargeN approximations, the \Thermodynamic limit, which is a \LargeN limit in $\ND$, and the \emph{\WideLayer limit}, which is a \LargeN limit in $N$:
@@ -884,13 +883,13 @@ the number of \emph{independent interacting components}:
 \end{align}
 For \SETOL, below, these connected components will be the matrix-generalized cumulants from RMT.
 In Quantum Chemistry, this is analogous to ensuring the renormalized Self-Energy and/or Effective Hamiltonian is \SizeConsistent.
-For NNs, \SizeConsistency appears when scaling the number of \red{feature vectors} $N$ in our matrix model,
-and it ensures that our layer Free Energy, etc.,  remain well-behaved as we increase $\MECS$.
+For NNs, \SizeConsistency appears when scaling the number of feature vectors $N$ in our matrix model,
+and it ensures that our layer Free Energy, etc., remain well-behaved as we increase $\MECS$.
 For a simple example, see Appendix~\ref{sxn:summary_sst92}
  where we derive the expression for the matrix-generalized
 \AnnealedHamiltonian $\HAN$.  
 Both \SizeExtensivity (in $\ND$ and $N$) and \SizeConsistency (in $\MECS$ )
-are crucial in our \SETOL analysis:  they justify taking the \LargeN approximation for matrix integrals, and they ensure
+are crucial in our \SETOL analysis: they justify taking the \LargeN approximation for matrix integrals, and they ensure
 our resulting HCIZ integral--a sum of integrated RMT cumulants (below)--
 scales with the dimension of the \EffectiveCorrelationSpace (\ECS), $\MECS$.  
 
@@ -910,19 +909,19 @@ This will take the form of an HCIZ integral,
   \approx \ND\beta\Trace{\mathcal{G}_{A}(\lambda)}  ,
 \end{align}
 that is evaluated in the \WideLayer\emph{\LargeN limit in $N$} (here, meaning as $N \gg 1$, but not at the limit $N=\infty$).
-Here,  $\AMAT_N$ and $\XMAT_N$ are $N \times N$ Hermetian matrices, (See Appendix \ref{sxn:appendix_A} for notation,) $d\mu(\AMAT)$ is a measure
+Here, $\AMAT_N$ and $\XMAT_N$ are $N \times N$ Hermetian matrices, (See Appendix \ref{sxn:appendix_A} for notation,) $d\mu(\AMAT)$ is a measure
 over all random (Orthogonal) matrices (see \EQN~\ref{eqn:dmuA}),
 and $\mathcal{G}_{A}()$ is called a \GEN~
 (which are different from $\Gamma_{\ND}$, above, and will be made clear in Section~\ref{sxn:r_transforms} ), defined in \EQN~\ref{eqn:generating_function_A} in Section~\ref{sxn:matgen}. 
 In applying this, we will actually write $\Trace{\AMAT\XMAT}=\tfrac{1}{N}\Trace{\AMAT\WMAT\WMAT^{\top}}=\tfrac{1}{N}\Trace{\WMAT^{\top}\AMAT\WMAT}$,
 where $\mathbf{W}$ is an $N \times M$ layer weight matrix, and $\AMAT=\AMAT_N:=\tfrac{1}{\ND}\SMAT\SMAT^{\top}$ is an (Outer) layer
-Correlation matrix, and, here,  $\XMAT=\XMAT_N=\tfrac{1}{N}\WMAT\WMAT^{\top}$).
+Correlation matrix, and here,  $\XMAT=\XMAT_N=\tfrac{1}{N}\WMAT\WMAT^{\top}$).
 Moreover, to evaluate this, we will need to restrict $\AMAT$ (and $\XMAT$)
 to the lower-rank \EffectiveCorrelationSpace (\ECS),  i.e., $\AMAT\rightarrow\AECS$. ($\XMAT$ is already restricted to the span of $\XECS$ by \ECS assumption.)
 
 Notice that this looks similar to a \SaddlePointApproximation (SPA), but where the more complicated function
 $\GNORM()$ now appears.
-Also, $\GNORM()$ here depends on only the limiting form of the ESD of $\AMAT$, $\rho^{\infty}_{A}(\lambda)$,
+Also, $\GNORM()$ here depends only on the limiting form of the ESD of $\AMAT$, $\rho^{\infty}_{A}(\lambda)$,
 and depends on the $M$ normalized eigenvalues $\lambda_{i}$ of $\XMAT$.
 
 
@@ -942,7 +941,7 @@ where $R(z)$ is a complex function, the \RTransform of the ESD $\rho(\lambda)$ o
 For more details, see Section~\ref{sxn:matgen} and Appendices~\ref{sxn:TraceLogDerivation} and~\ref{sxn:tanaka}.
 
 \paragraph{Branch Cuts and Phase Behavior.}
-Free energies ($F,\Gamma$)  often exhibit \emph{branch cuts} when expressed as analytic functions 
+Free energies ($F,\Gamma$) often exhibit \emph{branch cuts} when expressed as analytic functions 
 of complex parameters (i.e., temperature, coupling constants, or eigenvalue cutoffs),
 and arise from singularities in the underlying integral representations of the partition function $Z_{\ND}$,
 When a branch cut occurs, this demarcates non-analytic behavior
@@ -958,7 +957,7 @@ will be non-analytic and we must choose the appropriate, physically meaningful b
 corresponding to the \ECS (where $\Re[z]$ is the Real-part of $z$)
 We argue that this cut signifies a \emph{phase boundary}—an abrupt change
 in the system’s correlation structure and corresponds to an emerging singularity in the \LayerQuality.
-Even though we perform only a single exact RG step , 
+Even though we perform only a single exact RG step, 
 (rather than fully iterating a renormalization flow), the appearance of a branch cut in $\IZGINF$ will encode
 nontrivial \emph{phase-like} behavior in the \SETOL \HeavyTailed matrix model.
 
