@@ -5,7 +5,7 @@ Based on prior empirical results, and the success of the \ALPHA and \ALPHAHAT me
 \begin{quote}
 \emph{Why do the \ALPHA and \ALPHAHAT metrics work so well as NN model quality metrics for SOTA NN~models?}
 \end{quote}
-That is, why do NN models with heavier-tailed layer Empirical Spectral Distributions  (ESDs) tend to generalize better when compared to related models\red{, and how can single-layer metrics predict model quality so well}?
+That is, why do NN models with heavier-tailed layer Empirical Spectral Distributions  (ESDs) tend to generalize better when compared to related models, and how can single-layer metrics predict model quality so well ?
 Relatedly, can we derive these metrics from first principles?
 (If so, then under what conditions do they hold, and under what conditions do they fail?)
 
@@ -20,7 +20,7 @@ The \LayerQuality $\Q$ will estimate the contribution that an individual NN laye
 In deriving $\Q$, we have discovered a new \LayerQuality metric, called the \TRACELOG condition,
 which indicates that the generalizing components of the layer must concentrate into a low-rank subspace which we term the \emph{\EffectiveCorrelationSpace}, or~\ECS. That is, the better this condition is met, the more the generalizing components concentrate in this \ECS, and this tendency provides a new layer quality metric, derived in a totally independent way from \ALPHA and \ALPHAHAT. We will provide strong empirical justification that both metrics are acceptable Quality metrics by showing that they converge as model quality increases.
 
-\red{[There are forward pointers to \ref{sxn:empirical}, but not to \ref{sxn:matgen}. \ref{sxn:matgen} fulfills the claims of derivation. I suggest to start a new paragraph here, and add one above that does a similar job relating results in Section \ref{sxn:matgen} to claims being made here. This is one of the most critical pages in the whole paper.]}\\
+%\red{[There are forward pointers to \ref{sxn:empirical}, but not to \ref{sxn:matgen}. \ref{sxn:matgen} fulfills the claims of derivation. I suggest to start a new paragraph here, and add one above that does a similar job relating results in Section \ref{sxn:matgen} to claims being made here. This is one of the most critical pages in the whole paper.]}\\
 Importantly, we have conducted detailed experiments to show 
 that the empirical estimates of the \SETOL \TRACELOG condition align remarkably well with predictions from the \HTSR
 theory under \Ideal conditions (see Sections~\ref{sxn:empirical-test_acc}) and, then, 
