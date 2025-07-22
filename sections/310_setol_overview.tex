@@ -5,13 +5,12 @@
 
 Our \SETOL formulates a parametric expression for the \LayerQuality $\Q$ using a matrix-generalization of the classic \StudentTeacher (ST)
 model from the \SMOG theory of the 1990s~\cite{SST92,STS90}, 
-\but with a \SemiEmpirical twist in that the \Teacher is  now an actual, trained NN that is input to theory.
+but with a \SemiEmpirical twist in that the \Teacher is  now an actual, trained NN that is input to theory.
 Recent advances in the evaluation of so-called HCIZ random matrix integrals~\cite{potters_bouchaud_2020,Tanaka2007, Tanaka2008},
 such that the final expression for $\Q$ to be written in terms of empirically measured statistical properties of the layer ESD.
-We summarize our basic approach here; see Section~\ref{sxn:matgen} for a detailed derivation, and see Section~\ref{sxn:empirical} for a detailed empirical analysis.  \cyan{For reference here and later, Figure~\ref{fig:cetl-flow} displays a flowchart of the conceptual development of \SETOL.}
+We summarize our basic approach here; see Section~\ref{sxn:matgen} for a detailed derivation, and see Section~\ref{sxn:empirical} for a detailed empirical analysis.  For reference here and later, Figure~\ref{fig:cetl-flow} displays a flowchart of the conceptual development of \SETOL.
 
-
-\red{As is done in} the \StudentTeacher (ST) model~\cite{SST92}, 
+As is done in the \StudentTeacher (ST) model~\cite{SST92}, 
 we first formulate the \GeneralizationError $(\AVGE^{ST}_{gen})$ of the linear \Perceptron (in the \emph{\AnnealedApproximation},
 and in the \emph{\HighTemperature} limit; see Section ~\ref{sxn:SMOG_main}), and 
 we then generalize this to the case of a NN $(\AVGE^{ST}_{gen}\rightarrow\AVGE^{NN}_{gen})$, so that we can analyze the \Quality of each layer.
@@ -25,8 +24,7 @@ For an MLP or general NN, each layer's Energy is (negatively) associated with a
 individual layer contributes to the overall generalized accuracy,
 (i.e $1-\AVGE^{NN}_{gen}$) for a multilayer perceptron (MLP).
 
-\cyan{\textbf{Importantly, we deviate from the traditional approach in that we take the \Teacher as a fixed, empirical input to the theory.}  The Teacher contribution is then formulated in terms of the actual the layer eigenvalues, or Empirical Spectral Density (ESD).  In this way, the theory becomes \SemiEmpirical}
-
+\textbf{Importantly, we deviate from the traditional approach in that we take the \Teacher as a fixed, empirical input to the theory.}  The Teacher contribution is then formulated in terms of the actual the layer eigenvalues, or Empirical Spectral Density (ESD).  In this way, the theory becomes \SemiEmpirical.
 
 For technical reasons (below), we will seek the
 \emph{\LayerQuality (Squared)} $\QT$, which is defined as the \ThermalAverage
@@ -147,10 +145,6 @@ By ``resemble'' we mean that they share the same functional form in
   and $\LambdaECSmin$  encapsulates  the~\ECS (and, for some choices of $R(z)$,  selects the desired branch-cut of $R(z)$
   so that it is both analytic and well-behaved) .
 \end{itemize}
-
-%\red{[I think this one \EQN~\ref{eqn:QT_result} is the prize of the paper. The opening of Section \ref{sxn:setol} should refer to it, and this should say "See the derivation of \EQN XXX in Section \ref{sxn:comp_rmt}.]}
-%\cyan{This IS section 3}
-\chris{The flowchart is good enough for me.}
 
 To apply the theory, one must choose an \RTransform $R(z)$ for the \Teacher that models 
 the tail of the ESD $\rho^{emp}_{T}(\lambda)$, and that can be
