@@ -45,16 +45,16 @@ By comparing Student and Teacher outputs, you can approximate the Teacher’s ge
 Notably, if the Teacher perfectly interpolates its training data, the Student’s error directly estimates the Teacher’s \emph{true} \GeneralizationAccuracy.
 Otherwise, it captures the Teacher’s \emph{Precision} in reproducing its own noisy or biased labels.
 
-\paragraph{From the theoretical side}, we seek a succinct, analytic formulation of the ST \AverageGeneralizationError, denoted $\AVGSTGE$.  
+\paragraph{An extended theory.} We seek a succinct, analytic formulation of the ST \AverageGeneralizationError, denoted $\AVGSTGE$.  
 We work in the \AnnealedApproximation (AA) -- a simplification often valid when networks are sufficiently large and can nearly interpolate their training data. 
 Under this approximation, one obtains closed-form expressions for the \StudentTeacher \emph{Overlap} $(R)$
-and thus for the \Teacher’s overall error or accuracy.  
-These results lay the foundation for our \emph{\SemiEmpirical} approach, in which we supplement this theoretical form with empirical measurements (e.g., from the trained weight matrices) to account for real-world correlations in the data and the model’s internal structure.  
-
-\textbf{Take note that we deviate from the standard \SMOG ST model in an important way} -- we make no direct assumption that the labels are realizable by a \Teacher NN. \SETOL makes its realizability assumption in a novel way: rather than assume that there exists an unknown \Teacher that \emph{generates} the labels $\Yt$ implicitly, we assume that the supervision takes the form of the spectral density of the weight matrices that produced the labels.
+and thus for the \Teacher overall error or accuracy.  
+Take note also that we do not assume that the labels $\Yt$ are realizable by the \Teacher, but, rather,
+take the Teacher as empirical input to the theory.  
 This point is both subtle -- since the derivations  proceed closely at times to those found in~\cite{engel2001statistical,EngelAndVanDenBroeck,SST90,SST92}
 -- and also radical, because our derived quality metrics $\Q$ now
-depend directly on empirical measurables of the \Teacher.
+depend directly on empirical properties of the \Teacher.
+These results lay the foundation for our \emph{\SemiEmpirical} approach, in which we supplement this theoretical form with empirical measurements (e.g., from the trained weight matrices) to account for real-world correlations in the data and the model’s internal structure.  
 \textbf{As far as we know, this is completely new \SemiEmpirical approach for modeling NNs.}
 
 

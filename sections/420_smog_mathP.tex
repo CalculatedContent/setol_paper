@@ -121,7 +121,7 @@ described as having $N$ number of $M$-dimensional (input) feature vectors.   Tab
 
 \paragraph{Actual and Idealized Data and Energies.}
 
-Consider having a large set $\ND$ of actual, real-world data, 
+Consider a large set $\ND$ of actual, real-world data, 
 \begin{align}
   \label{eqn:x}
   \left( \XVEC_{\mu}, \MY_{\mu} \right) \in\ADD,\;\mu=1, \cdots, \ND,
@@ -821,7 +821,7 @@ where $\WVEC^{*}$ satisfies the saddle point equations:
   \EPSL(\WVEC^{*}):=\tfrac{\partial}{\partial \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}=0 \\
   \EPSL(\WVEC^{*}):=\tfrac{\partial^{2}}{\partial^{2} \WVEC}\EPSL(\WVEC)\vert_{\WVEC=\WVEC^{*}}>0  .
 \end{align}
-These equations guarantee that the solution $\EPSL(\WVEC^{*})$ is at \red{a local} minimum in $\WVEC$.
+These equations guarantee that the solution $\EPSL(\WVEC^{*})$ is at a (local) minimum in $\WVEC$.
 The SPA can be applied to many \LargeN integrals, as long as the integrand decays exponentially,  
 
 \paragraph{Wick Rotation.} When working with complex oscillatory integrands, $i.e., e^{iNf(x)}$,   
@@ -867,7 +867,7 @@ whereas for the matrix case, we will retain \emph{a reduced set} of the $M$ degr
     \item \LargeN limit in n: $n\gg 1$ (the number of training examples, fixed load: $\ND/m = 1$)
     \item \WideLayer limit: $N\gg 1$ (the number of feature vectors,  $n/N$ fixed)
 \end{itemize}
-Note that by ``limit'' we mean $\ND$ or $N$ simply grows arbitrarily large. In taking the \WideLayer \LargeN limit in $N$, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number data points per \red{feature vector or output dimension $N$}, remains constant. \footnote{Although we do not enforce this explicitly here, we note that the so-called ``Chinchilla Scaling Law'' demonstrates an explicit compute-optimal frontier~\cite{hoffmann2022}, which we can expect practitioners will likely adhere to.}  
+Note that by ``limit'' we mean $\ND$ or $N$ simply grows arbitrarily large. In taking the \WideLayer \LargeN limit in $N$, we assume implicitly that  the \emph{layer load}, $\ND/N$, the number data points per feature vector or output dimension $N$, remains constant. \footnote{Although we do not enforce this explicitly here, we note that the so-called ``Chinchilla Scaling Law'' demonstrates an explicit compute-optimal frontier~\cite{hoffmann2022}, which we can expect practitioners will likely adhere to.}  
 In doing this, we expect the matrix-generalized total Energies $(F, H^{an}, \cdots)$ to be \SizeExtensive in $\ND$ and $N$, the average quantities to be \SizeIntensive in both, 
 and, as discussed below, \emph{\SizeConsistent} in $\MECS$.
 

@@ -224,7 +224,7 @@ We can now obtain the \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged S
 
 In traditional \STATMECH (e.g., \cite{SST92}), one is interested in how the \emph{\TotalModelGeneralizationError} $\TGE(\AVGR)$ depends on $\AVGR$.
 With these simple error functions, \EQN~\ref{eqn:MGE} reduces to a function over $\AVGR$,
-and the \AverageSTGeneralizationError $\STGE(\AVGR)$ is then obtained by averaging over the Students 
+and the \AverageSTGeneralizationError $\STGE(\AVGR)$ is then obtained by taking a \emph{ThermalAverage} over the Students 
 \begin{align}
 \label{eqn:AVGSTGE_R}
 \AVGSTGE(\AVGR)=\THRMAVG{\EPSL(\AVGR)}=
@@ -234,6 +234,9 @@ and the \AverageSTGeneralizationError $\STGE(\AVGR)$ is then obtained by averagi
 \THRMAVG{(1-\AVGR)}  ,
 \end{align}
 where $\THRMAVG{\cdots}$ is a \ThermalAverage over the \Student weight vector $\SVEC$.
+Recall that even at high-T, this restricts the Students to ones trained with a similar
+amount of regularization as the Teacher (i.e. the measure (i.e. $d\mu(\SVEC)=d\SVEC$) is independent 
+of $\beta$).
 
 The \ModelQuality for the ST \Perceptron, $\Q^{ST}$,
 is just the \AverageGeneralizationAccuracy, so we can write
@@ -259,9 +262,6 @@ similar to a Replica calculation, but still in the AA).
 %For more details, see Appendix~\ref{sxn:summary_sst92}.
 %(In particular, doing this allows us to define the normalization needed later for the \TRACELOG condition).
 
-\input{sections/mapping_table}
-
-\cyan{
 \paragraph{Final Remarks}
 Additional results are provided in Appendix~\ref{sxn:summary_sst92}. In particular, 
 In Appendix~\ref{app:st-gen-err-annealed-ham}, we use the ideas from this section  and the previous one to derive the full non-linear vector form of the \AnnealedHamiltonian $\GAN$ (\EQN~\ref{eqn:Gan_def})
@@ -277,5 +277,5 @@ We can then express the Annealed Hamiltonian at High-T, i.e.,
 $\GANHTR=\EPSLR$ (\EQN~\ref{eqn:Gan_highT}).
 This shows that  our new derivation is consistent with the full  and the High-T results for
 classic ST \Perceptron model, for a Linear Perceptron in the AA.~\cite{SST92}
-}
 
+\input{sections/mapping_table}

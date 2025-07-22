@@ -12,7 +12,7 @@ Table~\ref{tab:st_notation} summarizes some of the key notation we will be using
 
 \paragraph{Test Error of the Teacher.}
 We start by describing how to obtain a simple formal expression for the empirical test errors of the \Teacher $T$.
-Let us say we have a model, called \Teacher $(T)$, which maps some \emph{actual} (i.e., correlated\red{,  meaning the features are not i.i.d.,}) data
+Let us say we have a model, called \Teacher $(T)$, which maps some \emph{actual} (i.e., correlated,  meaning the features are not i.i.d.,) data
 $\DATA\in\ADD$ to some known or \emph{true} labels $(\Ytrue)$
 (where,  $\Ytrue$ is, say, an $N$-dimensional vector of binary labels).
 We might say that $\Ytrue$ represents the \emph{\GroundTruth} for the problem.
@@ -52,9 +52,8 @@ We call this the \emph{Empirical \AverageGeneralizationError}, $\AVGEMPGE$, and 
  \AVGGE^{T}\approx \AVGEMPGE:= \frac{1}{\Ntest}\sum_{\mu=1}^{\Ntest}\mathcal{L}[\Ytest,\NNOUT(T,\DATAtest)] .
 \end{align}
 To measure the error, the loss function $\mathcal{L}$ may be an L1 $(\ell_1)$ or L2 $(\ell_2)$ loss;
-whereas for training a \red{DNN} model, it is usually something like a cross-entropy loss.
-%, but this detail does matter later.
-\footnote{\cyan{Note that $\AVGGE^{T}$ will be treated as an energy function, as is $\NNOUT$, yet they are related nonlinearly. This is because they are energies in \emph{two different systems} -- training, and inference -- and $\mathcal{L}$ is a transfer function that bridges them.}}
+whereas for training a NN model, it is usually something like a cross-entropy loss.
+\footnote{Note that $\AVGGE^{T}$ will be treated as an energy function, as is $\NNOUT$, yet they are related nonlinearly. This is because they are energies in \emph{two different systems} -- training, and inference -- and $\mathcal{L}$ is a transfer function that bridges them.}
 
 If we don't have a hold-out set, however, we can still estimate $\AVGGE^{T}$ using the \StudentTeacher approach.
 
@@ -142,8 +141,22 @@ This will be important below.
 
 
 \paragraph{The \ThermalAverage.} 
-In \STATMECH, even in the AA and at high-T, the average over Student weights $\langle\cdots\rangle_{S}$ is a \ThermalAverage $\THRMAVG{\cdots}$.  This means we should restrict the choice of $S$ to the same Boltzmann distribution we assume $T$ is 
-drawn from.  In a practical sense, we would expect our Students $S$ to be trained with the same amount of regularization (similar learning rates, weight decay, etc.). Being at high-T, however, we expect to allow some ''thermal fluctuations'' , which means we can admit a reasonable variety of Students in our average (i.e. as long as they overlap enough with  the Teacher.  Or, as shown later,  a very similar ESD.).
+In \STATMECH, the average over Student weights $\langle\cdots\rangle_{\SVEC}$ is a \ThermalAverage $\THRMAVG{\cdots}$.  This means we should restrict the choice of $S$ to the same Boltzmann distribution we assume $T$ is drawn from.  
+In a practical sense, we would expect our Students $S$ to be trained with the roughly same amount of regularization (same weight decay, etc.). In principle, we should be able to admit many kinds of $S$, including those arising from
+different optimization paths which lead to the same equilibrium sample. 
+While the parameter $\beta$, which is like a regularization setting,
+it actually modulates the trade-off between energy and entropy—
+sometimes called \emph{entropic regularization}—and therefore how strongly the
+data constrains the model, and not specifically how the model is trained.
+Moreover, in the high-T (small-$\beta$) limit the
+measure becomes broader, so we can admit more Student weights that fluctuate more
+around the mean.
+In practice, however, we find
+that different optimizer settings (batch sizes, learning rates, stopping criteria, etc.)  can give very different results.   
+Therefore we must be careful not to admit any arbitrary Student into the average
+because this would amount to averaging over \emph{several} Boltzmann distributions and this should
+be treated explicitly.  
+
 
 \paragraph{The \AverageGeneralizationError}
 We may seek to estimate the Empirical \AverageGeneralizationError
