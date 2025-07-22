@@ -71,7 +71,7 @@ by averaging over an ensemble of \Student $S$ \Perceptrons, in the \AnnealedAppr
 \HighTemperature (high-T); we call this ST \ModelQuality, and denote it $\Q^{ST}$.
 In Section~\ref{sxn:matgen}, we generalize $\Q^{ST}$ to an
 arbitrary layer in a \MultiLayerPerceptron, giving a \LayerQuality, i.e., $\Q^{ST}\rightarrow\Q$.
-\red{START} This formulation of the ST problem differs from the classic approach~\cite{SST92,engel2001statistical} in that
+This formulation of the ST problem differs from the classic approach~\cite{SST92,engel2001statistical} in that
 we treat the \Teacher as input to the theory rather than a random vector $\TVEC$
 and that \Teacher provides the trained weights $\WVEC$ explicitly as opposed
 to the labels $\Yt$.
@@ -79,7 +79,7 @@ to the labels $\Yt$.
 %usually does not fix the \Teacher but, instead,
 %averages over all \Teacher vectors $\TVEC$~\cite{SST92,engel2001statistical}.
 In the simpler \Perceptron formulation, there are only a few degrees of freedom (i.e., the ST overlap $R$, the feature load, the inverse Temperature $\beta$, and the number of training examples $\ND$), whereas in the matrix generalization,
-the structure of the empirical \Teacher weight matrix  $\TMAT=\WMAT$ provides $N\times M$ additional \red{degrees of freedom?},
+the structure of the empirical \Teacher weight matrix  $\TMAT=\WMAT$ provides $N\times M$ additional degrees of freedom,
 allowing for a much richer theoretical analysis.
 %\red{[This is wrong -- \cite{SST92} and ~\cite{EngelAndVanDenBroeck} both treat the Teacher and a single fixed vector, and the average is either a Boltzmann average over students or a quenched average over datasets or both. See \EQN 2.4 in~\cite{EngelAndVanDenBroeck} or \EQN 4.5 in~\cite{SST92}.]}
 %\red{This formulation of the \StudentTeacher problem is different from the classic approach because while we assume that there is a fixed \Teacher, we only assume that the \Teacher provides the ESD of the trained weight matrix $\WMAT$, and not the labels.}
@@ -89,7 +89,6 @@ Because of this, we present both a pedagogic derivation of $\Q^{ST}$
 in the Appendix, Section~\ref{sxn:summary_sst92}), whereas in
 Section~\ref{sxn:SMOG_main-st_av} we provide a simple derivation, assuming
 the \AnnealedApproximation and \HighTemperature at all times.
-\red{STOP}
 
 \paragraph{Towards a \SemiEmpirical Theory.}
 In the \SETOL approach to \STATMECH, we want a matrix generalization of the \StudentTeacher \ModelQuality, $\Q^{ST}$, for a single \LayerQuality

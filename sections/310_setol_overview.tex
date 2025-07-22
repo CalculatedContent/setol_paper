@@ -5,17 +5,11 @@
 
 Our \SETOL formulates a parametric expression for the \LayerQuality $\Q$ using a matrix-generalization of the classic \StudentTeacher (ST)
 model from the \SMOG theory of the 1990s~\cite{SST92,STS90}, 
-\cyan{but with a \SemiEmpirical twist in that the \Teacher is now an actual, trained NN that is input to theory.}
-%\red{albeit with a radical departure in terms of the meaning of the \Student and \Teacher, which our theory will require. This expression can be} evaluated using
+\but with a \SemiEmpirical twist in that the \Teacher is  now an actual, trained NN that is input to theory.
 Recent advances in the evaluation of so-called HCIZ random matrix integrals~\cite{potters_bouchaud_2020,Tanaka2007, Tanaka2008},
-allow the final expression for $\Q$ to be written in terms of empirically measured statistical properties of the layer ESD.
+such that the final expression for $\Q$ to be written in terms of empirically measured statistical properties of the layer ESD.
 We summarize our basic approach here; see Section~\ref{sxn:matgen} for a detailed derivation, and see Section~\ref{sxn:empirical} for a detailed empirical analysis.  \cyan{For reference here and later, Figure~\ref{fig:cetl-flow} displays a flowchart of the conceptual development of \SETOL.}
 
-\red{We may want to align the text below more closely with the flowchart..will review }
-% NOVE THIS TO 5 and weave into discussion on what is a semiempirical theory
-%\red{We deviate from the standard \SMOG theory in an important way -- we make no direct assumption that the labels are realizable by a \Teacher NN. \SETOL makes its realizability assumption in a novel way: rather than assume that there exists an unknown \Teacher that \emph{generates} the labels, \SETOL assumes that the labels are learnable only if the trained model, (which we refer to as the \Teacher in a slight abuse of terminology,) meets the \TRACELOG condition and has an \ECS, and the \ECS will have an ESD as provided by the \Teacher. The essence of \SETOL is that {\bf we assume that the \Teacher provides the ESD of the weight matrix, \emph{not} the labels.} We treat the \Student as a sample from the Boltzmann distribution of model training, much the same as in \SMOG theory. }
-%
-%This point is both subtle -- since the derivations will proceed almost identically to those found in~\cite{engel2001statistical,EngelAndVanDenBroeck,SST90,SST92} -- and also radical, because our derived quality metrics are now measures of concentration of the Boltzmann distribution in terms of the trained weight matrix spectral density, which can make far more specific predictions without the need for more labels. This also allows us to discuss label noise in terms of the \Teacher, since we are not bound by the labels themselves.}
 
 \red{As is done in} the \StudentTeacher (ST) model~\cite{SST92}, 
 we first formulate the \GeneralizationError $(\AVGE^{ST}_{gen})$ of the linear \Perceptron (in the \emph{\AnnealedApproximation},
