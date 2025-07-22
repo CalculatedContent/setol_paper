@@ -251,13 +251,31 @@ see Section~\ref{sxn:matgen_mlp3}.
 To generalize this expression, we will start with the \SelfOverlap $\ETA(\SMAT,\TMAT,\NDXI)$ for a
 \MultiLayerPerceptron (MLP3) in Section~\ref{sxn:matgen}.
 
-\cyan{Flush out more how formulaiton can be related back to the old stuff, 
- }
 Before doing this, however, we note that we can obtain this expression for $\STGE$ by defining the
 \AnnealedHamiltonian $\HANHT(\AVGR)$, at high-Temperature, as in Section~\ref{sxn:mathP}, \EQN~\ref{eqn:Gan_highT}.
-Indeed, it is really $\HANHT(\AVGR)=\EPSL(\AVGR)$ that we must generalize to the matrix case, which we do (using a technique
+Indeed, it is really $\HANHT(\AVGR)=\EPSL(\AVGR)$ that we must generalize to the matrix case 
+in the next section, which we do (using a technique
 similar to a Replica calculation, but still in the AA).
-For more details, see Appendix~\ref{sxn:summary_sst92}.
-(In particular, doing this allows us to define the normalization needed later for the \TRACELOG condition).
+%For more details, see Appendix~\ref{sxn:summary_sst92}.
+%(In particular, doing this allows us to define the normalization needed later for the \TRACELOG condition).
 
 \input{sections/mapping_table}
+
+\cyan{
+\paragraph{Final Remarks}
+Additional results are provided in Appendix~\ref{sxn:summary_sst92}. In particular, 
+In Appendix~\ref{app:st-gen-err-annealed-ham}, we use the ideas from this section  and the previous one to derive the full non-linear vector form of the \AnnealedHamiltonian $\GAN$ (\EQN~\ref{eqn:Gan_def})
+for the \LinearPerceptron, in the AA.
+Then, in Appendix~\ref{app:st-gen-err-annealed-ham}, we derive the matrix generalization
+$\GANR\rightarrow\GANMAT$ of these quantities using
+a \LargeN in $n$ expansion (as opposed to a full replica calculation).
+This derivation explains how to obtain the implicit $1/M$ normalization for
+the weight matrices $\WMAT$ that is necessary for the final results in Section~\ref{sxn:matgen}.
+(Notice this is similar to the implicit normalization $1/m$ on the ST vectors)
+Then, taking the case $N=1$, we can recover the original result for $\GANR$.
+We can then express the Annealed Hamiltonian at High-T, i.e.,
+$\GANHTR=\EPSLR$ (\EQN~\ref{eqn:Gan_highT}).
+This shows that  our new derivation is consistent with the full  and the High-T results for
+classic ST \Perceptron model, for a Linear Perceptron in the AA.~\cite{SST92}
+}
+

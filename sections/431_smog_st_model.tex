@@ -11,11 +11,7 @@ Table~\ref{tab:st_notation} summarizes some of the key notation we will be using
 \input{sections/table43}
 
 \paragraph{Test Error of the Teacher.}
-%\red{[NOTE: This is describing OUR ST model, not the classical one. We will need to resolve this.]\\}
-% Kets just say that
-We start by describing how to obtain a simple formal expression for the empirical test errors of the \Teacher, first for the \TrueAccuracy. \red{[And then? Generalization accuracy?]}
-
-\cyan{EXPLAIN HERE how the Teacher is the input}
+We start by describing how to obtain a simple formal expression for the empirical test errors of the \Teacher $T$.
 Let us say we have a model, called \Teacher $(T)$, which maps some \emph{actual} (i.e., correlated\red{,  meaning the features are not i.i.d.,}) data
 $\DATA\in\ADD$ to some known or \emph{true} labels $(\Ytrue)$
 (where,  $\Ytrue$ is, say, an $N$-dimensional vector of binary labels).
@@ -113,7 +109,7 @@ The \StudentTeacher model also explains why NNs can generalize even when trained
 \paragraph{Learning the Student.}
 Moving forward, we will always assume the \Teacher is trained to \Interpolation because this
 actually corresponds to the \AnnealedApproximation, whereas if the \Teacher makes
-errors, we may need to consider \Quenched averages, explained below.
+errors, we may need to consider \Quenched averages, explained below.  
 
 Imagine now that to estimate the empirical \AverageGeneralizationError, $\AVGEMPGE$,
 by training a very large number of Students, and computing the average ST error on some test set.
@@ -138,14 +134,19 @@ for both the training and test sets.
 \label{eqn:ST-learning-intepolation}
 \end{align}
 
-But if not, then the \Student is reproducing the possibly
-incorrect \Teacher labels, and, importantly, the \Student $S$ now depends explicitly
-on how the \Teacher was trained.  That is, we should denote that the learned
-\Student explicitly depending on $T$, i.e. $S\rightarrow S[T]$.
+If not, then the \Student is reproducing the possibly
+incorrect \Teacher labels, and, importantly, the \Student $S$ \emph{now depends explicitly
+on how the \Teacher was trained.}    That is, we should denote that the learned
+\Student \emph{explicitly depending} on $T$, i.e. $S\rightarrow S[T]$.
 This will be important below.
 
+
+\paragraph{The \ThermalAverage.} 
+In \STATMECH, even in the AA and at high-T, the average over Student weights $\langle\cdots\rangle_{S}$ is a \ThermalAverage $\THRMAVG{\cdots}$.  This means we should restrict the choice of $S$ to the same Boltzmann distribution we assume $T$ is 
+drawn from.  In a practical sense, we would expect our Students $S$ to be trained with the same amount of regularization (similar learning rates, weight decay, etc.). Being at high-T, however, we expect to allow some ''thermal fluctuations'' , which means we can admit a reasonable variety of Students in our average (i.e. as long as they overlap enough with  the Teacher.  Or, as shown later,  a very similar ESD.).
+
 \paragraph{The \AverageGeneralizationError}
-In either case, however, we may still estimate the Empirical \AverageGeneralizationError
+We may seek to estimate the Empirical \AverageGeneralizationError
 by replacing the test predictions in \EQN~\ref{eqn:Eg_test} with the student predictions
 $y_{\mu}^{test}\rightarrow \Ys$, and then averaging directly over the test data $\DATAtest$
 for all possible or available test examples.
@@ -188,7 +189,7 @@ if $T$ is trained to \Interpolation or not.
 Recall that in the \STATMECH approach to computing errors, we do not break the data into
 training and test, but, instead, to obtain the \AverageGeneralizationError, $\AVGGE$, use
 the \GeneratingFunction approach. In doing this, we need to compute both the \ThermalAverage
-over the model weights ($S,T$), and also take the data average over the entire available model data set $\MDD$
+over the model weights ($S,T$), and also take the data average over the entire available model data set $\MDD$.
 And the order can matter.
 
 In the case where the \Teacher is trained to \Interpolation, may train the \Student 
