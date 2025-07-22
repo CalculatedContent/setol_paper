@@ -19,10 +19,10 @@ Ignoring the bias terms, \emph{Without Loss of Generality}, (WLOG), the NN outpu
 \label{eqn:nflow}
              y_{\mu} := \EVEC_{3\mu} &= \frac{1}{\sqrt{N_3}} h (\WMAT_{3}^\top \EVEC_{2\mu})     ,
 \end{align}
-where $\EVEC_{\#\mu}$ denotes a vector of energies or NN outputs for that layer, and $h$ is a general function or functional, denoting either a non-linear activation or a more complex layer structure, such as a CNN or an RNN. Note that for binary classification, $\EVEC_3{\mu}=1|-1$ is just a binary number.
+where $\EVEC_{\#\mu}$ denotes a vector of energies or NN outputs for that layer, and $h$ is a general function or functional, denoting either a non-linear activation or a more complex layer structure, such as a CNN or an RNN. Note that for binary classification, $\EVEC_{3\mu}=1|-1$ is just a binary number.
 We can consider $h(\cdot)$ to be an (unspecified) activation function, but here we simply take $h(x)=x$.
 
-As in \EQN~\ref{eqn:deriveSTerror}, let us specify the ST error, or total Energy, specifically in terms of the L2 or RMSE loss:
+As in \EQN~\ref{eqn:deriveSTerror}, let us specify the ST error, or total Energy, specifically in terms of the $\ell_2$ or MSE loss:
 \begin{equation}
 \label{eqn:DE}
 \DETOPNN = \frac{1}{2}\sum_{\mu=1}^{\ND} (\Ys - \Yt)^2.
@@ -49,17 +49,31 @@ Using the general expression from \EQN~\ref{eqn:nflow} for the action of the NN 
 we can write the formal expression of the ST error for the simple MLP3 model as:
 \begin{align}
 \label{eqn:overlap1}
-\ETAMLPAVG  \\ \nonumber
-& =\langle\ETA(\SMAT_1,\SMAT_2,\SMAT_3,\TMAT_1,\TMAT_2,\TMAT_3,\NDXI)\rangle_{\AVGNDXI}  \\ \nonumber
-& :=  \frac{1}{\ND}\Trace{
-    \frac{1}{\sqrt{N_3}} h\left(\SMAT_3^{\top} 
-    \frac{1}{\sqrt{N_2}} h\left(\SMAT_2^{\top} 
-    \frac{1}{\sqrt{N_1}} h\left(\SMAT_1^{\top} \NDXI \right)\right)\right)^{\top} 
-    \times
-    \frac{1}{\sqrt{N_3}} h\left(\TMAT_3^{\top} 
-    \frac{1}{\sqrt{N_2}} h\left(\TMAT_2^{\top} 
-    \frac{1}{\sqrt{N_1}} h\left(\TMAT_1^{\top} \NDXI \right)\right)\right)
-  }.
+\ETAMLPAVG  
+& =\langle\ETA(\SMAT_1,\SMAT_2,\SMAT_3,\TMAT_1,\TMAT_2,\TMAT_3,\NDXI)\rangle_{\AVGNDXI}  \nonumber \\ 
+& :=  \frac{1}{\ND}\operatorname{Tr}\left[
+    \left\{
+    \frac{1}{\sqrt{N_3}} h\left(
+        \SMAT_3^{\top} 
+        \frac{1}{\sqrt{N_2}} h\left(
+            \SMAT_2^{\top} 
+            \frac{1}{\sqrt{N_1}} h\left(
+                \SMAT_1^{\top} \NDXI 
+            \right)
+        \right)
+    \right)
+    \right\}^{\top} \right. \nonumber \\  
+& \quad\quad\quad\quad \left. \times
+    \frac{1}{\sqrt{N_3}} h\left(
+        \TMAT_3^{\top} 
+        \frac{1}{\sqrt{N_2}} h\left(
+            \TMAT_2^{\top} 
+            \frac{1}{\sqrt{N_1}} h\left(
+                \TMAT_1^{\top} \NDXI 
+            \right)
+        \right)
+    \right)
+  \right]
 \end{align}
 
 So far, we have not used any particular assumption on the form of the NN or the data, 

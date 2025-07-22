@@ -7,8 +7,7 @@ that can be used as the starting point for our extended \SemiEmpirical theory.
 
 %\input{data_mapping}
 
-\paragraph{The Idealized Data}
-
+\paragraph{The Idealized Data.}
 To develop a \SemiEmpirical theory of the \Teacher \GeneralizationError, $\TGE^{T}$, 
 instead of training and evaluating a NN model using real data $(\DX)$,
 we seek a simple, analytical expression with parameters that can be fit to empirical measurements.
@@ -27,7 +26,7 @@ our \DataModel is a standard Gaussian $N(0,\sigma^{2}\mathbb{I})$ model for the 
 where $N(0,\sigma^{2}\IMm)$ denotes a Gaussian distribution with zero mean and variance $\sigma^{2}=\tfrac{1}{m}$,
 \and $\XImu$ is normalized such that $\Vert\XImu\Vert^{2}:=\sum_{i=1}^{m}(\XImu)^{2}_{i}=1$ for all $\ND$ data vectors.  The full idealized sample is denoted $\NDXI$, and is an $n\times m$ matrix, or, equivalently, a $n$-dimensional vector  of $m$-dimensional vectors $\XImu$. 
 
-We make this distinction between Actual and \ModelData to emphasize that,
+We make this distinction between actual $\ADD$ and idealized data $\MDD$ to emphasize that,
 later, we will use our so-called \SemiEmpirical procedure to
 account for the real correlations in the actual data phenomenologically
 by taking some analytical parameter of the theory and fitting it to the real world observations,
@@ -45,9 +44,9 @@ over the set of \emph{all} possible $\ND$ input examples $\XI$.  Define the data
 \label{eqn:DE_L}
 \DETOPSTL:=\sum_{\mu=1}^{\ND}\mathcal{L}[\NNOUT(\SVEC,\XI_{\mu}),\NNOUT(\TVEC,\XI_{\mu})]  .
 \end{align}
-where $\mathcal{L}(\SVEC,\TVEC, \XI)$ is simply the $\ell_2$ loss.  This measures the error
+where $\mathcal{L}(\SVEC,\TVEC, \XImu)$ is simply the $\ell_2$ loss.  This measures the error
 between the \Student and the \Teacher; it is zero when their predictions are identical,
-$(\Ys=\Yt)$ when $(\XI=\XImu)$, and is nonzero otherwise.
+$(\Ys=\Yt)$,  and is nonzero otherwise.
 
 %%5Let us write the Average St \GeneralizationError, $\AVGSTGE$ (formally) as in \EQN~\ref{eqn:finalEgen} as
 %%5\begin{align}
@@ -78,10 +77,10 @@ we define the  \EffectivePotential for the data-averaged ST \GeneralizationError
 \end{align}
 The measure $d\mu(\NDXI)$ will end up being a Gaussian measure over $\ND$ samples
 (see Appendix~\ref{sxn:summary_sst92}), and the intent is to evaluate it
-in the \LargeN limit in $\ND$, thereby sampling all possible inputs in the idealized data space, $\XI\in\MDD$.
+in the \LargeN limit in $\ND$, thereby sampling all possible inputs in the idealized data space, $\NDXI\in\MDD$.
 
 As in Section~\ref{sxn:mathP}, by applying the AA, we can rewrite the \AverageSTGeneralizationError, $\AVGSTGE$:
-first, a simple average over all the possible inputs $\XI$; and, 
+first, a simple average over all the possible inputs $\NDXI$; and, 
 second, then as a Thermal average over all Students $S$, in the AA, and at high-T 
 \begin{align}
 \label{eqn:MGE}
@@ -94,7 +93,7 @@ a \ThermalAverage in the canonical ensemble with $\beta$ fixed,
 as explained in Section~\ref{sxn:mathP}.  Here, we will do something similar, as the \Student
 average $\THRMAVG{\cdots}$ will be computed from the associated
 generating function $\IZG$ for the matrix-generalized case  (an HCIZ integral defined over all students,
-and in both the \LargeN \Thermodynamic limit in $\ND$, and \WideLayer \LargeN  limit in $N$).
+and in both the \LargeN \Thermodynamic limit in $\ND$, and the \WideLayer \LargeN  limit in $N$).
 
 Recall that above, the empirical estimate for $\AVGEMPGE$ depended on a
 specific instantiation of the model for the training data $\DATAtrain$,
@@ -132,7 +131,7 @@ This gives $\EPSLSTx\rightarrow\EPSL(\AVGR)$, where
 which is simply the dot product between the $m$-dimensional \Student $\SVEC$ and \Teacher $\TVEC$ weight vectors.
  Notice that the data vectors are normalized such that $\Vert\SVEC\Vert^{2}=\Vert
 \TVEC\Vert^{2}=1$ and 
-we assume there are \emph{no inversely-correlated} Students that predict more than half the Teacher labels incorrectly. And, importantly, the number of free parameters becomes $1$.
+we assume there are \emph{no inversely-correlated} Students--Students that predict more than half the Teacher labels incorrectly. And, importantly, the number of free parameters becomes $1$.
 
 For a \LinearPerceptron~\cite{SST92},% 
 \footnote{In the classic approach for the ST model, the theory examined different expressions $\EPSL(\AVGR)$.
@@ -222,9 +221,10 @@ We can now obtain the \EffectivePotential $\EPSL(\AVGR)$ for the data-averaged S
 \EPSL(\AVGR)=\langle\DETOPSTLL\rangle_{\AVGNDXI} =  1 - \AVGR.
 \end{equation}
 
-In traditional \STATMECH (e.g., \cite{SST92}), one is interested in how the \emph{\TotalModelGeneralizationError} $\TGE(\AVGR)$ depends on $\AVGR$.
+In traditional \STATMECH (e.g., \cite{SST92}), one is interested in how the \emph{Total 
+\GeneralizationError} $\TGE(\AVGR)$ depends on $\AVGR$.
 With these simple error functions, \EQN~\ref{eqn:MGE} reduces to a function over $\AVGR$,
-and the \AverageSTGeneralizationError $\STGE(\AVGR)$ is then obtained by taking a \emph{ThermalAverage} over the Students 
+and the \AverageSTGeneralizationError $\STGE(\AVGR)$ is then obtained by taking a \emph{\ThermalAverage} over the Students 
 \begin{align}
 \label{eqn:AVGSTGE_R}
 \AVGSTGE(\AVGR)=\THRMAVG{\EPSL(\AVGR)}=
@@ -235,10 +235,10 @@ and the \AverageSTGeneralizationError $\STGE(\AVGR)$ is then obtained by taking 
 \end{align}
 where $\THRMAVG{\cdots}$ is a \ThermalAverage over the \Student weight vector $\SVEC$.
 Recall that even at high-T, this restricts the Students to ones trained with a similar
-amount of regularization as the Teacher (i.e. the measure (i.e. $d\mu(\SVEC)=d\SVEC$) is independent 
+amount of regularization as the Teacher (i.e. the measure  $d\mu(\SVEC)=d\SVEC$ is independent 
 of $\beta$).
 
-The \ModelQuality for the ST \Perceptron, $\Q^{ST}$,
+The average \Quality for the ST \Perceptron, $\Q^{ST}$,
 is just the \AverageGeneralizationAccuracy, so we can write
 \begin{align}
 \label{eqn:QST_final}
@@ -254,7 +254,7 @@ see Section~\ref{sxn:matgen_mlp3}.
 To generalize this expression, we will start with the \SelfOverlap $\ETA(\SMAT,\TMAT,\NDXI)$ for a
 \MultiLayerPerceptron (MLP3) in Section~\ref{sxn:matgen}.
 
-Before doing this, however, we note that we can obtain this expression for $\STGE$ by defining the
+Before doing this, however, we note that we can obtain this expression for $\AVGSTGE$ by defining the
 \AnnealedHamiltonian $\HANHT(\AVGR)$, at high-Temperature, as in Section~\ref{sxn:mathP}, \EQN~\ref{eqn:Gan_highT}.
 Indeed, it is really $\HANHT(\AVGR)=\EPSL(\AVGR)$ that we must generalize to the matrix case 
 in the next section, which we do (using a technique
@@ -262,7 +262,7 @@ similar to a Replica calculation, but still in the AA).
 %For more details, see Appendix~\ref{sxn:summary_sst92}.
 %(In particular, doing this allows us to define the normalization needed later for the \TRACELOG condition).
 
-\paragraph{Final Remarks}
+\paragraph{Final Remarks.}
 Additional results are provided in Appendix~\ref{sxn:summary_sst92}. In particular, 
 In Appendix~\ref{app:st-gen-err-annealed-ham}, we use the ideas from this section  and the previous one to derive the full non-linear vector form of the \AnnealedHamiltonian $\GAN$ (\EQN~\ref{eqn:Gan_def})
 for the \LinearPerceptron, in the AA.

@@ -31,9 +31,9 @@ Imagine being a real-world practitioner who has trained a large-scale neural net
  We call this NN the \Teacher, because it is the primary empirical input to the theory. The term ``\Teacher'' means that we consider this object to be the original source of supervision -- this trained model replicates the training labels $\Yt$, often to perfection (interpolation) or nearly so.\footnote{If nearly so, then we consider this label noise to be the contribution of the \Teacher, which \SETOL can characterize.}
 You also hold a dataset $\ADD$ that approximates the distribution on which $T$ was trained, yet you lack a reliable yardstick for evaluating $T$’s outputs: perhaps $\ADD$ is contaminated with test data, or $T$ is an LLM with highly arbitrary outputs, or you just
 don't have access to test data.  In any case, you can escape this bind by applying a \emph{Student–Teacher} protocol.  
-You retrain one or more \Students\ $S_{1},S_{2},\dots$ on $D$ using ordinary tools (SGD), that resemble the Teacher $T$
+You retrain one or more \Students\ $S_{1},S_{2},\dots$ on $\ADD$ using ordinary tools (SGD), that resemble the Teacher $T$
 (same size, amount of regularization, etc),
-but now slightly varying the training procedures (i.e  initial conditions, optimization hyperparameters, etc.)--
+but now slightly varying the training procedures (i.e., initial conditions, optimization hyperparameters, etc.)--
 tasking them solely with \emph{imitating} $T$’s predictions. 
 Averaging over many such Students, you can obtain an \emph{indirect but quantitative} estimate of $T$’s performance.
 
