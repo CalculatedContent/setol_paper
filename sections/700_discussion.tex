@@ -92,7 +92,16 @@ A key question in deep learning theory is why large neural networks achieve stro
 
 \vspace{1em}
 \noindent
-\textbf{A novel way to characterize generalization.}
+\textbf{Student-Teacher Knowledge Distillation.}
+\SETOL also provides an explanation of why Student-Teacher distillation works so well.
+When training a Student NN $S$ to emulate a larger Teacher $T$, the Student inherits the inductive biases and generalization behavior of Teacher, which \SETOL explains is concentrated in smaller (i.e. lower rank) layer weight matrices of $T$.
+Thus, the Student converges to a similar region of the optimization landscape, shaped by the same spectral and statistical constraints that govern the Teacher, allowing
+for a smaller model to effectively mimic, if not reproduce, the Teacher's outputs.  
+
+
+\vspace{1em}
+\noindent
+\textbf{A Novel Way to Characterize Generalization.}
 Many results that use the AA / High-Temperature limit effectively state that ``with enough data and a wide enough NN, one can learn anything''. But how much is ``enough''? \SETOL takes this one step further by giving useful empirical measures that converge to the same Ideal, whose progress can be precisely tracked in finite settings. Our experimental results show that this occurs both in a simple model, as well as in large production models. These measures strongly indicate the point at which further learning in a particular layer will be counterproductive.
 
 \vspace{1em}
