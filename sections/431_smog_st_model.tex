@@ -239,16 +239,16 @@ this could be extremely expensive and impractical in modern ML, e.g., for very l
 For such massive NNs, one needs a theory that can detect anomalies in training directly from observations during and/or after training.
 This is a hallmark of the \SETOL approach, and it distinguishes \SETOL from the classic \STATMECH approach.
 
+\
+\input{sections/smog_gen_gap}
+
 \paragraph{What about Grokking?} There could be a scenario where the Teacher $T$ is trained to intepolation, achieving perfect training accuracy, and, yet, the test accuracy remains low;
 This scenario happens in Grokking,  in both the \emph{pre-Grokking} and \emph{anti-Grokking} 
 phases, and has been analyzed using the \HTSR theory.\cite{prakash2025grokking}  
 In the pre-Grokking case,  the \Teacher has not properly converged, and has one or more
 layer $\alpha\gg 2$, whereas in the anti-Grokking phase, the layers have may be overfit
 or overcorrecting, with $\alpha\ll 2$. In either case, we might argue that \Teacher has not 
-achieved \Thermodynamic equilibrium, and the ST approach may fail!
-This complex situation highlights why it is necessary to have a robust theory that
-can characterize the internal states of the NN layers, and without needing access
-to test or training data.
+achieved \Thermodynamic equilibrium, and a naive ST protocol may fail!
 
-\input{sections/smog_gen_gap}
-
+\emph{Grokking and other complex situations motivate why it is necessary to have a robust theory that
+can characterize the internal states of the NN layers, and without needing access to test or training data.}
