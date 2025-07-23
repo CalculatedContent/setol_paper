@@ -144,7 +144,7 @@ This will be important below.
 In \STATMECH, the average over Student weights $\langle\cdots\rangle_{\SVEC}$ is a \ThermalAverage $\THRMAVG{\cdots}$.  This means we should restrict the choice of $S$ to the same Boltzmann distribution we assume $T$ is drawn from.  
 In a practical sense, we would expect our Students $S$ to be trained with the roughly same amount of regularization (same weight decay, etc.). In principle, we should be able to admit many kinds of $S$, including those arising from
 different optimization paths which lead to the same equilibrium sample. 
-\footnote{i.e, see~\cite{WILSON20031429}, which shows that for NNs trained with SGD, nearly all learning rates, if they are not too large, converge to the same minima given enough time.}
+\footnote{See~\cite{WILSON20031429}, which shows that for NNs trained with SGD, nearly all learning rates, if they are not too large, converge to the same minima given enough time. Additionally, ~\cite{tsukada2024} shows that one can effectively train with any batch size and learning rate—as long as you schedule them correctly (i.e., growing them)—and still guarantee convergence to the same solution.}
 While the parameter $\beta$ is like a fixed regularization setting,
 it actually modulates the trade-off between energy and entropy—
 sometimes called \emph{entropic regularization}—and therefore how strongly the

@@ -21,6 +21,12 @@ Here, we want to determine how the quality of our MLP3 model varies with the \AL
 From previous work~\cite{MM20a_trends_NatComm,MM21a_simpsons_TR,YTHx22_TR}, we expect that \ALPHA metrics for the FC1 and FC2 layers should be well-correlated with the test accuracy, while varying some suitable training knob, such as learning rate or batch size, that can modulate the test accuracy.% 
 \footnote{Since we do not change the depth of the model here, we expect the \ALPHA metric to follow the \ALPHAHAT metric, also predicting the test accuracies~\cite{MM21a_simpsons_TR}.}
 
+In doing this, the goal is not to achieve \Thermodynamic equilibrium,
+but, instead, by using a common stopping rule, to simulate 
+in more realistic situations where models may not have fully converged.   This  allows us to test the theory outside of
+its more limited apparent range of validity, 
+thereby demonstrating the robustness of \SETOL.
+
 We vary the batch size from small to large, i.e., $bs\in[1,2,4,8,16,32]$, following the setup of previous work on the \HTSR~\Phenomenology~\cite{MM18_TR_JMLRversion}. 
 We expect similar effects by varying the learning rate, as it is known that small batch sizes correspond directly to large learning rates~\cite{SKYL17_TR,WT11}. 
 Thus, we conducted a second set of experiments where the learning rate was varied by a factor of 
