@@ -1,0 +1,92 @@
+%MAIN
+\documentclass[]{interact} % no 10/11/12pt options with interact
+
+\usepackage{lmodern}
+
+% match the TF sample
+\usepackage{epstopdf}
+\usepackage[caption=false]{subfig}
+\usepackage[numbers,sort&compress]{natbib}
+\bibpunct[, ]{[}{]}{,}{n}{,}{,}
+\renewcommand\bibfont{\fontsize{10}{12}\selectfont}
+
+%\usepackage{draftwatermark}
+% Customize the watermark
+%\SetWatermarkText{DRAFT}
+% \SetWatermarkScale{5}
+%\SetWatermarkColor[gray]{0.85}
+
+%\usepackage{lineno}
+%\linenumbers
+
+%-----------------------------------------------------------------------!
+\input{macros/packages}
+\input{macros/macros}
+\input{macros/dedup_phrase_macros}
+%-----------------------------------------------------------------------
+
+\begin{document}
+\articletype{RESEARCH ARTICLE}
+
+
+\title{%
+SETOL: A Semi-Empirical Theory of (Deep) Learning
+}
+
+\author{
+\name{Charles H. Martin\textsuperscript{a}\thanks{CONTACT Charles H. Martin. Email: charles@CalculationConsulting.com}
+      \and Christopher Hinrichs\textsuperscript{b}}
+\affil{\textsuperscript{a}Calculation Consulting, 8 Locksley Ave, 6B, San Francisco, CA 94122
+      \quad \textsuperscript{b}Onyx Point Systems}
+}
+
+
+\date{}
+\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\newpage
+\tableofcontents
+
+%GLG | Powered by Box
+
+\newpage
+\input{sections/100_introduction}
+\newpage
+\input{sections/200_htsr}
+\newpage
+\input{sections/300_setol}
+\newpage
+\input{sections/400_smog}
+\newpage
+\input{sections/500_matgen}
+\newpage
+\input{sections/600_empirical}
+\newpage
+\input{sections/700_discussion}
+
+
+%\vspace{-2mm}
+\noindent
+\paragraph{Acknowledgments.}
+We would like to thank Matt Lee of Triaxiom Capital and Carl Page of the Anthropocene Institute.
+We also thank Mirco Milletarì and Michael Mahoney for helpful conversations.
+%MWM would like to acknowledge DARPA, NSF, and ONR as well as the UC Berkeley BDD project and a gift from Intel for providing partial support of this work.
+%Our conclusions do not necessarily reflect the position or the policy of our sponsors, and no official endorsement should be inferred.
+%XXX.  WHO ELSE TO THANK.
+
+%\iffalse 
+\bibliographystyle{tfq}            % Taylor & Francis Reference Style Q
+\bibliography{bibliography/dnns}
+%\fi
+
+\appendix
+\input{appendix.tex}
+
+%JUNK%\input{appendix/tanaka}
+%JUNK%\input{appendix/extra}
+
+\end{document}
